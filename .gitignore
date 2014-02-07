@@ -11,3 +11,4 @@ bin/
 .project
 .classpath
 .gwt/
+.metadata/
