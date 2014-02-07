@@ -1,0 +1,5 @@
+# maalr .gitignore file
+logs/
+target/
+exports/
+
