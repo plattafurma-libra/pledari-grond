@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+
+    <indexConfiguration>
+        <items source="German" dest="German" stored="true" analyzed="false" type="TEXT"/>
+        <items source="German" dest="German_search" stored="false" analyzed="true" type="STRING"/>
+        <items source="German" dest="German_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
+        <items source="German_sort" dest="German_sort" stored="false" analyzed="false" type="INTEGER"/>
+        <items source="English" dest="English" stored="true" analyzed="false" type="TEXT"/>
+        <items source="English" dest="English_search" stored="false" analyzed="true" type="STRING"/>
+        <items source="English" dest="English_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
+        <items source="English_sort" dest="English_sort" stored="false" analyzed="false" type="INTEGER"/>
+    </indexConfiguration>
+</dictionaryConfiguration>

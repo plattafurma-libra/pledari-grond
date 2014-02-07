@@ -1,0 +1,645 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>gwt</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>de.uni_koeln.spinfo.maalr</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../maalr.parent</relativePath>
+	</parent>
+	
+	<scm>
+		<!-- Source code management -->
+		<!-- TODO: Update this when moving to GitHub -->
+		<connection>scm:svn:http://lisa.spinfo.uni-koeln.de/misc/${project.svn.name}</connection>
+		<developerConnection>scm:svn:http://lisa.spinfo.uni-koeln.de/${project.svn.name}</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://spinfo.phil-fak.uni-koeln.de/maalr</url>
+	</scm>
+
+	<!-- Required for buildnumber plugin -->
+	<repositories>
+
+		<repository>
+			<id>Codehaus</id>
+			<url>https://nexus.codehaus.org/content/groups/staging/</url>
+		</repository>
+
+	</repositories>
+
+	<dependencies>
+
+		<!-- To get and display server-side statistics -->
+
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>spring.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.gwtbootstrap</groupId>
+			<artifactId>gwt-bootstrap</artifactId>
+			<version>2.2.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>mongo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Required to upload files (import db) -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		
+
+
+		<!-- GWT -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gwt.google-apis</groupId>
+			<artifactId>gwt-visualization</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- Spring Web MVC -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+			<optional>false</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- GWT-Spring -->
+		<!-- Required to implement GWT Services as Spring Beans -->
+		<dependency>
+			<groupId>net.sf.gwt-widget</groupId>
+			<artifactId>gwt-sl</artifactId>
+			<version>1.3-RC1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.16</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/common/resources/css</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/assets/style</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>bootstrap*</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- <plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					 <descriptors>
+            			<descriptor>src/main/assembly/gwt.xml</descriptor>
+          			</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+          			<attachClasses>true</attachClasses>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+						<!-- .jsp files are filtered, to insert -->
+						<!-- maven properties (build number etc) -->
+						<resource>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.jsp</include>
+							</includes>
+							<filtering>true</filtering>
+						</resource>
+						<!-- all other files from webapp dir are -->
+						<!-- copied without filtering -->
+						<resource>
+							<directory>src/main/webapp</directory>
+							<excludes>
+								<excludes>**/*.jsp</excludes>
+							</excludes>
+							<filtering>false</filtering>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>set-system-properties</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>
+									<name>logback.configurationFile</name>
+									<value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value>
+								</property>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- This plugin generates a build number, as defined in -->
+			<!-- its configuration. -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<revisionOnScmFailure>true</revisionOnScmFailure>
+					<format>build {0,number} ({1,date})</format>
+					<items>
+						<item>buildNumber0</item>
+						<item>timestamp</item>
+					</items>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<!-- Generate findbugs statistics -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+					<xmlOutput>true</xmlOutput>
+					<!-- <includeFilterFile>findbugs-include.xml</includeFilterFile> -->
+					<excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											properties-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-2,)
+										</versionRange>
+										<goals>
+											<goal>
+												set-system-properties
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											gwt-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.5.1-rc1,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>resources</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+
+
+
+		<!-- Multiple profiles to speed up building the app. -->
+		<!-- For development, "exploded" or "exploded integration" -->
+		<!-- are recommended profiles, whereas for deployment -->
+		<!-- and continuous integration "war integration" is -->
+		<!-- recommended. -->
+
+		<profile>
+			<!-- "integration" starts jetty, runs integration tests (JMeter and -->
+			<!-- Maven Failsafe Plugin) and finally stops jetty. -->
+			<id>reports</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-site-plugin</artifactId>
+						<version>3.0</version>
+					</plugin>
+				</plugins>
+			</build>
+
+			<reporting>
+				<!-- Collect build/test reports -->
+				<plugins>
+					<plugin>
+						<!-- Generate GWT report -->
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<version>${gwt.version}</version>
+						<reportSets>
+							<reportSet>
+								<reports>
+									<report>compile-report</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>chronos-report-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</reporting>
+		</profile>
+
+
+		<profile>
+			<activation>
+      			<activeByDefault>false</activeByDefault>
+    		</activation>
+			<id>gwt-dev</id>
+			<properties>
+				<!-- GWT options -->
+				<gwt.draft-compile>true</gwt.draft-compile>
+				<!-- one of obfuscated, pretty, and detailed -->
+				<gwt.style>pretty</gwt.style>
+				<!-- Value between 1 and 9 -->
+				<gwt.optimizationlevel>1</gwt.optimizationlevel>
+				<!-- The Closure Compiler can further improve the generated Javascript -->
+				<!-- See https://developers.google.com/closure/compiler/ -->
+				<!-- BUG: If enabled, the GWT compiler will not generate compiler reports -->
+				<!-- (at least in GWT 2.5, see http://code.google.com/p/google-web-toolkit/issues/detail?id=7475 
+					) -->
+				<gwt.enableclosurecompiler>false</gwt.enableclosurecompiler>
+			</properties>
+
+			<build>
+
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<version>${gwt.version}</version>
+						<executions>
+							<execution>
+								<id>prepare</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>compile</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>test-compile</id>
+								<phase>test-compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+							<compileReport>true</compileReport>
+							<draftCompile>${gwt.draft-compile}</draftCompile>
+							<style>${gwt.style}</style>
+							<optimizationLevel>${gwt.optimizationlevel}</optimizationLevel>
+							<runTarget>index.jsp</runTarget>
+							<localWorkers>4</localWorkers>
+							<extraJvmArgs>-Xmx1G</extraJvmArgs>
+							<enableClosureCompiler>${gwt.enableclosurecompiler}</enableClosureCompiler>
+							<!-- List all required modules here, instead of auto-detecting them. -->
+							<!-- Also have a look at the corresponding section in the dev profile -->
+							<modules>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.admin.AdminDev</module>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.editor.EditorDev</module>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.user.UserDev</module>
+							</modules>
+							<!-- Integrate Antlr into GWT by using a method described on -->
+							<!-- http://mojo.codehaus.org/gwt-maven-plugin/user-guide/library.html -->
+							<!-- Have a look at the module description org/antlr/Runtime.gwt.xml -->
+							<compileSourcesArtifacts>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:common</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:mongo</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:lucene</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:sigar</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:antlr</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:spring.core</compileSourcesArtifact>
+								<compileSourcesArtifact>org.antlr:antlr-runtime</compileSourcesArtifact>
+							</compileSourcesArtifacts>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Multiple profiles to speed up building the app. -->
+		<!-- For development, "exploded" or "exploded integration" -->
+		<!-- are recommended profiles, whereas for deployment -->
+		<!-- and continuous integration "war integration" is -->
+		<!-- recommended. -->
+
+
+
+		<profile>
+			<id>gwt-prod</id>
+
+			<properties>
+				<!-- GWT options -->
+				<gwt.draft-compile>false</gwt.draft-compile>
+				<!-- one of obfuscated, pretty, and detailed -->
+				<gwt.style>obfuscated</gwt.style>
+				<!-- Value between 1 and 9 -->
+				<gwt.optimizationlevel>9</gwt.optimizationlevel>
+				<!-- The Closure Compiler can further improve the generated Javascript -->
+				<!-- See https://developers.google.com/closure/compiler/ -->
+				<!-- BUG: If enabled, the GWT compiler will not generate compiler reports -->
+				<!-- (at least in GWT 2.5, see http://code.google.com/p/google-web-toolkit/issues/detail?id=7475 
+					) -->
+				<gwt.enableclosurecompiler>false</gwt.enableclosurecompiler>
+			</properties>
+
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<version>${gwt.version}</version>
+
+						<executions>
+							<execution>
+								<id>prepare</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>resources</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>compile</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>test-compile</id>
+								<phase>test-compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+							<compileReport>true</compileReport>
+							<draftCompile>${gwt.draft-compile}</draftCompile>
+							<style>${gwt.style}</style>
+							<optimizationLevel>${gwt.optimizationlevel}</optimizationLevel>
+							<runTarget>index.jsp</runTarget>
+							<localWorkers>4</localWorkers>
+							<extraJvmArgs>-Xmx1G</extraJvmArgs>
+							<enableClosureCompiler>${gwt.enableclosurecompiler}</enableClosureCompiler>
+							<!-- List all required modules here, instead of auto-detecting them. -->
+							<!-- Also have a look at the corresponding section in the dev profile -->
+							<modules>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.admin.Admin</module>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.editor.Editor</module>
+								<module>de.uni_koeln.spinfo.maalr.webapp.ui.user.User</module>
+							</modules>
+							<!-- Integrate Antlr into GWT by using a method described on -->
+							<!-- http://mojo.codehaus.org/gwt-maven-plugin/user-guide/library.html -->
+							<!-- Have a look at the module description org/antlr/Runtime.gwt.xml -->
+							<compileSourcesArtifacts>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:common</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:mongo</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:lucene</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:sigar</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:antlr</compileSourcesArtifact>
+								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:spring.core</compileSourcesArtifact>
+								<compileSourcesArtifact>org.antlr:antlr-runtime</compileSourcesArtifact>
+							</compileSourcesArtifacts>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<developers>
+		<developer>
+			<id>sschwieb</id>
+			<email>schwiebert@spinfo.uni-koeln.de</email>
+			<name>Stephan Schwiebert</name>
+			<organization>Department of Computational Linguistics, University of Cologne</organization>
+			<roles>
+				<role>Technical Project Manager</role>
+				<role>Software Engineer</role>
+				<role>Software Tester</role>
+			</roles>
+			<organizationUrl>http://www.spinfo.uni-koeln.de</organizationUrl>
+			<url>http://www.spinfo.phil-fak.uni-koeln.de/sschwieb.html</url>
+		</developer>
+		<!-- TODO: Add Miha & Mandy -->
+	</developers>
+
+	<contributors>
+		<!-- TODO: Find contributors! :) -->
+	</contributors>
+
+	<organization>
+		<name>Department of Computational Linguistics, University of Cologne</name>
+		<url>http://www.spinfo.uni-koeln.de</url>
+	</organization>
+
+	<url>http://www.spinfo.phil-fak.uni-koeln.de/forschung-maalr.html</url>
+
+	<description>
+		alle wörter, namen, und arten zuo reden: 
+		dem ABC nach ordenlich gestellt, gantz fleissig unnd 
+		eigentlich vertolmetscht, dergleychen bishär nie gesähen. [Josua Maaler, 1551]
+		
+		http://en.wikipedia.org/wiki/Josua_Maaler
+		<!-- MAALR: Manual and Automatic Alignment of Language Resources -->
+		<!-- MAALR: Matching And Associating Language Resources -->
+		<!-- MAALR: Method to Automatically Align Linguistic Resources -->
+	</description>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://bob.spinfo.uni-koeln.de:8888/job/Maalr/</url>
+	</ciManagement>
+
+	<inceptionYear>2012</inceptionYear>
+
+	<licenses>
+		<!-- TODO: Add a licence -->
+	</licenses>
+
+	<mailingLists>
+		<!-- TODO: Will we need a mailing list? -->
+	</mailingLists>
+
+</project>

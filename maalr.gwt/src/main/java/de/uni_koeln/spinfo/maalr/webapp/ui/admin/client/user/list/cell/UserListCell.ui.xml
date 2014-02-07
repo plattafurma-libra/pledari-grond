@@ -1,0 +1,9 @@
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+	<ui:with field='userInfo'
+		type="de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo" />
+		
+	<div class="user-login"><ui:text from='{userInfo.getLogin}'></ui:text></div>
+
+</ui:UiBinder>  
+

@@ -1,0 +1,149 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui.base">
+	
+	<ui:with field='i18n' type='de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorUiBinderMessages' />
+	
+	<ui:style>
+		.label {
+			font-weight: bold;
+			vertical-align: middle;
+			margin: 10px;
+		}
+		
+		.mailto {
+			font-weight: bold;
+			vertical-align: middle;
+			color: blue;
+		}
+		
+		.edit-history {
+			vertical-align: middle;
+			color: blue;
+		}
+		
+		.button {
+			width: 50%;
+			padding: 10px;
+		}
+		
+		.editable {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.content {
+			border: solid 1px black;
+			padding: 10px;
+			height: 100%;
+		}
+		
+		.titlebar {
+			width: 100%;
+			background-color: #002994;
+			color: white;
+			font-weight: bold;
+			font-size: 110%;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		
+		.title {
+			padding-left: 10px;
+		}
+		
+		.panel {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="{style.panel}">
+			<div class="{style.titlebar}">
+			<div class="{style.title}">
+				<gwtbootstrap:InlineLabel title="{i18n.accountDetails}"></gwtbootstrap:InlineLabel>
+			</div>
+			</div>
+			<div class="{style.content}">
+				<table style="width:100%" cellspacing="5px">
+					<colgroup>
+						<col width="30%"></col>
+						<col width="70%"></col>
+					</colgroup>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.login}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<g:TextBox styleName="{style.editable}" ui:field="login"
+								readOnly="true"></g:TextBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.created}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<d:DateBox styleName="{style.editable}" ui:field="creationDate"></d:DateBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.lastActive}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<d:DateBox styleName="{style.editable}" ui:field="modifiedDate"></d:DateBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.firstName}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<g:TextBox styleName="{style.editable}" ui:field="firstName"></g:TextBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.lastName}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<g:TextBox styleName="{style.editable}" ui:field="lastName"></g:TextBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<g:Anchor ui:field="mailto" text="{i18n.email}" styleName="{style.mailto}"></g:Anchor>
+						</td>
+						<td>
+							<g:TextBox styleName="{style.editable}" ui:field="email"></g:TextBox>
+						</td>
+					</tr>
+					<tr>
+						<td class="{style.label}">
+							<gwtbootstrap:InlineLabel title="{i18n.role}"></gwtbootstrap:InlineLabel>
+						</td>
+						<td>
+							<g:ListBox styleName="{style.editable}" ui:field="role"></g:ListBox>
+						</td>
+					</tr>
+				</table>
+				<g:HorizontalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
+					<g:cell horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE" width="100%" >
+						<g:Anchor ui:field="edits" text="{i18n.showEditHistory}" styleName="{style.edit-history}"></g:Anchor>
+					</g:cell>
+					<g:cell horizontalAlignment="ALIGN_RIGHT" width="100%" >
+						<g:Button styleName="default-button" ui:field="cancel" text="{i18n.resetBtn}"></g:Button>
+					</g:cell>
+					<g:cell horizontalAlignment="ALIGN_RIGHT" width="100%" >
+						<g:Button styleName="danger-button" ui:field="save" text="{i18n.saveBtn}"></g:Button>
+					</g:cell>
+				</g:HorizontalPanel>
+			</div>
+		</div>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

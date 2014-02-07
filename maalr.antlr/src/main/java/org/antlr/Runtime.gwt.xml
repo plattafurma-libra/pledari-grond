@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='org.antlr.Runtime'>
+
+	<!-- 'Fake'-Module to integrate Antlr into GWT -->
+	<!-- See http://mojo.codehaus.org/gwt-maven-plugin/user-guide/library.html -->
+	
+	<!-- Final step: Replace Antlr's BitSet with a modified version,  -->
+	<!-- because the original uses Object.clone(), which is not supported -->
+	<!-- by GWT. This is done with the class 'org.antlr.runtime.Bitset' -->
+	<!-- provided by this project -->
+	<!-- Idea taken from http://code.google.com/p/gwt-xml-editor/wiki/GwtAntlr -->
+  
+  <source path="runtime" />
+</module>

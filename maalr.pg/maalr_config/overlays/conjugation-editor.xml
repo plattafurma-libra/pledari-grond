@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlayEditor>
+	<presetchooser id="type" base="RStichwort" generator="de.uni_koeln.spinfo.maalr.overlays.generator.VerbClassGenerator">
+		<options>
+			<option value="1"/>
+			<option value="2"/>
+			<option value="3"/>
+			<option value="4"/>
+			<option value="5"/>
+			<option value="6"/>
+			<option value="7"/>
+		</options>
+	</presetchooser>
+	<rows>
+		<row>
+			<column id="present">
+				<item id="preschentsing1"></item>
+				<item id="preschentsing2"></item>
+				<item id="preschentsing3"></item>
+				<item id="preschentplural1"></item>
+				<item id="preschentplural2"></item>
+				<item id="preschentplural3"></item>
+			</column>
+			<column id="imperfect">
+				<item id="imperfectsing1"></item>
+				<item id="imperfectsing2"></item>
+				<item id="imperfectsing3"></item>
+				<item id="imperfectplural1"></item>
+				<item id="imperfectplural2"></item>
+				<item id="imperfectplural3"></item>
+			</column>
+			<column id="particip">
+				<item id="participperfectms"></item>
+				<item id="participperfectfs"></item>
+				<item id="participperfectmp"></item>
+				<item id="participperfectfp"></item>
+			</column>
+		</row>
+		<row>
+			<column id="conjunctive">
+				<item id="conjunctivsing1"></item>
+				<item id="conjunctivsing2"></item>
+				<item id="conjunctivsing3"></item>
+				<item id="conjunctivplural1"></item>
+				<item id="conjunctivplural2"></item>
+				<item id="conjunctivplural3"></item>
+			</column>
+			<column id="conditional">
+				<item id="cundizionalsing1"></item>
+				<item id="cundizionalsing2"></item>
+				<item id="cundizionalsing3"></item>
+				<item id="cundizionalplural1"></item>
+				<item id="cundizionalplural2"></item>
+				<item id="cundizionalplural3"></item>
+			</column>
+			<column id="future">
+				<item id="futursing1"/>
+				<item id="futursing2"/>
+				<item id="futursing3"/>
+				<item id="futurplural1"/>
+				<item id="futurplural2"/>
+				<item id="futurplural3"/>
+			</column>
+		</row>
+		<row>
+			<column id="gerund">
+				<item id="gerundium"/>
+			</column>
+			<column id="imperative">
+				<item id="imperativ1"/>
+				<item id="imperativ2"/>
+			</column>
+		</row>
+	</rows>
+</overlayEditor>

@@ -1,0 +1,2 @@
+Do not modify css files in this directory - they are replaced during the build.
+Instead, modify css files in "assets/style".

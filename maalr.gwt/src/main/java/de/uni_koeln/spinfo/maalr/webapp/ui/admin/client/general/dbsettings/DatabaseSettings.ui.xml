@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui">
+	
+	<g:HTMLPanel>
+		<gwtbootstrap:Well>
+
+			<gwtbootstrap:ProgressBar visible="false" ui:field="busyIndicator" />
+						
+			<gwtbootstrap:Paragraph>
+				<gwtbootstrap:Label text="Database" />
+			</gwtbootstrap:Paragraph>
+			<g:HorizontalPanel>
+				<g:cell>
+					<gwtbootstrap:Paragraph ui:field="databaseInfos" />
+				</g:cell>
+			</g:HorizontalPanel>
+
+			<g:HorizontalPanel>
+				<g:cell>
+					<gwtbootstrap:ButtonGroup ui:field="leftGroup">
+						<gwtbootstrap:Button ui:field="updateStats" size="SMALL" text="Refresh" type="PRIMARY" />
+						<gwtbootstrap:Button ui:field="exportAll" size="SMALL" text="Backup" type="PRIMARY" icon="DOWNLOAD" />
+					</gwtbootstrap:ButtonGroup>
+				</g:cell>
+				<g:cell>
+					<gwtbootstrap:ButtonGroup ui:field="rightGroup">
+						<gwtbootstrap:Button ui:field="importAll" size="SMALL" text="Import" type="DANGER" icon="UPLOAD" />
+						<gwtbootstrap:Button ui:field="reload" text="Reload" size="SMALL" type="DANGER" />
+						<gwtbootstrap:Button ui:field="drop" text="Drop" size="SMALL" type="DANGER" />
+					</gwtbootstrap:ButtonGroup>
+				</g:cell>
+			</g:HorizontalPanel>
+			
+		</gwtbootstrap:Well>
+	</g:HTMLPanel>
+
+
+</ui:UiBinder> 

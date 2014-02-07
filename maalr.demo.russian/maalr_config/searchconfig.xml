@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+
+	<!-- Lucene's indexing configuration -->
+	<!-- 'source' refers the document from the database (mongoDB) -->
+	<!-- 'dest' refers the Lucence's document field -->
+	<indexConfiguration>
+		<items source="DLemma" dest="DLemma" stored="true" analyzed="true" type="TEXT" />
+		<items source="DLemma" dest="DLemma_exact" stored="false" analyzed="false" type="STRING" lowerCase="true" />
+		<items source="DType" dest="DType" stored="true" analyzed="false" type="STRING" lowerCase="true" />
+		<items source="DAspect" dest="DAspect" stored="true" analyzed="true" type="TEXT" />
+		<items source="DGender" dest="DGender" stored="true" analyzed="true" type="TEXT" />
+		<items source="DSingular" dest="DSingular" stored="true" analyzed="true" type="TEXT" />
+		<items source="DPlural" dest="DPlural" stored="true" analyzed="true" type="TEXT" />
+		<items source="RLemma" dest="RLemma" stored="true" analyzed="true" type="TEXT" />
+		<items source="RLemma" dest="RLemma_exact" stored="false" analyzed="false" type="STRING" lowerCase="true" />
+		<items source="RType" dest="RType" stored="true" analyzed="false" type="STRING" lowerCase="true" />
+		<items source="RAspect" dest="RAspect" stored="true" analyzed="true" type="TEXT" />
+		<items source="RGender" dest="RGender" stored="true" analyzed="true" type="TEXT" />
+		<items source="RSingular" dest="RSingular" stored="true" analyzed="true" type="TEXT" />
+		<items source="RPlural" dest="RPlural" stored="true" analyzed="true" type="TEXT" />
+	</indexConfiguration>
+
+	<!-- The input field within the search form -->
+	<textFields>
+		<textField id="searchPhrase"></textField>
+	</textFields>
+
+	<!-- Each 'fieldChoice' represents a combo box containing the defined options -->
+	<fieldChoices>
+		<fieldChoice id="language" valueOf="searchPhrase">
+			<options id="german" name="Deutsch">
+				<fields>
+					<field reference="DLemma" />
+				</fields>
+			</options>
+			<options id="russian" name="Russisch">
+				<fields>
+					<field reference="RLemma" />
+				</fields>
+			</options>
+			<options id="both" name="Beide" default="true">
+				<fields>
+					<field reference="DLemma" />
+					<field reference="RLemma" />
+				</fields>
+			</options>
+		</fieldChoice>
+
+		<fieldChoice id="gramTypeChoice" valueOf="type">
+			<options id="german" name="Deutsch">
+				<fields>
+					<field reference="DType" />
+				</fields>
+			</options>
+			<options id="russian" name="Russisch">
+				<fields>
+					<field reference="RType" />
+				</fields>
+			</options>
+			<options id="both" name="Beide" default="true">
+				<fields>
+					<field reference="DType" />
+					<field reference="RType" />
+				</fields>
+			</options>
+		</fieldChoice>
+	</fieldChoices>
+
+	<fieldValueChoices>
+		<fieldValueChoice id="type">
+			<options>
+				<option></option>
+				<option id="noun"></option>
+				<option id="adjective"></option>
+				<option id="verb"></option>
+			</options>
+		</fieldValueChoice>
+	</fieldValueChoices>
+
+	<queryModifiers>
+		<queryModifier id="gramType" reference="searchPhrase">
+			<queryModifiers>
+				<queryModifier id="default" default="true">
+					<field from="gramTypeChoice">
+						<modification>${field}</modification>
+					</field>
+					<value from="searchPhrase">
+						<modification>${phrase}</modification>
+					</value>
+				</queryModifier>
+			</queryModifiers>
+		</queryModifier>
+	
+		<queryModifier id="method" reference="searchPhrase">
+			<queryModifiers>
+				<!-- Exact matching -->
+				<queryModifier id="exact">
+					<field from="language">
+						<modification>${field}_exact</modification>
+					</field>
+					<value from="searchPhrase">
+						<modification>${phrase}</modification>
+					</value>
+				</queryModifier>
+	
+				<!-- Fuzzy matching (see: http://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Fuzzy%20Searches) -->
+				<queryModifier id="soft">
+					<field from="language">
+						<modification>${field}</modification>
+					</field>
+					<value from="searchPhrase">
+						<modification>${phrase}~0.6</modification>
+					</value>
+				</queryModifier>
+	
+				<!-- Wildcard matching (see: http://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Wildcard%20Searches) -->
+				<queryModifier id="normal" default="true">
+					<field from="language">
+						<modification>${field}</modification>
+					</field>
+					<value from="searchPhrase">
+						<modification>${phrase}*</modification>
+					</value>
+				</queryModifier>
+	
+			</queryModifiers>
+		</queryModifier>
+	</queryModifiers>
+	
+	<sortModifiers />
+
+</dictionaryConfiguration>

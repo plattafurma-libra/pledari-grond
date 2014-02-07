@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+
+    <indexConfiguration>
+        <items source="german" dest="german" stored="true" analyzed="false" type="TEXT"/>
+        <items source="german" dest="german_search" stored="false" analyzed="true" type="STRING"/>
+        <items source="german" dest="german_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
+        <items source="german_sort" dest="german_sort" stored="false" analyzed="false" type="INTEGER"/>
+        <items source="english" dest="english" stored="true" analyzed="false" type="TEXT"/>
+        <items source="english" dest="english_search" stored="false" analyzed="true" type="STRING"/>
+        <items source="english" dest="english_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
+        <items source="english_sort" dest="english_sort" stored="false" analyzed="false" type="INTEGER"/>
+        <items source="redirect_b" dest="redirect_b" stored="true" analyzed="false" type="TEXT"/>
+        <items source="maalr_comment" dest="maalr_comment" stored="true" analyzed="false" type="TEXT"/>
+        <items source="maalr_comment" dest="maalr_comment_search" stored="false" analyzed="true" type="STRING"/>
+        <items source="maalr_email" dest="maalr_email" stored="true" analyzed="false" type="TEXT"/>
+        
+    </indexConfiguration>
+    
+    <textFields>
+    	<textField id="searchPhrase"></textField>
+    	<textField id="category"></textField>
+    	<textField id="subSemantics"></textField>
+    	<textField id="gender"></textField>
+    	<textField id="grammar"></textField>
+    </textFields>
+    <fieldChoices>
+        <fieldChoice id="language" valueOf="searchPhrase">
+            <options id="german" name="German">
+                <fields>
+                    <field reference="german_search"/>
+                </fields>
+            </options>
+            <options id="english" name="English">
+                <fields>
+                    <field reference="english_search"/>
+                </fields>
+            </options>
+            <options id="both" name="Both" default="true">
+                <fields>
+                    <field reference="german_search"/>
+                    <field reference="english_search"/>
+                </fields>
+            </options>
+        </fieldChoice>
+        
+    </fieldChoices>
+    <queryModifiers>
+        <queryModifier id="method" reference="searchPhrase">
+            <queryModifiers>
+            	 <queryModifier id="normal" default="true" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
+                    <field from="language">
+                        <modification>${field}</modification>
+                    </field>
+                    <value from="searchPhrase">
+                        <modification>${phrase}</modification>
+                    </value>
+                </queryModifier>
+                <queryModifier id="intern"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.InfixQueryBuilder">
+                    <field from="language">
+                        <modification>${field}</modification>
+                    </field>
+                    <value from="searchPhrase">
+                        <modification>*${phrase}*</modification>
+                    </value>
+                </queryModifier>
+                <queryModifier id="prefix" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.PrefixQueryBuilder">
+                    <field from="language">
+                        <modification>${field}</modification>
+                    </field>
+                    <value from="searchPhrase">
+                        <modification>${phrase}</modification>
+                    </value>
+                </queryModifier>
+                <queryModifier id="suffix" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SuffixQueryBuilder">
+                    <field from="language">
+                        <modification>${field}</modification>
+                    </field>
+                    <value from="searchPhrase">
+                        <modification>*${phrase}</modification>
+                    </value>
+                </queryModifier>
+                <queryModifier id="exact" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.ExactMatchQueryBuilder">
+                    <field from="language">
+                        <modification>${field}</modification>
+                    </field>
+                    <value from="searchPhrase">
+                        <modification>${phrase}</modification>
+                    </value>
+                </queryModifier>
+               
+            </queryModifiers>
+        </queryModifier>
+    </queryModifiers>
+    <sortModifiers/>
+    <exactModifier>method=exact</exactModifier>
+</dictionaryConfiguration>

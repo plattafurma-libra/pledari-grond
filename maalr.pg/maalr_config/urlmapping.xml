@@ -1,0 +1,8 @@
+<!-- nur n bisschen überlegen -->
+
+<path>
+	<dir title="übersetzung" mapping="translate"></dir>
+	<dir title="wörterbuch" mapping="dictionary">
+		<dir title="*" mapping="*"></dir>
+	</dir>
+</path>

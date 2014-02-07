@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lemmaDescription>
+	<values>
+		<value internalName="DStichwort">
+			<type>TEXT</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="notNullValidator" />
+		</value>
+		<value internalName="Bearbeitungshinweis">
+			<type>ORACLE</type>
+		</value>
+		<!-- Values for field entry "Grammar" displayed in dropdown in LexiconEditor-overlay -->
+		<value internalName="DGrammatik">
+			<type>ENUM</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="choiceValidator" allowNull="true">
+				<values>
+					<value>adj</value>
+					<value>adv</value>
+					<value>art</value>
+					<value>cj</value>
+					<value>cumpos</value>
+					<value>int</value>
+					<value>interj</value>
+					<value>inv</value>
+					<value>n.l</value>
+					<value>n.p</value>
+					<value>num</value>
+					<value>prep</value>
+					<value>pron</value>
+					<value>refl</value>
+					<value>subst</value>
+					<value>tr</value>
+					<value>tr/int</value>
+				</values>
+			</validator>
+		</value>
+		<value internalName="DSubsemantik">
+			<type>ORACLE</type>
+		</value>
+		<value internalName="DSemantik">
+			<type>TEXT</type>
+		</value>
+		<!-- Values for field entry "Genus" displayed in dropdown in LexiconEditor-overlay -->
+		<value internalName="DGenus">
+			<type>ENUM</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="choiceValidator" allowNull="true">
+				<values>
+					<value>f</value>
+					<value>f(m)</value>
+					<value>f(n)</value>
+					<value>f(pl)</value>
+					<value>f,m</value>
+					<value>f,m,n</value>
+					<value>f,n</value>
+					<value>m</value>
+					<value>m(f)</value>
+					<value>m(pl)</value>
+					<value>m,f</value>
+					<value>m,n</value>
+					<value>m/n</value>
+					<value>n</value>
+					<value>n(f)</value>
+					<value>n(pl)</value>
+					<value>n,f</value>
+					<value>n,m</value>
+					<value>pl</value>
+				</values>
+			</validator>
+		</value>
+		<value internalName="RStichwort">
+			<type>TEXT</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="notNullValidator" />
+		</value>
+		<!-- Values for field entry "Grammar" displayed in dropdown in LexiconEditor-overlay -->
+		<value internalName="RGrammatik">
+			<type>ENUM</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="choiceValidator" allowNull="true">
+				<values>
+					<value>(refl) tr</value>
+					<value>abs/tr</value>
+					<value>adj</value>
+					<value>adv</value>
+					<value>art</value>
+					<value>cj</value>
+					<value>int</value>
+					<value>interj</value>
+					<value>inv</value>
+					<value>n.l</value>
+					<value>n.p</value>
+					<value>num</value>
+					<value>prep</value>
+					<value>pron</value>
+					<value>refl</value>
+					<value>subst</value>
+					<value>tr</value>
+					<value>tr/int</value>
+				</values>
+			</validator>
+		</value>
+		<!-- Values for field entry "Genus" displayed in dropdown in LexiconEditor-overlay -->
+		<value internalName="RGenus">
+			<type>ENUM</type>
+			<validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:type="choiceValidator" allowNull="true">
+				<values>
+					<value>(coll)m</value>
+					<value>(f)m</value>
+					<value>(m)f</value>
+					<value>(pl)f</value>
+					<value>coll</value>
+					<value>f</value>
+					<value>f(pl)</value>
+					<value>f.pl</value>
+					<value>f/m</value>
+					<value>f/m.pl</value>
+					<value>m</value>
+					<value>m(f)</value>
+					<value>m(f)pl</value>
+					<value>m(pl)</value>
+					<value>m,f</value>
+					<value>m.(pl)</value>
+					<value>m.pl</value>
+					<value>m/f</value>
+					<value>m/f.pl</value>
+					<value>pl</value>
+				</values>
+			</validator>
+		</value>
+		<value internalName="RSubsemantik">
+			<type>ORACLE</type>
+		</value>
+		<value internalName="RSemantik">
+			<type>TEXT</type>
+		</value>
+	</values>
+	<result_list_lang_a>
+		<valueFormat key="DStichwort" format="{0}"></valueFormat>
+		<!-- <valueFormat key="DSemantik" format="{0}"></valueFormat> -->
+		<valueFormat key="DSubsemantik" format="({0})"></valueFormat>
+		<valueFormat key="DGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></valueFormat>
+	</result_list_lang_a>
+	<language_a>german</language_a>
+	<language_b>romansh</language_b>
+	<dict_index_lang_a>DStichwort_search_exact</dict_index_lang_a>
+	<dict_index_lang_b>RStichwort_search_exact</dict_index_lang_b>
+	<result_list_lang_b>
+		<valueFormat key="RStichwort" format="{0}"></valueFormat>
+		<!-- <valueFormat key="RSemantik" format="{0}"></valueFormat> -->
+		<valueFormat key="RSubsemantik" format="({0})"></valueFormat>
+		<valueFormat key="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></valueFormat>
+	</result_list_lang_b>
+	<editor_list_lang_a>
+		<item>DStichwort</item>
+		<item>DGrammatik</item>
+		<item>DGenus</item>
+		<item>DSubsemantik</item>
+		<item>Bearbeitungshinweis</item>
+	</editor_list_lang_a>
+	<editor_list_lang_b>
+		<item>RStichwort</item>
+		<item>RGrammatik</item>
+		<item>RGenus</item>
+		<item>RSubsemantik</item>
+		<item>redirect_b</item>
+	</editor_list_lang_b>
+	<user_suggest_list_lang_a>
+		<item>DStichwort</item>
+	</user_suggest_list_lang_a>
+	<user_suggest_list_lang_b>
+		<item>RStichwort</item>
+	</user_suggest_list_lang_b>
+	<sort_list_lang_a>
+		<item>DStichwort_search_exact</item>
+		<item>DStichwort_sort</item>
+	</sort_list_lang_a>
+	<sort_list_lang_b>
+		<item>RStichwort_search_exact</item>
+		<item>RStichwort_sort</item>
+	</sort_list_lang_b>
+	<sort_order_lang_a>DStichwort_sort</sort_order_lang_a>
+	<sort_order_lang_b>RStichwort_sort</sort_order_lang_b>
+</lemmaDescription>

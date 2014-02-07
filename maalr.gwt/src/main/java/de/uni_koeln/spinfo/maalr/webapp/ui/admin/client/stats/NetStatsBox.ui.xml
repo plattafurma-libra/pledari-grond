@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui">
+	
+	<g:HTMLPanel>
+	<gwtbootstrap:Well>
+		<gwtbootstrap:Legend>Network</gwtbootstrap:Legend>
+				<g:VerticalPanel ui:field="netInterfaces" width="100%"></g:VerticalPanel>				
+	</gwtbootstrap:Well>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

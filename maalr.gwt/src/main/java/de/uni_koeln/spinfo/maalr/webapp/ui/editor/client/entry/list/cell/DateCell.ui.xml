@@ -1,0 +1,7 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+	<ui:with field='wrapper' type="de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.wrapper.ICellWrapper" />
+	<div>
+		<ui:text from='{wrapper.getDate}'></ui:text>
+	</div>
+</ui:UiBinder>  
+

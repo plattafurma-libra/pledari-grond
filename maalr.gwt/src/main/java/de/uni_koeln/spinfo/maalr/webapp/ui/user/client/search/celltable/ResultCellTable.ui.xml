@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:p="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.common.client"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+
+	<ui:style>
+		.result_panel {
+		}
+
+		.result_table {
+		}	
+
+	</ui:style>
+
+	<g:VerticalPanel width="100%">
+		<g:Cell>
+			<!-- <g:HTML ui:field="label"></g:HTML> -->
+			<b:FluidContainer>
+				<b:FluidRow>
+					<b:Column size="12" ui:field="resultLabelCell">
+					</b:Column>
+				</b:FluidRow>
+			</b:FluidContainer>
+		</g:Cell>
+		<g:Cell horizontalAlignment="ALIGN_CENTER" width="100%">
+			<g:VerticalPanel styleName="{style.result_panel}">
+				<g:Cell width="100%">
+					<b:CellTable ui:field='cellTable' width="100%"/>
+				</g:Cell>
+				<g:Cell>
+					<p:CustomPager ui:field="pager" />
+				</g:Cell>
+			</g:VerticalPanel>
+		</g:Cell>
+	</g:VerticalPanel>
+
+</ui:UiBinder> 

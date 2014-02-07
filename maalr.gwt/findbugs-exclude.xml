@@ -1,0 +1,9 @@
+<FindBugsFilter>
+<!-- See http://findbugs.sourceforge.net/manual/filter.html for more options -->
+  <Match>
+    <Package name="~de.uni_koeln.spinfo.maalr.antlr.shared.generated"/>
+  </Match>
+  <Match>
+  	<Package name="~org.antlr.runtime"/>
+  </Match>
+</FindBugsFilter>

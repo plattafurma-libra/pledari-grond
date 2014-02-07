@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lemmaDescription>
+    <values>
+        <value displayName="Deutsch" internalName="DLemma">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+        <value displayName="Wortart (DE)" internalName="DType">
+            <type>ENUM</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="choiceValidator" allowNull="true">
+                <values>
+                    <value>adjective</value>
+                    <value>verb</value>
+                    <value>noun</value>
+                </values>
+            </validator>
+        </value>
+        <value displayName="Russisch" internalName="RLemma">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+         <value displayName="Wortart (RU)" internalName="RType">
+            <type>ENUM</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="choiceValidator" allowNull="true">
+                <values>
+                    <value>adjective</value>
+                    <value>verb</value>
+                    <value>noun</value>
+                </values>
+            </validator>
+        </value>
+         <value displayName="Genus (DE)" internalName="DGenus">
+            <type>ENUM</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="choiceValidator" allowNull="true">
+                <values>
+                    <value>feminine</value>
+                    <value>masculine</value>
+                    <value>neuter</value>
+                </values>
+            </validator>
+        </value>
+         <value displayName="Genus (RU)" internalName="RType">
+            <type>ENUM</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="choiceValidator" allowNull="true">
+                <values>
+                    <value>feminine</value>
+                    <value>masculine</value>
+                    <value>neuter</value>
+                </values>
+            </validator>
+        </value>
+        <value displayName="Singular (DE)" internalName="DSingular">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+        <value displayName="Plural (DE)" internalName="DPlural">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+         <value displayName="Singular (RU)" internalName="RSingular">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+        <value displayName="Plural (RU)" internalName="RPlural">
+            <type>TEXT</type>
+            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
+        </value>
+    </values>
+    
+    <language_a>german</language_a>
+    <language_b>russian</language_b>
+    
+    <result_list_lang_a>
+    	<valueFormat key="DLemma" format="{0}"></valueFormat>
+    	<valueFormat key="DType" format="({0})"></valueFormat>
+    	<valueFormat key="DGender" format="&lt;i&gt;[{0}]&lt;/i&gt;"></valueFormat>
+    </result_list_lang_a>
+    
+    <!-- This field is required to generate a browsable, alphabetical index of all entries. It must refer to an 'exact' field -->
+    <dict_index_lang_a>DLemma_exact</dict_index_lang_a>
+    <dict_index_lang_b>RLemma_exact</dict_index_lang_b>
+    
+    <result_list_lang_b>
+    	<valueFormat key="RLemma" format="{0}"></valueFormat>
+    	<valueFormat key="RType" format="({0})"></valueFormat>
+    	<valueFormat key="RGender" format="&lt;i&gt;[{0}]&lt;/i&gt;"></valueFormat>
+        <!-- <item>RLemma</item>
+        <item>RType</item>
+        <item>RGender</item>  -->
+    </result_list_lang_b>
+    
+    <editor_list_lang_a>
+        <item>DLemma</item>
+        <item>DType</item>
+        <item>DGender</item>
+        <item>DSingular</item>
+        <item>DPlural</item>
+        <item>DAspect</item>
+    </editor_list_lang_a>
+    <editor_list_lang_b>
+        <item>RLemma</item>
+        <item>RType</item>
+        <item>RGender</item>
+        <item>RSingular</item>
+        <item>RPlural</item>
+        <item>RAspect</item>
+    </editor_list_lang_b>
+    <user_suggest_list_lang_a>
+        <item>DLemma</item>
+    </user_suggest_list_lang_a>
+    <user_suggest_list_lang_b>
+        <item>RLemma</item>
+    </user_suggest_list_lang_b>
+    <sort_list_lang_a>
+    	<item>DLemma_exact</item>
+    </sort_list_lang_a>
+    <sort_list_lang_b>
+    	<item>RLemma_exact</item>
+    </sort_list_lang_b>
+</lemmaDescription>

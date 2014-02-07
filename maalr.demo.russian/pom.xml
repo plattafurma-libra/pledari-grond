@@ -1,0 +1,284 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>maalr.demo</groupId>
+  <artifactId>ru</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+		<!-- general properties -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.svn.name>maalr-ru</project.svn.name>
+		<!-- application properties -->
+		<application.title>Maalr Russian</application.title>
+		<!-- dependency versions -->
+		<spring.version>3.1.3.RELEASE</spring.version>
+		<spring.security.version>3.1.3.RELEASE</spring.security.version>
+		<lucene.version>4.1.0</lucene.version>
+		<logback.version>1.0.9</logback.version>
+		<slf4j.version>1.6.6</slf4j.version>
+		<gwt.version>2.5.1-rc1</gwt.version>
+		<antlr.version>3.4</antlr.version>
+		<selenium.version>2.31.0</selenium.version>
+		<!-- GWT options -->
+		<gwt.draft-compile>true</gwt.draft-compile>
+		<!-- one of obfuscated, pretty, and detailed -->
+		<gwt.style>pretty</gwt.style>
+		<!-- Value between 1 and 9 -->
+		<gwt.optimizationlevel>9</gwt.optimizationlevel>
+		<gwt.enableclosurecompiler>false</gwt.enableclosurecompiler>
+		<jetty.default.port>8080</jetty.default.port>
+		<jetty.integration.port>9999</jetty.integration.port>
+		<jetty.version>9.0.1.v20130408</jetty.version>
+		<maalr.webapp.build>../maalr.demo.russian/target</maalr.webapp.build>
+		<maalr.webapp.name>ru-${project.version}</maalr.webapp.name>
+	</properties>
+  
+  
+  <dependencies>
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>gwt</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>gwt</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<classifier>classes</classifier>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>spring.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- Embed MongoDB for testing -->
+		<!-- Installs, starts and stops a DB via maven -->
+		<!-- Unfortunately, it's a bit unstable (MacOS), might crash the VM if 
+			multiple instances are started -->
+		<dependency>
+			<groupId>de.flapdoodle.embedmongo</groupId>
+			<artifactId>de.flapdoodle.embedmongo</artifactId>
+			<version>1.15</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<!-- Required to render dictionary entries through JSON -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<!-- Required to render dictionary entries through XML (JAXB) -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+		
+			
+			<!-- Start and stop MongoDB for integration tests -->
+			<plugin>
+				<groupId>com.github.joelittlejohn.embedmongo</groupId>
+				<artifactId>embedmongo-maven-plugin</artifactId>
+			</plugin>
+			
+			
+			<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+
+						<contextXml>jetty-context.xml</contextXml>
+						<webAppConfig>
+							<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
+							<baseResource
+								implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+								<resourcesAsCSV>${maalr.webapp.build}/${maalr.webapp.name}</resourcesAsCSV>
+							</baseResource>
+							<descriptor>${maalr.webapp.build}/${maalr.webapp.name}/WEB-INF/web.xml</descriptor>
+						</webAppConfig>
+						<classesDirectory>${maalr.webapp.build}/${maalr.webapp.name}/WEB-INF/classes</classesDirectory>
+						<systemProperties>
+							<!-- Tell jetty to use the same logging configuration as the webapp 
+								itself -->
+							<!-- <systemProperty> <name>logback.configurationFile</name> <value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value> 
+								</systemProperty> -->
+							<systemProperty>
+								<name>jetty.port</name>
+								<value>${jetty.default.port}</value>
+							</systemProperty>
+						</systemProperties>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-classic</artifactId>
+							<version>${logback.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<overlays>
+						<overlay>
+							<id>maalr-gwt</id>
+							<groupId>de.uni_koeln.spinfo.maalr</groupId>
+							<artifactId>gwt</artifactId>
+						</overlay>
+					</overlays>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+						<!-- .jsp files are filtered, to insert -->
+						<!-- maven properties (build number etc) -->
+						<resource>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.jsp</include>
+							</includes>
+							<filtering>true</filtering>
+						</resource>
+						<!-- all other files from webapp dir are -->
+						<!-- copied without filtering -->
+						<resource>
+							<directory>src/main/webapp</directory>
+							<excludes>
+								<excludes>**/*.jsp</excludes>
+							</excludes>
+							<filtering>false</filtering>
+						</resource>
+						<resource>
+							<directory>../maalr.spring.core/src/main/resources</directory>
+							<includes>
+								<include>**/*.jsp</include>
+							</includes>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>set-system-properties</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>
+									<name>logback.configurationFile</name>
+									<value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value>
+								</property>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											properties-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-2,)
+										</versionRange>
+										<goals>
+											<goal>
+												set-system-properties
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>startmongo</id>
+			<!-- <activation> <activeByDefault>true</activeByDefault> </activation> -->
+			<build>
+				<plugins>
+					<!-- Start MongoDB -->
+					<plugin>
+						<groupId>com.github.joelittlejohn.embedmongo</groupId>
+						<artifactId>embedmongo-maven-plugin</artifactId>
+						<version>0.1.3</version>
+						<executions>
+							<execution>
+								<id>start</id>
+								<phase>package</phase>
+								<goals>
+									<goal>start</goal>
+								</goals>
+								<configuration>
+									<logging>file</logging>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
+  
+</project>

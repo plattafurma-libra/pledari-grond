@@ -1,0 +1,344 @@
+note: noprealloc may hurt performance in many applications
+[mongod output] Fri Feb  7 13:47:49 BackgroundJob starting: DataFileSync
+[mongod output] Fri Feb  7 13:47:49 versionCmpTest passed
+[mongod output] Fri Feb  7 13:47:49 versionArrayTest passed
+[mongod output] Fri Feb  7 13:47:49 shardObjTest passed
+[mongod output] Fri Feb  7 13:47:49 shardKeyTest passed
+[mongod output] Fri Feb  7 13:47:49 isInRangeTest passed
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] MongoDB starting : pid=2592 port=27017 dbpath=/var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5 64-bit host=kerberos.spinfo.uni-koeln.de
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] db version v2.0.6, pdfile version 4.5
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] git version: e1c0cbc25863f6356aa4e31375add7bb49fb05bc
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] build info: Darwin erh2.10gen.cc 9.8.0 Darwin Kernel Version 9.8.0: Wed Jul 15 16:55:01 PDT 2009; root:xnu-1228.15.4~1/RELEASE_I386 i386 BOOST_LIB_VERSION=1_40
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] options: { dbpath: "/var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5", noauth: true, nohttpinterface: true, nojournal: true, noprealloc: true, port: 27017, smallfiles: true, verbose: true }
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] Accessing: local for the first time
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] query local.system.namespaces query: { name: /^local.temp./ } reslen:20 1ms
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] enter repairDatabases (to check pdfile version #)
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] done repairDatabases
+[mongod output] Fri Feb  7 13:47:49 BackgroundJob starting: snapshot
+[mongod output] Fri Feb  7 13:47:49 BackgroundJob starting: ClientCursorMonitor
+[mongod output] Fri Feb  7 13:47:49 BackgroundJob starting: PeriodicTask::Runner
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] fd limit hard:9223372036854775807 soft:10240 max conn: 8192
+[mongod output] Fri Feb  7 13:47:49 [initandlisten] waiting for connections on port 27017
+[mongod output] Fri Feb  7 13:48:09 [initandlisten] connection accepted from 127.0.0.1:49546 #1
+[mongod output] Fri Feb  7 13:48:09 [conn1] run command admin.$cmd { isMaster: 1 }
+[mongod output] Fri Feb  7 13:48:10 [conn1] command admin.$cmd command: { isMaster: 1 } ntoreturn:1 reslen:71 0ms
+[mongod output] Fri Feb  7 13:48:10 [conn1] run command db.$cmd { count: "entries", query: {} }
+[mongod output] Fri Feb  7 13:48:10 [conn1] Accessing: db for the first time
+[mongod output] Fri Feb  7 13:48:10 [conn1] command db.$cmd command: { count: "entries", query: {} } ntoreturn:1 reslen:58 0ms
+[mongod output] Fri Feb  7 13:48:10 [conn1] query db.system.indexes query: { name: "creationDate_1", ns: "db.users", key: { creationDate: 1 } } ntoreturn:1 reslen:20 10ms
+[mongod output] Fri Feb  7 13:48:10 [conn1] New namespace: db.system.indexes
+[mongod output] Fri Feb  7 13:48:10 [conn1] New namespace: db.system.namespaces
+[mongod output] Fri Feb  7 13:48:10 [FileAllocator] allocating new datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.ns, filling with zeroes...
+[mongod output] Fri Feb  7 13:48:10 [FileAllocator] creating directory /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp
+[mongod output] Fri Feb  7 13:48:10 [FileAllocator] done allocating datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.ns, size: 16MB,  took 0.107 secs
+[mongod output] Fri Feb  7 13:48:10 [FileAllocator] allocating new datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.0, filling with zeroes...
+[mongod output] Fri Feb  7 13:48:10 [FileAllocator] done allocating datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.0, size: 16MB,  took 0.378 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] create collection db.users {}
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users
+[mongod output] Fri Feb  7 13:48:11 [conn1] adding _id index for collection db.users
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { _id: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.781531433/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$_id_
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0.041 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] info: creating collection db.users on add index
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { creationDate: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.1188809379/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$creationDate_1
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0.001 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 1084ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.system.indexes query: { name: "lastModDate_1", ns: "db.users", key: { lastModDate: 1 } } ntoreturn:1 reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { lastModDate: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.131381165/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$lastModDate_1
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.system.indexes query: { name: "email_1", ns: "db.users", key: { email: 1 } } ntoreturn:1 reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { email: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.510051039/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$email_1
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.system.indexes query: { name: "firstname_1", ns: "db.users", key: { firstname: 1 } } ntoreturn:1 reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { firstname: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.1820577296/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$firstname_1
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.system.indexes query: { name: "lastname_1", ns: "db.users", key: { lastname: 1 } } ntoreturn:1 reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { lastname: 1 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.1095611416/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$lastname_1
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.system.indexes query: { name: "login_1_unique_true", ns: "db.users", key: { login: 1, unique: "true" } } ntoreturn:1 reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index db.users { login: 1, unique: "true" }
+[mongod output] Fri Feb  7 13:48:11 [conn1] warning: can't find plugin [true]
+[mongod output] Fri Feb  7 13:48:11 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777291.1416279334/
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] New namespace: db.users.$login_1_unique_true
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:11 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:11 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:11 [conn1] insert db.system.indexes 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] run command db.$cmd { getlasterror: 1, w: 1, wtimeout: 0 }
+[mongod output] Fri Feb  7 13:48:11 [conn1] command db.$cmd command: { getlasterror: 1, w: 1, wtimeout: 0 } ntoreturn:1 reslen:78 0ms
+[mongod output] Fri Feb  7 13:48:11 [conn1] query db.users query: { login: "admin" } reslen:20 66ms
+[mongod output] Fri Feb  7 13:48:12 [conn1] New namespace: db.entries
+[mongod output] Fri Feb  7 13:48:12 [conn1] adding _id index for collection db.entries
+[mongod output] Fri Feb  7 13:48:12 [conn1] build index db.entries { _id: 1 }
+[mongod output] Fri Feb  7 13:48:12 [conn1] external sort root: /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/_tmp/esort.1391777292.698023190/
+[mongod output] Fri Feb  7 13:48:12 [conn1] 	 external sort used : 0 files  in 0 secs
+[mongod output] Fri Feb  7 13:48:12 [conn1] New namespace: db.entries.$_id_
+[mongod output] Fri Feb  7 13:48:12 [conn1] 	 done building bottom layer, going to commit
+[mongod output] Fri Feb  7 13:48:12 [conn1] 	 fastBuildIndex dupsToDrop:0
+[mongod output] Fri Feb  7 13:48:12 [conn1] build index done 0 records 0 secs
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries padding:1 lenWHdr: 438
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries padding:1 lenWHdr: 1995
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries.$_id_ padding:1 lenWHdr: 8192
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries padding:1 lenWHdr: 415
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries padding:1 lenWHdr: 453
+[mongod output] Fri Feb  7 13:48:12 [conn1] allocating new extent for db.entries.$_id_ padding:1 lenWHdr: 8192
+[mongod output] Fri Feb  7 13:48:12 [conn1] insert db.entries 143ms
+[mongod output] Fri Feb  7 13:48:12 [conn1] run command db.$cmd { getlasterror: 1 }
+[mongod output] Fri Feb  7 13:48:12 [conn1] command db.$cmd command: { getlasterror: 1 } ntoreturn:1 reslen:67 0ms
+[mongod output] Fri Feb  7 13:48:13 [conn1] allocating new extent for db.entries padding:1 lenWHdr: 1975
+[mongod output] Fri Feb  7 13:48:13 [FileAllocator] allocating new datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.1, filling with zeroes...
+[mongod output] Fri Feb  7 13:48:13 [FileAllocator] done allocating datafile /var/folders/53/_cb9rvsx371drf74wsrnnx9h0000gn/T/embedmongo-db-83eb67e9-ff58-46b6-82c9-6de8849539d5/db.1, size: 32MB,  took 0.407 secs
+[mongod output] Fri Feb  7 13:48:13 [conn1] insert db.entries 560ms
+[mongod output] Fri Feb  7 13:48:13 [conn1] run command db.$cmd { getlasterror: 1 }
+[mongod output] Fri Feb  7 13:48:13 [conn1] command db.$cmd command: { getlasterror: 1 } ntoreturn:1 reslen:67 0ms
+[mongod output] Fri Feb  7 13:48:14 [initandlisten] connection accepted from 127.0.0.1:49547 #2
+[mongod output] Fri Feb  7 13:48:14 [conn2] query db.entries nreturned:101 reslen:48086 19ms
+[mongod output] Fri Feb  7 13:48:14 [conn2] getmore db.entries cursorid:4475521278880786479 nreturned:7674 reslen:4194334 27ms
+[mongod output] Fri Feb  7 13:48:20 [conn2] getmore db.entries cursorid:4475521278880786479 nreturned:7457 reslen:4194437 6ms
+[mongod output] Fri Feb  7 13:48:21 [conn2] getmore db.entries cursorid:4475521278880786479 nreturned:4768 reslen:2606423 25ms
+[mongod output] Fri Feb  7 13:48:26 [conn2] query db.entries nreturned:101 reslen:48086 0ms
+[mongod output] Fri Feb  7 13:48:26 [conn2] getmore db.entries cursorid:3500775199763355591 nreturned:7674 reslen:4194334 6ms
+[mongod output] Fri Feb  7 13:48:27 [conn2] getmore db.entries cursorid:3500775199763355591 nreturned:7457 reslen:4194437 7ms
+[mongod output] Fri Feb  7 13:48:30 [conn2] getmore db.entries cursorid:3500775199763355591 nreturned:4768 reslen:2606423 5ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "creationDate_1", ns: "db.users", key: { creationDate: 1 } } ntoreturn:1 nreturned:1 reslen:102 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "lastModDate_1", ns: "db.users", key: { lastModDate: 1 } } ntoreturn:1 nreturned:1 reslen:100 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "email_1", ns: "db.users", key: { email: 1 } } ntoreturn:1 nreturned:1 reslen:88 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "firstname_1", ns: "db.users", key: { firstname: 1 } } ntoreturn:1 nreturned:1 reslen:96 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "lastname_1", ns: "db.users", key: { lastname: 1 } } ntoreturn:1 nreturned:1 reslen:94 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.system.indexes query: { name: "login_1_unique_true", ns: "db.users", key: { login: 1, unique: "true" } } ntoreturn:1 nreturned:1 reslen:117 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] query db.users query: { login: "editor" } reslen:20 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn1] insert db.users 23ms
+[mongod output] Fri Feb  7 13:48:31 [initandlisten] connection accepted from 127.0.0.1:49548 #3
+[mongod output] Fri Feb  7 13:48:31 [conn3] query db.entries nreturned:101 reslen:48086 0ms
+[mongod output] Fri Feb  7 13:48:31 [conn3] getmore db.entries cursorid:1652152749361753051 nreturned:7674 reslen:4194334 7ms
+[mongod output] Fri Feb  7 13:48:35 [conn3] getmore db.entries cursorid:1652152749361753051 nreturned:7457 reslen:4194437 6ms
+[mongod output] Fri Feb  7 13:48:38 [conn3] getmore db.entries cursorid:1652152749361753051 nreturned:4768 reslen:2606423 4ms
+[mongod output] Fri Feb  7 13:48:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 12ms
+[mongod output] Fri Feb  7 13:48:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:48:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 12ms
+[mongod output] Fri Feb  7 13:48:49 [DataFileSync] flushing mmap took 415ms  for 4 files
+[mongod output] Fri Feb  7 13:48:49 [clientcursormon] mem (MB) res:54 virt:2489 mapped:64
+[mongod output] Fri Feb  7 13:49:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:49:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:49:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:49:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:50:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:50:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:50:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:50:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:51:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:51:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:51:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:51:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:52:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:52:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:52:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:52:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:53:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:53:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:53:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:53:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:53:50 [clientcursormon] mem (MB) res:54 virt:2489 mapped:64
+[mongod output] Fri Feb  7 13:54:13 [initandlisten] connection accepted from 127.0.0.1:49557 #4
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "creationDate_1", ns: "db.users", key: { creationDate: 1 } } ntoreturn:1 nreturned:1 reslen:102 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "lastModDate_1", ns: "db.users", key: { lastModDate: 1 } } ntoreturn:1 nreturned:1 reslen:100 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "email_1", ns: "db.users", key: { email: 1 } } ntoreturn:1 nreturned:1 reslen:88 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "firstname_1", ns: "db.users", key: { firstname: 1 } } ntoreturn:1 nreturned:1 reslen:96 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "lastname_1", ns: "db.users", key: { lastname: 1 } } ntoreturn:1 nreturned:1 reslen:94 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.system.indexes query: { name: "login_1_unique_true", ns: "db.users", key: { login: 1, unique: "true" } } ntoreturn:1 nreturned:1 reslen:117 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.users query: { login: "admin" } reslen:20 22ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] query db.users query: { login: "admin" } reslen:20 0ms
+[mongod output] Fri Feb  7 13:54:13 [conn4] insert db.users 0ms
+[mongod output] Fri Feb  7 13:54:15 [initandlisten] connection accepted from 127.0.0.1:49560 #5
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "creationDate_1", ns: "db.users", key: { creationDate: 1 } } ntoreturn:1 nreturned:1 reslen:102 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "lastModDate_1", ns: "db.users", key: { lastModDate: 1 } } ntoreturn:1 nreturned:1 reslen:100 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "email_1", ns: "db.users", key: { email: 1 } } ntoreturn:1 nreturned:1 reslen:88 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "firstname_1", ns: "db.users", key: { firstname: 1 } } ntoreturn:1 nreturned:1 reslen:96 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "lastname_1", ns: "db.users", key: { lastname: 1 } } ntoreturn:1 nreturned:1 reslen:94 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "login_1_unique_true", ns: "db.users", key: { login: 1, unique: "true" } } ntoreturn:1 nreturned:1 reslen:117 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.users ntoreturn:20 nreturned:2 reslen:226 0ms
+[mongod output] Fri Feb  7 13:54:15 [initandlisten] connection accepted from 127.0.0.1:49561 #6
+[mongod output] Fri Feb  7 13:54:15 [conn6] run command db.$cmd { count: "entries", query: {} }
+[mongod output] Fri Feb  7 13:54:15 [conn6] command db.$cmd command: { count: "entries", query: {} } ntoreturn:1 reslen:48 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn6] query db.entries nreturned:101 reslen:48086 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn6] getmore db.entries cursorid:5404249038279780797 nreturned:7674 reslen:4194334 7ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "creationDate_1", ns: "db.users", key: { creationDate: 1 } } ntoreturn:1 nreturned:1 reslen:102 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "lastModDate_1", ns: "db.users", key: { lastModDate: 1 } } ntoreturn:1 nreturned:1 reslen:100 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "email_1", ns: "db.users", key: { email: 1 } } ntoreturn:1 nreturned:1 reslen:88 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "firstname_1", ns: "db.users", key: { firstname: 1 } } ntoreturn:1 nreturned:1 reslen:96 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "lastname_1", ns: "db.users", key: { lastname: 1 } } ntoreturn:1 nreturned:1 reslen:94 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.system.indexes query: { name: "login_1_unique_true", ns: "db.users", key: { login: 1, unique: "true" } } ntoreturn:1 nreturned:1 reslen:117 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn5] query db.users ntoreturn:20 reslen:20 0ms
+[mongod output] Fri Feb  7 13:54:15 [conn6] getmore db.entries cursorid:5404249038279780797 nreturned:7457 reslen:4194437 6ms
+[mongod output] Fri Feb  7 13:54:16 [conn6] getmore db.entries cursorid:5404249038279780797 nreturned:4768 reslen:2606423 4ms
+[mongod output] Fri Feb  7 13:54:16 [conn6] run command db.$cmd { dbstats: true }
+[mongod output] Fri Feb  7 13:54:16 [conn6] command db.$cmd command: { dbstats: true } ntoreturn:1 reslen:201 75ms
+[mongod output] Fri Feb  7 13:54:16 [conn6] run command db.$cmd { collstats: "entries" }
+[mongod output] Fri Feb  7 13:54:16 [conn6] command db.$cmd command: { collstats: "entries" } ntoreturn:1 reslen:245 36ms
+[mongod output] Fri Feb  7 13:54:49 [DataFileSync] flushing mmap took 9ms  for 4 files
+[mongod output] Fri Feb  7 13:54:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:54:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:54:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:55:49 [DataFileSync] flushing mmap took 5ms  for 4 files
+[mongod output] Fri Feb  7 13:55:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:55:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:55:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:56:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:56:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:56:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:56:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:57:49 [DataFileSync] flushing mmap took 5ms  for 4 files
+[mongod output] Fri Feb  7 13:57:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:57:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:57:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:58:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:58:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:58:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:58:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 13:58:50 [clientcursormon] mem (MB) res:54 virt:2491 mapped:64
+[mongod output] Fri Feb  7 13:59:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 13:59:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:59:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 13:59:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:00:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:00:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:00:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:00:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:01:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:01:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:01:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:01:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:02:49 [DataFileSync] flushing mmap took 5ms  for 4 files
+[mongod output] Fri Feb  7 14:02:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:02:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:02:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:03:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:03:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:03:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:03:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:03:50 [clientcursormon] mem (MB) res:54 virt:2491 mapped:64
+[mongod output] Fri Feb  7 14:04:49 [DataFileSync] flushing mmap took 5ms  for 4 files
+[mongod output] Fri Feb  7 14:04:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:04:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:04:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:05:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:05:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:05:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:05:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:06:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:06:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:06:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:06:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:07:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:07:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:07:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:07:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:08:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:08:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:08:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:08:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:08:50 [clientcursormon] mem (MB) res:54 virt:2491 mapped:64
+[mongod output] Fri Feb  7 14:09:49 [DataFileSync] flushing mmap took 4ms  for 4 files
+[mongod output] Fri Feb  7 14:09:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:09:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:09:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:10:49 [DataFileSync] flushing mmap took 6ms  for 4 files
+[mongod output] Fri Feb  7 14:10:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:10:49 [PeriodicTask::Runner] task: DBConnectionPool-cleaner took: 0ms
+[mongod output] Fri Feb  7 14:10:49 [PeriodicTask::Runner] task: WriteBackManager::cleaner took: 0ms
+[mongod output] Fri Feb  7 14:11:10 [initandlisten] connection accepted from 127.0.0.1:49616 #7
+[mongod output] Fri Feb  7 14:11:10 [conn7] run command admin.$cmd { shutdown: 1, force: true }
+[mongod output] Fri Feb  7 14:11:10 [conn7] terminating, shutdown command received
+[mongod output] Fri Feb  7 14:11:10 dbexit: shutdown called
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: going to close listening sockets...
+[mongod output] Fri Feb  7 14:11:10 [conn7] closing listening socket: 5
+[mongod output] Fri Feb  7 14:11:10 [conn7] closing listening socket: 6
+[mongod output] Fri Feb  7 14:11:10 [conn7] removing socket file: /tmp/mongodb-27017.sock
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: going to flush diaglog...
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: going to close sockets...
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: waiting for fs preallocator...
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: closing all files...
+[mongod output] Fri Feb  7 14:11:10 [conn7] closeAllFiles() finished
+[mongod output] Fri Feb  7 14:11:10 [conn7] shutdown: removing fs lock...
+[mongod output] Fri Feb  7 14:11:10 dbexit: really exiting now
+[mongod output] Logstream::get called in uninitialized stateLogstream::get called in uninitialized state
+[mongod output] Logstream::get called in uninitialized stateLogstream::get called in uninitialized stateLogstream::get called in uninitialized stateLogstream::get called in uninitialized state
+[mongod output] 
+[mongod output] 
+[mongod output] 
+[mongod output] 
+[mongod output] Fri Feb  7 14:11:10 [conn2] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49547
+[mongod output] Fri Feb  7 14:11:10 [conn1] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49546
+[mongod output] Fri Feb  7 14:11:10 [conn6] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49561
+[mongod output] Fri Feb  7 14:11:10 [conn3] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49548
+[mongod output] Fri Feb  7 14:11:10 [conn4] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49557
+[mongod output] Fri Feb  7 14:11:10 [conn5] Socket recv() errno:9 Bad file descriptor 127.0.0.1:49560
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn6] SocketException: remote: 127.0.0.1:49561 error: 9001 socket exception [1] server [127.0.0.1:49561] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn6] end connection 127.0.0.1:49561
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn3] SocketException: remote: 127.0.0.1:49548 error: 9001 socket exception [1] server [127.0.0.1:49548] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn3] end connection 127.0.0.1:49548
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn4] SocketException: remote: 127.0.0.1:49557 error: 9001 socket exception [1] server [127.0.0.1:49557] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn4] end connection 127.0.0.1:49557
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn5] SocketException: remote: 127.0.0.1:49560 error: 9001 socket exception [1] server [127.0.0.1:49560] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn5] end connection 127.0.0.1:49560
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn2] SocketException: remote: 127.0.0.1:49547 error: 9001 socket exception [1] server [127.0.0.1:49547] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn2] end connection 127.0.0.1:49547
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn1] SocketException: remote: 127.0.0.1:49546 error: 9001 socket exception [1] server [127.0.0.1:49546] 
+[mongod output] Logstream::get called in uninitialized state
+[mongod output] Fri Feb  7 14:11:10 [conn1] end connection 127.0.0.1:49546
+[mongod output] 
