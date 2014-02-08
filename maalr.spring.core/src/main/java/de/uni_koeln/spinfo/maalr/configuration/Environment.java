@@ -68,14 +68,6 @@ public class Environment extends WebApplicationObjectSupport {
 		appProperties.setAppVersion(version);
 		appProperties.setAppBuild(build);
 		
-		// spring social settings
-		appProperties.setFacebookClientId(props.getProperty("facebook.consumerKey"));
-		appProperties.setFacebookClientSecret(props.getProperty("facebook.consumerSecret"));
-		appProperties.setTwitterClientId(props.getProperty("twitter.consumerKey"));
-		appProperties.setTwitterClientSecret(props.getProperty("twitter.consumerSecret"));
-		appProperties.setRedirectUrl(props.getProperty("social.redirect.page"));
-		
-		
 		configuration.getLemmaDescription();
 		luceneConfig = new LuceneConfiguration();
 		luceneConfig.setBaseDirectory(configuration.getLuceneDir());
@@ -105,8 +97,8 @@ public class Environment extends WebApplicationObjectSupport {
 		return  new File(configuration.getLexFile());
 	}
 
-	public AppProperties getAppProperties() {
-		return appProperties;
+	public Configuration getAppConfiguration() {
+		return configuration;
 	}
 
 }

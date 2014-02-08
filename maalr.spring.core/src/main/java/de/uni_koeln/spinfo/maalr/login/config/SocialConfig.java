@@ -18,6 +18,8 @@ package de.uni_koeln.spinfo.maalr.login.config;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,6 +64,8 @@ public class SocialConfig {
 
 	@Inject
 	private DataSource dataSource;
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Bean
 	public ConnectionFactoryLocator connectionFactoryLocator() {
@@ -69,21 +73,32 @@ public class SocialConfig {
 		SocialAuthenticationServiceRegistry registry = new SocialAuthenticationServiceRegistry();
 		
 		// add twitter
-		OAuth1ConnectionFactory<Twitter> twitterConnectionFactory = new TwitterConnectionFactory(
-				environment.getAppProperties().getTwitterClientId(),
-				environment.getAppProperties().getTwitterClientSecret());
-		OAuth1AuthenticationService<Twitter> twitterAuthenticationService = new OAuth1AuthenticationService<Twitter>(
-				twitterConnectionFactory);
-		registry.addAuthenticationService(twitterAuthenticationService);
+		if(environment.getAppConfiguration().getTwitterClientId() != null) {
+			logger.info("Initializing twitter authentication service...");
+			OAuth1ConnectionFactory<Twitter> twitterConnectionFactory = new TwitterConnectionFactory(
+					environment.getAppConfiguration().getTwitterClientId(),
+					environment.getAppConfiguration().getTwitterClientSecret());
+			OAuth1AuthenticationService<Twitter> twitterAuthenticationService = new OAuth1AuthenticationService<Twitter>(
+					twitterConnectionFactory);
+			registry.addAuthenticationService(twitterAuthenticationService);
+		} else {
+			logger.info("NOT initializing twitter authentication service...");
+		}
 
 		// add facebook
-		OAuth2ConnectionFactory<Facebook> facebookConnectionFactory = new FacebookConnectionFactory(
-				environment.getAppProperties().getFaceBookClientId(),
-				environment.getAppProperties().getFaceBookClientSecret());
-		OAuth2AuthenticationService<Facebook> facebookAuthenticationService = new OAuth2AuthenticationService<Facebook>(
-				facebookConnectionFactory);
-		registry.addAuthenticationService(facebookAuthenticationService);
+		if(environment.getAppConfiguration().getFaceBookClientId() != null) {
+			logger.info("Initializing facebook authentication service...");
+			OAuth2ConnectionFactory<Facebook> facebookConnectionFactory = new FacebookConnectionFactory(
+					environment.getAppConfiguration().getFaceBookClientId(),
+					environment.getAppConfiguration().getFaceBookClientSecret());
+			OAuth2AuthenticationService<Facebook> facebookAuthenticationService = new OAuth2AuthenticationService<Facebook>(
+					facebookConnectionFactory);
+			registry.addAuthenticationService(facebookAuthenticationService);
 
+		} else {
+			logger.info("NOT initializing facebook authentication service...");
+		}
+		
 		// add linkedIn
 //		OAuth2ConnectionFactory<LinkedIn> linkedInConnectionFactory = new LinkedInConnectionFactory(
 //				properties.getLinkedInConsumerKey(),
@@ -153,7 +168,7 @@ public class SocialConfig {
 				usersConnectionRepository(), new SocialSignInAdapter(userInfos));
 		//FIXME: SpringSocial: Handling not right...
 		//Set redirect page after external login (specified in /maalr.gwt/src/main/resources/application.properties)
-		String signInUrl = environment.getAppProperties().getRedirectUrl();
+		String signInUrl = environment.getAppConfiguration().getRedirectUrl();
 		//controller.setSignInUrl(signInUrl);
 		controller.setPostSignInUrl(signInUrl);
 		return controller;

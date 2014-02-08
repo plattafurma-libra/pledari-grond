@@ -180,7 +180,7 @@ public class Configuration {
 	public String getBackupNums() {
 		return properties.getProperty(BACKUP_NUMS);
 	}
-
+	
 	public UiConfiguration getEditorDefaultSearchUiConfig() {
 		return defaultEditorSearchConfiguration;
 	}
@@ -191,6 +191,26 @@ public class Configuration {
 
 	public UiConfiguration[] getUIConfigurations() {
 		return new UiConfiguration[] {defaultEditorSearchConfiguration, extendedEditorSearchConfiguration, defaultUserSearchConfiguration, extendedUserSearchConfiguration};
+	}
+	
+	public String getFaceBookClientId() {
+		return properties.getProperty("facebook.consumerKey");
+	}
+
+	public String getFaceBookClientSecret() {
+		return properties.getProperty("facebook.consumerSecret");
+	}
+
+	public String getTwitterClientId() {
+		return properties.getProperty("twitter.consumerKey");
+	}
+
+	public String getTwitterClientSecret() {
+		return properties.getProperty("twitter.consumerSecret");
+	}
+
+	public String getRedirectUrl() {
+		return properties.getProperty("social.redirect.page");
 	}
 
 }

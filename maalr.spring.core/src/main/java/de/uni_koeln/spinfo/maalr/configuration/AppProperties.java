@@ -25,16 +25,7 @@ public class AppProperties implements Serializable {
 	
 	private String appName, appVersion, appBuild;
 
-	private String faceBookClientId;
-
-	private String faceBookClientSecret;
-
-	private String twitterClientId;
-
-	private String twitterClientSecret;
-
-	private String redirectUrl;
-
+	
 	public String getAppName() {
 		return appName;
 	}
@@ -57,46 +48,6 @@ public class AppProperties implements Serializable {
 
 	public void setAppBuild(String appBuild) {
 		this.appBuild = appBuild;
-	}
-
-	public void setFacebookClientId(String faceBookClientId) {
-		this.faceBookClientId = faceBookClientId;
-	}
-
-	public void setFacebookClientSecret(String faceBookClientSecret) {
-		this.faceBookClientSecret = faceBookClientSecret;
-	}
-
-	public String getFaceBookClientId() {
-		return faceBookClientId;
-	}
-
-	public String getFaceBookClientSecret() {
-		return faceBookClientSecret;
-	}
-
-	public String getTwitterClientId() {
-		return twitterClientId;
-	}
-
-	public String getTwitterClientSecret() {
-		return twitterClientSecret;
-	}
-	
-	public void setTwitterClientId(String twitterClientId) {
-		this.twitterClientId = twitterClientId;
-	}
-
-	public void setTwitterClientSecret(String twitterClientSecret) {
-		this.twitterClientSecret = twitterClientSecret;
-	}
-
-	public void setRedirectUrl(String redirectUrl) {
-		this.redirectUrl = redirectUrl;
-	}
-
-	public String getRedirectUrl() {
-		return this.redirectUrl;
 	}
 
 }

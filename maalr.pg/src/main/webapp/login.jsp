@@ -3,14 +3,6 @@
 <%@	page import="java.util.ArrayList"%>
 <%@	page import="java.util.List"%>
 
-<%@	page import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
-
-<%@	page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@	page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@	page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
-
-<%@	page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo"%>
-
 <%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt'%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -52,21 +44,6 @@
 							<input name="submit" type="submit" value=<fmt:message key="maalr.login.sendButton"/> id="internal_login">
 						</div>
 					</div>
-					<!--
-					<table id="login_input">
-						<tr>
-							<td><fmt:message key="maalr.login.name"/>:</td>
-							<td><input id="uname" type='text' name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>' /></td>
-						</tr>
-						<tr>
-							<td><fmt:message key="maalr.login.pwd"/>:</td>
-							<td><input id="upwd" type='password' name='j_password'></td>
-						</tr>
-						<tr>
-							<td colspan='2'><input name="submit" type="submit" value=<fmt:message key="maalr.login.sendButton"/> id="internal_login"></td>
-						</tr>
-					</table>
-					 -->
 				</form>
 				
 				<%-- OPEN-ID SIGN IN --%>
