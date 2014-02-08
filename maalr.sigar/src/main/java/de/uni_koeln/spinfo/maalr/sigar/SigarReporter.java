@@ -34,9 +34,9 @@ import org.hyperic.sigar.NetInterfaceStat;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.DiskStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.NetStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.DiskStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.NetStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 
 public final class SigarReporter implements Runnable {
 	
@@ -56,14 +56,14 @@ public final class SigarReporter implements Runnable {
 	}
 
 	public void run() {
-		SigarSummary summary = getSigarSummary();
+		SystemSummary summary = getSigarSummary();
 		for (SigarHandler handler : handlers) {
 			handler.updated(summary);
 		}
 	}
 
-	private SigarSummary getSigarSummary() {
-		SigarSummary summary = new SigarSummary();
+	private SystemSummary getSigarSummary() {
+		SystemSummary summary = new SystemSummary();
 		if(load) {
 			try {
 				summary.setNumberOfCPUs(sigar.getCpuList().length);

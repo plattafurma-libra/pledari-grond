@@ -22,7 +22,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.CpuGauge;
 
 
@@ -51,7 +51,7 @@ public class CpuStatsBox extends Composite {
 		cpuGauge.draw();
 	}
 
-	public void update(SigarSummary summary) {
+	public void update(SystemSummary summary) {
 		cpuGauge.setNumberOfCPUs(summary.getNumberOfCPUs());
 		cpuGauge.setLoadAverage(summary.getLoadAverage()[0]);
 		cpuGauge.draw();

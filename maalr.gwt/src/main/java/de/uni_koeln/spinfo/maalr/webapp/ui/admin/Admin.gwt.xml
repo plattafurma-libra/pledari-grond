@@ -4,7 +4,7 @@
   <inherits name='de.uni_koeln.spinfo.maalr.common.Common'/>
   <inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo'/>
   <inherits name='de.uni_koeln.spinfo.maalr.webapp.ui.common.Common'/>
-  <inherits name='de.uni_koeln.spinfo.maalr.sigar.Sigar'/>
+  <!-- <inherits name='de.uni_koeln.spinfo.maalr.sigar.Sigar'/> -->
   <inherits name='de.uni_koeln.spinfo.maalr.lucene.Lucene'/>
   <!-- <inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo'/> -->
   <inherits name='de.uni_koeln.spinfo.maalr.services.admin.AdminServices'/>

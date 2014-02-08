@@ -190,8 +190,8 @@ public class LemmaEditorWidget extends SimplePanel {
 
 			@Override
 			public void onSuccess(Map<String, String> translations) {
-				langA = createFields(description.getLanguageName(true), description.getFields(useCase, true), columns, showLanguageHeader, translations);
-				langB = createFields(description.getLanguageName(false), description.getFields(useCase, false), columns, showLanguageHeader, translations);
+				langA = createFields(description, true, useCase, columns, showLanguageHeader, translations);
+				langB = createFields(description, false, useCase, columns, showLanguageHeader, translations);
 				finalBase.add(langA);
 				finalBase.add(langB);
 			}
@@ -200,8 +200,9 @@ public class LemmaEditorWidget extends SimplePanel {
 		setStyleName("lemma-editor", true);
 	}
 
-	private HorizontalPanel createFields(String languageLabel, ArrayList<String> fieldIds, int columns,  boolean displayHeader, Map<String, String> translation) {
-		
+	private HorizontalPanel createFields(LemmaDescription description, boolean firstLanguage, UseCase useCase, int columns,  boolean displayHeader, Map<String, String> translation) {
+		String languageLabel = description.getLanguageName(firstLanguage);
+		ArrayList<String> fieldIds = description.getFields(useCase, firstLanguage); 
 		HorizontalPanel panel = new HorizontalPanel();
 		panel.setWidth("100%");
 		List<Fieldset> cols = new ArrayList<Fieldset>();
@@ -221,10 +222,11 @@ public class LemmaEditorWidget extends SimplePanel {
 			panel.add(fieldSet);
 			cols.add(fieldSet);
 		}
-		ArrayList<ValueSpecification> all = description.getValues();
+		ArrayList<ValueSpecification> all = description.getValues(useCase);
 		valueSpecifications = new HashMap<String, ValueSpecification>();
 		for (ValueSpecification valueSpecification : all) {
 			valueSpecifications.put(valueSpecification.getInternalName(), valueSpecification);
+			Logger.getLogger(getClass()).info("Found value spec: " + valueSpecification);
 		}
 		int counter = 0;
 		for (String item : fieldIds) {
@@ -402,6 +404,7 @@ public class LemmaEditorWidget extends SimplePanel {
 		ValueSpecification valueSpecification = valueSpecifications.get(field);
 		if(valueSpecification != null && valueSpecification.getValidator() != null) {
 			String remark = valueSpecification.getValidator().validate(fields.get(field).getText());
+			Logger.getLogger(getClass()).info("Validation result for field " + field + ": " + remark);
 			if(remark != null) {
 				if(showError) {
 					groups.get(field).setType(ControlGroupType.ERROR);

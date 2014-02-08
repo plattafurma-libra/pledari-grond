@@ -23,9 +23,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.logging.Logger;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,147 +33,241 @@ import javax.xml.bind.annotation.XmlRootElement;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.StructuredEntry;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+/**
+ * 
+ * This class represents the basic dictionary structure, related to
+ * <ul>
+ * <li>The suggest- and modifiy-editor in frontend and backend</li>
+ * <li>The representation and ordering of query results and</li>
+ * <li>The alphabetical index of the dictionary</li>
+ * </ul>
+ * It is configured through the lemma-description.xml configuration file.
+ * 
+ * @author sschwieb
+ *
+ */
+@XmlRootElement(name="lemmaDescription")
 public class LemmaDescription implements Serializable {
+	
+	private static final long serialVersionUID = -666936366464661504L;
+	
+	@XmlElement(name="language")
+	private List<Language> languages = new ArrayList<Language>();
+	
+	static class DBField implements Serializable {
+		
+		private static final long serialVersionUID = -2685941821834904988L;
+		
+		@XmlAttribute
+		private String dbId;
+		
+		@XmlElementWrapper(name="allowed")
+		@XmlElement(name="value")
+		private List<String> allowedValues;
+		
+		@XmlAttribute(name="type")
+		private ValueType type = ValueType.TEXT;
+		
+		@XmlAttribute(name="allowsNull")
+		private boolean allowsNull = true;
 
-	private static final long serialVersionUID = 8271576000014422713L;
-	
-	@XmlElementWrapper(name="values")
-	@XmlElement(name="value")
-	private ArrayList<ValueSpecification> values = new ArrayList<ValueSpecification>();
-	
-	@XmlElementWrapper(name="result_list_lang_a")
-	@XmlElement(name="valueFormat")
-	private ArrayList<ValueFormat> resultListLangA = new ArrayList<ValueFormat>();
-	
-	@XmlElementWrapper(name="result_list_lang_b")
-	@XmlElement(name="valueFormat")
-	private ArrayList<ValueFormat> resultListLangB = new ArrayList<ValueFormat>();
-	
-	@XmlElementWrapper(name="editor_list_lang_a")
-	@XmlElement(name="item")
-	private ArrayList<String> editorLangA = new ArrayList<String>();
-	
-	@XmlElementWrapper(name="editor_list_lang_b")
-	@XmlElement(name="item")
-	private ArrayList<String> editorLangB = new ArrayList<String>();
-	
-	@XmlElementWrapper(name="user_suggest_list_lang_a")
-	@XmlElement(name="item")
-	private ArrayList<String> userSuggestLangA = new ArrayList<String>();
-	
-	@XmlElementWrapper(name="user_suggest_list_lang_b")
-	@XmlElement(name="item")
-	private ArrayList<String> userSuggestLangB = new ArrayList<String>();
-	
-	
-	@XmlElementWrapper(name="dict_list_lang_a")
-	@XmlElement(name="item")
-	private ArrayList<String> dictLangA = new ArrayList<String>();
-	
-	@XmlElementWrapper(name="dict_list_lang_b")
-	@XmlElement(name="item")
-	private ArrayList<String> dictLangB = new ArrayList<String>();
-	
-	@XmlElement(name="language_a")
-	private String languageA;
-	
-	@XmlElement(name="language_b")
-	private String languageB;
-	
-	@XmlElement(name="dict_index_lang_a")
-	private String dictFieldLangA;
-	
-	@XmlElement(name="dict_index_lang_b")
-	private String dictFieldLangB;
-	
-	@XmlElementWrapper(name="sort_list_lang_a")
-	@XmlElement(name="item")
-	private ArrayList<String> sortListLangA = new ArrayList<String>();
-	
-	@XmlElementWrapper(name="sort_list_lang_b")
-	@XmlElement(name="item")
-	private ArrayList<String> sortListLangB = new ArrayList<String>();
-	
-	@XmlElement(name="sort_order_lang_a")
-	private String sortOrderLangA;
+		@Override
+		public String toString() {
+			return "DBField [dbId=" + dbId + ", allowedValues=" + allowedValues
+					+ ", type=" + type + ", allowsNull=" + allowsNull + "]";
+		}
 
-	@XmlElement(name="sort_order_lang_b")
-	private String sortOrderLangB;
+	}
 	
-//	public String getLanguageA() {
-//		return languageA;
-//	}
-//
-	public void setLanguageA(String languageA) {
-		this.languageA = languageA;
-	}
-//
-//	public String getLanguageB() {
-//		return languageB;
-//	}
-//
-	public void setLanguageB(String languageB) {
-		this.languageB = languageB;
-	}
+	static class Dictionary implements Serializable {
+		
+		private static final long serialVersionUID = 8540014692798449169L;
+		
+		@XmlElement(name="field")
+		private IndexField field;
 
-	public ArrayList<String> getDictListLangA() {
-		return dictLangA;
+		@Override
+		public String toString() {
+			return "Dictionary [field=" + field + "]";
+		}
+		
 	}
-	public ArrayList<String> getDictListLangB() {
-		return dictLangB;
-	}
-	public void setResultListLangA(ArrayList<ValueFormat> resultListLangA) {
-		this.resultListLangA = resultListLangA;
-	}
+	
+	static class IndexField implements Serializable {
+		
+		private static final long serialVersionUID = -3914110096820231128L;
+		
+		@XmlAttribute
+		private String idxId;
 
-	public void setResultListLangB(ArrayList<ValueFormat> resultListLangB) {
-		this.resultListLangB = resultListLangB;
+		@Override
+		public String toString() {
+			return "IndexField [idxId=" + idxId + "]";
+		}
+		
 	}
+	
+	static class FormattedIndexField implements Serializable {
+		
+		private static final long serialVersionUID = -3914110096820231128L;
+		
+		@XmlAttribute
+		private String idxId;
+		
+		@XmlAttribute
+		private String format;
 
-	public void setEditorLangA(ArrayList<String> editorLangA) {
-		this.editorLangA = editorLangA;
+		@Override
+		public String toString() {
+			return "FormattedIndexField [idxId=" + idxId + ", format=" + format
+					+ "]";
+		}
+
+		
 	}
+	
+	static class Results implements Serializable {
+		
+		private static final long serialVersionUID = 4423016975803255789L;
 
-	public void setEditorLangB(ArrayList<String> editorLangB) {
-		this.editorLangB = editorLangB;
+		@XmlElementWrapper(name="fields")
+		@XmlElement(name="field")
+		private List<FormattedIndexField> fields;
+
+		@XmlElement(name="sort_order")
+		private SortOrder sortOrder;
+
+		@Override
+		public String toString() {
+			return "Results [fields=" + fields + ", sortOrder=" + sortOrder
+					+ "]";
+		}
+
+		public ArrayList<ValueFormat> getFormats() {
+			ArrayList<ValueFormat> formats = new ArrayList<ValueFormat>();
+			for (FormattedIndexField field : fields) {
+				ValueFormat format = new ValueFormat();
+				format.setFormat(field.format);
+				format.setKey(field.idxId);
+				formats.add(format);
+			}
+			return formats;
+		}
+
+	}
+	
+	static class SortOrder implements Serializable {
+		
+		private static final long serialVersionUID = 8571167186246264418L;
+		@XmlElementWrapper(name="fields")
+		@XmlElement(name="field")
+		private List<IndexField> fields;
+
+		@Override
+		public String toString() {
+			return "SortOrder [fields=" + fields + "]";
+		}
+
+		public ArrayList<String> getValues() {
+			ArrayList<String> values = new ArrayList<String>();
+			for (IndexField field : fields) {
+				values.add(field.idxId);
+			}
+			return values;
+		}
+		
+	}
+	
+	static class Editors implements Serializable {
+		
+		private static final long serialVersionUID = 3691320151505496726L;
+
+		@XmlElement(name="frontend_editor")
+		private Editor frontendEditor;
+		
+		@XmlElement(name="backend_editor")
+		private Editor backendEditor;
+
+		@Override
+		public String toString() {
+			return "Editors [frontendEditor=" + frontendEditor
+					+ ", backendEditor=" + backendEditor + "]";
+		}
+
+	}
+	
+	static class Editor implements Serializable {
+		
+		private static final long serialVersionUID = 298032125361937577L;
+		@XmlElementWrapper(name="fields")
+		@XmlElement(name="field")
+		private List<DBField> fields;
+
+		@Override
+		public String toString() {
+			return "Editor [fields=" + fields + "]";
+		}
+
+		public ArrayList<String> getFieldIds() {
+			ArrayList<String> ids = new ArrayList<String>();
+			for (DBField field : fields) {
+				ids.add(field.dbId);
+			}
+			return ids;
+		}
+		
+	}
+	
+	
+	static class Language implements Serializable {
+		
+		private static final long serialVersionUID = -6107461479348341257L;
+
+		@XmlAttribute
+		private String id;
+		
+		@XmlElement
+		private Editors editors;
+		
+		@XmlElement
+		private Results results;
+		
+		@XmlElement
+		private Dictionary dictionary;
+
+		@Override
+		public String toString() {
+			return "Language [id=" + id + ", editors=" + editors + ", results="
+					+ results + ", dictionary=" + dictionary + "]";
+		}
+
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "NewLemmaDescription [languages=" + languages + "]";
 	}
 
 	public ArrayList<ValueFormat> getResultListLangA() {
-		return resultListLangA;
+		return languages.get(0).results.getFormats();
 	}
 
 	public ArrayList<ValueFormat> getResultListLangB() {
-		return resultListLangB;
+		return languages.get(1).results.getFormats();
 	}
 
 	public ArrayList<String> getEditorLangA() {
-		return editorLangA;
+		return languages.get(0).editors.backendEditor.getFieldIds();
 	}
-
+	
 	public ArrayList<String> getEditorLangB() {
-		return editorLangB;
+		return languages.get(1).editors.backendEditor.getFieldIds();
 	}
-
-	//private HashMap<String, ValueSpecification> byId;
-
-	public ArrayList<ValueSpecification> getValues() {
-		return values;
-	}
-
-	public void setValues(ArrayList<ValueSpecification> values) {
-		this.values = values;
-	}
-
-	public void addField(ValueSpecification valueSpecification) {
-		values.add(valueSpecification);
-	}
-
-
+	
 	public String getLanguageName(boolean firstLanguage) {
-		if(firstLanguage) return languageA;
-		return languageB;
+		if(firstLanguage) return languages.get(0).id;
+		return languages.get(1).id;
 	}
 	
 	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage) {
@@ -215,19 +309,20 @@ public class LemmaDescription implements Serializable {
 		}
 		return builder.toString().trim();
 	}
+	
 	public ArrayList<String> getFields(UseCase useCase, boolean firstLanguage) {
 		if(useCase == UseCase.FIELDS_FOR_SIMPLE_EDITOR) {
 			if(firstLanguage) {
-				return userSuggestLangA;
+				return languages.get(0).editors.frontendEditor.getFieldIds();
 			} else {
-				return userSuggestLangB;
+				return languages.get(1).editors.frontendEditor.getFieldIds();
 			}
 		}
 		if(useCase == UseCase.FIELDS_FOR_ADVANCED_EDITOR) {
 			if(firstLanguage) {
-				return editorLangA;
+				return languages.get(0).editors.backendEditor.getFieldIds();
 			} else {
-				return editorLangB;
+				return languages.get(1).editors.backendEditor.getFieldIds();
 			}
 		}
 		if(useCase == UseCase.RESULT_LIST || useCase == UseCase.ALPHA_INDEX) {
@@ -322,30 +417,56 @@ public class LemmaDescription implements Serializable {
 	}
 	
 	public ArrayList<String> getSortListLangA() {
-		return sortListLangA;
+		return languages.get(0).results.sortOrder.getValues();
+	}
+
+	public ArrayList<String> getSortListLangB() {
+		return languages.get(1).results.sortOrder.getValues();
 	}
 	
-	public ArrayList<String> getSortListLangB() {
-		return sortListLangB;
+
+	public ArrayList<ValueSpecification> getValues(UseCase useCase) {
+		ArrayList<ValueSpecification> values = new ArrayList<ValueSpecification>();
+		if(useCase == UseCase.FIELDS_FOR_ADVANCED_EDITOR) {
+			values.addAll(getValueSpecifications(languages.get(0).editors.backendEditor.fields));
+			values.addAll(getValueSpecifications(languages.get(1).editors.backendEditor.fields));
+		} else {
+			values.addAll(getValueSpecifications(languages.get(0).editors.frontendEditor.fields));
+			values.addAll(getValueSpecifications(languages.get(1).editors.frontendEditor.fields));
+		}
+		return values;
 	}
+	
+	private ArrayList<ValueSpecification> getValueSpecifications(List<DBField> fields) {
+		ArrayList<ValueSpecification> list = new ArrayList<ValueSpecification>();
+		for (DBField field : fields) {
+			ValueSpecification spec = new ValueSpecification(field.dbId, field.type);
+			if(field.type == ValueType.ENUM) {
+				ValueValidator validator = new ChoiceValidator(field.allowsNull, field.allowedValues);
+				spec.setValidator(validator);
+			} else if (!field.allowsNull) {
+				spec.setValidator(new NotNullValidator());
+			}
+			list.add(spec);
+		}
+		return list;
+	}
+
 	public String getDictFieldLangA() {
-		return dictFieldLangA;
+		return languages.get(0).dictionary.field.idxId;
 	}
 	public String getDictFieldLangB() {
-		return dictFieldLangB;
+		return languages.get(1).dictionary.field.idxId;
 	}
 
 	public String getSortOrderLangA() {
-		return sortOrderLangA;
-	}
-	public void setSortOrderLangA(String sortOrderLangA) {
-		this.sortOrderLangA = sortOrderLangA;
+		List<IndexField> fields = languages.get(0).results.sortOrder.fields;
+		return fields.get(fields.size()-1).idxId;
 	}
 	public String getSortOrderLangB() {
-		return sortOrderLangB;
-	}
-	public void setSortOrderLangB(String sortOrderLangB) {
-		this.sortOrderLangB = sortOrderLangB;
+		List<IndexField> fields = languages.get(1).results.sortOrder.fields;
+		return fields.get(fields.size()-1).idxId;
 	}
 	
+
 }

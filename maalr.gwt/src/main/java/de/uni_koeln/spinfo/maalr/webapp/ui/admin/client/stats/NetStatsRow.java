@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.NetStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.NetStats;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 public class NetStatsRow extends Composite {

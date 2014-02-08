@@ -17,10 +17,10 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
 
 public interface BackendServiceAsync {
 	
@@ -36,7 +36,7 @@ public interface BackendServiceAsync {
 
 	void getIndexStats(AsyncCallback<IndexStatistics> callback);
 
-	void getSystemSummary(AsyncCallback<SigarSummary> callback);
+	void getSystemSummary(AsyncCallback<SystemSummary> callback);
 	
 	void getBackupInfos(AsyncCallback<BackupInfos> callback);
 

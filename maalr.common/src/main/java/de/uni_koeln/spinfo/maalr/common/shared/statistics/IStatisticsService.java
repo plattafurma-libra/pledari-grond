@@ -13,12 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.sigar;
+package de.uni_koeln.spinfo.maalr.common.shared.statistics;
 
-import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
+/**
+ * This interface is an extension point to provide information about the server status.
+ * During startup, the system tries to find a class implementing this interface. If an 
+ * implementation was found, the details will be displayed in the admin backend.
+ * 
+ * @author sschwieb
+ *
+ */
+public interface IStatisticsService {
 
-public interface SigarHandler {
-
-	void updated(SystemSummary summary);
+	/**
+	 * Returns the current {@link SystemSummary}, providing information
+	 * about system load, disc capacities, etc.
+	 * @return
+	 */
+	public SystemSummary getCurrent();
 
 }

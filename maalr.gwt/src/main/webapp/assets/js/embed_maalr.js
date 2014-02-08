@@ -1,4 +1,4 @@
-var maalr_queryDiv = document.getElementById("maalr_query_div");
+var maalr_queryDiv;
 var maalr_input;
 var maalr_max;
 var maalr_headerData;
@@ -8,6 +8,7 @@ var maalr_auto_query;
 injectQuery();
 
 function injectQuery() {
+	 maalr_queryDiv = document.getElementById("maalr_query_div");
 	 var fieldLabel = maalr_queryDiv.getAttribute("data-label");
 	 var buttonLabel = maalr_queryDiv.getAttribute("data-button");
 	 var inputLabel = maalr_queryDiv.getAttribute("data-placeholder");

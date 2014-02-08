@@ -30,7 +30,7 @@ import com.google.gwt.visualization.client.visualizations.BarChart;
 import com.google.gwt.visualization.client.visualizations.Gauge;
 import com.google.gwt.visualization.client.visualizations.PieChart;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.common.help.HelpBox;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.backupsettings.BackupSettings;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.dbsettings.DatabaseSettings;
@@ -108,21 +108,26 @@ public class DbManager extends Composite {
 		initializeDiskCharts();
 		Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
 			
+			private boolean shouldContinue = true;
+			
 			@Override
 			public boolean execute() {
-				service.getSystemSummary(new AsyncCallback<SigarSummary>() {
+				service.getSystemSummary(new AsyncCallback<SystemSummary>() {
 					
 					@Override
-					public void onSuccess(SigarSummary result) {
+					public void onSuccess(SystemSummary result) {
+						if(result == null) {
+							shouldContinue = false;
+						}
 						updateCharts(result);
 					}
 
 					@Override
 					public void onFailure(Throwable caught) {
-						
+						shouldContinue = false;
 					}
 				});
-				return true;
+				return shouldContinue;
 			}
 		}, 1000);
 	}
@@ -152,7 +157,7 @@ public class DbManager extends Composite {
 		}
 	}
 
-	private void updateCharts(SigarSummary summary) {
+	private void updateCharts(SystemSummary summary) {
 		if(memStats != null) {
 			memStats.update(summary);
 		}

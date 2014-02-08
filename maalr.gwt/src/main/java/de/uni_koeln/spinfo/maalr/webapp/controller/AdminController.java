@@ -15,10 +15,13 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.zip.ZipException;
 
 import javax.servlet.ServletOutputStream;
@@ -37,6 +40,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.shared.DatabaseException;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
@@ -45,8 +49,9 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.DatabaseIOException;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
+import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
+import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.AdminService;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
 @Controller("backendService")
@@ -87,7 +92,7 @@ public class AdminController implements BackendService {
 	}
 
 	@Override
-	public SigarSummary getSystemSummary() {
+	public SystemSummary getSystemSummary() {
 		return service.getSystemSummary();
 	}
 	

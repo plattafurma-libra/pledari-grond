@@ -1,49 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <lemmaDescription>
-    <values>
-        <value displayName="German" internalName="german">
-            <type>TEXT</type>
-            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
-        </value>
-        <value displayName="English" internalName="english">
-            <type>TEXT</type>
-            <validator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="notNullValidator"/>
-        </value>
-    </values>
-    <result_list_lang_a>
-    	<valueFormat key="german" format="{0}"></valueFormat>
-    </result_list_lang_a>
-    <language_a>german</language_a>
-    <language_b>english</language_b>
-    <dict_index_lang_a>german_search_exact</dict_index_lang_a>
-    <dict_index_lang_b>english_search_exact</dict_index_lang_b>
-    <result_list_lang_b>
-    	<valueFormat key="english" format="{0}"></valueFormat>
-    </result_list_lang_b>
-    <editor_list_lang_a>
-        <item>german</item>
-    </editor_list_lang_a>
-    <editor_list_lang_b>
-        <item>english</item>
-    </editor_list_lang_b>
-    <user_suggest_list_lang_a>
-        <item>german</item>
-    </user_suggest_list_lang_a>
-    <user_suggest_list_lang_b>
-        <item>english</item>
-    </user_suggest_list_lang_b>
-    <sort_list_lang_a>
-    	<item>german_search_exact</item>
-    	<item>german_sort</item>
-    </sort_list_lang_a>
-    <sort_list_lang_b>
-    	<item>english_search_exact</item>
-    	<item>english_sort</item>
-    </sort_list_lang_b>
-    <sort_order_lang_a>
-    	<item>german_sort</item>
-    </sort_order_lang_a>
-    <sort_order_lang_b>
-    	<item>english_sort</item>
-    </sort_order_lang_b>
+	<language id="german">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field dbId="german"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<field dbId="german" allowNull="false"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field idxId="german" format="{0}"></field>
+			</fields>
+			<sort_order>
+				<fields>
+					<field idxId="german_search_exact"></field>
+					<field idxId="german_sort"></field>
+				</fields>
+			</sort_order>
+		</results>
+		<dictionary>
+			<field idxId="german_search_exact"></field>		
+		</dictionary>
+	</language>
+	<language id="english">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field dbId="english"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<field dbId="english" allowNull="false"></field>
+					<field dbId="redirect_b"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field idxId="english" format="{0}"></field>
+			</fields>
+			<sort_order>
+				<fields>
+					<field idxId="english_search_exact"></field>
+					<field idxId="english_sort"></field>
+				</fields>
+			</sort_order>
+		</results>
+		<dictionary>
+			<field idxId="english_search_exact"></field>		
+		</dictionary>
+	</language>
 </lemmaDescription>

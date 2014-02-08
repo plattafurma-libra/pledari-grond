@@ -21,12 +21,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import de.uni_koeln.spinfo.maalr.common.shared.DatabaseException;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
 
 @RemoteServiceRelativePath("rpc/backend")
 public interface BackendService extends RemoteService {
@@ -43,7 +43,7 @@ public interface BackendService extends RemoteService {
 
 	IndexStatistics getIndexStats() throws NoIndexAvailableException;
 	
-	SigarSummary getSystemSummary();
+	SystemSummary getSystemSummary();
 
 	BackupInfos getBackupInfos();
 

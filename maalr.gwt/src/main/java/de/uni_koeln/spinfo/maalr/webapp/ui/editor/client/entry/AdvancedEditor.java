@@ -336,16 +336,20 @@ public class AdvancedEditor {
 					fromEditor.getMaalrValues().putAll(lv.getMaalrValues());
 					transferSpecialValues(lv, fromEditor);
 					editorWidget.updateFromEditor(fromEditor);
-					LexEntry entry = new LexEntry(fromEditor);
-					service.insert(entry, callback);
+					if(editorWidget.isValid(true, true)) {
+						LexEntry entry = new LexEntry(fromEditor);
+						service.insert(entry, callback);
+					}
 				} else {
 					LemmaVersion fromEditor = new LemmaVersion();
 					fromEditor.getEntryValues().putAll(lv.getEntryValues());
 					fromEditor.getMaalrValues().putAll(lv.getMaalrValues());
 					transferSpecialValues(lv, fromEditor);
 					editorWidget.updateFromEditor(fromEditor);
-					logger.info("Calling acceptAfterUpdate with user " + fromEditor.getUserId());
-					service.acceptAfterUpdate(entry, lv, fromEditor, callback);
+					if(editorWidget.isValid(true, true)) {
+						logger.info("Calling acceptAfterUpdate with user " + fromEditor.getUserId());
+						service.acceptAfterUpdate(entry, lv, fromEditor, callback);
+					}
 				}
 				editorWidget.updateFromEditor(lv);
 			}

@@ -7,7 +7,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../maalr.sigar</module>
 		<module>../maalr.antlr</module>
 		<module>../maalr.common</module>
 		<module>../maalr.mongo</module>

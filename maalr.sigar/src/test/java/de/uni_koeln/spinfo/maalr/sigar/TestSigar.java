@@ -24,9 +24,9 @@ import junit.framework.Assert;
 import org.hyperic.sigar.Sigar;
 import org.junit.Test;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.DiskStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.NetStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.DiskStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.NetStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 
 public class TestSigar {
 	
@@ -40,16 +40,16 @@ public class TestSigar {
 	@Test
 	public void testReporter() throws InterruptedException {
 		SigarReporter reporter = SigarWrapper.newReporter(100);
-		final List<SigarSummary> summaries = new ArrayList<SigarSummary>();
+		final List<SystemSummary> summaries = new ArrayList<SystemSummary>();
 		reporter.addHandler(new SigarHandler() {
 			
-			public void updated(SigarSummary summary) {
+			public void updated(SystemSummary summary) {
 				summaries.add(summary);
 			}
 		});
 		Thread.sleep(2000);
 		Assert.assertNotSame(0, summaries.size());
-		SigarSummary summary = summaries.get(0);
+		SystemSummary summary = summaries.get(0);
 		Assert.assertNotNull(summary);
 		Assert.assertNotSame(0, summary.getJavaMemoryCommitted());
 		Assert.assertNotSame(0, summary.getJavaMemoryMax());

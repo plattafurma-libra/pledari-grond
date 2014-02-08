@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.DiskStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.DiskStats;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.DiskPie;
 
 public class DiskStatsRow extends Composite {

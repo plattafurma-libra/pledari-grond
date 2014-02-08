@@ -49,7 +49,6 @@ public class Index {
 	@Autowired
 	private Environment environment;
 	private Dictionary dictionary;
-
 	
 	@PostConstruct
 	public void initialize() throws IOException {

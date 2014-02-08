@@ -44,13 +44,21 @@ public class ChoiceValidator extends ValueValidator implements Serializable {
 		allowedValues.addAll(Arrays.asList(values));
 	}
 	
+	public ChoiceValidator(boolean allowNull, List<String> values) {
+		this.allowNull = allowNull;
+		allowedValues.addAll(values);
+	}
+	
 	public ChoiceValidator() {
 		
 	}
 
 	@Override
 	public String validate(String input) {
-		if(allowNull && input == null) return null;
+		if(input == null) {
+			if(allowNull) return null;
+			return "This value must be defined";
+		}
 		if (allowedValues.contains(input)) return null;
 		return "Invalid choice: " + input;
 	}

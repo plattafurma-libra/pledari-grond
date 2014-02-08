@@ -29,6 +29,7 @@ import javax.xml.stream.XMLStreamException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +39,8 @@ import de.uni_koeln.spinfo.maalr.common.shared.Constants;
 import de.uni_koeln.spinfo.maalr.common.shared.DatabaseException;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.IStatisticsService;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
@@ -50,8 +53,6 @@ import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
-import de.uni_koeln.spinfo.maalr.sigar.spring.StatisticsService;
 
 @Service
 @Secured(Constants.Roles.ADMIN_5)
@@ -61,7 +62,8 @@ public class AdminService {
 	private Environment environment;
 	
 	@Autowired(required=false)
-	private StatisticsService systemStats;
+	@Qualifier("maalr.system.stats")
+	private IStatisticsService systemStats;
 	
 //	@Autowired
 //	private DataBaseCreator dbCreator;
@@ -128,7 +130,7 @@ public class AdminService {
 		return statistics;
 	}
 
-	public SigarSummary getSystemSummary() {
+	public SystemSummary getSystemSummary() {
 		if(systemStats == null) return null;
 		return systemStats.getCurrent();
 	}

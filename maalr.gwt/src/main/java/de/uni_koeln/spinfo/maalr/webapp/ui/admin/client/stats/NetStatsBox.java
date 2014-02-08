@@ -28,8 +28,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.NetStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.NetStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 
 public class NetStatsBox extends Composite {
 
@@ -70,7 +70,7 @@ public class NetStatsBox extends Composite {
 		existing.putAll(current);
 	}
 	
-	public void update(SigarSummary summary) {
+	public void update(SystemSummary summary) {
 		Map<String, NetStats> netStats = summary.getNetStats();
 		Map<String, NetStatsRow> currentlyMounted = new HashMap<String, NetStatsRow>();
 		for (NetStats stat : netStats.values()) {

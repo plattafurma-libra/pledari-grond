@@ -483,7 +483,6 @@
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:common</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:mongo</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:lucene</compileSourcesArtifact>
-								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:sigar</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:antlr</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:spring.core</compileSourcesArtifact>
 								<compileSourcesArtifact>org.antlr:antlr-runtime</compileSourcesArtifact>
@@ -575,7 +574,6 @@
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:common</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:mongo</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:lucene</compileSourcesArtifact>
-								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:sigar</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:antlr</compileSourcesArtifact>
 								<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:spring.core</compileSourcesArtifact>
 								<compileSourcesArtifact>org.antlr:antlr-runtime</compileSourcesArtifact>

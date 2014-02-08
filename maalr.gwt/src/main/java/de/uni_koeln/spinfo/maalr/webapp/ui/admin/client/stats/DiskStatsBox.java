@@ -28,8 +28,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.DiskStats;
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.DiskStats;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 
 public class DiskStatsBox extends Composite {
 
@@ -71,7 +71,7 @@ public class DiskStatsBox extends Composite {
 		mounted.putAll(currentlyMounted);
 	}
 	
-	public void update(SigarSummary summary) {
+	public void update(SystemSummary summary) {
 		ArrayList<DiskStats> diskStats = summary.getDiskStats();
 		Map<String, DiskStatsRow> currentlyMounted = new HashMap<String, DiskStatsRow>();
 		for (DiskStats stat : diskStats) {

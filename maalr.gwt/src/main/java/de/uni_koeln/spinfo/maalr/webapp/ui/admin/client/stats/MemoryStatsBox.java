@@ -21,7 +21,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.uni_koeln.spinfo.maalr.sigar.info.SigarSummary;
+import de.uni_koeln.spinfo.maalr.common.shared.statistics.SystemSummary;
 
 
 public class MemoryStatsBox extends Composite {
@@ -61,7 +61,7 @@ public class MemoryStatsBox extends Composite {
 		javaMem.setData((javaMemoryMax-javaMemoryUsed)/MB, javaMemoryUsed/MB);
 	}
 
-	public void update(SigarSummary summary) {
+	public void update(SystemSummary summary) {
 		setOsData(summary.getOsTotalMemory(), summary.getOsUsedMemory());
 		setJavaData(summary.getJavaMemoryMax(), summary.getJavaMemoryUsed());
 		draw();

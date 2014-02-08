@@ -447,7 +447,9 @@ public class LuceneIndexer {
 			bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
 			query = bc;
 		}
-		logger.info("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
+		if(logger.isDebugEnabled()) {
+			logger.debug("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
+		}
 		return query;
 	}
 

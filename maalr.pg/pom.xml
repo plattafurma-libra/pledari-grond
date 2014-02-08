@@ -43,12 +43,13 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
+		<!-- To get and display server-side statistics -->
 		<dependency>
 			<groupId>de.uni_koeln.spinfo.maalr</groupId>
-			<artifactId>common</artifactId>
+			<artifactId>sigar</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+		 
 		<!-- Testing with Selenium -->
 
 		<dependency>
