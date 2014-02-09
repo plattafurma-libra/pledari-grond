@@ -30,13 +30,13 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.stream.XMLStreamException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,6 @@ import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
 
@@ -190,8 +189,16 @@ public class BackUpHelper {
 		@Override
 		public void run() {
 			checkBackupNum();
-			triggerBackUp(createName());
-			validate();
+			File backupFile = triggerBackUp(createName());
+			boolean valid = validate();
+			if(!valid && backupFile != null) {
+				boolean deleted = false; //backupFile.delete();
+				if(deleted) {
+					logger.info("Deleted invalid backup " + backupFile);
+				} else {
+					logger.warn("Failed to delete invalid backup " + backupFile);
+				}
+			}
 		}
 		
 		List<File> getBackUpFiles() {
@@ -226,8 +233,12 @@ public class BackUpHelper {
 				logger.info("file: " + file.getName());
 			}
 			File toRemove = files.remove(0);
-			logger.info("delete file: " + toRemove.getName());
-			toRemove.delete();
+			boolean deleted = toRemove.delete();
+			if(!deleted) {
+				logger.warn("Failed to delete backup file " + toRemove + "!");
+			} else {
+				logger.info("Deleted backup file: " + toRemove.getName());				
+			}
 		}
 
 		private void sort(List<File> files) {
@@ -250,54 +261,41 @@ public class BackUpHelper {
 			};
 		}
 
-		private void triggerBackUp(final String fileName) {
+		private File triggerBackUp(final String fileName) {
+			File backupFile = new File(dir, fileName + ".zip");
 			try {
-				Database.getInstance().exportData(true, false, new FileOutputStream(new File(dir, fileName + ".zip")), fileName);
-			} catch (NoDatabaseAvailableException e) {
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (JAXBException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
+				Database.getInstance().exportData(true, false, new FileOutputStream(backupFile), fileName);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return backupFile;
 		}
 
 		private boolean validate() {
 			File file = new File(dir, fileName.toString() + ".zip");
 			if (getFileFilter().accept(file)) {
 				try {
-					BufferedInputStream input = new BufferedInputStream(new FileInputStream(file));
-					List<LexEntry> data = Database.getInstance().getExportedData(input);
-					Random r = new Random();
-					int to = (int) (data.size() * 0.1);
-					for (int i = 0; i < to; i++) {
-						Validator.validate(data.get(r.nextInt(data.size())));
+					logger.info("Validating backup " + file);
+					FileInputStream input = new FileInputStream(file);
+					Iterator<LexEntry> data = Database.getInstance().getExportedData(input);
+					int counter = 0;
+					while(data.hasNext()) {
+						Validator.validate(data.next());
+						counter++;
 					}
+					logger.info("Validated " + counter + " entries.");
 					this.latestBackup = file;
 					files.add(file);
 					logger.info(logMessage(true));
+					input.close();
 					return true;
-				} catch (InvalidEntryException e) {
-					e.printStackTrace();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (NoDatabaseAvailableException e) {
-					e.printStackTrace();
-				} catch (JAXBException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (XMLStreamException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				logger.info(logMessage(false));
+				logger.error(logMessage(false));
 				return false;
 			}
-			logger.info(logMessage(false));
+			logger.error(logMessage(false));
 			return false;
 		}
 

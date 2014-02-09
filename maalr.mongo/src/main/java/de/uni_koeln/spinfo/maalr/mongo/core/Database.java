@@ -102,12 +102,11 @@ public class Database {
 	private LemmaDescription description = Configuration.getInstance()
 			.getLemmaDescription();
 
-	private final boolean debugging, tracing;
+	private final boolean debugging;
 
 	Database() throws UnknownHostException {
 		logger.info("Connecting to MongoDB...");
 		debugging = logger.isDebugEnabled();
-		tracing = logger.isTraceEnabled();
 		DB db = MongoHelper.getDB();
 		entryCollection = db.getCollection("entries");
 		// backupCollection = db.getCollection("backup");
@@ -628,8 +627,7 @@ public class Database {
 		out.write("MD5:\t" + md5.getHash() + "\n");
 		out.write("Entries:\t" + entryCounter + "\n");
 		out.write("Versions:\t" + versionCounter + "\n");
-		out.close();
-		// FIXME: STREAM CLOSED EXCEPTION CALLLED...
+		out.flush();
 		zout.closeEntry();
 		zout.close();
 	}
@@ -654,19 +652,47 @@ public class Database {
 		insertBatch(toInsert);
 		logger.info("Import done.");
 	}
+	
+	
 
-	public List<LexEntry> getExportedData(InputStream input) throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
-		logger.info("Importing backed up data for validation... ");
-		XMLStreamReader xsr = getXMLStreamReader(new BufferedInputStream(input));
+	public Iterator<LexEntry> getExportedData(InputStream input) throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
+		final XMLStreamReader xsr = getXMLStreamReader(new BufferedInputStream(input));
 		xsr.nextTag();
-		Unmarshaller unmarshaller = JAXBContext.newInstance(LexEntry.class).createUnmarshaller();
-		List<LexEntry> toReturn = new ArrayList<LexEntry>();
-		while (xsr.nextTag() == XMLStreamConstants.START_ELEMENT) {
-			LexEntry entry = (LexEntry) unmarshaller.unmarshal(xsr);
-			toReturn.add(entry);
-		}
-		logger.info("Importing backed up data for validation done.");
-		return toReturn;
+		xsr.nextTag();
+		final Unmarshaller unmarshaller = JAXBContext.newInstance(LexEntry.class).createUnmarshaller();
+		Iterator<LexEntry> allEntries = new Iterator<LexEntry>() {
+			
+			
+			private LexEntry next = (LexEntry) unmarshaller.unmarshal(xsr);
+
+			@Override
+			public boolean hasNext() {
+				return next != null;
+			}
+
+			@Override
+			public LexEntry next() {
+				LexEntry toReturn = next;
+				try {
+					xsr.nextTag();
+					next = (LexEntry) unmarshaller.unmarshal(xsr);
+				} catch (JAXBException e) {
+					throw new RuntimeException("Failed to unmarshal entry", e);
+				} catch (IllegalStateException e) {
+					next = null;
+				} catch (XMLStreamException e) {
+					throw new RuntimeException("Failed to unmarshal entry", e);
+				}
+				return toReturn;
+			}
+
+			@Override
+			public void remove() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		return allEntries;
 	}
 
 	private XMLStreamReader getXMLStreamReader(InputStream input) throws IOException, FactoryConfigurationError, XMLStreamException, UnsupportedEncodingException {
