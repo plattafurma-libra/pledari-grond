@@ -23,13 +23,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import de.uni_koeln.spinfo.maalr.common.shared.Overlay;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 
 @RemoteServiceRelativePath("rpc/lookup")
 public interface SearchService extends RemoteService {
 
-	LightQueryResult search(MaalrQuery maalrQuery);
+	QueryResult search(MaalrQuery maalrQuery);
 
 	ArrayList<UiConfiguration> getUserConfigurations(String locale,
 			boolean editor);

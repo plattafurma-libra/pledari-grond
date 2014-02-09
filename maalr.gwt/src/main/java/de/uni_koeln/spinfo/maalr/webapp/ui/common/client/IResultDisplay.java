@@ -15,11 +15,11 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 
 public interface IResultDisplay {
 
-	void updateResult(MaalrQuery maalrQuery, LightQueryResult result);
+	void updateResult(MaalrQuery maalrQuery, QueryResult result);
 
 }

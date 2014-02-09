@@ -63,7 +63,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
-import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.Overlay;
 import de.uni_koeln.spinfo.maalr.common.shared.Overlays;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
@@ -78,7 +77,6 @@ import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
@@ -396,11 +394,10 @@ public class WebMVCController implements SearchService {
 //	}
 
 	@Override
-	public LightQueryResult search(MaalrQuery maalrQuery) {
+	public QueryResult search(MaalrQuery maalrQuery) {
 		try {
 			QueryResult qr = index.query(maalrQuery);
-			LightQueryResult lightQueryResult = getLightQueryResult(qr);
-			return lightQueryResult;
+			return qr;
 		} catch (InvalidQueryException e) {
 			e.printStackTrace();
 		} catch (NoIndexAvailableException e) {
@@ -413,16 +410,6 @@ public class WebMVCController implements SearchService {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	private LightQueryResult getLightQueryResult(QueryResult qr) {
-		LightQueryResult lightQueryResult = new LightQueryResult();
-		lightQueryResult.setEntries(new ArrayList<LemmaVersion>(qr.getEntries()));
-		lightQueryResult.setMaxEntries(qr.getMaxEntries());
-		lightQueryResult.setPageSize(qr.getPageSize());
-//		lightQueryResult.setLanguage(language);
-//		lightQueryResult.setSearchPhrase(searchPhrase);
-		return lightQueryResult;
 	}
 
 	@Override

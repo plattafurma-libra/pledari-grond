@@ -53,9 +53,9 @@ import com.google.gwt.view.client.ProvidesKey;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CustomPager;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Highlighter;
@@ -355,7 +355,7 @@ public class ResultCellTable extends Composite {
 		// cellTable.setColumnWidth(columnB, 100, Unit.PCT);
 	}
 
-	public void setResults(final MaalrQuery query, LightQueryResult result) {
+	public void setResults(final MaalrQuery query, QueryResult result) {
 		if (result.getMaxEntries() > 0) {
 			this.maalrQuery = query;
 			setSuggestVisible(false);
@@ -454,7 +454,7 @@ public class ResultCellTable extends Composite {
 	}
 
 	private void addResultLabel(MaalrQuery maalrQuery,
-			final LightQueryResult result) {
+			final QueryResult result) {
 		int a = ((maalrQuery.getPageNr() + 1) * maalrQuery.getPageSize()) - (maalrQuery.getPageSize() - 1);
 		int b = ((maalrQuery.getPageNr() + 1) * maalrQuery.getPageSize());
 		if (((maalrQuery.getPageNr() + 1) * maalrQuery.getPageSize()) > result.getMaxEntries()) {

@@ -228,7 +228,7 @@ public class Dictionary {
 			MaalrQuery query)
 			throws NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
 		int length = query.getPageSize();
-		final List<LemmaVersion> toReturn = new ArrayList<LemmaVersion>(length);
+		final ArrayList<LemmaVersion> results = new ArrayList<LemmaVersion>(length);
 		final ScoreDoc[] scoreDocs = docs.scoreDocs;
 		IndexSearcher searcher = indexProvider.getSearcher();
 		
@@ -240,9 +240,9 @@ public class Dictionary {
 //					doc.get(LemmaVersion.LEXENTRY_ID));
 //			e.putMaalrValue(LemmaVersion.ID, doc.get(LemmaVersion.ID));
 //			e.putEntryValue(LemmaVersion.OVERLAY, doc.get(LemmaVersion.OVERLAY));
-			toReturn.add(e);
+			results.add(e);
 		}
-		return new QueryResult(toReturn, docs.totalHits, length);
+		return new QueryResult(results, docs.totalHits, length);
 	}
 
 	public QueryResult getAllStartingWith(String language, String prefix,

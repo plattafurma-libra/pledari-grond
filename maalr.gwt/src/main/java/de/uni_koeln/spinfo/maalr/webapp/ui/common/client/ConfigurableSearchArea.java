@@ -71,9 +71,9 @@ import com.google.gwt.user.client.ui.Widget;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiFieldType;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
@@ -141,10 +141,10 @@ public class ConfigurableSearchArea extends Form {
 				return;
 			}
 			showSearchFeedback();
-			service.search(maalrQuery, new AsyncCallback<LightQueryResult>() {
+			service.search(maalrQuery, new AsyncCallback<QueryResult>() {
 
 				@Override
-				public void onSuccess(LightQueryResult result) {
+				public void onSuccess(QueryResult result) {
 					resultDisplay.updateResult(maalrQuery, result);
 					historyTimer.schedule(2000);
 				}

@@ -58,7 +58,6 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
@@ -178,7 +177,7 @@ public class LexEditor extends Composite implements HasHistorySupport {
 		queryBox = new ConfigurableSearchArea(new IResultDisplay() {
 			
 			@Override
-			public void updateResult(MaalrQuery maalrQuery, LightQueryResult result) {
+			public void updateResult(MaalrQuery maalrQuery, QueryResult result) {
 				historyArea.setVisible(true);
 				historyDataProvider.getList().clear();
 				provider.getList().clear();
@@ -344,10 +343,10 @@ public class LexEditor extends Composite implements HasHistorySupport {
 			return;
 		}
 		historyDataProvider.getList().clear();
-		searchService.search(maalrQuery, new AsyncCallback<LightQueryResult>() {
+		searchService.search(maalrQuery, new AsyncCallback<QueryResult>() {
 
 			@Override
-			public void onSuccess(LightQueryResult result) {
+			public void onSuccess(QueryResult result) {
 				SearchHelper.setLastQuery(maalrQuery);
 				historyArea.setVisible(true);
 				provider.getList().clear();

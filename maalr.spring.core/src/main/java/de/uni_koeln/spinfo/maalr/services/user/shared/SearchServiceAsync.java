@@ -22,12 +22,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.uni_koeln.spinfo.maalr.common.shared.Overlay;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 
 public interface SearchServiceAsync {
 	
-	void search(MaalrQuery maalrQuery, AsyncCallback<LightQueryResult> callback);
+	void search(MaalrQuery maalrQuery, AsyncCallback<QueryResult> callback);
 
 	void getUserConfigurations(String locale, boolean editor,
 			AsyncCallback<ArrayList<UiConfiguration>> callback);

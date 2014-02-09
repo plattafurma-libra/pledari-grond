@@ -31,8 +31,8 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
@@ -191,10 +191,10 @@ public class User implements EntryPoint {
 		if(SearchHelper.getLastQuery() != null && SearchHelper.getLastQuery().equals(maalrQuery)) {
 			return;
 		}
-		service.search(maalrQuery, new AsyncCallback<LightQueryResult>() {
+		service.search(maalrQuery, new AsyncCallback<QueryResult>() {
 
 			@Override
-			public void onSuccess(LightQueryResult result) {
+			public void onSuccess(QueryResult result) {
 				SearchHelper.setLastQuery(maalrQuery);
 				resultCellTable.setVisible(true);
 				resultCellTable.setResults(maalrQuery, result);

@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Constants.Roles;
+import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
@@ -80,10 +81,10 @@ public class Index {
 		// TODO: Clean depending on user role:
 		// Editors need infos about verification etc...
 		
-//		List<LemmaVersion> entries = result.getEntries();
-//		for (LemmaVersion lemma : entries) {
-//			lemma.getMaalrValues().keySet().retainAll(LemmaVersion.PUBLIC_MAALR_KEYS);
-//		}
+		List<LemmaVersion> entries = result.getEntries();
+		for (LemmaVersion lemma : entries) {
+			lemma.getMaalrValues().keySet().retainAll(LemmaVersion.PUBLIC_MAALR_KEYS);
+		}
 	}
 	
 	//@Secured({Roles.TRUSTED_IN_4, Roles.ADMIN_5})

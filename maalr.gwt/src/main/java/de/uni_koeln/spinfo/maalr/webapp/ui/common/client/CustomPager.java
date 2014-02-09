@@ -26,8 +26,8 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.SimplePanel;
 
-import de.uni_koeln.spinfo.maalr.lucene.query.LightQueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
+import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
 
 public class CustomPager extends SimplePanel {
@@ -46,7 +46,7 @@ public class CustomPager extends SimplePanel {
 		this.add(pagination);
 	}
 
-	public void createPageLinks(final MaalrQuery maalrQuery, LightQueryResult result) {
+	public void createPageLinks(final MaalrQuery maalrQuery, QueryResult result) {
 		if (pagination.getWidgetCount() > 0)
 			pagination.clear();
 
@@ -84,7 +84,7 @@ public class CustomPager extends SimplePanel {
 		}
 	}
 
-	private int getMaxPageNumber(MaalrQuery query, LightQueryResult result) {
+	private int getMaxPageNumber(MaalrQuery query, QueryResult result) {
 		return result.getMaxEntries() / query.getPageSize()
 				+ (result.getMaxEntries() % query.getPageSize() != 0 ? 1 : 0);
 	}
