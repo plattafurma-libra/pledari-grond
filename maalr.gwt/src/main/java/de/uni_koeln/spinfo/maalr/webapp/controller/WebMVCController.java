@@ -178,7 +178,8 @@ public class WebMVCController implements SearchService {
 			// if (query.getSearchPhrase() != null && query.getSearchPhrase().trim().length() > 0) {
 			// 		setPageTitle(mv, "Translations of " + query.getSearchPhrase());
 			// }
-			mv.addObject("result", index.query(query));
+			QueryResult result = index.query(query, true);
+			mv.addObject("result", result);
 			return mv;
 		} catch (InvalidQueryException e) {
 			return getIndexExceptionView(e);
@@ -219,7 +220,7 @@ public class WebMVCController implements SearchService {
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
-			QueryResult result = index.queryExact(query);
+			QueryResult result = index.queryExact(query, true);
 			mv.addObject("result", result);
 			//mv.addObject("query", query);
 			String language = query.getValue("language");
@@ -396,7 +397,7 @@ public class WebMVCController implements SearchService {
 	@Override
 	public QueryResult search(MaalrQuery maalrQuery) {
 		try {
-			QueryResult qr = index.query(maalrQuery);
+			QueryResult qr = index.query(maalrQuery, true);
 			return qr;
 		} catch (InvalidQueryException e) {
 			e.printStackTrace();

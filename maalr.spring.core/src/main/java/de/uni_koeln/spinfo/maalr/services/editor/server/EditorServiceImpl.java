@@ -135,7 +135,7 @@ public class EditorServiceImpl {
 	}
 
 	public QueryResult search(MaalrQuery maalrQuery) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
-		QueryResult result = index.query(maalrQuery);
+		QueryResult result = index.query(maalrQuery, false);
 		return result;
 	}
 
@@ -161,7 +161,7 @@ public class EditorServiceImpl {
 		MaalrQuery query = new MaalrQuery();
 		query.setPageSize(100);
 		query.setQueryValue("searchPhrase", lemma);
-		return new ArrayList<LemmaVersion>(index.queryExact(query).getEntries());
+		return new ArrayList<LemmaVersion>(index.queryExact(query, false).getEntries());
 	}
 
 	public void export(Set<String> fields, EditorQuery query, File dest) throws NoDatabaseAvailableException, IOException {
@@ -204,7 +204,7 @@ public class EditorServiceImpl {
 		}
 		writer.write("\n");
 		while(true) {
-			QueryResult result = index.query(query);
+			QueryResult result = index.query(query, false);
 			if(result == null ||result.getEntries() == null || result.getEntries().size() == 0) break;
 			List<LemmaVersion> entries = result.getEntries();
 			for (LemmaVersion version : entries) {

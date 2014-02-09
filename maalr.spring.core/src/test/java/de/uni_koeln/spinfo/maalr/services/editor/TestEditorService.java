@@ -106,7 +106,7 @@ public class TestEditorService extends MongoTestHelper {
 		MaalrQuery query = new MaalrQuery();
 		query.setPageSize(20);
 		query.setQueryValue("searchPhrase", "Haus");
-		QueryResult result = index.queryExact(query);
+		QueryResult result = index.queryExact(query, true);
 		List<LemmaVersion> old = result.getEntries();
 		for(int i = 0; i < old.size(); i++) {
 			logger.info("Old Order: " + i + " is " + old.get(i));

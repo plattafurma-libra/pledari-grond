@@ -207,7 +207,7 @@ public class LemmaVersion implements Serializable {
 
 	@XmlAttribute(name="timeStamp")
 	public Long getTimestamp() {
-		if(maalrValues.get(TIMESTAMP) == null) return null;
+		if(maalrValues.get(TIMESTAMP) == null) return 0L;
 		return Long.parseLong(maalrValues.get(TIMESTAMP));
 	}
 

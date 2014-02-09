@@ -56,36 +56,46 @@ public class Index {
 		dictionary = new Dictionary(environment.getLuceneConfig());
 	}
 
-	public QueryResult query(MaalrQuery maalrQuery) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
+	/**
+	 * Queries the index and returns the result in form of a
+	 * {@link QueryResult}. 
+	 */
+	public QueryResult query(MaalrQuery maalrQuery, boolean removeInternalData) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
 		QueryResult result = dictionary.query(maalrQuery);
-		clean(result);
+		if(removeInternalData) return clean(result);
 		return result;
 	}
 	
-	public QueryResult queryExact(MaalrQuery maalrQuery) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
+	public QueryResult queryExact(MaalrQuery maalrQuery, boolean removeInternalData) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
 		String exactModifier = Configuration.getInstance().getDictionaryConfig().getExactModifier();
 		String[] keyValue = exactModifier.split("=");
 		maalrQuery.getQueryMap().put(keyValue[0], keyValue[1]);
 		QueryResult result = dictionary.query(maalrQuery);
-		clean(result);
+		if(removeInternalData) return clean(result);
 		return result;
 	}
 	
 	public QueryResult getAllStartingWith(String language, String prefix, int page) throws NoIndexAvailableException, BrokenIndexException, InvalidQueryException {
 		QueryResult result = dictionary.getAllStartingWith(language, prefix, page);
-		clean(result);
-		return result;
+		return clean(result);
 	}
 	
-	private void clean(QueryResult result) {
-		// TODO: Clean depending on user role:
-		// Editors need infos about verification etc...
-		
+	private QueryResult clean(QueryResult result) {
 		List<LemmaVersion> entries = result.getEntries();
 		for (LemmaVersion lemma : entries) {
-			lemma.getMaalrValues().keySet().retainAll(LemmaVersion.PUBLIC_MAALR_KEYS);
+			clean(lemma);
 		}
+		return result;
 	}
+
+	private LemmaVersion clean(LemmaVersion lemma) {
+		lemma.getMaalrValues().keySet().retainAll(LemmaVersion.PUBLIC_MAALR_KEYS);
+		lemma.getEntryValues().remove(LemmaVersion.COMMENT);
+		lemma.getEntryValues().remove(LemmaVersion.EMAIL);
+		return lemma;
+	}
+	
+	
 	
 	//@Secured({Roles.TRUSTED_IN_4, Roles.ADMIN_5})
 	public IndexStatistics getIndexStatistics() {

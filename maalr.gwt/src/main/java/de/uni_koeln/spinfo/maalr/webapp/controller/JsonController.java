@@ -63,7 +63,7 @@ public class JsonController {
 	@RequestMapping(value="/json", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
 	public void queryJSON(@RequestParam("callback") String callback, MaalrQuery query, @RequestParam String locale, HttpServletResponse response) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
-		QueryResult result = index.query(query);
+		QueryResult result = index.query(query, true);
 		List<LemmaVersion> entries = result.getEntries();
 		if(exportFields == null) {
 			Set<ValueFormat> fields = new HashSet<ValueFormat>();
