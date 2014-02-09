@@ -5,10 +5,6 @@
 
 	<properties>
 		<spring-social.version>1.1.0.M2</spring-social.version>
-		<!-- <org.springframework.social-version>1.1.0.M4</org.springframework.social-version>
-		<org.springframework.social.facebook-version>1.1.0.M4</org.springframework.social.facebook-version>
-		<org.springframework.social.twitter-version>1.1.0.M4</org.springframework.social.twitter-version> -->
-		<org.springframework.security.crypto-version>3.1.4.RELEASE</org.springframework.security.crypto-version>
 	</properties>
 	
 	<repositories>
@@ -213,11 +209,12 @@
 			<version>1.0.0.RC3</version>
 		</dependency>
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.3.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
+		<!-- 
 
 		<dependency>
 			<groupId>org.springframework.social</groupId>
@@ -246,7 +243,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
-			<version>${org.springframework.security.crypto-version}</version>
+			<version>${spring.security.version}</version>
 		</dependency>
 
 		 -->
@@ -254,7 +251,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.3.159</version>
+			<version>1.3.174</version>
 		</dependency>
 
 		<!-- END SPRING SOCIAL -->
