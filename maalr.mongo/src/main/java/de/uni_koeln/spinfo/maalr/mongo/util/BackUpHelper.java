@@ -119,21 +119,25 @@ public class BackUpHelper {
 		List<File> scheduledBackUpFiles = getScheduledBackUpFiles();
 		for (File file : scheduledBackUpFiles) {
 			
-			FileInfo fileInfo = new FileInfo();
-			fileInfo.setAbsolutePath(file.getAbsolutePath());
-			
-			fileInfo.setLastModified(new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(new Date(file.lastModified())));
-			fileInfo.setName(file.getName());
-			fileInfo.setParent(file.getParentFile().getAbsolutePath());
-			
-			double bytes = file.length();
-			double kilobytes = (bytes / 1024);
-			double megabytes = (kilobytes / 1024);
-			fileInfo.setSize(new DecimalFormat("##.##").format(megabytes));
-			
-			String[] split = fileInfo.getName().replace(".zip", "").split("_");
-			fileInfo.setCreationDate(String.format("date/%s time/%s", split[5], split[6]));
-			list.add(fileInfo);
+			try {
+				FileInfo fileInfo = new FileInfo();
+				fileInfo.setAbsolutePath(file.getAbsolutePath());
+				
+				fileInfo.setLastModified(new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(new Date(file.lastModified())));
+				fileInfo.setName(file.getName());
+				fileInfo.setParent(file.getParentFile().getAbsolutePath());
+				
+				double bytes = file.length();
+				double kilobytes = (bytes / 1024);
+				double megabytes = (kilobytes / 1024);
+				fileInfo.setSize(new DecimalFormat("##.##").format(megabytes));
+				
+				String[] split = fileInfo.getName().replace(".zip", "").split("_");
+				fileInfo.setCreationDate(String.format("date/%s time/%s", split[5], split[6]));
+				list.add(fileInfo);
+			} catch (Exception e) {
+				logger.warn("Invalid backup file name: " + file.getAbsolutePath());
+			}
 		}
 		BackupInfos backupInfos = new BackupInfos(list);
 		backupInfos.setBackupDir(Configuration.getInstance().getBackupLocation());
