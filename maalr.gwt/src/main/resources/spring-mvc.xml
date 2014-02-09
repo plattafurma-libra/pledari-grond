@@ -50,12 +50,11 @@
 	 -->
 	
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> -->
-
+<!-- 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="mediaTypes">
 			<map>
-				<!-- <entry key="json" value="application/json" /> <entry key="xml" value="application/xml" /> -->
 			</map>
 		</property>
 		<property name="viewResolvers">
@@ -87,7 +86,7 @@
 			</list>
 		</property>
 	</bean>
-
+ -->
 	<!-- Allow file uploads (import db) -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
