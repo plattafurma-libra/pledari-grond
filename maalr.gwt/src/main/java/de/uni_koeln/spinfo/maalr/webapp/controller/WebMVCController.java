@@ -20,11 +20,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -34,8 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.lucene.queryparser.classic.ParseException;
-import org.apache.lucene.queryparser.flexible.core.QueryNodeException;
 import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,13 +58,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
-import de.uni_koeln.spinfo.maalr.common.shared.Overlay;
-import de.uni_koeln.spinfo.maalr.common.shared.Overlays;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueFormat;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
-import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.login.LoginManager;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
@@ -80,10 +72,9 @@ import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
-import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 
-@Controller("searchService")
-public class WebMVCController implements SearchService {
+@Controller
+public class WebMVCController {
 
 	@Autowired
 	private LoginManager loginManager;
@@ -394,59 +385,7 @@ public class WebMVCController implements SearchService {
 //		return new ModelAndView("test");
 //	}
 
-	@Override
-	public QueryResult search(MaalrQuery maalrQuery) {
-		try {
-			QueryResult qr = index.query(maalrQuery, true);
-			return qr;
-		} catch (InvalidQueryException e) {
-			e.printStackTrace();
-		} catch (NoIndexAvailableException e) {
-			e.printStackTrace();
-		} catch (BrokenIndexException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InvalidTokenOffsetsException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
-	public ArrayList<UiConfiguration> getUserConfigurations(String locale, boolean editor) {
-		UiConfiguration defaultConfig = editor ? configuration.getEditorDefaultSearchUiConfig() : configuration.getUserDefaultSearchUiConfig();
-		UiConfiguration extendedConfig = editor ? configuration.getEditorExtendedSearchUiConfig() : configuration.getUserExtendedSearchUiConfig();
-		return new ArrayList<UiConfiguration>(Arrays.asList(Localizer.localize(defaultConfig, locale), Localizer.localize(extendedConfig, locale)));
-	}
-
-	@Override
-	public Overlay getOverlay(String overlayType) {
-		try {
-			return Overlays.get(overlayType);
-		} catch (IOException e) {
-			Overlay dummy = new Overlay();
-			dummy.setForm("This service is currently not available.");
-			return dummy;
-		}
-	}
-
-	@Override
-	public List<String> getSuggestions(String id, String query, int limit) {
-		System.out.println("Suggestions for field " + id);
-		try {
-			return index.getSuggestionsForField(id, query, limit);
-		} catch (NoIndexAvailableException e) {
-			e.printStackTrace();
-		} catch (QueryNodeException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	
 	
 	@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
