@@ -287,6 +287,7 @@ public class BackUpHelper {
 					}
 					logger.info("Validated " + counter + " entries.");
 					this.latestBackup = file;
+					files = getFiles();
 					files.add(file);
 					logger.info(logMessage(true));
 					input.close();
