@@ -55,11 +55,9 @@
 	<!-- These filters define the servlet filter chain. They are applied
 	     from top to bottom.
 	-->
-	
+
+<!-- 	
 	<filter>
-		<!-- Proof of Concept: This way it would be possible to internationalize URLs -->
-		<!-- See http://stackoverflow.com/questions/6610510/spring-3-how-to-handle-multilanguage-url-with-same-content -->
-		<!-- Demonstrated with sample URL hilfe.html and help.html instead of agid.html -->
 		<filter-name>internationalUrlFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
@@ -68,6 +66,8 @@
 		<filter-name>internationalUrlFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	 -->
 	
 	<!--  Testing End -->
 
