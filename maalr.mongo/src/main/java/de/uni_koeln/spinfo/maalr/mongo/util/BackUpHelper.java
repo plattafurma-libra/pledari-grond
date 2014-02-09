@@ -188,7 +188,6 @@ public class BackUpHelper {
 
 		@Override
 		public void run() {
-			checkBackupNum();
 			File backupFile = triggerBackUp(createName());
 			boolean valid = validate();
 			if(!valid && backupFile != null) {
@@ -198,6 +197,9 @@ public class BackUpHelper {
 				} else {
 					logger.warn("Failed to delete invalid backup " + backupFile);
 				}
+			}
+			if(valid) {
+				checkBackupNum();
 			}
 		}
 		
