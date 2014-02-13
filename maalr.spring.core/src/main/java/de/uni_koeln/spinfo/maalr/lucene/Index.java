@@ -35,6 +35,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
+import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.ExactMatchQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.core.Dictionary;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
@@ -66,11 +67,8 @@ public class Index {
 		return result;
 	}
 	
-	public QueryResult queryExact(MaalrQuery maalrQuery, boolean removeInternalData) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
-		String exactModifier = Configuration.getInstance().getDictionaryConfig().getExactModifier();
-		String[] keyValue = exactModifier.split("=");
-		maalrQuery.getQueryMap().put(keyValue[0], keyValue[1]);
-		QueryResult result = dictionary.query(maalrQuery);
+	public QueryResult queryExact(String phrase, boolean firstLanguage, boolean removeInternalData) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
+		QueryResult result = dictionary.queryExact(phrase, firstLanguage);
 		if(removeInternalData) return clean(result);
 		return result;
 	}
@@ -133,6 +131,11 @@ public class Index {
 		for (LexEntry entry : modified) {
 			dictionary.update(entry);
 		}
+	}
+
+	public List<String> getSuggestionsForFieldChoice(String id, String query,
+			int limit) throws NoIndexAvailableException, QueryNodeException, IOException, ParseException {
+		return dictionary.getSuggestionsForFieldChoice(id, query, limit);
 	}
 
 }

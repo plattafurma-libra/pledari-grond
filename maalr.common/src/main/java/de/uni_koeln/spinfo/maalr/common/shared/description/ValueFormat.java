@@ -23,10 +23,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 
-/**
- * 
- * @deprecated
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ValueFormat implements Serializable {
 

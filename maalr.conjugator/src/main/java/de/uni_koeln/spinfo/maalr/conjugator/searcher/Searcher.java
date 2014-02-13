@@ -91,10 +91,10 @@ public class Searcher {
 		// Erzeuge einen IndexSearcher
 		IndexSearcher is = new IndexSearcher(dirReader);
 
-		StandardAnalyzer analyzer = new StandardAnalyzer(Version.LUCENE_43);
+		StandardAnalyzer analyzer = new StandardAnalyzer(Version.LUCENE_46);
 
 		// Überführt den vom User eigegebenen "Suchtext" in eine Lucene Query
-		QueryParser parser = new QueryParser(Version.LUCENE_43, "fullform",
+		QueryParser parser = new QueryParser(Version.LUCENE_46, "fullform",
 				analyzer);
 		Query query = parser.parse(q);
 		System.out.println("QUERY: " + query);

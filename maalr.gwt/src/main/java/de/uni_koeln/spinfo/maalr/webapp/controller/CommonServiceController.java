@@ -24,7 +24,7 @@ import org.apache.lucene.queryparser.flexible.core.QueryNodeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
@@ -36,7 +36,7 @@ import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 
-@Controller("commonService")
+@Service("commonService")
 public class CommonServiceController implements CommonService {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());

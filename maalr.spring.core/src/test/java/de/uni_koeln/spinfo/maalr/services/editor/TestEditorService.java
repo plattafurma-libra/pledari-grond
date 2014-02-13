@@ -103,10 +103,7 @@ public class TestEditorService extends MongoTestHelper {
 	@Test
 	public void testModifyOrder() throws Exception {
 		insertSampleEntries();
-		MaalrQuery query = new MaalrQuery();
-		query.setPageSize(20);
-		query.setQueryValue("searchPhrase", "Haus");
-		QueryResult result = index.queryExact(query, true);
+		QueryResult result = index.queryExact("Haus", true, true);
 		List<LemmaVersion> old = result.getEntries();
 		for(int i = 0; i < old.size(); i++) {
 			logger.info("Old Order: " + i + " is " + old.get(i));
@@ -155,12 +152,16 @@ public class TestEditorService extends MongoTestHelper {
 		lemmaVersion = new LemmaVersion();
 		lemmaVersion.putEntryValue("german", "Wohnhaus");
 		lemmaVersion.putEntryValue("english", "House");
+		lemmaVersion.putEntryValue("german_sort", "0");
+		lemmaVersion.putEntryValue("english_sort", "0");
 		lemmaVersion.setVerification(Verification.ACCEPTED);
 		entry = new LexEntry(lemmaVersion);
 		entries.add(entry);
 		lemmaVersion = new LemmaVersion();
 		lemmaVersion.putEntryValue("german", "Hausaufgaben");
 		lemmaVersion.putEntryValue("english", "homework");
+		lemmaVersion.putEntryValue("german_sort", "0");
+		lemmaVersion.putEntryValue("english_sort", "0");
 		lemmaVersion.setVerification(Verification.ACCEPTED);
 		entry = new LexEntry(lemmaVersion);
 		entries.add(entry);

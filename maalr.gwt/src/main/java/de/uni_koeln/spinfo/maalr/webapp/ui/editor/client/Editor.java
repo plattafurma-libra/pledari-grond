@@ -24,7 +24,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -71,10 +70,6 @@ public class Editor implements EntryPoint {
 	
 	private Map<String, Composite> modules = new HashMap<String, Composite>();
 	
-	private static ClientOptions options;
-
-	private static final DateTimeFormat format = DateTimeFormat.getFormat("dd MMM yy, h:m");
-
 	/**
 	 * This is the entry point method.
 	 */
@@ -89,7 +84,6 @@ public class Editor implements EntryPoint {
 
 			@Override
 			public void onSuccess(ClientOptions result) {
-				options = result;
 				navigation.setAppName(messages.getAppName(result.getShortAppName(), constants.editorBackend()));
 				panel.add(navigation);
 				try {
@@ -178,8 +172,8 @@ public class Editor implements EntryPoint {
 
 			@Override
 			public void onSuccess(LemmaDescription description) {
-				ArrayList<String> fields = new ArrayList<String>(description.getEditorLangA());
-				fields.addAll(description.getEditorLangB());
+				ArrayList<String> fields = new ArrayList<String>(description.getEditorFields(true));
+				fields.addAll(description.getEditorFields(false));
 				fields.add(LemmaVersion.COMMENT);
 				historyEditor.setColumns(fields);
 			}
@@ -194,8 +188,8 @@ public class Editor implements EntryPoint {
 
 			@Override
 			public void onSuccess(LemmaDescription description) {
-				ArrayList<String> fields = new ArrayList<String>(description.getEditorLangA());
-				fields.addAll(description.getEditorLangB());
+				ArrayList<String> fields = new ArrayList<String>(description.getEditorFields(true));
+				fields.addAll(description.getEditorFields(false));
 				fields.add(LemmaVersion.COMMENT);
 				lexEditor.setColumns(fields);
 			}

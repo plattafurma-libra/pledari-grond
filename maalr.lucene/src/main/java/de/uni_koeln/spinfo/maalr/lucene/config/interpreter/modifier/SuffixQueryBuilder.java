@@ -23,7 +23,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.RegexpQuery;
 import org.apache.lucene.search.TermQuery;
 
-import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrField;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
@@ -37,17 +37,23 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  * @author sschwieb
  *
  */
-public class SuffixQueryBuilder extends AbstractQueryBuilder {
-	
-	public List<Query> transform(MaalrField field) {
-		String fieldName = destFieldName.replace("${field}", field.getField());
-		String value = destValue.replace("${phrase}", field.getValue());
+public class SuffixQueryBuilder extends MaalrQueryBuilder {
+
+	@Override
+	protected void buildColumnToFieldsMapping() {
+		registerFieldMapping("first", false, MaalrFieldType.STRING, true, false);
+		registerFieldMapping("second",true, MaalrFieldType.STRING, false, false);		
+	}
+
+	@Override
+	public List<Query> transform(String value) {
 		value = TokenizerHelper.tokenizeString(analyzer, value);
-		TermQuery q1 = new TermQuery(new Term(fieldName + "_exact", value));
+		TermQuery q1 = new TermQuery(new Term(getFieldName("first"), value));
 		q1.setBoost(1000f);
-		Query q2 = new RegexpQuery(new Term(fieldName, ".*"+value));
-		TermQuery q3 = new TermQuery(new Term(fieldName + "_exact", ".*"+value));
+		Query q2 = new RegexpQuery(new Term(getFieldName("second"), ".*"+value));
+		TermQuery q3 = new TermQuery(new Term(getFieldName("first"), ".*"+value));
 		return Arrays.asList(q1, q2, q3);
 	}
 
+	
 }

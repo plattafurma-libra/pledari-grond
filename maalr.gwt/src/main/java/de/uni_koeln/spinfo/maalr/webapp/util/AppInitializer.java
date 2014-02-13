@@ -28,13 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.FieldChoice;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.FieldChoiceOption;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.FieldValueChoice;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.FieldValueChoiceOption;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryModifier;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryModifierOption;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.TextField;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelectorOption;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilderOption;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
@@ -105,36 +103,37 @@ public class AppInitializer {
 	private void configureSearchUi() {
 		DictionaryConfiguration dictionaryConfig = Configuration.getInstance().getDictionaryConfig();
 		ArrayList<String> mainFields = new ArrayList<String>();
-		List<TextField> textFields = dictionaryConfig.getTextFields();
-		for (TextField field : textFields) {
-			mainFields.add(field.getId());
+		List<QueryKey> queryKeys = dictionaryConfig.getQueryKeys();
+		for (QueryKey key : queryKeys) {
+			mainFields.add(key.getId());
 		}
-		List<FieldChoice> fcList = dictionaryConfig.getFieldChoices();
-		Map<String, FieldChoice> fieldChoices = new HashMap<String, FieldChoice>();
-		for (FieldChoice choice : fcList) {
-			fieldChoices.put(choice.getId(), choice);
+		List<ColumnSelector> fcList = dictionaryConfig.getColumnSelectors();
+		Map<String, ColumnSelector> columnSelectors = new HashMap<String, ColumnSelector>();
+		for (ColumnSelector choice : fcList) {
+			columnSelectors.put(choice.getId(), choice);
 		}
-		List<FieldValueChoice> fcvList = dictionaryConfig.getFieldValueChoices();
-		Map<String, FieldValueChoice> fieldValueChoices = new HashMap<String, FieldValueChoice>();
-		for (FieldValueChoice choice : fcvList) {
-			fieldValueChoices.put(choice.getId(), choice);
-		}
-		List<QueryModifier> qmList = dictionaryConfig.getQueryModifier();
-		Map<String, QueryModifier> queryModifiers = new HashMap<String, QueryModifier>(); 
-		for (QueryModifier modifier : qmList) {
+//		List<FieldValueChoice> fcvList = dictionaryConfig.getFieldValueChoices();
+//		Map<String, FieldValueChoice> fieldValueChoices = new HashMap<String, FieldValueChoice>();
+//		for (FieldValueChoice choice : fcvList) {
+//			fieldValueChoices.put(choice.getId(), choice);
+//		}
+		List<QueryBuilder> qmList = dictionaryConfig.getQueryModifier();
+		Map<String, QueryBuilder> queryModifiers = new HashMap<String, QueryBuilder>(); 
+		for (QueryBuilder modifier : qmList) {
 			queryModifiers.put(modifier.getId(), modifier);
 		}
 		UiConfiguration[] configs = Configuration.getInstance().getUIConfigurations();
 		for (UiConfiguration uiConfig : configs) {
-			initialize(mainFields, fieldChoices, fieldValueChoices, queryModifiers,
-					uiConfig);
+			if(uiConfig != null) {
+				initialize(mainFields, columnSelectors, queryModifiers,
+						uiConfig);
+			}
 		}
 	}
 
 	private void initialize(ArrayList<String> mainFields,
-			Map<String, FieldChoice> fieldChoices,
-			Map<String, FieldValueChoice> fieldValueChoices,
-			Map<String, QueryModifier> queryModifiers, UiConfiguration uiConfig) {
+			Map<String, ColumnSelector> fieldChoices,
+			Map<String, QueryBuilder> queryModifiers, UiConfiguration uiConfig) {
 		uiConfig.setMainFields(mainFields);
 		List<UiField> fields = uiConfig.getFields();
 		for (UiField field : fields) {
@@ -142,13 +141,13 @@ public class AppInitializer {
 				setBuildinDefaults(field);
 				continue;
 			}
-			FieldChoice choice = fieldChoices.get(field.getId());
+			ColumnSelector choice = fieldChoices.get(field.getId());
 			if(choice != null) {
 				ArrayList<String> values = new ArrayList<String>();
 				field.setValues(values);
-				List<FieldChoiceOption> options = choice.getOptions();
+				List<ColumnSelectorOption> options = choice.getOptions();
 				for(int i = 0; i < options.size(); i++) {
-					FieldChoiceOption option = options.get(i);
+					ColumnSelectorOption option = options.get(i);
 					values.add(option.getId());
 					if(option.isDefault()) {
 						field.setInitialValue(i);
@@ -156,28 +155,28 @@ public class AppInitializer {
 				}
 				continue;
 			}
-			FieldValueChoice valueChoice = fieldValueChoices.get(field.getId());
-			if(valueChoice != null) {
-				ArrayList<String> values = new ArrayList<String>();
-				field.setValues(values);
-				List<FieldValueChoiceOption> options = valueChoice.getOptions();
-				for(int i = 0; i < options.size(); i++) {
-					FieldValueChoiceOption option = options.get(i);
-					values.add(option.getId());
-					// TODO: Implement... grab and return values from db
-//					if(option.isDefault()) {
-//						field.setInitialValue(i);
-//					}
-				}
-				continue;
-			}
-			QueryModifier queryModifier = queryModifiers.get(field.getId());
+//			FieldValueChoice valueChoice = fieldValueChoices.get(field.getId());
+//			if(valueChoice != null) {
+//				ArrayList<String> values = new ArrayList<String>();
+//				field.setValues(values);
+//				List<FieldValueChoiceOption> options = valueChoice.getOptions();
+//				for(int i = 0; i < options.size(); i++) {
+//					FieldValueChoiceOption option = options.get(i);
+//					values.add(option.getId());
+//					// TODO: Implement... grab and return values from db
+////					if(option.isDefault()) {
+////						field.setInitialValue(i);
+////					}
+//				}
+//				continue;
+//			}
+			QueryBuilder queryModifier = queryModifiers.get(field.getId());
 			if(queryModifier != null) {
 				ArrayList<String> values = new ArrayList<String>();
 				field.setValues(values);
-				List<QueryModifierOption> options = queryModifier.getOptions();
+				List<QueryBuilderOption> options = queryModifier.getOptions();
 				for(int i = 0; i < options.size(); i++) {
-					QueryModifierOption option = options.get(i);
+					QueryBuilderOption option = options.get(i);
 					values.add(option.getId());
 					if(option.isDefault()) {
 						field.setInitialValue(i);

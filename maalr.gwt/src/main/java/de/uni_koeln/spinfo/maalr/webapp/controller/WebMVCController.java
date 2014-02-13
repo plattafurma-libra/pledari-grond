@@ -211,10 +211,13 @@ public class WebMVCController {
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
-			QueryResult result = index.queryExact(query, true);
+			String firstLanguage = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getId();
+			String language = query.getValue("language");
+			boolean isFirst = firstLanguage.equals(language);
+			System.out.println("QUERY FIRST LANG: " + isFirst);
+			QueryResult result = index.queryExact(query.getValue("searchPhrase"), isFirst, true);
 			mv.addObject("result", result);
 			//mv.addObject("query", query);
-			String language = query.getValue("language");
 			String key = null;
 			if(language.equals(configuration.getLemmaDescription().getLanguageName(true))) {
 				key = "dict.title_lang1";
@@ -368,7 +371,7 @@ public class WebMVCController {
 			//setPageTitle(mv, language + " dictionary index");
 		} else {
 			LemmaDescription desc = configuration.getLemmaDescription();
-			ValueFormat format = first ? desc.getResultListLangA().get(0) : desc.getResultListLangB().get(0);
+			ValueFormat format = desc.getResultList(first).get(0);
 			String template = getLocalizedString("maalr.dict_title_ext", session, request);
 			String langPair = Localizer.getTranslation(getLocale(session, request), (first ? "dict.lang1_lang2" : "dict.lang2_lang1"));
 			String title = template.replaceAll("\\{0\\}", langPair);

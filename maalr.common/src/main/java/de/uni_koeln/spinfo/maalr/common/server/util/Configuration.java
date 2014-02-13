@@ -26,6 +26,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration.UiConfigurations;
 import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
@@ -57,16 +58,8 @@ public class Configuration {
 	
 	private ClientOptions clientOptions;
 
-	private UiConfiguration defaultUserSearchConfiguration;
-
 	private DictionaryConfiguration dictConfig;
 
-	private UiConfiguration extendedUserSearchConfiguration;
-	
-	private UiConfiguration extendedEditorSearchConfiguration;
-	
-	private UiConfiguration defaultEditorSearchConfiguration;
-	
 	private Configuration() throws IOException {
 		properties = new Properties();
 		InputStreamReader input = null;
@@ -84,10 +77,6 @@ public class Configuration {
 			}
 		}
 		try {
-			defaultUserSearchConfiguration = getConfiguration("maalr_config/user-searchui.xml");
-			extendedUserSearchConfiguration = getConfiguration("maalr_config/user-searchui_extended.xml");
-			defaultEditorSearchConfiguration = getConfiguration("maalr_config/editor-searchui.xml");
-			extendedEditorSearchConfiguration = getConfiguration("maalr_config/editor-searchui_extended.xml");
 			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(new File("maalr_config/searchconfig.xml")), "UTF-8");
@@ -143,7 +132,7 @@ public class Configuration {
 	}
 	
 	public LemmaDescription getLemmaDescription() {
-		return DescriptionLoader.getLemmaDescription(properties);
+		return dictConfig.getLemmaDescription();
 	}
 	
 	public String getShortName() {
@@ -156,13 +145,6 @@ public class Configuration {
 
 	public ClientOptions getClientOptions() {
 		return clientOptions;
-	}
-
-	public UiConfiguration getUserDefaultSearchUiConfig() {
-		return defaultUserSearchConfiguration;
-	}
-	public UiConfiguration getUserExtendedSearchUiConfig() {
-		return extendedUserSearchConfiguration;
 	}
 
 	public DictionaryConfiguration getDictionaryConfig() {
@@ -182,15 +164,30 @@ public class Configuration {
 	}
 	
 	public UiConfiguration getEditorDefaultSearchUiConfig() {
-		return defaultEditorSearchConfiguration;
+		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
+		if(uiConfigs == null) return null;
+		return uiConfigs.getEditorDefaultUiConfiguration();
 	}
 
 	public UiConfiguration getEditorExtendedSearchUiConfig() {
-		return extendedEditorSearchConfiguration;
+		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
+		if(uiConfigs == null) return null;
+		return uiConfigs.getEditorAdvancedUiConfiguration();
+	}
+	
+	public UiConfiguration getUserDefaultSearchUiConfig() {
+		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
+		if(uiConfigs == null) return null;
+		return uiConfigs.getUserDefaultUiConfiguration();
+	}
+	public UiConfiguration getUserExtendedSearchUiConfig() {
+		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
+		if(uiConfigs == null) return null;
+		return uiConfigs.getUserAdvancedUiConfiguration();
 	}
 
 	public UiConfiguration[] getUIConfigurations() {
-		return new UiConfiguration[] {defaultEditorSearchConfiguration, extendedEditorSearchConfiguration, defaultUserSearchConfiguration, extendedUserSearchConfiguration};
+		return new UiConfiguration[] {getUserDefaultSearchUiConfig(), getUserExtendedSearchUiConfig(), getEditorDefaultSearchUiConfig(), getEditorExtendedSearchUiConfig()};
 	}
 	
 	public String getFaceBookClientId() {

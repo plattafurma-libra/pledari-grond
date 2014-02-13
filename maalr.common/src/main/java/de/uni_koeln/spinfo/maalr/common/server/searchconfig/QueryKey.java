@@ -13,25 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.pg2.selenium;
+package de.uni_koeln.spinfo.maalr.common.server.searchconfig;
 
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.Selenium;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 
-public class SeleniumHelper {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class QueryKey {
 	
-	public static Selenium setUp() {
-		DefaultSelenium selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://localhost:9999/");
-		selenium.start();
-		selenium.setSpeed("2000");
-		selenium.windowMaximize();
-		return selenium;
+	@XmlAttribute
+	private String id;
+
+	public String getId() {
+		return id;
 	}
-	
-	public static void tearDown(Selenium selenium, RCScreenshotGenerator generator) {
-		generator.setDriver(selenium);
-		generator.createSnapshot();
-		selenium.stop();
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

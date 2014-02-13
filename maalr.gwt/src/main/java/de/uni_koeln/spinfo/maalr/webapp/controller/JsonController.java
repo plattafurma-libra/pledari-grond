@@ -67,11 +67,11 @@ public class JsonController {
 		List<LemmaVersion> entries = result.getEntries();
 		if(exportFields == null) {
 			Set<ValueFormat> fields = new HashSet<ValueFormat>();
-			fields.addAll(configuration.getLemmaDescription().getResultListLangA());
-			fields.addAll(configuration.getLemmaDescription().getResultListLangB());
+			fields.addAll(configuration.getLemmaDescription().getResultList(true));
+			fields.addAll(configuration.getLemmaDescription().getResultList(false));
 			exportFields = fields;
 		}
-		configuration.getLemmaDescription().getResultListLangA();
+		configuration.getLemmaDescription().getResultList(true);
 		List<Map<String, String>> toReturn = new ArrayList<Map<String, String>>();
 		LemmaDescription ld = configuration.getLemmaDescription();
 		for (LemmaVersion entry : entries) {

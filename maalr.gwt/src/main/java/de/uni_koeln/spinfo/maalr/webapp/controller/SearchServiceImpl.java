@@ -88,9 +88,8 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<String> getSuggestions(String id, String query, int limit) {
-		System.out.println("Suggestions for field " + id);
 		try {
-			return index.getSuggestionsForField(id, query, limit);
+			return index.getSuggestionsForFieldChoice(id, query, limit);
 		} catch (NoIndexAvailableException e) {
 			e.printStackTrace();
 		} catch (QueryNodeException e) {

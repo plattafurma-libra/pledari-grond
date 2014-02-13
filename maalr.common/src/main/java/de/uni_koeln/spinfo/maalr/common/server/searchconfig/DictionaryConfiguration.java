@@ -24,75 +24,91 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DictionaryConfiguration {
 
-	private IndexConfiguration indexConfiguration;
+	@XmlElementWrapper(name="databaseColumns")
+	@XmlElement(name="column")
+	private List<IndexedColumn> indexedColumns = new ArrayList<IndexedColumn>();
 	
-	@XmlElementWrapper(name="fieldChoices")
-	@XmlElement(name="fieldChoice")
-	private List<FieldChoice> fieldChoices = new ArrayList<FieldChoice>();
+	@XmlElementWrapper(name="columnSelectors")
+	@XmlElement(name="columnSelector")
+	private List<ColumnSelector> fieldChoices = new ArrayList<ColumnSelector>();
 
-	@XmlElementWrapper(name="fieldValueChoices")
-	@XmlElement(name="fieldValueChoice")
-	private List<FieldValueChoice> fieldValueChoices = new ArrayList<FieldValueChoice>();
+	@XmlElementWrapper(name="queryBuilders")
+	@XmlElement(name="queryBuilder")
+	private List<QueryBuilder> queryBuilders = new ArrayList<QueryBuilder>();
+
+	@XmlElementWrapper(name="queryKeys")
+	@XmlElement(name="queryKey")
+	private List<QueryKey> queryKeys = new ArrayList<QueryKey>();
 	
-	@XmlElementWrapper(name="queryModifiers")
-	@XmlElement(name="queryModifier")
-	private List<QueryModifier> queryModifier = new ArrayList<QueryModifier>();
+	@XmlElement
+	private UiConfigurations uiConfigurations;
 	
-	public List<FieldValueChoice> getFieldValueChoices() {
-		return fieldValueChoices;
+	public UiConfigurations getUiConfigurations() {
+		return uiConfigurations;
 	}
 
-	public void setFieldValueChoices(List<FieldValueChoice> fieldValueChoices) {
-		this.fieldValueChoices = fieldValueChoices;
+	public static class UiConfigurations {
+		
+		@XmlElement(name="defaultUserConfiguration")
+		private UiConfiguration userDefaultUiConfiguration;
+		
+		@XmlElement(name="advancedUserConfiguration")
+		private UiConfiguration userAdvancedUiConfiguration;
+		
+		@XmlElement(name="defaultEditorConfiguration")
+		private UiConfiguration editorDefaultUiConfiguration;
+		
+		@XmlElement(name="advancedEditorConfiguration")
+		private UiConfiguration editorAdvancedUiConfiguration;
+
+		public UiConfiguration getUserDefaultUiConfiguration() {
+			return userDefaultUiConfiguration;
+		}
+
+		public UiConfiguration getUserAdvancedUiConfiguration() {
+			return userAdvancedUiConfiguration;
+		}
+
+		public UiConfiguration getEditorDefaultUiConfiguration() {
+			return editorDefaultUiConfiguration;
+		}
+
+		public UiConfiguration getEditorAdvancedUiConfiguration() {
+			return editorAdvancedUiConfiguration;
+		}
+		
+		
+		
 	}
 
-	public List<QueryModifier> getQueryModifier() {
-		return queryModifier;
+	@XmlElement
+	private LemmaDescription lemmaDescription;
+	
+	public LemmaDescription getLemmaDescription() {
+		return lemmaDescription;
 	}
 
-	public void setQueryModifier(List<QueryModifier> queryModifier) {
-		this.queryModifier = queryModifier;
+	public List<QueryBuilder> getQueryModifier() {
+		return queryBuilders;
 	}
 
-	public IndexConfiguration getIndexConfiguration() {
-		return indexConfiguration;
-	}
-
-	public void setIndexConfiguration(IndexConfiguration indexConfiguration) {
-		this.indexConfiguration = indexConfiguration;
-	}
-
-	public List<FieldChoice> getFieldChoices() {
+	public List<ColumnSelector> getColumnSelectors() {
 		return fieldChoices;
 	}
 
-	public void setFieldChoices(List<FieldChoice> fieldChoices) {
-		this.fieldChoices = fieldChoices;
-	}
-	
-
-	public List<TextField> getTextFields() {
-		return textFields;
+	public List<QueryKey> getQueryKeys() {
+		return queryKeys;
 	}
 
-	public void setTextFields(List<TextField> textFields) {
-		this.textFields = textFields;
+	public List<IndexedColumn> getIndexedColumns() {
+		return indexedColumns;
 	}
-
-	@XmlElementWrapper(name="textFields")
-	@XmlElement(name="textField")
-	private List<TextField> textFields = new ArrayList<TextField>();
-
-	@XmlElement(name="exactModifier")
-	private String exactModifier;
-	
-	public String getExactModifier() {
-		return exactModifier;
-	}
-
 	
 }

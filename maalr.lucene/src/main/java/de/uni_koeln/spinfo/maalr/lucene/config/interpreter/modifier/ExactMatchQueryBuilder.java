@@ -22,7 +22,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 
-import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrField;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
@@ -33,15 +33,20 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  * @author sschwieb
  *
  */
-public class ExactMatchQueryBuilder extends AbstractQueryBuilder {
+public class ExactMatchQueryBuilder extends MaalrQueryBuilder {
 
-	public List<Query> transform(MaalrField field) {
-		String fieldName = destFieldName.replace("${field}", field.getField());
-		String value = destValue.replace("${phrase}", field.getValue());
+	@Override
+	protected void buildColumnToFieldsMapping() {
+		registerFieldMapping("first", false, MaalrFieldType.STRING, true, false);	
+	}
+
+	@Override
+	public List<Query> transform(String value) {
 		value = TokenizerHelper.tokenizeString(LuceneHelper.newWhitespaceAnalyzer(), value);
 		// match both upper and lower case:
-		Query query = new TermQuery(new Term(fieldName + "_exact", value.toLowerCase())); 
+		Query query = new TermQuery(new Term(getFieldName("first"), value.toLowerCase()));
 		return Arrays.asList(query);
 	}
+	
 	
 }

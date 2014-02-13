@@ -22,7 +22,8 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
 
-import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrField;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
+import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
@@ -37,14 +38,20 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  * @author claesn
  *
  */
-public class SimplePrefixQueryBuilder extends AbstractQueryBuilder {
+public class SimplePrefixQueryBuilder extends MaalrQueryBuilder {
 
-	public List<Query> transform(MaalrField field) {
-		String fieldName = destFieldName.replace("${field}", field.getField());
-		String value = destValue.replace("${phrase}", field.getValue());
+	@Override
+	protected void buildColumnToFieldsMapping() {
+		registerFieldMapping("first", false, MaalrFieldType.STRING, true, false);		
+	}
+
+	@Override
+	public List<Query> transform(String value) {
 		value = TokenizerHelper.tokenizeString(LuceneHelper.newWhitespaceAnalyzer(), value);
-		Query query = new PrefixQuery(new Term(fieldName + "_exact", value.toLowerCase()));
+		Query query = new PrefixQuery(new Term(getFieldName("first"), value.toLowerCase()));
 		return Arrays.asList(query);
 	}
+	
+	
 	
 }

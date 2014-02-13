@@ -21,42 +21,39 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FieldChoice {
+public class QueryBuilder {
 	
-	@XmlAttribute(required=true)
+	@XmlAttribute
 	private String id;
 	
-	@XmlAttribute(required=true)
-	private String valueOf;
-	
-	private List<FieldChoiceOption> options = new ArrayList<FieldChoiceOption>();
+	@XmlElementWrapper(name="options")
+	@XmlElement(name="option")
+	private List<QueryBuilderOption> options = new ArrayList<QueryBuilderOption>();
 
+	@XmlAttribute(name="queryKeyId")
+	private String queryKeyId;
+
+	@XmlAttribute(name="columnSelectorId")
+	private String columnSelectorId;
+	
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getValueOf() {
-		return valueOf;
-	}
-
-	public void setValueOf(String valueOf) {
-		this.valueOf = valueOf;
-	}
-
-	public List<FieldChoiceOption> getOptions() {
+	public List<QueryBuilderOption> getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<FieldChoiceOption> options) {
-		this.options = options;
+	public String getQueryKeyId() {
+		return queryKeyId;
 	}
-	
-	
+
+	public String getColumnSelectorId() {
+		return columnSelectorId;
+	}
 
 }

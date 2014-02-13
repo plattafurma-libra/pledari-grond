@@ -442,8 +442,8 @@ public class LexEditor extends Composite implements HasHistorySupport {
 
 			@Override
 			public void onSuccess(final LemmaDescription description) {
-				final ArrayList<String> fields = new ArrayList<String>(description.getEditorLangA());
-				fields.addAll(description.getEditorLangB());
+				final ArrayList<String> fields = new ArrayList<String>(description.getEditorFields(true));
+				fields.addAll(description.getEditorFields(false));
 				fields.add(LemmaVersion.COMMENT);
 				LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
 

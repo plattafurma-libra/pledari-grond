@@ -26,13 +26,13 @@ import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexableField;
 
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.IndexedItem;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.IndexedColumn;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
 /**
- * A {@link FieldFactory} is responsible for converting an {@link IndexedItem}
+ * A {@link FieldFactory} is responsible for converting an {@link IndexedColumn}
  * into one or more {@link IndexableField} objects, thus creating a lucene index
  * from a maalr search configuration. Depending on the {@link MaalrFieldType},
  * it generates either an {@link StringField}, {@link TextField}, or {@link IntField}
@@ -51,14 +51,14 @@ public class FieldFactory {
 	private final boolean analyzed;
 	private final Analyzer analyzer;
 
-	public FieldFactory(IndexedItem item) {
+	public FieldFactory(IndexedColumn item) {
 		type = item.getType();
-		name = item.getDest();
+		name = item.getIndexFieldName();
 		lowercase = item.isLowerCase();
 		analyzed = item.isAnalyzed();
 		stored = item.isStored() ? Store.YES : Store.NO;
 		//workaround to enable special chars in search oracles (editor backend)
-		analyzer = (item.isWhitespaceAnalyzer()) ? LuceneHelper.newWhitespaceAnalyzer() : LuceneHelper.newAnalyzer();
+		analyzer = (item.usesWhitespaceAnalyzer()) ? LuceneHelper.newWhitespaceAnalyzer() : LuceneHelper.newAnalyzer();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -88,6 +88,13 @@ public class FieldFactory {
 			}
 		}
 		return fields;
+	}
+
+	@Override
+	public String toString() {
+		return "FieldFactory [type=" + type + ", name=" + name + ", stored="
+				+ stored + ", lowercase=" + lowercase + ", analyzed="
+				+ analyzed + ", analyzer=" + analyzer + "]";
 	}
 
 

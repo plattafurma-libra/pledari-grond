@@ -39,7 +39,7 @@ public class Indexer {
 
 	public static final String indexPath = "/Users/franciscomondaca/spinfo/local_projects/rg/konjugator/lucene/index2";
 
-	private static final Version LUCENE_VERSION = Version.LUCENE_43;
+	private static final Version LUCENE_VERSION = Version.LUCENE_46;
 
 	public DBCollection getMongoCollection() {
 		MongoClient mongoClient = null;

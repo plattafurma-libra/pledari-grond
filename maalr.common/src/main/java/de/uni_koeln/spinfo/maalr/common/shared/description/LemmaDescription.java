@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,12 +53,27 @@ public class LemmaDescription implements Serializable {
 	@XmlElement(name="language")
 	private List<Language> languages = new ArrayList<Language>();
 	
+	public Language getFirstLanguage() {
+		return languages.get(0);
+	}
+	
+	public Language getSecondLanguage() {
+		return languages.get(1);
+	}
+	
+	public Language getLanguage(boolean first) {
+		if(first) {
+			return languages.get(0);
+		}
+		return languages.get(1);
+	}
+	
 	static class DBField implements Serializable {
 		
 		private static final long serialVersionUID = -2685941821834904988L;
 		
 		@XmlAttribute
-		private String dbId;
+		private String column;
 		
 		@XmlElementWrapper(name="allowed")
 		@XmlElement(name="value")
@@ -73,38 +87,10 @@ public class LemmaDescription implements Serializable {
 
 		@Override
 		public String toString() {
-			return "DBField [dbId=" + dbId + ", allowedValues=" + allowedValues
+			return "DBField [column=" + column + ", allowedValues=" + allowedValues
 					+ ", type=" + type + ", allowsNull=" + allowsNull + "]";
 		}
 
-	}
-	
-	static class Dictionary implements Serializable {
-		
-		private static final long serialVersionUID = 8540014692798449169L;
-		
-		@XmlElement(name="field")
-		private IndexField field;
-
-		@Override
-		public String toString() {
-			return "Dictionary [field=" + field + "]";
-		}
-		
-	}
-	
-	static class IndexField implements Serializable {
-		
-		private static final long serialVersionUID = -3914110096820231128L;
-		
-		@XmlAttribute
-		private String idxId;
-
-		@Override
-		public String toString() {
-			return "IndexField [idxId=" + idxId + "]";
-		}
-		
 	}
 	
 	static class FormattedIndexField implements Serializable {
@@ -112,18 +98,16 @@ public class LemmaDescription implements Serializable {
 		private static final long serialVersionUID = -3914110096820231128L;
 		
 		@XmlAttribute
-		private String idxId;
+		private String column;
 		
 		@XmlAttribute
 		private String format;
 
 		@Override
 		public String toString() {
-			return "FormattedIndexField [idxId=" + idxId + ", format=" + format
+			return "FormattedIndexField [column=" + column + ", format=" + format
 					+ "]";
 		}
-
-		
 	}
 	
 	static class Results implements Serializable {
@@ -134,13 +118,9 @@ public class LemmaDescription implements Serializable {
 		@XmlElement(name="field")
 		private List<FormattedIndexField> fields;
 
-		@XmlElement(name="sort_order")
-		private SortOrder sortOrder;
-
 		@Override
 		public String toString() {
-			return "Results [fields=" + fields + ", sortOrder=" + sortOrder
-					+ "]";
+			return "Results [fields=" + fields + "]";
 		}
 
 		public ArrayList<ValueFormat> getFormats() {
@@ -148,34 +128,12 @@ public class LemmaDescription implements Serializable {
 			for (FormattedIndexField field : fields) {
 				ValueFormat format = new ValueFormat();
 				format.setFormat(field.format);
-				format.setKey(field.idxId);
+				format.setKey(field.column);
 				formats.add(format);
 			}
 			return formats;
 		}
 
-	}
-	
-	static class SortOrder implements Serializable {
-		
-		private static final long serialVersionUID = 8571167186246264418L;
-		@XmlElementWrapper(name="fields")
-		@XmlElement(name="field")
-		private List<IndexField> fields;
-
-		@Override
-		public String toString() {
-			return "SortOrder [fields=" + fields + "]";
-		}
-
-		public ArrayList<String> getValues() {
-			ArrayList<String> values = new ArrayList<String>();
-			for (IndexField field : fields) {
-				values.add(field.idxId);
-			}
-			return values;
-		}
-		
 	}
 	
 	static class Editors implements Serializable {
@@ -211,35 +169,45 @@ public class LemmaDescription implements Serializable {
 		public ArrayList<String> getFieldIds() {
 			ArrayList<String> ids = new ArrayList<String>();
 			for (DBField field : fields) {
-				ids.add(field.dbId);
+				ids.add(field.column);
 			}
 			return ids;
 		}
 		
 	}
 	
-	
-	static class Language implements Serializable {
+	public static class Language implements Serializable {
 		
 		private static final long serialVersionUID = -6107461479348341257L;
-
+		
 		@XmlAttribute
 		private String id;
 		
+		public String getId() {
+			return id;
+		}
+
+		@XmlAttribute
+		private String mainColumn;
+		
+		public String getMainColumn() {
+			return mainColumn;
+		}
+
 		@XmlElement
 		private Editors editors;
 		
 		@XmlElement
 		private Results results;
 		
-		@XmlElement
-		private Dictionary dictionary;
-
 		@Override
 		public String toString() {
-			return "Language [id=" + id + ", editors=" + editors + ", results="
-					+ results + ", dictionary=" + dictionary + "]";
+			return "Language [id=" + id + ", mainColumn=" + mainColumn
+					+ ", editors=" + editors + ", results=" + results
+					+ "]";
 		}
+		
+		
 
 	}
 	
@@ -249,25 +217,12 @@ public class LemmaDescription implements Serializable {
 		return "NewLemmaDescription [languages=" + languages + "]";
 	}
 
-	public ArrayList<ValueFormat> getResultListLangA() {
-		return languages.get(0).results.getFormats();
-	}
-
-	public ArrayList<ValueFormat> getResultListLangB() {
-		return languages.get(1).results.getFormats();
-	}
-
-	public ArrayList<String> getEditorLangA() {
-		return languages.get(0).editors.backendEditor.getFieldIds();
-	}
-	
-	public ArrayList<String> getEditorLangB() {
-		return languages.get(1).editors.backendEditor.getFieldIds();
+	public ArrayList<ValueFormat> getResultList(boolean firstLanguage) {
+		return getLanguage(firstLanguage).results.getFormats();
 	}
 	
 	public String getLanguageName(boolean firstLanguage) {
-		if(firstLanguage) return languages.get(0).id;
-		return languages.get(1).id;
+		return getLanguage(firstLanguage).id;
 	}
 	
 	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage) {
@@ -277,11 +232,11 @@ public class LemmaDescription implements Serializable {
 	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage, Escaper escaper) {
 		switch(useCase) {
 			case RESULT_LIST : {
-				List<ValueFormat> keys = firstLanguage ? getResultListLangA() : getResultListLangB();
+				List<ValueFormat> keys = getResultList(firstLanguage);
 				return format(lemma, keys, escaper);
 			}
 			case ALPHA_INDEX: {
-				List<ValueFormat> keys = firstLanguage ? getResultListLangA() : getResultListLangB();
+				List<ValueFormat> keys = getResultList(firstLanguage);
 				return format(lemma, keys.subList(0, 1), escaper);
 			}
 		default: return "--";
@@ -312,21 +267,13 @@ public class LemmaDescription implements Serializable {
 	
 	public ArrayList<String> getFields(UseCase useCase, boolean firstLanguage) {
 		if(useCase == UseCase.FIELDS_FOR_SIMPLE_EDITOR) {
-			if(firstLanguage) {
-				return languages.get(0).editors.frontendEditor.getFieldIds();
-			} else {
-				return languages.get(1).editors.frontendEditor.getFieldIds();
-			}
+			return getLanguage(firstLanguage).editors.frontendEditor.getFieldIds();
 		}
 		if(useCase == UseCase.FIELDS_FOR_ADVANCED_EDITOR) {
-			if(firstLanguage) {
-				return languages.get(0).editors.backendEditor.getFieldIds();
-			} else {
-				return languages.get(1).editors.backendEditor.getFieldIds();
-			}
+			return getLanguage(firstLanguage).editors.backendEditor.getFieldIds();
 		}
 		if(useCase == UseCase.RESULT_LIST || useCase == UseCase.ALPHA_INDEX) {
-			return firstLanguage ? getKeys(getResultListLangA()) : getKeys(getResultListLangB());
+			return getKeys(getResultList(firstLanguage));
 		}
 		throw new RuntimeException("Unsupported useCase: " + useCase + ". Please implement this!");
 	}
@@ -346,7 +293,7 @@ public class LemmaDescription implements Serializable {
 		StructuredEntry entry = new StructuredEntry();
 		entry.setLemma("<b>" + term + "</b>");
 		Map<String, List<String>> subEntries = new HashMap<String, List<String>>();
-		List<ValueFormat> langAKeys = new ArrayList<ValueFormat>(firstLanguage ? getResultListLangA() : getResultListLangB());
+		List<ValueFormat> langAKeys = new ArrayList<ValueFormat>(getResultList(firstLanguage));
 		langAKeys.remove(0);
 		for (LemmaVersion lemma : direct) {
 			String key = format(lemma, langAKeys);
@@ -374,7 +321,7 @@ public class LemmaDescription implements Serializable {
 		}
 		// Complex Terms:
 		subEntries.clear();
-		langAKeys = new ArrayList<ValueFormat>(firstLanguage ? getResultListLangA() : getResultListLangB());
+		langAKeys = new ArrayList<ValueFormat>(getResultList(firstLanguage));
 		for (LemmaVersion lemma : complex) {
 			String key = format(lemma, langAKeys);
 			// Regex: term must be surrounded by word boundaries >\\b<, upper/lower case doesn't matter >(?i)<
@@ -416,12 +363,9 @@ public class LemmaDescription implements Serializable {
 		return toReturn;
 	}
 	
-	public ArrayList<String> getSortListLangA() {
-		return languages.get(0).results.sortOrder.getValues();
-	}
-
-	public ArrayList<String> getSortListLangB() {
-		return languages.get(1).results.sortOrder.getValues();
+	public String[] getSortList(boolean firstLanguage) {
+		Language language = getLanguage(firstLanguage);
+		return new String[] {language.getMainColumn(), language.getMainColumn()+"_sort"};
 	}
 	
 
@@ -440,7 +384,7 @@ public class LemmaDescription implements Serializable {
 	private ArrayList<ValueSpecification> getValueSpecifications(List<DBField> fields) {
 		ArrayList<ValueSpecification> list = new ArrayList<ValueSpecification>();
 		for (DBField field : fields) {
-			ValueSpecification spec = new ValueSpecification(field.dbId, field.type);
+			ValueSpecification spec = new ValueSpecification(field.column, field.type);
 			if(field.type == ValueType.ENUM) {
 				ValueValidator validator = new ChoiceValidator(field.allowsNull, field.allowedValues);
 				spec.setValidator(validator);
@@ -452,21 +396,16 @@ public class LemmaDescription implements Serializable {
 		return list;
 	}
 
-	public String getDictFieldLangA() {
-		return languages.get(0).dictionary.field.idxId;
-	}
-	public String getDictFieldLangB() {
-		return languages.get(1).dictionary.field.idxId;
+	public String getDictField(boolean firstLanguage) {
+		return getLanguage(firstLanguage).mainColumn;
 	}
 
-	public String getSortOrderLangA() {
-		List<IndexField> fields = languages.get(0).results.sortOrder.fields;
-		return fields.get(fields.size()-1).idxId;
-	}
-	public String getSortOrderLangB() {
-		List<IndexField> fields = languages.get(1).results.sortOrder.fields;
-		return fields.get(fields.size()-1).idxId;
+	public String getSortOrder(boolean firstLanguage) {
+		return getLanguage(firstLanguage).mainColumn + "_sort";
 	}
 	
+	public ArrayList<String> getEditorFields(boolean firstLanguage) {
+		return getLanguage(true).editors.backendEditor.getFieldIds();
+	}
 
 }

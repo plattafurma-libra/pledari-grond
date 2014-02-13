@@ -39,10 +39,7 @@ public class UpdateOrderOperation implements IDBOperation<List<LexEntry>> {
 
 	public UpdateOrderOperation(boolean firstLang, List<LemmaVersion> ordered) {
 		this.items = ordered;
-		sortField = Configuration.getInstance().getLemmaDescription().getSortOrderLangA();
-		if(!firstLang) {
-			sortField = Configuration.getInstance().getLemmaDescription().getSortOrderLangB();
-		}
+		sortField = Configuration.getInstance().getLemmaDescription().getSortOrder(firstLang);
 		this.timeStamp = System.nanoTime();
 	}
 

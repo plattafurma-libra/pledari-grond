@@ -25,21 +25,21 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QueryModifier {
+public class ColumnSelector {
 	
-	@XmlAttribute
+	@XmlAttribute(required=true)
 	private String id;
 	
-	@XmlElementWrapper(name="queryModifiers")
-	@XmlElement(name="queryModifier")
-	private List<QueryModifierOption> options = new ArrayList<QueryModifierOption>();
-
 	@XmlAttribute
-	private String reference;
+	private String depends;
 	
-	public void setReference(String reference) {
-		this.reference = reference;
+	public String getDepends() {
+		return depends;
 	}
+
+	@XmlElementWrapper(name="options")
+	@XmlElement(name="option")
+	private List<ColumnSelectorOption> options = new ArrayList<ColumnSelectorOption>();
 
 	public String getId() {
 		return id;
@@ -49,16 +49,20 @@ public class QueryModifier {
 		this.id = id;
 	}
 
-	public List<QueryModifierOption> getOptions() {
+	public List<ColumnSelectorOption> getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<QueryModifierOption> options) {
+	public void setOptions(List<ColumnSelectorOption> options) {
 		this.options = options;
 	}
 
-	public String getReference() {
-		return reference;
+	@Override
+	public String toString() {
+		return "ColumnSelector [id=" + id + ", depends=" + depends
+				+ ", options=" + options + "]";
 	}
 	
+	
+
 }

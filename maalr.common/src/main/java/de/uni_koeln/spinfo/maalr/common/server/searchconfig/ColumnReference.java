@@ -19,18 +19,30 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
+/**
+ * Wrapper for a "field"-element within a {@link ColumnSelectorOption}. 
+ * @author sschwieb
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TextField {
+public class ColumnReference {
 	
 	@XmlAttribute
-	private String id;
-
-	public String getId() {
-		return id;
+	private String reference;
+	
+	public String getReference() {
+		return reference;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 
+	@Override
+	public String toString() {
+		return "ColumnReference [reference=" + reference + "]";
+	}
+
+	
+	
 }

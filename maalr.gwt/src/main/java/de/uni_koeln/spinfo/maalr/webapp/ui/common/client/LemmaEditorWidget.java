@@ -104,8 +104,8 @@ public class LemmaEditorWidget extends SimplePanel {
 	 */
 	public void setData(LemmaVersion lemma) {
 		List<String> toSet = new ArrayList<String>();
-		toSet.addAll(description.getEditorLangA());
-		toSet.addAll(description.getEditorLangB());
+		toSet.addAll(description.getEditorFields(true));
+		toSet.addAll(description.getEditorFields(false));
 		if(lemma == null) {
 			for (String key : toSet) {
 				HasText field = fields.get(key);
@@ -134,8 +134,8 @@ public class LemmaEditorWidget extends SimplePanel {
 	 */
 	public void updateFromEditor(LemmaVersion lemma) {
 		List<String> toSet = new ArrayList<String>();
-		toSet.addAll(description.getEditorLangA());
-		toSet.addAll(description.getEditorLangB());
+		toSet.addAll(description.getEditorFields(true));
+		toSet.addAll(description.getEditorFields(false));
 		for (String key : toSet) {
 			HasText field = fields.get(key);
 			if(field != null) {

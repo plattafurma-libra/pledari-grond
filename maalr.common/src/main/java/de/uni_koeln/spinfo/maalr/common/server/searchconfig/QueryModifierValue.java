@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * Wrapper for a "value"-element within a {@link QueryModifierOption}. 
+ * Wrapper for a "value"-element within a {@link QueryBuilderOption}. 
  * @author sschwieb
  *
  */

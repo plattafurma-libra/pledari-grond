@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<uiconfiguration>
-	<uifield id="searchPhrase" type="TEXT" label="Search" submit="true" submitlabel="Search"/>
-	<!-- <uifield id="language" type="RADIO" label="Language"/> -->
-	<!-- <uifield id="method" type="RADIO" label="Method"/> -->
-	<!-- <uifield id="pageSize" buildin="true" type="COMBO" label="Results per Page"/>-->
-	<uifield id="highlight" buildin="true" type="CHECKBOX" label="Highlight"/>
-	<!-- <uifield id="suggestions" buildin="true" type="CHECKBOX" label="Show unverified changes"/>-->
-</uiconfiguration>

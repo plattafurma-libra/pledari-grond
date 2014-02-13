@@ -76,8 +76,8 @@ public class ITIndexCreator extends MongoTestHelper {
 		config.setBaseDirectory(indexDir.getAbsolutePath());
 		environment.setLuceneConfig(config);
 		LemmaDescription ld = Configuration.getInstance().getLemmaDescription();
-		firstLang = ld.getResultListLangA().get(0);
-		secondLang = ld.getResultListLangB().get(0);
+		firstLang = ld.getResultList(true).get(0);
+		secondLang = ld.getResultList(false).get(0);
 	}
 	
 	@After

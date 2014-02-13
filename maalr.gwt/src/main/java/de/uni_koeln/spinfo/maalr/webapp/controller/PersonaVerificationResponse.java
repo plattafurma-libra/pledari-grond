@@ -1,6 +1,6 @@
 package de.uni_koeln.spinfo.maalr.webapp.controller;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * For Details see <a

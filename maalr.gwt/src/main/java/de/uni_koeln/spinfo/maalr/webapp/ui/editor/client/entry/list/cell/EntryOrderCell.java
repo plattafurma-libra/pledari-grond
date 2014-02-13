@@ -60,8 +60,8 @@ public class EntryOrderCell extends AbstractCell<LemmaVersionCellWrapper> {
 
 	public EntryOrderCell(EditorConstants constants) {
 		super("click");
-		lemmaAKey = AsyncLemmaDescriptionLoader.getDescription().getResultListLangA().get(0).getKey();
-		lemmaBKey = AsyncLemmaDescriptionLoader.getDescription().getResultListLangB().get(0).getKey();
+		lemmaAKey = AsyncLemmaDescriptionLoader.getDescription().getResultList(true).get(0).getKey();
+		lemmaBKey = AsyncLemmaDescriptionLoader.getDescription().getResultList(false).get(0).getKey();
 		this.constants = constants;
 	}
 

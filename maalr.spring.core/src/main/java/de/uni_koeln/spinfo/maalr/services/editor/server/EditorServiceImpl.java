@@ -158,10 +158,7 @@ public class EditorServiceImpl {
 	}
 
 	public ArrayList<LemmaVersion> getOrder(boolean firstLanguage, String lemma) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
-		MaalrQuery query = new MaalrQuery();
-		query.setPageSize(100);
-		query.setQueryValue("searchPhrase", lemma);
-		return new ArrayList<LemmaVersion>(index.queryExact(query, false).getEntries());
+		return new ArrayList<LemmaVersion>(index.queryExact(lemma, firstLanguage, false).getEntries());
 	}
 
 	public void export(Set<String> fields, EditorQuery query, File dest) throws NoDatabaseAvailableException, IOException {

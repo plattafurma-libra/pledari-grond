@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier;
+package de.uni_koeln.spinfo.pg.querybuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +21,7 @@ import java.util.List;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.RegexpQuery;
 import org.apache.lucene.search.TermQuery;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
@@ -37,18 +38,21 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  * {@link TermQuery} and {@link PrefixQuery}, and by modifying the
  * field names which are searched by lucene.
  * <br>
+ * <strong>Note: The transformation of the field names is proprietary.</strong>
+ * This means, that using this query builder requires a lucene index which
+ * defines fields with special naming conventions. 
  * 
  * @author sschwieb
  *
  */
-public class DefaultQueryBuilder extends MaalrQueryBuilder {
+public class DefaultPGQueryBuilder extends MaalrQueryBuilder {
 	
 
 	@Override
 	protected void buildColumnToFieldsMapping() {
 		registerFieldMapping("first", false, MaalrFieldType.STRING, true, false);
-		registerFieldMapping("second",true, MaalrFieldType.TEXT, true, false);
-		registerFieldMapping("third", false, MaalrFieldType.STRING, true, false);
+		registerFieldMapping("second",true, MaalrFieldType.STRING, false, false);
+		registerFieldMapping("third", false, MaalrFieldType.STRING, true, false);		
 	}
 
 
@@ -59,12 +63,16 @@ public class DefaultQueryBuilder extends MaalrQueryBuilder {
 		TermQuery first = new TermQuery(new Term(super.getFieldName("first"), value));
 		first.setBoost(1000f);
 		//match entries where searchphrase is followed by whitespace
-		TermQuery second = new TermQuery(new Term(super.getFieldName("second"), value));
+		RegexpQuery second = new RegexpQuery(new Term(super.getFieldName("second"), value+"( .*)"));
 		second.setBoost(100f);
+		//match entries where searchphrase is either preceded or surrounded by whitespace
+		RegexpQuery third = new RegexpQuery(new Term(super.getFieldName("second"), "(.* )"+value+"( .*)?"));
+		third.setBoost(10f);
 		PrefixQuery fourth = new PrefixQuery(new Term(super.getFieldName("first"), value));
-		fourth.setBoost(10f);
+//		fourth.setBoost(10f);
 		PrefixQuery fifth = new PrefixQuery(new Term(super.getFieldName("third"), value));
-		return Arrays.asList(first,second,fourth, fifth);
+//		fifth.setBoost(10f);
+		return Arrays.asList(first,second,third, fourth, fifth);
 	}
 	
 	

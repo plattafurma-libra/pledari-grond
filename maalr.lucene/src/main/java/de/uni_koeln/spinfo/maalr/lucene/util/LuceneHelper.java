@@ -25,7 +25,7 @@ import org.apache.lucene.util.Version;
 
 public class LuceneHelper {
 	
-	public final static Version CURRENT = Version.LUCENE_41;
+	public final static Version CURRENT = Version.LUCENE_46;
 	
 	public static Analyzer newAnalyzer() {
 		try {

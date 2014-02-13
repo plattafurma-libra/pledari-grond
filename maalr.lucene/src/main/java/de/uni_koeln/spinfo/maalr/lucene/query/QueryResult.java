@@ -72,5 +72,13 @@ public class QueryResult implements Serializable {
 		this.maxEntries = maxEntries;
 	}
 
+	@Override
+	public String toString() {
+		return "QueryResult [entries=" + entries + ", maxEntries=" + maxEntries
+				+ ", pageSize=" + pageSize + "]";
+	}
+	
+	
+
 	
 }

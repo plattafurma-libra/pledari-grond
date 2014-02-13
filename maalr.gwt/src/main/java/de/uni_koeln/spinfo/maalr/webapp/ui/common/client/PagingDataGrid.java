@@ -22,7 +22,6 @@ import com.google.gwt.event.dom.client.ScrollHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HeaderPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.view.client.HasRows;
 
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadHandler;
@@ -75,7 +74,6 @@ public class PagingDataGrid<T> extends DataGrid<T>{
 					return;
 				}
 
-				HasRows display = PagingDataGrid.this;
 				int maxScrollTop = scrollable.getWidget().getOffsetHeight()
 						- scrollable.getOffsetHeight();
 				if (lastScrollPos >= maxScrollTop) {

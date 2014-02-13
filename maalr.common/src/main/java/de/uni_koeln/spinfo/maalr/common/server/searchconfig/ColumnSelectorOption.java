@@ -24,27 +24,30 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
+/**
+ * This class represents an "option"-element within a "fieldchoice"-element
+ * in the search configuration.
+ * @author sschwieb
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FieldValueChoiceOption {
-	
-	@XmlAttribute(required=false)
+public class ColumnSelectorOption {
+
+	@XmlAttribute
 	private String id;
 	
-	@XmlAttribute(required=false)
-	private String ifSelected;
-	
-	@XmlElementWrapper(name="fields")
-	@XmlElement(name="field")
-	private List<FieldChoiceField> fields = new ArrayList<FieldChoiceField>();
+	@XmlElementWrapper(name="columns")
+	@XmlElement(name="column")
+	private List<ColumnReference> columnReferences = new ArrayList<ColumnReference>();
 	
 	@XmlAttribute(required=false, name="default")
 	private boolean isDefault;
-
+	
 	public boolean isDefault() {
 		return isDefault;
 	}
 
-	public void setDefault(boolean isDefault) {
+	public void setDefault(Boolean isDefault) {
 		this.isDefault = isDefault;
 	}
 
@@ -56,22 +59,20 @@ public class FieldValueChoiceOption {
 		this.id = id;
 	}
 
-	public String getIfSelected() {
-		return ifSelected;
+	public List<ColumnReference> getColumnReferences() {
+		return columnReferences;
 	}
 
-	public void setIfSelected(String ifSelected) {
-		this.ifSelected = ifSelected;
+	public void setFields(List<ColumnReference> fields) {
+		this.columnReferences = fields;
 	}
 
-	public List<FieldChoiceField> getFields() {
-		return fields;
+	@Override
+	public String toString() {
+		return "ColumnSelectorOption [id=" + id + ", columnReferences="
+				+ columnReferences + ", isDefault=" + isDefault + "]";
 	}
-
-	public void setFields(List<FieldChoiceField> fields) {
-		this.fields = fields;
-	}
-
 	
 	
+
 }

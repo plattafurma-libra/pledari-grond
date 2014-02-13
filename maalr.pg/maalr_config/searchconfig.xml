@@ -1,302 +1,380 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dictionaryConfiguration>
-
-    <indexConfiguration>
-        <items source="DStichwort" dest="DStichwort" stored="true" analyzed="false" type="TEXT"/>
-        <items source="DStichwort" dest="DStichwort_search" stored="false" analyzed="true" type="STRING"/>
-        <items source="DStichwort" dest="DStichwort_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
-        <items source="DStichwort_sort" dest="DStichwort_sort" stored="true" analyzed="false" type="INTEGER"/>
-        <items source="DSemantik" dest="DSemantik" stored="true" analyzed="false" type="TEXT"/>
-        <items source="DSubsemantik" dest="DSubsemantik" stored="true" analyzed="false" type="TEXT"/>
-        <items source="DSubsemantik" dest="DSubsemantik_exact" stored="false" analyzed="true" type="STRING"/>
-        <items source="DGrammatik" dest="DGrammatik" stored="true" analyzed="false" type="TEXT" whitespaceAnalyzer="true"/>
-        <items source="DGrammatik" dest="DGrammatik_exact" stored="false" analyzed="true" type="STRING" whitespaceAnalyzer="true"/>
-        <items source="DGenus" dest="DGenus" stored="true" analyzed="false" type="TEXT" whitespaceAnalyzer="true"/>
-        <items source="DGenus" dest="DGenus_exact" stored="false" analyzed="true" type="STRING" whitespaceAnalyzer="true"/>
-        <items source="RStichwort" dest="RStichwort" stored="true" analyzed="false" type="TEXT"/>
-        <items source="RStichwort" dest="RStichwort_search" stored="false" analyzed="true" type="STRING"/>
-        <items source="RStichwort" dest="RStichwort_search_exact" stored="false" analyzed="false" type="STRING" lowerCase="true"/>
-        <items source="RStichwort_sort" dest="RStichwort_sort" stored="true" analyzed="false" type="INTEGER"/>
-        <items source="RSemantik" dest="RSemantik" stored="true" analyzed="false" type="TEXT"/>
-        <items source="RSubsemantik" dest="RSubsemantik" stored="true" analyzed="false" type="TEXT"/>
-        <items source="RSubsemantik" dest="RSubsemantik_exact" stored="false" analyzed="true" type="STRING"/>
-        <items source="RGrammatik" dest="RGrammatik" stored="true" analyzed="false" type="TEXT" whitespaceAnalyzer="true"/>
-        <items source="RGrammatik" dest="RGrammatik_exact" stored="false" analyzed="true" type="STRING" whitespaceAnalyzer="true"/>
-        <items source="RGenus" dest="RGenus" stored="true" analyzed="false" type="TEXT" whitespaceAnalyzer="true"/>
-        <items source="RGenus" dest="RGenus_exact" stored="false" analyzed="true" type="STRING" whitespaceAnalyzer="true"/>
-        <items source="Bearbeitungshinweis" dest="Bearbeitungshinweis" stored="true" analyzed="false" type="TEXT"/>
-        <items source="Bearbeitungshinweis" dest="Bearbeitungshinweis_exact" stored="false" analyzed="true" type="STRING"/>
-        <items source="redirect_b" dest="redirect_b" stored="true" analyzed="false" type="TEXT"/>
-        <items source="maalr_comment" dest="maalr_comment" stored="true" analyzed="false" type="TEXT"/>
-        <items source="maalr_comment" dest="maalr_comment_search" stored="false" analyzed="true" type="STRING"/>
-        <items source="maalr_email" dest="maalr_email" stored="true" analyzed="false" type="TEXT"/>
-        <items source="infinitiv" dest="infinitiv" stored="true" analyzed="false" type="STRING"/>
-        <items source="type" dest="type" stored="true" analyzed="false" type="STRING"/>
-        <items source="subtype" dest="subtype" stored="true" analyzed="false" type="STRING"/>
-        <items source="irregular" dest="irregular" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentsing1" dest="preschentsing1" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentsing2" dest="preschentsing2" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentsing3" dest="preschentsing3" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentplural1" dest="preschentplural1" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentplural2" dest="preschentplural2" stored="true" analyzed="false" type="STRING"/>
-        <items source="preschentplural3" dest="preschentplural3" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectsing1" dest="imperfectsing1" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectsing2" dest="imperfectsing2" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectsing3" dest="imperfectsing3" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectplural1" dest="imperfectplural1" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectplural2" dest="imperfectplural2" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperfectplural3" dest="imperfectplural3" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivsing1" dest="conjunctivsing1" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivsing2" dest="conjunctivsing2" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivsing3" dest="conjunctivsing3" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivplural1" dest="conjunctivplural1" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivplural2" dest="conjunctivplural2" stored="true" analyzed="false" type="STRING"/>
-        <items source="conjunctivplural3" dest="conjunctivplural3" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalsing1" dest="cundizionalsing1" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalsing2" dest="cundizionalsing2" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalsing3" dest="cundizionalsing3" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalplural1" dest="cundizionalplural1" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalplural2" dest="cundizionalplural2" stored="true" analyzed="false" type="STRING"/>
-        <items source="cundizionalplural3" dest="cundizionalplural3" stored="true" analyzed="false" type="STRING"/>
-        <items source="participperfectms" dest="participperfectms" stored="true" analyzed="false" type="STRING"/>
-        <items source="participperfectfs" dest="participperfectfs" stored="true" analyzed="false" type="STRING"/>
-        <items source="participperfectmp" dest="participperfectmp" stored="true" analyzed="false" type="STRING"/>
-        <items source="participperfectfp" dest="participperfectfp" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperativ1" dest="imperativ1" stored="true" analyzed="false" type="STRING"/>
-        <items source="imperativ2" dest="imperativ2" stored="true" analyzed="false" type="STRING"/>
-        <items source="gerundium" dest="gerundium" stored="true" analyzed="false" type="STRING"/>
-        <items source="futursing1" dest="futursing1" stored="true" analyzed="false" type="STRING"/>
-        <items source="futursing2" dest="futursing2" stored="true" analyzed="false" type="STRING"/>
-        <items source="futursing3" dest="futursing3" stored="true" analyzed="false" type="STRING"/>
-        <items source="futurplural1" dest="futurplural1" stored="true" analyzed="false" type="STRING"/>
-        <items source="futurplural2" dest="futurplural2" stored="true" analyzed="false" type="STRING"/>
-        <items source="futurplural3" dest="futurplural3" stored="true" analyzed="false" type="STRING"/>
-        
-    </indexConfiguration>
+    <databaseColumns>
+    	<!-- The following columns will be added to the index.
+    	Each column will be mapped to a lucene-field with the identical
+    	id. Additionally, some variants of each column will automatically 
+    	be added to the index. These are determined by analyzing the query configuration
+    	as well as the main columns. -->
+        <column name="DStichwort"/>
+        <column name="DSemantik"/>
+        <column name="DSubsemantik"/>
+        <column name="DGrammatik"/>
+        <column name="DGenus"/>
+        <column name="RStichwort"/>
+        <column name="RSemantik"/>
+        <column name="RSubsemantik"/>
+        <column name="RGrammatik"/>
+        <column name="RGenus"/>
+        <column name="Bearbeitungshinweis"/>
+        <column name="redirect_b"/>
+        <column name="maalr_comment"/>
+        <column name="maalr_email"/>
+        <column name="infinitiv"/>
+        <column name="type"/>
+        <column name="subtype"/>
+        <column name="irregular"/>
+        <column name="preschentsing1"/>
+        <column name="preschentsing2"/>
+        <column name="preschentsing3"/>
+        <column name="preschentplural1"/>
+        <column name="preschentplural2"/>
+        <column name="preschentplural3"/>
+        <column name="imperfectsing1"/>
+        <column name="imperfectsing2"/>
+        <column name="imperfectsing3"/>
+        <column name="imperfectplural1"/>
+        <column name="imperfectplural2"/>
+        <column name="imperfectplural3"/>
+        <column name="conjunctivsing1"/>
+        <column name="conjunctivsing2"/>
+        <column name="conjunctivsing3"/>
+        <column name="conjunctivplural1"/>
+        <column name="conjunctivplural2"/>
+        <column name="conjunctivplural3"/>
+        <column name="cundizionalsing1"/>
+        <column name="cundizionalsing2"/>
+        <column name="cundizionalsing3"/>
+        <column name="cundizionalplural1"/>
+        <column name="cundizionalplural2"/>
+        <column name="cundizionalplural3"/>
+        <column name="participperfectms"/>
+        <column name="participperfectfs"/>
+        <column name="participperfectmp"/>
+        <column name="participperfectfp"/>
+        <column name="imperativ1"/>
+        <column name="imperativ2"/>
+        <column name="gerundium"/>
+        <column name="futursing1"/>
+        <column name="futursing2"/>
+        <column name="futursing3"/>
+        <column name="futurplural1"/>
+        <column name="futurplural2"/>
+        <column name="futurplural3"/>
+    </databaseColumns>
     
-    <textFields>
-    	<textField id="searchPhrase"></textField>
-    	<textField id="category"></textField>
-    	<textField id="subSemantics"></textField>
-    	<textField id="gender"></textField>
-    	<textField id="grammar"></textField>
-    </textFields>
-    <fieldChoices>
-        <fieldChoice id="language" valueOf="searchPhrase">
-            <options id="both" default="true">
-                <fields>
-                    <field reference="DStichwort_search"/>
-                    <field reference="RStichwort_search"/>
-                </fields>
+    <queryKeys>
+    	<!-- Note that the main query key MUST be named searchPhrase. -->
+    	<queryKey id="searchPhrase"/>
+    	<queryKey id="category"/>
+    	<queryKey id="subSemantics"/>
+    	<queryKey id="gender"/>
+    	<queryKey id="grammar"/>
+    </queryKeys>
+    
+    <columnSelectors>
+    	<!-- Depending on the selected language,
+    	a query is executed on different fields. Note that the language
+    	selection choice MUST be named language. -->
+        <columnSelector id="language">
+        	<options>
+        		<option id="both" default="true">
+	                <columns>
+	                    <column reference="DStichwort"/>
+	                    <column reference="RStichwort"/>
+	                </columns>
+	            </option>
+	            <option id="romansh">
+	                <columns>
+	                    <column reference="RStichwort"/>
+	                </columns>
+	            </option>
+	            <option id="german">
+	                <columns>
+	                    <column reference="DStichwort"/>
+	                </columns>
+	            </option>
+        	</options>
+        </columnSelector>
+        <columnSelector id="sigChoice">
+        	<options>
+	        	<option id="default" default="true">
+	        		<columns>
+						<column reference="Bearbeitungshinweis"/>        		
+	        		</columns>
+	        	</option>
+        	</options>
+        </columnSelector>
+        <!-- This choice depends on the selection made in 'language'.
+        Therefore, it must define options with identical ids. Depending
+        on the selected language option, the corresponding choice will be
+        selected here. -->
+        <columnSelector id="subSemChoice" depends="language">
+        	<options>
+	        	<option id="both" default="true">
+	        		<columns>
+						<column reference="DSubsemantik"/>
+						<column reference="RSubsemantik"/>        		
+	        		</columns>
+	        	</option>
+	        	<option id="german">
+	        		<columns>
+						<column reference="DSubsemantik"/>
+	        		</columns>
+	        	</option>
+	        	<option id="romansh">
+	        		<columns>
+						<column reference="RSubsemantik"/>        		
+	        		</columns>
+	        	</option>
+        	</options>
+        </columnSelector>
+        <!-- This choice depends on the selection made in 'language'.
+        Therefore, it must define options with identical ids. Depending
+        on the selected language option, the corresponding choice will be
+        selected here. -->
+        <columnSelector id="gramChoice" depends="language">
+        	<options>
+	        	<option id="both" default="true">
+	        		<columns>
+						<column reference="DGrammatik"/>
+						<column reference="RGrammatik"/>        		
+	        		</columns>
+	        	</option>
+	        	<option id="german">
+	        		<columns>
+						<column reference="DGrammatik"/>
+	        		</columns>
+	        	</option>
+	        	<option id="romansh">
+	        		<columns>
+						<column reference="RGrammatik"/>        		
+	        		</columns>
+	        	</option>
+        	</options>
+        </columnSelector>
+        <!-- This choice depends on the selection made in 'language'.
+        Therefore, it must define options with identical ids. Depending
+        on the selected language option, the corresponding choice will be
+        selected here. -->
+        <columnSelector id="genChoice" depends="language">
+        	<options>
+	        	<option id="both" default="true">
+	        		<columns>
+						<column reference="DGenus"/>
+						<column reference="RGenus"/>        		
+	        		</columns>
+	        	</option>
+	        	<option id="german">
+	        		<columns>
+						<column reference="DGenus"/>
+	        		</columns>
+	        	</option>
+	        	<option id="romansh">
+	        		<columns>
+						<column reference="RGenus"/>        		
+	        		</columns>
+	        	</option>
+        	</options>
+        </columnSelector>
+    </columnSelectors>
+    <queryBuilders>
+    	<queryBuilder id="genMod" queryKeyId="gender" columnSelectorId="genChoice">
+    		<options>
+   				<option id="default" default="true"  builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder"/>
+    		</options>
+    	</queryBuilder>
+    	<queryBuilder id="gramMod" queryKeyId="grammar" columnSelectorId="gramChoice">
+    		<options>
+    			<option id="default" default="true"  builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder"/>
+    		</options>
+    	</queryBuilder>
+    	<queryBuilder id="sigMod" queryKeyId="category" columnSelectorId="sigChoice">
+    		<options>
+    			<option id="default" default="true" builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder"/>
+    		</options>
+    	</queryBuilder>
+    	<queryBuilder id="subSemMod" queryKeyId="subSemantics" columnSelectorId="subSemChoice">
+    		<options>
+    			<option id="default" default="true" builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder"/>
+    		</options>
+    	</queryBuilder>
+        <queryBuilder id="method" queryKeyId="searchPhrase" columnSelectorId="language">
+            <options>
+            	<option id="normal" default="true" preset="DEFAULT"/>
+            	<!-- <option id="normal" default="true" builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder"/> -->
+                <option id="intern"  preset="INFIX"/>
+                <option id="prefix" preset="PREFIX"/>
+                <option id="suffix" preset="SUFFIX"/>
+                <option id="exact" preset="EXACT"/>
             </options>
-            <options id="romansh">
-                <fields>
-                    <field reference="RStichwort_search"/>
-                </fields>
-            </options>
-            <options id="german">
-                <fields>
-                    <field reference="DStichwort_search"/>
-                </fields>
-            </options>
-        </fieldChoice>
-        <fieldChoice id="sigChoice" valueOf="category">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="Bearbeitungshinweis"/>        		
-        		</fields>
-        	</options>
-        </fieldChoice>
-<!-- enable oracle search in editor popup, also needs reference to a queryModifier -->
-        <fieldChoice id="sigChoice_editorPopup" valueOf="Bearbeitungshinweis">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="Bearbeitungshinweis"/>        		
-        		</fields>
-        	</options>
-        </fieldChoice>
-        <fieldChoice id="subSemChoice" valueOf="subSemantics">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="DSubsemantik"/>
-					<field reference="RSubsemantik"/>        		
-        		</fields>
-        	</options>
-        </fieldChoice>
-<!-- enable oracle search for field DSubsemantik in editor popup, also needs reference to a queryModifier -->
-        <fieldChoice id="DsubSemChoice_editorPopup" valueOf="DSubsemantik">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="DSubsemantik"/>
-        		</fields>
-        	</options>
-        </fieldChoice>
-<!-- enable oracle search for field RSubsemantik in editor popup, also needs reference to a queryModifier -->
-        <fieldChoice id="RsubSemChoice_editorPopup" valueOf="RSubsemantik">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="RSubsemantik"/>
-        		</fields>
-        	</options>
-        </fieldChoice>
-        <fieldChoice id="gramChoice" valueOf="grammar">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="DGrammatik"/>
-					<field reference="RGrammatik"/>        		
-        		</fields>
-        	</options>
-        </fieldChoice>
-        <fieldChoice id="genChoice" valueOf="gender">
-        	<options id="default" default="true">
-        		<fields>
-					<field reference="DGenus"/>
-					<field reference="RGenus"/>        		
-        		</fields>
-        	</options>
-        </fieldChoice>
-        
-    </fieldChoices>
-    <queryModifiers>
-    	<queryModifier id="genMod" reference="gender">
-    		<queryModifiers>
-   				<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder">
-    				<field from="genChoice">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="gender">
-                        <modification>${phrase}</modification>
-                    </value>
-    			
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-    	<queryModifier id="gramMod" reference="grammar">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder">
-    				<field from="gramChoice">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="grammar">
-                        <modification>${phrase}</modification>
-                    </value>
-    			
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-    	<queryModifier id="sigMod" reference="category">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-    				<field from="sigChoice">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="category">
-                        <modification>${phrase}</modification>
-                    </value>
-
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-<!-- The following is needed to enable oracle search in lexicon editor widget (see definition of sigChoice_editorPopup above) -->
-    	<queryModifier id="sigMod_editorPopup" reference="Bearbeitungshinweis">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-    				<field from="sigChoice_editorPopup">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="Bearbeitungshinweis">
-                        <modification>${phrase}</modification>
-                    </value>
-
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-    	<queryModifier id="subSemMod" reference="subSemantics">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-    				<field from="subSemChoice">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="subSemantics">
-                        <modification>${phrase}</modification>
-                    </value>
-    			
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-<!-- enable oracle search for field DSubsemantik in lexicon editor widget (see definition of DsubSemChoice_editorPopup above) -->
-    	<queryModifier id="DsubSemMod_editorPopup" reference="DSubsemantik">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-    				<field from="DsubSemChoice_editorPopup">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="DSubsemantik">
-                        <modification>${phrase}</modification>
-                    </value>
-    			
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-<!-- enable oracle search for field RSubsemantik in lexicon editor widget (see definition of RsubSemChoice_editorPopup above) -->
-    	<queryModifier id="RsubSemMod_editorPopup" reference="RSubsemantik">
-    		<queryModifiers>
-    			<queryModifier id="default" default="true"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-    				<field from="RsubSemChoice_editorPopup">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="RSubsemantik">
-                        <modification>${phrase}</modification>
-                    </value>
-    			
-    			</queryModifier>
-    		</queryModifiers>
-    	</queryModifier>
-        <queryModifier id="method" reference="searchPhrase">
-            <queryModifiers>
-            	 <queryModifier id="normal" default="true" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.DefaultQueryBuilder">
-                    <field from="language">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="searchPhrase">
-                        <modification>${phrase}</modification>
-                    </value>
-                </queryModifier>
-                <queryModifier id="intern"  transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.InfixQueryBuilder">
-                    <field from="language">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="searchPhrase">
-                        <modification>${phrase}</modification>
-                    </value>
-                </queryModifier>
-                <queryModifier id="prefix" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.PrefixQueryBuilder">
-                    <field from="language">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="searchPhrase">
-                        <modification>${phrase}</modification>
-                    </value>
-                </queryModifier>
-                <queryModifier id="suffix" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SuffixQueryBuilder">
-                    <field from="language">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="searchPhrase">
-                        <modification>*${phrase}</modification>
-                    </value>
-                </queryModifier>
-                <queryModifier id="exact" transformer="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.ExactMatchQueryBuilder">
-                    <field from="language">
-                        <modification>${field}</modification>
-                    </field>
-                    <value from="searchPhrase">
-                        <modification>${phrase}</modification>
-                    </value>
-                </queryModifier>
-               
-            </queryModifiers>
-        </queryModifier>
-    </queryModifiers>
-    <exactModifier>method=exact</exactModifier>
+        </queryBuilder>
+    </queryBuilders>
+    <!-- Lemma description -->
+    <lemmaDescription>
+	<language id="german" mainColumn="DStichwort">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field column="DStichwort"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<!-- Editors must ensure that this field is not empty (visitors don't have to) -->
+					<field column="DStichwort" allowsNull="false"></field>
+					<field column="DGrammatik" type="ENUM">
+						<allowed>
+							<value>adj</value>
+							<value>adv</value>
+							<value>art</value>
+							<value>cj</value>
+							<value>cumpos</value>
+							<value>int</value>
+							<value>interj</value>
+							<value>inv</value>
+							<value>n.l</value>
+							<value>n.p</value>
+							<value>num</value>
+							<value>prep</value>
+							<value>pron</value>
+							<value>refl</value>
+							<value>subst</value>
+							<value>tr</value>
+							<value>tr/int</value>
+						</allowed>
+					</field>
+					<field column="DGenus" type="ENUM">
+						<allowed>
+							<value>f</value>
+							<value>f(m)</value>
+							<value>f(n)</value>
+							<value>f(pl)</value>
+							<value>f,m</value>
+							<value>f,m,n</value>
+							<value>f,n</value>
+							<value>m</value>
+							<value>m(f)</value>
+							<value>m(pl)</value>
+							<value>m,f</value>
+							<value>m,n</value>
+							<value>m/n</value>
+							<value>n</value>
+							<value>n(f)</value>
+							<value>n(pl)</value>
+							<value>n,f</value>
+							<value>n,m</value>
+							<value>pl</value>
+						</allowed>
+					</field>
+					<field column="DSubsemantik" type="ORACLE"></field>
+					<field column="Bearbeitungshinweis" type="ORACLE"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field column="DStichwort" format="{0}"></field>
+				<field column="DSubsemantik" format="({0})"></field>
+				<field column="DGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+			</fields>
+		</results>
+	</language>
+	<language id="romansh" mainColumn="RStichwort">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field column="RStichwort"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<field column="RStichwort" allowsNull="false"></field>
+					<field column="RGrammatik" type="ENUM">
+						<allowed>
+							<value>(refl) tr</value>
+							<value>abs/tr</value>
+							<value>adj</value>
+							<value>adv</value>
+							<value>art</value>
+							<value>cj</value>
+							<value>int</value>
+							<value>interj</value>
+							<value>inv</value>
+							<value>n.l</value>
+							<value>n.p</value>
+							<value>num</value>
+							<value>prep</value>
+							<value>pron</value>
+							<value>refl</value>
+							<value>subst</value>
+							<value>tr</value>
+							<value>tr/int</value>
+						</allowed>
+					</field>
+					<field column="RGenus" type="ENUM">
+						<allowed>
+							<value>(coll)m</value>
+							<value>(f)m</value>
+							<value>(m)f</value>
+							<value>(pl)f</value>
+							<value>coll</value>
+							<value>f</value>
+							<value>f(pl)</value>
+							<value>f.pl</value>
+							<value>f/m</value>
+							<value>f/m.pl</value>
+							<value>m</value>
+							<value>m(f)</value>
+							<value>m(f)pl</value>
+							<value>m(pl)</value>
+							<value>m,f</value>
+							<value>m.(pl)</value>
+							<value>m.pl</value>
+							<value>m/f</value>
+							<value>m/f.pl</value>
+							<value>pl</value>
+						</allowed>
+					</field>
+					<field column="RSubsemantik" type="ORACLE"></field>
+					<field column="redirect_b"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field column="RStichwort" format="{0}"></field>
+				<field column="RSubsemantik" format="({0})"></field>
+				<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+			</fields>
+		</results>
+	</language>
+</lemmaDescription>
+<uiConfigurations>
+	<defaultUserConfiguration>
+		<uifield id="searchPhrase" type="TEXT" label="Search" submit="true" submitlabel="Search"/>
+	</defaultUserConfiguration>
+	<advancedUserConfiguration>
+		<uifield id="searchPhrase" type="TEXT" label="Search" submit="true" submitlabel="Search"/>
+		<uifield id="language" type="RADIO" label="Language"/>
+		<uifield id="method" type="RADIO" label="Method"/>
+		<!-- <uifield id="pageSize" buildin="true" type="COMBO" label="Results per Page"/>-->
+		<uifield id="highlight" buildin="true" type="CHECKBOX" label="Highlight"/>
+		<uifield id="suggestions" buildin="true" type="CHECKBOX" label="Show unverified changes"/>
+	</advancedUserConfiguration>
+	<defaultEditorConfiguration>
+		<uifield id="searchPhrase" type="TEXT" label="Search" submit="true" submitlabel="Search"/>
+		<uifield id="highlight" buildin="true" type="CHECKBOX" label="Highlight"/>
+	</defaultEditorConfiguration>
+	<advancedEditorConfiguration>
+		<uifield id="searchPhrase" type="TEXT" label="Search" submit="true" submitlabel="Search"/>
+		<uifield id="highlight" buildin="true" type="CHECKBOX" label="Highlight"/>
+		<uifield id="language" type="RADIO" label="Language"/>
+		<uifield id="method" type="RADIO" label="Method"/>
+		<uifield id="category" type="ORACLE" label="Category"/>
+		<uifield id="subSemantics" type="ORACLE" label="SubSemantics"/>
+		<uifield id="gender" type="ORACLE" label="Gender"/>
+		<uifield id="grammar" type="ORACLE" label="Grammar"/>
+	</advancedEditorConfiguration>
+</uiConfigurations>
 </dictionaryConfiguration>

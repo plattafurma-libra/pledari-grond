@@ -40,12 +40,10 @@ import org.apache.lucene.store.NIOFSDirectory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
-import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
-import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexer;
+import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexManager;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneConfiguration;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
@@ -64,7 +62,7 @@ class DictionaryCreator {
 	private NIOFSDirectory indexDirectory;
 	private Analyzer analyzer;
 	private final boolean tracing = logger.isTraceEnabled();
-	private LuceneIndexer luceneIndexer;
+	private LuceneIndexManager indexManager;
 	
 	LuceneConfiguration getEnvironment() {
 		return environment;
@@ -79,8 +77,7 @@ class DictionaryCreator {
 		logger.info("Init Indexer, using whiteSpaceAnalyzer");
 //		analyzer = LuceneHelper.newAnalyzer();
 		analyzer = LuceneHelper.newWhitespaceAnalyzer();
-		DictionaryConfiguration configuration = Configuration.getInstance().getDictionaryConfig();
-		luceneIndexer = new LuceneIndexer(configuration);
+		indexManager = LuceneIndexManager.getInstance();
 	}
 	
 	int addToIndex(final Iterator<LexEntry> iterator) throws NoDatabaseAvailableException, IndexException {
@@ -188,7 +185,7 @@ class DictionaryCreator {
 		}
 		versions.addAll(lexEntry.getUnapprovedVersions());
 		for (LemmaVersion version : versions) {
-			Document doc = luceneIndexer.getDocument(lexEntry, version);
+			Document doc = indexManager.getDocument(lexEntry, version);
 			docs.add(doc);
 		}
 		return docs;

@@ -36,11 +36,9 @@ import org.apache.lucene.store.RAMDirectory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
-import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
-import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexer;
+import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexManager;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneConfiguration;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
@@ -57,7 +55,7 @@ import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 			.getLogger(DictionaryLoader.class);
 
 	private LuceneConfiguration environment;
-	private LuceneIndexer luceneIndexer;
+	private LuceneIndexManager indexManager;
 
 	private RAMDirectory ram;
 	private DirectoryReader reader;
@@ -68,8 +66,7 @@ import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 
 	void setEnvironment(LuceneConfiguration environment) {
 		this.environment = environment;
-		DictionaryConfiguration configuration = Configuration.getInstance().getDictionaryConfig();
-		luceneIndexer = new LuceneIndexer(configuration);
+		indexManager = LuceneIndexManager.getInstance();
 	}
 
 	IndexSearcher getSearcher() throws NoIndexAvailableException {
@@ -151,7 +148,7 @@ import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 		}
 		versions.addAll(lexEntry.getUnapprovedVersions());
 		for (LemmaVersion version : versions) {
-			Document doc = luceneIndexer.getDocument(lexEntry, version);
+			Document doc = indexManager.getDocument(lexEntry, version);
 			docs.add(doc);
 		}
 		return docs;

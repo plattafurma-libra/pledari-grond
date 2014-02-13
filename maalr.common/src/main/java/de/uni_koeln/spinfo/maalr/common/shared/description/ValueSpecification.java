@@ -34,6 +34,13 @@ public class ValueSpecification implements Serializable {
 	private ValueValidator validator;
 
 	
+	@Override
+	public String toString() {
+		return "ValueSpecification [internalName=" + internalName + ", type="
+				+ type + ", validator=" + validator + "]";
+	}
+
+
 	public ValueValidator getValidator() {
 		return validator;
 	}

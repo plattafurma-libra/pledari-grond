@@ -61,8 +61,8 @@ public class TestIndexCRUD {
 		index = new Dictionary();
 		index.setEnvironment(environment);
 		LemmaDescription ld = Configuration.getInstance().getLemmaDescription();
-		firstLang = ld.getResultListLangA().get(0);
-		secondLang = ld.getResultListLangB().get(0);
+		firstLang = ld.getResultList(true).get(0);
+		secondLang = ld.getResultList(false).get(0);
 	}
 	
 	@After
@@ -83,7 +83,6 @@ public class TestIndexCRUD {
 
 	private LexEntry generateValidEntry() {
 		LemmaVersion lv = new LemmaVersion();
-		
 		lv.putEntryValue(firstLang.getKey(), "a" + UUID.randomUUID().toString());
 		lv.putEntryValue(secondLang.getKey(), "b" + UUID.randomUUID().toString());
 		LexEntry entry = new LexEntry(lv);
@@ -121,7 +120,6 @@ public class TestIndexCRUD {
 		QueryResult results = index.getAllStartingWith("german", "a", 0);
 		Assert.assertTrue(results.getEntries().size() > 0);
 		results = index.getAllStartingWith("english", "x", 0);
-		System.out.println(results.getEntries().size());
 		Assert.assertTrue(results.getEntries().size() == 0);
 	}
 	

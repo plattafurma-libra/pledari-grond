@@ -15,39 +15,39 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.common.server.searchconfig;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FieldValueChoice {
+public class QueryBuilderOption {
 
 	@XmlAttribute
 	private String id;
 	
-	@XmlElementWrapper(name="options")
-	@XmlElement(name="option")
-	private List<FieldValueChoiceOption> options = new ArrayList<FieldValueChoiceOption>();
+	@XmlAttribute(required=false)
+	private String builderClass;
+	
+	@XmlAttribute(required=false)
+	private String preset;
+	
+	@XmlAttribute(name="default")
+	private boolean isDefault;
+
+	public boolean isDefault() {
+		return isDefault;
+	}
 
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public List<FieldValueChoiceOption> getOptions() {
-		return options;
-	}
-
-	public void setOptions(List<FieldValueChoiceOption> options) {
-		this.options = options;
+	public String getBuilderClass() {
+		return builderClass;
 	}
 	
+	public String getPreset() {
+		return preset;
+	}
+
 }

@@ -15,13 +15,10 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.zip.ZipException;
 
 import javax.servlet.ServletOutputStream;
@@ -49,8 +46,6 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.DatabaseIOException;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.AdminService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
