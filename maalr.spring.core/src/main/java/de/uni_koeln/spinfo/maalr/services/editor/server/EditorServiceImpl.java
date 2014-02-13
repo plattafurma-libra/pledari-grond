@@ -233,15 +233,12 @@ public class EditorServiceImpl {
 			String presetId, String base) throws GenerationFailedException {
 		try {
 			OverlayEditor editor = Overlays.getEditor(overlayType);
-			logger.info("Overlay-Editor for type " + overlayType + ": " + editor);
 			if(editor != null) {
 				OverlayPresetChooser chooser = editor.getPresetChooser();
 				String presetBuilderClass = chooser.getPresetBuilderClass();
-				logger.info("PReset-Builder: " + presetBuilderClass);
 				if(presetBuilderClass != null) {
 					Class<?> clazz = Thread.currentThread().getContextClassLoader().loadClass(presetBuilderClass);
 					IOverlayGenerator generator = (IOverlayGenerator) clazz.newInstance();
-					logger.info("Generator created!");
 					return generator.buildPreset(presetId, base);
 				}
 			}
@@ -252,7 +249,6 @@ public class EditorServiceImpl {
 		} catch (IllegalAccessException e) {
 			logger.error("Failed to instantiate overlay generator class", e);
 		}
-		logger.info("Returning null!");
 		return null;
 	}
 

@@ -74,7 +74,6 @@ class DictionaryCreator {
 
 	void initialize() throws IOException {
 		resetIndexDirectory();
-		logger.info("Init Indexer, using whiteSpaceAnalyzer");
 //		analyzer = LuceneHelper.newAnalyzer();
 		analyzer = LuceneHelper.newWhitespaceAnalyzer();
 		indexManager = LuceneIndexManager.getInstance();
@@ -115,7 +114,6 @@ class DictionaryCreator {
 	}
 
 	private IndexWriter initIndexWriter() throws IOException {
-		logger.info("Init IndexWriter");
 		IndexWriterConfig writerConfig = new IndexWriterConfig(
 				LuceneHelper.CURRENT, analyzer);
 		if (!indexAvailable()) {

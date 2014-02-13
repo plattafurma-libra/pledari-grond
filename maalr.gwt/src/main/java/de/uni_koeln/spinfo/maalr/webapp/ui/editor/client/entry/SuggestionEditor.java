@@ -358,9 +358,7 @@ public class SuggestionEditor extends Composite {
 
 	private void initialize(ListFilter filter, String listHeader) {
 		Logger logger = Logger.getLogger(getClass());
-		logger.info("Initializing...");
 		this.listFilter = filter;
-		logger.info("Init Widget..." + getClass());
 		initWidget(uiBinder.createAndBindUi(SuggestionEditor.this));
 		export.addClickHandler(new ClickHandler() {
 			
@@ -535,7 +533,6 @@ public class SuggestionEditor extends Composite {
 				//entryDetails.setData(new LemmaVersion());
 			}
 		});
-		logger.info("Widget initialized.");
 	}
 
 	public void setVerifierColumnVisible(boolean visible) {

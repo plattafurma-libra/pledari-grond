@@ -172,7 +172,7 @@ public class ListFilter extends Composite {
 	public void setQuery(EditorQuery query, boolean force) {
 		if (force)
 			dataProvider.dropLastQuery();
-		Logger.getLogger(getClass()).info("Setting current to zero in filter!");
+//		Logger.getLogger(getClass()).info("Setting current to zero in filter!");
 		query.setCurrent(0);
 		dataProvider.setQuery(query);
 		dataProvider.refreshQuery();

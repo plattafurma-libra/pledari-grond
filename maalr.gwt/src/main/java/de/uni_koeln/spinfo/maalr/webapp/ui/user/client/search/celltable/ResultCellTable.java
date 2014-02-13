@@ -292,7 +292,6 @@ public class ResultCellTable extends Composite {
 					MaalrQuery mq = new MaalrQuery();
 					String[] redir = redirect.split("=");
 					mq.setQueryValue(redir[0], redir[1]);
-					logger.info("Redirect-Query: " + mq.toURL() + " created from " + redirect);
 					String text = redir[1];
 					if (maalrQuery.isHighlight()) {
 						text = Highlighter.highlight(text, maalrQuery.getValue("searchPhrase"));
@@ -329,12 +328,10 @@ public class ResultCellTable extends Composite {
 					MaalrQuery mq = new MaalrQuery();
 					String[] redir = redirect.split("=");
 					mq.setQueryValue(redir[0], redir[1]);
-					logger.info("Redirect-Query: " + mq.toURL() + " created from " + redirect);
 					String text = redir[1];
 					if (maalrQuery.isHighlight()) {
 						text = Highlighter.highlight(text, maalrQuery.getValue("searchPhrase"));
 					}
-					logger.info("Highlighted: " + text);
 					String url = "<a href=\"" + Window.Location.getPath() + "#" + mq.toURL() + "\">" + text + "</a>";
 					toDisplay = toDisplay.replace(redir[1], url);
 					// toDisplay = "<a href=\"" + mq.toURL() + "\">" + redir[1]

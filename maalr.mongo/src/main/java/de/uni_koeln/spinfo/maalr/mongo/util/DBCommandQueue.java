@@ -73,7 +73,6 @@ public class DBCommandQueue {
 					for (LexEntry entry : entries) {
 						if(entry.getId() != null) {
 							LexEntry stored = Converter.convertToLexEntry(Database.getInstance().getById(entry.getId()));
-							//logger.info("Stored: " + stored);
 							if(stored.getChangeStamp() != null && !stored.getChangeStamp().equals(entry.getChangeStamp())) {
 								throw new OperationRejectedException("Local data outdated, please refresh the page and try again.");
 							}
@@ -116,7 +115,6 @@ public class DBCommandQueue {
 				try {
 					if(entry.getId() != null) {
 						LexEntry stored = Converter.convertToLexEntry(Database.getInstance().getById(entry.getId()));
-						//logger.info("Stored: " + stored);
 						if(stored.getChangeStamp() != null && !stored.getChangeStamp().equals(entry.getChangeStamp())) {
 							throw new OperationRejectedException("Local data outdated, please refresh the page and try again.");
 						}

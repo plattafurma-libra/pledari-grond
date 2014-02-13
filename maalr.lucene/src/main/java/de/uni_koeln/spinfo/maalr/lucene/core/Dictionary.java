@@ -302,7 +302,6 @@ public class Dictionary {
 	public IndexStatistics getIndexStatistics() {
 		final IndexStatistics statistics = new IndexStatistics();
 		try {
-			logger.info("Query for statistics...");
 			queue.push(new IndexOperation() {
 				
 				@Override
@@ -349,7 +348,6 @@ public class Dictionary {
 					statistics.setLastUpdated(indexCreator.getLastUpdated());
 				}
 			});
-			logger.info("Received statistics: " + statistics);
 			return statistics;
 		} catch (Exception e) {
 			return new IndexStatistics();

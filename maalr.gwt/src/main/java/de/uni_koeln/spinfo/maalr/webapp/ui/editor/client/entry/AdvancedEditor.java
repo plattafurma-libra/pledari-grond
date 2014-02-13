@@ -347,7 +347,6 @@ public class AdvancedEditor {
 					transferSpecialValues(lv, fromEditor);
 					editorWidget.updateFromEditor(fromEditor);
 					if(editorWidget.isValid(true, true)) {
-						logger.info("Calling acceptAfterUpdate with user " + fromEditor.getUserId());
 						service.acceptAfterUpdate(entry, lv, fromEditor, callback);
 					}
 				}

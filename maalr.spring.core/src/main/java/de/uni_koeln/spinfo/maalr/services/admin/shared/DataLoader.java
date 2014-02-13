@@ -138,13 +138,13 @@ public class DataLoader {
 		index.addToIndex(iterator);
 		logger.info("Index has been created, swapping to RAM...");
 		index.reloadIndex();
-		logger.info("RAM-Index updated!");
+		logger.info("RAM-Index updated.");
 		br.close();
 		if(zipFile != null) {
 			zipFile.close();
 		}
 		//loginManager.logout();
-		logger.info("Dataloader initialized!");
+		logger.info("Dataloader initialized.");
 	}
 
 }

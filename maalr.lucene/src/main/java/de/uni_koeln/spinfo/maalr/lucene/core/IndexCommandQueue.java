@@ -52,7 +52,6 @@ public class IndexCommandQueue {
 			}
 		};
 		executor = Executors.newSingleThreadExecutor(factory);
-		logger.info("Index Command Queue initialized");
 	}
 	
 	public void pushMulti(final List<IndexOperation> operation) throws Exception {

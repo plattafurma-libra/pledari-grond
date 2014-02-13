@@ -231,9 +231,9 @@ public class BackUpHelper {
 
 		private void removeOldest(List<File> files) {
 			sort(files);
-			for (File file : files) {
-				logger.info("file: " + file.getName());
-			}
+//			for (File file : files) {
+//				logger.info("file: " + file.getName());
+//			}
 			File toRemove = files.remove(0);
 			boolean deleted = toRemove.delete();
 			if(!deleted) {

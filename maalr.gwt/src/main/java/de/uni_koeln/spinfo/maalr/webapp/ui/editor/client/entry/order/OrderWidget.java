@@ -72,7 +72,6 @@ public class OrderWidget extends Composite {
 	
 	private void initialize() {
 		Logger logger = Logger.getLogger(getClass());
-		logger.info("Initializing...");
 		selectionModel = new SingleSelectionModel<LemmaVersion>(new ProvidesKey<LemmaVersion>() {
 
 			@Override
@@ -81,7 +80,6 @@ public class OrderWidget extends Composite {
 			}
 		});
 		provider = new ListDataProvider<LemmaVersion>();
-		logger.info("Init Widget...");
 		initWidget(uiBinder.createAndBindUi(OrderWidget.this));
 //		header.setText("Modify Order");
 		list.setPageSize(100);
@@ -151,7 +149,6 @@ public class OrderWidget extends Composite {
 				provider.refresh();
 			}
 		});
-		logger.info("Widget initialized.");
 	}
 	
 	public void setOrderedItems(ArrayList<LemmaVersion> items) {

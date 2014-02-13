@@ -412,7 +412,6 @@ public class Database {
 			BasicDBObject elemMatch = new BasicDBObject("$elemMatch",
 					attributes);
 			query.append(LexEntry.VERSIONS, elemMatch);
-			logger.info("Query: " + query);
 			// query.append("$and", attributes);
 			// query.append("$elemMatch", attributes);
 			found = entryCollection.find(query);
@@ -529,7 +528,6 @@ public class Database {
 		// "paddingFactor" : 1.0 ,
 		// "flags" : 1 , "totalIndexSize" : 654080 , "indexSizes" : { "_id_" :
 		// 654080} , "ok" : 1.0}
-		logger.info("Stats: " + collectionStats);
 
 		BasicDBObject query;
 		BasicDBList attributes;

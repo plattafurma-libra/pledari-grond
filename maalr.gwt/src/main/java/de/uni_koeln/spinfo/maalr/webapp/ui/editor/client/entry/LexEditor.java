@@ -151,7 +151,6 @@ public class LexEditor extends Composite implements HasHistorySupport {
 	
 	private void initialize() {
 		Logger logger = Logger.getLogger(getClass());
-		logger.info("Initializing...");
 		final SingleSelectionModel<LemmaVersion> selectionModel = new SingleSelectionModel<LemmaVersion>();
 		provider = new ListDataProvider<LemmaVersion>();
 		entryList = new QueryList(selectionModel, constants, messages);
@@ -165,7 +164,6 @@ public class LexEditor extends Composite implements HasHistorySupport {
 		service = GWT.create(EditorService.class);
 		//entryDetails = new LemmaEditorWidget(AsyncLemmaDescriptionLoader.getDescription(), UseCase.FIELDS_FOR_ADVANCED_EDITOR, false, 1, true, null);
 		//antlr = new AntlrEditorWidget(entryDetails);
-		logger.info("Init Widget..." + getClass().toString());
 		initWidget(uiBinder.createAndBindUi(LexEditor.this));
 		export.addClickHandler(new ClickHandler() {
 			
@@ -323,7 +321,6 @@ public class LexEditor extends Composite implements HasHistorySupport {
 				//entryDetails.setData(new LemmaVersion());
 			}
 		});
-		logger.info("Widget initialized.");
 	}
 
 	@Override
