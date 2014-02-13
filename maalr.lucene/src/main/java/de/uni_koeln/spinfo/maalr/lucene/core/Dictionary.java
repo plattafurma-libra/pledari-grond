@@ -27,6 +27,7 @@ import java.util.TreeSet;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexableField;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.flexible.core.QueryNodeException;
 import org.apache.lucene.sandbox.queries.DuplicateFilter;
@@ -38,6 +39,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.SortField;
 import org.apache.lucene.search.SortField.Type;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
 import org.apache.lucene.store.NIOFSDirectory;
@@ -245,6 +247,10 @@ public class Dictionary {
 			for (Query q : queries) {
 				query.add(q, Occur.SHOULD);
 			}
+			BooleanQuery bc = new BooleanQuery();
+			bc.add(query, Occur.MUST);
+			bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
+			query = bc;
 			TopDocs docs = indexProvider.getSearcher().search(query,
 					null, pageSize,
 					new Sort(new SortField(sortField, SortField.Type.INT)));
@@ -277,11 +283,10 @@ public class Dictionary {
 			for (Query q : queries) {
 				query.add(q, Occur.SHOULD);
 			}
-			System.out.println("Semi-Final Query: " + query);
-//			BooleanQuery bc = new BooleanQuery();
-//			bc.add(query, Occur.MUST);
-//			bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
-//			query = bc;
+			BooleanQuery bc = new BooleanQuery();
+			bc.add(query, Occur.MUST);
+			bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
+			query = bc;
 			TopDocs docs = indexProvider.getSearcher().search(query,
 					new DuplicateFilter(field), Integer.MAX_VALUE,
 					new Sort(new SortField(sortField, SortField.Type.STRING)));

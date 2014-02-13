@@ -513,6 +513,10 @@ public class LuceneIndexManager {
 		for (Query part : parts) {
 			bq.add(part, Occur.SHOULD);
 		}
+		BooleanQuery bc = new BooleanQuery();
+		bc.add(bq, Occur.MUST);
+		bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
+		bq = bc;
 		return bq;
 	}
 

@@ -29,6 +29,7 @@ import org.junit.Test;
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
+import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueFormat;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
@@ -86,6 +87,7 @@ public class TestIndexCRUD {
 		lv.putEntryValue(firstLang.getKey(), "a" + UUID.randomUUID().toString());
 		lv.putEntryValue(secondLang.getKey(), "b" + UUID.randomUUID().toString());
 		LexEntry entry = new LexEntry(lv);
+		lv.setVerification(Verification.ACCEPTED);
 		entry.setId(UUID.randomUUID().toString());
 		return entry;
 	}
