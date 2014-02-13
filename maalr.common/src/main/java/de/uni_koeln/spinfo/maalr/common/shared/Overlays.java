@@ -113,7 +113,6 @@ public class Overlays {
 	}
 
 	public static OverlayEditor getEditor(String overlayType) {
-		System.out.println("Editor: " + instance.editors.get(overlayType) + " in " + instance.editors);
 		return instance.editors.get(overlayType);
 	}
 

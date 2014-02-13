@@ -108,7 +108,6 @@ public class SimplePagingDataProvider extends AbstractDataProvider<LexEntry> {
 
 			private void updatePagination(final int overall) {
 				int currentPage = searchOptions.getCurrent()/searchOptions.getPageSize();
-				Logger.getLogger(getClass()).info("Current: " + currentPage);
 				int start = Math.max(0, currentPage-3);
 				final int end = Math.min(currentPage+4, (overall+searchOptions.getPageSize()-1)/searchOptions.getPageSize());
 				pagination.clear();
@@ -139,7 +138,6 @@ public class SimplePagingDataProvider extends AbstractDataProvider<LexEntry> {
 							@Override
 							public void onClick(ClickEvent event) {
 								searchOptions.setCurrent(page*searchOptions.getPageSize());
-								Logger.getLogger(getClass()).info("SPD: " + searchOptions.getCurrent());
 								doUpdate();
 							}
 						});
@@ -196,7 +194,6 @@ public class SimplePagingDataProvider extends AbstractDataProvider<LexEntry> {
 	 */
 	private void doUpdate() {
 		if(lastQuery != null && lastQuery.equals(searchOptions)) return;
-		Logger.getLogger(getClass()).info("Updating: " + searchOptions.getCurrent() + ", " + searchOptions);
 		service.getLexEntries(searchOptions, callback);
 	}
 

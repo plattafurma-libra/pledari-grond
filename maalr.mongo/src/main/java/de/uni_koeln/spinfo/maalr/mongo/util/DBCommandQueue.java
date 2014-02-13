@@ -59,12 +59,11 @@ public class DBCommandQueue {
 			}
 		};
 		executor = Executors.newSingleThreadExecutor(factory);
-		logger.info("DB Command Queue initialized");
 	}
 	
 	public List<LexEntry> pushMulti(final IDBOperation<List<LexEntry>> operation) throws Exception {
 		final List<LexEntry> entries = operation.getLexEntry();
-		logger.info("Received operation for " + entries.size() + " entries");
+		logger.debug("Received operation for " + entries.size() + " entries");
 		Callable<List<LexEntry>> callable = new Callable<List<LexEntry>>() {
 
 			@Override
@@ -93,7 +92,7 @@ public class DBCommandQueue {
 		try {
 			List<LexEntry> toReturn = future.get();
 			if(toReturn != null) {
-				logger.info("Successfully executed operation on " + toReturn.size() + " entries.");
+				logger.debug("Successfully executed operation on " + toReturn.size() + " entries.");
 			}
 			return toReturn;
 		} catch (ExecutionException e) {
@@ -107,7 +106,7 @@ public class DBCommandQueue {
 	
 	public LexEntry push(final IDBOperation<LexEntry> operation) throws Exception {
 		final LexEntry entry = operation.getLexEntry();
-		logger.info("Received operation for entry id " + entry.getId());
+		logger.debug("Received operation for entry id " + entry.getId());
 		Callable<LexEntry> callable = new Callable<LexEntry>() {
 
 			@Override
@@ -132,7 +131,7 @@ public class DBCommandQueue {
 		try {
 			LexEntry toReturn = future.get();
 			if(toReturn != null) {
-				logger.info("Successfully executed operation on entry id " + toReturn.getId());
+				logger.debug("Successfully executed operation on entry id " + toReturn.getId());
 			}
 			return toReturn;
 		} catch (ExecutionException e) {

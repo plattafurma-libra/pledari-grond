@@ -117,7 +117,6 @@ public class LemmaEditorWidget extends SimplePanel {
 			for (String key : toSet) {
 				HasText field = fields.get(key);
 				if(field != null) {
-					Logger.getLogger(getClass()).info("Setting data for key " + key + " and field " + field);
 					field.setText(lemma.getEntryValue(key));
 				}
 			}	
@@ -226,7 +225,6 @@ public class LemmaEditorWidget extends SimplePanel {
 		valueSpecifications = new HashMap<String, ValueSpecification>();
 		for (ValueSpecification valueSpecification : all) {
 			valueSpecifications.put(valueSpecification.getInternalName(), valueSpecification);
-			Logger.getLogger(getClass()).info("Found value spec: " + valueSpecification);
 		}
 		int counter = 0;
 		for (String item : fieldIds) {
@@ -404,7 +402,6 @@ public class LemmaEditorWidget extends SimplePanel {
 		ValueSpecification valueSpecification = valueSpecifications.get(field);
 		if(valueSpecification != null && valueSpecification.getValidator() != null) {
 			String remark = valueSpecification.getValidator().validate(fields.get(field).getText());
-			Logger.getLogger(getClass()).info("Validation result for field " + field + ": " + remark);
 			if(remark != null) {
 				if(showError) {
 					groups.get(field).setType(ControlGroupType.ERROR);

@@ -150,17 +150,9 @@ public class LexEditor extends Composite implements HasHistorySupport {
 	}
 	
 	private void initialize() {
-		Logger logger = Logger.getLogger(getClass());
 		final SingleSelectionModel<LemmaVersion> selectionModel = new SingleSelectionModel<LemmaVersion>();
 		provider = new ListDataProvider<LemmaVersion>();
 		entryList = new QueryList(selectionModel, constants, messages);
-		entryList.addSelectionChangedHandler(new Handler() {
-			
-			@Override
-			public void onSelectionChange(SelectionChangeEvent event) {
-				Logger.getLogger(getClass()).info("Selection changed: " + event + ", " + selectionModel.getSelectedObject());
-			}
-		});
 		service = GWT.create(EditorService.class);
 		//entryDetails = new LemmaEditorWidget(AsyncLemmaDescriptionLoader.getDescription(), UseCase.FIELDS_FOR_ADVANCED_EDITOR, false, 1, true, null);
 		//antlr = new AntlrEditorWidget(entryDetails);
