@@ -47,24 +47,24 @@ public class DictionaryConfiguration {
 	@XmlElement(name="queryKey")
 	private List<QueryKey> queryKeys = new ArrayList<QueryKey>();
 	
-	@XmlElement
+	@XmlElement(name="languages")
 	private LemmaDescription lemmaDescription;
 	
-	@XmlElement
+	@XmlElement(name="queryUI")
 	private UiConfigurations uiConfigurations;
 	
 	public static class UiConfigurations {
 		
-		@XmlElement(name="defaultUserConfiguration")
+		@XmlElement(name="defaultFrontendQueryFields")
 		private UiConfiguration userDefaultUiConfiguration;
 		
-		@XmlElement(name="advancedUserConfiguration")
+		@XmlElement(name="advancedFrontendQueryFields")
 		private UiConfiguration userAdvancedUiConfiguration;
 		
-		@XmlElement(name="defaultEditorConfiguration")
+		@XmlElement(name="defaultBackendQueryFields")
 		private UiConfiguration editorDefaultUiConfiguration;
 		
-		@XmlElement(name="advancedEditorConfiguration")
+		@XmlElement(name="advancedBackendQueryFields")
 		private UiConfiguration editorAdvancedUiConfiguration;
 
 		public UiConfiguration getUserDefaultUiConfiguration() {

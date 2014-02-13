@@ -41,7 +41,7 @@
 			</options>
 		</queryBuilder>
 	</queryBuilders>
-    <lemmaDescription>
+    <languages>
 	<language id="german" mainColumn="German">
 		<editors>
 			<frontend_editor>
@@ -81,5 +81,5 @@
 			</fields>
 		</results>
 	</language>
-</lemmaDescription>
+</languages>
 </dictionaryConfiguration>

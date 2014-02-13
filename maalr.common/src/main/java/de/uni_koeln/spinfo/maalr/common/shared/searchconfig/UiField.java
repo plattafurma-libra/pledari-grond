@@ -36,13 +36,11 @@ public class UiField implements Serializable {
 	@XmlAttribute(name="buildin")
 	private boolean buildIn;
 	
-	@XmlAttribute(name="label")
 	private String label;
 
 	@XmlAttribute(name="submit")
 	private boolean hasSubmit;
 
-	@XmlAttribute(name="submitlabel")
 	private String submitLabel;
 
 	private ArrayList<String> values;

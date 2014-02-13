@@ -53,7 +53,7 @@
 		</queryBuilder>
 	</queryBuilders>
 	
-	<lemmaDescription>
+	<languages>
 		<language id="german" mainColumn="german">
 			<editors>
 				<frontend_editor>
@@ -93,6 +93,6 @@
 				</fields>
 			</results>
 		</language>
-	</lemmaDescription>
+	</languages>
 	
 </dictionaryConfiguration>
