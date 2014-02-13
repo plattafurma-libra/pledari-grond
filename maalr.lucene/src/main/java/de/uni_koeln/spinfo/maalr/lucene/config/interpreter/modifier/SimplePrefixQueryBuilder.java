@@ -51,6 +51,10 @@ public class SimplePrefixQueryBuilder extends MaalrQueryBuilder {
 		Query query = new PrefixQuery(new Term(getFieldName("first"), value.toLowerCase()));
 		return Arrays.asList(query);
 	}
+
+	public String getIndexSortField() {
+		return super.getFieldName("first");
+	}
 	
 	
 	

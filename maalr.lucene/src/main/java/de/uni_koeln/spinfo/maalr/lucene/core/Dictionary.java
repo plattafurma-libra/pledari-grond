@@ -97,9 +97,9 @@ public class Dictionary {
 
 	private HashMap<String, Type> sortTypes;
 
-	private MaalrQueryBuilder langBIndexBuilder;
+	private SimplePrefixQueryBuilder langBIndexBuilder;
 
-	private MaalrQueryBuilder langAIndexBuilder;
+	private SimplePrefixQueryBuilder langAIndexBuilder;
 
 	private ExactMatchQueryBuilder exactMatchesLangA;
 
@@ -271,11 +271,12 @@ public class Dictionary {
 		List<Query> queries = null;
 		boolean firstLanguage = language.equals(description.getLanguageName(true));
 		field = description.getDictField(firstLanguage);
-		sortField = description.getSortList(firstLanguage)[0];
 		if(firstLanguage) {
 			queries = langAIndexBuilder.transform(prefix);
+			sortField = langAIndexBuilder.getIndexSortField();
 		} else {
 			queries = langBIndexBuilder.transform(prefix);
+			sortField = langBIndexBuilder.getIndexSortField();
 		}
 		int pageSize = 120;
 		try {
