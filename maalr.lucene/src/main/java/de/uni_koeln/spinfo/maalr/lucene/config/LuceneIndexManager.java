@@ -80,6 +80,8 @@ public class LuceneIndexManager {
 	
 	private String[] allColumns;
 	
+	private List<String> errors = new ArrayList<String>();
+	
 	/**
 	 * The {@link FieldFactory}-objects required by the current search configuration.
 	 * For each {@link IndexedColumn} defined in the configuration, one {@link FieldFactory}
@@ -227,13 +229,17 @@ public class LuceneIndexManager {
 			if(isDefaultQueryBuilderOption) {
 				String old = defaultQueryBuilderOptions.put(queryBuilderId, queryBuilderOptionId);
 				if(old != null && !old.equals(queryBuilderOptionId)) {
-					logger.error("Invalid configuration - Two or more query modifier are defined as default: " + old + " and " + queryBuilderOptionId + " for id " + queryBuilderId);
+					String msg = "Invalid configuration - Two or more query modifier are defined as default: " + old + " and " + queryBuilderOptionId + " for id " + queryBuilderId;
+					logger.error(msg);
+					errors.add(msg);
 				}
 			}
 			if(isDefaultColumnSelectorOption) {
 				String old = defaultColumnSelectorOptions.put(columnSelectorId, columnSelectorOptionId);
 				if(old != null && !old.equals(columnSelectorOptionId)) {
-					logger.error("Invalid configuration - Two or more field choices are defined as default: " + old + " and " + columnSelectorOptionId + " for id " + columnSelectorId);
+					String msg = "Invalid configuration - Two or more field choices are defined as default: " + old + " and " + columnSelectorOptionId + " for id " + columnSelectorId;
+					logger.error(msg);
+					errors.add(msg);
 				}
 			}
 		}
@@ -320,14 +326,19 @@ public class LuceneIndexManager {
 			if(item.getType() == null) {
 				item.setType(MaalrFieldType.TEXT);
 			}
-			finalItems.add(item);
+			boolean added = finalItems.add(item);
+			if(!added) {
+				errors.add("Column '" + item.getSource() + "' was found more than once in the list of indexed columns.");
+			}
 			logger.info("Required default field: " + item);
 		}
 		// Create fields required for static dictionary pages
-		finalItems.add(getSortColumn(Configuration.getInstance().getLemmaDescription().getFirstLanguage().getMainColumn()));
-		finalItems.add(getSortColumn(Configuration.getInstance().getLemmaDescription().getSecondLanguage().getMainColumn()));
-		finalItems.addAll(getDictionaryItem(Configuration.getInstance().getLemmaDescription().getFirstLanguage().getMainColumn()));
-		finalItems.addAll(getDictionaryItem(Configuration.getInstance().getLemmaDescription().getSecondLanguage().getMainColumn()));
+		String firstLanguageMain = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getMainColumn();
+		String secondLanguageMain = Configuration.getInstance().getLemmaDescription().getSecondLanguage().getMainColumn();
+		finalItems.add(getSortColumn(firstLanguageMain));
+		finalItems.add(getSortColumn(secondLanguageMain));
+		finalItems.addAll(getDictionaryItem(firstLanguageMain));
+		finalItems.addAll(getDictionaryItem(secondLanguageMain));
 		// Create fields required for oracles
 		autoGenerateOracleFields(finalItems);
 		// Keep track of all column names - required to convert from lucene documents
@@ -336,29 +347,59 @@ public class LuceneIndexManager {
 		for (IndexedColumn item : finalItems) {
 			columnNames.add(item.getSource());
 		}
+		if(!columnNames.contains(firstLanguageMain)) {
+			errors.add("Main column '" + firstLanguageMain + "' was not found in the set of all columns.");
+		}
+		if(!columnNames.contains(secondLanguageMain)) {
+			errors.add("Main column '" + secondLanguageMain + "' was not found in the set of all columns.");
+		}
 		allColumns = new String[columnNames.size()];
 		columnNames.toArray(allColumns);
 		// Lookup-Table to find column selectors by their id
 		Map<String, ColumnSelector> columnSelectorsById = new HashMap<String, ColumnSelector>();
 		for (ColumnSelector selector : configuration.getColumnSelectors()) {
-			columnSelectorsById.put(selector.getId(), selector);
+			ColumnSelector old = columnSelectorsById.put(selector.getId(), selector);
+			if(old != null) {
+				errors.add("Column selector id '" + selector.getId() + "' is defined more than once.");
+			}
 		}
 		choiceIdsToFields = new HashMap<String, Set<String>>();
+		Set<String> queryKeys = new HashSet<String>();
+		for (QueryKey key : configuration.getQueryKeys()) {
+			queryKeys.add(key.getId());
+		}
 		// Generate all required lucene fields, by analyzing all combinations of
 		// query modifier options and field choices. For each combination, one or more 
 		// individual MaalrQueryBuilders will be instantiated and stored in the
 		// builder registry. 
 		Map<String, QueryBuilder> queryBuilderById = new HashMap<String, QueryBuilder>();
 		for (QueryBuilder builderConfiguration : configuration.getQueryModifier()) {
-			queryBuilderById.put(builderConfiguration.getId(), builderConfiguration);
+			ColumnSelector selector = columnSelectorsById.get(builderConfiguration.getColumnSelectorId());
+			if(selector == null) {
+				errors.add("Illegal query builder configuration '" + builderConfiguration.getId() + ": The referenced column selector does not exist.");
+			}
+			if(!queryKeys.contains(builderConfiguration.getQueryKeyId())) {
+				errors.add("Illegal query builder configuration '" + builderConfiguration.getId() + ": The referenced query key does not exist.");
+			}
+			QueryBuilder old = queryBuilderById.put(builderConfiguration.getId(), builderConfiguration);
+			if(old != null) {
+				errors.add("Query builder id '" + old.getId() + "' is defined more than once.");
+			}
 			String columnSelectorId = builderConfiguration.getColumnSelectorId();
 			ColumnSelector columnSelector = columnSelectorsById.get(columnSelectorId);
 			logger.info("Processing query modifier " + builderConfiguration.getId() + ", related to field choice " + columnSelector.getId() + " and input field " + builderConfiguration.getQueryKeyId());
 			List<QueryBuilderOption> options = builderConfiguration.getOptions();
+			int defaultQueryOptionCounter = 0;
 			for (QueryBuilderOption qmOption : options) {
+				if(qmOption.isDefault()) {
+					defaultQueryOptionCounter++;
+				}
 				String builderClass = qmOption.getBuilderClass();
 				// Find the MaalrQueryBuilder to use for the given builder option 
 				Class<?> clazz = null;
+				if(builderClass != null && qmOption.getPreset() != null) {
+					errors.add("Invalid query builder option: You cannot define both builderClass and preset.");
+				}
 				if(builderClass == null) {
 					// Use a default builder
 					String preset = qmOption.getPreset();
@@ -376,10 +417,19 @@ public class LuceneIndexManager {
 				}
 				String columnSelectorDependency = columnSelector.getDepends();
 				if(columnSelectorDependency != null) {
+					if(!columnSelectorsById.containsKey(columnSelector.getId())) {
+						errors.add("Illegal selector dependency: " + columnSelector.getId() + " refers to non existing " + columnSelectorDependency);
+					}
+					ColumnSelector reference = columnSelectorsById.get(columnSelectorDependency);
+					if(reference.getDepends() != null) {
+						errors.add("Illegal selector configuration related to selector '" + columnSelectorDependency + "': You cannot chain column selector dependencies.");
+					}
 					builderRegistry.setDependency(columnSelector.getId(), columnSelectorDependency);
 				}
 				List<ColumnSelectorOption> selectorOptions = columnSelector.getOptions();
+				int defaultColumnSelectorCounter = 0;
 				for (ColumnSelectorOption selectorOption : selectorOptions) {
+					if(selectorOption.isDefault()) defaultColumnSelectorCounter++;
 					List<ColumnReference> columnReferences = selectorOption.getColumnReferences();
 					for (ColumnReference reference : columnReferences) {
 						// Create a new query builder for each referenced column
@@ -397,13 +447,19 @@ public class LuceneIndexManager {
 						builderRegistry.registerBuilder(builderConfiguration.getId(), qmOption.getId(), qmOption.isDefault(), columnSelectorId, selectorOption.getId(), selectorOption.isDefault(), builderConfiguration.getQueryKeyId(), builder);
 					}
 				}
+				if(defaultColumnSelectorCounter != 1) {
+					errors.add("Illegal column selector '" + columnSelector.getId() + "': There must be exactly one default option, but there were " + defaultColumnSelectorCounter);
+				}
+			}
+			if(defaultQueryOptionCounter != 1) {
+				errors.add("Illegal query builder '" + builderConfiguration.getId() + "': There must be exactly one default option, but there were " + defaultQueryOptionCounter);
 			}
 		}
 		// Got all lucene fields, now create field factories to ensure that they will
 		// be created and filled when a new entry is inserted.
 		logger.info("Field analysis completed, index will contain the following fields:");
 		for (IndexedColumn item : finalItems) {
-			logger.info(item.toString());
+			logger.info("   " + item.toString());
 			FieldFactory factory = new FieldFactory(item);
 			List<FieldFactory> factoriesBySource = fieldFactories.get(item.getSource());
 			if(factoriesBySource == null) {
@@ -416,6 +472,12 @@ public class LuceneIndexManager {
 		// implicit ones detected above.
 		Configuration.getInstance().getDictionaryConfig().getIndexedColumns().clear();
 		Configuration.getInstance().getDictionaryConfig().getIndexedColumns().addAll(finalItems);
+		if(errors.size() > 0) {
+			logger.error(errors.size() + " errors have been detected in the configuration:");
+			for (String error : errors) {
+				logger.error("   " + error);
+			}
+		}
 		
 	}
 	
