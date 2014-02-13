@@ -38,9 +38,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.StructuredEntry;
  * <ul>
  * <li>The suggest- and modifiy-editor in frontend and backend</li>
  * <li>The representation and ordering of query results and</li>
- * <li>The alphabetical index of the dictionary</li>
  * </ul>
- * It is configured through the lemma-description.xml configuration file.
  * 
  * @author sschwieb
  *
@@ -405,7 +403,7 @@ public class LemmaDescription implements Serializable {
 	}
 	
 	public ArrayList<String> getEditorFields(boolean firstLanguage) {
-		return getLanguage(true).editors.backendEditor.getFieldIds();
+		return getLanguage(firstLanguage).editors.backendEditor.getFieldIds();
 	}
 
 }

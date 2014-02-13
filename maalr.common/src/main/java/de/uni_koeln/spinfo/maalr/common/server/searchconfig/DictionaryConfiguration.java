@@ -48,12 +48,11 @@ public class DictionaryConfiguration {
 	private List<QueryKey> queryKeys = new ArrayList<QueryKey>();
 	
 	@XmlElement
+	private LemmaDescription lemmaDescription;
+	
+	@XmlElement
 	private UiConfigurations uiConfigurations;
 	
-	public UiConfigurations getUiConfigurations() {
-		return uiConfigurations;
-	}
-
 	public static class UiConfigurations {
 		
 		@XmlElement(name="defaultUserConfiguration")
@@ -84,12 +83,11 @@ public class DictionaryConfiguration {
 			return editorAdvancedUiConfiguration;
 		}
 		
-		
-		
 	}
-
-	@XmlElement
-	private LemmaDescription lemmaDescription;
+	
+	public UiConfigurations getUiConfigurations() {
+		return uiConfigurations;
+	}
 	
 	public LemmaDescription getLemmaDescription() {
 		return lemmaDescription;
