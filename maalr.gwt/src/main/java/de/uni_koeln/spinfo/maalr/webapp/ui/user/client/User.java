@@ -126,20 +126,11 @@ public class User implements EntryPoint {
 				element.removeChild(element.getChild(0));
 			}
 			search.setResultCellTable(resultCellTable);
-			resultCellTable.setVisible(false);
 			search.addSearchHandler(new SearchHandler() {
 
 				@Override
 				public void onSearch(final SearchEvent event) {
 
-					Command command = new Command() {
-
-						@Override
-						public void execute() {
-							History.newItem(event.getQuery().toURL());
-							//doSearch(event.getQuery());
-						}
-					};
 					AsyncLemmaDescriptionLoader
 							.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
 
@@ -185,7 +176,6 @@ public class User implements EntryPoint {
 
 	private void doSearch(final MaalrQuery maalrQuery) {
 		if(maalrQuery.getValues().size() == 0) {
-			resultCellTable.setVisible(true);
 			return;
 		}
 		if(SearchHelper.getLastQuery() != null && SearchHelper.getLastQuery().equals(maalrQuery)) {
@@ -196,13 +186,11 @@ public class User implements EntryPoint {
 			@Override
 			public void onSuccess(QueryResult result) {
 				SearchHelper.setLastQuery(maalrQuery);
-				resultCellTable.setVisible(true);
-				resultCellTable.setResults(maalrQuery, result);
+				search.updateResult(maalrQuery, result);
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				resultCellTable.setVisible(false);
 				Dialog.showError("An error occurred while processing your request.");
 				logger.error("Failed to send request", caught);
 			}

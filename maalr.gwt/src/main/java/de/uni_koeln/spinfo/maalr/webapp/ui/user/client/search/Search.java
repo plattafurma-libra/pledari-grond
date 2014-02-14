@@ -26,7 +26,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
-import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.ConfigurableSearchArea;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.IResultDisplay;
@@ -83,7 +82,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 
 	@Override
 	public void updateResult(MaalrQuery query, QueryResult result) {
-		if(MaalrQueryFormatter.getQueryLabel(query) == null) {
+		if(query.getQueryMap().isEmpty()) {
 			resultColumn.setVisible(false);
 			String className = DOM.getElementById("content").getClassName();
 			DOM.getElementById("content").setClassName(className + " search-centered");
