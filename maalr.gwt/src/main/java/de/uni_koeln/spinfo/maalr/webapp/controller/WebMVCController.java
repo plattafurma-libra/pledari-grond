@@ -36,7 +36,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -214,7 +214,6 @@ public class WebMVCController {
 			String firstLanguage = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getId();
 			String language = query.getValue("language");
 			boolean isFirst = firstLanguage.equals(language);
-			System.out.println("QUERY FIRST LANG: " + isFirst);
 			QueryResult result = index.queryExact(query.getValue("searchPhrase"), isFirst, true);
 			mv.addObject("result", result);
 			//mv.addObject("query", query);
@@ -433,7 +432,7 @@ public class WebMVCController {
 	    
 	    // Initialize RestTamplate
 	    RestTemplate restTemplate = new RestTemplate();
-	    restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+	    restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 	    restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 	    
 	    PersonaVerificationResponse response = restTemplate.postForObject("https://verifier.login.persona.org/verify", params, PersonaVerificationResponse.class);
