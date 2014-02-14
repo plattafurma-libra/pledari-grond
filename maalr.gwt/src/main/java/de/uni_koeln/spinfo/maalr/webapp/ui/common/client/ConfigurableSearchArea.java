@@ -77,7 +77,6 @@ import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 public class ConfigurableSearchArea extends Form {
 	
@@ -93,28 +92,34 @@ public class ConfigurableSearchArea extends Form {
 	
 	private SimplePanel optionsPanel;
 	
-	private static final int QUERY_SCHEDULER_DELAY = 200;
+	private static final int QUERY_SCHEDULER_DELAY = 150;
 	
-	private final Timer historyTimer = new Timer() {
+	private final HistoryTimer historyTimer = new HistoryTimer();
+	
+	private class HistoryTimer extends Timer {
 
+		private MaalrQuery maalrQuery;
+		
 		@Override
 		public void run() {
 			if(!withHistory) return;
-			final MaalrQuery maalrQuery = new MaalrQuery();
-			maalrQuery.setValues(removeNullValues(currentValues));
+			if(!currentValues.equals(maalrQuery.getValues())) {
+				return;
+			}
 			String url = maalrQuery.toURL();
 			if(historyPrefix != null) {
 				url = historyPrefix + url;
 			}
-			//setFocus(true);
-			if (historyContains(url)) {
-				return;
-			}
-			Logger.getLogger(getClass()).info("Timer Search: " + maalrQuery);
 			History.newItem(url);
 		}
+
+		public void scheduleUrlUpdate() {
+			maalrQuery = new MaalrQuery();
+			maalrQuery.setValues(removeNullValues(currentValues));
+			schedule(2000);
+		}
 		
-	};
+	}
 	
 	private final Timer feedbackTimer = new Timer() {
 		@Override
@@ -136,17 +141,17 @@ public class ConfigurableSearchArea extends Form {
 			final MaalrQuery maalrQuery = new MaalrQuery();
 			maalrQuery.setValues(removeNullValues(currentValues));
 			SearchHelper.setLastQuery(maalrQuery);
-			String url = maalrQuery.toURL();
-			if (historyContains(url)) {
-				return;
-			}
+//			String url = maalrQuery.toURL();
+//			if (historyContains(url)) {
+//				return;
+//			}
 			showSearchFeedback();
 			service.search(maalrQuery, new AsyncCallback<QueryResult>() {
 
 				@Override
 				public void onSuccess(QueryResult result) {
 					resultDisplay.updateResult(maalrQuery, result);
-					historyTimer.schedule(2000);
+					historyTimer.scheduleUrlUpdate();
 				}
 
 				@Override
@@ -483,7 +488,6 @@ public class ConfigurableSearchArea extends Form {
 			@Override
 			public void onChange(ChangeEvent arg0) {
 				String value = field.getValues().get(box.getSelectedIndex());
-				Logger.getLogger(getClass()).info("Current value: " + value + ", " + (value == null));
 				if(value == null) {
 					currentValues.remove(field.getId());
 				} else {
@@ -619,7 +623,6 @@ public class ConfigurableSearchArea extends Form {
 	}
 	
 	public void setFocus(final boolean selectAll) {
-		Logger.getLogger(getClass()).info("Setting focus, select: " + selectAll + " for box " + focusWidget);
 		if(focusWidget != null) {
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 		        public void execute () {
