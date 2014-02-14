@@ -320,6 +320,14 @@ public class ConfigurableSearchArea extends Form {
 						fireUpdate();
 					}
 				});
+				rb.addClickHandler(new ClickHandler() {
+					
+					@Override
+					public void onClick(ClickEvent arg0) {
+						currentValues.put(field.getId(), value);
+						fireUpdate();
+					}
+				});
 				options.add(rb);
 			}
 		}
