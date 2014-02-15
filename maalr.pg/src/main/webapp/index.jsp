@@ -26,13 +26,6 @@
 		<%-- NAVIGATION --%>
 		<%@ include file="/jspstatic/header_small.jsp"%>
 	
-		<%-- FOOTER INCLUDING A..Z INDEX --%>
-		<%--
-		<div id="bottom">
-			<%@ include file="/jspstatic/footer_intro.jsp"%>
-		</div>
-		--%>
-	
 		<div id="content" class="content">
 		
 			<%@ include file="/jspstatic/language_widget.jsp"%>
