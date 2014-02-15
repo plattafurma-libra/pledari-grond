@@ -58,22 +58,14 @@ public class JsonController {
 	
 	private Configuration configuration = Configuration.getInstance();
 	
-	private Set<ValueFormat> exportFields = null;
+	private LemmaDescription ld = configuration.getLemmaDescription();
 	
 	@RequestMapping(value="/json", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
 	public void queryJSON(@RequestParam("callback") String callback, MaalrQuery query, @RequestParam String locale, HttpServletResponse response) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
 		QueryResult result = index.query(query, true);
 		List<LemmaVersion> entries = result.getEntries();
-		if(exportFields == null) {
-			Set<ValueFormat> fields = new HashSet<ValueFormat>();
-			fields.addAll(configuration.getLemmaDescription().getResultList(true));
-			fields.addAll(configuration.getLemmaDescription().getResultList(false));
-			exportFields = fields;
-		}
-		configuration.getLemmaDescription().getResultList(true);
-		List<Map<String, String>> toReturn = new ArrayList<Map<String, String>>();
-		LemmaDescription ld = configuration.getLemmaDescription();
+		List<Map<String, String>> toReturn = new ArrayList<Map<String, String>>(entries.size());
 		for (LemmaVersion entry : entries) {
 			String first = ld.toString(entry, UseCase.RESULT_LIST, true);
 			String second = ld.toString(entry, UseCase.RESULT_LIST, false);
@@ -91,7 +83,10 @@ public class JsonController {
 		String string = om.writeValueAsString(json);
 		response.setContentType("text/javascript; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.print(callback + "(" + string + ")");
+		out.print(callback);
+		out.print('(');
+		out.print(string);
+		out.print(')');
 	}
 
 }
