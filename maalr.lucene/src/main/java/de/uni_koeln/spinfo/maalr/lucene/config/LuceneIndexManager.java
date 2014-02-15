@@ -273,12 +273,10 @@ public class LuceneIndexManager {
 				columnSelectorOption = selected;
 			}
 			String queryString = maalrQuery.get(config.queryKey);
-			logger.info("Query String: " + queryString);
 			if(queryString == null) return null;
 			if(columnSelectorOption == null) {
 				columnSelectorOption = defaultColumnSelectorOptions.get(config.columnSelectorId);
 			}
-			logger.info("Selector option: " + columnSelectorOption);
 			if(columnSelectorOption == null) {
 				return null;
 			}
@@ -286,7 +284,6 @@ public class LuceneIndexManager {
 			if(queryBuilderOption == null) {
 				queryBuilderOption = defaultQueryBuilderOptions.get(config.queryBuilderId);
 			}
-			logger.info("Builder option: " + queryBuilderOption);
 			if(queryBuilderOption == null) {
 				return null;
 			}
@@ -599,9 +596,9 @@ public class LuceneIndexManager {
 			query = bc;
 		}
 		long prepareEnd = System.nanoTime();
-//		if(logger.isDebugEnabled()) {
-			logger.info("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
-//		}
+		if(logger.isDebugEnabled()) {
+			logger.debug("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
+		}
 		return query;
 	}
 	
