@@ -325,6 +325,10 @@ public class LuceneIndexManager {
 			item.setUsesWhitespaceAnalyzer(false);
 			if(item.getType() == null) {
 				item.setType(MaalrFieldType.TEXT);
+			} else {
+				if(item.getType() != MaalrFieldType.CSV) {
+					errors.add("Column '" + item.getSource() + "' should not explicitly define a 'type' unless it is 'CSV'.");
+				}
 			}
 			boolean added = finalItems.add(item);
 			if(!added) {
