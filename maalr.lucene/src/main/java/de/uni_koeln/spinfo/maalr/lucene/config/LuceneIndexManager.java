@@ -80,7 +80,7 @@ public class LuceneIndexManager {
 	
 	private String[] allColumns;
 	
-	private List<String> errors = new ArrayList<String>();
+	private static Set<String> errors = new HashSet<String>();
 	
 	/**
 	 * The {@link FieldFactory}-objects required by the current search configuration.
@@ -123,6 +123,12 @@ public class LuceneIndexManager {
 				indexer = new LuceneIndexManager(Configuration.getInstance().getDictionaryConfig());
 			} catch (Exception e) {
 				logger.error("Failed to initialize indexer!", e);
+				if(errors.size() > 0) {
+					logger.error("The following errors were detected in the configuration:");
+					for (String error : errors) {
+						logger.error("   " + error);
+					}
+				}
 				throw new RuntimeException(e);
 			}
 		}
@@ -224,6 +230,7 @@ public class LuceneIndexManager {
 				builders = new ArrayList<MaalrQueryBuilder>();
 				choicesAndBuilders.put(columnSelectorOptionId, builders);
 			}
+			logger.info("Registered query builder for " + queryBuilderId + ":" + queryBuilderOptionId + ", " + columnSelectorId + ":" + columnSelectorOptionId);
 			builders.add(builder);
 			// Register default options
 			if(isDefaultQueryBuilderOption) {
@@ -266,10 +273,12 @@ public class LuceneIndexManager {
 				columnSelectorOption = selected;
 			}
 			String queryString = maalrQuery.get(config.queryKey);
+			logger.info("Query String: " + queryString);
 			if(queryString == null) return null;
 			if(columnSelectorOption == null) {
 				columnSelectorOption = defaultColumnSelectorOptions.get(config.columnSelectorId);
 			}
+			logger.info("Selector option: " + columnSelectorOption);
 			if(columnSelectorOption == null) {
 				return null;
 			}
@@ -277,6 +286,7 @@ public class LuceneIndexManager {
 			if(queryBuilderOption == null) {
 				queryBuilderOption = defaultQueryBuilderOptions.get(config.queryBuilderId);
 			}
+			logger.info("Builder option: " + queryBuilderOption);
 			if(queryBuilderOption == null) {
 				return null;
 			}
@@ -361,6 +371,9 @@ public class LuceneIndexManager {
 		columnNames.toArray(allColumns);
 		// Lookup-Table to find column selectors by their id
 		Map<String, ColumnSelector> columnSelectorsById = new HashMap<String, ColumnSelector>();
+		if(configuration.getColumnSelectors().isEmpty()) {
+			errors.add("No column selectors are defined!");
+		}
 		for (ColumnSelector selector : configuration.getColumnSelectors()) {
 			ColumnSelector old = columnSelectorsById.put(selector.getId(), selector);
 			if(old != null) {
@@ -372,11 +385,17 @@ public class LuceneIndexManager {
 		for (QueryKey key : configuration.getQueryKeys()) {
 			queryKeys.add(key.getId());
 		}
+		if(configuration.getQueryKeys().isEmpty()) {
+			errors.add("No query keys are defined!");
+		}
 		// Generate all required lucene fields, by analyzing all combinations of
 		// query modifier options and field choices. For each combination, one or more 
 		// individual MaalrQueryBuilders will be instantiated and stored in the
 		// builder registry. 
 		Map<String, QueryBuilder> queryBuilderById = new HashMap<String, QueryBuilder>();
+		if(configuration.getQueryModifier().isEmpty()) {
+			logger.error("No query builders are defined!");
+		}
 		for (QueryBuilder builderConfiguration : configuration.getQueryModifier()) {
 			ColumnSelector selector = columnSelectorsById.get(builderConfiguration.getColumnSelectorId());
 			if(selector == null) {
@@ -391,9 +410,15 @@ public class LuceneIndexManager {
 			}
 			String columnSelectorId = builderConfiguration.getColumnSelectorId();
 			ColumnSelector columnSelector = columnSelectorsById.get(columnSelectorId);
-			logger.info("Processing query modifier " + builderConfiguration.getId() + ", related to field choice " + columnSelector.getId() + " and input field " + builderConfiguration.getQueryKeyId());
+			if(columnSelector == null) {
+				errors.add("Illegal query builder '" + builderConfiguration.getId() + "': Referenced column selector '" + columnSelectorId + "' does not exist.");
+			}
+			logger.info("Processing query builder " + builderConfiguration.getId() + ", related to field choice " + columnSelector.getId() + " and input field " + builderConfiguration.getQueryKeyId());
 			List<QueryBuilderOption> options = builderConfiguration.getOptions();
 			int defaultQueryOptionCounter = 0;
+			if(options.isEmpty()) {
+				errors.add("Query builder " + builderConfiguration + " does not define any options!");
+			}
 			for (QueryBuilderOption qmOption : options) {
 				if(qmOption.isDefault()) {
 					defaultQueryOptionCounter++;
@@ -432,9 +457,15 @@ public class LuceneIndexManager {
 				}
 				List<ColumnSelectorOption> selectorOptions = columnSelector.getOptions();
 				int defaultColumnSelectorCounter = 0;
+				if(selectorOptions.isEmpty()) {
+					errors.add("Column selector " + columnSelector.getId() + " does not define any options!");
+				}
 				for (ColumnSelectorOption selectorOption : selectorOptions) {
 					if(selectorOption.isDefault()) defaultColumnSelectorCounter++;
 					List<ColumnReference> columnReferences = selectorOption.getColumnReferences();
+					if(columnReferences.isEmpty()) {
+						errors.add("Column selector option '" + columnSelector.getId() + ":" + selectorOption.getId() + "' does not refer to any columns!");
+					}
 					for (ColumnReference reference : columnReferences) {
 						// Create a new query builder for each referenced column
 						MaalrQueryBuilder builder = (MaalrQueryBuilder) clazz.newInstance();
@@ -449,6 +480,9 @@ public class LuceneIndexManager {
 						}
 						// Register the builder for the current query configuration
 						builderRegistry.registerBuilder(builderConfiguration.getId(), qmOption.getId(), qmOption.isDefault(), columnSelectorId, selectorOption.getId(), selectorOption.isDefault(), builderConfiguration.getQueryKeyId(), builder);
+						if(!columnNames.contains(reference.getReference())) {
+							errors.add("Invalid column selector option '" + columnSelector.getId() + ":" + selectorOption.getId() + "': Column '" + reference.getReference() + "' does not exist!");
+						}
 					}
 				}
 				if(defaultColumnSelectorCounter != 1) {
@@ -565,9 +599,9 @@ public class LuceneIndexManager {
 			query = bc;
 		}
 		long prepareEnd = System.nanoTime();
-		if(logger.isDebugEnabled()) {
-			logger.debug("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
-		}
+//		if(logger.isDebugEnabled()) {
+			logger.info("Final query: " + query + " created in " + ((prepareEnd-prepareStart)/1000000D) + " ms.");
+//		}
 		return query;
 	}
 	
