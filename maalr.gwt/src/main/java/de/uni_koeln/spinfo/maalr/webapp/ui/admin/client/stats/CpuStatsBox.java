@@ -59,7 +59,6 @@ public class CpuStatsBox extends Composite {
 			cpuPie.setData(summary.getCpuSystem(), summary.getCpuUser(), summary.getCpuNice(), summary.getCpuIdle());
 			cpuPie.draw();
 		} catch (Exception e) {
-			Window.alert("Falure: " + e);
 		}
 	}
 
