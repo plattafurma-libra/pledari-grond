@@ -56,7 +56,7 @@ public class Converter {
 		return object;
 	}
 
-	public static BasicDBObject convertLemmaVersion(LemmaVersion lemmaVersion) {
+	private static BasicDBObject convertLemmaVersion(LemmaVersion lemmaVersion) {
 		BasicDBObject obj = new BasicDBObject();
 		Map<String, String> toStore = new HashMap<String, String>(lemmaVersion.getEntryValues());
 		toStore.keySet().removeAll(LemmaVersion.MAALR_KEYS);

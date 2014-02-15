@@ -60,7 +60,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLo
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CustomPager;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Highlighter;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.OverlayPopup;
 
@@ -88,8 +87,6 @@ public class ResultCellTable extends Composite {
 	HTML label;
 
 	private Button suggest;
-
-	private Logger logger = Logger.getLogger(getClass());
 
 	private ListDataProvider<LemmaVersion> dataProvider;
 
@@ -250,13 +247,6 @@ public class ResultCellTable extends Composite {
 
 		};
 		popupColumn = new Column<LemmaVersion, SafeHtml>(overlayCell) {
-
-			private void onButtonClicked(LemmaVersion selected) {
-				final LemmaVersion lemma = new LemmaVersion();
-				lemma.setEntryValues(selected.getEntryValues());
-				lemma.setMaalrValues(selected.getMaalrValues());
-				openModifyEditor(lemma);
-			}
 
 			private final SafeHtml nothing = new SafeHtmlBuilder().toSafeHtml();
 

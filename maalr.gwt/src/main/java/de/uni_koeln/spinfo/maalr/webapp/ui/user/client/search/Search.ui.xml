@@ -4,9 +4,6 @@
 	xmlns:r="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable"
 	xmlns:c="urn:import.de.uni_koeln.spinfo.maalr.webapp.ui.user.client.configsearch">
 
-	<ui:style>
-	</ui:style>
-
 	<b:FluidContainer>
 		<b:FluidRow>
 			<b:Column size="4">

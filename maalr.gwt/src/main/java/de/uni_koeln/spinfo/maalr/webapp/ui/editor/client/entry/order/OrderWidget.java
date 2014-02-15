@@ -41,7 +41,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.description.Escaper;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 public class OrderWidget extends Composite {
 	
@@ -71,7 +70,6 @@ public class OrderWidget extends Composite {
 	}
 	
 	private void initialize() {
-		Logger logger = Logger.getLogger(getClass());
 		selectionModel = new SingleSelectionModel<LemmaVersion>(new ProvidesKey<LemmaVersion>() {
 
 			@Override

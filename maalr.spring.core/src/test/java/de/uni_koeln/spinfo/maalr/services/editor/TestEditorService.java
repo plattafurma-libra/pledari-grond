@@ -44,7 +44,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.login.LoginManager;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.core.Dictionary;
-import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneConfiguration;
 import de.uni_koeln.spinfo.maalr.mongo.SpringBackend;

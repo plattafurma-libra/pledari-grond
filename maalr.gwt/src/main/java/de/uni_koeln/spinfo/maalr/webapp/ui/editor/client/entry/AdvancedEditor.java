@@ -329,7 +329,6 @@ public class AdvancedEditor {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				Logger logger = Logger.getLogger(getClass());
 				if (entry == null) {
 					LemmaVersion fromEditor = new LemmaVersion();
 					fromEditor.getEntryValues().putAll(lv.getEntryValues());

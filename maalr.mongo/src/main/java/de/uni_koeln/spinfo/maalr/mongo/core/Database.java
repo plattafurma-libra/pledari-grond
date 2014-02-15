@@ -83,12 +83,12 @@ import de.uni_koeln.spinfo.maalr.mongo.util.Validator;
 
 public class Database {
 
-	public static final String QUERY_VERSION_CREATOR = LemmaVersion.CREATOR;
-	public static final String QUERY_VERSION_ROLE = LemmaVersion.CREATOR_ROLE;
-	public static final String QUERY_VERSION_VERIFICATION = LemmaVersion.VERIFICATION;
-	public static final String QUERY_VERSION_IP = LemmaVersion.IP_ADDRESS;
-	public static final String QUERY_VERSION_TIMESTAMP = LemmaVersion.TIMESTAMP;
-	public static final String QUERY_VERSION_STATE = LemmaVersion.STATUS;
+	private static final String QUERY_VERSION_CREATOR = LemmaVersion.CREATOR;
+	private static final String QUERY_VERSION_ROLE = LemmaVersion.CREATOR_ROLE;
+	private static final String QUERY_VERSION_VERIFICATION = LemmaVersion.VERIFICATION;
+	private static final String QUERY_VERSION_IP = LemmaVersion.IP_ADDRESS;
+	private static final String QUERY_VERSION_TIMESTAMP = LemmaVersion.TIMESTAMP;
+	private static final String QUERY_VERSION_STATE = LemmaVersion.STATUS;
 	private static final String QUERY_VERSION_VERIFIER = LemmaVersion.VERIFIER;
 
 	private static Database instance;

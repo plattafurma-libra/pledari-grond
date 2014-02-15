@@ -49,7 +49,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntryList;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorMessages;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorService;

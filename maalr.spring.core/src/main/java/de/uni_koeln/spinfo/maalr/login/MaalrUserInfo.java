@@ -93,16 +93,6 @@ public class MaalrUserInfo extends BasicDBObject {
 	public void setTitle(String title) {
 		super.put(Constants.Users.TITLE, title);
 	}
-	
-	public void incrementUpVotes() {
-		// TODO: how to make thread safe? Create a user command queue?
-		super.put(Constants.Users.UPVOTES, getInt(Constants.Users.UPVOTES)+1);
-	}
-	
-	public void incrementDownVotes() {
-		// TODO: how to make thread safe? Create a user command queue?
-		super.put(Constants.Users.DOWNVOTES, getInt(Constants.Users.DOWNVOTES)+1);
-	}
 
 	public LightUserInfo toLightUser() {
 		LightUserInfo userInfo = new LightUserInfo();

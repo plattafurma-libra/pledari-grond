@@ -48,7 +48,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Status;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.dataprovider.SimplePagingDataProvider;
 

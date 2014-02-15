@@ -71,7 +71,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.SearchHelper;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorMessages;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorService;

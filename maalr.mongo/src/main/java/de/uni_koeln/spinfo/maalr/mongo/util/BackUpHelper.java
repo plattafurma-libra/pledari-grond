@@ -172,7 +172,7 @@ public class BackUpHelper {
 		return c.getTime();
 	}
 
-	class ScheduledBackUp extends TimerTask {
+	private class ScheduledBackUp extends TimerTask {
 
 		private File dir;
 		private StringBuilder fileName;

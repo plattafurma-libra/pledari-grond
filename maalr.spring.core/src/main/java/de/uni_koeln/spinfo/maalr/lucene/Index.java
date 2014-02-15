@@ -29,13 +29,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
-import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Constants.Roles;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
-import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.ExactMatchQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.core.Dictionary;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
@@ -93,24 +91,18 @@ public class Index {
 		return lemma;
 	}
 	
-	
-	
-	//@Secured({Roles.TRUSTED_IN_4, Roles.ADMIN_5})
 	public IndexStatistics getIndexStatistics() {
 		return dictionary.getIndexStatistics();
 	}
 
-	@Secured(Roles.ADMIN_5)
 	public void reloadIndex() throws NoIndexAvailableException {
 		dictionary.reloadIndex();
 	}
 
-	@Secured(Roles.ADMIN_5)
 	public void dropIndex() throws IndexException {
 		dictionary.dropIndex();
 	}
 
-	@Secured({Roles.TRUSTED_IN_4, Roles.ADMIN_5})
 	public void addToIndex(Iterator<LexEntry> iterator) throws NoDatabaseAvailableException, IndexException {
 		dictionary.addToIndex(iterator);
 	}

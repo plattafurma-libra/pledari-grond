@@ -42,10 +42,6 @@ public class Overlay implements Serializable {
 		return firstLanguage;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public String getEditor() {
 		return editor;
 	}

@@ -42,7 +42,7 @@ public class ITUserDB extends MongoTestHelper {
 		
 	@Before
 	public void beforeTest() throws Exception {
-		Authentication login = loginManager.login("admin", "admin");
+		loginManager.login("admin", "admin");
 		backend.deleteAllEntries();
 		loginManager.logout();
 	}

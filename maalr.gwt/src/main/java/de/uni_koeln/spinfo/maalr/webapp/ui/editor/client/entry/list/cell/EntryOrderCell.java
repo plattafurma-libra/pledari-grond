@@ -28,8 +28,6 @@ import com.google.gwt.uibinder.client.UiRenderer;
 
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
-import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorService;
-import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.wrapper.LemmaVersionCellWrapper;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.order.OrderPopup;
 
@@ -38,8 +36,6 @@ public class EntryOrderCell extends AbstractCell<LemmaVersionCellWrapper> {
 	
 	private static EntryListUiRenderer renderer = GWT.create(EntryListUiRenderer.class);
 	
-	private EditorServiceAsync service = GWT.create(EditorService.class);
-
 	private String lemmaAKey;
 
 	private String lemmaBKey;

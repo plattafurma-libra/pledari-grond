@@ -75,24 +75,15 @@ public class Environment extends WebApplicationObjectSupport {
 		logger.info("Initializing " + appProperties.getAppName() + " " + appProperties.getAppVersion() + " " + appProperties.getAppBuild());
 		logger.info("**********************************************************************************");
 	}
-	
-
 
 	public LuceneConfiguration getLuceneConfig() {
 		return luceneConfig;
 	}
-	
-	
 
 	public void setLuceneConfig(LuceneConfiguration luceneConfig) {
 		this.luceneConfig = luceneConfig;
 	}
 
-
-	/**
-	 * @deprecated
-	 * @return
-	 */
 	public File getLexFile() {
 		return  new File(configuration.getLexFile());
 	}

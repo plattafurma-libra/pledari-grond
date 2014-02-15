@@ -61,10 +61,6 @@ public class ITSpringMongoBackend extends MongoTestHelper {
 
 	@Autowired
 	private SpringBackend backend;
-	
-
-	private static Logger logger = LoggerFactory.getLogger(ITSpringMongoBackend.class);
-	
 
 	@Before
 	public void beforeTest() throws Exception {

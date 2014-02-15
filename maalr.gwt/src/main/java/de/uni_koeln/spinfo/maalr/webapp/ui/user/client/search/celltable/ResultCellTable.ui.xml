@@ -4,18 +4,8 @@
 	xmlns:p="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.common.client"
 	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 
-	<ui:style>
-		.result_panel {
-		}
-
-		.result_table {
-		}	
-
-	</ui:style>
-
 	<g:VerticalPanel width="100%">
 		<g:Cell>
-			<!-- <g:HTML ui:field="label"></g:HTML> -->
 			<b:FluidContainer>
 				<b:FluidRow>
 					<b:Column size="12" ui:field="resultLabelCell">
@@ -24,7 +14,7 @@
 			</b:FluidContainer>
 		</g:Cell>
 		<g:Cell horizontalAlignment="ALIGN_CENTER" width="100%">
-			<g:VerticalPanel styleName="{style.result_panel}">
+			<g:VerticalPanel>
 				<g:Cell width="100%">
 					<b:CellTable ui:field='cellTable' width="100%"/>
 				</g:Cell>

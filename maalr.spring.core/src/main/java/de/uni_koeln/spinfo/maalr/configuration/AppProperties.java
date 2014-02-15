@@ -21,10 +21,7 @@ public class AppProperties implements Serializable {
 	
 	private static final long serialVersionUID = -3609707939921531733L;
 
-	public static final String SESSION_KEY = "appProperties";
-	
 	private String appName, appVersion, appBuild;
-
 	
 	public String getAppName() {
 		return appName;

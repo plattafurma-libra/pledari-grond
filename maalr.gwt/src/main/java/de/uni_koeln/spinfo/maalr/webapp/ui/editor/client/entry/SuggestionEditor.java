@@ -64,7 +64,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLo
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorMessages;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorService;
@@ -357,7 +356,6 @@ public class SuggestionEditor extends Composite {
 	}
 
 	private void initialize(ListFilter filter, String listHeader) {
-		Logger logger = Logger.getLogger(getClass());
 		this.listFilter = filter;
 		initWidget(uiBinder.createAndBindUi(SuggestionEditor.this));
 		export.addClickHandler(new ClickHandler() {

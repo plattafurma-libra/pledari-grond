@@ -87,15 +87,6 @@ public class Configuration {
 		}
 	}
 	
-	private static UiConfiguration getConfiguration(String path) throws JAXBException, IOException {
-		JAXBContext ctx = JAXBContext.newInstance(UiConfiguration.class);
-		Unmarshaller unmarshaller = ctx.createUnmarshaller();
-		InputStreamReader reader = new InputStreamReader(new FileInputStream(new File(path)), "UTF-8");
-		UiConfiguration config = (UiConfiguration) unmarshaller.unmarshal(reader);
-		reader.close();
-		return config;
-	}
-	
 	public synchronized static Configuration getInstance() {
 		if(instance == null) {
 			try {
@@ -111,9 +102,6 @@ public class Configuration {
 		return properties.getProperty(LUCENE_DIR);
 	}
 
-	/**
-	 * @deprecated
-	 */
 	public String getLexFile() {
 		return properties.getProperty(LEX_FILE);
 	}
