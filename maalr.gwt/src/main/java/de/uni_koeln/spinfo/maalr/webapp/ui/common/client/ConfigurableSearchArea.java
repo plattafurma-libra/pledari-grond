@@ -68,6 +68,9 @@ import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiFieldType;
@@ -78,24 +81,39 @@ import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
 
+/**
+ * This class renders a maalr search field and is responsible for sending and receiving
+ * queries. It is created dynamically based on the {@link UiConfiguration}s defined
+ * in the search configuration.
+ * 
+ * @author sschwieb
+ *
+ */
 public class ConfigurableSearchArea extends Form {
 	
 	private Button submit;
 	private TreeMap<String, String> currentValues = new TreeMap<String, String>();
 	private Map<String, Widget> elementsById = new HashMap<String, Widget>();
 	private Map<String, String> defaultsById = new HashMap<String, String>();
-	
 	private UiConfiguration configuration;
-	
 	private UiConfiguration defaultConfiguration;
 	private UiConfiguration extendedConfiguration;
-	
 	private SimplePanel optionsPanel;
-	
 	private static final int QUERY_SCHEDULER_DELAY = 150;
-	
 	private final HistoryTimer historyTimer = new HistoryTimer();
+	private SearchServiceAsync service;
+	private IResultDisplay resultDisplay;
+	private Button extended;
+	private TextBox focusWidget;
+	private boolean withHistory;
+	private String historyPrefix;
+	private Map<String, String> oracleHistory = new HashMap<String, String>();
 	
+	/**
+	 * This timer is responsible of updating the browser's location
+	 * bar after a delayed/'live' query has been executed.
+	 *
+	 */
 	private class HistoryTimer extends Timer {
 
 		private MaalrQuery maalrQuery;
@@ -121,6 +139,7 @@ public class ConfigurableSearchArea extends Form {
 		
 	}
 	
+	
 	private final Timer feedbackTimer = new Timer() {
 		@Override
 		public void run() {
@@ -134,6 +153,11 @@ public class ConfigurableSearchArea extends Form {
 		return maalrQuery;
 	}
 	
+	/**
+	 * This timer is responsible of running delayed queries
+	 * when a user modifies a text field.
+	 * 
+	 */
 	private final Timer queryTimer = new Timer() {
 
 		@Override
@@ -141,10 +165,6 @@ public class ConfigurableSearchArea extends Form {
 			final MaalrQuery maalrQuery = new MaalrQuery();
 			maalrQuery.setValues(removeNullValues(currentValues));
 			SearchHelper.setLastQuery(maalrQuery);
-//			String url = maalrQuery.toURL();
-//			if (historyContains(url)) {
-//				return;
-//			}
 			showSearchFeedback();
 			service.search(maalrQuery, new AsyncCallback<QueryResult>() {
 
@@ -163,6 +183,12 @@ public class ConfigurableSearchArea extends Form {
 		}
 	};
 	
+	/**
+	 * Helper method to remove all key-value pairs from a map where the 
+	 * value is <code>null</code>.
+	 * @param input
+	 * @return
+	 */
 	private TreeMap<String, String> removeNullValues(Map<String,String> input) {
 		TreeMap<String, String> copy = new TreeMap<String, String>();
 		Set<Entry<String, String>> entries = currentValues.entrySet();
@@ -174,13 +200,6 @@ public class ConfigurableSearchArea extends Form {
 		return copy;
 	}
 	
-	private SearchServiceAsync service;
-	private IResultDisplay resultDisplay;
-	private Button extended;
-	private TextBox focusWidget;
-	private boolean withHistory;
-	private String historyPrefix;
-
 	public ConfigurableSearchArea(IResultDisplay resultDisplay, boolean useEditorUi, boolean withHistory, String historyPrefix) {
 		this.resultDisplay = resultDisplay;
 		this.withHistory = withHistory;
@@ -230,6 +249,10 @@ public class ConfigurableSearchArea extends Form {
 		}
 	}
 	
+	/**
+	 * Set the search area to either extended/advanced or default/simple mode. 
+	 * @param extended
+	 */
 	public void setExtended(boolean extended) {
 		configuration = extended ? extendedConfiguration : defaultConfiguration;
 		this.extended.setText(extended? configuration.getLessLabel() : configuration.getMoreLabel());
@@ -333,8 +356,6 @@ public class ConfigurableSearchArea extends Form {
 		}
 		return options;
 	}
-	
-	private Map<String, String> oracleHistory = new HashMap<String, String>();
 	
 	private Widget buildOracle(final UiField field) {
 		MultiWordSuggestOracle oracle = new MultiWordSuggestOracle() {
@@ -475,9 +496,20 @@ public class ConfigurableSearchArea extends Form {
 		return box;
 	}
 
+	/**
+	 * Creates a combo box for the given field. Depending on the field,
+	 * the list of selectable items is generated differently: if it refers to a
+	 * {@link ColumnSelector} or a {@link QueryBuilder}, the combo box
+	 * will display the (translated) options. If it refers to a {@link QueryKey},
+	 * the list will be populated by performing a query on the database,
+	 * returning distinct values for the referenced column(s).
+	 * @param field
+	 * @return
+	 */
 	private Widget buildComboBox(final UiField field) {
 		final ListBox box = new ListBox();
 		ArrayList<String> values = field.getValues();
+		// 
 		if(values != null) {
 			for(int i = 0; i < values.size(); i++) {
 				String value = values.get(i);
@@ -490,20 +522,50 @@ public class ConfigurableSearchArea extends Form {
 				box.addItem(label, value);
 			}
 			box.setSelectedValue(field.getInitialValue());
-		}
-		box.addChangeHandler(new ChangeHandler() {
-			
-			@Override
-			public void onChange(ChangeEvent arg0) {
-				String value = field.getValues().get(box.getSelectedIndex());
-				if(value == null) {
-					currentValues.remove(field.getId());
-				} else {
-					currentValues.put(field.getId(), value);
+			box.addChangeHandler(new ChangeHandler() {
+				
+				@Override
+				public void onChange(ChangeEvent arg0) {
+					String value = box.getValue();
+					if(value == null) {
+						currentValues.remove(field.getId());
+					} else {
+						currentValues.put(field.getId(), value);
+					}
+					fireUpdate();
 				}
-				fireUpdate();
-			}
-		});
+			});
+		} else {
+			box.addItem("-", (String) null);
+			service.getSuggestions(field.getId(), "", 120, new AsyncCallback<List<String>>() {
+
+				@Override
+				public void onFailure(Throwable arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onSuccess(List<String> values) {
+					for (String value : values) {
+						box.addItem(value, value);
+					}
+				}
+				
+			});
+			box.addChangeHandler(new ChangeHandler() {
+				
+				@Override
+				public void onChange(ChangeEvent arg0) {
+					if(box.getSelectedIndex() == 0) {
+						currentValues.remove(field.getId());
+					} else {
+						currentValues.put(field.getId(), box.getValue());						
+					}
+					fireUpdate();
+				}
+			});
+		}
 		return box;
 	}
 
@@ -523,7 +585,6 @@ public class ConfigurableSearchArea extends Form {
 				fireUpdate();
 			}
 		});
-		// Sets style name when 
 		box.getElement().setClassName("gwt-checkbox-maalr");
 		return box;
 	}

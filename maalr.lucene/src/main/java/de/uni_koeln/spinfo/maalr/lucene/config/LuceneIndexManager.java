@@ -526,7 +526,7 @@ public class LuceneIndexManager {
 		ArrayList<ValueSpecification> values = new ArrayList<ValueSpecification>(ld.getValues(UseCase.FIELDS_FOR_ADVANCED_EDITOR));
 		values.addAll(ld.getValues(UseCase.FIELDS_FOR_SIMPLE_EDITOR));
 		for (ValueSpecification valueSpecification : values) {
-			if(valueSpecification.getType() == ValueType.ORACLE) {
+			if(valueSpecification.getType() == ValueType.ORACLE || valueSpecification.getType() == ValueType.ENUM) {
 				DefaultQueryBuilder builder = new DefaultQueryBuilder();
 				builder.setColumn(valueSpecification.getInternalName());
 				oracleBuilder.put(valueSpecification.getInternalName(), builder);
