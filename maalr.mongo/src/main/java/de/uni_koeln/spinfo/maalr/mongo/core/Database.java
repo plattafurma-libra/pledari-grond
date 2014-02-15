@@ -519,16 +519,6 @@ public class Database {
 		stats.addDBProperty("File Size",
 				nf.format(dbStats.getLong("fileSize") / (1024 * 1024)) + " MB");
 
-		CommandResult collectionStats = entryCollection.getStats();
-		// Stats: { "serverUsed" : "localhost/127.0.0.1:27017" , "ns" :
-		// "db.entries" ,
-		// "count" : 20000 , "size" : 6024212 , "avgObjSize" : 301.2106 ,
-		// "storageSize" : 6983680 ,
-		// "numExtents" : 5 , "nindexes" : 1 , "lastExtentSize" : 5242880 ,
-		// "paddingFactor" : 1.0 ,
-		// "flags" : 1 , "totalIndexSize" : 654080 , "indexSizes" : { "_id_" :
-		// 654080} , "ok" : 1.0}
-
 		BasicDBObject query;
 		BasicDBList attributes;
 		query = new BasicDBObject();
@@ -708,37 +698,4 @@ public class Database {
 		}
 	}
 
-	// public String getBackupInfo() {
-	// DBCursor cursor = backupCollection.find();
-	// Iterator<DBObject> iterator = cursor.iterator();
-	// StringBuilder sb = new StringBuilder();
-	// while (iterator.hasNext()) {
-	// DBObject o = iterator.next();
-	// String status = (String) o.get(BackUpHelper.STATUS);
-	// String file = (String) o.get(BackUpHelper.FILE);
-	// String date = (String) o.get(BackUpHelper.DATE);
-	// sb.append("Backup[STATUS=" + status + ", FILE=" + file + ", DATE="
-	// + date + "] " + System.getProperty("line.separator"));
-	// }
-	// return sb.toString();
-	// }
-	//
-	// public void setBackupInfo(BackupStatus status, String absolutePath,
-	// Date date) {
-	// Map<String, String> map = new HashMap<String, String>();
-	// map.put(BackUpHelper.STATUS, status.toString());
-	// map.put(BackUpHelper.FILE, absolutePath);
-	// map.put(BackUpHelper.DATE, date.toString());
-	// WriteResult result = backupCollection.save(new BasicDBObject(map));
-	// operationResult(result);
-	// logger.info("BACK UP INFO SET: " + "STATUS=" + status + ", FILE="
-	// + absolutePath + ", DATE=" + date);
-	// }
-	//
-	// public void deleteBackupInfo(String absolutePath) {
-	// WriteResult result = backupCollection.remove(new BasicDBObject(
-	// BackUpHelper.FILE, absolutePath));
-	// operationResult(result);
-	// logger.info("BACK UP INFO DELETED FOR: " + "FILE=" + absolutePath);
-	// }
 }
