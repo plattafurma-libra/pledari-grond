@@ -1,88 +1,89 @@
-<%@page
-	import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt'%>
-
-<%@page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@page import="java.util.List"%>
-<%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@page
-	import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%-- Header included here --%>
-<jsp:include page="/jsp/modules/htmlhead.jsp" />
-<body>
-	<div id="top">
-		<jsp:include page="/jsp/modules/header_small.jsp" />
-	</div>
-	<div id="content">
-		<div class="container well">
-			<h1>Login</h1>
-			<p>Try editor/editor or admin/admin.
-			<p>
+
+<%@	page import="java.util.ArrayList"%>
+<%@	page import="java.util.List"%>
+
+<%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt'%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
+
+<%-- HTML HEADER --%>
+<jsp:include page="/jspstatic/htmlhead.jsp" />
+
+	<body>
+		
+		<%-- NAVIGATION --%>
+		<jsp:include page="/jspstatic/header_small.jsp" />
+		
+		<%-- FOOTER --%>
+		<jsp:include page="/jspstatic/footer.jsp" />
+		
+		<div id="content">
+		
+			<%@ include file="/jspstatic/language_widget.jsp"%>
+			
+			<%-- INTERNAL SIGN IN --%>
+			<div class="container well" id="login_container">
+				<h1><fmt:message key="maalr.login.header" /></h1>
 				<c:if test="${not empty param.login_error}">
-					<font color="red"> Your login attempt was not successful,
-						try again.<br />
-					</font>
+					<p id="error_font"> <fmt:message key="maalr.login.error" /><br /></p>
 				</c:if>
-			<form name="f" action="<c:url value='j_spring_security_check'/>"
-				method="POST">
-				<table>
-					<tr>
-						<td>User:</td>
-						<td><input id="uname" type='text' name='j_username'
-							value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>' />
-						</td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input id="upwd" type='password' name='j_password'></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox"
-							name="_spring_security_remember_me"></td>
-						<td>Don't ask for my password for two weeks</td>
-					</tr>
-
-					<tr>
-						<td colspan='2'><input name="submit" type="submit"
-							id="internal_login"></td>
-					</tr>
-				</table>
-			</form>
-
-			<table>
-				<tr>
-					<td>
-						<form action="<c:url value='j_spring_openid_security_check'/>"
-							method="post">
-							<input name="openid_identifier" type="hidden"
-								value="https://www.google.com/accounts/o8/id" />
-							<div style="height: 50px">
-								<input type="image" src="/assets/img/login/google.png"
-									alt="Sign in with Google">
-							</div>
-							<input type="submit" value="Sign in with Google" />
+				<form name="f" action="<c:url value='j_spring_security_check'/>" method="POST">
+					<div id="login_input">
+						<div class="input_wrapper">
+							<label for="uname"><fmt:message key="maalr.login.name"/></label>
+							<input id="uname" type='text' name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>' />
+						</div>
+						<div class="input_wrapper">
+							<label for="upwd"><fmt:message key="maalr.login.pwd"/></label>
+							<input id="upwd" type='password' name='j_password'>
+						</div>
+						<div class="button_wrapper">
+							<input name="submit" type="submit" value=<fmt:message key="maalr.login.sendButton"/> id="internal_login">
+						</div>
+					</div>
+				</form>
+				
+				<%-- OPEN-ID SIGN IN --%>
+				<div id="openid_login">
+					<div class="input_wrapper">
+						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
+							<input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id" />
+							<button type="submit" value="${signInGoogle}" id="google_signin">Sign in with Google</button>
 						</form>
-					</td>
-					<td>
-						<form action="<c:url value='j_spring_openid_security_check'/>"
-							method="post">
-							<input name="openid_identifier" type="hidden"
-								value="https://me.yahoo.com/" />
-							<div style="height: 50px">
-								<input type="image" src="/assets/img/login/yahoo.png"
-									alt="Sign in with Yahoo">
-							</div>
-							<input type="submit" value="Sign in with Yahoo" />
+					</div>
+					<div class="input_wrapper">
+						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
+							<input name="openid_identifier" type="hidden" value="https://me.yahoo.com/" />
+							<button type="submit" value="${signInYahoo}" id="yahoo_signin">Sign in with Yahoo</button>
 						</form>
-					</td>
-				</tr>
-			</table>
+					</div>
+					<div class="input_wrapper">
+						<form action="<c:url value="/signin/facebook" />" method="POST">
+							<input type="hidden" name="scope" value="email,publish_stream,offline_access" />
+							<button type="submit" id="facebook_signin">Sign in with Facebook</button>
+						</form>
+					</div>
+					<div class="input_wrapper">
+						<form action="<c:url value="/signin/twitter" />" method="POST">
+							<button type="submit" id="twitter_signin">Sign in with Twitter</button>
+						</form>
+					</div>
+					<div class="input_wrapper">
+						<button type="submit" id="persona_signin">Sign in with Persona</button>
+					</div>
+				</div>
+				
+				<!-- login info text  -->
+				<div id="maalr_login_info">
+					<span class="glyphicon icon-info-sign"></span>
+					<p><fmt:message key="maalr.login.welcome" /></p>
+				</div>
+				
+			</div>
 		</div>
-	</div>
-</body>
-</html>
 
+	</body>
+</html>

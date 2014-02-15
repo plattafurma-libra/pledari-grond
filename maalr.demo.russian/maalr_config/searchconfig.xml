@@ -20,45 +20,71 @@
 	<queryKeys>
 		<queryKey id="searchPhrase" />
 		<queryKey id="grammar" />
+		<queryKey id="aspect" />
 	</queryKeys>
 
 	<!-- Each 'fieldChoice' represents a combo box containing the defined options -->
 	<columnSelectors>
 		<columnSelector id="language">
-			<options id="german">
-				<fields>
-					<field reference="DLemma" />
-				</fields>
-			</options>
-			<options id="russian">
-				<fields>
-					<field reference="RLemma" />
-				</fields>
-			</options>
-			<options id="both" default="true">
-				<fields>
-					<field reference="DLemma" />
-					<field reference="RLemma" />
-				</fields>
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DLemma" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RLemma" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DLemma" />
+						<column reference="RLemma" />
+					</columns>
+				</option>
 			</options>
 		</columnSelector>
 
 		<columnSelector id="gramChoice" depends="language">
-			<options id="german">
-				<fields>
-					<field reference="DType" />
-				</fields>
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DType" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RType" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DType" />
+						<column reference="RType" />
+					</columns>
+				</option>
 			</options>
-			<options id="russian">
-				<fields>
-					<field reference="RType" />
-				</fields>
-			</options>
-			<options id="both" default="true">
-				<fields>
-					<field reference="DType" />
-					<field reference="RType" />
-				</fields>
+		</columnSelector>
+		
+		<columnSelector id="aspectSelector" depends="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DAspect" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RAspect" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DAspect" />
+						<column reference="RAspect" />
+					</columns>
+				</option>
 			</options>
 		</columnSelector>
 	</columnSelectors>
@@ -72,11 +98,17 @@
 					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
 			</options>
 		</queryBuilder>
+		<queryBuilder id="aspectBuilder" queryKeyId="aspect"
+			columnSelectorId="aspectSelector">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
+			</options>
+		</queryBuilder>
 		<queryBuilder id="method" queryKeyId="searchPhrase"
 			columnSelectorId="language">
 			<options>
 				<option id="normal" default="true" preset="DEFAULT" />
-				<!-- <option id="normal" default="true" builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder"/> -->
 				<option id="intern" preset="INFIX" />
 				<option id="prefix" preset="PREFIX" />
 				<option id="suffix" preset="SUFFIX" />
@@ -113,6 +145,7 @@
 					<field column="DGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
 					<field column="DSingular" format="[sing: {0}]"></field>
 					<field column="DPlural" format="[pl: {0}]"></field>
+					<field column="DAspect" format="(Aspect: {0})"></field>
 				</fields>
 			</results>
 		</language>
@@ -141,6 +174,7 @@
 					<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
 					<field column="RSingular" format="[sing: {0}]"></field>
 					<field column="RPlural" format="[pl: {0}]"></field>
+					<field column="RAspect" format="(Aspect: {0})"></field>
 				</fields>
 			</results>
 		</language>
@@ -154,6 +188,8 @@
 			<uifield id="searchPhrase" type="TEXT" submit="true" />
 			<uifield id="language" type="RADIO" />
 			<uifield id="method" type="RADIO" />
+			<uifield id="grammar" type="COMBO" />
+			<uifield id="aspect" type="ORACLE" />
 			<uifield id="highlight" buildin="true" type="CHECKBOX" />
 		</advancedFrontendQueryFields>
 		<defaultBackendQueryFields>
