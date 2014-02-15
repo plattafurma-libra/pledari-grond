@@ -88,8 +88,10 @@ public class User implements EntryPoint {
 				}
 			}
 		});
-		Element element = DOM.getElementById("languages");
-		updateLanguageLinks(element);
+		Element element = DOM.getElementById("languages-widget");
+		if(element != null) {
+			updateLanguageLinks(element);
+		}
 	}
 
 	private void updateLanguageLinks(Element element) {
