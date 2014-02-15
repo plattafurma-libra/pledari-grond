@@ -15,6 +15,8 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general;
 
+import com.github.gwtbootstrap.client.ui.Column;
+import com.github.gwtbootstrap.client.ui.Container;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.RepeatingCommand;
@@ -74,34 +76,62 @@ public class DbManager extends Composite {
 	
 	private BackendServiceAsync service;
 	
+	@UiField
+	Column chartsColumn;
+	
+	@UiField
+	Column settingsColumn;
+	
+	@UiField
+	Container container;
+	
 	public DbManager() {
 		try {
 			initWidget(uiBinder.createAndBindUi(this));
-			helpBox.setHelpText("This is a dangerous area and currently work in progress.");
-			initVisualization();
+			helpBox.setHelpText("Backup or import a dictionary. Note that you cannot undo or cancel any operation.");
 			service = GWT.create(BackendService.class);
+			initVisualization();
 		} catch (Exception e) {
 			Window.alert("Failed to init db mgr: " + e);
 		}
 	}
 	
 	private void initVisualization() {
-		 // Create a callback to be called when the visualization API
-	    // has been loaded.
-	    Runnable onLoadCallback = new Runnable() {
-	      public void run() {
-	    	 initializeCharts();
-	      }
+		service.getSystemSummary(new AsyncCallback<SystemSummary>() {
 
-	    };
+			@Override
+			public void onFailure(Throwable caught) {
+				hideSystemSummary();
+			}
 
-	    // Load the visualization api, passing the onLoadCallback to be called
-	    // when loading is done.
-	    VisualizationUtils.loadVisualizationApi(onLoadCallback, PieChart.PACKAGE, Gauge.PACKAGE, BarChart.PACKAGE);
+			@Override
+			public void onSuccess(SystemSummary result) {
+				if(result == null) {
+					hideSystemSummary();
+				} else {
+					 // Create a callback to be called when the visualization API
+				    // has been loaded.
+				    Runnable onLoadCallback = new Runnable() {
+				      public void run() {
+				    	 initializeCharts();
+				      }
 
+				    };
+				    // Load the visualization api, passing the onLoadCallback to be called
+				    // when loading is done.
+				    VisualizationUtils.loadVisualizationApi(onLoadCallback, PieChart.PACKAGE, Gauge.PACKAGE, BarChart.PACKAGE);
+				}
+			}
+
+			private void hideSystemSummary() {
+				chartsColumn.setVisible(false);
+				settingsColumn.setSize(12);
+			}
+		});
 	}
 	
 	private void initializeCharts() {
+		container.setWidth("99%");
 		initializeCpuCharts();
 		initializeMemCharts();
 		initializeNetCharts();

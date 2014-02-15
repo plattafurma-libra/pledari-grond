@@ -47,14 +47,12 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
-		<!-- To get and display server-side statistics -->
-		<!-- 
-		<dependency>
+		<!-- Enable this dependency to get and display server-side statistics -->
+		<!-- <dependency>
 			<groupId>de.uni_koeln.spinfo.maalr</groupId>
 			<artifactId>sigar</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		 -->
+		</dependency> -->
 		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
