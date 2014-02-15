@@ -120,6 +120,22 @@ private Dictionary index;
 		validateResult(found, expected);
 	}
 	
+	@Test
+	public void testAlphabeticalIndex() throws NoIndexAvailableException, BrokenIndexException, InvalidQueryException {
+		QueryResult result = index.getAllStartingWith("german", "h", 0);
+		Set<String> found = getStrings("German", result);
+		String[] expected = new String[] {"heimwärts", "hausen", "Homer", "Haushalt", "Haus/Häuser", "Home-Run"};
+		validateResult(found, expected);
+	}
+	
+	@Test
+	public void testExactQuery() throws NoIndexAvailableException, BrokenIndexException, InvalidQueryException {
+		QueryResult result = index.queryExact("haus", true);
+		Set<String> found = getStrings("German", result);
+		String[] expected = new String[] {"Haus"};
+		validateResult(found, expected);
+	}
+	
 	
 	private Set<String> getStrings(String key, QueryResult result) {
 		HashSet<String> toReturn = new HashSet<String>();
