@@ -40,6 +40,7 @@ public class IndexedColumn {
 	
 	private boolean analyzed;
 	
+	@XmlAttribute(name="type", required=false)
 	private MaalrFieldType type;
 	
 	private boolean whitespaceAnalyzer;

@@ -15,8 +15,36 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.common.server.searchconfig;
 
+/**
+ * Defines the way an {@link IndexedColumn} is mapped onto Lucene fields.
+ * TEXT, STRING and INTEGER correspond to TextField, StringField and 
+ * IntField, whereas CSV is a customized option to generate multiple
+ * StringFields.
+ * 
+ * @author sschwieb
+ *
+ */
 public enum MaalrFieldType {
 	
-	TEXT, STRING, INTEGER, CSV;
+	/**
+	 * A field that is indexed and tokenized, without term vectors. 
+	 */
+	TEXT, 
+	
+	/**
+	 * A field that is indexed but not tokenized: the entire
+	 * String value is indexed as a single token.
+	 */
+	STRING, 
+	
+	/**
+	 * Field that indexes <code>int</code> values for efficient range filtering and sorting.
+	 */
+	INTEGER, 
+	
+	/**
+	 * Multiple fields of type STRING, separated by commas.
+	 */
+	CSV;
 
 }
