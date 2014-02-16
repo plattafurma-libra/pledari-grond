@@ -113,8 +113,7 @@ public class Database {
 		long entries = entryCollection.count();
 		logger.info("Connected to entries-collection containing " + entries
 				+ " items.");
-		// FIXME: method below commented out for testing purposes 
-		//createIndex();
+		createIndex();
 	}
 
 	private void createIndex() {
