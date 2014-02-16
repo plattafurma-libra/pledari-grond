@@ -15,6 +15,7 @@ function injectQuery() {
 	 var autoQuery = maalr_queryDiv.getAttribute("data-autoquery");
 	 var embedCss = maalr_queryDiv.getAttribute("data-embedcss");
 	 var source = maalr_queryDiv.getAttribute("data-source");
+	 
 	 maalr_max = maalr_queryDiv.getAttribute("data-pagesize");
 	 if(maalr_max == null || maalr_max < 1 || maalr_max > 20) {
 			maalr_max = 5;
@@ -87,6 +88,19 @@ function injectQuery() {
 		 maalr_queryDiv.appendChild(footer);
 	 }
 	 qForm.addEventListener('submit', queryMaalr, false);
+	 var maalr_queryLink = document.getElementById("maalr_query_link");
+	 if(maalr_queryLink != null) {
+		 maalr_queryLink.onclick = function(evt) {
+			 var phrase = maalr_input.value;
+			 if(phrase.length != 0) {
+				 if(evt != null) {
+					 evt.preventDefault();
+				 }
+				 var domain = maalr_queryDiv.getAttribute("data-source");
+				 window.location = domain + '/translate.html#searchPhrase=' + phrase;
+			 }
+			}
+	 }
 }
 
 function queryMaalr(evt) {
@@ -104,7 +118,7 @@ function queryMaalr(evt) {
 	}
 	var script = document.createElement('script');
 	var locale = document.getElementById("maalr_query_div").getAttribute("data-locale");
-	script.src = domain + "/json?pageNr=1&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
+	script.src = domain + "/json?pageNr=0&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
 	script.setAttribute("id","maalr_reply");
 	document.head.appendChild(script);
 }
