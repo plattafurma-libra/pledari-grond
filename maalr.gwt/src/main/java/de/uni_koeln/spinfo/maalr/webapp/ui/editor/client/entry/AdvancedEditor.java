@@ -274,9 +274,6 @@ public class AdvancedEditor {
 					Button sendButton = new Button(constants.reply());
 					sendButton.getElement().getStyle().setMarginLeft(10, Unit.PX);
 					sendButton.addClickHandler(new ClickHandler() {
-
-						
-						//FIXME: this is not generic at all - remove pg-specific parts!
 						
 						@Override
 						public void onClick(ClickEvent event) {
@@ -285,7 +282,6 @@ public class AdvancedEditor {
 								@Override
 								public void onFailure(Throwable caught) {
 									// TODO Auto-generated method stub
-									
 								}
 
 								@Override
