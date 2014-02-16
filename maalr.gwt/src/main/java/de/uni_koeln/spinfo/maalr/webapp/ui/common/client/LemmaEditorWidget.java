@@ -52,6 +52,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueSpecification;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueType;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueValidator;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
@@ -181,14 +182,14 @@ public class LemmaEditorWidget extends SimplePanel {
 		}
 		setWidget(base);
 		final CellPanel finalBase = base;
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
 			}
 
 			@Override
-			public void onSuccess(Map<String, String> translations) {
+			public void onSuccess(TranslationMap translations) {
 				langA = createFields(description, true, useCase, columns, showLanguageHeader, translations);
 				langB = createFields(description, false, useCase, columns, showLanguageHeader, translations);
 				finalBase.add(langA);
@@ -199,7 +200,7 @@ public class LemmaEditorWidget extends SimplePanel {
 		setStyleName("lemma-editor", true);
 	}
 
-	private HorizontalPanel createFields(LemmaDescription description, boolean firstLanguage, UseCase useCase, int columns,  boolean displayHeader, Map<String, String> translation) {
+	private HorizontalPanel createFields(LemmaDescription description, boolean firstLanguage, UseCase useCase, int columns,  boolean displayHeader, TranslationMap translation) {
 		String languageLabel = description.getLanguageName(firstLanguage);
 		ArrayList<String> fieldIds = description.getFields(useCase, firstLanguage); 
 		HorizontalPanel panel = new HorizontalPanel();

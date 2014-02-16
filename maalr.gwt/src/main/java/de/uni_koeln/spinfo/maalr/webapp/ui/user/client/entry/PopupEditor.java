@@ -35,6 +35,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AntlrEditorWidget;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonServiceAsync;
@@ -50,7 +51,7 @@ public class PopupEditor extends VerticalPanel {
 	private HelpInline commentFeedback;
 	private ControlGroup commentGroup;
 
-	public PopupEditor(String header, String sub, String description, final LemmaEditorWidget content, Map<String, String> translation, boolean withComment, boolean withEmail, Button...buttons) {
+	public PopupEditor(String header, String sub, String description, final LemmaEditorWidget content, TranslationMap translation, boolean withComment, boolean withEmail, Button...buttons) {
 		this.content = content;
 		PageHeader ph = new PageHeader();
 		ph.setText(header);

@@ -53,6 +53,7 @@ import com.google.gwt.view.client.ProvidesKey;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
@@ -145,7 +146,7 @@ public class ResultCellTable extends Composite {
 		resultLabelCell.add(label);
 	}
 
-	private void addOptionsColumn(Map<String, String> translationMap) {
+	private void addOptionsColumn(TranslationMap translationMap) {
 		final ButtonCell cell = new ButtonCell(IconType.EDIT,
 				ButtonType.DEFAULT, ButtonSize.MINI) {
 
@@ -215,7 +216,7 @@ public class ResultCellTable extends Composite {
 		});
 	}
 
-	private void addOverlayColumn(final String overlayField, final Map<String, String> translationMap) {
+	private void addOverlayColumn(final String overlayField, final TranslationMap translationMap) {
 		final SafeHtmlCell overlayCell = new SafeHtmlCell() {
 			final String closeButton = translationMap.get("maalr.verbOverlayPopup.closeButton");
 
@@ -361,7 +362,7 @@ public class ResultCellTable extends Composite {
 		} else {
 			cellTable.setVisible(false);
 			pager.setVisible(false);
-			LocalizedStrings.afterLoad(new AsyncCallback<Map<String, String>>() {
+			LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
@@ -369,7 +370,7 @@ public class ResultCellTable extends Composite {
 				}
 
 				@Override
-				public void onSuccess(Map<String, String> result) {
+				public void onSuccess(TranslationMap result) {
 					String info = result.get("maalr.query.nothing_found");
 					if (info != null) {
 						if(MaalrQueryFormatter.getQueryLabel(query) == null){
@@ -399,7 +400,7 @@ public class ResultCellTable extends Composite {
 			suggest.setVisible(visible);
 	}
 	
-	private void initSuggestButton(Map<String, String> result) {
+	private void initSuggestButton(TranslationMap result) {
 		suggest = new Button(result.get("suggest.button"), IconType.INFO_SIGN);
 		suggest.addClickHandler(new ClickHandler() {
 			@Override
@@ -416,7 +417,7 @@ public class ResultCellTable extends Composite {
 	}
 
 	private void addColumns(final MaalrQuery maalrQuery) {
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String, String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -424,7 +425,7 @@ public class ResultCellTable extends Composite {
 			}
 
 			@Override
-			public void onSuccess(Map<String, String> translationMap) {
+			public void onSuccess(TranslationMap translationMap) {
 				String value = maalrQuery.getValue("language");
 				boolean defaultOrder = true;
 				if (description.getLanguageName(false).equals(value)) {
@@ -451,10 +452,10 @@ public class ResultCellTable extends Composite {
 		final int first = a;
 		final int last = b;
 		if (formatted != null) {
-			LocalizedStrings.afterLoad(new AsyncCallback<Map<String, String>>() {
+			LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 				@Override
-				public void onSuccess(Map<String, String> translation) {
+				public void onSuccess(TranslationMap translation) {
 					String toShow = translation.get("maalr.query.results");
 					toShow = toShow.replaceAll("\\{0\\}", "");
 					toShow = toShow.replaceAll("\\{1\\}", first + "");

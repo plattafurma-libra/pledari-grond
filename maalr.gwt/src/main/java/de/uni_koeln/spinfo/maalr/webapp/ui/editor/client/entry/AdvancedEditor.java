@@ -69,6 +69,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.OverlayOption;
 import de.uni_koeln.spinfo.maalr.common.shared.OverlayPresetChooser;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.LemmaEditorWidget;
@@ -131,14 +132,14 @@ public class AdvancedEditor {
 		overlayPanel.add(left);
 		overlayPanel.add(right);
 
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String, String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
 			}
 
 			@Override
-			public void onSuccess(final Map<String, String> localizedStrings) {
+			public void onSuccess(final TranslationMap localizedStrings) {
 
 				service.getOverlayTypes(true,
 						new AsyncCallback<ArrayList<String>>() {
@@ -412,7 +413,7 @@ public class AdvancedEditor {
 		return popup;
 	}
 
-	private static void showOverlayEditor(final LemmaVersion lv, final String type, final Map<String, String> localizedStrings, final EditorConstants constants, final EditorMessages messages) {
+	private static void showOverlayEditor(final LemmaVersion lv, final String type, final TranslationMap localizedStrings, final EditorConstants constants, final EditorMessages messages) {
 		
 		service.getOverlayEditor(type, new AsyncCallback<OverlayEditor>() {
 
@@ -613,11 +614,8 @@ public class AdvancedEditor {
 			}
 
 			private String getLabel(String key,
-					Map<String, String> localizedStrings) {
-				String label = localizedStrings.get(key);
-				if (label == null)
-					return key;
-				return label;
+					TranslationMap localizedStrings) {
+				return localizedStrings.get(key);
 			}
 		});
 	}

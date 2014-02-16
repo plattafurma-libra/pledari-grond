@@ -21,13 +21,14 @@ import java.util.Set;
 
 import com.google.gwt.storage.client.Storage;
 
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 public class LocalDB {
 	
 	private static final long UPDATE_INTERVAL = 1000 * 60 * 60 * 4;
 
-	public static HashMap<String, String> getEditorTranslation(String locale) {
+	public static TranslationMap getEditorTranslation(String locale) {
 		if(!Storage.isLocalStorageSupported()) return null;
 		Storage storage = Storage.getLocalStorageIfSupported();
 		String dataKey = "et_data_"+locale;
@@ -45,27 +46,31 @@ public class LocalDB {
 		if(data == null) {
 			return null;
 		}
-		HashMap<String, String> toReturn = parseData(data);
+		TranslationMap toReturn = parseData(data);
 		Logger.getLogger(LocalDB.class).info("Parsed editor translations for locale " + locale);
 		return toReturn;
 	}
 	
-	private static HashMap<String, String> parseData(String data) {
-		HashMap<String, String> toReturn = new HashMap<String, String>();
+	private static TranslationMap parseData(String data) {
+		TranslationMap toReturn = new TranslationMap();
 		String[] pairs = data.split("\n",-1);
-		for (String keyValue : pairs) {
+		toReturn.setSourceFileName(pairs[0]);
+		for(int i = 1; i < pairs.length; i++) {
+			String keyValue = pairs[i];
 			String[] kv = keyValue.split("\t");
 			toReturn.put(kv[0], kv[1]);
 		}
 		return toReturn;
 	}
 
-	public static void setEditorTranslation(String locale, HashMap<String, String> map) {
+	public static void setEditorTranslation(String locale, TranslationMap map) {
 		if(!Storage.isLocalStorageSupported()) return;
 		Storage storage = Storage.getLocalStorageIfSupported();
 		String dataKey = "et_data_"+locale;
 		String timeKey = "et_time_"+locale;
 		StringBuilder sb = new StringBuilder();
+		sb.append(map.getSourceFileName());
+		sb.append("\n");
 		Set<Entry<String, String>> entries = map.entrySet();
 		for (Entry<String, String> entry : entries) {
 			sb.append(entry.getKey());

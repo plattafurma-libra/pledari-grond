@@ -29,6 +29,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.login.LoginManager;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
@@ -86,7 +87,7 @@ public class CommonServiceController implements CommonService {
 	}
 
 	@Override
-	public HashMap<String, String> getEditorTranslation(String locale) {
+	public TranslationMap getEditorTranslation(String locale) {
 		return Localizer.getEditorTranslations(locale);
 	}
 

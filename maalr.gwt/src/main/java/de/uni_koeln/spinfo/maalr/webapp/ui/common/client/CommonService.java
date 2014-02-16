@@ -16,7 +16,6 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -24,6 +23,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 
 @RemoteServiceRelativePath("rpc/common")
 public interface CommonService extends RemoteService {
@@ -37,6 +37,6 @@ public interface CommonService extends RemoteService {
 
 	ClientOptions getClientOptions();
 
-	HashMap<String, String> getEditorTranslation(String locale);
+	TranslationMap getEditorTranslation(String locale);
 
 }

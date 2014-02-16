@@ -32,6 +32,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.services.user.shared.LexService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.LexServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
@@ -44,10 +45,10 @@ public class LemmaEditor {
 	
 	private static LexServiceAsync lexService = GWT.create(LexService.class);
 	
-	private static Map<String, String> translation = null;
+	private static TranslationMap translation = null;
 	
 	public static void openEditor() {
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -56,7 +57,7 @@ public class LemmaEditor {
 			}
 
 			@Override
-			public void onSuccess(Map<String, String> result) {
+			public void onSuccess(TranslationMap result) {
 				translation = result;
 				internalOpenEditor(new LemmaVersion(), translation.get("suggest.title"), translation.get("suggest.subtext"), false);
 			}
@@ -65,7 +66,7 @@ public class LemmaEditor {
 	
 
 	public static void openEditor(final LemmaVersion toModify) {
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -74,7 +75,7 @@ public class LemmaEditor {
 			}
 
 			@Override
-			public void onSuccess(Map<String, String> result) {
+			public void onSuccess(TranslationMap result) {
 				translation = result;
 				LemmaEditorWidget editor = internalOpenEditor(toModify, translation.get("modify.title"), translation.get("modify.subtext"), true);
 				editor.setData(toModify);

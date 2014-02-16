@@ -71,6 +71,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiFieldType;
@@ -626,7 +627,7 @@ public class ConfigurableSearchArea extends Form {
 	public void setQuery(MaalrQuery maalrQuery) {
 		final String label = MaalrQueryFormatter.getQueryLabel(maalrQuery);
 		if(label != null) {
-			LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+			LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
@@ -635,7 +636,7 @@ public class ConfigurableSearchArea extends Form {
 				}
 
 				@Override
-				public void onSuccess(Map<String, String> result) {
+				public void onSuccess(TranslationMap result) {
 					String title = result.get("maalr.query.result_title");
 					if(title != null) {
 						Window.setTitle(title.replaceAll("\\{0\\}", label));

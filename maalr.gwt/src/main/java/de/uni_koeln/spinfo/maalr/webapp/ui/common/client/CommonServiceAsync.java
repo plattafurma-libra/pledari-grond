@@ -16,13 +16,13 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 
 public interface CommonServiceAsync {
 
@@ -36,7 +36,7 @@ public interface CommonServiceAsync {
 	void getClientOptions(AsyncCallback<ClientOptions> callback);
 	
 	void getEditorTranslation(String locale,
-			AsyncCallback<HashMap<String, String>> asyncCallback);
+			AsyncCallback<TranslationMap> asyncCallback);
 
 
 }

@@ -26,6 +26,7 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.SimplePanel;
 
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
@@ -61,10 +62,10 @@ public class CustomPager extends SimplePanel {
 //			right = (left + 5) > maxPageNumber ? maxPageNumber : left
 //					+ (left == 0 ? 5 : 4);
 //			left = (right - 5) < 0 ? 0 : (right - 5);
-			LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+			LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 				
 				@Override
-				public void onSuccess(Map<String, String> result) {
+				public void onSuccess(TranslationMap result) {
 					String first = result.get("maalr.query.results_first_page");
 					String last = result.get("maalr.query.results_last_page");
 					addFirstPageLink(maalrQuery, current, first);

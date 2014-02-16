@@ -58,6 +58,7 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
@@ -359,15 +360,15 @@ public class LexEditor extends Composite implements HasHistorySupport {
 	}
 	
 	public void setColumns(final List<String> fields) {
-		LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+		LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				setColumns(fields, new HashMap<String, String>());
+				setColumns(fields, new TranslationMap());
 			}
 
 			private void setColumns(List<String> fields,
-					Map<String, String> hashMap) {
+					TranslationMap hashMap) {
 				for (final String field : fields) {
 					final String title = hashMap.get(field) == null ? field : hashMap.get(field);
 					final CheckBox box = new CheckBox(title);
@@ -414,7 +415,7 @@ public class LexEditor extends Composite implements HasHistorySupport {
 			}
 
 			@Override
-			public void onSuccess(Map<String, String> result) {
+			public void onSuccess(TranslationMap result) {
 				setColumns(fields, result);
 			}
 		});
@@ -433,21 +434,21 @@ public class LexEditor extends Composite implements HasHistorySupport {
 				final ArrayList<String> fields = new ArrayList<String>(description.getEditorFields(true));
 				fields.addAll(description.getEditorFields(false));
 				fields.add(LemmaVersion.COMMENT);
-				LocalizedStrings.afterLoad(new AsyncCallback<Map<String,String>>() {
+				LocalizedStrings.afterLoad(new AsyncCallback<TranslationMap>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
 					}
 
 					@Override
-					public void onSuccess(Map<String, String> translation) {
+					public void onSuccess(TranslationMap translation) {
 						showExportDialog(fields, translation);
 					}
 				});
 				
 			}
 
-			private void showExportDialog(final ArrayList<String> fields, Map<String, String> translation) {
+			private void showExportDialog(final ArrayList<String> fields, TranslationMap translation) {
 				final Modal dialog = new Modal();
 				final FlowPanel panel = new FlowPanel();
 				final Set<String> selected = new HashSet<String>();

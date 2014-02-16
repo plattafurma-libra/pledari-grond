@@ -22,6 +22,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.LocalDB;
@@ -30,15 +31,15 @@ public class LocalizedStrings {
 
 	private static CommonServiceAsync service = GWT.create(CommonService.class);
 
-	private static HashMap<String, String> translation = null;
+	private static TranslationMap translation = null;
 
-	public static void afterLoad(final AsyncCallback<Map<String, String>> callback) {
+	public static void afterLoad(final AsyncCallback<TranslationMap> callback) {
 		final String locale = Document.get().getElementsByTagName("html").getItem(0).getAttribute("lang");
 		if (translation == null) {
 			translation = LocalDB.getEditorTranslation(locale);
 			if (translation == null) {
 				service.getEditorTranslation(locale,
-						new AsyncCallback<HashMap<String, String>>() {
+						new AsyncCallback<TranslationMap>() {
 
 							@Override
 							public void onFailure(Throwable caught) {
@@ -46,7 +47,7 @@ public class LocalizedStrings {
 							}
 
 							@Override
-							public void onSuccess(HashMap<String, String> result) {
+							public void onSuccess(TranslationMap result) {
 								translation = result;
 								LocalDB.setEditorTranslation(locale, translation);
 								callback.onSuccess(translation);
