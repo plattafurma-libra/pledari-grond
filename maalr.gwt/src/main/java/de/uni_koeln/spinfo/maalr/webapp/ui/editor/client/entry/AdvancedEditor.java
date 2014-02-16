@@ -67,6 +67,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.OverlayEditorItem;
 import de.uni_koeln.spinfo.maalr.common.shared.OverlayEditorRow;
 import de.uni_koeln.spinfo.maalr.common.shared.OverlayOption;
 import de.uni_koeln.spinfo.maalr.common.shared.OverlayPresetChooser;
+import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
@@ -279,17 +280,36 @@ public class AdvancedEditor {
 						
 						@Override
 						public void onClick(ClickEvent event) {
+							AsyncLemmaDescriptionLoader.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									// TODO Auto-generated method stub
+									
+								}
+
+								@Override
+								public void onSuccess(LemmaDescription ld) {
+									String firstLanguageId = ld.getLanguage(true).getId();
+									String secondLanguageId = ld.getLanguage(false).getId();
+									String first = localizedStrings.get(firstLanguageId);
+									String second = localizedStrings.get(secondLanguageId);
+									String lemma1st = ld.toString(lv, UseCase.RESULT_LIST, true);
+									String lemma2nd = ld.toString(lv, UseCase.RESULT_LIST, false);
+									String german = first + "%20%3D%20" + lemma1st;
+									String romansh = second + "%20%3D%20" + lemma2nd;
+									String remartg = localizedStrings.get("mail.comment") + "%0A" + URL.encode(comment.getText());
+									
+									String subject = "?subject=" + URL.encode(localizedStrings.get("mail.subject"));
+									String body = "&body=" + german + "%0A"+ romansh + "%0A%0A" + remartg;
+									String cc = "";
+									if(localizedStrings.get("mail.cc") != null) {
+										cc = "&cc=" + localizedStrings.get("mail.cc");	
+									}
+									Window.Location.assign("mailto:" + email.getText() + subject + cc + body);
+								}
+							});
 							
-							String german = "Tudestg" + "%20%3D%20" + lv.getEntryValue("DStichwort");
-							String romansh = "Rumantsch" + "%20%3D%20" + lv.getEntryValue("RStichwort");
-							String remartg = "Remartgas" + "%0A" + URL.encode(comment.getText());
-							
-							String subject = "?subject=" + URL.encode(localizedStrings.get("mail.subject"));
-							String body = "&body=" + german + "%0A"+ romansh + "%0A%0A" + remartg;
-							
-							String cc = "&cc=pg@rumantsch.ch";
-							
-							Window.Location.assign("mailto:" + email.getText() + subject + cc + body);
 						}
 					});
 					hp.add(sendButton);
