@@ -172,16 +172,8 @@ public class WebMVCController {
 			QueryResult result = index.query(query, true);
 			mv.addObject("result", result);
 			return mv;
-		} catch (InvalidQueryException e) {
-			return getIndexExceptionView(e);
-		} catch (NoIndexAvailableException e) {
-			return getIndexExceptionView(e);
-		} catch (BrokenIndexException e) {
-			return getIndexExceptionView(e);
-		} catch (IOException e) {
-			return getIndexExceptionView(e);
-		} catch (InvalidTokenOffsetsException e) {
-			return getIndexExceptionView(e);
+		} catch (Exception e) {
+			return getErrorView(e);
 		}
 	}
 
@@ -231,49 +223,14 @@ public class WebMVCController {
 			// should be configured somewhere else?
 			response.setCharacterEncoding("UTF-8");
 			return mv;
-		} catch (InvalidQueryException e) {
-			return getIndexExceptionView(e);
-		} catch (NoIndexAvailableException e) {
-			return getIndexExceptionView(e);
-		} catch (BrokenIndexException e) {
-			return getIndexExceptionView(e);
-		} catch (IOException e) {
-			return getIndexExceptionView(e);
-		} catch (InvalidTokenOffsetsException e) {
-			return getIndexExceptionView(e);
+		} catch (Exception e) {
+			return getErrorView(e);
 		}
-	}
-
-	private ModelAndView getIndexExceptionView(Exception e) {
-		ModelAndView mv = new ModelAndView("jsp/errors/indexError");
-		mv.addObject("exception", e);
-		return mv;
 	}
 
 	@RequestMapping("/admin/admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView("admin/admin");
-		return mv;
-	}
-
-	@RequestMapping("/agid")
-	public ModelAndView agid() {
-		ModelAndView mv = new ModelAndView("static/agid");
-		setPageTitle(mv, "Help");
-		return mv;
-	}
-
-	@RequestMapping("/agidplug-in")
-	public ModelAndView agidPlugin() {
-		ModelAndView mv = new ModelAndView("static/agidplug-in");
-		setPageTitle(mv, "Search Plug-In");
-		return mv;
-	}
-
-	@RequestMapping("/infos")
-	public ModelAndView infos() {
-		ModelAndView mv = new ModelAndView("static/infos");
-		setPageTitle(mv, "Infos");
 		return mv;
 	}
 
@@ -284,26 +241,20 @@ public class WebMVCController {
 		return mv;
 	}
 
-	@RequestMapping("/abreviaziuns")
-	public ModelAndView abbreviations() {
-		ModelAndView mv = new ModelAndView("static/abreviaziuns");
-		setPageTitle(mv, "Abreviaziuns");
-		return mv;
-	}
-
 	@RequestMapping("/browse")
 	public ModelAndView newAlphaList(@ModelAttribute("query") MaalrQuery query,
 			BindingResult br, HttpSession session, HttpServletRequest request) {
 		try {
 			return newAlphaList(query.getValue("language"), "A", 0,
 					query, br, session, request);
-		} catch (NoIndexAvailableException e) {
-			return getIndexExceptionView(e);
-		} catch (BrokenIndexException e) {
-			return getIndexExceptionView(e);
-		} catch (InvalidQueryException e) {
-			return getIndexExceptionView(e);
+		} catch (Exception e) {
+			return getErrorView(e);
 		}
+	}
+
+	private ModelAndView getErrorView(Exception e) {
+		logger.error("An error occurred", e);
+		return new ModelAndView("error");
 	}
 
 	@RequestMapping("/editor/editor")
@@ -349,7 +300,7 @@ public class WebMVCController {
 			InvalidQueryException {
 		if(language == null) language = Configuration.getInstance().getLemmaDescription().getLanguageName(true);
 		QueryResult result = index.getAllStartingWith(language, letter, page);
-		ModelAndView mv = new ModelAndView("jsp/browse_dictionary");
+		ModelAndView mv = new ModelAndView("browse_dictionary");
 		mv.addObject("result", result);
 		mv.addObject("letter", letter);
 		mv.addObject("page", page);

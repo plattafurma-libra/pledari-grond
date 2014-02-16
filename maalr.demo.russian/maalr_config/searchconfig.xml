@@ -191,6 +191,7 @@
 			<uifield id="grammar" type="COMBO" />
 			<uifield id="aspect" type="ORACLE" />
 			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="pageSize" buildin="true" type="COMBO" />
 		</advancedFrontendQueryFields>
 		<defaultBackendQueryFields>
 			<uifield id="searchPhrase" type="TEXT" submit="true" />
@@ -198,12 +199,13 @@
 			<uifield id="method" type="RADIO" />
 		</defaultBackendQueryFields>
 		<advancedBackendQueryFields>
-			<uifield id="searchPhrase" type="TEXT" label="Search" submit="true"
-				submitlabel="Search" />
-			<uifield id="language" type="RADIO" label="Language" />
-			<uifield id="gramTypeChoice" type="COMBO" label="Type" />
-			<uifield id="method" type="RADIO" label="Method" />
-			<uifield id="highlight" buildin="true" type="CHECKBOX" label="Highlight" />
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+			<uifield id="grammar" type="COMBO" />
+			<uifield id="aspect" type="ORACLE" />
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="pageSize" buildin="true" type="COMBO" />
 		</advancedBackendQueryFields>
 	</queryUI>
 

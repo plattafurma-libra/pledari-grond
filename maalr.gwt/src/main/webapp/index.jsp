@@ -19,18 +19,18 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%-- HTML HEADER --%>
-<%@ include file="jspstatic/htmlhead.jsp"%>
+<%@ include file="/maalr_modules/misc/htmlhead.jsp"%>
 
 	<body>
 	
 		<%-- NAVIGATION --%>
-		<%@ include file="/jspstatic/header_small.jsp"%>
+		<%@ include file="/maalr_modules/misc/header.jsp"%>
 	
 		<div id="content" class="content">
 		
-			<%@ include file="/jspstatic/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
-			<%@ include file="/jspstatic/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
 			
 			<%-- SEARCH AREA --%>
 			<div class="container-fluid">
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		
-		<jsp:include page="/jspstatic/footer.jsp" />
+		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 
 		<%-- GWT AJAX BROWSER HISTORY SUPPORT --%>
 		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>

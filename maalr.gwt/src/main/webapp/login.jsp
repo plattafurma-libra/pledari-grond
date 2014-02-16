@@ -10,19 +10,19 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%-- HTML HEADER --%>
-<jsp:include page="/jspstatic/htmlhead.jsp" />
+<jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
 		
 		<%-- NAVIGATION --%>
-		<jsp:include page="/jspstatic/header_small.jsp" />
+		<jsp:include page="/maalr_modules/misc/header.jsp" />
 		
 		<%-- FOOTER --%>
-		<jsp:include page="/jspstatic/footer.jsp" />
+		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 		
 		<div id="content">
 		
-			<%@ include file="/jspstatic/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
 			<%-- INTERNAL SIGN IN --%>
 			<div class="container well" id="login_container">

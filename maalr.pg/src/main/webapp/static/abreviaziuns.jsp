@@ -4,17 +4,17 @@
 <%@page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%-- Header included here --%>
-<jsp:include page="/jspstatic/htmlhead.jsp" />
+<jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 <body>
 	<div id="top">
-		<jsp:include page="/jspstatic/header_small.jsp" />
+		<jsp:include page="/maalr_modules/misc/header.jsp" />
 	</div>
-	<div id="bottom"><jsp:include page="/jspstatic/footer.jsp" /></div>
+	<div id="bottom"><jsp:include page="/maalr_modules/misc/footer.jsp" /></div>
 	<div id="content">
 	
-		<%@ include file="/jspstatic/language_widget.jsp"%>
+		<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 		
-		<%@ include file="/jspstatic/login_widget.jsp"%>
+		<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
 		
 		<div class="container well">
 

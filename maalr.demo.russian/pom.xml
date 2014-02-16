@@ -15,14 +15,8 @@
 		<!-- application properties -->
 		<application.title>Maalr Russian</application.title>
 		<!-- dependency versions -->
-		<spring.version>3.1.3.RELEASE</spring.version>
-		<spring.security.version>3.1.3.RELEASE</spring.security.version>
-		<lucene.version>4.1.0</lucene.version>
 		<logback.version>1.0.9</logback.version>
 		<slf4j.version>1.6.6</slf4j.version>
-		<gwt.version>2.5.1-rc1</gwt.version>
-		<antlr.version>3.4</antlr.version>
-		<selenium.version>2.31.0</selenium.version>
 		<!-- GWT options -->
 		<gwt.draft-compile>true</gwt.draft-compile>
 		<!-- one of obfuscated, pretty, and detailed -->
@@ -44,20 +38,7 @@
 			<artifactId>gwt</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
-		</dependency>
-		
-		<dependency>
-			<groupId>de.uni_koeln.spinfo.maalr</groupId>
-			<artifactId>gwt</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<classifier>classes</classifier>
-			<type>jar</type>
-		</dependency>
-		
-		<dependency>
-			<groupId>de.uni_koeln.spinfo.maalr</groupId>
-			<artifactId>spring.core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
 		</dependency>
 		
 		<!-- Embed MongoDB for testing -->
@@ -70,28 +51,14 @@
 			<version>1.15</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
-		<!-- Required to render dictionary entries through JSON -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.7.1</version>
-		</dependency>
 
-		<!-- Required to render dictionary entries through XML (JAXB) -->
-
+<!-- 		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-oxm</artifactId>
-			<version>${spring.version}</version>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>sigar</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.1</version>
-		</dependency>
+		 -->
 		
 	</dependencies>
 
@@ -155,100 +122,10 @@
 							<artifactId>gwt</artifactId>
 						</overlay>
 					</overlays>
-					<webResources>
-						<resource>
-							<directory>src/main/resources</directory>
-							<filtering>true</filtering>
-						</resource>
-						<!-- .jsp files are filtered, to insert -->
-						<!-- maven properties (build number etc) -->
-						<resource>
-							<directory>src/main/webapp</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<filtering>true</filtering>
-						</resource>
-						<!-- all other files from webapp dir are -->
-						<!-- copied without filtering -->
-						<resource>
-							<directory>src/main/webapp</directory>
-							<excludes>
-								<excludes>**/*.jsp</excludes>
-							</excludes>
-							<filtering>false</filtering>
-						</resource>
-						<resource>
-							<directory>../maalr.spring.core/src/main/resources</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<filtering>true</filtering>
-						</resource>
-					</webResources>
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0-alpha-2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>set-system-properties</goal>
-						</goals>
-						<configuration>
-							<properties>
-								<property>
-									<name>logback.configurationFile</name>
-									<value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value>
-								</property>
-							</properties>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											properties-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.0-alpha-2,)
-										</versionRange>
-										<goals>
-											<goal>
-												set-system-properties
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	
 	<profiles>

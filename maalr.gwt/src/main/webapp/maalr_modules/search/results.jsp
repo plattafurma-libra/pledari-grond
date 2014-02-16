@@ -154,7 +154,7 @@
 		} else if(mQuery.getValue("searchPhrase") != null){ 
 	%>
 	<div class="well">
-		<jsp:include page="/jspstatic/notfound.jsp" />
+		<jsp:include page="/maalr_modules/misc/notfound.jsp" />
 	</div>
 	<% 
 		} 

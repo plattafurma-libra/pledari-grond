@@ -7,19 +7,19 @@
 <%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
 
 <%-- HTML HEADER --%>
-<jsp:include page="/jspstatic/htmlhead.jsp" />
+<jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
 		
 		<%-- NAVIGATION --%>
-		<div id="top"><jsp:include page="/jspstatic/header_small.jsp" /></div>
+		<div id="top"><jsp:include page="/maalr_modules/misc/header.jsp" /></div>
 		
 		<%-- CONTENT --%>		
 		<div id="content">
 		
-			<%@ include file="/jspstatic/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
-			<%@ include file="/jspstatic/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
 		
 			<div class="container well container_plugin">
 				<h2>L'installaziun dal plugin da tschertgar dal Pledari Grond
@@ -41,7 +41,7 @@
 		</div>
 		
 		<%-- FOOTER --%>
-		<div id="bottom"><jsp:include page="/jspstatic/footer.jsp" /></div>
+		<div id="bottom"><jsp:include page="/maalr_modules/misc/footer.jsp" /></div>
 	
 	</body>
 </html>

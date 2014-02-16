@@ -43,6 +43,12 @@
 		
 		<dependency>
 			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>spring.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
 			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -104,37 +110,6 @@
 							<artifactId>gwt</artifactId>
 						</overlay>
 					</overlays>
-					<webResources>
-						<resource>
-							<directory>src/main/resources</directory>
-							<filtering>true</filtering>
-						</resource>
-						<!-- .jsp files are filtered, to insert -->
-						<!-- maven properties (build number etc) -->
-						<resource>
-							<directory>src/main/webapp</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<filtering>true</filtering>
-						</resource>
-						<!-- all other files from webapp dir are -->
-						<!-- copied without filtering -->
-						<resource>
-							<directory>src/main/webapp</directory>
-							<excludes>
-								<excludes>**/*.jsp</excludes>
-							</excludes>
-							<filtering>false</filtering>
-						</resource>
-						<resource>
-							<directory>../maalr.spring.core/src/main/resources</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<filtering>true</filtering>
-						</resource>
-					</webResources>
 				</configuration>
 			</plugin>
 

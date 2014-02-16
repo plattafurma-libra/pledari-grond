@@ -163,24 +163,6 @@
 				</executions>
 			</plugin>
 
-			<!-- <plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					 <descriptors>
-            			<descriptor>src/main/assembly/gwt.xml</descriptor>
-          			</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -267,6 +249,40 @@
 					</items>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<!-- Convert the localization files from UTF-8 to ASCII and copy them 
+					to the required directory. -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<version>1.0-alpha-1</version>
+				<configuration>
+					<dest>target/classes/de/uni_koeln/spinfo/maalr/webapp/i18n</dest>
+					<src>src/main/webapp/i18n</src>
+					<encoding>UTF8</encoding>
+					<includes>*.properties</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<id>native2ascii-utf8-resources</id>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<!-- Workaround to support Java 7 -->
+						<groupId>com.sun</groupId>
+						<artifactId>tools</artifactId>
+						<version>1.7.0</version>
+						<scope>system</scope>
+						<systemPath>${java.home}/../lib/tools.jar</systemPath>
+					</dependency>
+				</dependencies>
+			</plugin>
+			
 
 			<plugin>
 				<!-- Generate findbugs statistics -->
@@ -281,8 +297,9 @@
 					<excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
 				</configuration>
 			</plugin>
-
 		</plugins>
+		
+		
 
 		<resources>
 			<resource>
@@ -338,6 +355,25 @@
 										<goals>
 											<goal>compile</goal>
 											<goal>resources</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											native2ascii-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-1,)
+										</versionRange>
+										<goals>
+											<goal>native2ascii</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

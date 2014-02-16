@@ -1,16 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<fmt:setLocale value="<%=session.getAttribute("pl")%>" />
+<fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
+
 <jsp:include page="jsp/modules/htmlhead.jsp" />
 <body>
-	<jsp:include page="/jsp/modules/header_small.jsp" />
+	<jsp:include page="/maalr_modules/misc/header.jsp" />
 	<div class="content" id="content">
 		<div class="container-fluid">
 	<noscript>
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="alert">
-    <strong>Please enable JavaScript! </strong> This browser does not have JavaScript turned on. To use all features of this page, and to improve the performance of your queries,
-    please enable JavaScript.
-    </div>
+					<div class="alert container information_container">
+						<strong><fmt:message key="maalr.misc.enable_js_header" /></strong>
+						<fmt:message key="maalr.misc.enable_js_hint" />
+					</div>
 				</div>
 			</div>
 			</noscript>
