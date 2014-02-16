@@ -46,11 +46,12 @@
 		<!-- Unfortunately, it's a bit unstable (MacOS), might crash the VM if 
 			multiple instances are started -->
 		<dependency>
-			<groupId>de.flapdoodle.embedmongo</groupId>
-			<artifactId>de.flapdoodle.embedmongo</artifactId>
-			<version>1.15</version>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.41</version>
 			<scope>test</scope>
 		</dependency>
+		            
 
 <!-- 		
 		<dependency>
