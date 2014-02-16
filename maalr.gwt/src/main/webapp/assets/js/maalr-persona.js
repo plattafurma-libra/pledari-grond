@@ -18,7 +18,7 @@ var loggedInUser = null; // The user's email.
 var browseridArguments = {
   privacyURL: '',
   tosURL: '',
-  siteName: 'Pledari Grond 2.0'
+  siteName: site_name
 };
 /**
  * Anonymous function. Is called on document.ready. Checks if a user is currently logged in

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -39,12 +40,15 @@
 	#show_results_noscript { display: list-item; }
 </style>
 </noscript>
-<link rel="search" type="application/opensearchdescription+xml" title="Pledari Grond" href="/static/searchplugin.xml">
+<link rel="search" type="application/opensearchdescription+xml" title="<%=Configuration.getInstance().getLongName()%>" href="/static/searchplugin.xml">
 <script type="text/javascript" language="javascript" src="/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://login.persona.org/include.js"></script>
-<script type="text/javascript" src="/assets/js/pledari-persona.js"></script>
-<script type="text/javascript" src="/assets/js/pledari.js"></script>
+<script type="text/javascript">
+	var site_name= "<%=Configuration.getInstance().getLongName()%>"
+</script>
+<script type="text/javascript" src="/assets/js/maalr-persona.js"></script>
+<script type="text/javascript" src="/assets/js/maalr.js"></script>
 <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
