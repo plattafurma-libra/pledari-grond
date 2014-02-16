@@ -69,16 +69,13 @@
 
 
 		<!-- Embed MongoDB for testing -->
-		<!-- Installs, starts and stops a DB via maven -->
-		<!-- Unfortunately, it's a bit unstable (MacOS), might crash the VM if 
-			multiple instances are started -->
 		<dependency>
-			<groupId>de.flapdoodle.embedmongo</groupId>
-			<artifactId>de.flapdoodle.embedmongo</artifactId>
-			<version>1.15</version>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.41</version>
 			<scope>test</scope>
 		</dependency>
-
+		            
 		<!-- Required to render dictionary entries through JSON -->
 	 	<dependency>
 			<groupId>org.codehaus.jackson</groupId>

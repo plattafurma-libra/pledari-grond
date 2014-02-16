@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>mongo</artifactId>
 	<packaging>jar</packaging>
-	
+
 	<parent>
 		<groupId>de.uni_koeln.spinfo.maalr</groupId>
 		<artifactId>parent</artifactId>
@@ -12,30 +12,28 @@
 	</parent>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>de.uni_koeln.spinfo.maalr</groupId>
 			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	
+
 		<!-- Database -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
-			<version>2.9.1</version>
+			<version>2.11.2</version>
 		</dependency>
 
 		<!-- Embed MongoDB for testing -->
-		<!-- Installs, starts and stops a DB via maven -->
-		<!-- Unfortunately, it's a bit unstable (MacOS), might crash the VM if 
-			multiple instances are started -->
 		<dependency>
-			<groupId>de.flapdoodle.embedmongo</groupId>
-			<artifactId>de.flapdoodle.embedmongo</artifactId>
-			<version>1.15</version>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.41</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

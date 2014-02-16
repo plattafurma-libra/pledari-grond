@@ -26,20 +26,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.flapdoodle.embedmongo.runtime.Network;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongoDBRuntime;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodConfig;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodExecutable;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodProcess;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.Version;
+import de.uni_koeln.spinfo.maalr.mongo.util.MongoTestHelper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/spring-maalr-test.xml")
 public class TestLoginManager {
-	
-	private static MongodExecutable mongodExe;
-	private static MongodProcess mongod;
-	
+
 	@Autowired
 	private LoginManager loginManager;
 	
@@ -50,21 +42,12 @@ public class TestLoginManager {
 	
 	@BeforeClass
 	public static void startTestMongoDB() throws Exception {
-		try {
-			MongoDBRuntime runtime = MongoDBRuntime.getDefaultInstance();
-			mongodExe = runtime.prepare(new MongodConfig(Version.V2_2_0, 27017,
-					Network.localhostIsIPv6()));
-			mongod = mongodExe.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
+		MongoTestHelper.startTestMongoDB();
 	}
 
 	@AfterClass
 	public static void stopTestMongoDB() throws Exception {
-		mongod.stop();
-		mongodExe.cleanup();
+		MongoTestHelper.stopTestMongoDB();
 	}
 
 

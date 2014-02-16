@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import com.mongodb.CommandResult;
 import com.mongodb.DB;
-import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 
@@ -30,7 +30,7 @@ public class MongoHelper {
 
 	private static Logger logger = LoggerFactory.getLogger(MongoHelper.class);
 
-	private static Mongo mongo;
+	private static MongoClient mongo;
 
 	private static DB db;
 
@@ -40,7 +40,7 @@ public class MongoHelper {
 		synchronized(lock) {
 			if(db == null) {
 				logger.debug("Connecting to MongoDB...");
-				mongo = new Mongo(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
+				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
 				db = mongo.getDB("db");
 			}
 			return db;	

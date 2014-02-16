@@ -131,8 +131,8 @@ public class Database {
 				+ QUERY_VERSION_TIMESTAMP, 1));
 		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
 				+ QUERY_VERSION_VERIFICATION, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS, 1)
-				.append("background", true));
+//		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS, 1)
+//				.append("background", true));
 		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
 				+ QUERY_VERSION_VERIFICATION, 1).append(
 				QUERY_VERSION_TIMESTAMP, 1));

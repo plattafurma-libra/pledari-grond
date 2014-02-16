@@ -20,12 +20,13 @@ import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.flapdoodle.embedmongo.runtime.Network;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongoDBRuntime;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodConfig;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodExecutable;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.MongodProcess;
-import de.uni_koeln.spinfo.maalr.mongo.util.embedmongo.Version;
+import de.flapdoodle.embed.mongo.MongodExecutable;
+import de.flapdoodle.embed.mongo.MongodProcess;
+import de.flapdoodle.embed.mongo.MongodStarter;
+import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
+import de.flapdoodle.embed.mongo.config.Net;
+import de.flapdoodle.embed.mongo.distribution.Version;
+import de.flapdoodle.embed.process.runtime.Network;
 
 /**
  * Helper class for Integration Tests which require a running MongoDB instance. 
@@ -52,10 +53,13 @@ public class MongoTestHelper {
 		}
 		if(mongodExe == null) {
 			logger.info("Starting MongoDB runtime...");
-			MongoDBRuntime runtime = MongoDBRuntime.getDefaultInstance();
-			mongodExe = runtime.prepare(new MongodConfig(Version.V2_2_0, 27017,
-						Network.localhostIsIPv6()));
-			mongod = mongodExe.start();	
+			MongodStarter runtime = MongodStarter.getDefaultInstance();
+	        mongodExe = runtime.prepare(new MongodConfigBuilder()
+	            .version(Version.Main.PRODUCTION)
+	            .net(new Net(27017, Network.localhostIsIPv6()))
+	            .build());
+	        mongod = mongodExe.start();
+	        mongod.getProcessId();
 		} else {
 			logger.info("Reusing MongoDB runtime...");
 		}
@@ -68,7 +72,6 @@ public class MongoTestHelper {
 			logger.info("Shutting down MongoDB...");
 			MongoHelper.shutdown();
 			mongod.stop();
-			mongodExe.cleanup();	
 			mongodExe = null;
 		} else {
 			logger.info("Not shutting down MongoDB");

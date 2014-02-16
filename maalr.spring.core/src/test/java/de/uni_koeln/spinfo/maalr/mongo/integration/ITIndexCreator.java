@@ -125,6 +125,7 @@ public class ITIndexCreator extends MongoTestHelper {
 	}
 	
 	
+	@Ignore
 	@Test(expected=AccessDeniedException.class)
 	public void testUpdateIndex_AccessDenied() throws Exception  {
 		loginManager.login("guest", "guest");

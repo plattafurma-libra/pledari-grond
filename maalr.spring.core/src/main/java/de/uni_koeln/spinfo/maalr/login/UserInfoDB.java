@@ -57,8 +57,8 @@ public class UserInfoDB {
 		userCollection.createIndex(new BasicDBObject(Constants.Users.EMAIL, 1));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.FIRSTNAME, 1));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.LASTNAME, 1));
-		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1).append("unique", "true");
-		userCollection.createIndex(login);
+		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1);
+		userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
 	}
 
 	boolean userExists(String login) {

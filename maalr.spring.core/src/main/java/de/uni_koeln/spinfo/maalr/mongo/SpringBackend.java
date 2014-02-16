@@ -83,6 +83,7 @@ public class SpringBackend {
 	@Secured( { Constants.Roles.TRUSTED_EX_3, Constants.Roles.TRUSTED_IN_4, Constants.Roles.ADMIN_5 })
 	public void insert(LexEntry entry) throws Exception {
 		String login = getUserLogin();
+
 		addUserInfo(entry.getCurrent());
 		LexEntry modified = queue.push(new InsertOperation(entry).setLogin(login));
 		index.update(modified);
