@@ -87,7 +87,7 @@ import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 	private synchronized void loadIndex() throws NoIndexAvailableException {
 		if (searcher == null) {
 			try {
-				logger.info("Loading index from directory " + environment.getLuceneIndexDir());
+				logger.info("Loading index from directory " + environment.getLuceneIndexDir().getAbsolutePath());
 				NIOFSDirectory directory = new NIOFSDirectory(environment.getLuceneIndexDir());
 				ram = new RAMDirectory(directory, new IOContext());
 				reader = DirectoryReader.open(ram);
