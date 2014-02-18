@@ -21,7 +21,7 @@ public class AppProperties implements Serializable {
 	
 	private static final long serialVersionUID = -3609707939921531733L;
 
-	private String appName, appVersion, appBuild;
+	private String appName, appVersion;
 	
 	public String getAppName() {
 		return appName;
@@ -37,14 +37,6 @@ public class AppProperties implements Serializable {
 
 	public void setAppVersion(String appVersion) {
 		this.appVersion = appVersion;
-	}
-
-	public String getAppBuild() {
-		return appBuild;
-	}
-
-	public void setAppBuild(String appBuild) {
-		this.appBuild = appBuild;
 	}
 
 }

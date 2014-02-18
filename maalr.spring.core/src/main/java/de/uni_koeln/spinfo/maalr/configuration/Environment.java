@@ -66,13 +66,11 @@ public class Environment extends WebApplicationObjectSupport {
 		appProperties = new AppProperties();
 		appProperties.setAppName(name);
 		appProperties.setAppVersion(version);
-		appProperties.setAppBuild(build);
-		
 		configuration.getLemmaDescription();
 		luceneConfig = new LuceneConfiguration();
 		luceneConfig.setBaseDirectory(configuration.getLuceneDir());
 		logger.info("**********************************************************************************");
-		logger.info("Initializing " + appProperties.getAppName() + " " + appProperties.getAppVersion() + " " + appProperties.getAppBuild());
+		logger.info("Initializing " + appProperties.getAppName() + " " + appProperties.getAppVersion());
 		logger.info("**********************************************************************************");
 	}
 
