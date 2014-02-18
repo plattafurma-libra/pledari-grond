@@ -9,12 +9,12 @@
 		<column name="DSemantik" />
 		<column name="DSubsemantik" />
 		<column name="DGrammatik" />
-		<column name="DGenus" type="CSV"/>
+		<column name="DGenus"/>
 		<column name="RStichwort" />
 		<column name="RSemantik" />
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
-		<column name="RGenus" type="CSV"/>
+		<column name="RGenus"/>
 		<column name="Bearbeitungshinweis" type="CSV"/>
 		<column name="redirect_b" />
 		<column name="maalr_comment" />
