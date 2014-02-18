@@ -123,7 +123,7 @@
 							<properties>
 								<property>
 									<name>logback.configurationFile</name>
-									<value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value>
+									<value>src/test/resources/logback.xml</value>
 								</property>
 							</properties>
 						</configuration>
@@ -137,7 +137,7 @@
 					<version>${jetty.version}</version>
 					<configuration>
 
-						<contextXml>jetty-context.xml</contextXml>
+						<contextXml>src/test/resources/jetty-context.xml</contextXml>
 						<webAppConfig>
 							<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
 							<baseResource
@@ -148,10 +148,6 @@
 						</webAppConfig>
 						<classesDirectory>${maalr.webapp.build}/${maalr.webapp.name}/WEB-INF/classes</classesDirectory>
 						<systemProperties>
-							<!-- Tell jetty to use the same logging configuration as the webapp 
-								itself -->
-							<!-- <systemProperty> <name>logback.configurationFile</name> <value>${maalr.webapp.build}/${maalr.webapp.name}/logback.xml</value> 
-								</systemProperty> -->
 							<systemProperty>
 								<name>jetty.port</name>
 								<value>${jetty.default.port}</value>

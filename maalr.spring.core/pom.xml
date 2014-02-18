@@ -288,13 +288,6 @@
 				<version>2.12.2</version>
 			</plugin>
 
-			<!-- Start and stop MongoDB for integration tests -->
-			<plugin>
-				<groupId>com.github.joelittlejohn.embedmongo</groupId>
-				<artifactId>embedmongo-maven-plugin</artifactId>
-				<version>0.1.10</version>
-			</plugin>
-
 		</plugins>
 
 	</build>

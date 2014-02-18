@@ -18,11 +18,7 @@
 			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		
 	
-	<!-- Lucene -->
-
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
@@ -54,9 +50,5 @@
 		</dependency>
 
 	</dependencies>
-
-	<build>
-		
-	</build>
-
+	
 </project>

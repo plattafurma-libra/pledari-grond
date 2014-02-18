@@ -36,15 +36,4 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<!-- Start and stop MongoDB for integration tests -->
-			<plugin>
-				<groupId>com.github.joelittlejohn.embedmongo</groupId>
-				<artifactId>embedmongo-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-
-	</build>
-
 </project>
