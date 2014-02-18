@@ -33,6 +33,8 @@ import org.slf4j.LoggerFactory;
 
 import com.sun.j3d.utils.behaviors.vp.WandViewBehavior.TranslationListener6D;
 
+import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
+
 public class Localizer {
 
 	private static Map<String, TranslationMap> translations = new HashMap<String, TranslationMap>();
@@ -44,16 +46,14 @@ public class Localizer {
 		if(map == null) {
 			map = new TranslationMap();
 			Properties translation = new Properties();
-			try {
-				if(locale == null) locale = "";
-				File file = new File("maalr_config/i18n/user-searchui_" + locale + ".properties");
-				if(!file.exists()) {
-					file = new File("maalr_config/i18n/user-searchui.properties");
-				}
+			if(locale == null) locale = "";
+			File file = new File(Configuration.getInstance().getConfigDirectory(),"i18n/user-searchui_" + locale + ".properties");
+			if(!file.exists()) {
+				file = new File(Configuration.getInstance().getConfigDirectory(),"i18n/user-searchui.properties");
+			}
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
 				logger.info("Loading strings from file " + file + "...");
-				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
 				translation.load(br);
-				br.close();
 				Set<Entry<Object, Object>> entrySet = translation.entrySet();
 				for (Entry<Object, Object> entry : entrySet) {
 					map.put((String)entry.getKey(), (String) entry.getValue());
@@ -116,10 +116,10 @@ public class Localizer {
 		if(map == null) {
 			Properties properties = new Properties();
 			try {
-				String fileName = "maalr_config/i18n/lemma-description_" + locale + ".properties";
-				File file = new File(fileName);
+				String fileName = "i18n/lemma-description_" + locale + ".properties";
+				File file = new File(Configuration.getInstance().getConfigDirectory(), fileName);
 				if(!file.exists()) {
-					file = new File("maalr_config/i18n/lemma-description.properties");
+					file = new File(Configuration.getInstance().getConfigDirectory(),"i18n/lemma-description.properties");
 				}
 				logger.info("Loading strings from file " + file);
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));

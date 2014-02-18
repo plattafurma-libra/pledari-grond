@@ -17,13 +17,17 @@ package de.uni_koeln.spinfo.maalr.common.server.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration.UiConfigurations;
@@ -59,29 +63,53 @@ public class Configuration {
 	private ClientOptions clientOptions;
 
 	private DictionaryConfiguration dictConfig;
+	
+	private final File configDir;
+	
+	public File getConfigDirectory() {
+		return configDir;
+	}
+	
+	public InputStreamReader getConfiguration(String relativePath) throws IOException {
+		File parent = getConfigDirectory();
+		File file = new File(parent, relativePath);
+		InputStreamReader reader;
+		try {
+			reader = new InputStreamReader(new FileInputStream(file), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new IOException(e);
+		}
+		return reader;
+	}
+	
 
 	private Configuration() throws IOException {
+		String configDir = System.getProperty("maalr.config.dir");
+		boolean isDefault = false;
+		if(configDir == null) {
+			this.configDir = new File("maalr_config");
+			isDefault = true;
+		} else {
+			this.configDir = new File(configDir);
+		}
+		if(this.configDir.exists()) {
+			LoggerFactory.getLogger(getClass()).info("Using " + (isDefault? "default " : "") + "configuration in directory " + this.configDir.getAbsolutePath());
+		} else {
+			LoggerFactory.getLogger(getClass()).error("The " + (isDefault? "default " : "") + "configuration directory " + this.configDir.getAbsolutePath() + " does not exist!");
+		}
 		properties = new Properties();
-		InputStreamReader input = null;
-		try {
-			input = new InputStreamReader(new FileInputStream("maalr_config/maalr.properties"), "UTF-8");
+		try (InputStreamReader input = getConfiguration("maalr.properties")){
 			properties.load(input);
 			clientOptions = new ClientOptions();
 			clientOptions.setShortAppName(getShortName());
 			clientOptions.setLongAppName(getLongName());
 		} catch (IOException e) {
 			throw e;
-		} finally {
-			if(input != null) {
-				input.close();	
-			}
-		}
-		try {
+		} 
+		try (InputStreamReader reader = getConfiguration("searchconfig.xml")) {
 			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(new File("maalr_config/searchconfig.xml")), "UTF-8");
 			dictConfig = (DictionaryConfiguration) unmarshaller.unmarshal(reader);
-			reader.close();
 		} catch (JAXBException e) {
 			throw new IOException("Failed to parse search configuration files", e);
 		}

@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -36,6 +37,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.slf4j.LoggerFactory;
+
+import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 
 
 @XmlRootElement
@@ -57,7 +62,7 @@ public class Overlays {
 		try {
 			JAXBContext ctx = JAXBContext.newInstance(Overlays.class, OverlayEditor.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
-			File overlayDefinition = new File("maalr_config/overlays.xml");
+			File overlayDefinition = new File(Configuration.getInstance().getConfigDirectory(),"overlays.xml");
 			if(overlayDefinition.exists()) {
 				instance = (Overlays) unmarshaller.unmarshal(new InputStreamReader(new FileInputStream(overlayDefinition), "UTF-8"));
 				List<Overlay> overlays = instance.xmlList;
@@ -103,18 +108,6 @@ public class Overlays {
 
 	private Overlay getOverlay(String overlayType) throws IOException {
 		Overlay overlay = overlays.get(overlayType);
-		if(overlay != null) return overlay;
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("maalr_config/overlays/conjugation.html"), "UTF-8"));
-		StringBuilder sb = new StringBuilder();
-		String line = null;
-		while((line = br.readLine()) != null) {
-			sb.append(line);
-			sb.append("\n");
-		}
-		br.close();
-		overlay = new Overlay();
-		overlay.setForm(sb.toString());
-		overlays.put(overlayType, overlay);
 		return overlay;
 	}
 
