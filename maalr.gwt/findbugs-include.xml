@@ -1,6 +1,0 @@
-<FindBugsFilter>
-<!-- See http://findbugs.sourceforge.net/manual/filter.html for more options -->
-  <Match>
-    <Package name="~de.uni_koeln.spinfo.*"/>
-  </Match>
-</FindBugsFilter>
