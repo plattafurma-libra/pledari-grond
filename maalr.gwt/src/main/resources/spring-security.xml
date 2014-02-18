@@ -78,7 +78,10 @@
 	<!-- short introduction (in German language) -->
 	<bean id="JaasAuthenticationProvider" class="org.springframework.security.authentication.jaas.JaasAuthenticationProvider">
 		<!-- Defines which authentication modules to use. -->
-		<property name="loginConfig" value="file:maalr_config/login.config" />
+		<!-- The path to the maalr configuration directory can be set via the system property 'maalr.config.dir' -->
+		<!-- If not set, the default value 'maalr_config' will be used (assuming that the configuration dir -->
+		<!-- lies in the base directory) -->
+		<property name="loginConfig" value="file:${maalr.config.dir:maalr_config}/login.config" />
 		<property name="loginContextName" value="MaalrLogin" />
 		<property name="callbackHandlers">
 			<list>
