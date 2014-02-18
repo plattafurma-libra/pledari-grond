@@ -206,20 +206,12 @@ public class Configuration {
 		return new UiConfiguration[] {getUserDefaultSearchUiConfig(), getUserExtendedSearchUiConfig(), getEditorDefaultSearchUiConfig(), getEditorExtendedSearchUiConfig()};
 	}
 	
-	public String getFaceBookClientId() {
-		return properties.getProperty("facebook.consumerKey");
+	public String getSocialClientKey(String socialService) {
+		return properties.getProperty(socialService + ".consumerKey");
 	}
-
-	public String getFaceBookClientSecret() {
-		return properties.getProperty("facebook.consumerSecret");
-	}
-
-	public String getTwitterClientId() {
-		return properties.getProperty("twitter.consumerKey");
-	}
-
-	public String getTwitterClientSecret() {
-		return properties.getProperty("twitter.consumerSecret");
+	
+	public String getSocialClientSecret(String socialService) {
+		return properties.getProperty(socialService + ".consumerSecret");
 	}
 
 	public String getRedirectUrl() {

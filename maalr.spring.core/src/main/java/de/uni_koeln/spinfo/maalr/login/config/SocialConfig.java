@@ -32,15 +32,15 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.NotConnectedException;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.support.OAuth1ConnectionFactory;
 import org.springframework.social.connect.support.OAuth2ConnectionFactory;
 import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
-import org.springframework.social.security.SocialAuthenticationServiceRegistry;
-import org.springframework.social.security.provider.OAuth1AuthenticationService;
-import org.springframework.social.security.provider.OAuth2AuthenticationService;
+import org.springframework.social.google.api.Google;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 
@@ -66,38 +66,56 @@ public class SocialConfig {
 	private DataSource dataSource;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	private static final String TWITTER = "twitter", FACEBOOK="facebook", GOOGLE="google";
 
 	@Bean
 	public ConnectionFactoryLocator connectionFactoryLocator() {
 		
-		SocialAuthenticationServiceRegistry registry = new SocialAuthenticationServiceRegistry();
-		
+        ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();		
 		// add twitter
-		if(environment.getAppConfiguration().getTwitterClientId() != null) {
+		if(environment.getAppConfiguration().getSocialClientKey(TWITTER) != null) {
 			logger.info("Initializing twitter authentication service...");
 			OAuth1ConnectionFactory<Twitter> twitterConnectionFactory = new TwitterConnectionFactory(
-					environment.getAppConfiguration().getTwitterClientId(),
-					environment.getAppConfiguration().getTwitterClientSecret());
-			OAuth1AuthenticationService<Twitter> twitterAuthenticationService = new OAuth1AuthenticationService<Twitter>(
-					twitterConnectionFactory);
-			registry.addAuthenticationService(twitterAuthenticationService);
+					environment.getAppConfiguration().getSocialClientKey(TWITTER),
+					environment.getAppConfiguration().getSocialClientSecret(TWITTER));
+			registry.addConnectionFactory(twitterConnectionFactory);
+//			OAuth1AuthenticationService<Twitter> twitterAuthenticationService = new OAuth1AuthenticationService<Twitter>(
+//					twitterConnectionFactory);
+//			registry.addAuthenticationService(twitterAuthenticationService);
 		} else {
 			logger.info("NOT initializing twitter authentication service...");
 		}
 
 		// add facebook
-		if(environment.getAppConfiguration().getFaceBookClientId() != null) {
+		if(environment.getAppConfiguration().getSocialClientKey(FACEBOOK) != null) {
 			logger.info("Initializing facebook authentication service...");
 			OAuth2ConnectionFactory<Facebook> facebookConnectionFactory = new FacebookConnectionFactory(
-					environment.getAppConfiguration().getFaceBookClientId(),
-					environment.getAppConfiguration().getFaceBookClientSecret());
-			OAuth2AuthenticationService<Facebook> facebookAuthenticationService = new OAuth2AuthenticationService<Facebook>(
-					facebookConnectionFactory);
-			registry.addAuthenticationService(facebookAuthenticationService);
+					environment.getAppConfiguration().getSocialClientKey(FACEBOOK),
+					environment.getAppConfiguration().getSocialClientSecret(FACEBOOK));
+			registry.addConnectionFactory(facebookConnectionFactory);
+//			OAuth2AuthenticationService<Facebook> facebookAuthenticationService = new OAuth2AuthenticationService<Facebook>(
+//					facebookConnectionFactory);
+//			registry.addAuthenticationService(facebookAuthenticationService);
 
 		} else {
 			logger.info("NOT initializing facebook authentication service...");
 		}
+		// add google
+		if(environment.getAppConfiguration().getSocialClientKey(GOOGLE) != null) {
+			logger.info("Initializing google authentication service...");
+			OAuth2ConnectionFactory<Google> connectionFactory = new GoogleConnectionFactory(
+					environment.getAppConfiguration().getSocialClientKey(GOOGLE),
+					environment.getAppConfiguration().getSocialClientSecret(GOOGLE));
+			registry.addConnectionFactory(connectionFactory);
+//			OAuth2AuthenticationService<Google> authenticationService = new OAuth2AuthenticationService<Google>(
+//					connectionFactory);
+//			registry.addAuthenticationService(authenticationService);
+
+		} else {
+			logger.info("NOT initializing google authentication service...");
+		}
+		
 		
 		// add linkedIn
 //		OAuth2ConnectionFactory<LinkedIn> linkedInConnectionFactory = new LinkedInConnectionFactory(
@@ -157,6 +175,19 @@ public class SocialConfig {
 	public Twitter twitter() {
 		return connectionRepository().getPrimaryConnection(Twitter.class).getApi();
 	}
+	
+	/**
+	 * A proxy to a request-scoped object representing the current user's
+	 * primary Google account.
+	 * 
+	 * @throws NotConnectedException
+	 *             if the user is not connected to google.
+	 */
+	@Bean
+	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
+	public Google google() {
+		return connectionRepository().getPrimaryConnection(Google.class).getApi();
+	}
 
 	/**
 	 * The Spring MVC Controller that allows users to sign-in with their
@@ -169,7 +200,7 @@ public class SocialConfig {
 		//FIXME: SpringSocial: Handling not right...
 		//Set redirect page after external login (specified in /maalr.gwt/src/main/resources/application.properties)
 		String signInUrl = environment.getAppConfiguration().getRedirectUrl();
-		//controller.setSignInUrl(signInUrl);
+		controller.setSignInUrl(signInUrl);
 		controller.setPostSignInUrl(signInUrl);
 		return controller;
 	}

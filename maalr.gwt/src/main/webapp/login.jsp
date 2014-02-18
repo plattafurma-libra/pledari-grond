@@ -48,10 +48,16 @@
 				
 				<%-- OPEN-ID SIGN IN --%>
 				<div id="openid_login">
-					<div class="input_wrapper">
+					<!-- <div class="input_wrapper">
 						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
 							<input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id" />
 							<button type="submit" value="${signInGoogle}" id="google_signin">Sign in with Google</button>
+						</form>
+					</div> -->
+					<div class="input_wrapper">
+						<form action="<c:url value="/signin/google" />" method="POST">
+							<input type="hidden" name="scope" value="email" />
+							<button type="submit" id="google_signin">Sign in with Google</button>
 						</form>
 					</div>
 					<div class="input_wrapper">

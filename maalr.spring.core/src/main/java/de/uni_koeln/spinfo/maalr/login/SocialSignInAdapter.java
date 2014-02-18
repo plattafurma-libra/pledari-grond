@@ -93,14 +93,14 @@ public final class SocialSignInAdapter implements SignInAdapter, UserDetailsServ
 	}
 
 	private UserDetails signIn(MaalrUserInfo user) {
-		UserDetails details = getUserDeatails(user);
+		UserDetails details = getUserDetails(user);
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(details, details.getPassword(), details.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authToken);
 		logger.info("AUTHENTICATION: " + authToken);
 		return details;
 	}
 
-	private UserDetails getUserDeatails(MaalrUserInfo user) {
+	private UserDetails getUserDetails(MaalrUserInfo user) {
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleId());
 		authorities.add(authority);
@@ -110,6 +110,6 @@ public final class SocialSignInAdapter implements SignInAdapter, UserDetailsServ
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		MaalrUserInfo user = findUserByLogin(userId);
-		return getUserDeatails(user);
+		return getUserDetails(user);
 	}
 }
