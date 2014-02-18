@@ -3,6 +3,10 @@ encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/Editor
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorConstants_en.properties=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorConstants_rm.properties=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorUiBinderMessages_rm.properties=UTF-8
+encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text.properties=UTF-8
+encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_de.properties=UTF-8
+encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_en.properties=UTF-8
+encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_rm.properties=UTF-8
 encoding//src/main/webapp/assets/style/user_style.css=UTF-8
 encoding//src/main/webapp/i18n/text.properties=UTF-8
 encoding//src/main/webapp/i18n/text_de.properties=UTF-8
