@@ -35,9 +35,6 @@
 		
 		<profile>
 			<id>dict-en-min</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<maalr.config.dir>src/test/resources/maalr_minimal</maalr.config.dir>		
 			</properties>

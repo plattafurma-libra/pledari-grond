@@ -23,8 +23,8 @@ Have a look at the profiles-section of the pom.
 
 Examples: 
 
-Run jetty without any imports, using the default dictionary:
-mvn jetty:run -P gwt-dev
+Run jetty without any imports, using the russian dictionary:
+mvn jetty:run -P gwt-dev dict-ru
 
 Run jetty with the english dictionary, importing data during startup
 mvn jetty:run -P gwt-dev import dict-en-min
@@ -32,3 +32,6 @@ mvn jetty:run -P gwt-dev import dict-en-min
 Once jetty has been started, you can modify JSPs without the need of a
 server restart. You can also modify the GWT code, and use the devmode bookmarklets
 to recompile the code on the fly, without restarting the server.
+
+Default launch configurations for Eclipse can be found in the "launchConfigurations"
+directory.
