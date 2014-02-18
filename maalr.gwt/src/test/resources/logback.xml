@@ -7,7 +7,7 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/maalr.log</file>
+		<file>temp/logs/maalr.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
 			<FileNamePattern>temp/logs/maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
