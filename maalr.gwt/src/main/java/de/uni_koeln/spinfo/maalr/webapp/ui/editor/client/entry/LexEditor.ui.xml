@@ -1,7 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:m1="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.details"
 	xmlns:m3="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.filter"
 	xmlns:m2="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list"
 	xmlns:c="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.common.client"
