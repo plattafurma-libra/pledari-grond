@@ -31,6 +31,7 @@ public class LuceneConfiguration {
 
 	public void setBaseDirectory(String luceneDir) {
 		this.indexDir = new File(luceneDir);
+		indexDir.mkdirs();
 	}
 
 }
