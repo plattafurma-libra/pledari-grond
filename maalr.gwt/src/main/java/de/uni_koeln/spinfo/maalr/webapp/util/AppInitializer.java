@@ -71,7 +71,7 @@ public class AppInitializer {
 	@PostConstruct
 	public void postConstruct() throws Exception  {
 		String shouldImport = System.getProperty("maalr.import");
-		if(shouldImport != null) {
+		if(shouldImport != null && Boolean.parseBoolean(shouldImport)) {
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			logger.warn("Importing Data...");
 			try {
