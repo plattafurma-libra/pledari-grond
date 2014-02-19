@@ -1,6 +1,6 @@
 /* The div which contains the maalr snippet */
 .maalr_query_div {
-	width: 30%;
+	width: 100%;
 	font-family: Verdana, Geneva, sans-serif;
 }
 
@@ -16,13 +16,12 @@
 
 /* The query input field */
 .maalr_query_input {
-	width: 250px;
-	margin-left: 10px;
+	width: 90%;
 }
 
 /* The query button (if enabled) */
 .maalr_query_button {
-	float: right;
+	width: auto;
 }
 
 .maalr_results {
@@ -54,11 +53,11 @@
 
 /* An odd row in the results table */
 .maalr_odd_result_row {
-	
+	background-color:white;
 }
 
 .pledari_header {
-	background-color:00B3FF;
+	background-color:#00B3FF;
 	color:white;
 	width:100%;
 	height:30px;
@@ -69,7 +68,7 @@
 }
 
 .pledari_footer {
-	background-color:00B3FF;
+	background-color:#00B3FF;
 	color:white;
 	width:100%;
 	height:30px;

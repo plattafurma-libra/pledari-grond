@@ -9,7 +9,6 @@ injectQuery();
 
 function injectQuery() {
 	 maalr_queryDiv = document.getElementById("maalr_query_div");
-	 var fieldLabel = maalr_queryDiv.getAttribute("data-label");
 	 var buttonLabel = maalr_queryDiv.getAttribute("data-button");
 	 var inputLabel = maalr_queryDiv.getAttribute("data-placeholder");
 	 var autoQuery = maalr_queryDiv.getAttribute("data-autoquery");
@@ -34,7 +33,6 @@ function injectQuery() {
 		  var link  = document.createElement('link');
 		  link.rel  = 'stylesheet';
 		  link.type = 'text/css';
-		  source = "src/main/webapp"; // Development FIXME
 		  link.href = source + '/assets/style/maalr_embedded.css';
 		  link.media = 'all';
 		  head.appendChild(link);
@@ -45,13 +43,6 @@ function injectQuery() {
 	 qForm.setAttribute("method","get");
 	 qForm.setAttribute("action","dummy");
 	 qForm.setAttribute("onsubmit","return false");
-	 if(fieldLabel != null) {
-		 var label = document.createElement("label");
-		 label.setAttribute("for","query");
-		 label.innerHTML = fieldLabel;
-		 qForm.appendChild(label);
-		 label.setAttribute("class", "maalr_query_label");
-	 }
 	 maalr_input = document.createElement("input");
 	 maalr_input.setAttribute("type","text");
 	 maalr_input.setAttribute("name","query");
@@ -61,8 +52,18 @@ function injectQuery() {
 	 if(inputLabel != null) {
 		 maalr_input.placeholder=inputLabel;
 	 }
-	 qForm.appendChild(maalr_input);
-	 if(autoQuery != null && autoQuery) {
+	 var qTable = document.createElement("table");
+	 var qRow = document.createElement("tr");
+	 qTable.appendChild(qRow);
+	 var fieldTd = document.createElement("td");
+	 fieldTd.setAttribute("width","100%");
+	 qRow.appendChild(fieldTd);
+	 var buttonTd = document.createElement("td");
+	 buttonTd.setAttribute("width","auto");
+	 qRow.appendChild(buttonTd);
+	 fieldTd.appendChild(maalr_input);
+	 //qForm.appendChild(maalr_input);
+	 if(autoQuery == null || autoQuery) {
 		 maalr_input.onkeyup=function() {
 			clearTimeout(maalr_auto_query);
 			maalr_auto_query = setTimeout("queryMaalr()",300);
@@ -73,8 +74,10 @@ function injectQuery() {
 		 button.setAttribute("type","submit");
 		 button.innerHTML = (buttonLabel);
 		 button.setAttribute("class", "maalr_query_button");
-		 qForm.appendChild(button);
+		 //qForm.appendChild(button);
+		 buttonTd.appendChild(button);
 	 }
+	 qForm.appendChild(qTable);
 	 maalr_queryDiv.appendChild(qForm);
 	 var results = document.createElement("div");
 	 results.setAttribute("id", "maalr_results");

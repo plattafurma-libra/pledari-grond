@@ -15,13 +15,12 @@
 
 /* The query input field */
 .maalr_query_input {
-	width: 250px;
-	margin-left: 10px;
+	width: 100%;
 }
 
 /* The query button (if enabled) */
 .maalr_query_button {
-	float: right;
+	width: auto;
 }
 
 .maalr_results {
@@ -53,5 +52,5 @@
 
 /* An odd row in the results table */
 .maalr_odd_result_row {
-	
+	background-color:white;
 }

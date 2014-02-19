@@ -57,6 +57,19 @@ public class PledariController {
 		setPageTitle(mv, "Infos");
 		return mv;
 	}
+	
+	@RequestMapping("/embed")
+	public ModelAndView embed() {
+		ModelAndView mv = new ModelAndView("static/json");
+		setPageTitle(mv, "Embed");
+		return mv;
+	}
+	
+	@RequestMapping("/iframe")
+	public ModelAndView iframe() {
+		ModelAndView mv = new ModelAndView("static/iframe");
+		return mv;
+	}
 
 	@RequestMapping("/abreviaziuns")
 	public ModelAndView abbreviations() {

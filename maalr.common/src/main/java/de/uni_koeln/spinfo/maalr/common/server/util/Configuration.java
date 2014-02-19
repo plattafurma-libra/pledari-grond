@@ -217,5 +217,9 @@ public class Configuration {
 	public String getRedirectUrl() {
 		return properties.getProperty("social.redirect.page");
 	}
+	
+	public String getServerInetAddress() {
+		return properties.getProperty("maalr.inet.address");
+	}
 
 }
