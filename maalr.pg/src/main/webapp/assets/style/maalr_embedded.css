@@ -1,0 +1,89 @@
+/* The div which contains the maalr snippet */
+.maalr_query_div {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+/* The query form, containing label, input and button (label and button are optional) */
+.maalr_query_form {
+	margin-bottom: 0px;
+}
+
+/* The query label (if enabled) */
+.maalr_query_label {
+	
+}
+
+/* The query input field */
+.maalr_query_input {
+	width: 90%;
+}
+
+/* The query button (if enabled) */
+.maalr_query_button {
+	width: auto;
+}
+
+.maalr_results {
+	width: 100%;
+	min-height: 5em;
+}
+
+/* The "nothing-found"-label
+.maalr_nothing_found {
+	margin: 10px;	
+}
+
+/* The <table/> containing the results. */
+.maalr_result_table {
+	border-spacing: 0px;
+	width: 100%;
+	font-size: 80%;
+}
+
+/* A single row in the results table */
+.maalr_result_row {
+	
+}
+
+/* An even row in the results table */
+.maalr_even_result_row {
+	background-color:#b0e7ff;
+}
+
+/* An odd row in the results table */
+.maalr_odd_result_row {
+	background-color:white;
+}
+
+.pledari_header {
+	background-color:#00B3FF;
+	color:white;
+	width:100%;
+	height:30px;
+}
+
+.pledari_header_text {
+	padding:5px;
+}
+
+.pledari_footer {
+	background-color:#00B3FF;
+	color:white;
+	width:100%;
+	height:30px;
+	font-size:80%;	
+}
+
+.pledari_footer_text {
+	padding:5px;
+}
+
+.pledari_footer_link {
+	color:white; 
+	float:left;
+}
+
+.pledari_cr {
+	float:right;
+}

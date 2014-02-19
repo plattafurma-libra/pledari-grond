@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='de.uni_koeln.spinfo.maalr.mongo'>
+
+  <inherits name="com.google.gwt.user.User" />
+  
+  <source path="exceptions" />
+  <source path="stats" />
+  <source path="user" />
+  
+</module>

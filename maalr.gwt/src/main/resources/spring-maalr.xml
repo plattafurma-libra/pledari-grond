@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/aop    
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- Tell Spring to use Services etc which are defined through annotations -->
+	<!-- Otherwise, all services would have to be listed here. -->
+	<!-- PRO: Less annoying xml configuration -->
+	<!-- CONTRA: Difficult to get an overview about all services, kind of spooky... 
+		:) -->
+	<context:annotation-config ></context:annotation-config>
+
+	<!-- Could also define bean class and id here -->
+	<!-- Alternative is to use the @Service-Annotation, as in the referenced 
+		class -->
+	<!-- <bean id="springLogUserLogin" class="de.uni_koeln.spinfo.maalr.login.UserToMdcFilter"> 
+		</bean> -->
+
+	<!-- Tell Spring to scan all classes in this package (including subpackages) -->
+	<context:component-scan base-package="de.uni_koeln.spinfo" />
+
+	<!-- Spring MVC is defined in a separate file -->
+	<import resource="spring-mvc.xml" />
+
+	<!-- Security features are defined in a separate file -->
+	<import resource="spring-security.xml" />
+
+	<!-- Optionally enable access through RMI -->
+	<!-- TODO: This is work in progress! -->
+	<import resource="spring-rmi.xml"/>
+	
+</beans>

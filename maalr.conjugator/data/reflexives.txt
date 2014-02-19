@@ -1,0 +1,473 @@
+s'abassar
+s'absentar
+s'abstegnair
+s'acclimatisar
+s'accordar
+s'accorscher
+s'accumadar
+s'accumplir
+s'accumular
+s'acquistar
+s'adattar
+s'adossar
+s'adrenalinisar
+s'adressar
+s'affar
+s'affidar
+s'affiliar
+s'agitar
+s'alienar
+s'alingiar
+s'allegrar
+s'alliar
+s'allontanar
+s'alterar
+s'animar
+s'annunziar
+s'approfundar
+s'appropriar
+s'approximar
+s'arder
+s'armar
+s'arranschar
+s'arrogar
+s'associar
+s'atschertar
+s'augmentar
+s'auzar
+s'avanzar
+s'aventurar
+s'aviar
+s'avischinar
+s'avrir
+s'edifitgar
+s'elevar
+s'emancipar
+s'embartgar
+s'embellir
+s'embratgar
+s'embratschar
+s'embrinir
+s'embrugliar
+s'emburgaisar
+s'empatgar
+s'empatschar
+s'empermetter
+s'empipar
+s'emplunar
+s'empudair
+s'encapslar
+s'enchavar
+s'enchavar
+s'encleger
+s'enclinar
+s'enconuscher
+s'encotschnir
+s'endentar
+s'endirir
+s'endisar
+s'endrizzar
+s'enfarinar
+s'enfieutrar
+s'enfilar
+s'enfirmir
+s'enfitgar
+s'enfuttar
+s'engaschar
+s'engiavunar
+s'englittar
+s'ennivlar
+s'enquagliar
+s'enriclar
+s'enritgir
+s'enschanugliar
+s'entardar
+s'enterrar
+s'entupar
+s'entusiasmar
+s'etablir
+s'exaltar
+s'exaurir
+s'exculpar
+s'explitgar
+s'exponer
+s'exprimer
+s'externar
+s'extinguer
+s'identifitgar
+s'ignivar
+s'imaginar
+s'immatricular
+s'impegnar
+s'imponer
+s'impoppar
+s'inamurar
+s'inclinar
+s'indebitar
+s'indignar
+s'infiltrar
+s'inflammar
+s'infurmar
+s'inquietar
+s'inschignar
+s'inscriver
+s'inscuntrar
+s'installar
+s'integrar
+s'intensivar
+s'interessar
+s'intermetter
+s'intgantar
+s'irritar
+s'isolar
+s'obligar
+s'obstinar
+s'occupar
+s'offrir
+s'opponer
+s'organisar
+s'orientar
+s'ornar
+s'umiliar
+s'unir
+sa barattar
+sa baruffar
+sa basar
+sa batter
+sa bifurtgar
+sa bittar
+sa blamar
+sa brancar
+sa branclar
+sa brischar
+sa burtgar
+sa calmar
+sa capslar
+sa chapir
+sa chapriziar
+sa charplinar
+sa chasar
+sa chatschar
+sa chattar
+sa chattinar
+sa chavistrar
+sa clamar
+sa colliar
+sa colurar
+sa concentrar
+sa concretisar
+sa conferir
+sa confermar
+sa confidar
+sa confruntar
+sa congiurar
+sa consecrar
+sa conservar
+sa conspirar
+sa constituir
+sa consumar
+sa conuscher
+sa convertir
+sa copular
+sa crair
+sa crollar
+sa cruschar
+sa cugliunar
+sa cuir
+sa cumblidar
+sa cumplettar
+sa cumplottar
+sa cumponer
+sa cumportar
+sa cumprar
+sa cumprometter
+sa cumprovar
+sa cunfar
+sa cuntegnair
+sa cuntentar
+sa cuntradir
+sa cunvegnir
+sa cupidar
+sa curclar
+sa cussegliar
+sa cuvernar
+sa cuvrir
+sa dar
+sa dasdar
+sa dauzar
+sa decider
+sa declerar
+sa deditgar
+sa defender
+sa degnar
+sa deliberar
+sa depurtar
+sa derasar
+sa descuflar
+sa desmincar
+sa desociar
+sa desperar
+sa diromar
+sa disar
+sa dischimpegnar
+sa discreditar
+sa disculpar
+sa discurrer
+sa disgraziar
+sa dispitar
+sa dissolver
+sa distanziar
+sa distatgar
+sa distinguer
+sa distrair
+sa divertir
+sa divorziar
+sa domiciliar
+sa drizzar
+sa drogar
+sa dublar
+sa dumagnar
+sa dumandar
+sa durmentar
+sa dustar
+sa duvrar
+sa famigliarisar
+sa fatschentar
+sa fermar
+sa fidar
+sa fieutrar
+sa figurar
+sa fitgar
+sa fittar
+sa fixar
+sa fortifitgar
+sa fuar
+sa fultschar
+sa fundar
+sa furmar
+sa futrar
+sa gidar
+sa giustifitgar
+sa glischnar
+sa gloriar
+sa grittentar
+sa gruppar
+sa habilitar
+sa lamentar
+sa laschar
+sa lavar
+sa legitimar
+sa legrar
+sa liar
+sa liberar
+sa limitar
+sa lubir
+sa ludar
+sa manar
+sa manifestar
+sa mantegnair
+sa mantunar
+sa maridar
+sa martirar
+sa marventar
+sa maschadar
+sa mascrar
+sa mazzar
+sa meglierar
+sa mesirar
+sa metter
+sa midar
+sa moderar
+sa mortifitgar
+sa mover
+sa mudregiar
+sa multiplitgar
+sa mussar
+sa muventar
+sa natiralisar
+sa nivlar
+sa nudar
+sa numnar
+sa nuspir
+sa nutrir
+sa padimar
+sa palentar
+sa paletschar
+sa paregliar
+sa parentar
+sa parfumar
+sa parter
+sa participar
+sa passiunar
+sa patrunar
+sa pender
+sa percorscher
+sa perder
+sa perfecziunar
+sa permetter
+sa perstgisar
+sa persvader
+sa pertgirar
+sa petgnar
+sa pinar
+sa pitgar
+sa plaschair
+sa platgar
+sa plunar
+sa postar
+sa precipitar
+sa prender
+sa preparar
+sa preschentar
+sa prestar
+sa privar
+sa procrear
+sa procurar
+sa profilar
+sa profundar
+sa promenar
+sa propagar
+sa prosternar
+sa prostituir
+sa proveder
+sa pudrar
+sa pusar
+sa quietar
+sa quintuplar
+sa radunar
+sa ravgentar
+sa reabilitar
+sa realisar
+sa rebellar
+sa reconciliar
+sa recrear
+sa recumandar
+sa refar
+sa referir
+sa refrestgentar
+sa regenerar
+sa regurdar
+sa remetter
+sa render
+sa resignar
+sa resolver
+sa restabilir
+sa restrenscher
+sa retardar
+sa retegnair
+sa retrair
+sa reunir
+sa revantschar
+sa revegnir
+sa revoltar
+sa rimar
+sa rimnar
+sa rinforzar
+sa ritschar
+sa rudlar
+sa rugalar
+sa ruinar
+sa rumper
+sa ruschnar
+sa sacrifitgar
+sa sadular
+sa salvar
+sa sbagliar
+sa sbartgar
+sa sbassar
+sa sblatgir
+sa scagnar
+sa schanegiar
+sa schenar
+sa schlantschar
+sa schlargiar
+sa schliar
+sa schluccar
+sa schluitar
+sa sclerir
+sa scolar
+sa scornar
+sa scriver
+sa scuntrar
+sa sdisar
+sa segirar
+sa sentir
+sa separar
+sa serenar
+sa servir
+sa sfadiar
+sa sfradar
+sa sfugar
+sa sfurzar
+sa sgobar
+sa sgragnar
+sa sgrifflar
+sa siemiar
+sa smagliar
+sa smincar
+sa sminuir
+sa smirvegliar
+sa snuir
+sa socialisar
+sa solidarisar
+sa sparpagliar
+sa sparter
+sa spaventar
+sa spezialisar
+sa spruvar
+sa spusar
+sa spustar
+sa squitschar
+sa sromar
+sa stabilir
+sa stalegiar
+sa stanclentar
+sa starmentar
+sa statgar
+sa stender
+sa stentar
+sa stgamiar
+sa stgandelisar
+sa stgarpar
+sa stgaudar
+sa stgisar
+sa stinar
+sa storscher
+sa stortigliar
+sa strair
+sa strapatschar
+sa struztgar
+sa stumplar
+sa stuschar
+sa subordinar
+sa suicidar
+sa sumegliar
+sa surdar
+sa surtrair
+sa sustegnair
+sa suttametter
+sa svegliar
+sa svestgir
+sa sviluppar
+sa tagliar
+sa tegnair
+sa tissientar
+sa tradir
+sa trair
+sa transfurmar
+sa travestgir
+sa triplar
+sa trumpar
+sa tschentar
+sa tschurriclar
+sa turmentar
+sa turpegiar
+sa vaccinar
+sa vargugnar
+sa verifitgar
+sa vesair
+sa vestgir
+sa vilentar
+sa vinditgar
+sa volver
+sa zuppar

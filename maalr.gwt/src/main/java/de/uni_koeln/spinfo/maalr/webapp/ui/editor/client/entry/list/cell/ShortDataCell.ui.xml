@@ -1,0 +1,10 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+	<ui:with field='wrapper' type="de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.wrapper.ICellWrapper" />
+	<div style="font-size:90%">
+		<div>
+			<div><ui:safehtml from='{wrapper.getShortLemma}'></ui:safehtml></div>
+			<div style="font-size:90%"><ui:text from='{wrapper.getShortComment}'></ui:text></div>
+		</div>
+	</div>
+</ui:UiBinder>  
+

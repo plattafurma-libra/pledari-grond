@@ -1,0 +1,303 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.uni_koeln.spinfo.maalr.pg</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>pg</artifactId>
+	<packaging>war</packaging>
+	
+	<properties>
+		<maalr.webapp.build>../maalr.pg/target</maalr.webapp.build>
+		<maalr.webapp.name>pg-${project.version}</maalr.webapp.name>
+		<jetty.version>9.0.1.v20130408</jetty.version>
+		<jetty.default.port>8080</jetty.default.port>
+		<slf4j.version>1.6.6</slf4j.version>
+		<logback.version>1.0.9</logback.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>gwt</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>mongo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>lucene</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>spring.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- Enable this dependency to get and display server-side statistics -->
+		<!-- <dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>sigar</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.2</version>
+		</dependency>
+            
+
+
+		<!-- Embed MongoDB for testing -->
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.41</version>
+			<scope>test</scope>
+		</dependency>
+		            
+		<!-- Required to render dictionary entries through JSON -->
+	 	<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency> 
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+
+			<!-- Start and stop MongoDB for integration tests -->
+			<plugin>
+				<groupId>com.github.joelittlejohn.embedmongo</groupId>
+				<artifactId>embedmongo-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<overlays>
+						<overlay>
+							<id>maalr-gwt</id>
+							<groupId>de.uni_koeln.spinfo.maalr</groupId>
+							<artifactId>gwt</artifactId>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>set-system-properties</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>
+									<name>logback.configurationFile</name>
+									<value>src/test/resources/logback.xml</value>
+								</property>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+
+						<contextXml>src/test/resources/jetty-context.xml</contextXml>
+						<webAppConfig>
+							<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
+							<baseResource
+								implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+								<resourcesAsCSV>${maalr.webapp.build}/${maalr.webapp.name}</resourcesAsCSV>
+							</baseResource>
+							<descriptor>${maalr.webapp.build}/${maalr.webapp.name}/WEB-INF/web.xml</descriptor>
+						</webAppConfig>
+						<classesDirectory>${maalr.webapp.build}/${maalr.webapp.name}/WEB-INF/classes</classesDirectory>
+						<systemProperties>
+							<systemProperty>
+								<name>jetty.port</name>
+								<value>${jetty.default.port}</value>
+							</systemProperty>
+						</systemProperties>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>ch.qos.logback</groupId>
+							<artifactId>logback-classic</artifactId>
+							<version>${logback.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											properties-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-2,)
+										</versionRange>
+										<goals>
+											<goal>
+												set-system-properties
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											native2ascii-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-1,)
+										</versionRange>
+										<goals>
+											<goal>native2ascii</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+
+		<profile>
+			<id>integration</id>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-maven-plugin</artifactId>
+						<configuration>
+
+							<systemProperties>
+								<systemProperty>
+									<name>jetty.port</name>
+									<value>${jetty.integration.port}</value>
+								</systemProperty>
+							</systemProperties>
+							<stopPort>9991</stopPort>
+							<stopKey>test</stopKey>
+							<daemon>true</daemon>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-jetty</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<scanIntervalSeconds>0</scanIntervalSeconds>
+									<daemon>true</daemon>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>ch.qos.logback</groupId>
+								<artifactId>logback-classic</artifactId>
+								<version>${logback.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+
+				</plugins>
+			</build>
+
+		</profile>
+		
+		<profile>
+			<id>startmongo</id>
+			<build>
+				<plugins>
+					<!-- Start MongoDB -->
+					<plugin>
+						<groupId>com.github.joelittlejohn.embedmongo</groupId>
+						<artifactId>embedmongo-maven-plugin</artifactId>
+						<version>0.1.3</version>
+						<executions>
+							<execution>
+								<id>start</id>
+								<phase>package</phase>
+								<goals>
+									<goal>start</goal>
+								</goals>
+								<configuration>
+									<logging>file</logging>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+</project>

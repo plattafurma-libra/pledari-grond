@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:s="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.stats">
+	<ui:style>
+		
+		.bold {
+			font-weight: bold;
+		}
+		
+		.sub {
+			font-size: 80%;
+		}
+		
+		.row {
+			padding: 10px;
+			border-bottom: 1px solid gray;
+		}
+		
+		.chart {
+			margin-right: 40px;
+		}
+		
+	</ui:style>
+	<g:HorizontalPanel width="100%" styleName="{style.row}">
+		<g:cell width="100px" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<s:NetBar ui:field="bar" styleName="{style.chart}"></s:NetBar>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label styleName="{style.bold}" ui:field="name"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="speed"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label ui:field="out"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="outErrors"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label ui:field="in"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="inErrors"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+	</g:HorizontalPanel>
+
+</ui:UiBinder> 

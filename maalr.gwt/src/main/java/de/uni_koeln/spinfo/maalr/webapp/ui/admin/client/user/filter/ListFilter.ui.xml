@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui">
+	<g:HTMLPanel>
+		<gwtbootstrap:Well>
+		<gwtbootstrap:Form type="HORIZONTAL">
+			<gwtbootstrap:Fieldset>
+				<gwtbootstrap:Legend>Filter</gwtbootstrap:Legend>
+				<gwtbootstrap:ControlGroup>
+					<gwtbootstrap:ControlLabel>Name/IP-Address</gwtbootstrap:ControlLabel>
+					<gwtbootstrap:Controls>
+							<gwtbootstrap:TextBox ui:field="name"></gwtbootstrap:TextBox>
+					</gwtbootstrap:Controls>
+				</gwtbootstrap:ControlGroup>
+				<gwtbootstrap:ControlGroup>
+					<gwtbootstrap:ControlLabel>Role</gwtbootstrap:ControlLabel>
+					<gwtbootstrap:Controls>
+						<gwtbootstrap:ListBox ui:field="role"></gwtbootstrap:ListBox>
+					</gwtbootstrap:Controls>
+				</gwtbootstrap:ControlGroup>
+			</gwtbootstrap:Fieldset>
+		</gwtbootstrap:Form>
+			<gwtbootstrap:ButtonGroup>
+				<gwtbootstrap:Button ui:field="reset" text="Reset"></gwtbootstrap:Button>
+				<gwtbootstrap:Button ui:field="apply" text="Apply" type="PRIMARY"></gwtbootstrap:Button>
+			</gwtbootstrap:ButtonGroup>
+		</gwtbootstrap:Well>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop    
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- Enable Spring method security through @Secured -->
+	<security:global-method-security
+		secured-annotations="enabled" />
+
+	<!-- Spring security configuration -->
+	<security:http auto-config='true'>
+		<!-- Allow unauthorized users to access the login page -->
+		<!-- Otherwise it would be difficult to login... -->
+		<security:intercept-url pattern="/login.html*" />
+		<security:intercept-url pattern="/translate.html*" />
+		<security:intercept-url pattern="/de.uni_koeln.spinfo.maalr.user/**" />
+		
+		<!-- Only admins get access to the backend -->
+		<!-- Unauthorized users will get redirected to the login page -->
+		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/editor/**" access="ROLE_TRUSTED_IN" />
+		
+		<!-- Define which login form to use -->
+		<!-- After login, the postLoginHandler will increase the session timeout -->
+		<!-- and insert new user infos into the user database -->
+		<security:form-login login-page='/login.html' authentication-success-handler-ref="postLoginHandler" authentication-failure-url = "/login.html?login_error=1" />
+		
+		<!-- Enable login through openid -->
+		<security:openid-login authentication-success-handler-ref="postLoginHandler" authentication-failure-url="/login.html?login_error=1">
+			<security:attribute-exchange>
+				<!-- Try to get attributes from Open ID (not supported by all providers, can be null) -->
+				<security:openid-attribute name="axContactEmail" type="http://axschema.org/contact/email" required="true" />
+				<security:openid-attribute name="oiContactEmail" type="http://schema.openid.net/contact/email" required="true" />
+				<security:openid-attribute name="axNamePersonFirstName" type="http://axschema.org/namePerson/first" required="true" />
+				<security:openid-attribute name="axNamePersonLastName" type="http://axschema.org/namePerson/last" required="true" />
+			</security:attribute-exchange>
+		</security:openid-login>
+	</security:http>
+
+	<security:authentication-manager>
+
+		<!-- Login through JAAS. Can be configured to use different JAAS login 
+			modules, such as files with username/password, LDAP, Kerberos, or else. See 
+			http://docs.oracle.com/javase/1.5.0/docs/guide/security/jgss/tutorials/AcnOnly.html -->
+		<security:authentication-provider ref="MaalrLoginManager" />
+
+		<!-- Login through OpenID. Currently configured to use either Google or Yahoo. -->
+		<!-- See login.jsp for details -->
+		<security:authentication-provider ref="OpenIdLoginManager" />
+		
+	</security:authentication-manager>
+
+	<!-- This bean enables Spring to authenticate throught OpenID -->
+	<!-- See http://en.wikipedia.org/wiki/OpenID -->
+	<bean id="OpenIdLoginManager" class="org.springframework.security.openid.OpenIDAuthenticationProvider">
+		<property name="userDetailsService" ref="OpenIdUserDetailsService" />
+	</bean>
+
+	<bean id="OpenIdUserDetailsService" class="de.uni_koeln.spinfo.maalr.login.OpenIdDetailsManager">
+		<!-- Responsible for connecting openid logins with the user database -->
+	</bean>
+
+	<!-- This bean enables Spring to authenticate through JAAS -->
+	<!-- As JAAS can use different authentication frameworks, such as LDAP, Kerberos, or simple text files, -->
+	<!-- this allows the integration into various environments. -->
+	<!-- See http://de.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service for a -->
+	<!-- short introduction (in German language) -->
+	<bean id="JaasAuthenticationProvider" class="org.springframework.security.authentication.jaas.JaasAuthenticationProvider">
+		<!-- Defines which authentication modules to use. -->
+		<!-- The path to the maalr configuration directory can be set via the system property 'maalr.config.dir' -->
+		<!-- If not set, the default value 'maalr_config' will be used (assuming that the configuration dir -->
+		<!-- lies in the base directory) -->
+		<property name="loginConfig" value="file:${maalr.config.dir:maalr_config}/login.config" />
+		<property name="loginContextName" value="MaalrLogin" />
+		<property name="callbackHandlers">
+			<list>
+				<bean class="org.springframework.security.authentication.jaas.JaasNameCallbackHandler" />
+				<bean class="org.springframework.security.authentication.jaas.JaasPasswordCallbackHandler" />
+			</list>
+		</property>
+		<property name="authorityGranters">
+			<!-- Responsible for assigning roles to authorized users -->
+			<list>
+				<bean class="de.uni_koeln.spinfo.maalr.login.MaalrAuthorityGranter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
