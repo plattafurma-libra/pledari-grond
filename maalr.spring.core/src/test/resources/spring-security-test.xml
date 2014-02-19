@@ -85,7 +85,7 @@
 	<bean id="JaasAuthenticationProvider"
 		class="org.springframework.security.authentication.jaas.JaasAuthenticationProvider">
 		<!-- Defines which authentication modules to use. -->
-		<property name="loginConfig" value="file:maalr_config/login.config" />
+		<property name="loginConfig" value="file:src/test/resources/maalr_test_config/login.config" />
 		<property name="loginContextName" value="MaalrLogin" />
 		<property name="callbackHandlers">
 			<list>
