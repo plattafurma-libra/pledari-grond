@@ -114,7 +114,8 @@ Anforderungen anpassen.
 		<td>ja</td>
 		<td>false</td>
 		<td>Falls das Design des Widgets an die jeweilige Webseite angepasst werden soll, kann dieser Parameter auf 'false' gesetzt werden.
-		In dem Fall müssen eigene CSS-Regeln für die Elemente des Widgets definiert werden.
+		In dem Fall müssen eigene CSS-Regeln für die Elemente des Widgets definiert werden - das entsprechende Stylesheet finden
+		Sie <a href="/assets/style/maalr_embedded.css">hier</a>.
 		</td>
 	</tr>
 </table>

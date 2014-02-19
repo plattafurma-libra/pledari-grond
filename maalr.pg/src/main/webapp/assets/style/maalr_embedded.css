@@ -6,7 +6,7 @@
 
 /* The query form, containing label, input and button (label and button are optional) */
 .maalr_query_form {
-	
+	margin-bottom: 0px;
 }
 
 /* The query label (if enabled) */
