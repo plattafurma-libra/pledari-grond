@@ -22,6 +22,46 @@ body {
 	border: 0 none;
 }
 
+a {
+	color: rgb(153, 153, 153);
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow:    none;
+	box-shadow:         none;
+
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	border-radius: 0;
+
+	width: 284px;
+	height: 26px;
+	padding: 4px 12px;
+	margin-left: 0;
+	border: 1px solid white;
+
+	font-family: "europa", sans-serif;
+	box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+	border: 1px solid rgb(0, 255, 188);
+	color: rgb(76,76,76);
+	-webkit-box-shadow: none;
+	-moz-box-shadow:    none;
+	box-shadow:         none;
+}
+
 /* Alphabetical List */
 .alpha_navi {
 	width: 92%;
@@ -164,6 +204,7 @@ body {
 
 label, input, button, select, textarea {
 	font-weight: 400;
+	margin-bottom: 0;
 }
 
 input::-webkit-input-placeholder,
@@ -262,14 +303,15 @@ input:focus, textarea:focus {
 #content a:hover {
 	color: rgb(0, 255, 188);
 	text-decoration: none;
+	background-color: transparent;
 }
 
 #content.search-centered .container-fluid:last-child .span4 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -196px;
-	margin-top: -72px;
+	margin-left: -271px;
+	margin-top: -54px;
 }
 
 .well {
@@ -307,15 +349,6 @@ input:focus, textarea:focus {
 }
 
 #search-widget #simple_search_input {
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	border: 1px solid white;
-
-	-webkit-box-shadow: none;
-	-moz-box-shadow:    none;
-	box-shadow:         none;
-
 	-webkit-border-radius: 24px;
 	-moz-border-radius: 24px;
 	-ms-border-radius: 24px;
@@ -325,12 +358,6 @@ input:focus, textarea:focus {
 	height: 24px;
 	padding: 4px 12px;
 	margin-left: -8px;
-
-	font-family: "europa", sans-serif;
-}
-
-#search-widget #simple_search_input:focus {
-	border: 1px solid rgb(0, 255, 188);
 }
 
 #search-plus-icon {
@@ -424,17 +451,17 @@ input:focus, textarea:focus {
 	left: 0px;
 	right: 0px;
 	min-height: 36px;
-	background-color: rgb(200,200,200);
+	background-color: rgb(236,236,236);
 	z-index: 1000;
-	font-weight: 100;
 }
 
 #navi_bottom a {
-	color: white;
+	color: rgb(126,126,126);
 	display: inline-block;
 }
 
 #navi_bottom a:hover {
+	color: black;
 	text-decoration: none;
 }
 
@@ -527,9 +554,9 @@ input:focus, textarea:focus {
 }
 
 #content.content .row-fluid .span4 {
-	width: 392px;
 	float: none;
 	margin: 0 auto;
+	width: 542px;
 }
 
 #content.content .row-fluid .span8 {
@@ -543,7 +570,6 @@ input:focus, textarea:focus {
 }
 
 #content.content .row-fluid .span4 .well {
-	margin-left: 22px;
 	margin-bottom: 42px;
 	position: relative;
 	background-color: transparent;
@@ -553,40 +579,12 @@ input:focus, textarea:focus {
 	display: none;
 }
 
-#content.content input[type="text"] {
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	border: 1px solid white;
-
-	-webkit-box-shadow: none;
-	-moz-box-shadow:    none;
-	box-shadow:         none;
-
-	-webkit-border-radius: 24px;
-	-moz-border-radius: 24px;
-	-ms-border-radius: 24px;
-	border-radius: 24px;
-
-	width: 284px;
-	height: 26px;
-	padding: 4px 12px;
-	margin-left: 0;
-
-	font-family: "europa", sans-serif;
-}
-
-#content.content input[type="text"]:focus {
-	border: 1px solid rgb(0, 255, 188);
-	color: rgb(0, 255, 188);
-}
-
 #content.content .control-group a.btn {
 	text-transform: lowercase;
 	color: rgb(153, 153, 153);
 	position: absolute;
 	top: 26px;
-	right: -24px;
+	right: 42px;
 	display: block;
 	width: 37px;
 	height: 18px;
@@ -648,7 +646,7 @@ input:focus, textarea:focus {
 	content: "+";
 	position: absolute;
 	top: -24px;
-	left: 24px;
+	left: 32px;
 	
 	color: rgb(153, 153, 153);
 	text-align: center;
@@ -672,6 +670,17 @@ input:focus, textarea:focus {
 #content.content .row-fluid .span8 .gwt-HTML span {
 	font-size: 13px !important;
 	font-weight: 400 !important;
+	display: block;
+	width: 100%;
+}
+
+#content.content .row-fluid .span8 .gwt-HTML span:last-child {
+	color: rgb(153, 153, 153);
+	margin-bottom: 24px;
+}
+
+#searchphrase {
+	font-weight: bold;
 }
 
 #content.content .row-fluid .span8 table {
@@ -692,10 +701,12 @@ input:focus, textarea:focus {
 #content.content .row-fluid .span8 table.resultlist {
 	padding: 0 20px;
 }
-
-#content.content table.resultlist tr.GDPXEMADBC,
-#content.content table.resultlist tr.GDPXEMADBC td,
-#content.content table.resultlist tr.GDPXEMADBC td div {
+/*STAND: 24.02.2014*/
+/*NEW GKHQX3BBBC*/
+/*OLD GDPXEMADBC*/
+#content.content table.resultlist tr.GKHQX3BBBC,
+#content.content table.resultlist tr.GKHQX3BBBC td,
+#content.content table.resultlist tr.GKHQX3BBBC td div {
 	background-color: transparent;
 }
 
@@ -792,42 +803,21 @@ input:focus, textarea:focus {
 
 #login_container input[type="text"],
 #login_container input[type="password"] {
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	border: 1px solid white;
-
-	-webkit-box-shadow: none;
-	-moz-box-shadow:    none;
-	box-shadow:         none;
-
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	-ms-border-radius: 0;
-	border-radius: 0;
-
-	font-family: "europa", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	line-height: 18px;
-
-	height: 14px;
 	width: 182px;
-	padding: 5px 10px;
 	background-color: rgb(245, 245, 245);
-	border-color: rgb(245, 245, 245);
+	border: 1px solid rgb(245, 245, 245);
 }
 
 #login_container input[type="text"]:focus,
 #login_container input[type="password"]:focus {
 	border: 1px solid rgb(0, 255, 188);
-	color: rgb(0, 255, 188);
 }
 
 #login_container input#internal_login {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
-	border: 1px solid white;
+	border: 0 none;
 
 	-webkit-box-shadow: none;
 	-moz-box-shadow:    none;
@@ -839,7 +829,6 @@ input:focus, textarea:focus {
 	border-radius: 0;
 
 	background-color: rgb(0, 255, 188);
-	border-color: rgb(0, 255, 188);
 	color: white;
 
 	height: 24px;
@@ -971,6 +960,10 @@ input:focus, textarea:focus {
 	margin-bottom: 24px;
 }
 
+.information_container h2 {
+	letter-spacing: 0.02em;
+}
+
 
 /* BROWSE */
 .browse_container {
@@ -1019,7 +1012,7 @@ input:focus, textarea:focus {
 	font-size: 13px;
 	line-height: 18px;
 	text-transform: uppercase;
-	letter-spacing: 0.2em;
+	letter-spacing: 0.02em;
 	margin-bottom: 32px;
 }
 
@@ -1038,24 +1031,26 @@ input:focus, textarea:focus {
 .container_plugin .section {
 	margin-bottom: 24px;
 }
-
-tr.GDPXEMADKB td:nth-child(1) {
+/*STAND: 24.02.2014*/
+/*NEW GKHQX3BBKB*/
+/*OLD GDPXEMADKB*/
+tr.GKHQX3BBKB td:nth-child(1) {
 	width: 0%;
 }
 
-tr.GDPXEMADKB td:nth-child(2) {
+tr.GKHQX3BBKB td:nth-child(2) {
 	width: 40%;
 }
 
-tr.GDPXEMADKB td:nth-child(3) {
+tr.GKHQX3BBKB td:nth-child(3) {
 	width: 10%;
 }
 
-tr.GDPXEMADKB td:nth-child(4) {
+tr.GKHQX3BBKB td:nth-child(4) {
 	width: 49%;
 }
 
-tr.GDPXEMADKB td:nth-child(5) {
+tr.GKHQX3BBKB td:nth-child(5) {
 	width: 0%;
 }
 
@@ -1099,6 +1094,14 @@ tr.GDPXEMADKB td:nth-child(5) {
 	color: rgb(0, 255, 188); 
 }
 
+#searchoptions input#searchPhrase {
+	border-radius: 24px;
+	width: 312px;
+	height: 32px;
+	margin: 0 auto;
+	display: block;
+}
+
 
 /* MODAL */
 
@@ -1127,32 +1130,25 @@ tr.GDPXEMADKB td:nth-child(5) {
 .modal-body { 
 	position: relative;
 	padding: 0;
-}
-
-.modal-body input[type="text"], .modal-body textarea {
-	max-width: 590px !important;
-	height: 24px;
-	box-shadow: 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0);
-	border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0;
-	border: 1px solid rgb(245, 245, 245);
-	color: rgb(0, 255, 188);
-	letter-spacing: 0.1em;
-	font-family: 'europa', 'Helvetica', Arial, sans-serif;
-	font-size: 13px;
-	border: 0 none;
-	box-sizing: border-box;
+	margin-bottom: 12px;
 }
 
 .modal-body textarea {
 	height: auto;
-	border: 0 none;
 }
 
-.modal-body input[type="text"]:focus, .modal-body textarea:focus {
+.modal-body input[type="text"]:focus,
+.modal-body textarea:focus {
 	box-shadow: 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0);
-	border: 1px solid rgb(0, 255, 188);
 }
 
+.modal-body .lemma-editor > table {
+	width: 100% !important;
+}
+
+.modal-body .lemma-editor > table > tbody > tr > td:first-child input {
+	width: 90% !important;
+}
 
 .modal a.btn {
 	box-shadow: 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0);
@@ -1184,8 +1180,9 @@ tr.GDPXEMADKB td:nth-child(5) {
 	padding: 0 !important; margin: 0 !important;
 }
 
-.modal-body table .form-horizontal .control-group {
-	padding: 0; 
+.modal-body table .control-group {
+	padding: 0;
+	margin-bottom: 12px;
 }
 
 .modal-body table .form-horizontal .control-group .control-label {
@@ -1193,7 +1190,6 @@ tr.GDPXEMADKB td:nth-child(5) {
 	margin: 0;
 	width: 90px;
 	text-align: left;
-	margin-top: 4px;
 	border: 0 none;
 }
 
@@ -1201,14 +1197,18 @@ tr.GDPXEMADKB td:nth-child(5) {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 200px;
+	width: 100%;
 }
 
 .modal-body table .form-horizontal .control-group .controls .gwt-TextBox {
 	box-sizing: border-box;
-	width: 180px;
+	width: 100%;
 	font-size: 13px;
-	border: 0 none;
+	border: 1px solid white;
+}
+
+.modal-body table .form-horizontal .control-group .controls .gwt-TextBox:focus {
+	border: 1px solid rgb(0, 255, 188);
 }
 
 .modal .page-header {
@@ -1247,6 +1247,10 @@ tr.GDPXEMADKB td:nth-child(5) {
 	line-height: 18px;
 }
 
+.modal td[width="25%"] {
+	padding: 0 10px 0 0 !important;
+}
+
 #content.container_entry {
 	width: 522px;
 	line-height: 20px;
@@ -1268,6 +1272,57 @@ blockquote {
 
 blockquote h4 {
 	margin-top: 8px;
+}
+
+#content .pagination a {
+	color: #999;
+}
+
+#content .pagination li a:hover {
+	color: rgb(0, 255, 188);
+}
+
+#content .pagination li.disabled a:hover,
+#content .pagination li.active a:hover {
+	color: #999;
+}
+
+#content .pagination li.active a:hover {
+	background-color: #f5f5f5;
+}
+
+.maalr_overlay_V {
+	background-color: rgb(99,246,182);
+	color: white;
+	text-decoration: none;
+	padding: 0 6px;
+}
+
+.help-inline {
+	padding: 0;
+	color: red !important;
+}
+
+.control-group.error>label {
+	color: red !important;
+}
+
+.control-group.error textarea {
+	border: 0 none !important;
+	color: rgb(99,246,182) !important;
+	box-shadow: none !important;
+}
+
+.control-group.success > label {
+	color: rgb(76,76,76) !important;
+}
+
+a.btn.btn-danger {
+	background-color: rgb(0, 255, 188) !important;
+}
+
+a.btn.btn-danger:hover {
+	color: white !important;
 }
 
 
@@ -1398,6 +1453,7 @@ blockquote h4 {
 	}
 
 	#content.content .row-fluid .span4 .well form #searchoptions input[type="text"] + a.btn {
+		display: none;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -1444,11 +1500,10 @@ blockquote h4 {
 	#navi_bottom {
 		position: absolute;
 		padding-bottom: 6px;
-		background-color: rgb(200,200,200);
 	}
 
 	#navi_bottom #navi_bottom_menu {
-		margin: 0 24px;
+		margin: 0;
 		float: none;
 		text-align: center;
 	}
@@ -1528,12 +1583,15 @@ blockquote h4 {
 	.pagination a {
 		padding: 0 4px;
 	}
-
-	.GDPXEMADGC div button {
+	
+	/*STAND: 24.02.2014*/
+	/*NEW GKHQX3BBGC*/
+	/*OLD GDPXEMADGC*/
+	.GKHQX3BBGC div button {
 		display: none;
 	}
 
-	.GDPXEMADGC {
+	.GKHQX3BBGC {
 		width: 1px;
 	}
 
@@ -1549,6 +1607,7 @@ blockquote h4 {
 	.container_plugin {
 		margin-top: 112px;
 		width: 80%;
+		margin-bottom: 146px;
 	}
 
 	#content.content .row-fluid .span {
@@ -1563,6 +1622,8 @@ blockquote h4 {
 		bottom: auto !important;
 		width: auto !important;
 		margin: 0 !important;
+		padding: 12px;
+		-webkit-overflow-scrolling: touch;
 	}
 
 	.modal table, .modal tr, .modal td, .modal tbody { 
@@ -1573,10 +1634,6 @@ blockquote h4 {
 		float: none;
 		display: block;
 		margin-bottom: 6px !important;
-	}
-
-	.modal .control-group {
-		margin-bottom: 0;
 	}
 
 	.modal tbody, .modal table {
@@ -1600,6 +1657,7 @@ blockquote h4 {
 	.modal input[type="text"] {
 		box-sizing: border-box !important;
 		height: 32px;
+		margin-bottom: 0;
 	}
 
 	.modal textarea {
@@ -1611,18 +1669,27 @@ blockquote h4 {
 		margin-bottom: 8px !important;
 	}
 
+	.modal td[width="25%"] {
+		padding: 0;
+		width: 100% !important;
+	}
+
+	.modal-body .lemma-editor > table > tbody > tr > td:first-child input {
+		width: 100% !important;
+	}
+
 	#searchoptions .control-group span {
 		font-size: 10px;
 	}
 
 	#content.search-centered .container-fluid:last-child .span4 {
 		position: relative;
-		top: 50% !important;
-		margin-top: 52px;
-		min-height: 204px;
+		margin-top: 82px;
+		margin-bottom: 32px;
 	}
 
 	#content.container_entry {
 		width: 90%;
 	}
+
 }
