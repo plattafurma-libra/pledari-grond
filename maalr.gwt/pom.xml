@@ -319,7 +319,7 @@
 					<dest>target/classes/de/uni_koeln/spinfo/maalr/webapp/i18n</dest>
 					<src>src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n</src>
 					<encoding>UTF8</encoding>
-					<includes>*.properties</includes>
+					<includes>**/*.properties</includes>
 				</configuration>
 				<executions>
 					<execution>
@@ -346,7 +346,11 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
+				<filtering>false</filtering>
+				<excludes>
+					<!-- Do not copy i18n properties - this will be done by the native2ascii-plugin -->
+					<exclude>de/uni_koeln/spinfo/maalr/webapp/i18n/*.properties</exclude>
+				</excludes>
 			</resource>
 		</resources>
 
