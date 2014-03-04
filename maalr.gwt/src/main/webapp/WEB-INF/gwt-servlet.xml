@@ -6,6 +6,9 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
 	<!-- This bean is responsible for mapping GWT calls to Spring Services -->
 	<bean class="org.gwtwidgets.server.spring.GWTHandler">
+		<property name="shouldCheckPermutationStrongName">
+			<value>true</value>
+		</property>
 		<property name="mappings">
 			<map>
 				<!-- Add new services here: -->
