@@ -24,7 +24,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.WebApplicationObjectSupport;
 
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
+import de.uni_koeln.spinfo.maalr.common.shared.description.Escaper;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneConfiguration;
 
 
@@ -35,8 +38,6 @@ public class Environment extends WebApplicationObjectSupport {
 	
 	private Configuration configuration;
 
-	private String build;
-
 	private String version;
 
 	private String name;
@@ -46,9 +47,15 @@ public class Environment extends WebApplicationObjectSupport {
 	private LuceneConfiguration luceneConfig;
 	
 	public Environment() {
-		build = "Unknown";
 		version = "Unknown";
 		configuration = Configuration.getInstance();
+		configuration.getLemmaDescription().setDefaultEscaper(new Escaper() {
+			
+			@Override
+			public String escape(String text) {
+				return SafeHtmlUtils.htmlEscape(text);
+			}
+		});
 		/*
 		 * Load application properties, which contain build and version
 		 * number
@@ -59,7 +66,6 @@ public class Environment extends WebApplicationObjectSupport {
 		} catch (IOException e) {
 			logger.error("Failed to read application properties!", e);
 		}
-		build = (String) props.get("application.build");
 		version = (String) props.get("application.version");
 		name = (String) props.getProperty("application.name");
 		

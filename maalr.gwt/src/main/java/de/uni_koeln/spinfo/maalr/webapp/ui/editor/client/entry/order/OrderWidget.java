@@ -37,7 +37,6 @@ import com.google.gwt.view.client.ProvidesKey;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
-import de.uni_koeln.spinfo.maalr.common.shared.description.Escaper;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
@@ -85,23 +84,15 @@ public class OrderWidget extends Composite {
 		list.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 		Column<LemmaVersion, SafeHtml> column = new Column<LemmaVersion, SafeHtml>(new SafeHtmlCell()) {
 
-			Escaper escaper = new Escaper() {
-				
-				@Override
-				public String escape(String text) {
-					return new SafeHtmlBuilder().appendEscaped(text).toSafeHtml().asString();
-				}
-			};
-			
 			@Override
 			public SafeHtml getValue(LemmaVersion object) {
 				
 				SafeHtmlBuilder sb = new SafeHtmlBuilder();
 				LemmaDescription description = AsyncLemmaDescriptionLoader
 						.getDescription();
-				String toDisplay = description.toString(object, UseCase.RESULT_LIST, true, escaper)
+				String toDisplay = description.toString(object, UseCase.RESULT_LIST, true)
 						+ " ⇔ "
-						+ description.toString(object, UseCase.RESULT_LIST, false, escaper);
+						+ description.toString(object, UseCase.RESULT_LIST, false);
 				sb.appendHtmlConstant(toDisplay);
 				return sb.toSafeHtml();
 			}

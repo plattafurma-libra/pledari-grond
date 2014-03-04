@@ -16,8 +16,10 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import de.uni_koeln.spinfo.maalr.common.shared.description.Escaper;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 
 public class AsyncLemmaDescriptionLoader {
@@ -34,8 +36,15 @@ public class AsyncLemmaDescriptionLoader {
 			service.getLemmaDescription(new AsyncCallback<LemmaDescription>() {
 				
 				@Override
-				public void onSuccess(LemmaDescription arg0) {
-					description = arg0;
+				public void onSuccess(LemmaDescription loaded) {
+					loaded.setDefaultEscaper(new Escaper() {
+						
+						@Override
+						public String escape(String text) {
+							return SafeHtmlUtils.htmlEscape(text);
+						}
+					});
+					description = loaded;
 					callback.onSuccess(description);
 				}
 				

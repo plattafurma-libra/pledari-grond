@@ -291,8 +291,8 @@ public class AdvancedEditor {
 									String secondLanguageId = ld.getLanguage(false).getId();
 									String first = localizedStrings.get(firstLanguageId);
 									String second = localizedStrings.get(secondLanguageId);
-									String lemma1st = ld.toString(lv, UseCase.RESULT_LIST, true);
-									String lemma2nd = ld.toString(lv, UseCase.RESULT_LIST, false);
+									String lemma1st = ld.toUnescapedString(lv, UseCase.RESULT_LIST, true);
+									String lemma2nd = ld.toUnescapedString(lv, UseCase.RESULT_LIST, false);
 									String german = first + "%20%3D%20" + lemma1st;
 									String romansh = second + "%20%3D%20" + lemma2nd;
 									String remartg = localizedStrings.get("mail.comment") + "%0A" + URL.encode(comment.getText());

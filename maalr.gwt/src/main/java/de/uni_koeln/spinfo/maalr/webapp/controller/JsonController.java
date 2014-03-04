@@ -19,10 +19,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,7 +39,6 @@ import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
-import de.uni_koeln.spinfo.maalr.common.shared.description.ValueFormat;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
@@ -59,7 +56,7 @@ public class JsonController {
 	private Configuration configuration = Configuration.getInstance();
 	
 	private LemmaDescription ld = configuration.getLemmaDescription();
-	
+
 	@RequestMapping(value="/json", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
 	public void queryJSON(@RequestParam("callback") String callback, MaalrQuery query, @RequestParam String locale, HttpServletResponse response) throws InvalidQueryException, NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {

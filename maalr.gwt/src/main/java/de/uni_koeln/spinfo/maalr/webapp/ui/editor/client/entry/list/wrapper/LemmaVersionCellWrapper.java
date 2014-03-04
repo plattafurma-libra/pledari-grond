@@ -22,6 +22,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
@@ -72,6 +73,14 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 	   }
 	
 	private static final LemmaTemplates templates = GWT.create(LemmaTemplates.class);
+	
+	private Escaper escaper = new Escaper() {
+		
+		@Override
+		public String escape(String text) {
+			return SafeHtmlUtils.htmlEscape(text);
+		}
+	};
 	
 	@Override
 	public SafeHtml getVerificationLabel() {
@@ -160,42 +169,26 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 	public String getComment() {
 		String comment = lemma.getEntryValue(LemmaVersion.COMMENT);
 		if(comment == null) return "";
-		return comment.trim();
+		return comment;
 	}
 
 	@Override
 	public SafeHtml getLemma() {
 		SafeHtmlBuilder builder = new SafeHtmlBuilder();
-		Escaper escaper = new Escaper() {
-			
-			@Override
-			public String escape(String text) {
-				return new SafeHtmlBuilder().appendEscaped(text).toSafeHtml().asString();
-			}
-		};
-		builder.appendHtmlConstant(lemmaDescription.toString(lemma, UseCase.RESULT_LIST, true, escaper));
+		builder.appendHtmlConstant(lemmaDescription.toString(lemma, UseCase.RESULT_LIST, true));
 		builder.appendHtmlConstant(" ⇔ ");
-		builder.appendHtmlConstant(lemmaDescription.toString(lemma, UseCase.RESULT_LIST, false, escaper));
+		builder.appendHtmlConstant(lemmaDescription.toString(lemma, UseCase.RESULT_LIST, false));
 		return builder.toSafeHtml();
 	}
-	
-	
 
 	@Override
 	public SafeHtml getShortLemma() {
 		SafeHtmlBuilder builder = new SafeHtmlBuilder();
-		Escaper escaper = new Escaper() {
-			
-			@Override
-			public String escape(String text) {
-				return new SafeHtmlBuilder().appendEscaped(text).toSafeHtml().asString();
-			}
-		};
-		String first = lemmaDescription.toString(lemma, UseCase.RESULT_LIST, true, escaper).trim();
+		String first = lemmaDescription.toString(lemma, UseCase.RESULT_LIST, true).trim();
 		if(first.length() > 85) {
 			first = escaper.escape(first.substring(0,40) + "..." + first.substring(first.length()-40));
 		}
-		String second = lemmaDescription.toString(lemma, UseCase.RESULT_LIST, false, escaper).trim();
+		String second = lemmaDescription.toString(lemma, UseCase.RESULT_LIST, false).trim();
 		if(second.length() > 85) {
 			second = escaper.escape(second.substring(0,40) + "..." + first.substring(first.length()-40));
 		}

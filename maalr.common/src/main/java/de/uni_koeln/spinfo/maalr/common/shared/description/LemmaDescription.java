@@ -48,6 +48,12 @@ public class LemmaDescription implements Serializable {
 	
 	private static final long serialVersionUID = -666936366464661504L;
 	
+	private transient Escaper defaultEscaper;
+	
+	public void setDefaultEscaper(Escaper defaultEscaper) {
+		this.defaultEscaper = defaultEscaper;
+	}
+
 	@XmlElement(name="language")
 	private List<Language> languages = new ArrayList<Language>();
 	
@@ -223,11 +229,16 @@ public class LemmaDescription implements Serializable {
 		return getLanguage(firstLanguage).id;
 	}
 	
-	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage) {
+	public String toUnescapedString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage) {
 		return toString(lemma, useCase, firstLanguage, null);
 	}
 	
-	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage, Escaper escaper) {
+	public String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage) {
+		if(defaultEscaper == null) throw new RuntimeException("Unable to call 'toString' before an escaper has been set!");
+		return toString(lemma, useCase, firstLanguage, defaultEscaper);
+	}
+	
+	private String toString(LemmaVersion lemma, UseCase useCase, boolean firstLanguage, Escaper escaper) {
 		switch(useCase) {
 			case RESULT_LIST : {
 				List<ValueFormat> keys = getResultList(firstLanguage);
@@ -240,6 +251,7 @@ public class LemmaDescription implements Serializable {
 		default: return "--";
 		}
 	}
+	
 
 	private String format(LemmaVersion lemma, List<ValueFormat> keys) {
 		return format(lemma, keys, null);
@@ -283,6 +295,7 @@ public class LemmaDescription implements Serializable {
 		}
 		return toReturn;
 	}
+	
 	public String toString(String term, List<LemmaVersion> meanings, boolean firstLanguage) {
 		List<LemmaVersion> direct = getDirectMatches(term, meanings, firstLanguage);
 		Set<LemmaVersion> complex = new HashSet<LemmaVersion>();

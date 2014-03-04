@@ -156,8 +156,8 @@ public class Database {
 	}
 
 	private String toLogString(LemmaVersion lemma) {
-		String first = description.toString(lemma, UseCase.RESULT_LIST, true);
-		String second = description.toString(lemma, UseCase.RESULT_LIST, false);
+		String first = description.toUnescapedString(lemma, UseCase.RESULT_LIST, true);
+		String second = description.toUnescapedString(lemma, UseCase.RESULT_LIST, false);
 		if (first.length() > 15) {
 			first = first.substring(0, 15) + "...";
 		}

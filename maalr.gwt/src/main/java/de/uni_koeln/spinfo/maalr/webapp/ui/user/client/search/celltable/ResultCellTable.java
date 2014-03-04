@@ -17,7 +17,6 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.github.gwtbootstrap.client.ui.Button;
@@ -104,7 +103,7 @@ public class ResultCellTable extends Composite {
 	private MaalrQuery maalrQuery;
 
 	private Column<LemmaVersion, SafeHtml> popupColumn;
-
+	
 	private static final ProvidesKey<LemmaVersion> KEY_PROVIDER = new ProvidesKey<LemmaVersion>() {
 		public Object getKey(LemmaVersion item) {
 			return item;
@@ -289,8 +288,6 @@ public class ResultCellTable extends Composite {
 					}
 					String url = "<a href=\"" + Window.Location.getPath() + "#" + mq.toURL() + "\">" + text + "</a>";
 					toDisplay = toDisplay.replace(redir[1], url);
-					// toDisplay = "<a href=\"" + mq.toURL() + "\">" + redir[1]
-					// + "</a>";
 				}
 				if (!object.isApproved()) {
 					toDisplay = "<span class=\"unverified\">" + toDisplay + "</span>";
