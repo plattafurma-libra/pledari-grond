@@ -45,6 +45,7 @@
 <script type="text/javascript">
 	var site_name= "<%=Configuration.getInstance().getLongName()%>"
 </script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/js/maalr-persona.js"></script>
 <script type="text/javascript" src="/assets/js/maalr.js"></script>
 <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script>

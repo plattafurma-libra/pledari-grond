@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.gwtbootstrap.datetimepicker.client.ui.resources.DatetimepickerResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -76,6 +77,7 @@ public class Editor implements EntryPoint {
 	 */
 	@Override
 	public void onModuleLoad() {
+		DatetimepickerResourceInjector.configure();
 		final RootPanel panel = RootPanel.get("navigation");
 		panel.clear();
 		final Navigation navigation = new Navigation();

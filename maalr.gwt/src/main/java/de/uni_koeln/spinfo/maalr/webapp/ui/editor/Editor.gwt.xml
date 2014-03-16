@@ -10,7 +10,7 @@
 	<inherits name='de.uni_koeln.spinfo.maalr.antlr.Antlr4Maalr' />
 	<inherits name='de.uni_koeln.spinfo.maalr.services.editor.EditorServices' />
 	<inherits name='de.uni_koeln.spinfo.maalr.services.user.UserServices' />
-	<inherits name='com.github.gwtbootstrap.datetimepicker.Datetimepicker' />
+	<inherits name='com.github.gwtbootstrap.datetimepicker.DatetimepickerNoResources' />
 	
 	<!-- GWT's static string i18n -->
 	<inherits name='com.google.gwt.i18n.I18N' />

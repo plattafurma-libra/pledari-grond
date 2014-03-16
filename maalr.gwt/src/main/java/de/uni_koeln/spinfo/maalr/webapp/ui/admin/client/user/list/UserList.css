@@ -12,24 +12,16 @@
 }
 
 .dataGridFooter {
-  border-top: 2px solid #6f7277;
   padding: 3px 5px;
   text-align: left;
-  background-color: #002994;
-  color: white;
-  font-weight: bold;
   overflow: hidden;
   white-space: nowrap;
   text-shadow: none;
 }
 
 .dataGridHeader {
-  border-bottom: 2px solid #6f7277;
   padding: 3px 5px;
   text-align: left;
-  background-color: #002994;
-  color: white;
-  font-weight: bold;
   overflow: hidden;
   white-space: nowrap;
   text-shadow: none;
