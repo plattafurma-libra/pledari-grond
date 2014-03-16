@@ -25,6 +25,9 @@ if(request.getParameter("pl") != null) {
 </title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-<link href="/assets/style/admin_style.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/admin_style.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" language="javascript" src="../de.uni_koeln.spinfo.maalr.admin/de.uni_koeln.spinfo.maalr.admin.nocache.js"></script>
 </head>

@@ -70,6 +70,7 @@ public class Editor implements EntryPoint {
 	
 	private Map<String, Composite> modules = new HashMap<String, Composite>();
 	
+	
 	/**
 	 * This is the entry point method.
 	 */

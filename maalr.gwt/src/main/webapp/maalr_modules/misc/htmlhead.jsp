@@ -32,16 +32,14 @@
 <style type="text/css">
 	#show_results_noscript { display: none; }
 </style>
-<noscript>
 <link href="/assets/style/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/assets/style/user_style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	#show_results_script { display: none; }
 	#show_results_noscript { display: list-item; }
 </style>
-</noscript>
 <link rel="search" type="application/opensearchdescription+xml" title="<%=Configuration.getInstance().getLongName()%>" href="/static/searchplugin.xml">
-<script type="text/javascript" language="javascript" src="/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
+<script type="text/javascript" src="/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://login.persona.org/include.js"></script>
 <script type="text/javascript">

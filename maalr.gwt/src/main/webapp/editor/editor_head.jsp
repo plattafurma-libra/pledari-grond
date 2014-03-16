@@ -25,6 +25,10 @@ if(request.getParameter("pl") != null) {
 <!-- SET DEFAULT LOCALE FOR EDITOR BACKEND -->
 <meta name="gwt:property" content="locale=<%= request.getLocale() %>">
 <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-<link href="/assets/style/editor_style.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/editor_style.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/style/backend/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" language="javascript" src="../de.uni_koeln.spinfo.maalr.editor/de.uni_koeln.spinfo.maalr.editor.nocache.js"></script>
 </head>

@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.Brand;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -48,6 +49,7 @@ public class Navigation extends Composite {
 		try {
 			initWidget(uiBinder.createAndBindUi(this));
 			nav = new Nav();
+			navBar.setPosition(NavbarPosition.TOP);
 			navBar.add(nav);
 		} catch (Exception e) {
 			Window.alert("Failed to init: " + e);

@@ -17,7 +17,7 @@
 	<extend-property name="locale" values="rm, en"/>
 	<set-property-fallback name="locale" value="en"/> 
 
-	<stylesheet src='../assets/style/editor_style.css' />
+	<!-- <stylesheet src='../assets/style/editor_style.css' />-->
 
 
 	<!-- Specify the app entry point class. -->
