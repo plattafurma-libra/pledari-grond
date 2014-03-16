@@ -29,5 +29,8 @@ if(request.getParameter("pl") != null) {
 <link href="/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/assets/style/backend/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" language="javascript" src="../de.uni_koeln.spinfo.maalr.admin/de.uni_koeln.spinfo.maalr.admin.nocache.js"></script>
 </head>
