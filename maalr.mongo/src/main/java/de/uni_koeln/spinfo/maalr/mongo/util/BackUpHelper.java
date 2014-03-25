@@ -15,14 +15,10 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.mongo.util;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,18 +28,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.xml.bind.JAXBException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
-import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
@@ -113,6 +105,9 @@ public class BackUpHelper {
 		return files;
 	}
 	
+	/**
+	 * Returns a wrapper class (pojo) for displaying backup information within the admin-gwt-view.
+	 */
 	public BackupInfos getBackupInfos() {
 		List<FileInfo> list = new ArrayList<FileInfo>();
 		List<File> scheduledBackUpFiles = getScheduledBackUpFiles();
@@ -203,9 +198,9 @@ public class BackUpHelper {
 			}
 		}
 		
-		List<File> getBackUpFiles() {
-			return this.files;
-		}
+//		List<File> getBackUpFiles() {
+//			return this.files;
+//		}
 		
 		File getLatestBackup() {
 			return this.latestBackup;
