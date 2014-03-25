@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <overlayEditor>
-	<presetchooser id="type" base="RStichwort" generator="de.uni_koeln.spinfo.maalr.overlays.generator.VerbClassGenerator">
+	<presetchooser id="type" base="RStichwort"
+		generator="de.uni_koeln.spinfo.maalr.overlays.generator.VerbClassGenerator">
 		<options>
-			<option value="1"/>
-			<option value="2"/>
-			<option value="3"/>
-			<option value="4"/>
-			<option value="5"/>
-			<option value="6"/>
-			<option value="7"/>
+			<option value="1" />
+			<option value="2" />
+			<option value="3" />
+			<option value="4" />
+			<option value="5" />
+			<option value="6" />
+			<option value="7" />
 		</options>
 	</presetchooser>
 	<rows>
@@ -29,12 +30,6 @@
 				<item id="imperfectplural2"></item>
 				<item id="imperfectplural3"></item>
 			</column>
-			<column id="particip">
-				<item id="participperfectms"></item>
-				<item id="participperfectfs"></item>
-				<item id="participperfectmp"></item>
-				<item id="participperfectfp"></item>
-			</column>
 		</row>
 		<row>
 			<column id="conjunctive">
@@ -53,22 +48,30 @@
 				<item id="cundizionalplural2"></item>
 				<item id="cundizionalplural3"></item>
 			</column>
+		</row>
+		<row>
 			<column id="future">
-				<item id="futursing1"/>
-				<item id="futursing2"/>
-				<item id="futursing3"/>
-				<item id="futurplural1"/>
-				<item id="futurplural2"/>
-				<item id="futurplural3"/>
+				<item id="futursing1" />
+				<item id="futursing2" />
+				<item id="futursing3" />
+				<item id="futurplural1" />
+				<item id="futurplural2" />
+				<item id="futurplural3" />
+			</column>
+			<column id="particip">
+				<item id="participperfectms"></item>
+				<item id="participperfectfs"></item>
+				<item id="participperfectmp"></item>
+				<item id="participperfectfp"></item>
 			</column>
 		</row>
 		<row>
-			<column id="gerund">
-				<item id="gerundium"/>
-			</column>
 			<column id="imperative">
-				<item id="imperativ1"/>
-				<item id="imperativ2"/>
+				<item id="imperativ1" />
+				<item id="imperativ2" />
+			</column>
+			<column id="gerund">
+				<item id="gerundium" />
 			</column>
 		</row>
 	</rows>
