@@ -1,5 +1,6 @@
 /* The div which contains the maalr snippet */
 .maalr_query_div {
+	width: 30%;
 	font-family: Verdana, Geneva, sans-serif;
 }
 
@@ -15,12 +16,13 @@
 
 /* The query input field */
 .maalr_query_input {
-	width: 100%;
+	width: 250px;
+	margin-left: 10px;
 }
 
 /* The query button (if enabled) */
 .maalr_query_button {
-	width: auto;
+	float: right;
 }
 
 .maalr_results {
@@ -28,7 +30,7 @@
 	min-height: 5em;
 }
 
-/* The "nothing-found"-label*/
+/* The "nothing-found"-label
 .maalr_nothing_found {
 	margin: 10px;	
 }
@@ -47,10 +49,42 @@
 
 /* An even row in the results table */
 .maalr_even_result_row {
-	background-color:lightgray;
+	background-color:#b0e7ff;
 }
 
 /* An odd row in the results table */
 .maalr_odd_result_row {
-	background-color:white;
+	
+}
+
+.pledari_header {
+	background-color:00B3FF;
+	color:white;
+	width:100%;
+	height:30px;
+}
+
+.pledari_header_text {
+	padding:5px;
+}
+
+.pledari_footer {
+	background-color:00B3FF;
+	color:white;
+	width:100%;
+	height:30px;
+	font-size:80%;	
+}
+
+.pledari_footer_text {
+	padding:5px;
+}
+
+.pledari_footer_link {
+	color:white; 
+	float:left;
+}
+
+.pledari_cr {
+	float:right;
 }

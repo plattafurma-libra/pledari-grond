@@ -17,8 +17,8 @@
 var loggedInUser = null; // The user's email.
 var browseridArguments = {
   privacyURL: '',
-  tosURL: '',
-  siteName: 'Pledari Grond 2.0'
+  tosURL: 'www.pledaigrond.ch/infos',
+  siteName: 'Pledari Grond'
 };
 /**
  * Anonymous function. Is called on document.ready. Checks if a user is currently logged in

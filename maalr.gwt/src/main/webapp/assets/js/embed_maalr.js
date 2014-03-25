@@ -1,4 +1,4 @@
-var maalr_queryDiv;
+var maalr_queryDiv = document.getElementById("maalr_query_div");
 var maalr_input;
 var maalr_max;
 var maalr_headerData;
@@ -8,13 +8,12 @@ var maalr_auto_query;
 injectQuery();
 
 function injectQuery() {
-	 maalr_queryDiv = document.getElementById("maalr_query_div");
+	 var fieldLabel = maalr_queryDiv.getAttribute("data-label");
 	 var buttonLabel = maalr_queryDiv.getAttribute("data-button");
 	 var inputLabel = maalr_queryDiv.getAttribute("data-placeholder");
 	 var autoQuery = maalr_queryDiv.getAttribute("data-autoquery");
 	 var embedCss = maalr_queryDiv.getAttribute("data-embedcss");
 	 var source = maalr_queryDiv.getAttribute("data-source");
-	 
 	 maalr_max = maalr_queryDiv.getAttribute("data-pagesize");
 	 if(maalr_max == null || maalr_max < 1 || maalr_max > 20) {
 			maalr_max = 5;
@@ -33,6 +32,7 @@ function injectQuery() {
 		  var link  = document.createElement('link');
 		  link.rel  = 'stylesheet';
 		  link.type = 'text/css';
+		  source = "src/main/webapp"; // Development FIXME
 		  link.href = source + '/assets/style/maalr_embedded.css';
 		  link.media = 'all';
 		  head.appendChild(link);
@@ -43,6 +43,13 @@ function injectQuery() {
 	 qForm.setAttribute("method","get");
 	 qForm.setAttribute("action","dummy");
 	 qForm.setAttribute("onsubmit","return false");
+	 if(fieldLabel != null) {
+		 var label = document.createElement("label");
+		 label.setAttribute("for","query");
+		 label.innerHTML = fieldLabel;
+		 qForm.appendChild(label);
+		 label.setAttribute("class", "maalr_query_label");
+	 }
 	 maalr_input = document.createElement("input");
 	 maalr_input.setAttribute("type","text");
 	 maalr_input.setAttribute("name","query");
@@ -52,18 +59,8 @@ function injectQuery() {
 	 if(inputLabel != null) {
 		 maalr_input.placeholder=inputLabel;
 	 }
-	 var qTable = document.createElement("table");
-	 var qRow = document.createElement("tr");
-	 qTable.appendChild(qRow);
-	 var fieldTd = document.createElement("td");
-	 fieldTd.setAttribute("width","100%");
-	 qRow.appendChild(fieldTd);
-	 var buttonTd = document.createElement("td");
-	 buttonTd.setAttribute("width","auto");
-	 qRow.appendChild(buttonTd);
-	 fieldTd.appendChild(maalr_input);
-	 //qForm.appendChild(maalr_input);
-	 if(autoQuery == null || autoQuery) {
+	 qForm.appendChild(maalr_input);
+	 if(autoQuery != null && autoQuery) {
 		 maalr_input.onkeyup=function() {
 			clearTimeout(maalr_auto_query);
 			maalr_auto_query = setTimeout("queryMaalr()",300);
@@ -74,10 +71,8 @@ function injectQuery() {
 		 button.setAttribute("type","submit");
 		 button.innerHTML = (buttonLabel);
 		 button.setAttribute("class", "maalr_query_button");
-		 //qForm.appendChild(button);
-		 buttonTd.appendChild(button);
+		 qForm.appendChild(button);
 	 }
-	 qForm.appendChild(qTable);
 	 maalr_queryDiv.appendChild(qForm);
 	 var results = document.createElement("div");
 	 results.setAttribute("id", "maalr_results");
@@ -91,19 +86,6 @@ function injectQuery() {
 		 maalr_queryDiv.appendChild(footer);
 	 }
 	 qForm.addEventListener('submit', queryMaalr, false);
-	 var maalr_queryLink = document.getElementById("maalr_query_link");
-	 if(maalr_queryLink != null) {
-		 maalr_queryLink.onclick = function(evt) {
-			 var phrase = maalr_input.value;
-			 if(phrase.length != 0) {
-				 if(evt != null) {
-					 evt.preventDefault();
-				 }
-				 var domain = maalr_queryDiv.getAttribute("data-source");
-				 window.location = domain + '/translate.html#searchPhrase=' + phrase;
-			 }
-			}
-	 }
 }
 
 function queryMaalr(evt) {
@@ -121,7 +103,7 @@ function queryMaalr(evt) {
 	}
 	var script = document.createElement('script');
 	var locale = document.getElementById("maalr_query_div").getAttribute("data-locale");
-	script.src = domain + "/json?pageNr=0&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
+	script.src = domain + "/json?pageNr=1&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
 	script.setAttribute("id","maalr_reply");
 	document.head.appendChild(script);
 }

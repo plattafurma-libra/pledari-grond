@@ -23,7 +23,7 @@ body {
 }
 
 a {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 }
 
 input[type="text"],
@@ -42,6 +42,8 @@ textarea {
 	-ms-border-radius: 0;
 	border-radius: 0;
 
+	outline: 0 !important;
+
 	width: 284px;
 	height: 26px;
 	padding: 4px 12px;
@@ -55,7 +57,7 @@ textarea {
 input[type="text"]:focus,
 input[type="password"]:focus,
 textarea:focus {
-	border: 1px solid rgb(0, 255, 188);
+	border: 1px solid rgb(21, 233, 177);
 	color: rgb(76,76,76);
 	-webkit-box-shadow: none;
 	-moz-box-shadow:    none;
@@ -301,7 +303,8 @@ input:focus, textarea:focus {
 }
 
 #content a:hover {
-	color: rgb(0, 255, 188);
+	/* color: rgb(21, 233, 177); */
+	color: rgb(0, 200, 255);
 	text-decoration: none;
 	background-color: transparent;
 }
@@ -370,11 +373,11 @@ input:focus, textarea:focus {
 }
 
 #search-plus-icon a {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 }
 
 #search-plus-icon a:hover {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 	text-decoration: none;
 }
 
@@ -391,7 +394,7 @@ input:focus, textarea:focus {
 	border: 0 none;
 
 	background-color: transparent;
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 	text-transform: lowercase;
 	padding: 0;
 
@@ -412,7 +415,7 @@ input:focus, textarea:focus {
 }
 
 #languages-widget ul li a {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 }
 
 #languages-widget ul li a:hover {
@@ -436,7 +439,7 @@ input:focus, textarea:focus {
 }
 
 #login-widget ul li a {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 }
 
 #login-widget ul li a:hover {
@@ -528,12 +531,13 @@ input:focus, textarea:focus {
 }
 
 #searchoptions fieldset .control-group:nth-child(4) {
-	margin-bottom: 0;
+	margin-bottom: 8px;
 }
 
 #searchoptions label {
 	margin-top: 4px;
 	line-height: 16px;
+	cursor: pointer;
 }
 
 #searchoptions label.deafualt-config-maalr {
@@ -581,7 +585,7 @@ input:focus, textarea:focus {
 
 #content.content .control-group a.btn {
 	text-transform: lowercase;
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 	position: absolute;
 	top: 26px;
 	right: 42px;
@@ -609,7 +613,7 @@ input:focus, textarea:focus {
 }
 
 #content.content .control-group a.btn:hover {
-	color: rgb(0, 255, 188);
+	color: rgb(21, 233, 177);
 }
 
 #content.content .control-group + .control-group,
@@ -619,18 +623,25 @@ input:focus, textarea:focus {
 
 #content.content .row-fluid .span4 .well form > a {
 	position: relative;
-	top: 22px;
+	top: 0px;
 	display: block;
 	margin: 0 auto;
-	width: 100px;
-	color: rgb(245, 245, 245);
+	width: 42px;
+	height: 42px;
+	color: transparent;
 	font-weight: 100;
+	padding: 0;
 
 	text-shadow: none;
 	vertical-align: middle;
 	cursor: pointer;
+
 	background-color: transparent;
-	background-image: none;
+	background-image: url(/assets/img/more_inactive.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 22px 22px;
+
 	border: 0 none;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
@@ -642,29 +653,16 @@ input:focus, textarea:focus {
 	box-shadow: none;
 }
 
-#content.content .row-fluid .span4 .well form > a:after {
-	content: "+";
-	position: absolute;
-	top: -24px;
-	left: 32px;
-	
-	color: rgb(153, 153, 153);
-	text-align: center;
-	margin: 0 auto;
-	width: 56px;
-	font-size: 42px;
-	line-height: 56px;
+#content.content .row-fluid .span4.open .well form > a {
+	background-image: url(/assets/img/less_inactive.png);
 }
 
-#content.content .row-fluid .span4 .well form #searchoptions.open + a:after {
-	content: "-";
-	position: absolute;
-	top: -24px;
-	left: 24px;
+#content.content .row-fluid .span4 .well form > a:hover {
+	background-image: url(/assets/img/more_active.png);
 }
 
-#content.content .row-fluid .span4 .well form > a:hover:after {
-	color: rgb(0, 255, 188);
+#content.content .row-fluid .span4.open .well form > a:hover {
+	background-image: url(/assets/img/less_active.png);
 }
 
 #content.content .row-fluid .span8 .gwt-HTML span {
@@ -675,7 +673,7 @@ input:focus, textarea:focus {
 }
 
 #content.content .row-fluid .span8 .gwt-HTML span:last-child {
-	color: rgb(153, 153, 153);
+	color: rgb(163, 163, 163);
 	margin-bottom: 24px;
 }
 
@@ -691,7 +689,7 @@ input:focus, textarea:focus {
 	font-size: 13px !important;
 	line-height: 22px !important;
 	font-weight: 400 !important;
-	color: color: rgb(153, 153, 153) !important;
+	color: color: rgb(132, 132, 132) !important;
 }
 
 #content.content .row-fluid .span8 th {
@@ -701,9 +699,11 @@ input:focus, textarea:focus {
 #content.content .row-fluid .span8 table.resultlist {
 	padding: 0 20px;
 }
-/*STAND: 24.02.2014*/
-/*NEW GKHQX3BBBC*/
-/*OLD GDPXEMADBC*/
+
+#content.content .row-fluid .span8 table.resultlist a {
+	color: rgb(163, 163, 163);
+}
+
 #content.content table.resultlist tr.GKHQX3BBBC,
 #content.content table.resultlist tr.GKHQX3BBBC td,
 #content.content table.resultlist tr.GKHQX3BBBC td div {
@@ -715,7 +715,7 @@ input:focus, textarea:focus {
 	color: white;
 	background: none;
 	background-image: none;
-	background-color: rgb(0, 255, 188);
+	background-color: rgb(0, 200, 255);
 	box-shadow: none;
 	text-shadow: none;
 	border-radius: 0;
@@ -739,12 +739,12 @@ input:focus, textarea:focus {
 }
 
 .maalr_result_title {
-	color: rgb(153, 153, 153);
+	color: rgb(163, 163, 163);
 }
 
 .span8 .well .span12 a.btn {
 	text-transform: lowercase;
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 	height: 18px;
 	padding: 0;
 	margin: 0;
@@ -764,7 +764,7 @@ input:focus, textarea:focus {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	background-color: rgb(0, 255, 188);
+	background-color: rgb(21, 233, 177);
 	color: white;
 	padding: 2px 4px;
 	margin-top: 12px;
@@ -810,7 +810,7 @@ input:focus, textarea:focus {
 
 #login_container input[type="text"]:focus,
 #login_container input[type="password"]:focus {
-	border: 1px solid rgb(0, 255, 188);
+	border: 1px solid rgb(21, 233, 177);
 }
 
 #login_container input#internal_login {
@@ -828,7 +828,7 @@ input:focus, textarea:focus {
 	-ms-border-radius: 0;
 	border-radius: 0;
 
-	background-color: rgb(0, 255, 188);
+	background-color: rgb(21, 233, 177);
 	color: white;
 
 	height: 24px;
@@ -901,7 +901,7 @@ input:focus, textarea:focus {
 	line-height: 18px;
 
 	background-color: transparent;
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 	border: 0 none;
 	padding: 0 0 0 18px;
 	margin: 0;
@@ -923,7 +923,7 @@ input:focus, textarea:focus {
 #login_container button#facebook_signin:hover,
 #login_container button#twitter_signin:hover,
 #login_container button#persona_signin:hover {
-	color: rgb(0, 255, 188);
+	color: rgb(0, 200, 255);
 }
 
 #login_container p#error_font {
@@ -983,7 +983,9 @@ input:focus, textarea:focus {
 
 .browse_container .item {
 	float: left;
-	width: 122px;
+	width: 138px;
+	padding-right: 12px;
+	margin-bottom: 4px;
 }
 
 .browse_container > .span12 {
@@ -992,7 +994,7 @@ input:focus, textarea:focus {
 }
 
 .browse_container .span12 a {
-	color: rgb(153, 153, 153);
+	color: rgb(132, 132, 132);
 }
 
 .browse_container .well {
@@ -1031,23 +1033,21 @@ input:focus, textarea:focus {
 .container_plugin .section {
 	margin-bottom: 24px;
 }
-/*STAND: 24.02.2014*/
-/*NEW GKHQX3BBKB*/
-/*OLD GDPXEMADKB*/
+
 tr.GKHQX3BBKB td:nth-child(1) {
 	width: 0%;
 }
 
 tr.GKHQX3BBKB td:nth-child(2) {
-	width: 40%;
+	width: 46%;
 }
 
 tr.GKHQX3BBKB td:nth-child(3) {
-	width: 10%;
+	/* width: 10%; */
 }
 
 tr.GKHQX3BBKB td:nth-child(4) {
-	width: 49%;
+	width: 43%;
 }
 
 tr.GKHQX3BBKB td:nth-child(5) {
@@ -1087,11 +1087,11 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 #searchoptions .control-group span { 
-	color: rgb(153, 153, 153); cursor: pointer; 
+	color: rgb(132, 132, 132); cursor: pointer; 
 }
 
 #searchoptions .control-group span:hover { 
-	color: rgb(0, 255, 188); 
+	/* color: rgb(0, 200, 255); */
 }
 
 #searchoptions input#searchPhrase {
@@ -1101,6 +1101,39 @@ tr.GKHQX3BBKB td:nth-child(5) {
 	margin: 0 auto;
 	display: block;
 }
+
+#searchoptions .styledRadio,
+#searchoptions .styledCheckbox {
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-right: 4px;
+	margin-top: -1px;
+	background-size: 16px 32px;
+}
+
+#searchoptions .styledRadio {
+	background-image: url(/assets/img/radiobutton_sprite.png);
+	background-position: 0px 0px;
+}
+
+#searchoptions .styledCheckbox {
+	background-image: url(/assets/img/checkbox_sprite.png);
+	background-position: 0px 0px;
+}
+
+#searchoptions .styledRadio.checked {
+	background-position: 0px 16px;
+}
+
+#searchoptions .styledCheckbox.checked {
+	background-position: 0px 16px;
+}
+
+#searchoptions .styledRadio.checked + input + span,
+#searchoptions .styledCheckbox.checked + input + span {
+	color: rgb(0, 200, 255);
+} 
 
 
 /* MODAL */
@@ -1160,16 +1193,12 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 .modal a.btn:hover {
-	color: rgb(0, 255, 188);
+	color: rgb(0, 200, 255);
 }
 
 .modal a.btn.btn-primary {
-	background: rgb(0, 255, 188);
+	background: rgb(0, 200, 255);
 	color: white;
-}
-
-.modal a.btn.btn-primary:hover {
-	background: rgb(0, 230, 170);
 }
 
 .modal-body table {
@@ -1208,7 +1237,7 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 .modal-body table .form-horizontal .control-group .controls .gwt-TextBox:focus {
-	border: 1px solid rgb(0, 255, 188);
+	border: 1px solid rgb(21, 233, 177);
 }
 
 .modal .page-header {
@@ -1276,10 +1305,27 @@ blockquote h4 {
 
 #content .pagination a {
 	color: #999;
+	border-color: rgb(163, 163, 163);
+}
+
+#content .pagination a[disabled=""],
+#content .pagination a[disabled=""] * {
+	-webkit-text-shadow: none !important;
+	-moz-text-shadow: none !important;
+	-ms-text-shadow: none !important;
+	text-shadow: none !important;
+	filter: none;
+}
+
+#content .pagination ul {
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-ms-box-shadow: none !important;
+	box-shadow: none !important;
 }
 
 #content .pagination li a:hover {
-	color: rgb(0, 255, 188);
+	color: rgb(0, 200, 255);
 }
 
 #content .pagination li.disabled a:hover,
@@ -1292,10 +1338,17 @@ blockquote h4 {
 }
 
 .maalr_overlay_V {
-	background-color: rgb(99,246,182);
+	background-color: rgb(0, 200, 255);
 	color: white;
 	text-decoration: none;
-	padding: 0 6px;
+	padding: 0 5px 0 6px;
+	margin-left: 14px;
+	margin-right: 6px;
+}
+
+.table tbody tr:hover td, .table tbody tr:hover th,
+.table tbody tr:active td, .table tbody tr:active th {
+	background: none !important;
 }
 
 .help-inline {
@@ -1309,7 +1362,7 @@ blockquote h4 {
 
 .control-group.error textarea {
 	border: 0 none !important;
-	color: rgb(99,246,182) !important;
+	color: rgb(21, 233, 177) !important;
 	box-shadow: none !important;
 }
 
@@ -1318,7 +1371,7 @@ blockquote h4 {
 }
 
 a.btn.btn-danger {
-	background-color: rgb(0, 255, 188) !important;
+	background-color: rgb(21, 233, 177) !important;
 }
 
 a.btn.btn-danger:hover {
@@ -1344,20 +1397,20 @@ a.btn.btn-danger:hover {
 	}
 
 	#languages-widget {
-		background-color: rgb(100,246,166);
+		background-color: rgb(21, 233, 177);
 
-		background-image: linear-gradient(bottom, rgb(100,246,166) 0%, rgb(99,246,182) 100%);
-		background-image: -o-linear-gradient(bottom, rgb(100,246,166) 0%, rgb(99,246,182) 100%);
-		background-image: -moz-linear-gradient(bottom, rgb(100,246,166) 0%, rgb(99,246,182) 100%);
-		background-image: -webkit-linear-gradient(bottom, rgb(100,246,166) 0%, rgb(99,246,182) 100%);
-		background-image: -ms-linear-gradient(bottom, rgb(100,246,166) 0%, rgb(99,246,182) 100%);
+		background-image: linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
+		background-image: -o-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
+		background-image: -moz-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
+		background-image: -webkit-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
+		background-image: -ms-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
 
 		background-image: -webkit-gradient(
 			linear,
 			left bottom,
 			left top,
-			color-stop(0, rgb(100,246,166)),
-			color-stop(1, rgb(99,246,182))
+			color-stop(0, rgb(21, 233, 177)),
+			color-stop(1, rgb(40, 241, 188))
 		);
 
 		left: 0px;
@@ -1433,6 +1486,10 @@ a.btn.btn-danger:hover {
 		margin-top: 22px;
 	}
 
+	#content.search-centered .container-fluid:last-child .span4 {
+		margin-top: -82px;
+	}
+
 	#content.content .row-fluid .span4 .well {
 		margin: 0;
 		padding-left: 0;
@@ -1464,7 +1521,7 @@ a.btn.btn-danger:hover {
 	}
 
 	#content.content .row-fluid .span4 .well form #searchoptions + a.btn {
-		top: -20px;
+		top: 0px;
 		width: 52px;
 		height: 52px;
 	}
@@ -1472,7 +1529,6 @@ a.btn.btn-danger:hover {
 	#content.content .row-fluid .span4 .well form #searchoptions .control-group {
 		width: 80%;
 		margin: 0 auto;
-		margin-bottom: 6px;
 	}
 
 	#content.content .row-fluid .span4 .well form #searchoptions .control-group:first-child {
@@ -1583,10 +1639,7 @@ a.btn.btn-danger:hover {
 	.pagination a {
 		padding: 0 4px;
 	}
-	
-	/*STAND: 24.02.2014*/
-	/*NEW GKHQX3BBGC*/
-	/*OLD GDPXEMADGC*/
+
 	.GKHQX3BBGC div button {
 		display: none;
 	}
@@ -1596,7 +1649,9 @@ a.btn.btn-danger:hover {
 	}
 
 	.maalr_overlay_V {
-		display: none;
+		/* display: none; */
+		margin-left: 0;
+		padding: 0 2px;
 	}
 
 	#searchphrase + span {
@@ -1679,17 +1734,21 @@ a.btn.btn-danger:hover {
 	}
 
 	#searchoptions .control-group span {
-		font-size: 10px;
+		/*font-size: 10px;*/
 	}
 
-	#content.search-centered .container-fluid:last-child .span4 {
+	#content.search-centered .container-fluid:last-child .span4.open {
 		position: relative;
-		margin-top: 82px;
-		margin-bottom: 32px;
+		margin-top: 22px;
 	}
 
 	#content.container_entry {
 		width: 90%;
+	}
+
+	#searchoptions .styledRadio,
+	#searchoptions .styledCheckbox {
+		margin-top: 1px;
 	}
 
 }

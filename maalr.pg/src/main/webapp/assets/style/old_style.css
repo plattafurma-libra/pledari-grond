@@ -1,0 +1,209 @@
+/************************************
+			SEARCH FORM
+*************************************/
+#head_search {
+	text-align: center;
+	margin-top: 2em;
+}
+
+/************************************
+     TITLE in result table
+*************************************/
+.maalr_result_title {
+	color: #002994;
+	font-size: large;
+}
+
+a {
+	text-decoration: none;
+}
+
+a_pag {
+	font-size: 200%;
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Main Content Area */
+#content {
+	margin-bottom: 50px;
+	margin-right: 10px;
+	position: absolute;
+	left: 0px;
+	top: 14em;
+	right: 0px;
+	bottom: 1.5em;
+	overflow: auto;
+	background-color: white;
+}
+
+/* Footer */
+#bottom {
+	margin: 10px;
+	padding: 10px;
+	background-color: #002994;
+	color: white;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.bottom-table {
+	width: 50%;
+	margin: 0px auto;
+}
+
+.left {
+	float: left;
+	margin-left: 10px;
+}
+
+.right {
+	float: right;
+	margin-right: 10px;
+}
+
+#bottom a {
+	color: white;
+}
+
+.bottom-txt {
+	text-align: center;
+	color: white;
+	font-size: 90%;
+}
+
+/* Header */
+#top {
+	background-color: #002994;
+	color: white;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+}
+
+#top a,#top a:visited {
+	color: white;
+}
+
+#clear {
+	clear: both;
+}
+
+#h_menu {
+	text-align: left;
+}
+
+/* Start Page */
+#initial_content {
+	padding-top: 20px;
+	position: absolute;
+	left: 0px;
+	top: 13.5em;
+	right: 0px;
+	bottom: 4em;
+	overflow: auto;
+	background-color: white;
+	font-size: 10pt;
+}
+
+#logo_table {
+	margin: 0px auto;
+	width: 50%;
+}
+
+#h_main_menu {
+	margin: 0px auto;
+}
+
+#main_logo {
+	margin: 0px auto;
+}
+
+.centering {
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+	padding-top: 20px;
+}
+
+/* Login Page */
+.login {
+	width: 40%;
+	margin: 0px auto;
+	border: 1px solid black;
+	padding: 10px;
+	margin-top: 30px;
+}
+
+/* Static Pages */
+.text {
+	width: 70%;
+	margin: 0px auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* Alphabetical List */
+.alpha_navi {
+	width: 100%;
+}
+
+.alpha_sub_navi {
+	overflow: hidden;
+	width: 100%;
+}
+
+.pg_logo {
+	width: 100%;
+	line-height: normal;
+}
+
+/* Logo */
+.logo-area {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.logo-small {
+	font-size: 250%;
+}
+
+.logo-large {
+	font-size: 600%;
+}
+
+#logo_main {
+	font-family: "Lucida Bright", Georgia, "Bitstream Charter",
+		"URW Bookman L", serif;
+	display: inline;
+}
+
+#logo_main a,#logo_main a:visited,#logo_main a:hover {
+	color: #ffce38;
+	text-decoration: none;
+}
+
+.logo_sub {
+	width: 100%;
+	color: white;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 30%;
+}
+
+/* Alphabetical List */
+.alphatable table {
+	border-spacing: 0px;
+}
+
+.alphatable td {
+	border: 1px solid black;
+	width: 200px;
+}
