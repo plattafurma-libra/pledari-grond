@@ -38,7 +38,7 @@
 					<g:cell>
 						<gwtbootstrap:Well>
 							<g:VerticalPanel width="100%" height="100%">
-								<gwtbootstrap:Legend title="{i18n.search}"></gwtbootstrap:Legend>
+								<!-- <gwtbootstrap:Legend title="{i18n.search}"></gwtbootstrap:Legend> -->
 								<g:SimplePanel ui:field="searchBoxParent"></g:SimplePanel>
 							</g:VerticalPanel>
 							<!-- <q:QueryBox ui:field="queryBox"></q:QueryBox> -->
@@ -47,7 +47,7 @@
 					<g:cell>
 						<gwtbootstrap:Well height="300px" ui:field="historyArea">
 							<g:VerticalPanel width="100%" height="100%">
-								<gwtbootstrap:Legend title="{i18n.lemmaHistory}"></gwtbootstrap:Legend>
+								<!-- <gwtbootstrap:Legend title="{i18n.lemmaHistory}"></gwtbootstrap:Legend> -->
 								<m2:EntryVersionsList ui:field="historyList"
 									width="100%" height="200px"></m2:EntryVersionsList>
 								<g:HorizontalPanel width="100%">
@@ -74,13 +74,13 @@
 							</g:cell>
 							<g:cell horizontalAlignment="ALIGN_RIGHT">
 								<g:HorizontalPanel>
+									<gwtbootstrap:DropdownButton
+										ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}"
+										text="{i18n.columns}"></gwtbootstrap:DropdownButton>
 									<gwtbootstrap:Button ui:field="newEntry"
 										icon="PLUS_SIGN" text="{i18n.newEntry}" styleName="btn {style.export}"></gwtbootstrap:Button>
 									<gwtbootstrap:Button icon="DOWNLOAD"
 										ui:field="export" styleName="btn {style.export}" text="{i18n.export}"></gwtbootstrap:Button>
-									<gwtbootstrap:DropdownButton
-										ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}"
-										text="{i18n.columns}"></gwtbootstrap:DropdownButton>
 								</g:HorizontalPanel>
 							</g:cell>
 						</g:HorizontalPanel>
