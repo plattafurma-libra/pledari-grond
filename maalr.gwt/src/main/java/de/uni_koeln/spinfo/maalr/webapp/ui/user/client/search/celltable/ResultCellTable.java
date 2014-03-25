@@ -136,7 +136,6 @@ public class ResultCellTable extends Composite {
 			}
 		};
 		cellTable.addRowHoverHandler(handler);
-		// Create a data provider and connect the table to it.
 		dataProvider = new ListDataProvider<LemmaVersion>();
 		dataProvider.addDataDisplay(cellTable);
 		pager = new CustomPager();
@@ -298,7 +297,6 @@ public class ResultCellTable extends Composite {
 		};
 
 		cellTable.addColumn(columnA, new SafeHtmlBuilder().appendHtmlConstant("<span class=\"maalr_result_title\">" + langA + "</span>").toSafeHtml());
-		// cellTable.setColumnWidth(columnA, 100, Unit.PCT);
 	}
 
 	private void addColumnB(String langB, final boolean b) {
@@ -337,7 +335,6 @@ public class ResultCellTable extends Composite {
 
 		};
 		cellTable.addColumn(columnB, new SafeHtmlBuilder().appendHtmlConstant("<span class=\"maalr_result_title\">" + langB + "</span>").toSafeHtml());
-		// cellTable.setColumnWidth(columnB, 100, Unit.PCT);
 	}
 
 	public void setResults(final MaalrQuery query, QueryResult result) {

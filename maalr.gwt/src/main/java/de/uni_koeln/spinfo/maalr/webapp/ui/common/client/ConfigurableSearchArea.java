@@ -297,6 +297,7 @@ public class ConfigurableSearchArea extends Form {
 		// Wrap the default configuration elements for CSS purposes
 		if(configuration.equals(defaultConfiguration)) {
 			if(field.getType().equals(UiFieldType.CHECKBOX)) {
+				// FIXME: Typo... check also user_style.css
 				widget.getElement().setClassName("deafualt-config-maalr");
 			}
 		}

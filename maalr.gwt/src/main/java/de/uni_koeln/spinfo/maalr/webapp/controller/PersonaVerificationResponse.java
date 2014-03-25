@@ -3,9 +3,7 @@ package de.uni_koeln.spinfo.maalr.webapp.controller;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * For Details see <a
- * href="https://developer.mozilla.org/en-US/Persona/Remote_Verification_API"
- * >Remote_Verification_API</a>.
+ * For Details see <a href="https://developer.mozilla.org/en-US/Persona/Remote_Verification_API">Remote_Verification_API</a>.
  * 
  * @author Mihail Atanassov (atanassov.mihail@gmail.com)
  * 
