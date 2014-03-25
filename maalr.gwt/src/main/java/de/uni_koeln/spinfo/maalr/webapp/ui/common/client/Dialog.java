@@ -94,6 +94,7 @@ public class Dialog extends Modal {
 		Logger.getLogger(Dialog.class).info("Message: " + message);
 		messageLabel = new Label(message);
 		final Dialog dialog = new Dialog(title, messageLabel, true, okButton);
+		dialog.getElement().setId("showErrorDialogMaalr");
 		okButton.addClickHandler(new ClickHandler() {
 			
 			@Override
