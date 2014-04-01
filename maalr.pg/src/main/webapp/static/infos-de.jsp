@@ -66,7 +66,7 @@
 	<b>Aktuelle Redaktion des Pledari Grond online </b> <br>
 	Anna-Alice Dazzi Gross <br> Daniel Telli <br> Marietta
 	Cathomas Manetsch <br> Gabriela Holderegger Pajarola <br>
-	Angela Schmed <br> Marina Wyss <br> Annetta Zini
+	Angela Schmed Bass <br> Marina Wyss <br> Annetta Zini
 </p>
 
 <p>

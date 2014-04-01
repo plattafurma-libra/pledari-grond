@@ -65,7 +65,7 @@
 <p>
 	<b>Redacziun actuala dal Pledari Grond online </b> <br> Anna-Alice
 	Dazzi Gross <br> Daniel Telli <br> Marietta Cathomas Manetsch
-	<br> Gabriela Holderegger Pajarola <br> Angela Schmed <br>
+	<br> Gabriela Holderegger Pajarola <br> Angela Schmed Bass <br>
 	Marina Wyss <br> Annetta Zini
 </p>
 
