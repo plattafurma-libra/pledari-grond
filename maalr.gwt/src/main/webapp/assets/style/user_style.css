@@ -1308,6 +1308,19 @@ blockquote h4 {
 	border-color: rgb(163, 163, 163);
 }
 
+#content .pagination ul li a {
+	background-color: transparent;
+}
+
+#content .pagination ul li.active a {
+	background-color: white;
+}
+
+#content .pagination ul li.disabled a,
+#content .pagination ul li.disabled a:hover {
+	color: rgb(192, 192, 192);
+}
+
 #content .pagination a[disabled=""],
 #content .pagination a[disabled=""] * {
 	-webkit-text-shadow: none !important;
@@ -1370,6 +1383,13 @@ blockquote h4 {
 	color: rgb(76,76,76) !important;
 }
 
+.control-group.success textarea {
+	border-color: rgb(21, 233, 177);
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
 a.btn.btn-danger {
 	background-color: rgb(21, 233, 177) !important;
 }
@@ -1378,6 +1398,24 @@ a.btn.btn-danger:hover {
 	color: white !important;
 }
 
+#showErrorDialogMaalr {
+	background-color: rgb(204, 204, 204);
+}
+
+#showErrorDialogMaalr .modal-footer {
+	background-color: rgb(204, 204, 204);
+}
+
+#showErrorDialogMaalr .modal-header {
+	padding: 0;
+	border-bottom: 0 none;
+}
+
+#showErrorDialogMaalr .modal-header .close {
+	position: relative;
+	top: -3px;
+	right: -3px;
+}
 
 /* MOBILE */
 
