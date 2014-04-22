@@ -89,7 +89,8 @@ public class Validator {
 		}
 		Map<String, String> values = entry.getEntryValues();
 		if(values.size() == 0) {
-			throw new InvalidEntryException(entry.getClass().getSimpleName() + " must contain at least one value!");
+			//throw new InvalidEntryException(entry.getClass().getSimpleName() + " must contain at least one value!");
+			throw new InvalidEntryException("dialog.failure.field");
 		}
 	}
 
