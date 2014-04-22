@@ -22,6 +22,7 @@ import com.github.gwtbootstrap.client.ui.ProgressBar;
 import com.github.gwtbootstrap.client.ui.base.ProgressBarBase.Style;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
@@ -86,6 +87,7 @@ public class Dialog extends Modal {
 			}
 		});
 		dialog.show();
+		dialog.getElement().getStyle().setMarginTop(10, Unit.PX);
 	}
 
 	public static void showError(String title, String message) {
