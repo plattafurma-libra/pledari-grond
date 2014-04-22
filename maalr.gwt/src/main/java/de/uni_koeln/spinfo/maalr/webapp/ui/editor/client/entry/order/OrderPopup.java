@@ -24,6 +24,7 @@ import com.github.gwtbootstrap.client.ui.ModalFooter;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -90,9 +91,17 @@ public class OrderPopup {
 						modal.hide();
 					}
 				});
-				ModalFooter footer = new ModalFooter(ok, cancel);
+				ModalFooter footer = new ModalFooter(cancel, ok);
 				modal.add(footer);
+				modal.setAnimation(true);
+				modal.setBackdrop(BackdropType.STATIC);
+				int customWidth = 850;
+				modal.setWidth(customWidth + "px");
 				modal.show();
+				double customMargin = -1*(customWidth/2);
+				modal.getElement().getStyle().setMarginLeft(customMargin, Unit.PX);
+				modal.getElement().getStyle().setMarginRight(customMargin, Unit.PX);
+				modal.getElement().getStyle().setMarginTop(10, Unit.PX);
 			}
 		});
 	}
