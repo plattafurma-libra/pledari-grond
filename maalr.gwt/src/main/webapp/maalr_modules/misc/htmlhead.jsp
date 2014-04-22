@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
-<%@page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
 	if(session.getAttribute("pl") == null) {
-		session.setAttribute("pl", request.getLocale().getLanguage());
+		//session.setAttribute("pl", request.getLocale().getLanguage());
+		session.setAttribute("pl", "rm");
 	}
 	if(request.getParameter("pl") != null) {
 		session.setAttribute("pl", request.getParameter("pl"));

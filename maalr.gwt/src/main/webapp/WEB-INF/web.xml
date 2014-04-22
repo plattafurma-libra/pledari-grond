@@ -141,7 +141,7 @@
 	
 	<context-param>
   		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-  		<param-value>de</param-value>
+  		<param-value>rm</param-value>
 	</context-param>
 
 </web-app>

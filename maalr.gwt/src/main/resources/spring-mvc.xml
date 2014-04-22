@@ -36,57 +36,33 @@
 
 	<mvc:annotation-driven />
 
-<!-- Define a handler interceptor which will be called before and after 
-				a controller -->
-			<!-- method is executed. It will print the execution time as debug output. -->
-			
-	<!-- 
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/*" />
-			<bean class="de.uni_koeln.spinfo.maalr.webapp.util.DebugInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
-	 -->
-	
+	<!-- Define a handler interceptor which will be called before and after 
+		a controller -->
+	<!-- method is executed. It will print the execution time as debug output. -->
+
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/*" /> <bean 
+		class="de.uni_koeln.spinfo.maalr.webapp.util.DebugInterceptor" /> </mvc:interceptor> 
+		</mvc:interceptors> -->
+
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> -->
-<!-- 
-	<bean
-		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="mediaTypes">
-			<map>
-			</map>
-		</property>
-		<property name="viewResolvers">
-			<list>
-				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean
-					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-					<property name="prefix" value="/" />
-					<property name="suffix" value=".jsp" />
-				</bean>
-			</list>
-		</property>
-		<property name="defaultViews">
-			<list>
-				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-					<constructor-arg>
-						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-							<property name="classesToBeBound">
-								<list>
-									<value>de.uni_koeln.spinfo.maalr.lucene.query.QueryResult
-									</value>
-								</list>
-							</property>
-						</bean>
-					</constructor-arg>
-				</bean>
-			</list>
-		</property>
+	<!-- <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> 
+		<property name="mediaTypes"> <map> </map> </property> <property name="viewResolvers"> 
+		<list> <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" 
+		/> <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/" /> <property name="suffix" value=".jsp" 
+		/> </bean> </list> </property> <property name="defaultViews"> <list> <bean 
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" 
+		/> <bean class="org.springframework.web.servlet.view.xml.MarshallingView"> 
+		<constructor-arg> <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller"> 
+		<property name="classesToBeBound"> <list> <value>de.uni_koeln.spinfo.maalr.lucene.query.QueryResult 
+		</value> </list> </property> </bean> </constructor-arg> </bean> </list> </property> 
+		</bean> -->
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="rm" />
 	</bean>
- -->
+
 	<!-- Allow file uploads (import db) -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

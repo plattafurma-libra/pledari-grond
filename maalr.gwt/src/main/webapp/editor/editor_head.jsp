@@ -1,10 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
        "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 if(session.getAttribute("pl") == null) {
 	session.setAttribute("pl", request.getLocale().getLanguage());
+	//session.setAttribute("pl", "rm");
 }
 if(request.getParameter("pl") != null) {
 	session.setAttribute("pl", request.getParameter("pl"));
