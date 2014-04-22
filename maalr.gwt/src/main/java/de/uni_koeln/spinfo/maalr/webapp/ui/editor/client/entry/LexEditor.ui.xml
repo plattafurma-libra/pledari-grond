@@ -24,11 +24,7 @@
 		
 		.buttongroup {
 			float: right;
-		}
-		
-		.export {
-			margin-right: 20px;
-		}
+		}		
 	</ui:style>
 	
 	<gwtbootstrap:FluidContainer>
@@ -38,26 +34,23 @@
 					<g:cell>
 						<gwtbootstrap:Well>
 							<g:VerticalPanel width="100%" height="100%">
-								<!-- <gwtbootstrap:Legend title="{i18n.search}"></gwtbootstrap:Legend> -->
+								<!-- <gwtbootstrap:Legend title="{i18n.search}" /> -->
 								<g:SimplePanel ui:field="searchBoxParent"></g:SimplePanel>
 							</g:VerticalPanel>
-							<!-- <q:QueryBox ui:field="queryBox"></q:QueryBox> -->
+							<!-- <q:QueryBox ui:field="queryBox" /> -->
 						</gwtbootstrap:Well>
 					</g:cell>
 					<g:cell>
 						<gwtbootstrap:Well height="300px" ui:field="historyArea">
 							<g:VerticalPanel width="100%" height="100%">
 								<!-- <gwtbootstrap:Legend title="{i18n.lemmaHistory}"></gwtbootstrap:Legend> -->
-								<m2:EntryVersionsList ui:field="historyList"
-									width="100%" height="200px"></m2:EntryVersionsList>
+								<m2:EntryVersionsList ui:field="historyList" width="100%" height="200px" />
 								<g:HorizontalPanel width="100%">
 									<gwtbootstrap:ButtonGroup>
-										<gwtbootstrap:Button toggle="true" text="{i18n.showAll}"
-											icon="EYE_OPEN" ui:field="fullHistory"></gwtbootstrap:Button>
+										<gwtbootstrap:Button toggle="true" text="{i18n.showAll}" icon="EYE_OPEN" ui:field="fullHistory" />
 									</gwtbootstrap:ButtonGroup>
 									<gwtbootstrap:ButtonGroup ui:field="deleteOldGroup">
-										<gwtbootstrap:Button text="{i18n.deleteHistory}"
-											ui:field="deleteHistory" type="DANGER" icon="TRASH"></gwtbootstrap:Button>
+										<gwtbootstrap:Button text="{i18n.deleteHistory}" ui:field="deleteHistory" type="DANGER" icon="TRASH" />
 									</gwtbootstrap:ButtonGroup>
 								</g:HorizontalPanel>
 							</g:VerticalPanel>
@@ -70,29 +63,24 @@
 					<g:FlowPanel>
 						<g:HorizontalPanel styleName="{style.listHeader}">
 							<g:cell horizontalAlignment="ALIGN_LEFT">
-								<g:Label ui:field="listLegend" styleName="{style.listLegend}" text="{i18n.lemmata}"></g:Label>
+								<g:Label ui:field="listLegend" styleName="{style.listLegend}" text="{i18n.lemmata}" />
 							</g:cell>
 							<g:cell horizontalAlignment="ALIGN_RIGHT">
 								<g:HorizontalPanel>
-									<gwtbootstrap:DropdownButton
-										ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}"
-										text="{i18n.columns}"></gwtbootstrap:DropdownButton>
-									<gwtbootstrap:Button ui:field="newEntry"
-										icon="PLUS_SIGN" text="{i18n.newEntry}" styleName="btn {style.export}"></gwtbootstrap:Button>
-									<gwtbootstrap:Button icon="DOWNLOAD"
-										ui:field="export" styleName="btn {style.export}" text="{i18n.export}"></gwtbootstrap:Button>
+									<gwtbootstrap:DropdownButton ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}" text="{i18n.columns}" />
+									<gwtbootstrap:Button ui:field="newEntry" icon="PLUS_SIGN" text="{i18n.newEntry}" styleName="btn" />
+									<gwtbootstrap:Button icon="DOWNLOAD" ui:field="export" styleName="btn" text="{i18n.export}" />
 								</g:HorizontalPanel>
 							</g:cell>
 						</g:HorizontalPanel>
 						<g:HorizontalPanel width="100%">
-							<g:cell horizontalAlignment="ALIGN_LEFT"
-								verticalAlignment="ALIGN_MIDDLE">
-								<g:Label ui:field="resultSummary"></g:Label>
+							<g:cell horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+								<g:Label ui:field="resultSummary" />
 							</g:cell>
 						</g:HorizontalPanel>
 						<g:FlowPanel width="100%">
-							<q:QueryList ui:field="entryList"></q:QueryList>
-							<c:CustomPager ui:field="pager"></c:CustomPager>
+							<q:QueryList ui:field="entryList" />
+							<c:CustomPager ui:field="pager" />
 						</g:FlowPanel>
 					</g:FlowPanel>
 				</gwtbootstrap:Well>

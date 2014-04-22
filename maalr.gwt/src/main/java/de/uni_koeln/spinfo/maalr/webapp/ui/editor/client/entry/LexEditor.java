@@ -16,10 +16,8 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.github.gwtbootstrap.client.ui.Button;
@@ -453,10 +451,12 @@ public class LexEditor extends Composite implements HasHistorySupport {
 				final FlowPanel panel = new FlowPanel();
 				final Set<String> selected = new HashSet<String>();
 				final List<CheckBox> boxes = new ArrayList<CheckBox>();
+				
 				for (final String field : fields) {
 					String label = translation.get(field);
 					if(label == null) label = field;
 					final CheckBox box = new CheckBox(label);
+					
 					box.addClickHandler(new ClickHandler() {
 						
 						@Override
@@ -468,9 +468,11 @@ public class LexEditor extends Composite implements HasHistorySupport {
 							}
 						};
 					});
+					
 					boxes.add(box);
 					panel.add(box);
 				}
+				
 				Button exportAll = new Button(constants.selectAll());
 				exportAll.addClickHandler(new ClickHandler() {
 					
@@ -482,6 +484,7 @@ public class LexEditor extends Composite implements HasHistorySupport {
 						selected.addAll(fields);
 					}
 				});
+				
 				Button exportNone = new Button(constants.deselectAll());
 				exportNone.addClickHandler(new ClickHandler() {
 					
@@ -493,6 +496,7 @@ public class LexEditor extends Composite implements HasHistorySupport {
 						selected.clear();
 					}
 				});
+				
 				ButtonGroup group = new ButtonGroup();
 				group.add(exportAll);
 				group.add(exportNone);
@@ -548,7 +552,13 @@ public class LexEditor extends Composite implements HasHistorySupport {
 				dialog.add(footer);
 				dialog.setAnimation(true);
 				dialog.setBackdrop(BackdropType.STATIC);
+				int customWidth = 850;
+				dialog.setWidth(customWidth + "px");
 				dialog.show();
+				double customMargin = -1*(customWidth/2);
+				dialog.getElement().getStyle().setMarginLeft(customMargin, Unit.PX);
+				dialog.getElement().getStyle().setMarginRight(customMargin, Unit.PX);
+				dialog.getElement().getStyle().setMarginTop(70, Unit.PX);
 			}
 		});
 	}
