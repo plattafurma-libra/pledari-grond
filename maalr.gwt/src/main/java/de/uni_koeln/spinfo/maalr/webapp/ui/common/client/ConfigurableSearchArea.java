@@ -256,7 +256,7 @@ public class ConfigurableSearchArea extends Form {
 	 */
 	public void setExtended(boolean extended) {
 		configuration = extended ? extendedConfiguration : defaultConfiguration;
-		this.extended.setText(extended? configuration.getLessLabel() : configuration.getMoreLabel());
+		this.extended.setText(extended ? configuration.getLessLabel() : configuration.getMoreLabel());
 		buildSearchPanel(configuration);
 		if(SearchHelper.getLastQuery() != null) {
 			setQuery(SearchHelper.getLastQuery());
@@ -297,8 +297,7 @@ public class ConfigurableSearchArea extends Form {
 		// Wrap the default configuration elements for CSS purposes
 		if(configuration.equals(defaultConfiguration)) {
 			if(field.getType().equals(UiFieldType.CHECKBOX)) {
-				// FIXME: Typo... check also user_style.css
-				widget.getElement().setClassName("deafualt-config-maalr");
+				widget.getElement().setClassName("default-config-maalr checkbox");
 			}
 		}
 		
@@ -587,7 +586,7 @@ public class ConfigurableSearchArea extends Form {
 				fireUpdate();
 			}
 		});
-		box.getElement().setClassName("gwt-checkbox-maalr");
+		box.getElement().setClassName("gwt-checkbox-maalr checkbox");
 		return box;
 	}
 	
