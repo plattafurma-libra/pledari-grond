@@ -24,10 +24,6 @@
 		.buttongroup {
 			float: right;
 		}
-		
-		.export {
-			margin-right: 20px;
-		}
 	</ui:style>
 	<gwtbootstrap:FluidContainer>
 		<gwtbootstrap:FluidRow>
@@ -39,17 +35,14 @@
 					<g:cell>
 						<gwtbootstrap:Well>
 							<g:VerticalPanel width="100%" height="100%">
-								<gwtbootstrap:Legend title="{i18n.lemmaHistory}"></gwtbootstrap:Legend>
-								<m2:EntryVersionsList ui:field="historyList"
-									width="100%" height="400px"></m2:EntryVersionsList>
+								<!-- <gwtbootstrap:Legend title="{i18n.lemmaHistory}" /> -->
+								<m2:EntryVersionsList ui:field="historyList" width="100%" height="400px" />
 								<g:HorizontalPanel width="100%">
 									<gwtbootstrap:ButtonGroup>
-										<gwtbootstrap:Button toggle="true" text="{i18n.showAll}"
-											icon="EYE_OPEN" ui:field="fullHistory"></gwtbootstrap:Button>
+										<gwtbootstrap:Button toggle="true" text="{i18n.showAll}" icon="EYE_OPEN" ui:field="fullHistory" />
 									</gwtbootstrap:ButtonGroup>
 									<gwtbootstrap:ButtonGroup ui:field="deleteOldGroup">
-										<gwtbootstrap:Button text="{i18n.deleteHistory}"
-											ui:field="deleteHistory" type="DANGER" icon="TRASH"></gwtbootstrap:Button>
+										<gwtbootstrap:Button text="{i18n.deleteHistory}" ui:field="deleteHistory" type="DANGER" icon="TRASH" />
 									</gwtbootstrap:ButtonGroup>
 								</g:HorizontalPanel>
 							</g:VerticalPanel>
@@ -66,34 +59,24 @@
 							</g:cell>
 							<g:cell horizontalAlignment="ALIGN_RIGHT">
 								<g:HorizontalPanel>
-									<gwtbootstrap:Button ui:field="newEntry"
-										icon="PLUS_SIGN" text="{i18n.newEntry}" styleName="btn {style.export}"></gwtbootstrap:Button>
-									<gwtbootstrap:Button icon="DOWNLOAD"
-										ui:field="export" text="{i18n.export}" styleName="btn {style.export}"></gwtbootstrap:Button>
-									<gwtbootstrap:DropdownButton
-										ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}"
-										text="{i18n.columns}"></gwtbootstrap:DropdownButton>
+									<gwtbootstrap:DropdownButton ui:field="columns" icon="COLUMNS" title="{i18n.configureColumns}" text="{i18n.columns}" />
+									<gwtbootstrap:Button ui:field="newEntry" icon="PLUS_SIGN" text="{i18n.newEntry}" styleName="btn" />
+									<gwtbootstrap:Button icon="DOWNLOAD" ui:field="export" text="{i18n.export}" styleName="btn" />
 								</g:HorizontalPanel>
 							</g:cell>
 						</g:HorizontalPanel>
-						<g:Label ui:field="resultSummary"></g:Label>
-						<m2:AllEntriesList ui:field="entryList" width="100%"
-							height="750px"></m2:AllEntriesList>
-						<g:HorizontalPanel width="100%" ui:field="pagination"></g:HorizontalPanel>
+						<g:Label ui:field="resultSummary" />
+						<m2:AllEntriesList ui:field="entryList" width="100%" height="750px" />
+						<g:HorizontalPanel width="100%" ui:field="pagination" />
 						<g:HorizontalPanel width="100%">
 							<gwtbootstrap:ButtonGroup ui:field="toggleSelectGroup">
-								<gwtbootstrap:Button text="{i18n.multiSelectBtn}"
-									ui:field="toggleMultiSelect" toggle="true"></gwtbootstrap:Button>
-								<gwtbootstrap:Button text="{i18n.selectAllBtn}"
-									ui:field="selectAll"></gwtbootstrap:Button>
-								<gwtbootstrap:Button text="{i18n.deselectAllBtn}"
-									ui:field="deselectAll"></gwtbootstrap:Button>
+								<gwtbootstrap:Button text="{i18n.multiSelectBtn}" ui:field="toggleMultiSelect" toggle="true" />
+								<gwtbootstrap:Button text="{i18n.selectAllBtn}" ui:field="selectAll" />
+								<gwtbootstrap:Button text="{i18n.deselectAllBtn}" ui:field="deselectAll" />
 							</gwtbootstrap:ButtonGroup>
 							<gwtbootstrap:ButtonGroup ui:field="deleteEntriesGroup">
-								<!-- <gwtbootstrap:Button text="Accept selected" type="PRIMARY" icon="THUMBS_UP" 
-									ui:field="acceptAll"></gwtbootstrap:Button> -->
-								<gwtbootstrap:Button text="{i18n.rejectSelectedBtn}"
-									type="DANGER" icon="THUMBS_DOWN" ui:field="rejectAll"></gwtbootstrap:Button>
+								<!-- <gwtbootstrap:Button text="Accept selected" type="PRIMARY" icon="THUMBS_UP" ui:field="acceptAll" /> -->
+								<gwtbootstrap:Button text="{i18n.rejectSelectedBtn}" type="DANGER" icon="THUMBS_DOWN" ui:field="rejectAll" />
 							</gwtbootstrap:ButtonGroup>
 						</g:HorizontalPanel>
 					</g:FlowPanel>

@@ -16,10 +16,8 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.github.gwtbootstrap.client.ui.Button;
@@ -79,8 +77,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.wrapper.LexE
 
 public class SuggestionEditor extends Composite {
 
-	private static EntryEditorUiBinder uiBinder = GWT
-			.create(EntryEditorUiBinder.class);
+	private static EntryEditorUiBinder uiBinder = GWT.create(EntryEditorUiBinder.class);
 	
 	private EditorConstants constants;
 	
@@ -351,7 +348,13 @@ public class SuggestionEditor extends Composite {
 				dialog.add(footer);
 				dialog.setAnimation(true);
 				dialog.setBackdrop(BackdropType.STATIC);
+				int customWidth = 850;
+				dialog.setWidth(customWidth + "px");
 				dialog.show();
+				double customMargin = -1*(customWidth/2);
+				dialog.getElement().getStyle().setMarginLeft(customMargin, Unit.PX);
+				dialog.getElement().getStyle().setMarginRight(customMargin, Unit.PX);
+				dialog.getElement().getStyle().setMarginTop(70, Unit.PX);
 			}
 		});
 	}
