@@ -56,7 +56,7 @@ public class QueryList extends EntryList<LemmaVersion> {
 	@Override
 	protected void addColumns() {
 		entryColumn = new LemmaVersionColumnHighlightable(new SafeHtmlCell());
-		table.addColumn(entryColumn, "Entry");
+		table.addColumn(entryColumn, constants.entry());
 		table.setColumnWidth(entryColumn, "250px");
 		editCell = new EntryEditCell(constants, messages);
 		Column<LemmaVersion, LemmaVersionCellWrapper> column = new Column<LemmaVersion, LemmaVersionCellWrapper>(editCell) {
