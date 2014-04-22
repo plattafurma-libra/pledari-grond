@@ -99,9 +99,9 @@ public class Admin implements EntryPoint {
 		DbManager dbManager = new DbManager();
 		registerModule(roleEditor, Modules.ANCHOR_ROLE_MANAGER);
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
-		navigation.addLink("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
-		navigation.addLink("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLink("Logout", "/j_spring_security_logout");
+		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
+		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
+		navigation.addLinkLeft("Logout", "/j_spring_security_logout");
 	}
 
 	private void initHistory() {

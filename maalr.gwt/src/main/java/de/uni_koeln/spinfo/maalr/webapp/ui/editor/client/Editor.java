@@ -162,6 +162,7 @@ public class Editor implements EntryPoint {
 		historyFilter.setLemmaState(null);
 		historyFilter.setUserRole(null);
 		historyFilter.setStateVisible(false);
+		historyFilter.setVerifierVisible(false);
 		historyFilter.setVerificationVisible(false);
 		historyFilter.setRoleVisible(false);
 		final SuggestionEditor historyEditor = new SuggestionEditor(constants, historyFilter, constants.verifiedLemma());
@@ -198,14 +199,12 @@ public class Editor implements EntryPoint {
 			}
 		});
 		registerModule(lexEditor, Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLink(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR);
-		navigation.addLink(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
-		navigation.addLink(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLink(constants.logout(), "/j_spring_security_logout");
-		
-		// FIXME: URL not set properly
-		navigation.addLink(constants.rm(), GWT.getHostPageBaseURL() + "editor.html?locale=rm");
-		navigation.addLink(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en");
+		navigation.addLinkLeft(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR);
+		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
+		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
+		navigation.addLinkRight(constants.logout(), "/j_spring_security_logout", true);
+		navigation.addLinkRight(constants.rm(), GWT.getHostPageBaseURL() + "editor.html?locale=rm", false);
+		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", false);
 	}
 	
 	private void setSuggestionColumns(SuggestionEditor editor) {

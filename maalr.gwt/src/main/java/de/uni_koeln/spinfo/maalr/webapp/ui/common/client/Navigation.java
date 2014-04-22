@@ -19,6 +19,8 @@ import com.github.gwtbootstrap.client.ui.Brand;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.VerticalDivider;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -43,14 +45,19 @@ public class Navigation extends Composite {
 	@UiField
 	Brand backendName;
 
-	private Nav nav;
+	private Nav navLeft;
+
+	private Nav navRight;
 	
 	public Navigation() {
 		try {
 			initWidget(uiBinder.createAndBindUi(this));
-			nav = new Nav();
 			navBar.setPosition(NavbarPosition.TOP);
-			navBar.add(nav);
+			navLeft = new Nav();
+			navRight = new Nav();
+			navRight.setAlignment(Alignment.RIGHT);
+			navBar.add(navLeft);
+			navBar.add(navRight);
 		} catch (Exception e) {
 			Window.alert("Failed to init: " + e);
 		}
@@ -60,8 +67,13 @@ public class Navigation extends Composite {
 		backendName.setText(name);
 	}
 	
-	public void addLink(String title, String href) {
-		nav.add(new NavLink(title, href));
+	public void addLinkLeft(String title, String href) {
+		navLeft.add(new NavLink(title, href));
+	}
+	
+	public void addLinkRight(String title, String href, boolean divider) {
+		navRight.add(new NavLink(title, href));
+		if (divider) navRight.add(new VerticalDivider());
 	}
 
 }
