@@ -31,7 +31,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.j3d.utils.behaviors.vp.WandViewBehavior.TranslationListener6D;
+//import com.sun.j3d.utils.behaviors.vp.WandViewBehavior.TranslationListener6D;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 
