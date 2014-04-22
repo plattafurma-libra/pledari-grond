@@ -88,18 +88,18 @@ legend {
 	min-height: 15px;
 }
 
-	.user-actions {
-		visibility: hidden;
-	}
+.user-actions {
+	visibility: hidden;
+}
+
+.user-row {
 	
-	.user-row {
-	}
-	
-	.user-row:hover .user-actions {
-		visibility: visible;
-	}
-	
-	
+}
+
+.user-row:hover .user-actions {
+	visibility: visible;
+}
+
 .editor-modal {
 	z-index: 1050;
 	background-color: #fff;
@@ -128,18 +128,46 @@ legend {
 }
 
 thead th {
-  background-color: #006DCC;
-  color: white;
+	background-color: #006DCC;
+	color: white;
 }
 
-tr td:first-child,
-tr th:first-child {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+/*tr td:first-child,tr th:first-child {
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}*/
+
+/*tr td:last-child,tr th:last-child {
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}*/
+
+.gwt-SuggestBoxPopup {
+	z-index: 99999;
+	/*visibility: visible;
+	overflow: visible;*/
+	background-color: #FFFFFF;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	/*width: 31em;*/
+	padding: 5px;
+	border: 1px solid #DEDEDE;
+	position: absolute;
+	/*left: 60px;
+	top: 450px;*/
 }
 
-tr td:last-child,
-tr th:last-child {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+.gwt-SuggestBox {
+	z-index: 99999;
+}
+
+td.item:hover {
+	white-space: nowrap;
+	background-color: #D1EEEE;
+	cursor: pointer;
+	/*padding: 5px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;*/
 }
