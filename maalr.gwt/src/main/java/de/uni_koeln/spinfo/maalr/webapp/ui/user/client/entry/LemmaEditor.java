@@ -15,8 +15,6 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry;
 
-import java.util.Map;
-
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.ModalFooter;
@@ -53,7 +51,6 @@ public class LemmaEditor {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
@@ -71,7 +68,6 @@ public class LemmaEditor {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
@@ -142,8 +138,7 @@ public class LemmaEditor {
 						ok.setText(translation.get("button.ok"));
 						ok.setType(ButtonType.DANGER);
 						clicked = false;
-						Dialog.showError(translation.get("dialog.failure"), translation.get(caught.getMessage())); 
-//						Dialog.showError(translation.get("dialog.failure"), caught); // exception from SpringBackend
+						Dialog.showError(translation.get("dialog.failure"), translation.get(caught.getMessage())); // exception from SpringBackend
 					}
 
 					@Override
@@ -179,8 +174,5 @@ public class LemmaEditor {
 		popup.getElement().getStyle().setMarginRight(customMargin, Unit.PX);
 		return editor;
 	}
-
-
-
 
 }
