@@ -83,6 +83,7 @@ public class VerifiedEntryOptionsCell extends AbstractCell<LexEntryCellWrapper> 
 
 			@Override
 			public void onFailure(Throwable caught) {
+				// TODO: Add translation for 'Throwable caught'
 				Dialog.showError(constants.operationFailed(), caught);
 			}
 
@@ -101,6 +102,7 @@ public class VerifiedEntryOptionsCell extends AbstractCell<LexEntryCellWrapper> 
 
 			@Override
 			public void onFailure(Throwable caught) {
+				// TODO: Add translation for 'Throwable caught'
 				Dialog.showError(constants.operationFailed(), caught);
 			}
 
