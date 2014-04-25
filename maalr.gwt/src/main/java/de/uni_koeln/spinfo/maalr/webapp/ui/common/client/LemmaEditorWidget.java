@@ -95,8 +95,8 @@ public class LemmaEditorWidget extends SimplePanel {
 
 	private LemmaVersion initial;
 	
-	private HorizontalPanel langA;
-	private HorizontalPanel langB;
+	private VerticalPanel langA;
+	private VerticalPanel langB;
 
 	/**
 	 * Copies the data from the given {@link LemmaVersion} into
@@ -200,36 +200,25 @@ public class LemmaEditorWidget extends SimplePanel {
 		setStyleName("lemma-editor", true);
 	}
 
-	private HorizontalPanel createFields(LemmaDescription description, boolean firstLanguage, UseCase useCase, int columns,  boolean displayHeader, TranslationMap translation) {
+	private VerticalPanel createFields(LemmaDescription description, boolean firstLanguage, UseCase useCase, int columns,  boolean displayHeader, TranslationMap translation) {
 		String languageLabel = description.getLanguageName(firstLanguage);
-		ArrayList<String> fieldIds = description.getFields(useCase, firstLanguage); 
+		ArrayList<String> fieldIds = description.getFields(useCase, firstLanguage);
+		VerticalPanel vPanel = new VerticalPanel();
 		HorizontalPanel panel = new HorizontalPanel();
+		Legend legend = new Legend(translation.get(languageLabel));
+		vPanel.add(legend);
+		vPanel.add(panel);
 		panel.setWidth("100%");
-		List<Fieldset> cols = new ArrayList<Fieldset>();
-		for(int i = 0; i < columns; i++) {
-			Fieldset fieldSet = new Fieldset();
-			fieldSet.setStyleName("form-horizontal");
-			if(displayHeader) {
-				if(i == 0) {
-//					fieldSet.add(new Legend(languageLabel));
-					fieldSet.add(new Legend(translation.get(languageLabel)));
-				} else {
-					Legend legend = new Legend();
-					legend.getElement().getStyle().setProperty("minHeight", "36px");
-					fieldSet.add(legend);
-				}
+		vPanel.setWidth("100%");
+		getValueSepcifications(description, useCase);
+		for (int i = 0; i < fieldIds.size(); i++) {
+			String item = fieldIds.get(i);
+			if (i % 2 == 0) { // break
+				panel = new HorizontalPanel();
+				vPanel.add(panel);
 			}
-			panel.add(fieldSet);
-			cols.add(fieldSet);
-		}
-		ArrayList<ValueSpecification> all = description.getValues(useCase);
-		valueSpecifications = new HashMap<String, ValueSpecification>();
-		for (ValueSpecification valueSpecification : all) {
-			valueSpecifications.put(valueSpecification.getInternalName(), valueSpecification);
-		}
-		int counter = 0;
-		for (String item : fieldIds) {
-			Fieldset set = cols.get(counter%cols.size()); 
+			Fieldset set = new Fieldset();
+			set.setStyleName("form-horizontal");
 			ControlGroup group = new ControlGroup();
 			groups.put(item, group);
 			HelpInline help = new HelpInline();
@@ -241,7 +230,7 @@ public class LemmaEditorWidget extends SimplePanel {
 				vs.setType(ValueType.TEXT);
 				Logger.getLogger(getClass()).warn("No Specification for " + item + ", generating default...");
 				valueSpecifications.put(item, vs);
-//				continue;
+				//continue;
 			}
 			String labelText = translation.get(vs.getInternalName());
 			if(labelText == null || labelText.trim().length() == 0) {
@@ -262,9 +251,17 @@ public class LemmaEditorWidget extends SimplePanel {
 			control.add(help);
 			group.add(control);
 			set.add(group);
-			counter++;
+			panel.add(set);
 		}
-		return panel;
+		return vPanel;
+	}
+
+	private void getValueSepcifications(LemmaDescription description, UseCase useCase) {
+		ArrayList<ValueSpecification> all = description.getValues(useCase);
+		valueSpecifications = new HashMap<String, ValueSpecification>();
+		for (ValueSpecification valueSpecification : all) {
+			valueSpecifications.put(valueSpecification.getInternalName(), valueSpecification);
+		}
 	}
 
 	private Widget buildOracleFor(final ValueSpecification vs) {

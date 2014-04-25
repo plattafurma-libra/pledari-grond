@@ -163,11 +163,11 @@ public class AdvancedEditor {
 								final Button edit = new Button(constants.edit());
 								langAOverlay.addChangeHandler(new ChangeHandler() {
 
-											@Override
-											public void onChange(ChangeEvent event) {
-												edit.setEnabled(langAOverlay.getSelectedIndex() != 0);
-											}
-										});
+									@Override
+									public void onChange(ChangeEvent event) {
+										edit.setEnabled(langAOverlay.getSelectedIndex() != 0);
+									}
+								});
 								
 								edit.getElement().getStyle().setMarginLeft(10, Unit.PX);
 								edit.addClickHandler(new ClickHandler() {
@@ -195,7 +195,7 @@ public class AdvancedEditor {
 							}
 						});
 				service.getOverlayTypes(false, new AsyncCallback<ArrayList<String>>() {
-
+					
 							@Override
 							public void onFailure(Throwable caught) {
 							}
@@ -619,5 +619,6 @@ public class AdvancedEditor {
 			}
 		});
 	}
+	
 
 }

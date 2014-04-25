@@ -41,10 +41,10 @@
 						</gwtbootstrap:Well>
 					</g:cell>
 					<g:cell>
-						<gwtbootstrap:Well height="300px" ui:field="historyArea">
+						<gwtbootstrap:Well ui:field="historyArea">
 							<g:VerticalPanel width="100%" height="100%">
 								<!-- <gwtbootstrap:Legend title="{i18n.lemmaHistory}"></gwtbootstrap:Legend> -->
-								<m2:EntryVersionsList ui:field="historyList" width="100%" height="200px" />
+								<m2:EntryVersionsList ui:field="historyList" width="100%" height="400px" />
 								<g:HorizontalPanel width="100%">
 									<gwtbootstrap:ButtonGroup>
 										<gwtbootstrap:Button toggle="true" text="{i18n.showAll}" icon="EYE_OPEN" ui:field="fullHistory" />
