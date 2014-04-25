@@ -105,6 +105,7 @@ public class Dialog extends Modal {
 			}
 		});
 		dialog.show();
+		dialog.getElement().getStyle().setMarginTop(10, Unit.PX);
 	}
 
 	public static void showError(String title) {
@@ -119,6 +120,7 @@ public class Dialog extends Modal {
 			}
 		});
 		dialog.show();
+		dialog.getElement().getStyle().setMarginTop(10, Unit.PX);
 	}
 
 	public static void confirm(String dialogTitle, String message, String confirmDeleteButton, String cancelDeleteButton, final Command ok, final Command cancel, boolean okIsPrimary) {
@@ -150,6 +152,7 @@ public class Dialog extends Modal {
 			}
 		});
 		dialog.show();
+		dialog.getElement().getStyle().setMarginTop(10, Unit.PX);
 	}
 
 	public static void showInfo(String dialogTitle, String message) {
@@ -165,6 +168,7 @@ public class Dialog extends Modal {
 			}
 		});
 		dialog.show();
+		dialog.getElement().getStyle().setMarginTop(10, Unit.PX);
 	}
 	
 	
