@@ -62,6 +62,7 @@
 <script type="text/javascript" src="/assets/js/pledari.js"></script>
 <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript" src="/assets/js/user/user_dynamic_locale.js"></script>
 <link href="/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
 <link href="/de.uni_koeln.spinfo.maalr.user/css/gwt-bootstrap.css" rel="stylesheet">
 <link href="/de.uni_koeln.spinfo.maalr.user/css/font-awesome.css" rel="stylesheet">

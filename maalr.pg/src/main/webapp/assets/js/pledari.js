@@ -6,6 +6,12 @@ $(document).ready(function() {
 	if (window.devicePixelRatio) {
 		retina = window.devicePixelRatio > 1;
 	}
+
+	$('#languages-widget li:first a').hover(function() {
+		$(this).text('grischun');
+	}, function() {
+		$(this).text('rumantsch');
+	});
 	
 	$('#content.content').on('click', '.row-fluid .span4 .well form #searchoptions + a.btn', function(event) {
 
@@ -145,5 +151,10 @@ $(document).ready(function() {
 		}
 		
 	}
+
+	// hack for safari modal window close on link click ext_links_dicts
+	//$('body').on('click', '.ext_links_dicts a', function() {
+	//	$('.modal, .modal-backdrop').remove();
+	//});
 	
 });

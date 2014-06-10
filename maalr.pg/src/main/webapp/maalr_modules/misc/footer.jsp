@@ -14,7 +14,7 @@
 	</div>
 	--%>
 	<ul id="navi_bottom_menu">
-		<li><a href="#" id="propose_navi"><i></i><span class=""><fmt:message key="maalr.navi.suggest" /> </span></a></li>	
+		<li><a href="#" id="propose_navi"><i></i><span class=""><fmt:message key="maalr.navi.suggest" /> </span></a></li>
 		<li><a href="/help.html"><fmt:message key="maalr.navi.help" /></li>
 		<li><a href="/infos.html"><i></i><span class=""><fmt:message key="maalr.navi.info" /> </span></a></li>
 		<li><a href="/assets/binary/grammatica.pdf" target="_blank"><i></i><span class=""><fmt:message key="maalr.navi.grammatica" /> </span></a></li>		
