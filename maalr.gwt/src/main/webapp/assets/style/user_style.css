@@ -565,6 +565,10 @@ input:focus, textarea:focus {
 	width: 542px;
 }
 
+#content.content .row-fluid .span4 .well form {
+	margin-bottom: 6px;
+}
+
 #content.content .row-fluid .span8 {
 	width: 662px;
 	float: none;
@@ -1168,6 +1172,10 @@ tr.GKHQX3BBKB td:nth-child(5) {
 	margin-bottom: 12px;
 }
 
+.modal-body ul.ext_links_dicts {
+	margin-left: 0;
+}
+
 .modal-body textarea {
 	height: auto;
 }
@@ -1422,6 +1430,34 @@ a.btn.btn-danger:hover {
 	position: relative;
 	top: -3px;
 	right: -3px;
+}
+
+/*DICTIONARY LINK WIDGET*/
+#dictionary_links {
+	margin: 0px auto;
+	position: relative;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.ext_links_dicts { 
+	list-style:none 
+}
+
+.ext_links_dicts li:before {
+	content: "→";
+	color: #848484;
+}
+
+.ext_links_dicts li > a {
+	padding: 0px 0px 0px 3px;
+	font-size: 13px;
+}
+
+.ext_links_dicts li > a:hover {
+	color: rgb(0, 200, 255);
+	text-decoration:none;
 }
 
 /* MOBILE */
