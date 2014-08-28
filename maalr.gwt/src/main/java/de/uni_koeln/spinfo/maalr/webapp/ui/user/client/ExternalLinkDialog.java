@@ -15,6 +15,8 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.Heading;
 import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
@@ -33,7 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  */
 
-public class LinkDialog extends Widget {
+public class ExternalLinkDialog extends Widget {
 
 	private Modal modal;
 
@@ -41,9 +43,12 @@ public class LinkDialog extends Widget {
 
 	private Dictionary localeDictionary;
 
-	public LinkDialog() {
+	private List<String> links;
+
+	public ExternalLinkDialog(List<String> links) {
 		this.linksDictionary = DictionaryConstants.getLinksDictionary();
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
+		this.links = links;
 		init();
 	}
 
@@ -55,26 +60,21 @@ public class LinkDialog extends Widget {
 	private void createModalWithLinks() {
 		modal = new Modal(true);
 		modal.setBackdrop(BackdropType.NORMAL);
-		modal.add(new Heading(3, localeDictionary.get(DictionaryConstants.DICT_LINK_LABEL)));
+		modal.add(new Heading(3, localeDictionary.get(links.get(0))));
 
 		UnorderedList list = new UnorderedList();
-		String className = list.getElement().getClassName();
-		list.getElement().setClassName(className + " ext_links_dicts");
+		String ulClassName = list.getElement().getClassName();
+		list.getElement().setClassName(ulClassName + " ext_links_dicts");
 
-		list.add(new ListItem(createLink(
-				localeDictionary.get(DictionaryConstants.SURSILVAN),
-				linksDictionary.get(DictionaryConstants.LINK_SURSILVAN))));
-		list.add(new ListItem(createLink(
-				localeDictionary.get(DictionaryConstants.PUTER),
-				linksDictionary.get(DictionaryConstants.LINK_PUTER))));
-		list.add(new ListItem(createLink(
-				localeDictionary.get(DictionaryConstants.VALLADER),
-				linksDictionary.get(DictionaryConstants.LINK_VALLADER))));
-		list.add(new ListItem(createLink(
-				localeDictionary.get(DictionaryConstants.PLEDARI),
-				linksDictionary.get(DictionaryConstants.LINK_PLEDARI))));
+		for (int i = 1; i < links.size(); i++) {
+			list.add(new ListItem(createLink(localeDictionary.get(links.get(i)),
+					linksDictionary.get(links.get(i)))));
+		}
 
 		modal.add(list);
+		
+		String modalClassName = modal.getElement().getClassName();
+		modal.getElement().setClassName(modalClassName + " vertical-center");
 	}
 
 	private Anchor createLink(final String txt, final String url) {

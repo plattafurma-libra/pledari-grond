@@ -15,6 +15,8 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -39,7 +41,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictionaryConstants;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.LinkDialog;
+import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
 
 public class Search extends Composite implements HasHandlers, IResultDisplay {
@@ -72,17 +74,18 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		localeDictionary = DictionaryConstants.getLocaleDictionary();
 		well.add(searchForm);
-		well.add(getLink());
+		well.add(getLink(DictionaryConstants.DICT_LINKS));
+		well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
 	}
 
-	private Widget getLink() {
+	private Widget getLink(final List<String> links) {
 		final Anchor anchor = new Anchor(new SafeHtml() {
 
 			private static final long serialVersionUID = -8025097762092729852L;
 
 			@Override
 			public String asString() {
-				return "<span>" + localeDictionary.get(DictionaryConstants.DICT_LINK_LABEL) + "</span>";
+				return "<span>" + localeDictionary.get(links.get(0)) + "</span>";
 			}
 		});
 
@@ -91,7 +94,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				new LinkDialog();
+				new ExternalLinkDialog(links);
 
 				event.getNativeEvent().preventDefault();
 				event.getNativeEvent().stopPropagation();

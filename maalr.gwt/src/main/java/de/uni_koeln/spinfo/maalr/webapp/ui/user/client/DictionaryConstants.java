@@ -15,6 +15,9 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Window;
 
@@ -22,7 +25,7 @@ import com.google.gwt.user.client.Window;
  * <p>Utility class for dynamic i18n within the
  * {@code de.uni_koeln.spinfo.maalr.webapp.ui.user.User} modules.
  * </p>
- * <p>E.g. in {@link LinkDialog}</p>
+ * <p>E.g. in {@link ExternalLinkDialog}</p>
  * 
  * @author Mihail Atanassov <atanassov.mihail@gmail.com>
  * 
@@ -30,28 +33,37 @@ import com.google.gwt.user.client.Window;
 
 public class DictionaryConstants {
 
-	public static final String FALLBACK_PROPERTIES = "properties_rm";
-	public static final String PROPERTIES = "properties_";
-	public static final String DICT_LINK_LABEL = "dictionary_link_label";
-	public static final String KEY_LOCALE = "pl";
-
-	public static final String LINKS = "links_";
-	public static final String LINK_SURSILVAN = "link_sursilvan";
-	public static final String LINK_PUTER = "link_puter";
-	public static final String LINK_VALLADER = "link_vallader";
-	public static final String LINK_PLEDARI = "link_pledari";
-
-	public static final String SURSILVAN = "sursilvan";
-	public static final String PUTER = "puter";
-	public static final String VALLADER = "vallader";
-	public static final String PLEDARI = "pledari";
+	public static final String LOCALE_PARAM = "pl";
+	public static final String LOCALE_FALLBACK = "rm";
+	public static final String LINKS = "links";
+	
+	public static final List<String> DICT_LINKS;
+	public static final List<String> GLOSSAR_LINKS;
+	
+	static {
+		
+		DICT_LINKS = new ArrayList<String>();
+		DICT_LINKS.add("dict_label");
+		DICT_LINKS.add("sursilvan");
+		DICT_LINKS.add("puter");
+		DICT_LINKS.add("vallader");
+		DICT_LINKS.add("pledari");
+		
+		GLOSSAR_LINKS = new ArrayList<String>();
+		GLOSSAR_LINKS.add("glossar_label");
+		GLOSSAR_LINKS.add("gourmet");
+		GLOSSAR_LINKS.add("flora");
+		GLOSSAR_LINKS.add("avionary");
+		GLOSSAR_LINKS.add("ballape");
+		
+	}
 
 	public static Dictionary getLocaleDictionary() {
-		String locale = Window.Location.getParameter(KEY_LOCALE);
+		String locale = Window.Location.getParameter(LOCALE_PARAM);
 		if (locale == null)
-			return Dictionary.getDictionary(FALLBACK_PROPERTIES);
+			return Dictionary.getDictionary(LOCALE_FALLBACK);
 		else
-			return Dictionary.getDictionary(PROPERTIES + locale);
+			return Dictionary.getDictionary(locale);
 	}
 
 	public static Dictionary getLinksDictionary() {

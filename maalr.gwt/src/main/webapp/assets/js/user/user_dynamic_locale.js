@@ -1,22 +1,36 @@
-var properties_rm = {
-	dictionary_link_label: "dicziunaris dals idioms",
+var rm = {
+	dict_label: "dicziunaris dals idioms",
 	sursilvan: "dicziunari sursilvan",
 	puter: "dicziunari puter",
 	vallader: "dicziunari vallader",
-	pledari: "divers dicziunaris"
+	pledari: "divers dicziunaris",
+	glossar_label: "glossars",
+	gourmet: "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
+	flora: "Flora Helvetica, nums da flurs e plantas",
+	avionary: "Terminologia d’utschels",
+	ballape: "Glossari da ballape"
 };
 
-var properties_de = {
-	dictionary_link_label: "Wörterbücher der Idiome",
+var de = {
+	dict_label: "Wörterbücher der Idiome",
 	sursilvan: "Wörterbuch sursilvan",
 	puter: "Wörterbuch puter",
 	vallader: "Wörterbuch vallader",
-	pledari: "Andere Wörterbücher"
+	pledari: "Andere Wörterbücher",
+	glossar_label: "Glossars",
+	gourmet: "Dicziunari Gourmet, Wortschatz für Küche und Gastronomie",
+	flora: "Flora Helvetica, Blumen- und Pflanzennamen",
+	avionary: "Vogelnamen",
+	ballape: "Fussball-Terminologie"
 };
 
-var links_ = {
-	link_sursilvan: "http://www.vocabularisursilvan.ch",
-	link_puter: "http://www.udg.ch/dicziunari/puter",
-	link_vallader: "http://www.udg.ch/dicziunari/vallader",
-	link_pledari: "http://www.pledari.ch"
+var links = {
+	sursilvan: "http://www.vocabularisursilvan.ch",
+	puter: "http://www.udg.ch/dicziunari/puter",
+	vallader: "http://www.udg.ch/dicziunari/vallader",
+	pledari: "http://www.pledari.ch",
+	gourmet: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=1321",
+	flora: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=1288",
+	avionary: "http://www.avionary.info/",
+	ballape: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=66"
 };
