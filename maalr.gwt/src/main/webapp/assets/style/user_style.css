@@ -1151,12 +1151,13 @@ tr.GKHQX3BBKB td:nth-child(5) {
 .modal {
 	position: absolute;
 	width: 600px !important;
-	top: 0px !important;
+	height: auto !important;
+	top: 112px !important;
 	left: 50% !important;
 	right: auto !important;
 	bottom: !important;
 	padding: 32px;
-	margin-top: 112px !important; 
+	margin-top: 0 !important;
 	margin-left: -332px !important;
 	margin-right: 0 !important;
 	margin-bottom: 0 !important;
@@ -1164,6 +1165,12 @@ tr.GKHQX3BBKB td:nth-child(5) {
 	box-shadow: 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0);
 	border-radius: 12px; -webkit-border-radius: 12px; -moz-border-radius: 12px;
 	background: rgb(227, 227, 227);
+}
+
+.modal.vertical-center {
+	top: 50% !important;
+	margin-top: -112px !important;
+	height: 162px !important;
 }
 
 .modal-body { 
@@ -1439,6 +1446,7 @@ a.btn.btn-danger:hover {
 	display: block;
 	vertical-align: middle;
 	text-align: center;
+	margin-bottom: 6px;
 }
 
 .ext_links_dicts { 
