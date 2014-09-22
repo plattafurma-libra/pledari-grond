@@ -43,8 +43,8 @@ textarea {
 	border-radius: 0;
 
 	outline: 0 !important;
-
-	width: 284px;
+	
+	width: 100%;
 	height: 26px;
 	padding: 4px 12px;
 	margin-left: 0;
@@ -563,6 +563,10 @@ input:focus, textarea:focus {
 	float: none;
 	margin: 0 auto;
 	width: 542px;
+}
+
+#content.content .row-fluid .span4 .well form {
+	margin-bottom: 6px;
 }
 
 #content.content .row-fluid .span8 {
@@ -1147,12 +1151,13 @@ tr.GKHQX3BBKB td:nth-child(5) {
 .modal {
 	position: absolute;
 	width: 600px !important;
-	top: 0px !important;
+	height: auto !important;
+	top: 112px !important;
 	left: 50% !important;
 	right: auto !important;
 	bottom: !important;
 	padding: 32px;
-	margin-top: 112px !important; 
+	margin-top: 0 !important;
 	margin-left: -332px !important;
 	margin-right: 0 !important;
 	margin-bottom: 0 !important;
@@ -1162,10 +1167,20 @@ tr.GKHQX3BBKB td:nth-child(5) {
 	background: rgb(227, 227, 227);
 }
 
+.modal.vertical-center {
+	top: 50% !important;
+	margin-top: -112px !important;
+	height: 162px !important;
+}
+
 .modal-body { 
 	position: relative;
 	padding: 0;
 	margin-bottom: 12px;
+}
+
+.modal-body ul.ext_links_dicts {
+	margin-left: 0;
 }
 
 .modal-body textarea {
@@ -1386,10 +1401,15 @@ blockquote h4 {
 }
 
 .control-group.success textarea {
-	border-color: rgb(21, 233, 177);
+	/*border-color: rgb(21, 233, 177);*/
+	border-color: transparent;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
+}
+
+.control-group.success textarea:FOCUS {
+	border-color: rgb(21, 233, 177);
 }
 
 a.btn.btn-danger {
@@ -1417,6 +1437,35 @@ a.btn.btn-danger:hover {
 	position: relative;
 	top: -3px;
 	right: -3px;
+}
+
+/*DICTIONARY LINK WIDGET*/
+#dictionary_links {
+	margin: 0px auto;
+	position: relative;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+	margin-bottom: 6px;
+}
+
+.ext_links_dicts { 
+	list-style:none 
+}
+
+.ext_links_dicts li:before {
+	content: "→";
+	color: #848484;
+}
+
+.ext_links_dicts li > a {
+	padding: 0px 0px 0px 3px;
+	font-size: 13px;
+}
+
+.ext_links_dicts li > a:hover {
+	color: rgb(0, 200, 255);
+	text-decoration:none;
 }
 
 /* MOBILE */

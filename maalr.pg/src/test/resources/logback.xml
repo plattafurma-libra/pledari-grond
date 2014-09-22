@@ -7,16 +7,15 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>temp/logs/maalr.log</file>
+		<file>logs/maalr.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>temp/logs/maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>logs/maalr.%d{yyyy-MM-dd}.logggg</FileNamePattern>
       		<!-- keep 30 days' worth of history -->
       		<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%date [%-16X{src}] %-5level **%X{login}** %-60logger{55} ::  %msg%n
-			</pattern>
+			<pattern>%date [%-16X{src}] %-5level **%X{login}** %-60logger{55} ::  %msg%n</pattern>
 		</encoder>
 	</appender>
 

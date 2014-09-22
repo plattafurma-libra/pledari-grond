@@ -31,7 +31,7 @@
 		</div>
 		
 		<div id="bottom"><jsp:include page="/maalr_modules/misc/footer.jsp" /></div>
-		
+		<jsp:include page="/analytics.jsp" />
 	</body>
 </html>
 

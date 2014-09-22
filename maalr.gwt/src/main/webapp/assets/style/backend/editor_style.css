@@ -171,3 +171,11 @@ td.item:hover {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;*/
 }
+
+#comment_field {
+	width: 100%;
+}
+
+#email_field {
+	width: 350px;
+}

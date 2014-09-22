@@ -1,17 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@	page import="java.util.ArrayList"%>
-<%@	page import="java.util.List"%>
+<%@	page import="java.util.ArrayList" %>
+<%@	page import="java.util.List" %>
 
-<%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt'%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value="<%=session.getAttribute("pl") %>" />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
-
 	<body>
 		
 		<%-- NAVIGATION --%>
@@ -30,6 +29,6 @@
 				Sorry, but an unexpected error occurred.
 			</div>
 		</div>
-
+		<jsp:include page="/analytics.jsp" />
 	</body>
 </html>

@@ -33,6 +33,7 @@
 	<mvc:resources mapping="/static/*.xml" location="/static/"
 		cache-period="31556926" />
 	<mvc:resources mapping="/favicon.ico" location="/" />
+	<mvc:resources mapping="/robots.txt" location="/" />
 
 	<mvc:annotation-driven />
 

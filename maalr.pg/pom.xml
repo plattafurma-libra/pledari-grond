@@ -164,7 +164,7 @@
 							<properties>
 								<property>
 									<name>logback.configurationFile</name>
-									<value>src/test/resources/logback.xml</value>
+									<value>src/main/resources/logback.xml</value>
 								</property>
 							</properties>
 						</configuration>
@@ -178,7 +178,7 @@
 				<version>${jetty.version}</version>
 				<configuration>
 
-					<contextXml>src/test/resources/jetty-context.xml</contextXml>
+					<contextXml>src/main/resources/jetty-context.xml</contextXml>
 					<webAppConfig>
 						<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
