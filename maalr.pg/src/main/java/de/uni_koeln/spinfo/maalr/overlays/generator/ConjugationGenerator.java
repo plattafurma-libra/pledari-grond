@@ -768,11 +768,11 @@ public class ConjugationGenerator {
 			if (isVocal(root)) {
 				cs.setFutursing1("vegn a " + Pronouns.pron_r_v_1ps
 						+ cs.getInfinitiv());
-				cs.setFutursing2("vengs a " + Pronouns.pron_r_v_2ps
+				cs.setFutursing2("vegns a " + Pronouns.pron_r_v_2ps
 						+ cs.getInfinitiv());
 				cs.setFutursing3("vegn a " + Pronouns.pron_r_v_3ps
 						+ cs.getInfinitiv());
-				cs.setFuturplural1("vengnin ad " + Pronouns.pron_r_v_1pp
+				cs.setFuturplural1("vegnin ad " + Pronouns.pron_r_v_1pp
 						+ cs.getInfinitiv());
 				cs.setFuturplural2("vegnis ad " + Pronouns.pron_r_v_2pp
 						+ cs.getInfinitiv());
@@ -782,11 +782,11 @@ public class ConjugationGenerator {
 			} else {
 				cs.setFutursing1("vegn a " + Pronouns.pron_r_1ps
 						+ cs.getInfinitiv());
-				cs.setFutursing2("vengs a " + Pronouns.pron_r_2ps
+				cs.setFutursing2("vegns a " + Pronouns.pron_r_2ps
 						+ cs.getInfinitiv());
 				cs.setFutursing3("vegn a " + Pronouns.pron_r_3ps
 						+ cs.getInfinitiv());
-				cs.setFuturplural1("vengnin ad " + Pronouns.pron_r_1pp
+				cs.setFuturplural1("vegnin ad " + Pronouns.pron_r_1pp
 						+ cs.getInfinitiv());
 				cs.setFuturplural2("vegnis ad " + Pronouns.pron_r_2pp
 						+ cs.getInfinitiv());
@@ -800,17 +800,17 @@ public class ConjugationGenerator {
 
 			if (isVocal(root)) {
 				cs.setFutursing1("vegn ad " + cs.getInfinitiv());
-				cs.setFutursing2("vengs ad " + cs.getInfinitiv());
+				cs.setFutursing2("vegns ad " + cs.getInfinitiv());
 				cs.setFutursing3("vegn ad " + cs.getInfinitiv());
-				cs.setFuturplural1("vengnin ad " + cs.getInfinitiv());
+				cs.setFuturplural1("vegnin ad " + cs.getInfinitiv());
 				cs.setFuturplural2("vegnis ad " + cs.getInfinitiv());
 				cs.setFuturplural3("vegnan ad " + cs.getInfinitiv());
 
 			} else {
 				cs.setFutursing1("vegn a " + cs.getInfinitiv());
-				cs.setFutursing2("vengs a " + cs.getInfinitiv());
+				cs.setFutursing2("vegns a " + cs.getInfinitiv());
 				cs.setFutursing3("vegn a " + cs.getInfinitiv());
-				cs.setFuturplural1("vengnin a " + cs.getInfinitiv());
+				cs.setFuturplural1("vegnin a " + cs.getInfinitiv());
 				cs.setFuturplural2("vegnis a " + cs.getInfinitiv());
 				cs.setFuturplural3("vegnan a " + cs.getInfinitiv());
 			}
