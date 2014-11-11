@@ -16,6 +16,7 @@
 		<column name="RGrammatik" />
 		<column name="RGenus"/>
 		<column name="Bearbeitungshinweis" type="CSV"/>
+		<column name="redirect_a" />
 		<column name="redirect_b" />
 		<column name="maalr_comment" />
 		<column name="maalr_email" />
@@ -274,6 +275,7 @@
 						</field>
 						<field column="DSubsemantik" type="ORACLE"></field>
 						<field column="Bearbeitungshinweis" type="ORACLE"></field>
+						<field column="redirect_a"></field>
 					</fields>
 				</backend_editor>
 			</editors>
