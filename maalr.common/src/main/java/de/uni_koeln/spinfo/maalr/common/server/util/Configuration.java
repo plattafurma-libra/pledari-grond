@@ -106,6 +106,7 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		} 
+		// TODO: Try reading more then one searchconfig.xml
 		try (InputStreamReader reader = getConfiguration("searchconfig.xml")) {
 			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
