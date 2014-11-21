@@ -8,6 +8,5 @@ bin/
 .cache
 .DS_Store
 .svn
-.classpath
 .gwt/
 .metadata/
