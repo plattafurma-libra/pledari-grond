@@ -74,6 +74,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLo
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.LemmaEditorWidget;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
+import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util.SimpleWebLogger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorMessages;
@@ -141,8 +142,7 @@ public class AdvancedEditor {
 			@Override
 			public void onSuccess(final TranslationMap localizedStrings) {
 
-				service.getOverlayTypes(true,
-						new AsyncCallback<ArrayList<String>>() {
+				service.getOverlayTypes(true, new AsyncCallback<ArrayList<String>>() {
 
 							@Override
 							public void onFailure(Throwable caught) {
@@ -178,7 +178,7 @@ public class AdvancedEditor {
 									}
 								});
 								group.add(edit);
-//								left.add(new ControlLabel(messages.controlLabelOverlay(AsyncLemmaDescriptionLoader.getDescription().getLanguageName(true))));
+								// left.add(new ControlLabel(messages.controlLabelOverlay(AsyncLemmaDescriptionLoader.getDescription().getLanguageName(true))));
 								left.add(new ControlLabel(messages.controlLabelOverlay()));
 								Controls controls = new Controls();
 								controls.add(group);
@@ -413,6 +413,10 @@ public class AdvancedEditor {
 		return popup;
 	}
 
+	/**
+	 * The verb-generator-dialog. Opens when you hit the edit button on the
+	 * tudestg/rumantsch overlay for editing a verb.
+	 */
 	private static void showOverlayEditor(final LemmaVersion lv, final String type, final TranslationMap localizedStrings, final EditorConstants constants, final EditorMessages messages) {
 		
 		service.getOverlayEditor(type, new AsyncCallback<OverlayEditor>() {
@@ -426,6 +430,20 @@ public class AdvancedEditor {
 
 			@Override
 			public void onSuccess(OverlayEditor result) {
+				
+//				List<OverlayEditorRow> rows2 = result.getRows();
+//				for (OverlayEditorRow overlayEditorRow : rows2) {
+//					List<OverlayEditorColumn> columns = overlayEditorRow.getColumns();
+//					for (OverlayEditorColumn overlayEditorColumn : columns) {
+//						List<OverlayEditorItem> items = overlayEditorColumn.getItems();
+//						for (OverlayEditorItem overlayEditorItem : items) {
+//							String id = overlayEditorItem.getId();
+//							SimpleWebLogger.log(AdvancedEditor.class, "id=" + id);
+//						}
+//						
+//					}
+//				}
+				
 				final PopupPanel modal = new PopupPanel();
 				modal.setStyleName("editor-modal");
 				modal.setPopupPosition(50, 50);
