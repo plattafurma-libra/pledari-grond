@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui"
+	xmlns:gwtbootstrapbase="urn:import:com.github.gwtbootstrap.client.ui.base">
+	
+	
+	<g:HTMLPanel>
+		<gwtbootstrap:Well>
+			<gwtbootstrap:Paragraph>
+				<gwtbootstrap:Label text="Backup history" />
+			</gwtbootstrap:Paragraph>
+			<g:HorizontalPanel>
+				<g:cell>
+					<gwtbootstrapbase:DivWidget ui:field="generalInfo"/>
+				</g:cell>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:cell>
+					<gwtbootstrap:Accordion ui:field="backupInfo" />
+				</g:cell>
+			</g:HorizontalPanel>
+		</gwtbootstrap:Well>
+	</g:HTMLPanel>
+	
+</ui:UiBinder> 

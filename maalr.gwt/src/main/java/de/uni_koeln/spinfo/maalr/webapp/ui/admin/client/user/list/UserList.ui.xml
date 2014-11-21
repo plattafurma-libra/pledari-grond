@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:p2="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.common.client">
+	<ui:style>
+	
+	.scrollpanel {
+	 	outline: 0;
+	 	cursor: pointer;
+	}
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<p2:PagingDataGrid ui:field="table" width="100%" height="100%"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

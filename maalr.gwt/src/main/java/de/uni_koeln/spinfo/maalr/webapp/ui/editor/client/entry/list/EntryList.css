@@ -1,0 +1,110 @@
+@def selectionBorderWidth 0px;
+.dataGridWidget {
+ 
+}
+
+.dataGridFirstColumn {
+ 
+}
+
+.dataGridLastColumn {
+ 
+}
+
+.dataGridFooter {
+  padding: 3px 15px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.dataGridHeader {
+  padding: 3px 15px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.dataGridCell {
+  padding: 2px 15px;
+  overflow: hidden;
+}
+
+.dataGridFirstColumnFooter {
+ 
+}
+
+.dataGridFirstColumnHeader {
+ 
+}
+
+.dataGridLastColumnFooter {
+ 
+}
+
+.dataGridLastColumnHeader {
+ 
+}
+
+.dataGridSortableHeader {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.dataGridSortableHeader:hover {
+  color: #6c6b6b;
+}
+
+.dataGridSortedHeaderAscending {
+ 
+}
+
+.dataGridSortedHeaderDescending {
+ 
+}
+
+.dataGridEvenRow {
+  background: white;
+}
+
+.dataGridEvenRowCell {
+}
+
+.dataGridOddRow {
+  background: #EAEAEA;
+  cursor: pointer;
+}
+
+.dataGridOddRowCell {
+}
+
+.dataGridHoveredRow {
+  background: #C5CCDF;
+}
+
+.dataGridHoveredRowCell {
+	cursor: pointer;
+}
+
+.dataGridKeyboardSelectedRow {
+  background: #ffc;
+}
+
+.dataGridKeyboardSelectedRowCell {
+}
+
+.dataGridSelectedRow {
+  background: #628cd5;
+  color: white;
+}
+
+.dataGridSelectedRowCell {
+}
+
+/**
+ * The keyboard selected cell is visible over selection.
+ */
+.dataGridKeyboardSelectedCell {
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+    <databaseColumns>
+        <column name="German"/>
+        <column name="English"/>
+    </databaseColumns>
+    <queryKeys>
+		<queryKey id="searchPhrase" />
+	</queryKeys>
+    <columnSelectors>
+		<columnSelector id="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="German" />
+					</columns>
+				</option>
+				<option id="english">
+					<columns>
+						<column reference="English" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="German" />
+						<column reference="English" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+	</columnSelectors>
+	
+	<queryBuilders>
+		<queryBuilder id="method" queryKeyId="searchPhrase" columnSelectorId="language">
+			<options>
+				<option id="default" default="true" preset="DEFAULT" />
+				<option id="infix" preset="INFIX" />
+				<option id="prefix" preset="PREFIX" />
+				<option id="suffix" preset="SUFFIX" />
+				<option id="exact" preset="EXACT" />
+			</options>
+		</queryBuilder>
+	</queryBuilders>
+    <languages>
+	<language id="german" mainColumn="German">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field column="German"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<field column="German" allowNull="false"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field column="German" format="{0}"></field>
+			</fields>
+		</results>
+	</language>
+	<language id="english" mainColumn="English">
+		<editors>
+			<frontend_editor>
+				<fields>
+					<field column="English"></field>
+				</fields>
+			</frontend_editor>
+			<backend_editor>
+				<fields>
+					<field column="English" allowNull="false"></field>
+					<field column="redirect_b"></field>
+				</fields>
+			</backend_editor>
+		</editors>
+		<results>
+			<fields>
+				<field column="English" format="{0}"></field>
+			</fields>
+		</results>
+	</language>
+</languages>
+</dictionaryConfiguration>

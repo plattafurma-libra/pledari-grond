@@ -1,0 +1,435 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>gwt</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>de.uni_koeln.spinfo.maalr</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../maalr.parent</relativePath>
+	</parent>
+
+	<properties>
+		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+		<maalr.import>false</maalr.import>
+	</properties>
+	
+	
+	<profiles>
+	
+		<profile>
+			<id>import</id>
+			<properties>
+				<maalr.import>true</maalr.import>		
+			</properties>
+		</profile>
+	
+		<profile>
+			<id>dict-ru</id>
+			<properties>
+				<maalr.config.dir>src/test/resources/maalr_russian</maalr.config.dir>		
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>dict-en-min</id>
+			<properties>
+				<maalr.config.dir>src/test/resources/maalr_minimal</maalr.config.dir>		
+			</properties>
+		</profile>
+	
+		<profile>
+			<!-- Improve GWT compile time -->
+			<id>gwt-dev</id>
+			<properties>
+				<gwt.draft.compile>true</gwt.draft.compile>
+				<gwt.compile.report>false</gwt.compile.report>
+				<gwt.style>pretty</gwt.style>
+				<gwt.optimizationlevel>1</gwt.optimizationlevel>
+				<gwt.enableclosurecompiler>false</gwt.enableclosurecompiler>
+				<gwt.module.suffix>Dev</gwt.module.suffix>
+			</properties>
+		</profile>
+		<profile>
+			<!-- Compile for production (default) -->
+			<id>gwt-prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<gwt.draft.compile>false</gwt.draft.compile>
+				<gwt.compile.report>true</gwt.compile.report>
+				<gwt.style>obfuscated</gwt.style>
+				<gwt.optimizationlevel>9</gwt.optimizationlevel>
+				<gwt.enableclosurecompiler>true</gwt.enableclosurecompiler>
+				<gwt.module.suffix></gwt.module.suffix>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>spring.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.gwtbootstrap</groupId>
+			<artifactId>gwt-bootstrap</artifactId>
+			<version>2.2.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>mongo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Required to upload files (import db) -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<!-- GWT -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gwt.google-apis</groupId>
+			<artifactId>gwt-visualization</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- Spring Web MVC -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+			<optional>false</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- GWT-Spring -->
+		<!-- Required to implement GWT Services as Spring Beans -->
+		<dependency>
+			<groupId>net.sf.gwt-widget</groupId>
+			<artifactId>gwt-sl</artifactId>
+			<version>1.3-RC1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>set-system-properties</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>
+									<!-- Configure jetty logging -->
+									<name>logback.configurationFile</name>
+									<value>src/test/resources/logback.xml</value>
+								</property>
+								<property>
+									<!-- Use maalr_config directory as specified in variable -->
+									<name>maalr.config.dir</name>
+									<value>${maalr.config.dir}</value>
+								</property>
+								<property>
+									<!-- Whether or not maalr should import data on startup -->
+									<name>maalr.import</name>
+									<value>${maalr.import}</value>
+								</property>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<!-- Use custom jetty context (improved startup time) -->
+					<contextXml>src/test/resources/jetty-context.xml</contextXml>
+					<webAppConfig>
+						<!-- Also use src/main/webapp as resource directory (allows modifying JSP's without server restart) -->
+						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+							<resourcesAsCSV>src/main/webapp,${webappDirectory}</resourcesAsCSV>
+						</baseResource>
+						<descriptor>${webappDirectory}/WEB-INF/web.xml</descriptor>
+					</webAppConfig>
+					<classesDirectory>${webappDirectory}/WEB-INF/classes</classesDirectory>
+					<systemProperties>
+						<!-- Use port as defined in variable -->
+						<systemProperty>
+							<name>jetty.port</name>
+							<value>${jetty.default.port}</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>ch.qos.logback</groupId>
+						<artifactId>logback-classic</artifactId>
+						<version>${logback.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>${gwt.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<runTarget>index.html</runTarget>
+					<hostedWebapp>${webappDirectory}</hostedWebapp>
+					<compileReport>${gwt.compile.report}</compileReport>
+					<style>${gwt.style}</style>
+					<precompile>false</precompile>
+					<draftCompile>${gwt.draft.compile}</draftCompile>
+					<optimizationLevel>${gwt.optimizationlevel}</optimizationLevel>
+					<logLevel>INFO</logLevel>
+					<extraJvmArgs>-Xmx1G</extraJvmArgs>
+					<modules>
+						<module>de.uni_koeln.spinfo.maalr.webapp.ui.admin.Admin${gwt.module.suffix}</module>
+						<module>de.uni_koeln.spinfo.maalr.webapp.ui.editor.Editor${gwt.module.suffix}</module>
+						<module>de.uni_koeln.spinfo.maalr.webapp.ui.user.User${gwt.module.suffix}</module>
+					</modules>
+					<compileSourcesArtifacts>
+						<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:common</compileSourcesArtifact>
+						<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:mongo</compileSourcesArtifact>
+						<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:lucene</compileSourcesArtifact>
+						<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:antlr</compileSourcesArtifact>
+						<compileSourcesArtifact>de.uni_koeln.spinfo.maalr:spring.core</compileSourcesArtifact>
+						<compileSourcesArtifact>org.antlr:antlr-runtime</compileSourcesArtifact>
+					</compileSourcesArtifacts>
+				</configuration>
+
+			</plugin>
+
+			<plugin>
+				<groupId>com.github.joelittlejohn.embedmongo</groupId>
+				<artifactId>embedmongo-maven-plugin</artifactId>
+				<version>0.1.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.2</version>
+			</plugin>
+
+			<plugin>
+				<!-- Convert the localization files from UTF-8 to ASCII and copy them 
+					to the required directory. -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<version>1.0-alpha-1</version>
+				<configuration>
+					<dest>target/classes/de/uni_koeln/spinfo/maalr/webapp/i18n</dest>
+					<src>src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n</src>
+					<encoding>UTF8</encoding>
+					<includes>**/*.properties</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<id>native2ascii-utf8-resources</id>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<!-- Workaround to support Java 7 -->
+						<groupId>com.sun</groupId>
+						<artifactId>tools</artifactId>
+						<version>1.7.0</version>
+						<scope>system</scope>
+						<systemPath>${java.home}/../lib/tools.jar</systemPath>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<!-- Do not copy i18n properties - this will be done by the native2ascii-plugin -->
+					<exclude>de/uni_koeln/spinfo/maalr/webapp/i18n/*.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											native2ascii-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-1,)
+										</versionRange>
+										<goals>
+											<goal>native2ascii</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											properties-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0-alpha-2,)
+										</versionRange>
+										<goals>
+											<goal>
+												set-system-properties
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											gwt-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.6.0,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+	<organization>
+		<name>Department of Computational Linguistics, University of Cologne</name>
+		<url>http://www.spinfo.uni-koeln.de</url>
+	</organization>
+
+	<url>http://www.spinfo.phil-fak.uni-koeln.de/forschung-maalr.html</url>
+
+	<description>
+		alle wörter, namen, und arten zuo reden: 
+		dem ABC nach ordenlich gestellt, gantz fleissig unnd 
+		eigentlich vertolmetscht, dergleychen bishär nie gesähen. [Josua Maaler, 1551]
+		http://en.wikipedia.org/wiki/Josua_Maaler
+	</description>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://bob.spinfo.uni-koeln.de:8888/job/Maalr/</url>
+	</ciManagement>
+
+	<inceptionYear>2012</inceptionYear>
+
+	<licenses>
+		<!-- TODO: Add a licence -->
+	</licenses>
+
+</project>

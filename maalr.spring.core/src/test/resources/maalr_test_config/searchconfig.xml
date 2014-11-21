@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+
+	<databaseColumns>
+		<column name="german" />
+		<column name="english" />
+		<column name="redirect_b" />
+		<column name="maalr_comment" />
+		<column name="maalr_email" />
+	</databaseColumns>
+
+	<queryKeys>
+		<queryKey id="searchPhrase" />
+		<queryKey id="category" />
+		<queryKey id="subSemantics" />
+		<queryKey id="gender" />
+		<queryKey id="grammar" />
+	</queryKeys>
+	
+	<columnSelectors>
+		<columnSelector id="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="german" />
+					</columns>
+				</option>
+				<option id="english">
+					<columns>
+						<column reference="english" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="german" />
+						<column reference="english" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+	</columnSelectors>
+	
+	<queryBuilders>
+		<queryBuilder id="method" queryKeyId="searchPhrase"
+			columnSelectorId="language">
+			<options>
+				<option id="normal" default="true" preset="DEFAULT" />
+				<option id="intern" preset="INFIX" />
+				<option id="prefix" preset="PREFIX" />
+				<option id="suffix" preset="SUFFIX" />
+				<option id="exact" preset="EXACT" />
+			</options>
+		</queryBuilder>
+	</queryBuilders>
+	
+	<languages>
+		<language id="german" mainColumn="german">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="german"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<field column="german" allowNull="false"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="german" format="{0}"></field>
+				</fields>
+			</results>
+		</language>
+		<language id="english" mainColumn="english">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="english"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<field column="english" allowNull="false"></field>
+						<field column="redirect_b"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="english" format="{0}"></field>
+				</fields>
+			</results>
+		</language>
+	</languages>
+	
+</dictionaryConfiguration>

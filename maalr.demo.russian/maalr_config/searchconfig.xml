@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+
+	<databaseColumns>
+		<column name="DLemma" />
+		<column name="DType" />
+		<column name="DAspect" />
+		<column name="DGender" />
+		<column name="DSingular" />
+		<column name="DPlural" />
+		<column name="RLemma" />
+		<column name="RType" />
+		<column name="RAspect" />
+		<column name="RGender" />
+		<column name="RSingular" />
+		<column name="RPlural" />
+	</databaseColumns>
+
+	<!-- The input field within the search form -->
+	<queryKeys>
+		<queryKey id="searchPhrase" />
+		<queryKey id="grammar" />
+		<queryKey id="aspect" />
+	</queryKeys>
+
+	<!-- Each 'fieldChoice' represents a combo box containing the defined options -->
+	<columnSelectors>
+		<columnSelector id="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DLemma" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RLemma" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DLemma" />
+						<column reference="RLemma" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+
+		<columnSelector id="gramChoice" depends="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DType" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RType" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DType" />
+						<column reference="RType" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		
+		<columnSelector id="aspectSelector" depends="language">
+			<options>
+				<option id="german">
+					<columns>
+						<column reference="DAspect" />
+					</columns>
+				</option>
+				<option id="russian">
+					<columns>
+						<column reference="RAspect" />
+					</columns>
+				</option>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DAspect" />
+						<column reference="RAspect" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+	</columnSelectors>
+
+
+	<queryBuilders>
+		<queryBuilder id="gramType" queryKeyId="grammar"
+			columnSelectorId="gramChoice">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="aspectBuilder" queryKeyId="aspect"
+			columnSelectorId="aspectSelector">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="method" queryKeyId="searchPhrase"
+			columnSelectorId="language">
+			<options>
+				<option id="normal" default="true" preset="DEFAULT" />
+				<option id="intern" preset="INFIX" />
+				<option id="prefix" preset="PREFIX" />
+				<option id="suffix" preset="SUFFIX" />
+				<option id="exact" preset="EXACT" />
+			</options>
+		</queryBuilder>
+	</queryBuilders>
+
+
+	<languages>
+		<language id="german" mainColumn="DLemma">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="DLemma"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<!-- Editors must ensure that this field is not empty (visitors don't 
+							have to) -->
+						<field column="DLemma" allowsNull="false"></field>
+						<field column="DType" type="ORACLE"></field>
+						<field column="DAspect"></field>
+						<field column="DSingular"></field>
+						<field column="DPlural"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="DLemma" format="{0}"></field>
+					<field column="DType" format="({0})"></field>
+					<field column="DGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+					<field column="DSingular" format="[sing: {0}]"></field>
+					<field column="DPlural" format="[pl: {0}]"></field>
+					<field column="DAspect" format="(Aspect: {0})"></field>
+				</fields>
+			</results>
+		</language>
+		<language id="russian" mainColumn="RLemma">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="RLemma"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<field column="RLemma" allowsNull="false"></field>
+						<field column="RType" type="ORACLE"></field>
+						<field column="RAspect"></field>
+						<field column="RSingular"></field>
+						<field column="RPlural"></field>
+						<field column="redirect_b"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="RLemma" format="{0}"></field>
+					<field column="RType" format="({0})"></field>
+					<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+					<field column="RSingular" format="[sing: {0}]"></field>
+					<field column="RPlural" format="[pl: {0}]"></field>
+					<field column="RAspect" format="(Aspect: {0})"></field>
+				</fields>
+			</results>
+		</language>
+	</languages>
+
+	<queryUI>
+		<defaultFrontendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+		</defaultFrontendQueryFields>
+		<advancedFrontendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+			<uifield id="grammar" type="COMBO" />
+			<uifield id="aspect" type="ORACLE" />
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="pageSize" buildin="true" type="COMBO" />
+		</advancedFrontendQueryFields>
+		<defaultBackendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+		</defaultBackendQueryFields>
+		<advancedBackendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+			<uifield id="grammar" type="COMBO" />
+			<uifield id="aspect" type="ORACLE" />
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="pageSize" buildin="true" type="COMBO" />
+		</advancedBackendQueryFields>
+	</queryUI>
+
+</dictionaryConfiguration>

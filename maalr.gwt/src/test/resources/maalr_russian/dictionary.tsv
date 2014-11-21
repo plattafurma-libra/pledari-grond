@@ -1,0 +1,32 @@
+DLemma	DAspect	DType	DGender	DSingular	DPlural	RLemma	RAspect	RType	RGender	RSingular	RPlural
+Lauf	-	noun	maskuline	Lauf	Läufe	бег	-	noun	masculine	бег	бега
+laufen	-	verb	-	-	-	бегать	несоверш.в	verb	-	-	-
+laufen	-	verb	-	-	-	бежать	соверш.в	verb	-	-	-
+laufend	-	adverb	-	-	-	постоянный	-	adverb	-	-	-
+laufend	-	adjective	-	-	текущий	-	adjective	-	-	-
+entlaufen	-	adjective	-	-	-	беглый	-	adjective	-	-	-
+bitter	-	adjective	-	-	-	го́рький		adjective	-	-	-
+leicht	-	adjective	-	-	-	лёгкий		adjective	-	-	-
+famos	-	adjective	-	-	-	отличный		adjective	-	-	-
+rigoros	-	adjective	-	-	-	строгий		adjective	-	-	-
+schön	-	adjective	-	-	-	красивый		adjective	-	-	-
+majestätisch	-	adjective	-	-	-	величественный		adjective	-	-	-
+komisch (lächerlich)	-	adjective	-	-	-	забавный		adjective	-	-	-
+laut	-	adjective	-	-	-	шумный		adjective	-	-	-
+gelb	-	adjective	-	-	-	жёлтый		adjective	-	-	-
+waschen	-	verb	-	-	-	мыть	несоверш.в	verb	-	-	-
+jagen	-	verb	-	-	-	охотиться	несоверш.в	verb	-	-	-
+sich unterhalten	-	verb	-	-	-	общаться	несоверш.в	verb	-	-	-
+sich unterhalten	-	verb	-	-	-	беседовать	несоверш.в	verb	-	-	-
+rauchen	-	verb	-	-	-	курить	несоверш.в	verb	-	-	-
+durchgehen	-	verb	-	-	-	пройти	соверш.в	verb	-	-	-
+hierherkommen	-	verb	-	-	-	прийти	соверш.в	verb	-	-	-
+gehen	-	verb	-	-	-	ходить	несоверш.в	verb	-	-	-
+gehen	-	verb	-	-	-	идти	несоверш.в	verb	-	-	-
+grillen	-	verb	-	-	-	поджаривать	несоверш.в	verb	-	-	-
+grillen	-	verb	-	-	-	поджаривать на гриле	несоверш.в	verb	-	-	-
+Ei	-	noun	neuter	Ei	Eier	яйцо	-	noun	neuter	яйцо	яйца
+Butter	-	noun	feminine	Butter	-	масло	-	noun	neuter	масло	масла
+Schickse	-	noun	feminine	Schickse	Schicksen	баба	-	noun	feminine	баба	бабы
+Nase	-	noun	feminine	Nase	Nasen	нос	-	noun	masculine	нос	носы
+Adler	-	noun	masculine	Adler	Adler	орёл	-	noun	masculine	орёл	орлы

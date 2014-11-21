@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>Maalr</display-name>
+
+	<context-param>
+		<!-- Set the context file which will be used to initialize Spring -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-maalr.xml</param-value>
+	</context-param>
+
+	<listener>
+		<!-- TODO: What was this for...? -->
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<!-- Maalr's central dispatcher for http requests -->
+		<!-- see http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/web/servlet/DispatcherServlet.html -->
+		<servlet-name>maalr</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<session-config>
+		<!-- Session timeout is one minute by default -->
+		<!-- After logging in, the timeout is increased by the post-login-handler -->
+		<session-timeout>1</session-timeout>
+	</session-config>
+
+	<!-- Configure caching: -->
+	<!-- See http://docs.codehaus.org/display/JETTY/LastModifiedCacheControl -->
+	<servlet>
+		<servlet-name>default</servlet-name>
+		<servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>cacheControl</param-name>
+			<param-value>max-age=3600,public</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>maalr</servlet-name>
+		<!-- TODO: If renamed to html, it will conflict with the gwt configuration -->
+		<url-pattern>/*.html</url-pattern>
+		<!-- <url-pattern>/*.xml</url-pattern>
+		<url-pattern>/*.json</url-pattern> -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- ///////////////// Filter Declaration Start ///////////////// -->
+	
+	<!-- These filters define the servlet filter chain. They are applied
+	     from top to bottom.
+	-->
+
+<!-- 	
+	<filter>
+		<filter-name>internationalUrlFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>internationalUrlFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	 -->
+	
+	<!--  Testing End -->
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 
+	<filter>
+		<filter-name>springLogUserLogin</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springLogUserLogin</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	 -->
+	
+	<!-- ///////////////// Filter Declaration End ///////////////// -->
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Front Controller for all GWT-Spring based servlets -->
+	<servlet>
+		<servlet-name>gwt</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Don't forget to declare a gwt-servlet.xml -->
+	<servlet-mapping>
+		<servlet-name>gwt</servlet-name>
+		<url-pattern>de.uni_koeln.spinfo.maalr/rpc/*</url-pattern>
+		<url-pattern>de.uni_koeln.spinfo.maalr.admin/rpc/*</url-pattern>
+		<url-pattern>de.uni_koeln.spinfo.maalr.editor/rpc/*</url-pattern>
+		<url-pattern>de.uni_koeln.spinfo.maalr.user/rpc/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- remote logging -->
+	<!-- TODO: disable when production-ready! -->
+	<servlet>
+		<servlet-name>remoteLogging</servlet-name>
+		<servlet-class>de.uni_koeln.spinfo.maalr.webapp.util.Slf4JRemoteLoggingService</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>remoteLogging</servlet-name>
+		<url-pattern>/de.uni_koeln.spinfo.maalr/remote_logging</url-pattern>
+		<url-pattern>/de.uni_koeln.spinfo.maalr.admin/remote_logging</url-pattern>
+		<url-pattern>/de.uni_koeln.spinfo.maalr.user/remote_logging</url-pattern>
+		<url-pattern>/de.uni_koeln.spinfo.maalr.editor/remote_logging</url-pattern>
+		<url-pattern>/de.uni_koeln.spinfo.maalr.antlr/remote_logging</url-pattern>
+	</servlet-mapping>
+
+	<!-- Remove at least some whitespaces from the generated HTML -->
+	<!-- See http://stackoverflow.com/questions/208736/strip-whitespace-from-jsp-output -->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<trim-directive-whitespaces>true</trim-directive-whitespaces>
+		</jsp-property-group>
+	</jsp-config>
+	
+	<context-param>
+  		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+  		<param-value>rm</param-value>
+	</context-param>
+
+</web-app>

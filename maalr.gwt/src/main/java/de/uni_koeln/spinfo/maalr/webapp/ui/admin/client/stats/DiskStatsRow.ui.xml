@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:general="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general">
+	<ui:style>
+		
+		.bold {
+			font-weight: bold;
+		}
+		
+		.sub {
+			font-size: 80%;
+		}
+		
+		.row {
+			padding: 10px;
+			border-bottom: 1px solid gray;
+		}
+		
+		.chart {
+			margin-right: 20px;
+		}
+		
+	</ui:style>
+	<g:HorizontalPanel width="100%" styleName="{style.row}">
+		<g:cell width="120px" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<general:DiskPie ui:field="pie" styleName="{style.chart}"></general:DiskPie>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label styleName="{style.bold}" ui:field="name"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="dev"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label ui:field="free"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="used"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+		<g:cell width="30%" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_MIDDLE">
+			<g:VerticalPanel>
+				<g:cell>
+					<g:Label ui:field="rwBytes"></g:Label>
+				</g:cell>
+				<g:cell>
+					<g:Label styleName="{style.sub}" ui:field="rwTotal"></g:Label>
+				</g:cell>
+			</g:VerticalPanel>
+		</g:cell>
+	</g:HorizontalPanel>
+
+</ui:UiBinder> 

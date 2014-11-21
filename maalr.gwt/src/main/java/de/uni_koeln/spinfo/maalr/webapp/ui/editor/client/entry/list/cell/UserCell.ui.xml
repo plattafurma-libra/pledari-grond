@@ -1,0 +1,12 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+	<ui:with field='wrapper' type="de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.list.wrapper.ICellWrapper" />
+	<div style="font-size:90%; width: 100%">
+		<div>
+			<ui:safehtml from='{wrapper.getRoleLabel}'></ui:safehtml>
+		</div>
+		<div>
+			<ui:safehtml from='{wrapper.getUserDetails}'></ui:safehtml>
+		</div>
+	</div>
+</ui:UiBinder>  
+
