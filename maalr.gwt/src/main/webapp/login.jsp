@@ -28,7 +28,7 @@
 			<div class="container well" id="login_container">
 				<h1><fmt:message key="maalr.login.header" /></h1>
 				<br>
-				<%--
+				
 				<c:if test="${not empty param.login_error}">
 					<p id="error_font"> <fmt:message key="maalr.login.error" /><br /></p>
 				</c:if>
@@ -47,7 +47,7 @@
 						</div>
 					</div>
 				</form>
-				 --%>
+				 
 				<%-- OPEN-ID SIGN IN --%>
 				<div id="openid_login">
 					<%-- <div class="input_wrapper">
