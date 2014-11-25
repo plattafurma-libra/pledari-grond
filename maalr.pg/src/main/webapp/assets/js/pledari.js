@@ -7,11 +7,11 @@ $(document).ready(function() {
 		retina = window.devicePixelRatio > 1;
 	}
 
-	$('#languages-widget li:first a').hover(function() {
-		$(this).text('grischun');
-	}, function() {
-		$(this).text('rumantsch');
-	});
+//	$('#languages-widget li:first a').hover(function() {
+//		$(this).text('grischun');
+//	}, function() {
+//		$(this).text('rumantsch');
+//	});
 	
 	$('#content.content').on('click', '.row-fluid .span4 .well form #searchoptions + a.btn', function(event) {
 
