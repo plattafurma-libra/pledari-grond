@@ -17,7 +17,6 @@ package de.uni_koeln.spinfo.maalr.common.server.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -27,6 +26,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
@@ -36,41 +36,43 @@ import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 
 public class Configuration {
-	
+
+	private Logger logger = LoggerFactory.getLogger(Configuration.class);
+
 	private static final String LUCENE_DIR = "lucene.dir";
 
 	private static final String LEX_FILE = "lex.file";
 
 	private static final String MONGODB_PORT = "mongodb.port";
-	
-	private static final String MONGODB_HOST="mongodb.host";
-	
-	private static final String LONG_NAME="maalr.long.name";
-	
-	private static final String SHORT_NAME="maalr.short.name";
-	
+
+	private static final String MONGODB_HOST = "mongodb.host";
+
+	private static final String LONG_NAME = "maalr.long.name";
+
+	private static final String SHORT_NAME = "maalr.short.name";
+
 	private static final String BACKUP_LOCATION = "backup.location";
-	
+
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
-	
+
 	private static final String BACKUP_NUMS = "backup.nums";
-	
-	
+
 	private Properties properties;
-	
+
 	private static Configuration instance;
-	
+
 	private ClientOptions clientOptions;
 
 	private DictionaryConfiguration dictConfig;
-	
+
 	private final File configDir;
-	
+
 	public File getConfigDirectory() {
 		return configDir;
 	}
-	
-	public InputStreamReader getConfiguration(String relativePath) throws IOException {
+
+	public InputStreamReader getConfiguration(String relativePath)
+			throws IOException {
 		File parent = getConfigDirectory();
 		File file = new File(parent, relativePath);
 		InputStreamReader reader;
@@ -81,43 +83,52 @@ public class Configuration {
 		}
 		return reader;
 	}
-	
 
 	private Configuration() throws IOException {
 		String configDir = System.getProperty("maalr.config.dir");
 		boolean isDefault = false;
-		if(configDir == null) {
+		if (configDir == null) {
 			this.configDir = new File("maalr_config");
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);
 		}
-		if(this.configDir.exists()) {
-			LoggerFactory.getLogger(getClass()).info("Using " + (isDefault? "default " : "") + "configuration in directory " + this.configDir.getAbsolutePath());
+		if (this.configDir.exists()) {
+			LoggerFactory.getLogger(getClass()).info(
+					"Using " + (isDefault ? "default " : "")
+							+ "configuration in directory "
+							+ this.configDir.getAbsolutePath());
 		} else {
-			LoggerFactory.getLogger(getClass()).error("The " + (isDefault? "default " : "") + "configuration directory " + this.configDir.getAbsolutePath() + " does not exist!");
+			LoggerFactory.getLogger(getClass()).error(
+					"The " + (isDefault ? "default " : "")
+							+ "configuration directory "
+							+ this.configDir.getAbsolutePath()
+							+ " does not exist!");
 		}
 		properties = new Properties();
-		try (InputStreamReader input = getConfiguration("maalr.properties")){
+		try (InputStreamReader input = getConfiguration("maalr.properties")) {
 			properties.load(input);
 			clientOptions = new ClientOptions();
 			clientOptions.setShortAppName(getShortName());
 			clientOptions.setLongAppName(getLongName());
 		} catch (IOException e) {
 			throw e;
-		} 
+		}
 		// TODO: Try reading more then one searchconfig.xml
-		try (InputStreamReader reader = getConfiguration("searchconfig.xml")) {
-			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
+		try (InputStreamReader reader = getConfiguration("searchconfig_sm.xml")) {
+			JAXBContext ctx = JAXBContext
+					.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
-			dictConfig = (DictionaryConfiguration) unmarshaller.unmarshal(reader);
+			dictConfig = (DictionaryConfiguration) unmarshaller
+					.unmarshal(reader);
 		} catch (JAXBException e) {
-			throw new IOException("Failed to parse search configuration files", e);
+			throw new IOException("Failed to parse search configuration files",
+					e);
 		}
 	}
-	
+
 	public synchronized static Configuration getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			try {
 				instance = new Configuration();
 			} catch (IOException e) {
@@ -126,7 +137,7 @@ public class Configuration {
 		}
 		return instance;
 	}
-	
+
 	public String getLuceneDir() {
 		return properties.getProperty(LUCENE_DIR);
 	}
@@ -139,7 +150,6 @@ public class Configuration {
 		return Integer.parseInt(properties.getProperty(MONGODB_PORT));
 	}
 
-
 	public String getMongoDBHost() {
 		return properties.getProperty(MONGODB_HOST);
 	}
@@ -147,15 +157,16 @@ public class Configuration {
 	public void setLuceneDir(String dir) {
 		properties.put(LUCENE_DIR, dir);
 	}
-	
+
 	public LemmaDescription getLemmaDescription() {
+		logger.info("getLemmaDescription() called by " + getStackTrace());
 		return dictConfig.getLemmaDescription();
 	}
-	
+
 	public String getShortName() {
 		return properties.getProperty(SHORT_NAME);
 	}
-	
+
 	public String getLongName() {
 		return properties.getProperty(LONG_NAME);
 	}
@@ -165,52 +176,68 @@ public class Configuration {
 	}
 
 	public DictionaryConfiguration getDictionaryConfig() {
+		logger.info("getDictionaryConfig() called by " + getStackTrace());
 		return dictConfig;
 	}
 
 	public String getBackupLocation() {
 		return properties.getProperty(BACKUP_LOCATION);
 	}
-	
+
 	public String getTriggerTime() {
 		return properties.getProperty(BACKUP_TRIGGER_TIME);
 	}
-	
+
 	public String getBackupNums() {
 		return properties.getProperty(BACKUP_NUMS);
 	}
-	
+
 	public UiConfiguration getEditorDefaultSearchUiConfig() {
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
-		if(uiConfigs == null) return null;
+		if (uiConfigs == null)
+			return null;
 		return uiConfigs.getEditorDefaultUiConfiguration();
 	}
 
 	public UiConfiguration getEditorExtendedSearchUiConfig() {
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
-		if(uiConfigs == null) return null;
+		if (uiConfigs == null)
+			return null;
 		return uiConfigs.getEditorAdvancedUiConfiguration();
 	}
-	
+
 	public UiConfiguration getUserDefaultSearchUiConfig() {
+		logger.info("getUserDefaultSearchUiConfig() called by " + getStackTrace());
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
-		if(uiConfigs == null) return null;
+		if (uiConfigs == null)
+			return null;
 		return uiConfigs.getUserDefaultUiConfiguration();
 	}
+
+	private StackTraceElement getStackTrace() {
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		return stackTraceElements[stackTraceElements.length - 2];
+	}
+
 	public UiConfiguration getUserExtendedSearchUiConfig() {
+		logger.info("getUserExtendedSearchUiConfig() called by " + getStackTrace());
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
-		if(uiConfigs == null) return null;
+		if (uiConfigs == null)
+			return null;
 		return uiConfigs.getUserAdvancedUiConfiguration();
 	}
 
 	public UiConfiguration[] getUIConfigurations() {
-		return new UiConfiguration[] {getUserDefaultSearchUiConfig(), getUserExtendedSearchUiConfig(), getEditorDefaultSearchUiConfig(), getEditorExtendedSearchUiConfig()};
+		return new UiConfiguration[] { getUserDefaultSearchUiConfig(),
+				getUserExtendedSearchUiConfig(),
+				getEditorDefaultSearchUiConfig(),
+				getEditorExtendedSearchUiConfig() };
 	}
-	
+
 	public String getSocialClientKey(String socialService) {
 		return properties.getProperty(socialService + ".consumerKey");
 	}
-	
+
 	public String getSocialClientSecret(String socialService) {
 		return properties.getProperty(socialService + ".consumerSecret");
 	}
@@ -218,7 +245,7 @@ public class Configuration {
 	public String getRedirectUrl() {
 		return properties.getProperty("social.redirect.page");
 	}
-	
+
 	public String getServerInetAddress() {
 		return properties.getProperty("maalr.inet.address");
 	}
