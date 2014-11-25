@@ -429,7 +429,8 @@ public class ResultCellTable extends Composite {
 				addColumnA(translationMap.get(description.getLanguageName(defaultOrder)), defaultOrder);
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG2 : LemmaVersion.OVERLAY_LANG1, translationMap);
 				addColumnB(translationMap.get(description.getLanguageName(!defaultOrder)), !defaultOrder);
-				addOptionsColumn(translationMap);
+				// TODO: Commented to disable modify option for surmiran
+				// addOptionsColumn(translationMap);
 			}
 		});
 
