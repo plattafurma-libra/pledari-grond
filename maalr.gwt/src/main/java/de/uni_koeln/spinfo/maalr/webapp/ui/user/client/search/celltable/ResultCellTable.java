@@ -365,25 +365,26 @@ public class ResultCellTable extends Composite {
 
 				@Override
 				public void onSuccess(TranslationMap result) {
+					// TODO: Disable propose functionality in surmiran edition
 					String info = result.get("maalr.query.nothing_found");
 					if (info != null) {
 						if(MaalrQueryFormatter.getQueryLabel(query) == null){
 							label.setHTML(""); //return nothing on empty searchphrases
-							setSuggestVisible(false);
+							// setSuggestVisible(false);
 							return;
 						}
 						else{
 							info = info.replaceAll("\\{0\\}", MaalrQueryFormatter.getQueryLabel(query));
-							info = info.replaceAll("\\{1\\}", result.get("suggest.button"));
+							// info = info.replaceAll("\\{1\\}", result.get("suggest.button"));
 							label.setHTML(info);
 						}
 					}
-					if (suggest == null) {
-						initSuggestButton(result);
-						resultLabelCell.add(suggest);
-					} else {
-						setSuggestVisible(true);
-					}
+//					if (suggest == null) {
+//						initSuggestButton(result);
+//						resultLabelCell.add(suggest);
+//					} else {
+//						setSuggestVisible(true);
+//					}
 				}
 			});
 		}
