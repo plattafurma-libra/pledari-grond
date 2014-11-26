@@ -74,8 +74,9 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		localeDictionary = DictionaryConstants.getLocaleDictionary();
 		well.add(searchForm);
-		well.add(getLink(DictionaryConstants.DICT_LINKS));
-		well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
+		// TODO: Disable in surmiran edition 
+		// well.add(getLink(DictionaryConstants.DICT_LINKS));
+		// well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
 	}
 
 	private Widget getLink(final List<String> links) {
