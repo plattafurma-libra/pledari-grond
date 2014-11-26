@@ -199,6 +199,14 @@ public class WebMVCController {
 	 */
 	@RequestMapping("/dictionary/{values[language]}/{values[searchPhrase]}")
 	public ModelAndView search(@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpServletResponse response, HttpSession session, HttpServletRequest request) {
+		// FIXME:  java.lang.NumberFormatException: Invalid shift value in prefixCoded bytes (is encoded value really an INT?)
+		/* A snippet of the exception thrown
+		 * ....
+		 * at de.uni_koeln.spinfo.maalr.lucene.core.Dictionary.queryExact(Dictionary.java:254) ~[lucene-0.0.1-SNAPSHOT.jar:na]
+		 * at de.uni_koeln.spinfo.maalr.lucene.Index.queryExact(Index.java:69) ~[spring.core-0.0.1-SNAPSHOT.jar:na]
+	     * at de.uni_koeln.spinfo.maalr.webapp.controller.WebMVCController.search(WebMVCController.java:208) ~[classes/:na]
+	     * ...
+		 */
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
@@ -207,7 +215,7 @@ public class WebMVCController {
 			boolean isFirst = firstLanguage.equals(language);
 			QueryResult result = index.queryExact(query.getValue("searchPhrase"), isFirst, true);
 			mv.addObject("result", result);
-			//mv.addObject("query", query);
+			// mv.addObject("query", query);
 			String key = null;
 			if(language.equals(configuration.getLemmaDescription().getLanguageName(true))) {
 				key = "dict.title_lang1";
