@@ -15,13 +15,13 @@
 	}
 %>
 
-<!--[if lt IE 7]>      <html lang="<%=session.getAttribute("pl")%>" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="<%=session.getAttribute("pl")%>" class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="<%=session.getAttribute("pl")%>" class="lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html lang="<%=session.getAttribute("pl")%>" class="ie9"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="<%=session.getAttribute("pl")%>"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang='<%=session.getAttribute("pl")%>' class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang='<%=session.getAttribute("pl")%>' class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang='<%=session.getAttribute("pl")%>'> <!--<![endif]-->
 
-<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 <!--[if lt IE 9]>
@@ -50,7 +50,7 @@
 </noscript>
 <link rel="search" type="application/opensearchdescription+xml" title="<%=Configuration.getInstance().getLongName()%>" href="/static/searchplugin.xml">
 <script type="text/javascript">
-	var site_name= "<%=Configuration.getInstance().getLongName()%>"
+	var site_name = "<%=Configuration.getInstance().getLongName()%>";
 </script>
 <script type="text/javascript" src="/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
