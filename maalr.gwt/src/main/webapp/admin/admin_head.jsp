@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
        "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 if(session.getAttribute("pl") == null) {
@@ -10,8 +10,8 @@ if(request.getParameter("pl") != null) {
 	session.setAttribute("pl", request.getParameter("pl"));
 }
 %>
-<html lang="<%=session.getAttribute("pl")%>">
-<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<html lang='<%=session.getAttribute("pl")%>'>
+<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 <!--[if lt IE 9]>

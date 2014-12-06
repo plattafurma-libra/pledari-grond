@@ -11,8 +11,8 @@ if(request.getParameter("pl") != null) {
 	session.setAttribute("pl", request.getParameter("pl"));
 }
 %>
-<html lang="<%=session.getAttribute("pl")%>">
-<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<html lang='<%=session.getAttribute("pl")%>'>
+<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 <!--[if lt IE 9]>
@@ -24,7 +24,7 @@ if(request.getParameter("pl") != null) {
 <title><%=Configuration.getInstance().getShortName()%> - Editor Backend</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <!-- SET DEFAULT LOCALE FOR EDITOR BACKEND -->
-<meta name="gwt:property" content="locale=<%= request.getLocale() %>">
+<meta name="gwt:property" content='locale=<%=request.getLocale()%>'>
 <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 <link href="/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
