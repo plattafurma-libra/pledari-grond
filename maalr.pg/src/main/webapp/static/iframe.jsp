@@ -10,7 +10,7 @@
 		}
 		String languageTag = (String) session.getAttribute("pl");
 %>
-<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <html lang="<%=languageTag %>">
