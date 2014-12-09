@@ -6,7 +6,7 @@
 	import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:setLocale value="<%=session.getAttribute("pl")%>" />
+<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <h1>Allgemeine Informationen</h1>

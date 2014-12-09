@@ -11,8 +11,8 @@ if(request.getParameter("pl") != null) {
 	session.setAttribute("pl", request.getParameter("pl"));
 }
 %>
-<html lang="<%=session.getAttribute("pl")%>">
-<fmt:setLocale value="<%=session.getAttribute("pl") %>" />
+<html lang='<%=session.getAttribute("pl")%>'>
+<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 <!--[if lt IE 9]>
