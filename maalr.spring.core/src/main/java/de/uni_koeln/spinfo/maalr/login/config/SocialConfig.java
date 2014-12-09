@@ -39,8 +39,6 @@ import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 
@@ -101,20 +99,20 @@ public class SocialConfig {
 		} else {
 			logger.info("NOT initializing facebook authentication service...");
 		}
-		// add google
-		if(environment.getAppConfiguration().getSocialClientKey(GOOGLE) != null) {
-			logger.info("Initializing google authentication service...");
-			OAuth2ConnectionFactory<Google> connectionFactory = new GoogleConnectionFactory(
-					environment.getAppConfiguration().getSocialClientKey(GOOGLE),
-					environment.getAppConfiguration().getSocialClientSecret(GOOGLE));
-			registry.addConnectionFactory(connectionFactory);
-//			OAuth2AuthenticationService<Google> authenticationService = new OAuth2AuthenticationService<Google>(
-//					connectionFactory);
-//			registry.addAuthenticationService(authenticationService);
-
-		} else {
-			logger.info("NOT initializing google authentication service...");
-		}
+//		// add google
+//		if(environment.getAppConfiguration().getSocialClientKey(GOOGLE) != null) {
+//			logger.info("Initializing google authentication service...");
+//			OAuth2ConnectionFactory<Google> connectionFactory = new GoogleConnectionFactory(
+//					environment.getAppConfiguration().getSocialClientKey(GOOGLE),
+//					environment.getAppConfiguration().getSocialClientSecret(GOOGLE));
+//			registry.addConnectionFactory(connectionFactory);
+////			OAuth2AuthenticationService<Google> authenticationService = new OAuth2AuthenticationService<Google>(
+////					connectionFactory);
+////			registry.addAuthenticationService(authenticationService);
+//
+//		} else {
+//			logger.info("NOT initializing google authentication service...");
+//		}
 		
 		
 		// add linkedIn
@@ -176,18 +174,18 @@ public class SocialConfig {
 		return connectionRepository().getPrimaryConnection(Twitter.class).getApi();
 	}
 	
-	/**
-	 * A proxy to a request-scoped object representing the current user's
-	 * primary Google account.
-	 * 
-	 * @throws NotConnectedException
-	 *             if the user is not connected to google.
-	 */
-	@Bean
-	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
-	public Google google() {
-		return connectionRepository().getPrimaryConnection(Google.class).getApi();
-	}
+//	/**
+//	 * A proxy to a request-scoped object representing the current user's
+//	 * primary Google account.
+//	 * 
+//	 * @throws NotConnectedException
+//	 *             if the user is not connected to google.
+//	 */
+//	@Bean
+//	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
+//	public Google google() {
+//		return connectionRepository().getPrimaryConnection(Google.class).getApi();
+//	}
 
 	/**
 	 * The Spring MVC Controller that allows users to sign-in with their
