@@ -47,7 +47,7 @@
 		<url-pattern>/*.html</url-pattern>
 		<!-- <url-pattern>/*.xml</url-pattern>
 		<url-pattern>/*.json</url-pattern> -->
-		<url-pattern>/</url-pattern>
+		<url-pattern>/surmiran</url-pattern>
 	</servlet-mapping>
 
 	<!-- ///////////////// Filter Declaration Start ///////////////// -->

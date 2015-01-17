@@ -35,8 +35,6 @@
 	<mvc:resources mapping="/favicon.ico" location="/" />
 	<mvc:resources mapping="/robots.txt" location="/" />
 
-	<mvc:annotation-driven />
-
 	<!-- Define a handler interceptor which will be called before and after 
 		a controller -->
 	<!-- method is executed. It will print the execution time as debug output. -->
