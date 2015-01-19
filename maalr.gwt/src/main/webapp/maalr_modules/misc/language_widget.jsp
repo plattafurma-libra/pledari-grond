@@ -1,4 +1,5 @@
-<%@page import="de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription.Language"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription.Language"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />

@@ -27,6 +27,8 @@
 		<%@ include file="/maalr_modules/misc/header.jsp"%>
 	
 		<div id="content" class="content">
+			
+			<%@ include file="/maalr_modules/misc/dict_links.jsp"%>
 		
 			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
