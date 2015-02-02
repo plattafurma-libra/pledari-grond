@@ -87,14 +87,14 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 		if(authentication != null) {
 			Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 			if(roles.contains(Constants.Roles.ADMIN_5)) {
-				response.sendRedirect("/admin/admin.html");
+				response.sendRedirect("/surmiran/admin/admin.html");
 				return;
 			} else if(roles.contains(Constants.Roles.TRUSTED_IN_4)) {
-				response.sendRedirect("/editor/editor.html");
+				response.sendRedirect("/surmiran/editor/editor.html");
 				return;
 			}
 		}
-        response.sendRedirect("/index.html");
+        response.sendRedirect("/surmiran/index.html");
 	}
 
 }
