@@ -210,7 +210,7 @@
 					<webAppConfig>
 						<!-- Also use src/main/webapp as resource directory (allows modifying JSP's without server restart) -->
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
-							<resourcesAsCSV>src/main/webapp,${webappDirectory}</resourcesAsCSV>
+							<resourcesAsCSV>src/main/webapp/${webappDirectory}</resourcesAsCSV>
 						</baseResource>
 						<descriptor>${webappDirectory}/WEB-INF/web.xml</descriptor>
 					</webAppConfig>
@@ -245,6 +245,7 @@
 					</execution>
 				</executions>
 				<configuration>
+<!-- 				    <webappDirectory>${webappDirectory}/surmiran</webappDirectory> -->
 					<runTarget>index.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<compileReport>${gwt.compile.report}</compileReport>

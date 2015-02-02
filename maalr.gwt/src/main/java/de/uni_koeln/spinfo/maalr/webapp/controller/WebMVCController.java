@@ -73,6 +73,7 @@ import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 @Controller
+@RequestMapping("/surmiran")
 public class WebMVCController {
 
 	@Autowired
@@ -112,7 +113,10 @@ public class WebMVCController {
 		return new MaalrQuery();
 	}
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	/*
+	 * DEFAULT-MAPPING FOR INDEX
+	 */
+	@RequestMapping()
 	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
@@ -124,12 +128,12 @@ public class WebMVCController {
 		mv.addObject("pageTitle", title);
 	}
 
-	@RequestMapping("/")
-	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("index");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-		return mv;
-	}
+//	@RequestMapping("/")
+//	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
+//		ModelAndView mv = new ModelAndView("index");
+//		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+//		return mv;
+//	}
 
 	@ModelAttribute("pageTitle")
 	private String getHtmlPageTitle() {
@@ -284,11 +288,11 @@ public class WebMVCController {
 		}
 	}
 
-//	@Secured({Constants.Roles.ADMIN_5})
-//	@RequestMapping(value = "/admin/importDB", method = { RequestMethod.POST })
-//	public void importDB(HttpServletRequest request, HttpServletResponse response) throws InvalidEntryException, NoDatabaseAvailableException, IOException, JAXBException, XMLStreamException  {
-//		adminController.importDatabase(request);
-//	}
+	//	@Secured({Constants.Roles.ADMIN_5})
+	//	@RequestMapping(value = "/admin/importDB", method = { RequestMethod.POST })
+	//	public void importDB(HttpServletRequest request, HttpServletResponse response) throws InvalidEntryException, NoDatabaseAvailableException, IOException, JAXBException, XMLStreamException  {
+	//		adminController.importDatabase(request);
+	//	}
 	
 	@RequestMapping("/browse/{language}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
