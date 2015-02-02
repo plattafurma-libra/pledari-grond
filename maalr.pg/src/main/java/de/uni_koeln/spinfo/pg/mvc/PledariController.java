@@ -28,6 +28,7 @@ public class PledariController {
 	private Configuration configuration = Configuration.getInstance();
 
 	private void setPageTitle(ModelAndView mv, String title) {
+		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("pageTitle", title);
 	}
 
@@ -40,6 +41,7 @@ public class PledariController {
 	@RequestMapping("/help")
 	public ModelAndView agid() {
 		ModelAndView mv = new ModelAndView("static/agid");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "Help");
 		return mv;
 	}
@@ -47,6 +49,7 @@ public class PledariController {
 	@RequestMapping("/agidplug-in")
 	public ModelAndView agidPlugin() {
 		ModelAndView mv = new ModelAndView("static/agidplug-in");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "Search Plug-In");
 		return mv;
 	}
@@ -54,6 +57,7 @@ public class PledariController {
 	@RequestMapping("/infos")
 	public ModelAndView infos() {
 		ModelAndView mv = new ModelAndView("static/infos");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "Infos");
 		return mv;
 	}
@@ -61,6 +65,7 @@ public class PledariController {
 	@RequestMapping("/embed")
 	public ModelAndView embed() {
 		ModelAndView mv = new ModelAndView("static/json");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "Embed");
 		return mv;
 	}
@@ -68,12 +73,14 @@ public class PledariController {
 	@RequestMapping("/iframe")
 	public ModelAndView iframe() {
 		ModelAndView mv = new ModelAndView("static/iframe");
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 
 	@RequestMapping("/abreviaziuns")
 	public ModelAndView abbreviations() {
 		ModelAndView mv = new ModelAndView("static/abreviaziuns");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "Abreviaziuns");
 		return mv;
 	}
