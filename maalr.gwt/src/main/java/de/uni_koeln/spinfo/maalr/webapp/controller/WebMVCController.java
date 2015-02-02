@@ -73,7 +73,6 @@ import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 @Controller
-@RequestMapping("/surmiran")
 public class WebMVCController {
 
 	@Autowired
@@ -93,6 +92,10 @@ public class WebMVCController {
 		String locale = (String) request.getParameter("pl");
 		if(locale == null) {
 			locale = (String) session.getAttribute("pl");
+			if(locale == null) {
+				session.setAttribute("pl", "sm");
+				locale = "sm";
+			}
 			return locale;
 		} else {
 			return locale;
@@ -113,27 +116,26 @@ public class WebMVCController {
 		return new MaalrQuery();
 	}
 
-	/*
-	 * DEFAULT-MAPPING FOR INDEX
-	 */
-	@RequestMapping()
-	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("index");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-		session.setAttribute("language", Configuration.getInstance().getLemmaDescription().getLanguageName(true));
-		return mv;
-	}
-
 	private void setPageTitle(ModelAndView mv, String title) {
 		mv.addObject("pageTitle", title);
 	}
 
-//	@RequestMapping("/")
-//	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
-//		ModelAndView mv = new ModelAndView("index");
-//		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-//		return mv;
-//	}
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
+	ModelAndView mv = new ModelAndView("index");
+	setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+	mv.addObject("dictContext", configuration.getDictContext());
+	session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
+	return mv;
+	}
+	
+	@RequestMapping("/")
+	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("index");
+		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
+		return mv;
+	}
 
 	@ModelAttribute("pageTitle")
 	private String getHtmlPageTitle() {
@@ -166,6 +168,7 @@ public class WebMVCController {
 	public ModelAndView translate(@ModelAttribute("query") MaalrQuery query, BindingResult br, final HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("search", query);
 		
 		try {
@@ -184,6 +187,7 @@ public class WebMVCController {
 	public ModelAndView login(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("login");
 		setPageTitle(mv, getLocalizedString("maalr.login_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 	
@@ -214,6 +218,7 @@ public class WebMVCController {
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
+			mv.addObject("dictContext", configuration.getDictContext());
 			String firstLanguage = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getId();
 			String language = query.getValue("language");
 			boolean isFirst = firstLanguage.equals(language);
@@ -248,6 +253,7 @@ public class WebMVCController {
 	@RequestMapping("/maalr")
 	public ModelAndView maalr() {
 		ModelAndView mv = new ModelAndView("static/maalr");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "About Maalr");
 		return mv;
 	}
@@ -265,7 +271,9 @@ public class WebMVCController {
 
 	private ModelAndView getErrorView(Exception e) {
 		logger.error("An error occurred", e);
-		return new ModelAndView("error");
+		ModelAndView mv = new ModelAndView("error");
+		mv.addObject("dictContext", configuration.getDictContext());
+		return mv;
 	}
 
 	@RequestMapping("/editor/editor")
@@ -312,6 +320,7 @@ public class WebMVCController {
 		if(language == null) language = Configuration.getInstance().getLemmaDescription().getLanguageName(true);
 		QueryResult result = index.getAllStartingWith(language, letter, page);
 		ModelAndView mv = new ModelAndView("browse_dictionary");
+		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("result", result);
 		mv.addObject("letter", letter);
 		mv.addObject("page", page);
@@ -343,14 +352,6 @@ public class WebMVCController {
 		}
 		return mv;
 	}
-	
-//	@RequestMapping("/test")
-//	public ModelAndView speedTest() {
-//		return new ModelAndView("test");
-//	}
-
-	
-	
 	
 	@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
 	@ResponseBody
