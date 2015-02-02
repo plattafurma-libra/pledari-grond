@@ -42,10 +42,14 @@ public class Configuration {
 	private static final String LUCENE_DIR = "lucene.dir";
 
 	private static final String LEX_FILE = "lex.file";
+	
+	private static final String DICT_CONTEXT = "maalr.dict.context";
 
 	private static final String MONGODB_PORT = "mongodb.port";
 
 	private static final String MONGODB_HOST = "mongodb.host";
+	
+	private static final String MONGODB_NAME = "mongodb.name";
 
 	private static final String LONG_NAME = "maalr.long.name";
 
@@ -88,7 +92,7 @@ public class Configuration {
 		String configDir = System.getProperty("maalr.config.dir");
 		boolean isDefault = false;
 		if (configDir == null) {
-			this.configDir = new File("maalr_config");
+			this.configDir = new File("maalr_sm_config");
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);
@@ -159,7 +163,6 @@ public class Configuration {
 	}
 
 	public LemmaDescription getLemmaDescription() {
-		logger.info("getLemmaDescription() called by " + getStackTrace());
 		return dictConfig.getLemmaDescription();
 	}
 
@@ -170,13 +173,16 @@ public class Configuration {
 	public String getLongName() {
 		return properties.getProperty(LONG_NAME);
 	}
+	
+	public String getDictContext() {
+		return properties.getProperty(DICT_CONTEXT);
+	}
 
 	public ClientOptions getClientOptions() {
 		return clientOptions;
 	}
 
 	public DictionaryConfiguration getDictionaryConfig() {
-		logger.info("getDictionaryConfig() called by " + getStackTrace());
 		return dictConfig;
 	}
 
@@ -207,20 +213,13 @@ public class Configuration {
 	}
 
 	public UiConfiguration getUserDefaultSearchUiConfig() {
-		logger.info("getUserDefaultSearchUiConfig() called by " + getStackTrace());
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
 		if (uiConfigs == null)
 			return null;
 		return uiConfigs.getUserDefaultUiConfiguration();
 	}
 
-	private StackTraceElement getStackTrace() {
-		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-		return stackTraceElements[stackTraceElements.length - 2];
-	}
-
 	public UiConfiguration getUserExtendedSearchUiConfig() {
-		logger.info("getUserExtendedSearchUiConfig() called by " + getStackTrace());
 		UiConfigurations uiConfigs = dictConfig.getUiConfigurations();
 		if (uiConfigs == null)
 			return null;
@@ -248,6 +247,10 @@ public class Configuration {
 
 	public String getServerInetAddress() {
 		return properties.getProperty("maalr.inet.address");
+	}
+
+	public String getDbName() {
+		return properties.getProperty(MONGODB_NAME);
 	}
 
 }
