@@ -15,7 +15,6 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
-import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -47,7 +46,7 @@ public class LocalDB {
 			return null;
 		}
 		TranslationMap toReturn = parseData(data);
-		Logger.getLogger(LocalDB.class).info("Parsed editor translations for locale " + locale);
+		Logger.getLogger(LocalDB.class).debug("Parsed editor translations for locale " + locale);
 		return toReturn;
 	}
 	
@@ -80,7 +79,7 @@ public class LocalDB {
 		}
 		storage.setItem(dataKey, sb.toString().trim());
 		storage.setItem(timeKey, System.currentTimeMillis()+"");
-		Logger.getLogger(LocalDB.class).info("Stored translations for locale " + locale);
+		Logger.getLogger(LocalDB.class).debug("Stored translations for locale " + locale);
 	}
 
 }
