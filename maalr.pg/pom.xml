@@ -9,7 +9,9 @@
 	<properties>
 		<maalr.webapp.build>../maalr.pg/target</maalr.webapp.build>
 		<maalr.webapp.name>pg-${project.version}</maalr.webapp.name>
-		<jetty.version>9.0.1.v20130408</jetty.version>
+		<!-- <jetty.version>9.0.1.v20130408</jetty.version> -->
+		<jetty.version>9.1.5.v20140505</jetty.version>
+		<!-- <jetty.version>9.2.7.v20150116</jetty.version> -->
 		<jetty.default.port>8080</jetty.default.port>
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.9</logback.version>
@@ -63,6 +65,12 @@
 			<version>4.3.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
 
 
 		<!-- Embed MongoDB for testing -->
@@ -177,10 +185,10 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-
 					<contextXml>src/main/resources/jetty-context.xml</contextXml>
 					<webAppConfig>
 						<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
+						<contextPath>/surmiran</contextPath>
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
 							<resourcesAsCSV>${maalr.webapp.build}/${maalr.webapp.name}</resourcesAsCSV>
 						</baseResource>
