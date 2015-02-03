@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-	<display-name>Maalr</display-name>
+	<display-name>Maalr - Surmiran</display-name>
 
 	<context-param>
 		<!-- Set the context file which will be used to initialize Spring -->
@@ -12,7 +12,6 @@
 	</context-param>
 
 	<listener>
-		<!-- TODO: What was this for...? -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
@@ -43,33 +42,22 @@
 
 	<servlet-mapping>
 		<servlet-name>maalr</servlet-name>
-		<!-- TODO: If renamed to html, it will conflict with the gwt configuration -->
 		<url-pattern>/*.html</url-pattern>
 		<!-- <url-pattern>/*.xml</url-pattern>
 		<url-pattern>/*.json</url-pattern> -->
-		<url-pattern>/surmiran</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 	<!-- ///////////////// Filter Declaration Start ///////////////// -->
-	
-	<!-- These filters define the servlet filter chain. They are applied
-	     from top to bottom.
-	-->
 
-<!-- 	
-	<filter>
-		<filter-name>internationalUrlFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
+	<!-- These filters define the servlet filter chain. They are applied from 
+		top to bottom. -->
 
-	<filter-mapping>
-		<filter-name>internationalUrlFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	 -->
-	
-	<!--  Testing End -->
+	<!-- <filter> <filter-name>internationalUrlFilter</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		</filter> <filter-mapping> <filter-name>internationalUrlFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+	<!-- Testing End -->
 
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
@@ -80,18 +68,10 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- 
-	<filter>
-		<filter-name>springLogUserLogin</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
+	<!-- <filter> <filter-name>springLogUserLogin</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		</filter> <filter-mapping> <filter-name>springLogUserLogin</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
 
-	<filter-mapping>
-		<filter-name>springLogUserLogin</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	 -->
-	
 	<!-- ///////////////// Filter Declaration End ///////////////// -->
 
 	<listener>
@@ -138,10 +118,10 @@
 			<trim-directive-whitespaces>true</trim-directive-whitespaces>
 		</jsp-property-group>
 	</jsp-config>
-	
+
 	<context-param>
-  		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-  		<param-value>rm</param-value>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>sm</param-value>
 	</context-param>
 
 </web-app>
