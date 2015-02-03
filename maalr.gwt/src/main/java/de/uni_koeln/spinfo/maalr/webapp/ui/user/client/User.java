@@ -67,28 +67,27 @@ public class User implements EntryPoint {
 		resultCellTable = new ResultCellTable();
 		AsyncLemmaDescriptionLoader.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
 
-			@Override
-			public void onFailure(Throwable caught) {
-			}
+					@Override
+					public void onFailure(Throwable caught) {
+					}
 
-			@Override
-			public void onSuccess(LemmaDescription result) {
-				// TODO: Commented to disable modify option for surmiran
-				//				HiJax.hijackAnchor("propose_navi", new Command() {
-				//
-				//					@Override
-				//					public void execute() {
-				//						openEditor();
-				//					}
-				//				});
-				try {
-					initializeMainPanel();
-				} catch (Exception e) {
-					logger.error("Error!", e);
-					Window.alert("Please check log file: " + e);
-				}
-			}
-		});
+					@Override
+					public void onSuccess(LemmaDescription result) {
+						HiJax.hijackAnchor("propose_navi", new Command() {
+
+							@Override
+							public void execute() {
+								openEditor();
+							}
+						});
+						try {
+							initializeMainPanel();
+						} catch (Exception e) {
+							logger.error("Error!", e);
+							Window.alert("Please check log file: " + e);
+						}
+					}
+				});
 		Element element = DOM.getElementById("languages-widget");
 		if(element != null) {
 			updateLanguageLinks(element);
