@@ -33,7 +33,7 @@ function injectQuery() {
 		  link.rel  = 'stylesheet';
 		  link.type = 'text/css';
 		  source = "src/main/webapp"; // Development FIXME
-		  link.href = source + '/assets/style/maalr_embedded.css';
+		  link.href = source + '/surmiran/assets/style/maalr_embedded.css';
 		  link.media = 'all';
 		  head.appendChild(link);
 	 }
