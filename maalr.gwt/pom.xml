@@ -137,6 +137,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- GWT-Spring -->
@@ -186,7 +187,7 @@
 									<value>src/test/resources/logback.xml</value>
 								</property>
 								<property>
-									<!-- Use maalr_config directory as specified in variable -->
+									<!-- Use maalr_sm_config directory as specified in variable -->
 									<name>maalr.config.dir</name>
 									<value>${maalr.config.dir}</value>
 								</property>
