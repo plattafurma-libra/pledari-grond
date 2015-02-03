@@ -78,12 +78,10 @@ public class Admin implements EntryPoint {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
 		
 	}
-
 	
 	private void initializeMainPanel() {
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
@@ -101,7 +99,7 @@ public class Admin implements EntryPoint {
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
 		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/j_spring_security_logout");
+		navigation.addLinkLeft("Logout", "/surmiran/j_spring_security_logout");
 	}
 
 	private void initHistory() {
