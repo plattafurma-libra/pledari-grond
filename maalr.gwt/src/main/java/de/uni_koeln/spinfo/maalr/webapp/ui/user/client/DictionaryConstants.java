@@ -34,7 +34,7 @@ import com.google.gwt.user.client.Window;
 public class DictionaryConstants {
 
 	public static final String LOCALE_PARAM = "pl";
-	public static final String LOCALE_FALLBACK = "rm";
+	public static final String LOCALE_FALLBACK = "sm";
 	public static final String LINKS = "links";
 	
 	public static final List<String> DICT_LINKS;
