@@ -17,7 +17,6 @@ package de.uni_koeln.spinfo.maalr.webapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.flexible.core.QueryNodeException;

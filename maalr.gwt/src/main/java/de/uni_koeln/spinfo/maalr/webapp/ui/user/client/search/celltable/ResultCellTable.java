@@ -370,21 +370,21 @@ public class ResultCellTable extends Composite {
 					if (info != null) {
 						if(MaalrQueryFormatter.getQueryLabel(query) == null){
 							label.setHTML(""); //return nothing on empty searchphrases
-							// setSuggestVisible(false);
+							setSuggestVisible(false);
 							return;
 						}
 						else{
 							info = info.replaceAll("\\{0\\}", MaalrQueryFormatter.getQueryLabel(query));
-							// info = info.replaceAll("\\{1\\}", result.get("suggest.button"));
+							info = info.replaceAll("\\{1\\}", result.get("suggest.button"));
 							label.setHTML(info);
 						}
 					}
-//					if (suggest == null) {
-//						initSuggestButton(result);
-//						resultLabelCell.add(suggest);
-//					} else {
-//						setSuggestVisible(true);
-//					}
+					if (suggest == null) {
+						initSuggestButton(result);
+						resultLabelCell.add(suggest);
+					} else {
+						setSuggestVisible(true);
+					}
 				}
 			});
 		}
@@ -431,7 +431,7 @@ public class ResultCellTable extends Composite {
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG2 : LemmaVersion.OVERLAY_LANG1, translationMap);
 				addColumnB(translationMap.get(description.getLanguageName(!defaultOrder)), !defaultOrder);
 				// TODO: Commented to disable modify option for surmiran
-				// addOptionsColumn(translationMap);
+				addOptionsColumn(translationMap);
 			}
 		});
 

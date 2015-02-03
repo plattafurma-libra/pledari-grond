@@ -18,20 +18,13 @@
 
 	<!-- FIXME: Configure servlet mapping in web.xml, such that these requests 
 		will not be delegated to spring. -->
-	<mvc:resources mapping="/assets/**" location="/assets/"
-		cache-period="31556926" />
-	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr/**"
-		location="/de.uni_koeln.spinfo.maalr/" />
-	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.admin/**"
-		location="/de.uni_koeln.spinfo.maalr.admin/" />
-	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.editor/**"
-		location="/de.uni_koeln.spinfo.maalr.editor/" />
-	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.user/**"
-		location="/de.uni_koeln.spinfo.maalr.user/" />
-	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.common/**"
-		location="/de.uni_koeln.spinfo.maalr.common/" />
-	<mvc:resources mapping="/static/*.xml" location="/static/"
-		cache-period="31556926" />
+	<mvc:resources mapping="/assets/**" location="/assets/" cache-period="31556926" />
+	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr/**" location="/de.uni_koeln.spinfo.maalr/" />
+	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.admin/**" location="/de.uni_koeln.spinfo.maalr.admin/" />
+	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.editor/**" location="/de.uni_koeln.spinfo.maalr.editor/" />
+	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.user/**" location="/de.uni_koeln.spinfo.maalr.user/" />
+	<mvc:resources mapping="/de.uni_koeln.spinfo.maalr.common/**" location="/de.uni_koeln.spinfo.maalr.common/" />
+	<mvc:resources mapping="/static/*.xml" location="/static/" cache-period="31556926" />
 	<mvc:resources mapping="/favicon.ico" location="/" />
 	<mvc:resources mapping="/robots.txt" location="/" />
 
@@ -59,7 +52,7 @@
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="rm" />
+		<property name="defaultLocale" value="sm" />
 	</bean>
 
 	<!-- Allow file uploads (import db) -->
