@@ -71,6 +71,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
+import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
@@ -638,8 +639,11 @@ public class ConfigurableSearchArea extends Form {
 				@Override
 				public void onSuccess(TranslationMap result) {
 					String title = result.get("maalr.query.result_title");
+					String pageName = result.get("maalr.page.title");
+					String searchPhrase = "'" + label + "'";
+					
 					if(title != null) {
-						Window.setTitle(title.replaceAll("\\{0\\}", label));
+						Window.setTitle(pageName + " - " + title.replaceAll("\\{0\\}", searchPhrase));
 					}
 				}
 			});
