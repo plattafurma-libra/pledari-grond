@@ -26,13 +26,13 @@ if(request.getParameter("pl") != null) {
 <!-- SET DEFAULT LOCALE FOR EDITOR BACKEND -->
 <meta name="gwt:property" content='locale=<%=request.getLocale()%>'>
 <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-<link href="/surmiran/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
-<link href="/surmiran/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/surmiran/assets/style/backend/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-<link href="/surmiran/assets/style/backend/datetimepicker.css" rel="stylesheet" type="text/css">
-<link href="/surmiran/assets/style/backend/editor_style.css" rel="stylesheet" type="text/css">
+<link href="${dictContext}/assets/style/backend/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="${dictContext}/assets/style/backend/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="${dictContext}/assets/style/backend/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+<link href="${dictContext}/assets/style/backend/datetimepicker.css" rel="stylesheet" type="text/css">
+<link href="${dictContext}/assets/style/backend/editor_style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="/surmiran/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/surmiran/assets/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="${dictContext}/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${dictContext}/assets/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="../de.uni_koeln.spinfo.maalr.editor/de.uni_koeln.spinfo.maalr.editor.nocache.js"></script>
 </head>
