@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
-encoding//maalr_config/i18n/lemma-description.properties=UTF-8
-encoding//maalr_config/i18n/lemma-description_de.properties=UTF-8
-encoding//maalr_config/i18n/lemma-description_rm.properties=UTF-8
-encoding//maalr_config/i18n/user-searchui.properties=UTF-8
-encoding//maalr_config/i18n/user-searchui_de.properties=UTF-8
-encoding//maalr_config/i18n/user-searchui_rm.properties=UTF-8
+encoding//maalr_sm_config/i18n/lemma-description.properties=UTF-8
+encoding//maalr_sm_config/i18n/lemma-description_de.properties=UTF-8
+encoding//maalr_sm_config/i18n/lemma-description_sm.properties=UTF-8
+encoding//maalr_sm_config/i18n/user-searchui.properties=UTF-8
+encoding//maalr_sm_config/i18n/user-searchui_de.properties=UTF-8
+encoding//maalr_sm_config/i18n/user-searchui_sm.properties=UTF-8
 encoding/<project>=UTF-8
 encoding/JSONP_Demo.html=UTF-8
