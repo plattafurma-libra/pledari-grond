@@ -2,9 +2,11 @@
 
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 	<body>
+		
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
-		<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-		<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+		
+		<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+		<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 	
 		<div id="content" class="container container_entry">
 		

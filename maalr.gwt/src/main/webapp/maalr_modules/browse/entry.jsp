@@ -54,10 +54,10 @@
 		%>
 			<ul>
 				<li id="show_results_noscript">
-					Show query results for <a href="/translate.html?values[searchPhrase]=<%=phrase%>"><i><%=phrase%></i></a>
+					Show query results for <a href="${dictContext}/translate.html?values[searchPhrase]=<%=phrase%>"><i><%=phrase%></i></a>
 				</li>
 				<li id="show_results_script">
-				Show query results for <a href="/translate.html#searchPhrase=<%=phrase%>"><i><%=phrase%></i></a>
+				Show query results for <a href="${dictContext}/translate.html#searchPhrase=<%=phrase%>"><i><%=phrase%></i></a>
 				</li>
 			</ul>
 		<% } %>

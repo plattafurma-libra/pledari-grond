@@ -247,6 +247,7 @@ public class WebMVCController {
 	@RequestMapping("/admin/admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView("admin/admin");
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 
@@ -279,6 +280,7 @@ public class WebMVCController {
 	@RequestMapping("/editor/editor")
 	public ModelAndView editor() {
 		ModelAndView mv = new ModelAndView("editor/editor");
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 	

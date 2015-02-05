@@ -57,7 +57,8 @@ textarea {
 input[type="text"]:focus,
 input[type="password"]:focus,
 textarea:focus {
-	border: 1px solid rgb(21, 233, 177);
+/* 	border: 1px solid rgb(21, 233, 177); */
+	border: 1px solid rgb(243, 134, 200);
 	color: rgb(76,76,76);
 	-webkit-box-shadow: none;
 	-moz-box-shadow:    none;
@@ -259,22 +260,23 @@ input:focus, textarea:focus {
 	height: 48px;
 	z-index: 1000;
 
-	background-color: rgb(113, 198, 0);
+	background-color: rgb(177, 245, 142);
+	
    	
-   	
-	background-image: linear-gradient(bottom, rgb(113, 198, 0) 0%, rgb(145, 246, 0) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(113, 198, 0) 0%, rgb(145, 246, 0) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(113, 198, 0) 0%, rgb(145, 246, 0) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(113, 198, 0) 0%, rgb(145, 246, 0) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(113, 198, 0) 0%, rgb(145, 246, 0) 100%);
+	background-image: linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(132, 183, 106)), color-stop(1, rgb(177, 245, 142)) );
 
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(113, 198, 0)),
-		color-stop(1, rgb(145, 246, 0))
-	);
+/* 	background-image: -webkit-gradient( */
+/* 		linear, */
+/* 		left bottom, */
+/* 		left top, */
+/* 		color-stop(0, rgb(113, 198, 0)), */
+/* 		color-stop(1, rgb(145, 246, 0)) */
+/* 	); */
 }
 
 #navi_head #brand_title {
@@ -307,7 +309,10 @@ input:focus, textarea:focus {
 
 #content a:hover {
 	/* color: rgb(21, 233, 177); */
-	color: rgb(0, 200, 255);
+	/* color: rgb(0, 200, 255); */
+	/* color: rgb(113, 198, 0); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
 	text-decoration: none;
 	background-color: transparent;
 }
@@ -620,7 +625,9 @@ input:focus, textarea:focus {
 }
 
 #content.content .control-group a.btn:hover {
-	color: rgb(21, 233, 177);
+/* 	color: rgb(21, 233, 177); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
 }
 
 #content.content .control-group + .control-group,
@@ -644,7 +651,7 @@ input:focus, textarea:focus {
 	cursor: pointer;
 
 	background-color: transparent;
-	background-image: url(/assets/img/more_inactive.png);
+	background-image: url(/surmiran/assets/img/more_inactive.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px 22px;
@@ -661,15 +668,15 @@ input:focus, textarea:focus {
 }
 
 #content.content .row-fluid .span4.open .well form > a {
-	background-image: url(/assets/img/less_inactive.png);
+	background-image: url(/surmiran/assets/img/less_inactive.png);
 }
 
 #content.content .row-fluid .span4 .well form > a:hover {
-	background-image: url(/assets/img/more_active.png);
+	background-image: url(/surmiran/assets/img/more_active.png);
 }
 
 #content.content .row-fluid .span4.open .well form > a:hover {
-	background-image: url(/assets/img/less_active.png);
+	background-image: url(/surmiran/assets/img/less_active.png);
 }
 
 #content.content .row-fluid .span8 .gwt-HTML span {
@@ -722,7 +729,9 @@ input:focus, textarea:focus {
 	color: white;
 	background: none;
 	background-image: none;
-	background-color: rgb(0, 200, 255);
+	/* background-color: rgb(0, 200, 255); */
+/* 	background-color: rgb(113, 198, 0); */
+	background-color: rgb(243, 134, 200);
 	box-shadow: none;
 	text-shadow: none;
 	border-radius: 0;
@@ -771,7 +780,9 @@ input:focus, textarea:focus {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	background-color: rgb(21, 233, 177);
+/* 	background-color: rgb(21, 233, 177); */
+/* 	background-color: rgb(228, 244, 138); */
+	background-color: rgb(243, 134, 200);
 	color: white;
 	padding: 2px 4px;
 	margin-top: 12px;
@@ -817,7 +828,8 @@ input:focus, textarea:focus {
 
 #login_container input[type="text"]:focus,
 #login_container input[type="password"]:focus {
-	border: 1px solid rgb(21, 233, 177);
+/* 	border: 1px solid rgb(21, 233, 177); */
+	border: 1px solid rgb(243, 134, 200);
 }
 
 #login_container input#internal_login {
@@ -835,7 +847,8 @@ input:focus, textarea:focus {
 	-ms-border-radius: 0;
 	border-radius: 0;
 
-	background-color: rgb(21, 233, 177);
+/* 	background-color: rgb(21, 233, 177); */
+	background-color: rgb(243, 134, 200);
 	color: white;
 
 	height: 24px;
@@ -930,7 +943,10 @@ input:focus, textarea:focus {
 #login_container button#facebook_signin:hover,
 #login_container button#twitter_signin:hover,
 #login_container button#persona_signin:hover {
-	color: rgb(0, 200, 255);
+/* 	color: rgb(0, 200, 255); */
+/* 	color: rgb(113, 198, 0); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
 }
 
 #login_container p#error_font {
@@ -1120,12 +1136,12 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 #searchoptions .styledRadio {
-	background-image: url(/assets/img/radiobutton_sprite.png);
+	background-image: url(/surmiran/assets/img/radiobutton_sprite.png);
 	background-position: 0px 0px;
 }
 
 #searchoptions .styledCheckbox {
-	background-image: url(/assets/img/checkbox_sprite.png);
+	background-image: url(/surmiran/assets/img/checkbox_sprite.png);
 	background-position: 0px 0px;
 }
 
@@ -1139,7 +1155,9 @@ tr.GKHQX3BBKB td:nth-child(5) {
 
 #searchoptions .styledRadio.checked + input + span,
 #searchoptions .styledCheckbox.checked + input + span {
-	color: rgb(0, 200, 255);
+/* 	color: rgb(0, 200, 255); */
+/* 	color: rgb(113, 198, 0); */
+	color: rgb(243, 134, 200);
 } 
 
 
@@ -1211,11 +1229,18 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 .modal a.btn:hover {
-	color: rgb(0, 200, 255);
+/* 	color: rgb(0, 200, 255); */
+/* 	color: rgb(113, 198, 0); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
+	
 }
 
 .modal a.btn.btn-primary {
-	background: rgb(0, 200, 255);
+/* 	background: rgb(0, 200, 255); */
+/* 	background: rgb(113, 198, 0); */
+/* 	background: rgb(228, 244, 138); */
+	background: rgb(243, 134, 200);
 	color: white;
 }
 
@@ -1255,7 +1280,8 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 .modal-body table .form-horizontal .control-group .controls .gwt-TextBox:focus {
-	border: 1px solid rgb(21, 233, 177);
+/* 	border: 1px solid rgb(21, 233, 177); */
+	border: 1px solid rgb(243, 134, 200);
 }
 
 .modal .page-header {
@@ -1356,7 +1382,10 @@ blockquote h4 {
 }
 
 #content .pagination li a:hover {
-	color: rgb(0, 200, 255);
+/* 	color: rgb(0, 200, 255); */
+/* 	color: rgb(113, 198, 0); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
 }
 
 #content .pagination li.disabled a:hover,
@@ -1369,7 +1398,9 @@ blockquote h4 {
 }
 
 .maalr_overlay_V {
-	background-color: rgb(0, 200, 255);
+/* 	background-color: rgb(0, 200, 255); */
+/* 	background-color: rgb(113, 198, 0); */
+	background-color: rgb(243, 134, 200);
 	color: white;
 	text-decoration: none;
 	padding: 0 5px 0 6px;
@@ -1393,7 +1424,8 @@ blockquote h4 {
 
 .control-group.error textarea {
 	border: 0 none !important;
-	color: rgb(21, 233, 177) !important;
+/* 	color: rgb(21, 233, 177) !important; */
+	color: rgb(243, 134, 200) !important;
 	box-shadow: none !important;
 }
 
@@ -1410,11 +1442,13 @@ blockquote h4 {
 }
 
 .control-group.success textarea:FOCUS {
-	border-color: rgb(21, 233, 177);
+/* 	border-color: rgb(21, 233, 177); */
+	border-color: rgb(243, 134, 200);
 }
 
 a.btn.btn-danger {
-	background-color: rgb(21, 233, 177) !important;
+/* 	background-color: rgb(21, 233, 177) !important; */
+	background-color: rgb(243, 134, 200) !important;
 }
 
 a.btn.btn-danger:hover {
@@ -1465,7 +1499,10 @@ a.btn.btn-danger:hover {
 }
 
 .ext_links_dicts li > a:hover {
-	color: rgb(0, 200, 255);
+/* 	color: rgb(0, 200, 255); */
+/* 	color: rgb(113, 198, 0); */
+/* 	color: rgb(228, 244, 138); */
+	color: rgb(243, 134, 200);
 	text-decoration:none;
 }
 
@@ -1487,22 +1524,31 @@ a.btn.btn-danger:hover {
 	}
 
 	#languages-widget {
-		background-color: rgb(21, 233, 177);
+/* 		background-color: rgb(21, 233, 177); */
 
-		background-image: linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
-		background-image: -o-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
-		background-image: -moz-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
-		background-image: -webkit-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
-		background-image: -ms-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%);
+/* 		background-image: linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
+/* 		background-image: -o-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
+/* 		background-image: -moz-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
+/* 		background-image: -webkit-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
+/* 		background-image: -ms-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
 
-		background-image: -webkit-gradient(
-			linear,
-			left bottom,
-			left top,
-			color-stop(0, rgb(21, 233, 177)),
-			color-stop(1, rgb(40, 241, 188))
-		);
+/* 		background-image: -webkit-gradient( */
+/* 			linear, */
+/* 			left bottom, */
+/* 			left top, */
+/* 			color-stop(0, rgb(21, 233, 177)), */
+/* 			color-stop(1, rgb(40, 241, 188)) */
+/* 		); */
 
+/* 		left: 0px; */
+		
+		background-color: rgb(243, 134, 200);
+		background-image: linear-gradient(bottom, rgb(243, 134, 200) 0%, rgb(249, 195, 228) 100%);
+		background-image: -o-linear-gradient(bottom, rgb(243, 134, 200) 0%, rgb(249, 195, 228) 100%);
+		background-image: -moz-linear-gradient(bottom, rgb(243, 134, 200) 0%, rgb(249, 195, 228) 100%);
+		background-image: -webkit-linear-gradient(bottom, rgb(243, 134, 200) 0%, rgb(249, 195, 228) 100%);
+		background-image: -ms-linear-gradient(bottom, rgb(243, 134, 200) 0%, rgb(249, 195, 228) 100%);
+		background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(243, 134, 200)), color-stop(1, rgb(249, 195, 228)) );
 		left: 0px;
 	}
 
