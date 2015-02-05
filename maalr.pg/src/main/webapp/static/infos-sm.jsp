@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.Locale"%>
-<%@ page import="java.text.NumberFormat"%>
-<%@ page
-	import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics" %>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <fmt:setLocale value="<%=session.getAttribute("pl")%>" />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
@@ -14,8 +14,7 @@
 <p>
 	<strong>Versiun online da la banca da datas linguisticas da la
 		Lia Rumantscha (LR) installada en l'internet en collavuraziun cun la
-		Giuventetgna Rumantscha (<a href="http://www.giuru.ch/"
-		target="_blank">GiuRu</a>).
+		Giuventetgna Rumantscha (<a href="http://www.giuru.ch/" target="_blank">GiuRu</a>).
 	</strong>
 </p>
 

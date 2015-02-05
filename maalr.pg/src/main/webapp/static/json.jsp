@@ -22,9 +22,9 @@
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<% 
-					if(languageTag.equals("rm")){
+					if(languageTag.equals("sm")){
 				%>
-					<jsp:include page="/static/json-rm.jsp" />
+					<jsp:include page="/static/json-sm.jsp" />
 				<% 
 					} else if(languageTag.equals("de")){
 				%>

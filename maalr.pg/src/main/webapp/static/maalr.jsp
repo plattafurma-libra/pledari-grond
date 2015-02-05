@@ -1,6 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.List"%>
+<%@ page import="java.util.List" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />

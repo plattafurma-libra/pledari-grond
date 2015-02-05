@@ -143,10 +143,10 @@ $(document).ready(function() {
 
 		if (retina) {
 			$('.styledRadio').css({
-				'background-image': 'url(/assets/img/radiobutton_sprite2x.png)'
+				'background-image': 'url(/surmiran/assets/img/radiobutton_sprite2x.png)'
 			});
 			$('.styledCheckbox').css({
-				'background-image': 'url(/assets/img/checkbox_sprite2x.png)'
+				'background-image': 'url(/surmiran/assets/img/checkbox_sprite2x.png)'
 			});
 		}
 		
