@@ -3,7 +3,7 @@
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
-<div id="wraper_ext_links_dicts">
+<div id="ext_links_container">
 	<ul class="ext_links_dicts">
 		<li><a href="http://pledarigrond.ch/surmiran" target="_blank"><fmt:message key="maalr.dict_links.surmiran" /></a></li>
 		<li><a href="http://www.vocabularisursilvan.ch" target="_blank"><fmt:message key="maalr.dict_links.sursilvan" /></a></li>
