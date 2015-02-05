@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <overlays>
 	<overlay firstLanguage="false" type="V">
-		<form>maalr_config/overlays/conjugation.html</form>
-		<editor>maalr_config/overlays/conjugation-editor.xml</editor>
+		<form>maalr_sm_config/overlays/conjugation.html</form>
+		<editor>maalr_sm_config/overlays/conjugation-editor.xml</editor>
 	</overlay>
 </overlays>
