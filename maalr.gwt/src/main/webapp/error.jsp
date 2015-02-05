@@ -25,7 +25,7 @@
 			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
 			
 			<%-- INTERNAL SIGN IN --%>
-			<div class="container well">
+			<div class="container well" style="margin-top:300px">
 				Sorry, but an unexpected error occurred.
 			</div>
 		</div>
