@@ -8,7 +8,7 @@
 
 <!-- <Url type="text/html" method="get" template="http://edison.spinfo.uni-koeln.de/#searchPhrase={searchTerms}" />
 <moz:SearchForm>http://edison.spinfo.uni-koeln.de/</moz:SearchForm> -->
-<Url type="text/html" method="get" template="http://www.pledarigrond.ch/#searchPhrase={searchTerms}" />
+<Url type="text/html" method="get" template="http://www.pledarigrond.ch/surmiran/#searchPhrase={searchTerms}" />
 <moz:SearchForm>http://www.pledarigrond.ch/</moz:SearchForm>
 </OpenSearchDescription>
 
