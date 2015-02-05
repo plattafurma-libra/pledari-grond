@@ -1,12 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.Locale"%>
+<%@ page import="java.util.Locale" %>
 
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@ page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.openid.OpenIDAttribute" %>
+<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
@@ -19,9 +19,9 @@
 		<%-- CONTENT --%>	
 		<div id="content">
 			
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 		
 			<div class="container well information_container">
 				<%
@@ -29,9 +29,9 @@
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<%
-					if (languageTag.equals("rm")) {
+					if (languageTag.equals("sm")) {
 				%>
-				<jsp:include page="/static/agid-rm.jsp" />
+				<jsp:include page="/static/agid-sm.jsp" />
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
