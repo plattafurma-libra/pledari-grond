@@ -13,11 +13,53 @@
 		<column name="RSemantik" />
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
-		<column name="RGenus" />
-		<column name="Bearbeitungshinweis" type="CSV" />
-		<column name="type" />
+		<column name="RGenus"/>
+		<column name="Bearbeitungshinweis" type="CSV"/>
+		<column name="redirect_a" />
+		<column name="redirect_b" />
 		<column name="maalr_comment" />
 		<column name="maalr_email" />
+		<column name="infinitiv" />
+		<column name="type" />
+		<column name="subtype" />
+		<column name="irregular" />
+		<column name="preschentsing1" />
+		<column name="preschentsing2" />
+		<column name="preschentsing3" />
+		<column name="preschentplural1" />
+		<column name="preschentplural2" />
+		<column name="preschentplural3" />
+		<column name="imperfectsing1" />
+		<column name="imperfectsing2" />
+		<column name="imperfectsing3" />
+		<column name="imperfectplural1" />
+		<column name="imperfectplural2" />
+		<column name="imperfectplural3" />
+		<column name="conjunctivsing1" />
+		<column name="conjunctivsing2" />
+		<column name="conjunctivsing3" />
+		<column name="conjunctivplural1" />
+		<column name="conjunctivplural2" />
+		<column name="conjunctivplural3" />
+		<column name="cundizionalsing1" />
+		<column name="cundizionalsing2" />
+		<column name="cundizionalsing3" />
+		<column name="cundizionalplural1" />
+		<column name="cundizionalplural2" />
+		<column name="cundizionalplural3" />
+		<column name="participperfectms" />
+		<column name="participperfectfs" />
+		<column name="participperfectmp" />
+		<column name="participperfectfp" />
+		<column name="imperativ1" />
+		<column name="imperativ2" />
+		<column name="gerundium" />
+		<column name="futursing1" />
+		<column name="futursing2" />
+		<column name="futursing3" />
+		<column name="futurplural1" />
+		<column name="futurplural2" />
+		<column name="futurplural3" />
 	</databaseColumns>
 
 	<queryKeys>
