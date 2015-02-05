@@ -10,6 +10,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %> --%>
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
@@ -25,7 +26,7 @@
 					<tbody>
 						<tr>
 							<td align="left" style="vertical-align: top;">
-							<sform:form action="/translate.html" method="get" modelAttribute="query" class="form-inline">
+							<sform:form action="${dictContext}/translate.html" method="get" modelAttribute="query" class="form-inline">
 								<fieldset>
 									<% 
 										UiConfiguration uiConfig = Configuration.getInstance().getUserDefaultSearchUiConfig();

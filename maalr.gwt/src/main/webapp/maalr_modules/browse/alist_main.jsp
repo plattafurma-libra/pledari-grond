@@ -27,7 +27,7 @@
 			<fmt:message key="maalr.dict.letter_link" var="linkTitle">
 				<fmt:param><%=c %></fmt:param>
 			</fmt:message>
-			<a href="/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
+			<a href="${dictContext}/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
 		</td>
 		<%
 			}

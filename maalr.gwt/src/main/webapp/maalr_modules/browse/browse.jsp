@@ -36,7 +36,7 @@
 			<fmt:message key="maalr.dict.letter_link" var="linkTitle">
 				<fmt:param><%=c %></fmt:param>
 			</fmt:message>
-			<a href="/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
+			<a href="${dictContext}/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
 		</div>
 		<%
 			}
@@ -61,7 +61,7 @@
 							<fmt:param><%=(i+1) %></fmt:param>
 						</fmt:message>
 						
-						<a href="/browse/<%=language +"/" + letter + ".html?page=" + i %>"
+						<a href="${dictContext}/browse/<%=language +"/" + letter + ".html?page=" + i %>"
 							title="${linkTitle}"><%=(i+1)%></a>
 					</div>
 					<%
@@ -81,7 +81,7 @@
 										%>
 									<fmt:message key="maalr.dict.translations_of" var="translationsOf"/>
 									<div class="item"><a 
-										href="<%="/dictionary/" + language + "/" + translated + ".html"%>"
+										href="${dictContext}<%="/dictionary/" + language + "/" + translated + ".html"%>"
 											title="${translationsOf}&nbsp;<%=translated%>"><%=translated%>
 										</a>
 									</div>
@@ -92,9 +92,9 @@
 				<%-- INDEX LANGUAGE SELECTION --%>
 				<div class="span12">
 					<fmt:message key="maalr.dict.language"/>: 
-					<a href="/browse/${otherLanguage}/${letter}.html"><fmt:message key="maalr.indexLang.${otherLanguage}" /></a>
+					<a href="${dictContext}/browse/${otherLanguage}/${letter}.html"><fmt:message key="maalr.indexLang.${otherLanguage}" /></a>
 					/
-					<a href="/browse/${language}/${letter}.html"><fmt:message key="maalr.indexLang.${language}" /></a>	
+					<a href="${dictContext}/browse/${language}/${letter}.html"><fmt:message key="maalr.indexLang.${language}" /></a>	
 				</div>
 			
 			</div>
