@@ -21,8 +21,8 @@
 		
 		<div id="content">
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
 			<%-- INTERNAL SIGN IN --%>
 			<div class="container well">
