@@ -7,9 +7,12 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<maalr.context.path>/rumantsch</maalr.context.path>
 		<maalr.webapp.build>../maalr.pg/target</maalr.webapp.build>
 		<maalr.webapp.name>pg-${project.version}</maalr.webapp.name>
-		<jetty.version>9.0.1.v20130408</jetty.version>
+		<!-- <jetty.version>9.0.1.v20130408</jetty.version> -->
+		<jetty.version>9.1.5.v20140505</jetty.version>
+		<!-- <jetty.version>9.2.7.v20150116</jetty.version> -->
 		<jetty.default.port>8080</jetty.default.port>
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.9</logback.version>
@@ -96,6 +99,15 @@
 
 		<plugins>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<warName>rumantsch</warName>
+				</configuration>
+			</plugin>
+			
 
 			<!-- Start and stop MongoDB for integration tests -->
 			<plugin>
@@ -177,10 +189,9 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-
 					<contextXml>src/main/resources/jetty-context.xml</contextXml>
 					<webAppConfig>
-						<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
+						<contextPath>${maalr.context.path}</contextPath>
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
 							<resourcesAsCSV>${maalr.webapp.build}/${maalr.webapp.name}</resourcesAsCSV>
 						</baseResource>
@@ -264,17 +275,14 @@
 	</build>
 
 	<profiles>
-
 		<profile>
 			<id>integration</id>
 			<build>
 				<plugins>
-
 					<plugin>
 						<groupId>org.eclipse.jetty</groupId>
 						<artifactId>jetty-maven-plugin</artifactId>
 						<configuration>
-
 							<systemProperties>
 								<systemProperty>
 									<name>jetty.port</name>
@@ -306,12 +314,9 @@
 							</dependency>
 						</dependencies>
 					</plugin>
-
 				</plugins>
 			</build>
-
 		</profile>
-
 		<profile>
 			<id>startmongo</id>
 			<build>
@@ -337,7 +342,6 @@
 				</plugins>
 			</build>
 		</profile>
-
 	</profiles>
 
 </project>
