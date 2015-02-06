@@ -1,12 +1,12 @@
-<%@page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.Locale"%>
-<%@ page import="java.text.NumberFormat"%>
-<%@ page
-	import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.text.NumberFormat" %>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <h1>Die Suche mit Pledari Grond auf einer Webseite einbetten</h1>
 
@@ -14,7 +14,7 @@
 
 <p>Die einfachste Möglichkeit, auf Ihrer Webseite die Suche im Pledari Grond zu ermöglichen, besteht
 in der Einbettung eines iFrames. Fügen Sie folgenden HTML-Code an der Stelle, an der Sie die Suchfunktion
-einbetten möchten, ein.
+einbetten möchten, ein.</p>
 
 <textarea rows="4" style="width:100%;">
 
@@ -22,51 +22,42 @@ einbetten möchten, ein.
      &lt;/iframe&gt;
 </textarea>
 
-Auf Ihrer Seite wird anschließend folgendes Widget dargestellt, dessen Höhe und Breite Sie durch die Parameter
-'height' und 'width' beeinflussen können.
+<p>Auf Ihrer Seite wird anschließend folgendes Widget dargestellt, dessen Höhe und Breite Sie durch die Parameter
+'height' und 'width' beeinflussen können.</p>
 
 <div class="well" style="width:350px;">
- <iframe src="<%=Configuration.getInstance().getServerInetAddress()%>/iframe.html" seamless="true" width="350px" height="350px">
-     </iframe>
+	<iframe src="<%=Configuration.getInstance().getServerInetAddress()%>${dictContext}/iframe.html" seamless="true" width="350px" height="350px"></iframe>
 </div>
 
-     </p>
-     
 
 <h2>JavaScript</h2>
-<p>
-Sollten Sie das Widget an das Layout Ihrer Seite anpassen wollen, kopieren Sie folgenden
-Inhalt an die gewünschte Stelle im HTML-Code der Webseite. 
+<p>Sollten Sie das Widget an das Layout Ihrer Seite anpassen wollen, kopieren Sie folgenden 
+Inhalt an die gewünschte Stelle im HTML-Code der Webseite.</p>
 <textarea rows="8" style="width:100%;">
-
  &lt;div id=&quot;maalr_query_div&quot; class=&quot;maalr_query_div&quot;
     		data-source=&quot;<%=Configuration.getInstance().getServerInetAddress()%>&quot;
     		data-locale=&quot;rm&quot;&gt;
     		data-button=&quot;Suchen&quot;&gt;
     		data-placeholder=&quot;Bitte Suchbegriff eingeben...&quot;&gt;
-    		&lt;script type=&quot;text/javascript&quot; src=&quot;<%=Configuration.getInstance().getServerInetAddress()%>/assets/js/embed_pledari.js&quot;&gt;&lt;/script&gt;
+    		&lt;script type=&quot;text/javascript&quot; src=&quot;<%=Configuration.getInstance().getServerInetAddress()%>${dictContext}/assets/js/embed_pledari.js&quot;&gt;&lt;/script&gt;
  &lt;/div&gt;
- 
- </textarea>
-</p>
-<p>
-Anschließend erscheint an der entsprechenden Stelle folgendes Widget:
+</textarea>
 
+<p>Anschließend erscheint an der entsprechenden Stelle folgendes Widget:</p>
 <div class="well" style="width:350px;">
 	<div id="maalr_query_div" class="maalr_query_div"
 	    		data-source="<%=Configuration.getInstance().getServerInetAddress()%>"
 	    		data-locale="rm"
 	    		data-button="Suchen"
 	    		data-placeholder="Bitte Suchbegriff eingeben...">
-	    		<script type="text/javascript" src="<%=Configuration.getInstance().getServerInetAddress()%>/assets/js/embed_pledari.js"></script>
+	    		<script type="text/javascript" src="<%=Configuration.getInstance().getServerInetAddress()%>${dictContext}/assets/js/embed_pledari.js"></script>
 	 </div>
  </div>
-</p>
 
-<p>
-Sie können das Formular an das Layout Ihrer Seite anpassen, durch Hinzufügen bzw. Modifikation
+
+<p>Sie können das Formular an das Layout Ihrer Seite anpassen, durch Hinzufügen bzw. Modifikation
 einzelner Parameter können Sie die Funktionalität ebenso wie das Layout des Widgets an Ihre
-Anforderungen anpassen.
+Anforderungen anpassen.</p>
 <table>
 		<col style="width:150px">
         <col style="width:100px">
@@ -115,12 +106,8 @@ Anforderungen anpassen.
 		<td>false</td>
 		<td>Falls das Design des Widgets an die jeweilige Webseite angepasst werden soll, kann dieser Parameter auf 'false' gesetzt werden.
 		In dem Fall müssen eigene CSS-Regeln für die Elemente des Widgets definiert werden - das entsprechende Stylesheet finden
-		Sie <a href="/assets/style/maalr_embedded.css">hier</a>.
+		Sie <a href="${dictContext}/assets/style/maalr_embedded.css">hier</a>.
 		</td>
 	</tr>
 </table>
-</p>
-<p>
-
-</p>
 

@@ -1,6 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.List"%>
+<%@ page import="java.util.List" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
@@ -14,14 +14,13 @@
 		
 		<div id="content" class="container">
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 	
 			<div class="page-header">
 				<h1>
-					Maalr<small> A Modern Approach to Aggregate Lexical
-						Resources</small>
+					Maalr<small> A Modern Approach to Aggregate Lexical Resources</small>
 				</h1>
 			</div>
 	

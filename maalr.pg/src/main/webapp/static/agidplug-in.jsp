@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.List"%>
+<%@ page import="java.util.List" %>
 
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@ page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.openid.OpenIDAttribute" %>
+<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
@@ -17,9 +17,8 @@
 		<%-- CONTENT --%>		
 		<div id="content">
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 		
 			<div class="container well container_plugin">
 				<h2>L'installaziun dal plugin da tschertgar dal Pledari Grond

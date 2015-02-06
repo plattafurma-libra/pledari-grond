@@ -1,8 +1,11 @@
-<%@page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@page import="java.util.List"%>
-<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+
+<%@ page import="java.util.List" %>
+
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken" %>
+<%@ page import="org.springframework.security.openid.OpenIDAttribute" %>
+
 <%-- Header included here --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 <body>

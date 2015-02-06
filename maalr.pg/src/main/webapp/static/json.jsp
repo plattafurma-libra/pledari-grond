@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="java.util.Locale"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="java.util.Locale" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
@@ -12,8 +13,8 @@
 		<%-- CONTENT --%>		
 		<div id="content">
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
 			<div class="container well information_container">
 	
