@@ -1,12 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.util.Locale"%>
+<%@ page import="java.util.Locale" %>
 
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@ page import="org.springframework.security.openid.OpenIDAttribute"%>
-<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken"%>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.openid.OpenIDAttribute" %>
+<%@ page import="org.springframework.security.openid.OpenIDAuthenticationToken" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
@@ -31,11 +31,11 @@
 				<%
 					if (languageTag.equals("rm")) {
 				%>
-				<jsp:include page="/static/agid-rm.jsp" />
+				<jsp:include page="${dictContext}/static/agid-rm.jsp" />
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
-				<jsp:include page="/static/agid-de.jsp" />
+				<jsp:include page="${dictContext}/static/agid-de.jsp" />
 				<%
 					} else {
 				%>

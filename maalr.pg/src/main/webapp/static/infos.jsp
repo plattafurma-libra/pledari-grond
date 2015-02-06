@@ -1,19 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="java.util.Locale"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="java.util.Locale" %>
 
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
-		
 		<%-- NAVIGATION --%>
 		<div id="top"><jsp:include page="/maalr_modules/misc/header.jsp" /></div>
 
 		<%-- CONTENT --%>		
 		<div id="content">
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
 			<div class="container well information_container">
 	
@@ -24,11 +24,11 @@
 				<% 
 					if(languageTag.equals("rm")){
 				%>
-					<jsp:include page="/static/infos-rm.jsp" />
+					<jsp:include page="${dictContext}/static/infos-rm.jsp" />
 				<% 
 					} else if(languageTag.equals("de")){
 				%>
-					<jsp:include page="/static/infos-de.jsp" />
+					<jsp:include page="${dictContext}/static/infos-de.jsp" />
 				<% 
 					} else {
 				%>
