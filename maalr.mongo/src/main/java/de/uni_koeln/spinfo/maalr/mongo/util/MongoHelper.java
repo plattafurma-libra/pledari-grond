@@ -41,7 +41,7 @@ public class MongoHelper {
 			if(db == null) {
 				logger.debug("Connecting to MongoDB...");
 				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
-				db = mongo.getDB("db");
+				db = mongo.getDB(Configuration.getInstance().getDbName());
 			}
 			return db;	
 		}
