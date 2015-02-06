@@ -1888,3 +1888,8 @@ a.btn.btn-danger:hover {
 	}
 
 }
+
+#ext_links_container {
+	margin-top: 150px;
+	position: absolute;
+}
