@@ -1,6 +1,9 @@
-<%@page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+<%@ page import="java.util.Locale"%>
+
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="java.util.Locale"%>
+
 <%
 		if(request.getParameter("pl") != null) {
 			session.setAttribute("pl", request.getParameter("pl"));
@@ -22,7 +25,7 @@
     		data-autoquery="true" 
     		data-pagesize="10"
     		data-embedcss="true">
-    		<script type="text/javascript" src="<%=Configuration.getInstance().getServerInetAddress()%>/assets/js/embed_pledari.js"></script>
+    		<script type="text/javascript" src="<%=Configuration.getInstance().getServerInetAddress()%>/rumantsch/assets/js/embed_pledari.js"></script>
     </div>
 	</body>
 </html>

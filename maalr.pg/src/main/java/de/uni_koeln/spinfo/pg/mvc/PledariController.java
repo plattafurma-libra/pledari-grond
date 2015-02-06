@@ -27,8 +27,9 @@ public class PledariController {
 
 	private Configuration configuration = Configuration.getInstance();
 
-	private void setPageTitle(ModelAndView mv, String title) {
+	private void setPageTitleAndContext(ModelAndView mv, String title) {
 		mv.addObject("pageTitle", title);
+		mv.addObject("dictContext", configuration.getDictContext());
 	}
 
 	@ModelAttribute("pageTitle")
@@ -40,28 +41,28 @@ public class PledariController {
 	@RequestMapping("/help")
 	public ModelAndView agid() {
 		ModelAndView mv = new ModelAndView("static/agid");
-		setPageTitle(mv, "Help");
+		setPageTitleAndContext(mv, "Help");
 		return mv;
 	}
 
 	@RequestMapping("/agidplug-in")
 	public ModelAndView agidPlugin() {
 		ModelAndView mv = new ModelAndView("static/agidplug-in");
-		setPageTitle(mv, "Search Plug-In");
+		setPageTitleAndContext(mv, "Search Plug-In");
 		return mv;
 	}
 
 	@RequestMapping("/infos")
 	public ModelAndView infos() {
 		ModelAndView mv = new ModelAndView("static/infos");
-		setPageTitle(mv, "Infos");
+		setPageTitleAndContext(mv, "Infos");
 		return mv;
 	}
 	
 	@RequestMapping("/embed")
 	public ModelAndView embed() {
 		ModelAndView mv = new ModelAndView("static/json");
-		setPageTitle(mv, "Embed");
+		setPageTitleAndContext(mv, "Embed");
 		return mv;
 	}
 	
@@ -74,7 +75,7 @@ public class PledariController {
 	@RequestMapping("/abreviaziuns")
 	public ModelAndView abbreviations() {
 		ModelAndView mv = new ModelAndView("static/abreviaziuns");
-		setPageTitle(mv, "Abreviaziuns");
+		setPageTitleAndContext(mv, "Abreviaziuns");
 		return mv;
 	}
 
