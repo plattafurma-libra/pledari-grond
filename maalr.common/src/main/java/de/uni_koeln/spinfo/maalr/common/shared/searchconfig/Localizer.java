@@ -110,8 +110,6 @@ public class Localizer {
 	}
 	
 	public static TranslationMap getEditorTranslations(String locale) {
-		Logger logger = LoggerFactory.getLogger(Localizer.class);
-//		logger.info("Requesting translated editor strings for locale " + locale);
 		TranslationMap map = editorTranslations.get(locale);
 		if(map == null) {
 			Properties properties = new Properties();
@@ -133,11 +131,9 @@ public class Localizer {
 				map.setSourceFileName(file.getName());
 				editorTranslations.put(locale, map);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-//		logger.info("Returning translation: " + map);
 		return map;
 	}
 
