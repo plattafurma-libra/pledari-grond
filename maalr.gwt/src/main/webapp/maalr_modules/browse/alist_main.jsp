@@ -1,8 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
@@ -27,7 +27,7 @@
 			<fmt:message key="maalr.dict.letter_link" var="linkTitle">
 				<fmt:param><%=c %></fmt:param>
 			</fmt:message>
-			<a href="/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
+			<a href="${dictContext}/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
 		</td>
 		<%
 			}

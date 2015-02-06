@@ -3,9 +3,7 @@ $(document).ready(function() {
 	var mobile = false;
 	
 	$('#content.content').on('click', '.row-fluid .span4 .well form #searchoptions + a.btn', function(event) {
-
 		$('#searchoptions').toggleClass('open');
-
 	});
 
 	checkMobile();

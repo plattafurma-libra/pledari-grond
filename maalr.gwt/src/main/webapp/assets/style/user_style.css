@@ -241,7 +241,7 @@ h1 {
 
 /*
 input, textarea {
-	background-image: url(/assets/img/cursor.gif);
+	background-image: url(/rumantsch/assets/img/cursor.gif);
 	background-repeat: no-repeat;
 	background-position: 1px 2px;
 }
@@ -643,7 +643,7 @@ input:focus, textarea:focus {
 	cursor: pointer;
 
 	background-color: transparent;
-	background-image: url(/assets/img/more_inactive.png);
+	background-image: url(/rumantsch/assets/img/more_inactive.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px 22px;
@@ -660,15 +660,15 @@ input:focus, textarea:focus {
 }
 
 #content.content .row-fluid .span4.open .well form > a {
-	background-image: url(/assets/img/less_inactive.png);
+	background-image: url(/rumantsch/assets/img/less_inactive.png);
 }
 
 #content.content .row-fluid .span4 .well form > a:hover {
-	background-image: url(/assets/img/more_active.png);
+	background-image: url(/rumantsch/assets/img/more_active.png);
 }
 
 #content.content .row-fluid .span4.open .well form > a:hover {
-	background-image: url(/assets/img/less_active.png);
+	background-image: url(/rumantsch/assets/img/less_active.png);
 }
 
 #content.content .row-fluid .span8 .gwt-HTML span {
@@ -1119,12 +1119,12 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 #searchoptions .styledRadio {
-	background-image: url(/assets/img/radiobutton_sprite.png);
+	background-image: url(/rumantsch/assets/img/radiobutton_sprite.png);
 	background-position: 0px 0px;
 }
 
 #searchoptions .styledCheckbox {
-	background-image: url(/assets/img/checkbox_sprite.png);
+	background-image: url(/rumantsch/assets/img/checkbox_sprite.png);
 	background-position: 0px 0px;
 }
 

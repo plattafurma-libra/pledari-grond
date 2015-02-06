@@ -22,10 +22,10 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 		<%
-			MaalrQuery pgq = (MaalrQuery) request.getAttribute("query");
+			MaalrQuery maalrQuery = (MaalrQuery) request.getAttribute("query");
 		%>
 	    <div class="page-header">
-    		<h1><fmt:message key="maalr.dict.entry_header" />&nbsp;<i><%=MaalrQueryFormatter.getQueryLabel(pgq)%></i></h1>
+    		<h1><fmt:message key="maalr.dict.entry_header" />&nbsp;<i><%=MaalrQueryFormatter.getQueryLabel(maalrQuery) %></i></h1>
     	</div>
 		
 		<div class="well" style="text-align: justify;">
@@ -33,13 +33,13 @@
 				QueryResult result = (QueryResult) request.getAttribute("result");
 				List<LemmaVersion> entries = new ArrayList<LemmaVersion>();
 		
-				if (pgq != null && result != null) {
+				if (maalrQuery != null && result != null) {
 					entries = result.getEntries();
 					LemmaDescription description = Configuration.getInstance().getLemmaDescription();
-					String language = (String) pgq.getValue("language");
+					String language = (String) maalrQuery.getValue("language");
 			%>
 			
-			<%=description.toString(MaalrQueryFormatter.getQueryLabel(pgq), entries, description.getLanguageName(true).equals(language))%>
+			<%=description.toString(MaalrQueryFormatter.getQueryLabel(maalrQuery), entries, description.getLanguageName(true).equals(language)) %>
 			
 			<%
 				}
@@ -47,17 +47,17 @@
 			%>
 		</div>
 
-		<%	if (pgq != null && result != null && result.getEntries().size() != 0) {  %>
+		<%	if (maalrQuery != null && result != null && result.getEntries().size() != 0) {  %>
 		<% 
-				String language = pgq.getValue("language");
-		  	 	String phrase = MaalrQueryFormatter.getQueryLabel(pgq);
+				String language = maalrQuery.getValue("language");
+		  	 	String phrase = MaalrQueryFormatter.getQueryLabel(maalrQuery);
 		%>
 			<ul>
 				<li id="show_results_noscript">
-					Show query results for <a href="/translate.html?values[searchPhrase]=<%=phrase%>"><i><%=phrase%></i></a>
+					Show query results for <a href="${dictContext}/translate.html?values[searchPhrase]=<%=phrase %>"><i><%=phrase %></i></a>
 				</li>
 				<li id="show_results_script">
-				Show query results for <a href="/translate.html#searchPhrase=<%=phrase%>"><i><%=phrase%></i></a>
+				Show query results for <a href="${dictContext}/translate.html#searchPhrase=<%=phrase %>"><i><%=phrase %></i></a>
 				</li>
 			</ul>
 		<% } %>

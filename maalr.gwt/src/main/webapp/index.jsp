@@ -1,38 +1,38 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="java.text.DateFormat"%>
-<%@ page import="java.text.NumberFormat"%>
-<%@ page import="java.util.Calendar"%>
-<%@ page import="java.util.Date"%>
-<%@ page import="java.util.Locale"%>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Locale" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer"%>
-<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Constants"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Constants" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
-<%@ page import="de.uni_koeln.spinfo.maalr.webapp.i18n.UrlGenerator"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.webapp.i18n.UrlGenerator" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%-- HTML HEADER --%>
-<%@ include file="/maalr_modules/misc/htmlhead.jsp"%>
+<%@ include file="/maalr_modules/misc/htmlhead.jsp" %>
 
 	<body>
 	
 		<%-- NAVIGATION --%>
-		<%@ include file="/maalr_modules/misc/header.jsp"%>
+		<%@ include file="/maalr_modules/misc/header.jsp" %>
 	
 		<div id="content" class="content">
 			
-			<%@ include file="/maalr_modules/misc/dict_links.jsp"%>
+			<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
+			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
 			<%-- SEARCH AREA --%>
 			<div class="container-fluid">

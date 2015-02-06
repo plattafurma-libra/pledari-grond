@@ -90,8 +90,12 @@ public class WebMVCController {
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
 		String locale = (String) request.getParameter("pl");
-		if(locale == null) {
+		if (locale == null) {
 			locale = (String) session.getAttribute("pl");
+			if (locale == null) {
+				session.setAttribute("pl", "rm");
+				locale = "rm";
+			}
 			return locale;
 		} else {
 			return locale;
@@ -116,6 +120,7 @@ public class WebMVCController {
 	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
 		session.setAttribute("language", Configuration.getInstance().getLemmaDescription().getLanguageName(true));
 		return mv;
 	}
@@ -128,6 +133,7 @@ public class WebMVCController {
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 
@@ -162,6 +168,7 @@ public class WebMVCController {
 	public ModelAndView translate(@ModelAttribute("query") MaalrQuery query, BindingResult br, final HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("search", query);
 		
 		try {
@@ -180,6 +187,7 @@ public class WebMVCController {
 	public ModelAndView login(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("login");
 		setPageTitle(mv, getLocalizedString("maalr.login_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 	
@@ -202,6 +210,7 @@ public class WebMVCController {
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
+			mv.addObject("dictContext", configuration.getDictContext());
 			String firstLanguage = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getId();
 			String language = query.getValue("language");
 			boolean isFirst = firstLanguage.equals(language);
@@ -230,12 +239,14 @@ public class WebMVCController {
 	@RequestMapping("/admin/admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView("admin/admin");
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 
 	@RequestMapping("/maalr")
 	public ModelAndView maalr() {
 		ModelAndView mv = new ModelAndView("static/maalr");
+		mv.addObject("dictContext", configuration.getDictContext());
 		setPageTitle(mv, "About Maalr");
 		return mv;
 	}
@@ -253,12 +264,15 @@ public class WebMVCController {
 
 	private ModelAndView getErrorView(Exception e) {
 		logger.error("An error occurred", e);
-		return new ModelAndView("error");
+		ModelAndView mv = new ModelAndView("error");
+		mv.addObject("dictContext", configuration.getDictContext());
+		return mv;
 	}
 
 	@RequestMapping("/editor/editor")
 	public ModelAndView editor() {
 		ModelAndView mv = new ModelAndView("editor/editor");
+		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 	
@@ -276,11 +290,11 @@ public class WebMVCController {
 		}
 	}
 
-//	@Secured({Constants.Roles.ADMIN_5})
-//	@RequestMapping(value = "/admin/importDB", method = { RequestMethod.POST })
-//	public void importDB(HttpServletRequest request, HttpServletResponse response) throws InvalidEntryException, NoDatabaseAvailableException, IOException, JAXBException, XMLStreamException  {
-//		adminController.importDatabase(request);
-//	}
+	//	@Secured({Constants.Roles.ADMIN_5})
+	//	@RequestMapping(value = "/admin/importDB", method = { RequestMethod.POST })
+	//	public void importDB(HttpServletRequest request, HttpServletResponse response) throws InvalidEntryException, NoDatabaseAvailableException, IOException, JAXBException, XMLStreamException  {
+	//		adminController.importDatabase(request);
+	//	}
 	
 	@RequestMapping("/browse/{language}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
@@ -300,6 +314,7 @@ public class WebMVCController {
 		if(language == null) language = Configuration.getInstance().getLemmaDescription().getLanguageName(true);
 		QueryResult result = index.getAllStartingWith(language, letter, page);
 		ModelAndView mv = new ModelAndView("browse_dictionary");
+		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("result", result);
 		mv.addObject("letter", letter);
 		mv.addObject("page", page);
@@ -332,14 +347,6 @@ public class WebMVCController {
 		return mv;
 	}
 	
-//	@RequestMapping("/test")
-//	public ModelAndView speedTest() {
-//		return new ModelAndView("test");
-//	}
-
-	
-	
-	
 	@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
 	@ResponseBody
 	public String isSignedIn(HttpServletRequest request, Model model) throws IOException {
@@ -355,7 +362,7 @@ public class WebMVCController {
 	public String logoutPersona(HttpServletRequest request, Model model) throws IOException {
 		loginManager.logout();
 		logger.info("Persona logout!");
-		return "/";
+		return configuration.getDictContext();
 	}
 	
 	@RequestMapping(value = "/persona/login",  method = RequestMethod.POST)
@@ -368,10 +375,10 @@ public class WebMVCController {
 				for (GrantedAuthority grantedAuthority : authorities) {
 					logger.info("GrantedAuthority: " + grantedAuthority.getAuthority());
 					if (grantedAuthority.getAuthority().equals("ROLE_ADMIN"))
-						return "/admin/admin";
+						return configuration.getDictContext() + "/rumantsch/admin/admin";
 					if (grantedAuthority.getAuthority().equals("ROLE_TRUSTED_IN"))
-						return "/editor/editor";
-					return "/";
+						return configuration.getDictContext() + "/editor/editor";
+					return configuration.getDictContext();
 				}
 			}
 		}
@@ -397,10 +404,10 @@ public class WebMVCController {
 			if (user == null) {
 				user = register(response);
 				authUser(user);
-				return "/";
+				return configuration.getDictContext();
 			} else {
 				authUser(user);
-				return "/";
+				return configuration.getDictContext();
 			}
 		} else {
 			logger.warn("Persona authentication failed due to reason: " + response.getReason());

@@ -1,19 +1,19 @@
-<%@ page import="de.uni_koeln.spinfo.maalr.login.LoginManager"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.LoginManager" %>
 
-<%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt'%>
+<%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt' %>
 
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <cr:choose>
     <cr:when test="${user != null}">
-		<a id="maalr-current-user" href="<cr:url value='/j_spring_security_logout'/>">
+		<a id="maalr-current-user" href="<cr:url value='${dictContext}/j_spring_security_logout'/>">
 			<fmt:message key="maalr.user.logout">
 				<fmt:param>${user.getDisplayName()}</fmt:param>
 			</fmt:message> 
 		</a>
     </cr:when>
     <cr:otherwise>
-		<a href="/login.html">
+		<a href="${dictContext}/login.html">
 			<fmt:message key="maalr.user.login" />
 		</a>
     </cr:otherwise>
