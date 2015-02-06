@@ -25,7 +25,7 @@
 					<tbody>
 						<tr>
 							<td align="left" style="vertical-align: top;">
-							<sform:form action="/translate.html" method="get" modelAttribute="query" class="form-inline">
+							<sform:form action="${dictContext}/translate.html" method="get" modelAttribute="query" class="form-inline">
 								<fieldset>
 									<% 
 										UiConfiguration uiConfig = Configuration.getInstance().getUserDefaultSearchUiConfig();

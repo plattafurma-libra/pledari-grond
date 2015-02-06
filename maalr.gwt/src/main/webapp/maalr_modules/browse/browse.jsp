@@ -15,19 +15,17 @@
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
-<%-- 
-		<jsp:include page="/maalr_modules/browse/alist_main.jsp" />
---%>
+<%-- <jsp:include page="/maalr_modules/browse/alist_main.jsp" /> --%>
+
 <div class="alpha_navi chars">
-<%-- 			char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+		<%-- char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 					'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
 					'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü', '0', '1', '2', '3', '4',
-					'5', '6', '7', '8', '9' };
- --%>
+					'5', '6', '7', '8', '9' }; --%>
 		<%
-			char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-					'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-					'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü' };
+		char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+						 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
+						 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ä', 'Ö', 'Ü' };
 		String language = (String) request.getAttribute("language");
 			for (int i = 0; i < chars.length; i++) {
 				char c = chars[i];
@@ -36,7 +34,7 @@
 			<fmt:message key="maalr.dict.letter_link" var="linkTitle">
 				<fmt:param><%=c %></fmt:param>
 			</fmt:message>
-			<a href="/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
+			<a href="${dictContext}/browse/<%=language %>/<%=c + ".html"%>" title="${linkTitle}"><%=c + ""%></a>
 		</div>
 		<%
 			}
@@ -61,7 +59,7 @@
 							<fmt:param><%=(i+1) %></fmt:param>
 						</fmt:message>
 						
-						<a href="/browse/<%=language +"/" + letter + ".html?page=" + i %>"
+						<a href="${dictContext}/browse/<%=language +"/" + letter + ".html?page=" + i %>"
 							title="${linkTitle}"><%=(i+1)%></a>
 					</div>
 					<%
@@ -80,9 +78,9 @@
 									String translated = description.toString(entry, UseCase.ALPHA_INDEX, language.equals(description.getLanguageName(true)));
 										%>
 									<fmt:message key="maalr.dict.translations_of" var="translationsOf"/>
-									<div class="item"><a 
-										href="<%="/dictionary/" + language + "/" + translated + ".html"%>"
-											title="${translationsOf}&nbsp;<%=translated%>"><%=translated%>
+									<div class="item">
+										<a href="${dictContext}<%="/dictionary/" + language + "/" + translated + ".html" %>" title="${translationsOf}&nbsp;<%=translated %>">
+											<%=translated %>
 										</a>
 									</div>
 							<% } %>
@@ -92,9 +90,9 @@
 				<%-- INDEX LANGUAGE SELECTION --%>
 				<div class="span12">
 					<fmt:message key="maalr.dict.language"/>: 
-					<a href="/browse/${otherLanguage}/${letter}.html"><fmt:message key="maalr.indexLang.${otherLanguage}" /></a>
+					<a href="${dictContext}/browse/${otherLanguage}/${letter}.html"><fmt:message key="maalr.indexLang.${otherLanguage}" /></a>
 					/
-					<a href="/browse/${language}/${letter}.html"><fmt:message key="maalr.indexLang.${language}" /></a>	
+					<a href="${dictContext}/browse/${language}/${letter}.html"><fmt:message key="maalr.indexLang.${language}" /></a>	
 				</div>
 			
 			</div>

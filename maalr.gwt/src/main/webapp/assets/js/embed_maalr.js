@@ -33,7 +33,7 @@ function injectQuery() {
 		  link.rel  = 'stylesheet';
 		  link.type = 'text/css';
 		  source = "src/main/webapp"; // Development FIXME
-		  link.href = source + '/assets/style/maalr_embedded.css';
+		  link.href = source + '/rumantsch/assets/style/maalr_embedded.css';
 		  link.media = 'all';
 		  head.appendChild(link);
 	 }
@@ -103,7 +103,7 @@ function queryMaalr(evt) {
 	}
 	var script = document.createElement('script');
 	var locale = document.getElementById("maalr_query_div").getAttribute("data-locale");
-	script.src = domain + "/json?pageNr=1&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
+	script.src = domain + "/rumantsch/json?pageNr=1&pageSize=" + maalr_max + "&locale=" + locale + "&values[searchPhrase]=" + phrase + "?&callback=maalrCallback";
 	script.setAttribute("id","maalr_reply");
 	document.head.appendChild(script);
 }
