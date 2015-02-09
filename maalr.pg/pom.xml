@@ -7,6 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
+	 	<maalr.context.path>/surmiran</maalr.context.path>
 		<maalr.webapp.build>../maalr.pg/target</maalr.webapp.build>
 		<maalr.webapp.name>pg-${project.version}</maalr.webapp.name>
 		<!-- <jetty.version>9.0.1.v20130408</jetty.version> -->
@@ -104,6 +105,15 @@
 
 		<plugins>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<warName>surmiran</warName>
+				</configuration>
+			</plugin>
+
 
 			<!-- Start and stop MongoDB for integration tests -->
 			<plugin>
@@ -187,8 +197,7 @@
 				<configuration>
 					<contextXml>src/main/resources/jetty-context.xml</contextXml>
 					<webAppConfig>
-						<!-- <contextPath>${maalr.webapp.build}</contextPath> -->
-						<contextPath>/surmiran</contextPath>
+						<contextPath>${maalr.context.path}</contextPath>
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
 							<resourcesAsCSV>${maalr.webapp.build}/${maalr.webapp.name}</resourcesAsCSV>
 						</baseResource>
