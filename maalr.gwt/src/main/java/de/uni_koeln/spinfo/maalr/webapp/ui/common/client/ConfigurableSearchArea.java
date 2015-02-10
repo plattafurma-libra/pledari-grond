@@ -638,8 +638,11 @@ public class ConfigurableSearchArea extends Form {
 				@Override
 				public void onSuccess(TranslationMap result) {
 					String title = result.get("maalr.query.result_title");
+					String pageName = result.get("maalr.page.title");
+					String searchPhrase = "'" + label + "'";
+					
 					if(title != null) {
-						Window.setTitle(title.replaceAll("\\{0\\}", label));
+						 Window.setTitle(pageName + " - " + title.replaceAll("\\{0\\}", searchPhrase));
 					}
 				}
 			});
