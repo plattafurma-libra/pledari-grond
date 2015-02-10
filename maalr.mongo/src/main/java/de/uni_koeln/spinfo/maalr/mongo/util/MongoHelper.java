@@ -33,15 +33,20 @@ public class MongoHelper {
 	private static MongoClient mongo;
 
 	private static DB db;
+	
+	private static String DB_NAME;
 
 	private static final Object lock = new Object();
 
-	public static DB getDB() throws UnknownHostException {
+	public static DB getDB(String dbName) throws UnknownHostException {
 		synchronized(lock) {
-			if(db == null) {
-				logger.debug("Connecting to MongoDB...");
+			dbName = dbName != null ? dbName : Configuration.getInstance().getDbName();
+			//if(db == null) {
+			if(DB_NAME == null || !DB_NAME.equals(dbName)) {
+				DB_NAME = dbName;
+				logger.debug("Connecting to MongoDB... " + DB_NAME);
 				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
-				db = mongo.getDB(Configuration.getInstance().getDbName());
+				db = mongo.getDB(DB_NAME);
 			}
 			return db;	
 		}
@@ -50,7 +55,7 @@ public class MongoHelper {
 	public static boolean isRunning() {
 		logger.info("Checking if MongoDB is running - might produce some stack traces...");
 		try {
-			CommandResult result = getDB().getStats();
+			CommandResult result = getDB(null).getStats();
 			if(result != null) return true;
 			return false;
 		} catch (Exception e) {
