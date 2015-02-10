@@ -2,20 +2,20 @@
 <configuration>
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%date{HH:mm:ss.SSS} [%-8thread] %-5level %-38logger{0} | %m %n</pattern>
+			<pattern> %date{HH:mm:ss.SSS} [%-16X{src}] |%X{login}| %-5level %-20logger{0} | %m %n</pattern>
 		</encoder>
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/maalr.log</file>
+		<file>logs/sm-maalr.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>logs/maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>logs/sm-maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
       		<!-- keep 30 days' worth of history -->
       		<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%date [%-8thread] %-5level %-60logger{55} ::  %msg%n
+			<pattern>%date [%-16X{src}] %-5level **%X{login}** %-60logger{55} ::  %msg%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -23,11 +23,19 @@
 	<logger name="org.springframework">
 		<level value="INFO" />
 	</logger>
+	
+	<logger name="com.mongodb">
+		<level value="INFO" />
+	</logger>
 
 	<logger name="org.eclipse.jetty">
 		<level value="INFO" />
 	</logger>
-
+	
+	<logger name="de.uni_koeln">
+		<level value="INFO" />
+	</logger>
+	
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="CONSOLE" />
