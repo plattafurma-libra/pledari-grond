@@ -43,7 +43,7 @@ public class UserInfoDB {
 	
 	UserInfoDB() {
 		try {
-			DB db = MongoHelper.getDB();
+			DB db = MongoHelper.getDB("maalr_user");
 			userCollection = db.getCollection("users");
 			createIndex();
 		} catch (UnknownHostException e) {
