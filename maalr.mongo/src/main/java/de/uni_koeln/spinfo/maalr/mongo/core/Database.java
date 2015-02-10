@@ -105,10 +105,9 @@ public class Database {
 	private final boolean debugging;
 
 	Database() throws UnknownHostException {
-		logger.info("Connecting to MongoDB...");
+		// logger.info("Connecting to MongoDB...");
 		debugging = logger.isDebugEnabled();
-		DB db = MongoHelper.getDB();
-		entryCollection = db.getCollection("entries");
+		entryCollection = MongoHelper.getDB(null).getCollection("entries");
 		// backupCollection = db.getCollection("backup");
 		long entries = entryCollection.count();
 		logger.info("Connected to entries-collection containing " + entries
@@ -322,7 +321,7 @@ public class Database {
 		logger.warn("Dropping database!");
 		entryCollection.drop();
 		try {
-			entryCollection = MongoHelper.getDB().getCollection("entries");
+			entryCollection = MongoHelper.getDB(null).getCollection("entries");
 			createIndex();
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
