@@ -7,10 +7,10 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/maalr.log</file>
+		<file>logs/rm-maalr.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>logs/maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>logs/rm-maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
       		<!-- keep 30 days' worth of history -->
       		<maxHistory>30</maxHistory>
 		</rollingPolicy>
@@ -25,6 +25,10 @@
 	</logger>
 
 	<logger name="org.eclipse.jetty">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="com.mongodb">
 		<level value="INFO" />
 	</logger>
 	
