@@ -1,3 +1,5 @@
+@CHARSET "UTF-8";
+
 html,body {
 	height: 100%;
 	margin: 0px;
@@ -136,12 +138,10 @@ thead th {
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
 }*/
-
 /*tr td:last-child,tr th:last-child {
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
 }*/
-
 .gwt-SuggestBoxPopup {
 	z-index: 99999;
 	/*visibility: visible;
