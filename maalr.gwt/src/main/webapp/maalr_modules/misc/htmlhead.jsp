@@ -27,7 +27,7 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!--[if IE 7]>
 	<link rel="stylesheet" href="/de.uni_koeln.spinfo.maalr.user/css/font-awesome-ie7.css">
@@ -58,16 +58,14 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://login.persona.org/include.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${dictContext}/assets/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
-<script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <script type="text/javascript" src="${dictContext}/assets/js/user/user_dynamic_locale.js"></script>
+<script type="text/javascript" src="http://use.typekit.net/qvz4srm.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/gwt-bootstrap.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/font-awesome.css" rel="stylesheet">
-<link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/datepicker.css" rel="stylesheet">
 <link href="${dictContext}/assets/style/user_style.css" rel="stylesheet">
 </head>
