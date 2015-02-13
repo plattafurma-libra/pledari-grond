@@ -40,7 +40,7 @@ public class UserInfoDB {
 
 	private DBCollection userCollection;
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoDB.class);
-	private static final String USER_DB_NAME = "maalr_user";
+	private static final String USER_DB_NAME = "maalr";
 	private static final String USER_COLLECTION = "users";
 	
 	UserInfoDB() {
