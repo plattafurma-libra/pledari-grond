@@ -96,7 +96,7 @@ public class Database {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	private DBCollection entryCollection;
-
+	
 	// private DBCollection backupCollection;
 
 	private LemmaDescription description = Configuration.getInstance()
@@ -105,13 +105,11 @@ public class Database {
 	private final boolean debugging;
 
 	Database() throws UnknownHostException {
-		// logger.info("Connecting to MongoDB...");
 		debugging = logger.isDebugEnabled();
 		entryCollection = MongoHelper.getDB(null).getCollection("entries");
 		// backupCollection = db.getCollection("backup");
 		long entries = entryCollection.count();
-		logger.info("Connected to entries-collection containing " + entries
-				+ " items.");
+		logger.info("Connected to entries-collection containing " + entries + " items.");
 		createIndex();
 	}
 
