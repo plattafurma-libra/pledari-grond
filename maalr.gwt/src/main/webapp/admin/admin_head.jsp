@@ -37,6 +37,5 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.admin/js/bootstrap.min.js"></script>
-<%-- <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.admin/js/bootstrap-datetimepicker.js"></script> --%>
 <script type="text/javascript" src="../de.uni_koeln.spinfo.maalr.admin/de.uni_koeln.spinfo.maalr.admin.nocache.js"></script>
 </head>
