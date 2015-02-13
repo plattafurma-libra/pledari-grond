@@ -34,22 +34,18 @@ public class MongoHelper {
 
 	private static DB db;
 	
-	private static String DB_NAME;
-
 	private static final Object lock = new Object();
 	
 
 	public static DB getDB(String dbName) throws UnknownHostException {
 		synchronized(lock) {
 			dbName = dbName != null ? dbName : Configuration.getInstance().getDbName();
-			//if(db == null) {
-			if(DB_NAME == null || !DB_NAME.equals(dbName)) {
-				DB_NAME = dbName;
-				logger.debug("Connecting to MongoDB...");
+			if(mongo == null) {
 				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
-				db = mongo.getDB(Configuration.getInstance().getDbName());
 			}
-			return db;	
+			db = mongo.getDB(dbName);
+			logger.info("Connecting to data base... " + db.getName());
+			return db;
 		}
 	}
 	
