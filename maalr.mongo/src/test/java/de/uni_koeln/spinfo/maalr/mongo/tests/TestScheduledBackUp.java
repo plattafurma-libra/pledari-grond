@@ -28,7 +28,7 @@ public class TestScheduledBackUp {
 //		MongoDBRuntime runtime = MongoDBRuntime.getDefaultInstance();
 //		mongodExe = runtime.prepare(new MongodConfig(Version.V2_2_0, 27017, Network.localhostIsIPv6()));
 //		mongod = mongodExe.start();
-//		URI resource = System.class.getResource("/data.tab.zip").toURI();
+//		URI resource = System.class.getResource("/data_rm.tab.zip").toURI();
 //		File file = new File(resource);
 //		createFromSQLDump(file, 2000);
 //	}
