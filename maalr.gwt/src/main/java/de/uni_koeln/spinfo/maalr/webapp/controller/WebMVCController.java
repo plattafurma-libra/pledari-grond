@@ -375,7 +375,7 @@ public class WebMVCController {
 				for (GrantedAuthority grantedAuthority : authorities) {
 					logger.info("GrantedAuthority: " + grantedAuthority.getAuthority());
 					if (grantedAuthority.getAuthority().equals("ROLE_ADMIN"))
-						return configuration.getDictContext() + "/rumantsch/admin/admin";
+						return configuration.getDictContext() + "/admin/admin";
 					if (grantedAuthority.getAuthority().equals("ROLE_TRUSTED_IN"))
 						return configuration.getDictContext() + "/editor/editor";
 					return configuration.getDictContext();
