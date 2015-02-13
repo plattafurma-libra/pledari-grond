@@ -370,7 +370,7 @@ public class WebMVCController {
 	public String logoutPersona(HttpServletRequest request, Model model) throws IOException {
 		loginManager.logout();
 		logger.info("Persona logout!");
-		return "/";
+		return configuration.getDictContext();
 	}
 	
 	@RequestMapping(value = "/persona/login",  method = RequestMethod.POST)
@@ -383,10 +383,10 @@ public class WebMVCController {
 				for (GrantedAuthority grantedAuthority : authorities) {
 					logger.info("GrantedAuthority: " + grantedAuthority.getAuthority());
 					if (grantedAuthority.getAuthority().equals("ROLE_ADMIN"))
-						return "/admin/admin";
+						return configuration.getDictContext() + "/admin/admin";
 					if (grantedAuthority.getAuthority().equals("ROLE_TRUSTED_IN"))
-						return "/editor/editor";
-					return "/";
+						return configuration.getDictContext() + "/editor/editor";
+					return configuration.getDictContext();
 				}
 			}
 		}
@@ -412,10 +412,10 @@ public class WebMVCController {
 			if (user == null) {
 				user = register(response);
 				authUser(user);
-				return "/";
+				return configuration.getDictContext();
 			} else {
 				authUser(user);
-				return "/";
+				return configuration.getDictContext();
 			}
 		} else {
 			logger.warn("Persona authentication failed due to reason: " + response.getReason());

@@ -49,7 +49,7 @@
 				</form>
 				 
 				<%-- OPEN-ID SIGN IN --%>
-<!-- 				<div id="openid_login"> -->
+				<div id="openid_login">
 					<%-- <div class="input_wrapper">
 						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
 							<input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id" />
@@ -79,15 +79,15 @@
 							<button type="submit" id="twitter_signin"><fmt:message key="maalr.login.twitter"/></button>
 						</form>
 					</div> --%>
-<!-- 					<div class="input_wrapper"> -->
-<%-- 						<button type="submit" id="persona_signin"><fmt:message key="maalr.login.persona"/></button> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
+					<div class="input_wrapper">
+						<button type="submit" id="persona_signin"><fmt:message key="maalr.login.persona"/></button>
+					</div>
+				</div>
 				<%-- login info text  --%>
-<!-- 				<div id="maalr_login_info"> -->
-<!-- 					<span class="glyphicon icon-info-sign"></span> -->
+<%-- 				<div id="maalr_login_info"> --%>
+<%-- 					<span class="glyphicon icon-info-sign"></span> --%>
 <%-- 					<p><fmt:message key="maalr.login.welcome" /></p> --%>
-<!-- 				</div> -->
+<%-- 				</div> --%>
 			</div>
 		</div>
 		<jsp:include page="/analytics.jsp" />
