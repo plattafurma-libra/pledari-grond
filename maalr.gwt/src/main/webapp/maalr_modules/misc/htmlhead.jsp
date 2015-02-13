@@ -67,5 +67,5 @@
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/gwt-bootstrap.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/font-awesome.css" rel="stylesheet">
-<link href="${dictContext}/assets/style/user_style.css" rel="stylesheet">
+<link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/user.css" rel="stylesheet">
 </head>
