@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -101,7 +101,7 @@ public class Admin implements EntryPoint {
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
 		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/j_spring_security_logout");
+		navigation.addLinkLeft("Logout", "/rumantsch/j_spring_security_logout");
 	}
 
 	private void initHistory() {

@@ -33,6 +33,7 @@ import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
 
+import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Constants;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
@@ -44,8 +45,7 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 	private UserInfoBackend backend;
 	
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication authentication)
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
 		// Set Session Timeout to one hour
 		request.getSession().setMaxInactiveInterval(60*60);
@@ -84,17 +84,18 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 			}
 			request.getSession().setAttribute("uname", userInfo.getFirstname());
 		}
+		String dictContext = Configuration.getInstance().getDictContext();
 		if(authentication != null) {
 			Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 			if(roles.contains(Constants.Roles.ADMIN_5)) {
-				response.sendRedirect("/admin/admin.html");
+				response.sendRedirect(dictContext + "/admin/admin.html");
 				return;
 			} else if(roles.contains(Constants.Roles.TRUSTED_IN_4)) {
-				response.sendRedirect("/editor/editor.html");
+				response.sendRedirect(dictContext + "/editor/editor.html");
 				return;
 			}
 		}
-        response.sendRedirect("/index.html");
+        response.sendRedirect(dictContext + "/index.html");
 	}
 
 }

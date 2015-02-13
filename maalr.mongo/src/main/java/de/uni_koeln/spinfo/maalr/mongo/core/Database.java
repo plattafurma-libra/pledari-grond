@@ -104,7 +104,6 @@ public class Database {
 	private final boolean debugging;
 
 	Database() throws UnknownHostException {
-		// logger.info("Connecting to MongoDB...");
 		debugging = logger.isDebugEnabled();
 		entryCollection = MongoHelper.getDB(null).getCollection("entries");
 		// backupCollection = db.getCollection("backup");

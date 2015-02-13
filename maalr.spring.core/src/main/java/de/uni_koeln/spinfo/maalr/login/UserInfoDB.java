@@ -40,14 +40,15 @@ public class UserInfoDB {
 
 	private DBCollection userCollection;
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoDB.class);
-	private static final String USER_DB_NAME = "maalr_user";
+	private static final String USER_DB_NAME = "maalr";
 	private static final String USER_COLLECTION = "users";
 	
 	UserInfoDB() {
 		try {
 			DB db = MongoHelper.getDB(USER_DB_NAME);
 			userCollection = db.getCollection(USER_COLLECTION);
-			createIndex();
+			if(userCollection.count() == 0)
+				createIndex();
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -60,7 +61,7 @@ public class UserInfoDB {
 		userCollection.createIndex(new BasicDBObject(Constants.Users.FIRSTNAME, 1));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.LASTNAME, 1));
 		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1);
-		userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
+		userCollection.ensureIndex(login, new BasicDBObject("unique", "true"));
 	}
 
 	boolean userExists(String login) {
