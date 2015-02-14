@@ -82,7 +82,7 @@
 						<column reference="RStichwort" />
 					</columns>
 				</option>
-				<option id="surmiran">
+				<option id="sutsilvan">
 					<columns>
 						<column reference="RStichwort" />
 					</columns>
@@ -119,7 +119,7 @@
 						<column reference="DSubsemantik" />
 					</columns>
 				</option>
-				<option id="surmiran">
+				<option id="sutsilvan">
 					<columns>
 						<column reference="RSubsemantik" />
 					</columns>
@@ -142,7 +142,7 @@
 						<column reference="DGrammatik" />
 					</columns>
 				</option>
-				<option id="surmiran">
+				<option id="sutsilvan">
 					<columns>
 						<column reference="RGrammatik" />
 					</columns>
@@ -165,7 +165,7 @@
 						<column reference="DGenus" />
 					</columns>
 				</option>
-				<option id="surmiran">
+				<option id="sutsilvan">
 					<columns>
 						<column reference="RGenus" />
 					</columns>
@@ -286,7 +286,7 @@
 				</fields>
 			</results>
 		</language>
-		<language id="surmiran" mainColumn="RStichwort">
+		<language id="sutsilvan" mainColumn="RStichwort">
 			<editors>
 				<frontend_editor>
 					<fields>
