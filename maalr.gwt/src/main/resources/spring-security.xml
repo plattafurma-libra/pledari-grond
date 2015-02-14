@@ -81,8 +81,8 @@
 		<!-- The path to the maalr configuration directory can be set via the system property 'maalr.config.dir' -->
 		<!-- If not set, the default value 'maalr_sm_config' will be used (assuming that the configuration dir -->
 		<!-- lies in the base directory) -->
-		<property name="loginConfig" value="file:${maalr.config.dir:maalr_sm_config}/login.config" />
-		<property name="loginContextName" value="SMMaalrLogin" />
+		<property name="loginConfig" value="file:${maalr.config.dir:maalr_ss_config}/login.config" />
+		<property name="loginContextName" value="SSMaalrLogin" />
 		<property name="callbackHandlers">
 			<list>
 				<bean class="org.springframework.security.authentication.jaas.JaasNameCallbackHandler" />
