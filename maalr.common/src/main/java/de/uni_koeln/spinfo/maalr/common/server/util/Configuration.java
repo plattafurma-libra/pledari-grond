@@ -92,7 +92,7 @@ public class Configuration {
 		String configDir = System.getProperty("maalr.config.dir");
 		boolean isDefault = false;
 		if (configDir == null) {
-			this.configDir = new File("maalr_sm_config");
+			this.configDir = new File("maalr_ss_config");
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);
@@ -118,8 +118,7 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		}
-		// TODO: Try reading more then one searchconfig.xml
-		try (InputStreamReader reader = getConfiguration("searchconfig_sm.xml")) {
+		try (InputStreamReader reader = getConfiguration("searchconfig_ss.xml")) {
 			JAXBContext ctx = JAXBContext
 					.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
