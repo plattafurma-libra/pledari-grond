@@ -198,12 +198,14 @@ public class Editor implements EntryPoint {
 				lexEditor.setColumns(fields);
 			}
 		});
+		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
+		String locale = DictionaryConstants.getDictionary().get(DictionaryConstants.LOCALE);
 		registerModule(lexEditor, Modules.ANCHOR_LEX_EDITOR);
 		navigation.addLinkLeft(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR);
 		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
 		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLinkRight(constants.logout(), "/surmiran/j_spring_security_logout", true);
-		navigation.addLinkRight(constants.sm(), GWT.getHostPageBaseURL() + "editor.html?locale=sm", false);
+		navigation.addLinkRight(constants.logout(), contextPath + "/j_spring_security_logout", true);
+		navigation.addLinkRight(constants.ss(), GWT.getHostPageBaseURL() + "editor.html?locale=" + locale, false);
 		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", false);
 	}
 	
