@@ -6,7 +6,7 @@
 <%
 	if(session.getAttribute("pl") == null) {
 		session.setAttribute("pl", request.getLocale().getLanguage());
-		//session.setAttribute("pl", "sm");
+		//session.setAttribute("pl", "ss");
 	}
 	if(request.getParameter("pl") != null) {
 		session.setAttribute("pl", request.getParameter("pl"));
@@ -40,5 +40,6 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.editor/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.editor/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.editor/js/dynamic_locale.js"></script>
 <script type="text/javascript" src="../de.uni_koeln.spinfo.maalr.editor/de.uni_koeln.spinfo.maalr.editor.nocache.js"></script>
 </head>

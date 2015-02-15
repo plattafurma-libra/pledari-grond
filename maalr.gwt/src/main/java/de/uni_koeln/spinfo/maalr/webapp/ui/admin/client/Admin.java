@@ -97,9 +97,10 @@ public class Admin implements EntryPoint {
 		DbManager dbManager = new DbManager();
 		registerModule(roleEditor, Modules.ANCHOR_ROLE_MANAGER);
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
+		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
 		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/surmiran/j_spring_security_logout");
+		navigation.addLinkLeft("Logout", contextPath + "/j_spring_security_logout");
 	}
 
 	private void initHistory() {
