@@ -29,9 +29,9 @@
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<%
-					if (languageTag.equals("sm")) {
+					if (languageTag.equals("ss")) {
 				%>
-				<jsp:include page="/static/agid-sm.jsp" />
+				<jsp:include page="/static/agid-ss.jsp" />
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
