@@ -41,7 +41,7 @@ Inhalt an die gewünschte Stelle im HTML-Code der Webseite.
 
  &lt;div id=&quot;maalr_query_div&quot; class=&quot;maalr_query_div&quot;
     		data-source=&quot;<%=Configuration.getInstance().getServerInetAddress()%>&quot;
-    		data-locale=&quot;sm&quot;&gt;
+    		data-locale=&quot;ss&quot;&gt;
     		data-button=&quot;Suchen&quot;&gt;
     		data-placeholder=&quot;Bitte Suchbegriff eingeben...&quot;&gt;
     		&lt;script type=&quot;text/javascript&quot; src=&quot;<%=Configuration.getInstance().getServerInetAddress()%>/assets/js/embed_pledari.js&quot;&gt;&lt;/script&gt;
@@ -55,7 +55,7 @@ Anschließend erscheint an der entsprechenden Stelle folgendes Widget:
 <div class="well" style="width:350px;">
 	<div id="maalr_query_div" class="maalr_query_div"
 	    		data-source="<%=Configuration.getInstance().getServerInetAddress()%>"
-	    		data-locale="sm"
+	    		data-locale="ss"
 	    		data-button="Suchen"
 	    		data-placeholder="Bitte Suchbegriff eingeben...">
 	    		<script type="text/javascript" src="<%=Configuration.getInstance().getServerInetAddress()%>/assets/js/embed_pledari.js"></script>
@@ -83,7 +83,7 @@ Anforderungen anpassen.
 		<td>data-locale</td>
 		<td>nein</td>
 		<td>-</td>
-		<td>Gibt an, in welcher Sprache das Formular dargestellt werden soll. Entweder "de" oder "sm".</td>
+		<td>Gibt an, in welcher Sprache das Formular dargestellt werden soll. Entweder "de" oder "ss".</td>
 	</tr>
 	<tr>
 		<td>data-button</td>

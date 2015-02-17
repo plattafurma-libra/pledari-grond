@@ -61,6 +61,8 @@ public class Configuration {
 
 	private static final String BACKUP_NUMS = "backup.nums";
 
+	private static final String LOCALE_CODE = "locale.code";
+
 	private Properties properties;
 
 	private static Configuration instance;
@@ -98,12 +100,12 @@ public class Configuration {
 			this.configDir = new File(configDir);
 		}
 		if (this.configDir.exists()) {
-			LoggerFactory.getLogger(getClass()).info(
+			logger.info(
 					"Using " + (isDefault ? "default " : "")
 							+ "configuration in directory "
 							+ this.configDir.getAbsolutePath());
 		} else {
-			LoggerFactory.getLogger(getClass()).error(
+			logger.error(
 					"The " + (isDefault ? "default " : "")
 							+ "configuration directory "
 							+ this.configDir.getAbsolutePath()
@@ -250,6 +252,10 @@ public class Configuration {
 
 	public String getDbName() {
 		return properties.getProperty(MONGODB_NAME);
+	}
+
+	public String getLocaleCode() {
+		return properties.getProperty(LOCALE_CODE);
 	}
 
 }

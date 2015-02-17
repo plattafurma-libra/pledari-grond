@@ -365,7 +365,7 @@ public class ResultCellTable extends Composite {
 
 				@Override
 				public void onSuccess(TranslationMap result) {
-					// TODO: Disable propose functionality in surmiran edition
+					// TODO: Disable propose functionality in sutsilvan edition
 					String info = result.get("maalr.query.nothing_found");
 					if (info != null) {
 						if(MaalrQueryFormatter.getQueryLabel(query) == null){
@@ -430,7 +430,7 @@ public class ResultCellTable extends Composite {
 				addColumnA(translationMap.get(description.getLanguageName(defaultOrder)), defaultOrder);
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG2 : LemmaVersion.OVERLAY_LANG1, translationMap);
 				addColumnB(translationMap.get(description.getLanguageName(!defaultOrder)), !defaultOrder);
-				// TODO: Commented to disable modify option for surmiran
+				// TODO: Commented to disable modify option for sutsilvan
 				addOptionsColumn(translationMap);
 			}
 		});

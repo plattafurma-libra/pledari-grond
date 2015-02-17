@@ -294,11 +294,11 @@ public class AdvancedEditor {
 									String lemma1st = ld.toUnescapedString(lv, UseCase.RESULT_LIST, true);
 									String lemma2nd = ld.toUnescapedString(lv, UseCase.RESULT_LIST, false);
 									String german = first + "%20%3D%20" + lemma1st;
-									String surmiran = second + "%20%3D%20" + lemma2nd;
+									String sutsilvan = second + "%20%3D%20" + lemma2nd;
 									String remartg = localizedStrings.get("mail.comment") + "%0A" + URL.encode(comment.getText());
 									
 									String subject = "?subject=" + URL.encode(localizedStrings.get("mail.subject"));
-									String body = "&body=" + german + "%0A"+ surmiran + "%0A%0A" + remartg;
+									String body = "&body=" + german + "%0A"+ sutsilvan + "%0A%0A" + remartg;
 									String cc = "";
 									if(localizedStrings.get("mail.cc") != null) {
 										cc = "&cc=" + localizedStrings.get("mail.cc");	

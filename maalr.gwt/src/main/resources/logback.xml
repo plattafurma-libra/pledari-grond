@@ -7,10 +7,10 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/sm-maalr.log</file>
+		<file>logs/ss-maalr.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<FileNamePattern>logs/sm-maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>logs/ss-maalr.%d{yyyy-MM-dd}.log</FileNamePattern>
       		<!-- keep 30 days' worth of history -->
       		<maxHistory>30</maxHistory>
 		</rollingPolicy>

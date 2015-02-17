@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
+package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
 import java.util.List;
 

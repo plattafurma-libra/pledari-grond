@@ -121,7 +121,7 @@
 
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-		<param-value>sm</param-value>
+		<param-value>ss</param-value>
 	</context-param>
 
 </web-app>

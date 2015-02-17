@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
+package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +31,14 @@ import com.google.gwt.user.client.Window;
  * 
  */
 
-public class DictionaryConstants {
+class DictionaryConstants {
 
-	public static final String LOCALE_PARAM = "pl";
-	public static final String LOCALE_FALLBACK = "sm";
-	public static final String LINKS = "links";
+	protected static final String LOCALE_PARAM = "pl";
+	protected static final String LOCALE_FALLBACK = "ss";
+	protected static final String LINKS = "links";
 	
-	public static final List<String> DICT_LINKS;
-	public static final List<String> GLOSSAR_LINKS;
+	protected static final List<String> DICT_LINKS;
+	protected static final List<String> GLOSSAR_LINKS;
 	
 	static {
 		
@@ -58,7 +58,7 @@ public class DictionaryConstants {
 		
 	}
 
-	public static Dictionary getLocaleDictionary() {
+	static Dictionary getLocaleDictionary() {
 		String locale = Window.Location.getParameter(LOCALE_PARAM);
 		if (locale == null)
 			return Dictionary.getDictionary(LOCALE_FALLBACK);
@@ -66,7 +66,7 @@ public class DictionaryConstants {
 			return Dictionary.getDictionary(locale);
 	}
 
-	public static Dictionary getLinksDictionary() {
+	static Dictionary getLinksDictionary() {
 		return Dictionary.getDictionary(LINKS);
 	}
 

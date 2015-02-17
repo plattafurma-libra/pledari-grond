@@ -1,4 +1,4 @@
-var sm = {
+var ss = {
 	dict_label: "dicziunaris dals idioms",
 	sursilvan: "dicziunari sursilvan",
 	puter: "dicziunari puter",

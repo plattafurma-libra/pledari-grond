@@ -7,8 +7,8 @@
 
 <%
 	if(session.getAttribute("pl") == null) {
-		//session.setAttribute("pl", request.getLocale().getLanguage());
-		session.setAttribute("pl", "sm");
+		String localeCode = Configuration.getInstance().getLocaleCode();
+		session.setAttribute("pl", localeCode);
 	}
 	if(request.getParameter("pl") != null) {
 		session.setAttribute("pl", request.getParameter("pl"));
@@ -58,7 +58,7 @@
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
-<script type="text/javascript" src="${dictContext}/assets/js/user_dynamic_locale.js"></script>
+<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <%-- <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script> --%>
 <%-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> --%>

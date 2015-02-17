@@ -246,7 +246,7 @@
 					</execution>
 				</executions>
 				<configuration>
-<!-- 				    <webappDirectory>${webappDirectory}/surmiran</webappDirectory> -->
+<!-- 				    <webappDirectory>${webappDirectory}/sutsilvan</webappDirectory> -->
 					<runTarget>index.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<compileReport>${gwt.compile.report}</compileReport>
