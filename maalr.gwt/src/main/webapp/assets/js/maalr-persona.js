@@ -28,7 +28,7 @@ $(function() {
 	if(loggedInUser === null) {
 		$.ajax({
 			type: 'GET', 
-			url: '/surmiran/persona/signedin',
+			url: '/sutsilvan/persona/signedin',
 			success: function(response) { 
 				if (response !== '') {
 					this.loggedInUser = response;
@@ -57,7 +57,7 @@ function logout(event) {
 	this.loggedInUser = null;
 	$.ajax({
 		type: 'POST', 
-		url: '/surmiran/persona/logout',
+		url: '/sutsilvan/persona/logout',
 		success: function(response) { 
 			window.location.href = response;
 		}
@@ -85,7 +85,7 @@ function verifiedEmail(assertion) {
 	if (assertion !== null) {
 		$.ajax({
 			type : 'POST',
-			url : '/surmiran/persona/login',
+			url : '/sutsilvan/persona/login',
 			data : { assertion : assertion },
 			success : function(response) { 
 				window.location.href = response;
