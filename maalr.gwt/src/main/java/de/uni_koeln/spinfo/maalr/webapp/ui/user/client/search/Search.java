@@ -40,8 +40,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictionaryConstants;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
 
 public class Search extends Composite implements HasHandlers, IResultDisplay {
@@ -74,7 +72,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		localeDictionary = DictionaryConstants.getLocaleDictionary();
 		well.add(searchForm);
-		// TODO: Disable in surmiran edition 
+		// TODO: Disabled in sutsilvan edition 
 		// well.add(getLink(DictionaryConstants.DICT_LINKS));
 		// well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
 	}
