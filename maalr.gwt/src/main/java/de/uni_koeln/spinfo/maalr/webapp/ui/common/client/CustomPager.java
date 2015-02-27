@@ -15,14 +15,13 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.common.client;
 
-import java.util.Map;
-
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Pagination;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -43,8 +42,16 @@ public class CustomPager extends SimplePanel {
 
 	public CustomPager() {
 		pagination = new Pagination();
-		pagination.setStyle(Bootstrap.Pagination.CENTERED);
+		setStyle();
 		this.add(pagination);
+	}
+
+	private void setStyle() {
+		pagination.setStyle(Bootstrap.Pagination.CENTERED);
+		if(Window.getClientWidth() < 767) {
+			String className = pagination.getElement().getClassName() + " pagination-mini";
+			pagination.getElement().setClassName(className);
+		} 
 	}
 
 	public void createPageLinks(final MaalrQuery maalrQuery, QueryResult result) {
