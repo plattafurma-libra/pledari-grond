@@ -13,6 +13,19 @@ $(document).ready(function() {
 		$(this).text('rumantsch');
 	});
 	
+	
+	$(window).resize(function() { 
+		resizePagination();
+	});
+	
+	function resizePagination() {
+		if($(window).width() < 767) {
+			$('div.pagination').addClass('pagination-mini');
+		} else {
+			$('div.pagination').removeClass('pagination-mini');
+		}
+	}
+	
 	$('#content.content').on('click', '.row-fluid .span4 .well form #searchoptions + a.btn', function(event) {
 
 		$('#searchoptions').toggleClass('open');
