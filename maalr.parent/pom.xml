@@ -9,6 +9,7 @@
 	<modules>
 		<module>../maalr.antlr</module>
 		<module>../maalr.common</module>
+		<module>../maalr.conjugator</module>
 		<module>../maalr.mongo</module>
 		<module>../maalr.lucene</module>
 		<module>../maalr.spring.core</module>
