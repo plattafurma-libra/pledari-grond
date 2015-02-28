@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.overlays.generator;
+package de.uni_koeln.spinfo.maalr.conjugator.generator;
 
 import java.util.HashMap;
 
@@ -24,12 +24,13 @@ import de.uni_koeln.spinfo.maalr.common.shared.GenerationFailedException;
 import de.uni_koeln.spinfo.maalr.conjugator.generator.ConjugationGenerator;
 
 /**
- * Generates verb forms based on the given verb class and the infinitive.
- * The generation is done by delegating the method call to an instance of
+ * Generates verb forms based on the given verb class and the infinitive. The
+ * generation is done by delegating the method call to an instance of
  * {@link ConjugationGenerator}.
- *  
- * @author sschwieb
- *
+ * 
+ * The instances of this class are created with ClassLoader API within the editor
+ * service implementation {@link EditorServiceImpl#getOverlayEditorPreset(String overlayType,
+			String presetId, String base)}
  */
 public class VerbClassGenerator implements IOverlayGenerator {
 
@@ -40,7 +41,8 @@ public class VerbClassGenerator implements IOverlayGenerator {
 			return generator.generateConjugation(infinitive, preset);
 		} catch (Exception e) {
 			LoggerFactory.getLogger(getClass()).warn("Failed to generate word forms", e);
-			throw new GenerationFailedException("Failed to generate word forms: " + e.getMessage());
+			throw new GenerationFailedException("Failed to generate word forms for infinitive '" 
+					+ infinitive + "': " + e.getMessage());
 		}
 	}
 

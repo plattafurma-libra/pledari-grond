@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <overlayEditor>
 	<presetchooser id="type" base="RStichwort"
-		generator="de.uni_koeln.spinfo.maalr.overlays.generator.VerbClassGenerator">
+		generator="de.uni_koeln.spinfo.maalr.conjugator.generator.VerbClassGenerator">
 		<options>
 			<option value="1" />
 			<option value="2" />
