@@ -260,15 +260,15 @@ input:focus, textarea:focus {
 	height: 48px;
 	z-index: 1000;
 
-	background-color: rgb(177, 245, 142);
+	background-color: rgb(132, 183, 106);
 	
    	
-	background-image: linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(177, 245, 142) 100%);
-	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(132, 183, 106)), color-stop(1, rgb(177, 245, 142)) );
+	background-image: linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(132, 183, 106) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(132, 183, 106) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(132, 183, 106) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(132, 183, 106) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(132, 183, 106) 0%, rgb(132, 183, 106) 100%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(132, 183, 106)), color-stop(1, rgb(132, 183, 106)) );
 
 /* 	background-image: -webkit-gradient( */
 /* 		linear, */
