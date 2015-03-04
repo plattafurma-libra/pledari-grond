@@ -63,8 +63,7 @@
 			<column id="particip">
 				<item id="participperfectms"></item>
 				<item id="participperfectfs"></item>
-				<item id="participperfectmp"></item>
-				<item id="participperfectfp"></item>
+				
 			</column>
 		</row>
 		<row>
