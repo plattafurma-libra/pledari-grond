@@ -30,6 +30,26 @@ import java.util.Set;
 
 public class ConjugationGenerator {
 
+	// (Endung - Klasse)
+	//
+	// -ar - 1
+	//
+	// -er - 2
+	//
+	// -ier - 3
+	//
+	// -eir [è] - 4
+	//
+	// -er - 5
+	//
+	// -eir [é] - 6
+	//
+	// -eir [é](esch) - 7
+	//
+	// -ar (esch) - 8
+	//
+	// Vokaländerung in der Wurzel - 9
+
 	private ConjugationStructure cs;
 
 	private Pronouns pronouns;
@@ -120,7 +140,7 @@ public class ConjugationGenerator {
 					+ "The range of conjugations is from 1 to 9.");
 		} else if (getEnding() == null) {
 			throw new RuntimeException(infinitiv + "  is not a valid verb."
-					+ "\n" + "Please type a verb in its infinitive form.");
+					+ "\n" + "Please enter a verb in its infinitive form.");
 		}
 
 		conjugation = conjugate(root, conjugationCLass);
@@ -147,17 +167,17 @@ public class ConjugationGenerator {
 			case 0:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			case 1:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			case 2:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			default:
 
