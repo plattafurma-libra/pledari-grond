@@ -19,6 +19,7 @@ import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -58,7 +59,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 
 	@UiField
 	Well well;
-
+	
 	ResultCellTable resultCellTable;
 
 	private ConfigurableSearchArea searchForm;
@@ -119,6 +120,8 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		String className = DOM.getElementById("content").getClassName();
 		DOM.getElementById("content").setClassName(
 				className + " search-centered");
+		setMargin(75);
+		
 	}
 
 	@Override
@@ -128,12 +131,21 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			String className = DOM.getElementById("content").getClassName();
 			DOM.getElementById("content").setClassName(
 					className + " search-centered");
+			setMargin(0);
 		} else {
 			this.resultCellTable.setResults(query, result);
 			DOM.getElementById("content").removeClassName("search-centered");
 			resultColumn.setVisible(true);
+			setMargin(75);
 		}
 
+	}
+
+	private void setMargin(int margin) {
+//		if(Window.getClientWidth() < 767) 
+//			this.getElement().getStyle().setMarginTop(0, Unit.PX);
+//		else
+			this.getElement().getStyle().setMarginTop(margin, Unit.PX);
 	}
 
 	public void setFocus(boolean selectAll) {
