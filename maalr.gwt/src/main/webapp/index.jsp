@@ -34,7 +34,7 @@
 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
 			<%-- SEARCH AREA --%>
-			<div class="container-fluid">
+			<div class="container-fluid" id="nojs_searchcontainer">
 				<noscript>
 					<div class="row-fluid">
 						<div class="span12">
