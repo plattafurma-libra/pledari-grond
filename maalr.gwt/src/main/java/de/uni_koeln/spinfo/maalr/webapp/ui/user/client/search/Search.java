@@ -17,8 +17,12 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
 import java.util.List;
 
+import com.github.gwtbootstrap.client.ui.Column;
+import com.github.gwtbootstrap.client.ui.NavPills;
 import com.github.gwtbootstrap.client.ui.Well;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -28,6 +32,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,6 +45,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
+import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictLinksDropDown;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictionaryConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
@@ -58,7 +64,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 
 	@UiField
 	Well well;
-
+	
 	ResultCellTable resultCellTable;
 
 	private ConfigurableSearchArea searchForm;
@@ -120,6 +126,8 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		String className = DOM.getElementById("content").getClassName();
 		DOM.getElementById("content").setClassName(
 				className + " search-centered");
+		setMargin(75);
+		
 	}
 
 	@Override
@@ -129,12 +137,21 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			String className = DOM.getElementById("content").getClassName();
 			DOM.getElementById("content").setClassName(
 					className + " search-centered");
+			setMargin(0);
 		} else {
 			this.resultCellTable.setResults(query, result);
 			DOM.getElementById("content").removeClassName("search-centered");
 			resultColumn.setVisible(true);
+			setMargin(75);
 		}
 
+	}
+
+	private void setMargin(int margin) {
+//		if(Window.getClientWidth() < 767) 
+//			this.getElement().getStyle().setMarginTop(0, Unit.PX);
+//		else
+			this.getElement().getStyle().setMarginTop(margin, Unit.PX);
 	}
 
 	public void setFocus(boolean selectAll) {
