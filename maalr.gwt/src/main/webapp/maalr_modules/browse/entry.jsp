@@ -24,7 +24,7 @@
 		<%
 			MaalrQuery pgq = (MaalrQuery) request.getAttribute("query");
 		%>
-	    <div class="page-header">
+	    <div class="page-header" style="margin: 90px 0 30px;">
     		<h1><fmt:message key="maalr.dict.entry_header" />&nbsp;<i><%=MaalrQueryFormatter.getQueryLabel(pgq)%></i></h1>
     	</div>
 		

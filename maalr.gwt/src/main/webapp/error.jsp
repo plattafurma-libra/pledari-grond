@@ -19,7 +19,7 @@
 		<%-- FOOTER --%>
 		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 		
-		<div id="content">
+		<div>
 		
 			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
