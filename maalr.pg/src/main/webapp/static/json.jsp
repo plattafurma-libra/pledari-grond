@@ -25,11 +25,11 @@
 				<% 
 					if(languageTag.equals("rm")){
 				%>
-					<jsp:include page="/static/json-rm.jsp" />
+						<%@ include file="/static/json-rm.jsp" %>
 				<% 
 					} else if(languageTag.equals("de")){
 				%>
-					<jsp:include page="/static/json-de.jsp" />
+						<%@ include file="/static/json-de.jsp" %>
 				<% 
 					} else {
 				%>

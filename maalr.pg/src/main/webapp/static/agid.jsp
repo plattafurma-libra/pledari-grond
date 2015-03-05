@@ -31,11 +31,11 @@
 				<%
 					if (languageTag.equals("rm")) {
 				%>
-				<jsp:include page="${dictContext}/static/agid-rm.jsp" />
+						<%@ include  file="/static/agid-rm.jsp" %>
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
-				<jsp:include page="${dictContext}/static/agid-de.jsp" />
+						<%@ include  file="/static/agid-de.jsp" %>
 				<%
 					} else {
 				%>

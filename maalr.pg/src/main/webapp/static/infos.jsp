@@ -24,11 +24,11 @@
 				<% 
 					if(languageTag.equals("rm")){
 				%>
-					<jsp:include page="${dictContext}/static/infos-rm.jsp" />
+						<%@ include file="/static/infos-rm.jsp" %>
 				<% 
 					} else if(languageTag.equals("de")){
 				%>
-					<jsp:include page="${dictContext}/static/infos-de.jsp" />
+						<%@ include file="/static/infos-de.jsp" %>
 				<% 
 					} else {
 				%>
