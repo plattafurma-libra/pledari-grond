@@ -1,4 +1,4 @@
-package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
+package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
 import com.github.gwtbootstrap.client.ui.Dropdown;
 import com.github.gwtbootstrap.client.ui.NavHeader;
@@ -29,13 +29,8 @@ public class DictLinksDropDown extends NavPills {
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
 		this.add(createDropdown());
 		this.setHideOn(Device.DESKTOP);
-<<<<<<< HEAD
 		if(Window.getClientWidth() > 768)
 			extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
-=======
-		if(Window.getClientWidth() < 768)
-			extLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
->>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 		addResizeHandler();
 		this.getElement().getStyle().setMarginTop(55, Unit.PX);
 		this.getElement().getStyle().setMarginLeft(5, Unit.PX);

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-var ss = {
-	dict_label: "dicziunaris dals idioms",
-	sursilvan: "dicziunari sursilvan",
-	puter: "dicziunari puter",
-	vallader: "dicziunari vallader",
-=======
 var sm = {
 	select: "elegia en dicziunari",
 	dict_label_lia: "dicziunaris dal Lia Rumantscha",
@@ -15,7 +8,6 @@ var sm = {
 	sursilvan: "sursilvan",
 	puter: "puter",
 	vallader: "vallader",
->>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 	pledari: "divers dicziunaris",
 	glossar_label: "glossaris",
 	gourmet: "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",

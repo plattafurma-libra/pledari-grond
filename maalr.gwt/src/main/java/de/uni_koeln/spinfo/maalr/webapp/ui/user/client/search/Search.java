@@ -45,12 +45,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
-<<<<<<< HEAD
-=======
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictLinksDropDown;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictionaryConstants;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.ExternalLinkDialog;
->>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
 
 public class Search extends Composite implements HasHandlers, IResultDisplay {
