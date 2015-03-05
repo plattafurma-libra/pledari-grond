@@ -31,11 +31,11 @@
 				<%
 					if (languageTag.equals("ss")) {
 				%>
-				<jsp:include page="/static/agid-ss.jsp" />
+						<%@ include  file="/static/agid-rm.jsp" %>
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
-				<jsp:include page="/static/agid-de.jsp" />
+						<%@ include  file="/static/agid-de.jsp" %>
 				<%
 					} else {
 				%>
