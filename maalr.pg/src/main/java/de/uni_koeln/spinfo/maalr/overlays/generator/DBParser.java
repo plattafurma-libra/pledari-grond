@@ -44,8 +44,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import de.uni_koeln.spinfo.maalr.conjugator.generator.ConjugationStructure;
-
 public class DBParser {
 
 	// Path to the original DB in working copy

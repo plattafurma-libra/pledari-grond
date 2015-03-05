@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.IOverlayGenerator;
 import de.uni_koeln.spinfo.maalr.common.shared.GenerationFailedException;
-import de.uni_koeln.spinfo.maalr.conjugator.generator.ConjugationGenerator;
 
 /**
  * Generates verb forms based on the given verb class and the infinitive.
