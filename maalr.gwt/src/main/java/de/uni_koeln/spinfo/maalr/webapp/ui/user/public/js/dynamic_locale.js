@@ -1,8 +1,21 @@
+<<<<<<< HEAD
 var ss = {
 	dict_label: "dicziunaris dals idioms",
 	sursilvan: "dicziunari sursilvan",
 	puter: "dicziunari puter",
 	vallader: "dicziunari vallader",
+=======
+var sm = {
+	select: "elegia en dicziunari",
+	dict_label_lia: "dicziunaris dal Lia Rumantscha",
+	dict_label_other: "dicziunaris dals idioms",
+	rumantsch: "rumantsch grischun",
+	surmiran: "surmiran",
+	sutsilvan: "sutsilvan",
+	sursilvan: "sursilvan",
+	puter: "puter",
+	vallader: "vallader",
+>>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 	pledari: "divers dicziunaris",
 	glossar_label: "glossaris",
 	gourmet: "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
@@ -12,10 +25,15 @@ var ss = {
 };
 
 var de = {
-	dict_label: "Wörterbücher der Idiome",
-	sursilvan: "Wörterbuch sursilvan",
-	puter: "Wörterbuch puter",
-	vallader: "Wörterbuch vallader",
+	select: "Wählen Sie ein Wörterbuch",
+	dict_label_lia: "Wörterbücher der Lia Rumantscha",
+	dict_label_other: "Wörterbücher weiterer Idiome",
+	rumantsch: "Rumantsch Grischun",
+	surmiran: "Surmiran",
+	sutsilvan: "Sutsilvan",
+	sursilvan: "Sursilvan",
+	puter: "Puter",
+	vallader: "Vallader",
 	pledari: "Andere Wörterbücher",
 	glossar_label: "Glossare",
 	gourmet: "Dicziunari Gourmet, Wortschatz für Küche und Gastronomie",
@@ -25,6 +43,9 @@ var de = {
 };
 
 var links = {
+	rumantsch: "/rumantsch",
+	surmiran: "/surmiran",
+	sutsilvan: "/sutsilvan",
 	sursilvan: "http://www.vocabularisursilvan.ch",
 	puter: "http://www.udg.ch/dicziunari/puter",
 	vallader: "http://www.udg.ch/dicziunari/vallader",

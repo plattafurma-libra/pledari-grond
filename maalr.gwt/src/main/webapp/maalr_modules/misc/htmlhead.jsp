@@ -54,18 +54,20 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://login.persona.org/include.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${dictContext}/assets/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
+=======
+>>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
+<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
 <%-- <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script> --%>
 <%-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> --%>
 
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/gwt-bootstrap.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/font-awesome.css" rel="stylesheet">
-<link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/datepicker.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/user.css" rel="stylesheet">
 </head>
