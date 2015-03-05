@@ -127,10 +127,6 @@ public class User implements EntryPoint {
 		if(noScriptDiv != null)
 			noScriptDiv.removeFromParent();
 	
-		// TODO: Add new widget for mobile version...
-		DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
-		RootPanel.get("navi_head").add(dictLinksDropDown);
-		
 		search.setResultCellTable(resultCellTable);
 		search.addSearchHandler(new SearchHandler() {
 
@@ -163,7 +159,12 @@ public class User implements EntryPoint {
 		});
 		
 		// Insert search widget into div#content 
-		RootPanel.get("content").add(search);
+		RootPanel contentPanel = RootPanel.get("content");
+		if(contentPanel != null) {
+			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
+			RootPanel.get("navi_head").add(dictLinksDropDown);
+			contentPanel.add(search);
+		}
 
 
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
