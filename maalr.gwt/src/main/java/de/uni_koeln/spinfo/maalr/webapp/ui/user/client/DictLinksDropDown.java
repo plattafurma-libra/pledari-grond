@@ -4,7 +4,6 @@ import com.github.gwtbootstrap.client.ui.Dropdown;
 import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavPills;
-import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.Style.Visibility;
@@ -28,9 +27,6 @@ public class DictLinksDropDown extends NavPills {
 		this.linksDictionary = DictionaryConstants.getLinksDictionary();
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
 		this.add(createDropdown());
-		this.setHideOn(Device.DESKTOP);
-		if(Window.getClientWidth() > 768)
-			extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
 		addResizeHandler();
 		this.getElement().getStyle().setMarginTop(55, Unit.PX);
 		this.getElement().getStyle().setMarginLeft(5, Unit.PX);
@@ -54,21 +50,30 @@ public class DictLinksDropDown extends NavPills {
 
 	private void addResizeHandler() {
 		
+		if(Window.getClientWidth() > 768) {
+			extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
+			dropDownLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
+		}
+		
 		Window.addResizeHandler(new ResizeHandler() {
 
 			@Override
 			public void onResize(ResizeEvent event) {
 				
-				if(event.getWidth() < 768) {
-					dropDownLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
-				} else {
-					dropDownLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
+				if(dropDownLinkContainer != null) {
+					if(event.getWidth() < 768) {
+						dropDownLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
+					} else {
+						dropDownLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
+					}
 				}
-				
-				if(event.getWidth() < 1028) {
-					extLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
-				} else {
-					extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
+					
+				if(extLinkContainer != null) {
+					if(event.getWidth() < 1028) {
+						extLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
+					} else {
+						extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
+					}
 				}
 			}
 			
