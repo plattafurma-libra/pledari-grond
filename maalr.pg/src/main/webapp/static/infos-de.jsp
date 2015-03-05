@@ -21,8 +21,8 @@
 
 <p>
 	<%
-		String languageTag = (String) session.getAttribute("pl");
-		Locale locale = Locale.forLanguageTag(languageTag);
+		// String languageTag = (String) session.getAttribute("pl");
+		// Locale locale = Locale.forLanguageTag(languageTag);
 		NumberFormat nf = NumberFormat.getNumberInstance(locale);
 	%>
 	<fmt:message key="maalr.index.entry_count" var="numberOfEntries">
