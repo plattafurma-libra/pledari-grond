@@ -57,10 +57,7 @@
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
-=======
->>>>>>> f0d63b4... Add dropdown link widget to mobile version, update dynamic locale js, remove unused grind layout
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
 <%-- <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script> --%>
