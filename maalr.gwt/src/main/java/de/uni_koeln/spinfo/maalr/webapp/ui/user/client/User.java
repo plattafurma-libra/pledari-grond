@@ -122,43 +122,49 @@ public class User implements EntryPoint {
 	}
 
 	private void initializeMainPanel() {
-		Element element = DOM.getElementById("head_search");
-		if (element != null) {
-			for (int i = 0; i < element.getChildCount(); i++) {
-				element.removeChild(element.getChild(0));
+		
+		Element noScriptDiv = DOM.getElementById("nojs_searchcontainer");
+		if(noScriptDiv != null)
+			noScriptDiv.removeFromParent();
+	
+		// TODO: Add new widget for mobile version...
+		DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
+		RootPanel.get("navi_head").add(dictLinksDropDown);
+		
+		search.setResultCellTable(resultCellTable);
+		search.addSearchHandler(new SearchHandler() {
+
+			@Override
+			public void onSearch(final SearchEvent event) {
+
+				AsyncLemmaDescriptionLoader
+						.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
+							}
+
+							@Override
+							public void onSuccess(LemmaDescription result) {
+								// TODO Auto-generated method stub
+							}
+						});
 			}
-			search.setResultCellTable(resultCellTable);
-			search.addSearchHandler(new SearchHandler() {
 
-				@Override
-				public void onSearch(final SearchEvent event) {
+		});
+		search.addPagerHandler(new PagerHandler() {
 
-					AsyncLemmaDescriptionLoader
-							.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+			@Override
+			public void onSizeChanged(PagerEvent event) {
+				resultCellTable.doPageSizeChanged(event.getSize());
+			}
 
-								@Override
-								public void onFailure(Throwable caught) {
-									// TODO Auto-generated method stub
-								}
+		});
+		
+		// Insert search widget into div#content 
+		RootPanel.get("content").add(search);
 
-								@Override
-								public void onSuccess(LemmaDescription result) {
-									// TODO Auto-generated method stub
-								}
-							});
-				}
-
-			});
-			search.addPagerHandler(new PagerHandler() {
-
-				@Override
-				public void onSizeChanged(PagerEvent event) {
-					resultCellTable.doPageSizeChanged(event.getSize());
-				}
-
-			});
-			RootPanel.get("content").add(search);
-		}
 
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
 			public void onValueChange(ValueChangeEvent<String> event) {
