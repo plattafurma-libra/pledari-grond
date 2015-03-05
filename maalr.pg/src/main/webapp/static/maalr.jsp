@@ -12,7 +12,7 @@
 		
 		<div id="bottom"><jsp:include page="/maalr_modules/misc/footer.jsp" /></div>
 		
-		<div id="content" class="container">
+		<div class="container">
 		
 			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
