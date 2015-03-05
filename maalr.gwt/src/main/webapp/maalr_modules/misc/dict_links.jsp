@@ -3,7 +3,7 @@
 <fmt:setLocale value='<%=session.getAttribute("pl")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
-<div id="ext_links_container">
+<div id="ext_links_container" style="visibility: hidden;">
 	<div style="margin-left: 24px; padding-bottom: 5px;">
 		<span style="text-decoration: underline;"><fmt:message key="maalr.dict_links.lia" /></span>
 	</div>
