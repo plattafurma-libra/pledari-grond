@@ -29,8 +29,8 @@ public class DictLinksDropDown extends NavPills {
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
 		this.add(createDropdown());
 		this.setHideOn(Device.DESKTOP);
-		if(Window.getClientWidth() < 768)
-			extLinkContainer.getStyle().setVisibility(Visibility.HIDDEN);
+		if(Window.getClientWidth() > 768)
+			extLinkContainer.getStyle().setVisibility(Visibility.VISIBLE);
 		addResizeHandler();
 		this.getElement().getStyle().setMarginTop(55, Unit.PX);
 		this.getElement().getStyle().setMarginLeft(5, Unit.PX);
