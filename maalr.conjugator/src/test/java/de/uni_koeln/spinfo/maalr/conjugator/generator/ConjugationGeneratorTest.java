@@ -23,9 +23,9 @@ public class ConjugationGeneratorTest {
 	public void testGenerateConjugation() throws FileNotFoundException,
 			IOException {
 
-		conjugation = generator.generateConjugation("pedir",4);
+		conjugation = generator.generateConjugation("serar",9);
 
-		generator.printConjugation(conjugation, "ART-2_eir");
+		generator.printConjugation(conjugation, "ART-9_serar");
 
 	}
 
