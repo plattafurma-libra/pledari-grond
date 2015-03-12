@@ -73,7 +73,7 @@ public class Pronouns {
 	public static final String pron_r_v_3pp = "s'";
 
 	// Conjunctiv
-	public static final String pron_conjunctiv_c = "tge ";
+	public static final String pron_conjunctiv_c = "tgi ";
 	public static final String pron_conjunctiv_v = "tg'";
 
 	// Particip Perfect Classification
