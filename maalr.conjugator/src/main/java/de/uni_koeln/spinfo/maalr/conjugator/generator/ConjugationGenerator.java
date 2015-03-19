@@ -70,8 +70,6 @@ public class ConjugationGenerator {
 
 	private HashMap<String, String> conjugation;
 
-	private Set<String> avoid;
-
 	private String lastTwo;
 	private String lastThree;
 
@@ -124,18 +122,22 @@ public class ConjugationGenerator {
 	}
 
 	public HashMap<String, String> generateConjugation(String infinitiv,
-			int conjugationCLass) {
+			int conjugationClass) {
 
 		root = getRoot(infinitiv);
 
-		modRoot = changeVocalInRoot(root, conjugationCLass);
+		if (conjugationClass == 9) {
+			modRoot = changeVocalInRoot(root, conjugationClass);
 
-		if (modRoot == null) {
-			modRoot = root;
+			if (modRoot == null) {
+				throw new RuntimeException(
+						"For this conjugation you need to enter a verb with a vowel in its root!");
+			}
+
 		}
 
-		if (conjugationCLass < 1 || conjugationCLass > 9) {
-			throw new RuntimeException(conjugationCLass
+		if (conjugationClass < 1 || conjugationClass > 9) {
+			throw new RuntimeException(conjugationClass
 					+ " is not a valid conjugation class." + "\n"
 					+ "The range of conjugations is from 1 to 9.");
 		} else if (getEnding() == null) {
@@ -143,7 +145,7 @@ public class ConjugationGenerator {
 					+ "\n" + "Please enter a verb in its infinitive form.");
 		}
 
-		conjugation = conjugate(root, conjugationCLass);
+		conjugation = conjugate(root, conjugationClass);
 
 		return addPronouns(conjugation);
 
@@ -254,9 +256,6 @@ public class ConjugationGenerator {
 
 				break;
 
-			} else if (conjugationClass == 9) {
-				throw new RuntimeException(
-						"For this conjugation you need to enter a verb with a vowel in its root!");
 			}
 
 		}
@@ -375,13 +374,15 @@ public class ConjugationGenerator {
 			// 3ps
 			cs.setPreschentsing3(root + "a");
 
-			// 1pp
-			cs.setPreschentplural1(root + "agn");
-
 			if (cs.getConjugationclass().equals("art-6")) {
+				// 1pp
+				cs.setPreschentplural1(root + "ign");
 				// 2pp
 				cs.setPreschentplural2(root + "iz");
 			} else {
+
+				// 1pp
+				cs.setPreschentplural1(root + "agn");
 				// 2pp
 				cs.setPreschentplural2(root + "ez");
 			}
@@ -733,14 +734,18 @@ public class ConjugationGenerator {
 		case "art-8":
 
 			cs.setParticipperfectms(root + "o");
+			cs.setParticipperfectmp(root + "os");
 			cs.setParticipperfectfs(root + "ada");
+			cs.setParticipperfectfp(root + "adas");
 
 			break;
 
 		case "art-2":
 
 			cs.setParticipperfectms(root + "ea");
+			cs.setParticipperfectmp(root + "eas");
 			cs.setParticipperfectfs(root + "eda");
+			cs.setParticipperfectfp(root + "edas");
 
 			break;
 
@@ -752,25 +757,35 @@ public class ConjugationGenerator {
 			case 'o':
 
 				cs.setParticipperfectms(modRoot + "ia");
+				cs.setParticipperfectmp(modRoot + "ias");
 				cs.setParticipperfectfs(modRoot + "eida");
+				cs.setParticipperfectfp(modRoot + "eidas");
 
 				break;
 
 			case 'a':
 
 				cs.setParticipperfectms(root + "o");
+				cs.setParticipperfectmp(root + "os");
 				cs.setParticipperfectfs(root + "ada");
+				cs.setParticipperfectfp(root + "adas");
+
 				break;
 
 			case 'i':
 
 				cs.setParticipperfectms(modRoot + "a");
+				cs.setParticipperfectmp(modRoot + "as");
 				cs.setParticipperfectfs(modRoot + "ada");
+				cs.setParticipperfectfp(modRoot + "adas");
+
 				break;
 			case 'u':
 
 				cs.setParticipperfectms(root + "ia");
+				cs.setParticipperfectmp(root + "ias");
 				cs.setParticipperfectfs(root + "eida");
+				cs.setParticipperfectfp(root + "eidas");
 
 				break;
 
@@ -780,7 +795,9 @@ public class ConjugationGenerator {
 		default:
 
 			cs.setParticipperfectms(root + "ia");
+			cs.setParticipperfectmp(root + "ias");
 			cs.setParticipperfectfs(root + "eida");
+			cs.setParticipperfectfp(root + "eidas");
 
 			break;
 
@@ -1424,8 +1441,7 @@ public class ConjugationGenerator {
 	public void printConjugation(Map<String, String> conjugation, String conj)
 			throws IOException, FileNotFoundException {
 
-		File file = new File("/Users/franciscomondaca/Desktop/neu_k/" + conj
-				+ ".txt");
+		File file = new File("/Users/franciscomondaca/Desktop/" + conj + ".txt");
 		Writer out = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(file), "UTF8"));
 
@@ -1520,7 +1536,11 @@ public class ConjugationGenerator {
 		out.append("\n");
 		out.append(conjugation.get("participperfectms"));
 		out.append("\n");
+		out.append(conjugation.get("participperfectmp"));
+		out.append("\n");
 		out.append(conjugation.get("participperfectfs"));
+		out.append("\n");
+		out.append(conjugation.get("participperfectfp"));
 		out.append("\n");
 		out.append("\n");
 
