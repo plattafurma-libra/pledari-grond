@@ -31,16 +31,22 @@ import com.google.gwt.user.client.Window;
  * 
  */
 
-class DictionaryConstants {
+public class DictionaryConstants {
 
 	protected static final String LOCALE_PARAM = "pl";
 	protected static final String LOCALE_FALLBACK = "ss";
 	protected static final String LINKS = "links";
+	public static final String EXT_LINKS = "ext_links";
 	
 	protected static final List<String> DICT_LINKS;
 	protected static final List<String> GLOSSAR_LINKS;
+	public static final List<String> DICT_LINKS_EXTERNAL;
 	
 	static {
+		
+		DICT_LINKS_EXTERNAL = new ArrayList<String>();
+		DICT_LINKS_EXTERNAL.add("dict_ulteriurs");
+		DICT_LINKS_EXTERNAL.add("pledari");
 		
 		DICT_LINKS = new ArrayList<String>();
 		DICT_LINKS.add("dict_label");
@@ -58,7 +64,7 @@ class DictionaryConstants {
 		
 	}
 
-	static Dictionary getLocaleDictionary() {
+	public static Dictionary getLocaleDictionary() {
 		String locale = Window.Location.getParameter(LOCALE_PARAM);
 		if (locale == null)
 			return Dictionary.getDictionary(LOCALE_FALLBACK);
@@ -66,8 +72,12 @@ class DictionaryConstants {
 			return Dictionary.getDictionary(locale);
 	}
 
-	static Dictionary getLinksDictionary() {
+	public static Dictionary getLinksDictionary() {
 		return Dictionary.getDictionary(LINKS);
+	}
+	
+	public static Dictionary getExtLinksDictionary() {
+		return Dictionary.getDictionary(EXT_LINKS);
 	}
 
 }

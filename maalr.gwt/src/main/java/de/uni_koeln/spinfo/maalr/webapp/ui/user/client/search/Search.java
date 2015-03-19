@@ -99,7 +99,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				new ExternalLinkDialog(links);
+				new ExternalLinkDialog(links, DictionaryConstants.getLinksDictionary());
 
 				event.getNativeEvent().preventDefault();
 				event.getNativeEvent().stopPropagation();

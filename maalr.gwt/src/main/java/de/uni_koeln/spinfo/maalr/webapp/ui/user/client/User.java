@@ -20,6 +20,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Command;
@@ -46,6 +48,8 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.DictLinksDropDown;
+import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.DictionaryConstants;
+import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.Search;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
 
@@ -181,6 +185,23 @@ public class User implements EntryPoint {
 			//Logger.getLogger(getClass()).info("History.getToken(): " + History.getToken());
 			History.fireCurrentHistoryState();
 		}
+		
+		Element anchorToOtherDicts = DOM.getElementById("links_ulteriurs");
+		if(anchorToOtherDicts != null) {
+			Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
+			wrapper.addClickHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+					new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL,
+							DictionaryConstants.getExtLinksDictionary());
+					event.getNativeEvent().preventDefault();
+					event.getNativeEvent().stopPropagation();
+				}
+			});
+		}
+		
+		
 		search.setFocus(true);
 	}
 
