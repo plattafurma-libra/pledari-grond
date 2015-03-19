@@ -14,6 +14,7 @@
 		<li><a href="http://www.vocabularisursilvan.ch" target="_blank"><fmt:message key="maalr.dict_links.sursilvan" /></a></li>
 		<li><a href="http://www.udg.ch/dicziunari/puter" target="_blank"><fmt:message key="maalr.dict_links.puter" /></a></li>
 		<li><a href="http://www.udg.ch/dicziunari/vallader" target="_blank"><fmt:message key="maalr.dict_links.vallader" /></a></li>
-		<li><a href="http://www.pledari.ch" target="_blank"><fmt:message key="maalr.dict_links.ulteriurs" /></a></li>
+		<%-- <li><a href="http://www.pledari.ch" target="_blank"><fmt:message key="maalr.dict_links.ulteriurs" /></a></li> --%>
+		<li><a href="#" id="links_ulteriurs"><fmt:message key="maalr.dict_links.ulteriurs" /></a></li>
 	</ul>
 </div>
