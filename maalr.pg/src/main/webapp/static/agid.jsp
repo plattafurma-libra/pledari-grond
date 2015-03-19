@@ -31,7 +31,7 @@
 				<%
 					if (languageTag.equals("ss")) {
 				%>
-						<%@ include  file="/static/agid-rm.jsp" %>
+						<%@ include  file="/static/agid-ss.jsp" %>
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
