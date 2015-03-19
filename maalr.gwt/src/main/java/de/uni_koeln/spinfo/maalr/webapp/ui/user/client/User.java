@@ -184,17 +184,20 @@ public class User implements EntryPoint {
 		}
 		
 		Element anchorToOtherDicts = DOM.getElementById("links_ulteriurs");
-		Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
-		wrapper.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL, 
-						DictionaryConstants.getExtLinksDictionary());
-				event.getNativeEvent().preventDefault();
-				event.getNativeEvent().stopPropagation();
-			}
-		});
+		if(anchorToOtherDicts != null) {
+			Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
+			wrapper.addClickHandler(new ClickHandler() {
+				
+				@Override
+				public void onClick(ClickEvent event) {
+					new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL, 
+							DictionaryConstants.getExtLinksDictionary());
+					event.getNativeEvent().preventDefault();
+					event.getNativeEvent().stopPropagation();
+				}
+			});
+		}
+		
 		
 		search.setFocus(true);
 	}
