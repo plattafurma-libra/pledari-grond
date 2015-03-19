@@ -25,7 +25,7 @@
 				<% 
 					if(languageTag.equals("sm")){
 				%>
-						<%@ include file="/static/infos-rm.jsp" %>
+						<%@ include file="/static/infos-sm.jsp" %>
 				<% 
 					} else if(languageTag.equals("de")){
 				%>
