@@ -2,6 +2,7 @@ var ss = {
 	select: "elegia en dicziunari",
 	dict_label_lia: "dicziunaris dal Lia Rumantscha",
 	dict_label_other: "dicziunaris dals idioms",
+	dict_ulteriurs: "ulteriurs dicziunaris",
 	rumantsch: "rumantsch grischun",
 	surmiran: "surmiran",
 	sutsilvan: "sutsilvan",
@@ -20,6 +21,7 @@ var de = {
 	select: "Wählen Sie ein Wörterbuch",
 	dict_label_lia: "Wörterbücher der Lia Rumantscha",
 	dict_label_other: "Wörterbücher weiterer Idiome",
+	dict_ulteriurs: "Andere Wöterbücher",
 	rumantsch: "Rumantsch Grischun",
 	surmiran: "Surmiran",
 	sutsilvan: "Sutsilvan",
@@ -46,4 +48,8 @@ var links = {
 	flora: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=1288",
 	avionary: "http://www.avionary.info/",
 	ballape: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=66"
+};
+
+var ext_links = {
+	pledari: "http://www.pledari.ch"
 };
