@@ -55,6 +55,12 @@
 			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>de.uni_koeln.spinfo.maalr</groupId>
+			<artifactId>conjugator</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<!-- Enable this dependency to get and display server-side statistics -->
 		<!-- <dependency> <groupId>de.uni_koeln.spinfo.maalr</groupId> <artifactId>sigar</artifactId> 

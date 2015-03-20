@@ -25,13 +25,30 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.mongodb.MongoClientOptions.Builder;
-
 public class ConjugationGenerator {
+
+	// (Endung - Klasse)
+	//
+	// -ar - 1
+	//
+	// -er - 2
+	//
+	// -ier - 3
+	//
+	// -eir [è] - 4
+	//
+	// -er - 5
+	//
+	// -eir [é] - 6
+	//
+	// -eir [é](esch) - 7
+	//
+	// -ar (esch) - 8
+	//
+	// Vokaländerung in der Wurzel - 9
 
 	private ConjugationStructure cs;
 
@@ -52,8 +69,6 @@ public class ConjugationGenerator {
 	private ArrayList<HashMap<String, String>> conjugationList;
 
 	private HashMap<String, String> conjugation;
-
-	private Set<String> avoid;
 
 	private String lastTwo;
 	private String lastThree;
@@ -107,26 +122,30 @@ public class ConjugationGenerator {
 	}
 
 	public HashMap<String, String> generateConjugation(String infinitiv,
-			int conjugationCLass) {
+			int conjugationClass) {
 
 		root = getRoot(infinitiv);
 
-		modRoot = changeVocalInRoot(root);
+		if (conjugationClass == 9) {
+			modRoot = changeVocalInRoot(root, conjugationClass);
 
-		if (modRoot == null) {
-			modRoot = root;
+			if (modRoot == null) {
+				throw new RuntimeException(
+						"For this conjugation you need to enter a verb with a vowel in its root!");
+			}
+
 		}
 
-		if (conjugationCLass < 1 || conjugationCLass > 9) {
-			throw new RuntimeException(conjugationCLass
+		if (conjugationClass < 1 || conjugationClass > 9) {
+			throw new RuntimeException(conjugationClass
 					+ " is not a valid conjugation class." + "\n"
 					+ "The range of conjugations is from 1 to 9.");
 		} else if (getEnding() == null) {
 			throw new RuntimeException(infinitiv + "  is not a valid verb."
-					+ "\n" + "Please type a verb in its infinitive form.");
+					+ "\n" + "Please enter a verb in its infinitive form.");
 		}
 
-		conjugation = conjugate(root, conjugationCLass);
+		conjugation = conjugate(root, conjugationClass);
 
 		return addPronouns(conjugation);
 
@@ -138,7 +157,7 @@ public class ConjugationGenerator {
 
 			query = removeWhitespaces(query);
 
-			if (query.equals("ir")) {
+			if (query.equals("eir")) {
 				setVerb(query);
 				setEnding(query);
 				query = checkReflexiveness(query);
@@ -150,43 +169,19 @@ public class ConjugationGenerator {
 			case 0:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			case 1:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			case 2:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
+						+ "Please enter a verb in its infinitive form.");
 
 			default:
-
-				avoid = new HashSet<String>();
-				avoid.add("ar");
-				avoid.add("er");
-				avoid.add("eir");
-				avoid.add("s'ar");
-				avoid.add("s'ir");
-				avoid.add("s'er");
-				avoid.add("s'eir");
-				avoid.add("sa ar");
-				avoid.add("sa er");
-				avoid.add("sa ir");
-				avoid.add("sa air");
-				avoid.add("sa'ar");
-				avoid.add("sa'ir");
-				avoid.add("sa'er");
-				avoid.add("sa'eir");
-
-				if (avoid.contains(query)) {
-
-					throw new RuntimeException("'" + query + "'"
-							+ " is not a valid verb." + "\n"
-							+ "Please type a verb in its infinitive form.");
-				}
 
 				query = processQuery(query);
 
@@ -224,8 +219,9 @@ public class ConjugationGenerator {
 		return query;
 	}
 
-	public String changeVocalInRoot(String root) {
+	public String changeVocalInRoot(String root, int conjugationClass) {
 		StringBuilder builder = null;
+
 		for (int i = root.length() - 1; i >= 0; i--) {
 
 			char ch = root.charAt(i);
@@ -262,6 +258,11 @@ public class ConjugationGenerator {
 
 			}
 
+		}
+
+		if (builder == null) {
+
+			return null;
 		}
 
 		return builder.toString();
@@ -373,13 +374,15 @@ public class ConjugationGenerator {
 			// 3ps
 			cs.setPreschentsing3(root + "a");
 
-			// 1pp
-			cs.setPreschentplural1(root + "agn");
-
 			if (cs.getConjugationclass().equals("art-6")) {
+				// 1pp
+				cs.setPreschentplural1(root + "ign");
 				// 2pp
 				cs.setPreschentplural2(root + "iz");
 			} else {
+
+				// 1pp
+				cs.setPreschentplural1(root + "agn");
 				// 2pp
 				cs.setPreschentplural2(root + "ez");
 			}
@@ -731,14 +734,18 @@ public class ConjugationGenerator {
 		case "art-8":
 
 			cs.setParticipperfectms(root + "o");
+			cs.setParticipperfectmp(root + "os");
 			cs.setParticipperfectfs(root + "ada");
+			cs.setParticipperfectfp(root + "adas");
 
 			break;
 
 		case "art-2":
 
 			cs.setParticipperfectms(root + "ea");
+			cs.setParticipperfectmp(root + "eas");
 			cs.setParticipperfectfs(root + "eda");
+			cs.setParticipperfectfp(root + "edas");
 
 			break;
 
@@ -750,25 +757,35 @@ public class ConjugationGenerator {
 			case 'o':
 
 				cs.setParticipperfectms(modRoot + "ia");
+				cs.setParticipperfectmp(modRoot + "ias");
 				cs.setParticipperfectfs(modRoot + "eida");
+				cs.setParticipperfectfp(modRoot + "eidas");
 
 				break;
 
 			case 'a':
 
 				cs.setParticipperfectms(root + "o");
+				cs.setParticipperfectmp(root + "os");
 				cs.setParticipperfectfs(root + "ada");
+				cs.setParticipperfectfp(root + "adas");
+
 				break;
 
 			case 'i':
 
 				cs.setParticipperfectms(modRoot + "a");
+				cs.setParticipperfectmp(modRoot + "as");
 				cs.setParticipperfectfs(modRoot + "ada");
+				cs.setParticipperfectfp(modRoot + "adas");
+
 				break;
 			case 'u':
 
 				cs.setParticipperfectms(root + "ia");
+				cs.setParticipperfectmp(root + "ias");
 				cs.setParticipperfectfs(root + "eida");
+				cs.setParticipperfectfp(root + "eidas");
 
 				break;
 
@@ -778,7 +795,9 @@ public class ConjugationGenerator {
 		default:
 
 			cs.setParticipperfectms(root + "ia");
+			cs.setParticipperfectmp(root + "ias");
 			cs.setParticipperfectfs(root + "eida");
+			cs.setParticipperfectfp(root + "eidas");
 
 			break;
 
@@ -851,8 +870,7 @@ public class ConjugationGenerator {
 
 			case 'e':
 			case 'o':
-	
-				
+
 				cs.setImperativ1(root + "a!");
 				cs.setImperativ2(modRoot + "e!");
 				break;
@@ -1423,8 +1441,7 @@ public class ConjugationGenerator {
 	public void printConjugation(Map<String, String> conjugation, String conj)
 			throws IOException, FileNotFoundException {
 
-		File file = new File("/Users/franciscomondaca/Desktop/neu_k/" + conj
-				+ ".txt");
+		File file = new File("/Users/franciscomondaca/Desktop/" + conj + ".txt");
 		Writer out = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(file), "UTF8"));
 
@@ -1519,7 +1536,11 @@ public class ConjugationGenerator {
 		out.append("\n");
 		out.append(conjugation.get("participperfectms"));
 		out.append("\n");
+		out.append(conjugation.get("participperfectmp"));
+		out.append("\n");
 		out.append(conjugation.get("participperfectfs"));
+		out.append("\n");
+		out.append(conjugation.get("participperfectfp"));
 		out.append("\n");
 		out.append("\n");
 

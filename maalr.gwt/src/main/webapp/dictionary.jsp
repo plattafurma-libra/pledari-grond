@@ -8,7 +8,7 @@
 		<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 		<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 	
-		<div id="content" class="container container_entry">
+		<div class="container container_entry">
 		
 			<jsp:include page="/maalr_modules/browse/entry.jsp" />
 		

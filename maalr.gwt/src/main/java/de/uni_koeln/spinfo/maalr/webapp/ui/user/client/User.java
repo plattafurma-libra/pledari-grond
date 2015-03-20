@@ -20,6 +20,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Command;
@@ -122,43 +124,50 @@ public class User implements EntryPoint {
 	}
 
 	private void initializeMainPanel() {
-		Element element = DOM.getElementById("head_search");
-		if (element != null) {
-			for (int i = 0; i < element.getChildCount(); i++) {
-				element.removeChild(element.getChild(0));
+		
+		Element noScriptDiv = DOM.getElementById("nojs_searchcontainer");
+		if(noScriptDiv != null)
+			noScriptDiv.removeFromParent();
+	
+		search.setResultCellTable(resultCellTable);
+		search.addSearchHandler(new SearchHandler() {
+
+			@Override
+			public void onSearch(final SearchEvent event) {
+
+				AsyncLemmaDescriptionLoader
+						.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
+							}
+
+							@Override
+							public void onSuccess(LemmaDescription result) {
+								// TODO Auto-generated method stub
+							}
+						});
 			}
-			search.setResultCellTable(resultCellTable);
-			search.addSearchHandler(new SearchHandler() {
 
-				@Override
-				public void onSearch(final SearchEvent event) {
+		});
+		search.addPagerHandler(new PagerHandler() {
 
-					AsyncLemmaDescriptionLoader
-							.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+			@Override
+			public void onSizeChanged(PagerEvent event) {
+				resultCellTable.doPageSizeChanged(event.getSize());
+			}
 
-								@Override
-								public void onFailure(Throwable caught) {
-									// TODO Auto-generated method stub
-								}
-
-								@Override
-								public void onSuccess(LemmaDescription result) {
-									// TODO Auto-generated method stub
-								}
-							});
-				}
-
-			});
-			search.addPagerHandler(new PagerHandler() {
-
-				@Override
-				public void onSizeChanged(PagerEvent event) {
-					resultCellTable.doPageSizeChanged(event.getSize());
-				}
-
-			});
-			RootPanel.get("content").add(search);
+		});
+		
+		// Insert search widget into div#content 
+		RootPanel contentPanel = RootPanel.get("content");
+		if(contentPanel != null) {
+			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
+			RootPanel.get("navi_head").add(dictLinksDropDown);
+			contentPanel.add(search);
 		}
+
 
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
 			public void onValueChange(ValueChangeEvent<String> event) {
@@ -173,6 +182,22 @@ public class User implements EntryPoint {
 			//Logger.getLogger(getClass()).info("History.getToken(): " + History.getToken());
 			History.fireCurrentHistoryState();
 		}
+		
+		Element anchorToOtherDicts = DOM.getElementById("links_ulteriurs");
+		if(anchorToOtherDicts != null) {
+			Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
+			wrapper.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL,
+							DictionaryConstants.getExtLinksDictionary());
+					event.getNativeEvent().preventDefault();
+					event.getNativeEvent().stopPropagation();
+				}
+			});
+		}
+		
+		
 		search.setFocus(true);
 	}
 
