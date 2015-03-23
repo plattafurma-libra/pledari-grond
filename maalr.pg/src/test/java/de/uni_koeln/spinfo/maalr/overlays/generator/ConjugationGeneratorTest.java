@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ConjugationGeneratorTest {
+	
 	private static ConjugationGenerator conjugationGenerator;
 
 	@BeforeClass

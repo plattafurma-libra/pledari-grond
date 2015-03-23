@@ -36,11 +36,17 @@ public class DictionaryConstants {
 	public static final String LOCALE_PARAM = "pl";
 	public static final String LOCALE_FALLBACK = "sm";
 	public static final String LINKS = "links";
+	public static final String EXT_LINKS = "ext_links";
 	
 	public static final List<String> DICT_LINKS;
 	public static final List<String> GLOSSAR_LINKS;
+	public static final List<String> DICT_LINKS_EXTERNAL;
 	
 	static {
+		
+		DICT_LINKS_EXTERNAL = new ArrayList<String>();
+		DICT_LINKS_EXTERNAL.add("dict_ulteriurs");
+		DICT_LINKS_EXTERNAL.add("pledari");
 		
 		DICT_LINKS = new ArrayList<String>();
 		DICT_LINKS.add("dict_label");
@@ -68,6 +74,10 @@ public class DictionaryConstants {
 
 	public static Dictionary getLinksDictionary() {
 		return Dictionary.getDictionary(LINKS);
+	}
+
+	public static Dictionary getExtLinksDictionary() {
+		return Dictionary.getDictionary(EXT_LINKS);
 	}
 
 }

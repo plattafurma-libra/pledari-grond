@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <overlayEditor>
 	<presetchooser id="type" base="RStichwort"
-		generator="de.uni_koeln.spinfo.maalr.overlays.generator.VerbClassGenerator">
+		generator="de.uni_koeln.spinfo.maalr.conjugator.generator.VerbClassGenerator">
 		<options>
 			<option value="1" />
 			<option value="2" />
@@ -10,6 +10,8 @@
 			<option value="5" />
 			<option value="6" />
 			<option value="7" />
+			<option value="8" />
+			<option value="9" />
 		</options>
 	</presetchooser>
 	<rows>
@@ -60,9 +62,11 @@
 			</column>
 			<column id="particip">
 				<item id="participperfectms"></item>
-				<item id="participperfectfs"></item>
 				<item id="participperfectmp"></item>
+				<item id="participperfectfs"></item>
 				<item id="participperfectfp"></item>
+
+
 			</column>
 		</row>
 		<row>

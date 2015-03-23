@@ -20,8 +20,8 @@
 		<%-- FOOTER --%>
 		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 		
-		<div id="content">
-		
+		<div>
+			
 			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
 			
 			<%-- INTERNAL SIGN IN --%>

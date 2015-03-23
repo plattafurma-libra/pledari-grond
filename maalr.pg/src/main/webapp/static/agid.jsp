@@ -17,7 +17,7 @@
 		<div id="top"><jsp:include page="/maalr_modules/misc/header.jsp" /></div>
 
 		<%-- CONTENT --%>	
-		<div id="content">
+		<div>
 			
 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			
@@ -31,11 +31,11 @@
 				<%
 					if (languageTag.equals("sm")) {
 				%>
-				<jsp:include page="/static/agid-sm.jsp" />
+						<%@ include  file="/static/agid-sm.jsp" %>
 				<%
 					} else if (languageTag.equals("de")) {
 				%>
-				<jsp:include page="/static/agid-de.jsp" />
+						<%@ include  file="/static/agid-de.jsp" %>
 				<%
 					} else {
 				%>

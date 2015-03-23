@@ -252,7 +252,7 @@ public class Dictionary {
 			bc.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())),Occur.MUST);
 			query = bc;
 			TopDocs docs = indexProvider.getSearcher().search(query,
-					null, pageSize, new Sort(new SortField(sortField, SortField.Type.LONG)));
+					null, pageSize, new Sort(new SortField(sortField, SortField.Type.STRING)));
 
 			return toQueryResult(docs, 0, pageSize);
 		} catch (IOException e) {
