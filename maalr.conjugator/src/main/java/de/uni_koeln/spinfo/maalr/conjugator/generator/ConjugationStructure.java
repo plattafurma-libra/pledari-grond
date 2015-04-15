@@ -16,7 +16,6 @@ package de.uni_koeln.spinfo.maalr.conjugator.generator;
  * limitations under the License.
  ******************************************************************************/
 
-
 import java.util.HashMap;
 
 public class ConjugationStructure {
@@ -80,7 +79,12 @@ public class ConjugationStructure {
 			conjunctivsing1, conjunctivsing2, conjunctivsing3,
 			conjunctivplural1, conjunctivplural2, conjunctivplural3,
 			cundizionalsing1, cundizionalsing2, cundizionalsing3,
-			cundizionalplural1, cundizionalplural2, cundizionalplural3 };
+			cundizionalplural1, cundizionalplural2, cundizionalplural3,
+			participperfectms, participperfectfs, participperfectmp,
+			participperfectfp, imperativ1, imperativ2, gerundium, futursing1,
+			futursing2, futursing3, futurplural1, futurplural2, futurplural3
+
+	};
 
 	private HashMap<String, String> values;
 
