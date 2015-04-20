@@ -13,6 +13,6 @@
 		<br><br>
 		<li><a href="#" id="links_ulteriurs"><fmt:message key="maalr.dict_links.ulteriurs" /></a></li>
 		<br><br>
-		<li><a href="#" id="glossar_label"><fmt:message key="maalr.dict_links.ulteriurs" /></a></li>
+		<li><a href="#" id="glossar_label"><fmt:message key="maalr.dict_links.glossary" /></a></li>
 	</ul>
 </div>
