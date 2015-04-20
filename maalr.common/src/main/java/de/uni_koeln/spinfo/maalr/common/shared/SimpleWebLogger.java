@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util;
+package de.uni_koeln.spinfo.maalr.common.shared;
 
 /**
  * Utility class for simple logging into the browsers console by using JSNI .
