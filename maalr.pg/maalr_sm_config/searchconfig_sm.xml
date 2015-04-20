@@ -14,6 +14,7 @@
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
 		<column name="RGenus"/>
+		<column name="RFlex" />
 		<column name="Bearbeitungshinweis" type="CSV"/>
 		<column name="redirect_a" />
 		<column name="redirect_b" />
