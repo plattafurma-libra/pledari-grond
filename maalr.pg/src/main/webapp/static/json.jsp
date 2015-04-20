@@ -11,7 +11,7 @@
 		<div id="top"><jsp:include page="/maalr_modules/misc/header.jsp" /></div>
 
 		<%-- CONTENT --%>		
-		<div id="content">
+		<div>
 		
 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
@@ -25,11 +25,11 @@
 				<% 
 					if(languageTag.equals("rm")){
 				%>
-					<jsp:include page="/static/json-rm.jsp" />
+						<%@ include file="/static/json-rm.jsp" %>
 				<% 
 					} else if(languageTag.equals("de")){
 				%>
-					<jsp:include page="/static/json-de.jsp" />
+						<%@ include file="/static/json-de.jsp" %>
 				<% 
 					} else {
 				%>

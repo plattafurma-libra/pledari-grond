@@ -9,7 +9,8 @@
 	
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
 		
-		<div class="content" id="content">
+<!-- 		<div class="content" id="content"> -->
+		<div class="content">
 			<div class="container-fluid">
 				<noscript>
 					<div class="row-fluid">

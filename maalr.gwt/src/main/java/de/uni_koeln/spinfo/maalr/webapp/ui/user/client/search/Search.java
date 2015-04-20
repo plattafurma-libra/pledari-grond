@@ -19,6 +19,8 @@ import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -58,7 +60,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 
 	@UiField
 	Well well;
-
+	
 	ResultCellTable resultCellTable;
 
 	private ConfigurableSearchArea searchForm;
@@ -94,7 +96,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				new ExternalLinkDialog(links);
+				new ExternalLinkDialog(links, DictionaryConstants.getLinksDictionary());
 
 				event.getNativeEvent().preventDefault();
 				event.getNativeEvent().stopPropagation();
@@ -113,27 +115,39 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	}
 
 	public void setResultCellTable(ResultCellTable resultCellTable) {
-		this.resultCellTable = resultCellTable;
-		resultColumn.add(resultCellTable);
-		resultColumn.setVisible(false);
-		String className = DOM.getElementById("content").getClassName();
-		DOM.getElementById("content").setClassName(
-				className + " search-centered");
+		Element content = getContentDiv();
+		if(content != null) {
+			this.resultCellTable = resultCellTable;
+			resultColumn.add(resultCellTable);
+			resultColumn.setVisible(false); 
+			content.setClassName(content.getClassName() + " search-centered");
+			setMargin(75);
+		}
+	}
+
+	private Element getContentDiv() {
+		return DOM.getElementById("content");
 	}
 
 	@Override
 	public void updateResult(MaalrQuery query, QueryResult result) {
-		if (query.getQueryMap().isEmpty()) {
-			resultColumn.setVisible(false);
-			String className = DOM.getElementById("content").getClassName();
-			DOM.getElementById("content").setClassName(
-					className + " search-centered");
-		} else {
-			this.resultCellTable.setResults(query, result);
-			DOM.getElementById("content").removeClassName("search-centered");
-			resultColumn.setVisible(true);
+		Element content = getContentDiv();
+		if(content != null) {
+			if (query.getQueryMap().isEmpty()) {
+				resultColumn.setVisible(false);
+				content.setClassName(content.getClassName() + " search-centered");
+				setMargin(0);	
+			} else {
+				this.resultCellTable.setResults(query, result);
+				content.removeClassName("search-centered");
+				resultColumn.setVisible(true);
+				setMargin(75);
+			}
 		}
+	}
 
+	private void setMargin(int margin) {
+		this.getElement().getStyle().setMarginTop(margin, Unit.PX);
 	}
 
 	public void setFocus(boolean selectAll) {

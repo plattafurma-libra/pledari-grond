@@ -1297,18 +1297,18 @@ tr.GKHQX3BBKB td:nth-child(5) {
 	padding: 0 10px 0 0 !important;
 }
 
-#content.container_entry {
+.container_entry {
 	width: 522px;
 	line-height: 20px;
 	margin-top: 68px;
 }
 
-#content.container_entry ul {
+.container_entry ul {
 	list-style-type: none;
 	margin: 6px 0 0 18px;
 }
 
-#content.container_entry a {
+.container_entry a {
 	color: rgb(76,76,76);
 }
 
@@ -1831,7 +1831,7 @@ a.btn.btn-danger:hover {
 		margin-top: 22px;
 	}
 
-	#content.container_entry {
+	.container_entry {
 		width: 90%;
 	}
 
