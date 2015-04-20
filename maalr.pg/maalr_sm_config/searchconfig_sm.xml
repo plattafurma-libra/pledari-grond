@@ -344,6 +344,7 @@
 						</field>
 						<field column="RSubsemantik" type="ORACLE"></field>
 						<field column="redirect_b"></field>
+						<field column="RFlex"></field>
 					</fields>
 				</backend_editor>
 			</editors>
