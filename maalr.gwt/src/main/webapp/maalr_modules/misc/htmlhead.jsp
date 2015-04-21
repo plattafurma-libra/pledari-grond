@@ -7,8 +7,7 @@
 
 <%
 	if(session.getAttribute("pl") == null) {
-		//session.setAttribute("pl", request.getLocale().getLanguage());
-		session.setAttribute("pl", "rm");
+		session.setAttribute("pl", request.getLocale().getLanguage());
 	}
 	if(request.getParameter("pl") != null) {
 		session.setAttribute("pl", request.getParameter("pl"));
