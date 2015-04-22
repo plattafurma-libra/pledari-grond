@@ -3,24 +3,15 @@
 	<presetchooser id="type" base="RStichwort"
 		generator="de.uni_koeln.spinfo.maalr.conjugator.generator.VerbClassGenerator">
 		<options>
-			<option value="1" />
-			<option value="2" />
-			<option value="3" />
-			<option value="4" />
-			<option value="5" />
-			<option value="6" />
-			<option value="7" />
-			<option value="8" />
-			<option value="9" />
-			<!-- <option value="-ar (cantar)" /> -->
-			<!-- <option value="-er (lascher)" /> -->
-			<!-- <option value="-ier (cuntschier)" /> -->
-			<!-- <option value="-eir (tigneir)" /> -->
-			<!-- <option value="-er (tanscher)" /> -->
-			<!-- <option value="-eir (parteir)" /> -->
-			<!-- <option value="-eir (amplaneir, -esch)" /> -->
-			<!-- <option value="-ar (abitar, -esch)" /> -->
-			<!-- <option value="verbs alternonts" /> -->
+			<option value="1" label="-ar (cantar)"/>
+			<option value="2" label="-er (lascher)"/>
+			<option value="3" label="-ier (cuntschier)"/>
+			<option value="4" label="-eir (tigneir)"/>
+			<option value="5" label="-er (tanscher)"/>
+			<option value="6" label="-eir (parteir)"/>
+			<option value="7" label="-eir (amplaneir, -esch)"/>
+			<option value="8" label="-ar (abitar, -esch)"/>
+			<option value="9" label="verbs alternonts"/>
 		</options>
 	</presetchooser>
 	<rows>
