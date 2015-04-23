@@ -171,12 +171,14 @@
 </blockquote>
 
 <h3>Haben Sie weitere Probleme mit dem Pledari Grond online?</h3>
-<p>Kontaktieren Sie uns über die verschiedenen Formulare, wenn Ihnen
+<p>
+	Kontaktieren Sie uns über die verschiedenen Formulare, wenn Ihnen
 	bei der Benutzung des Pledari Grond online weitere Probleme begegnen
 	sollten. Ihre Anregungen und Bemerkungen helfen uns, den Pledari Grond
-	online laufend zu verbessern.</p>
+	online laufend zu verbessern.
+</p>
 <p>
-	Redaktion Pledari Grond online <br>Servetsch da linguistica
-	applitgada <br>Lia Rumantscha
+	Lia Rumantscha<br>
+	Redaktion Pledari Grond online
 </p>
 <p><a href="mailto:pg@rumantsch.ch">pg@rumantsch.ch</a></p>
