@@ -170,11 +170,13 @@
 </blockquote>
 
 <h3>Auters problems cun il Pledari Grond online?</h3>
-<p>Sche Vus inscuntrais auters problems cun utilisar il Pledari
-	Grond online, contactai nus. Voss impuls e Vossas remartgas pon
-	contribuir a render il Pledari Grond pli nizzaivel.</p>
 <p>
-	Redacziun Pledari Grond online <br>Servetsch da linguistica
-	applitgada <br>Lia Rumantscha
+	Sche Vus inscuntrais auters problems cun utilisar il Pledari
+	Grond online, contactai nus. Voss impuls e Vossas remartgas pon
+	contribuir a render il Pledari Grond pli nizzaivel.
+</p>
+<p>
+	Lia Rumantscha<br>
+	Redacziun Pledari Grond online
 </p>
 <p><a href="mailto:pg@rumantsch.ch">pg@rumantsch.ch</a></p>
