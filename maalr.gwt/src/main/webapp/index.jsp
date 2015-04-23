@@ -25,13 +25,14 @@
 		<%-- NAVIGATION --%>
 		<%@ include file="/maalr_modules/misc/header.jsp" %>
 	
+		<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
+		
 		<div id="content" class="content">
-			
+		
 			<div class="well" style="margin-top: 25%; width: 50%;">
 				<p>Diese Seite befindet sich zur Zeit im Aufbau.</p>
 			</div>
-<%-- 			<%@ include file="/maalr_modules/misc/dict_links.jsp" %> --%>
-		
+			
 <%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
 			
 <%-- 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %> --%>
