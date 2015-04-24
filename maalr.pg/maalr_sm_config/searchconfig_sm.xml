@@ -14,6 +14,7 @@
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
 		<column name="RGenus"/>
+		<column name="RFlex" />
 		<column name="Bearbeitungshinweis" type="CSV"/>
 		<column name="redirect_a" />
 		<column name="redirect_b" />
@@ -344,6 +345,7 @@
 						</field>
 						<field column="RSubsemantik" type="ORACLE"></field>
 						<field column="redirect_b"></field>
+						<field column="RFlex"></field>
 					</fields>
 				</backend_editor>
 			</editors>

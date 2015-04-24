@@ -67,10 +67,8 @@
 <h3>Oters problems cun igl Vocabulari surmiran online?</h3>
 <p>Schi vous scuntrez sen oters problems cun utilisar igl Vocabulari surmiran online, ans  contacte. Igls voss impuls e las vossas remarcas pon contribueir a render chesta purscheida pi nizzevla.</p>
 <p>
-	Redacziun Vocabulari surmiran online
-	<br>
-	Sarvetsch da linguistica applitgeida
-	<br>
 	Leia Rumantscha
+	<br>
+	Redacziun Vocabulari surmiran online
 </p>
 <p><a href="mailto:pg@rumantsch.ch">pg@rumantsch.ch</a></p>
