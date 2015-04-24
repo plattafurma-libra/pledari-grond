@@ -30,7 +30,11 @@
 		<div id="content" class="content">
 		
 			<div class="well" style="margin-top: 25%; width: 50%;">
-				<p>Diese Seite befindet sich zur Zeit im Aufbau.</p>
+				<h5>INFURMAZIUN / INFORMATION</h5>
+				<hr>
+				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
+				<br>
+				<p>Hier entsteht ein Online-Wörterbuch Sutsilvan-Deutsch/Deutsch-Sutsilvan. Wir bitten Sie um etwas Geduld.</p>
 			</div>
 			
 <%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
