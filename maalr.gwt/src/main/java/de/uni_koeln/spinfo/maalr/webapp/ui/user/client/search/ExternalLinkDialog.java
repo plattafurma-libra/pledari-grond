@@ -45,8 +45,8 @@ public class ExternalLinkDialog extends Widget {
 
 	private List<String> links;
 
-	public ExternalLinkDialog(List<String> links) {
-		this.linksDictionary = DictionaryConstants.getLinksDictionary();
+	public ExternalLinkDialog(List<String> links, Dictionary linksDictionary) {
+		this.linksDictionary = linksDictionary;
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
 		this.links = links;
 		init();

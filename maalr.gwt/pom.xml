@@ -15,31 +15,31 @@
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 		<maalr.import>false</maalr.import>
 	</properties>
-	
-	
+
+
 	<profiles>
-	
+
 		<profile>
 			<id>import</id>
 			<properties>
-				<maalr.import>true</maalr.import>		
+				<maalr.import>true</maalr.import>
 			</properties>
 		</profile>
-	
+
 		<profile>
 			<id>dict-ru</id>
 			<properties>
-				<maalr.config.dir>src/test/resources/maalr_russian</maalr.config.dir>		
+				<maalr.config.dir>src/test/resources/maalr_russian</maalr.config.dir>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>dict-en-min</id>
 			<properties>
-				<maalr.config.dir>src/test/resources/maalr_minimal</maalr.config.dir>		
+				<maalr.config.dir>src/test/resources/maalr_minimal</maalr.config.dir>
 			</properties>
 		</profile>
-	
+
 		<profile>
 			<!-- Improve GWT compile time -->
 			<id>gwt-dev</id>
@@ -80,7 +80,8 @@
 		<dependency>
 			<groupId>com.github.gwtbootstrap</groupId>
 			<artifactId>gwt-bootstrap</artifactId>
-			<version>2.2.1.0</version>
+			<!-- <version>2.2.1.0</version> -->
+			<version>2.3.2.0</version>
 		</dependency>
 
 		<dependency>
@@ -209,7 +210,8 @@
 					<!-- Use custom jetty context (improved startup time) -->
 					<contextXml>src/test/resources/jetty-context.xml</contextXml>
 					<webAppConfig>
-						<!-- Also use src/main/webapp as resource directory (allows modifying JSP's without server restart) -->
+						<!-- Also use src/main/webapp as resource directory (allows modifying 
+							JSP's without server restart) -->
 						<baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
 							<resourcesAsCSV>src/main/webapp/${webappDirectory}</resourcesAsCSV>
 						</baseResource>
@@ -246,7 +248,7 @@
 					</execution>
 				</executions>
 				<configuration>
-<!-- 				    <webappDirectory>${webappDirectory}/sutsilvan</webappDirectory> -->
+					<!-- <webappDirectory>${webappDirectory}/sutsilvan</webappDirectory> -->
 					<runTarget>index.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<compileReport>${gwt.compile.report}</compileReport>

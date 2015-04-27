@@ -25,42 +25,50 @@
 		<%-- NAVIGATION --%>
 		<%@ include file="/maalr_modules/misc/header.jsp" %>
 	
+		<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
+		
 		<div id="content" class="content">
 		
-			<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
-		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+			<div class="well" style="margin-top: 25%; width: 50%;">
+				<h5>INFURMAZIUN / INFORMATION</h5>
+				<hr>
+				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
+				<br>
+				<p>Hier entsteht ein Online-Wörterbuch Sutsilvan-Deutsch/Deutsch-Sutsilvan. Wir bitten Sie um etwas Geduld.</p>
+			</div>
 			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
+<%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
+			
+<%-- 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %> --%>
 			
 			<%-- SEARCH AREA --%>
-			<div class="container-fluid">
-				<noscript>
-					<div class="row-fluid">
-						<div class="span12">
-							<div class="alert container information_container">
-								<strong><fmt:message key="maalr.misc.enable_js_header" /></strong>
-								<fmt:message key="maalr.misc.enable_js_hint" />
-							</div>
-						</div>
-					</div>
-				</noscript>
-				<div class="row-fluid">
-					<div class="span4">
-						<jsp:include page="/maalr_modules/search/complex_search.jsp" />
-					</div>
-					<div id="search-results" class="span8">
-						<jsp:include page="/maalr_modules/search/results.jsp" />
-					</div>
-				</div>
-			</div>
+<!-- 			<div class="container-fluid" id="nojs_searchcontainer"> -->
+<!-- 				<noscript> -->
+<!-- 					<div class="row-fluid"> -->
+<!-- 						<div class="span12"> -->
+<!-- 							<div class="alert container information_container"> -->
+<%-- 								<strong><fmt:message key="maalr.misc.enable_js_header" /></strong> --%>
+<%-- 								<fmt:message key="maalr.misc.enable_js_hint" /> --%>
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</noscript> -->
+<!-- 				<div class="row-fluid"> -->
+<!-- 					<div class="span4"> -->
+<%-- 						<jsp:include page="/maalr_modules/search/complex_search.jsp" /> --%>
+<!-- 					</div> -->
+<!-- 					<div id="search-results" class="span8"> -->
+<%-- 						<jsp:include page="/maalr_modules/search/results.jsp" /> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 		
 		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 
 		<%-- GWT AJAX BROWSER HISTORY SUPPORT --%>
-		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
+<!-- 		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe> -->
 		
-		<jsp:include page="/analytics.jsp" />
+<%-- 		<jsp:include page="/analytics.jsp" /> --%>
 	</body>
 </html>
