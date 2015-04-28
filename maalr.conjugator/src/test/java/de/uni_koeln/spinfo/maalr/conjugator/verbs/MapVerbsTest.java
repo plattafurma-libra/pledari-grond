@@ -1,6 +1,7 @@
 package de.uni_koeln.spinfo.maalr.conjugator.verbs;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -18,11 +19,30 @@ public class MapVerbsTest {
 	@Test
 	public void testAddConjugations() throws IOException {
 
-		List<String> list = mapper.addConjugations("data_sm_edit.tab");
+		List<String> list = mapper.addConjugations("data_sm.tab");
 
-		VerbsIO.printList(list, "data_sm_edit");
+		VerbsIO.printList(list, "data_sm_irr");
 
 	}
 
-	
+	@Test
+	public void test() {
+
+		String s = "esser–sein";
+
+		if (s.contains("–")) {
+
+			System.out.println(s);
+		}
+	}
+
+	@Test
+	public void formatIrregulars() throws IOException {
+
+		List<HashMap<String, String>> list_irregulars = mapper
+				.parseIrregulars("irregulars.txt");
+
+		VerbsIO.printList(list_irregulars, "irreg_format_map");
+	}
+
 }

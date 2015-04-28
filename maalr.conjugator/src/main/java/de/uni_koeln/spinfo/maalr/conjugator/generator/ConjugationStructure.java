@@ -21,6 +21,8 @@ import java.util.HashMap;
 public class ConjugationStructure {
 
 	public static final String verb = "verb";
+	public static final String meaning = "meaning";
+
 	public static final String infinitiv = "infinitiv";
 	public static final String root = "root";
 	public static final String ending = "ending";
@@ -457,6 +459,14 @@ public class ConjugationStructure {
 		this.isReflexive = isReflexive;
 	}
 
+	public void setMeaning(String mean) {
+		values.put(meaning, mean);
+	}
+
+	public String getMeaning() {
+		return values.get(meaning);
+	}
+
 	public String getValue(String key) {
 		switch (key) {
 
@@ -464,6 +474,8 @@ public class ConjugationStructure {
 			return getVerb();
 		case infinitiv:
 			return getInfinitiv();
+		case meaning:
+			return getMeaning();
 		case root:
 			return getRoot();
 		case ending:
@@ -551,5 +563,107 @@ public class ConjugationStructure {
 			break;
 		}
 		return values.get(key);
+	}
+
+	@Override
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+
+		buffer.append(values.get(verb));
+		buffer.append("-");
+		buffer.append(values.get(meaning));
+		buffer.append("\n");
+
+		// Preschaint
+		buffer.append(values.get(preschentsing1));
+		buffer.append("\t");
+		buffer.append(values.get(preschentsing2));
+		buffer.append("\t");
+		buffer.append(values.get(preschentsing3));
+		buffer.append("\t");
+		buffer.append(values.get(preschentplural1));
+		buffer.append("\t");
+		buffer.append(values.get(preschentplural2));
+		buffer.append("\t");
+		buffer.append(values.get(preschentplural3));
+		buffer.append("\n");
+
+		// Imperfect
+		buffer.append(values.get(imperfectsing1));
+		buffer.append("\t");
+		buffer.append(values.get(imperfectsing2));
+		buffer.append("\t");
+		buffer.append(values.get(imperfectsing3));
+		buffer.append("\t");
+		buffer.append(values.get(imperfectplural1));
+		buffer.append("\t");
+		buffer.append(values.get(imperfectplural2));
+		buffer.append("\t");
+		buffer.append(values.get(imperfectplural3));
+		buffer.append("\n");
+
+		// Imperfect
+		buffer.append(values.get(futursing1));
+		buffer.append("\t");
+		buffer.append(values.get(futursing2));
+		buffer.append("\t");
+		buffer.append(values.get(futursing3));
+		buffer.append("\t");
+		buffer.append(values.get(futurplural1));
+		buffer.append("\t");
+		buffer.append(values.get(futurplural2));
+		buffer.append("\t");
+		buffer.append(values.get(futurplural3));
+		buffer.append("\n");
+
+		// Conjunctiv
+		buffer.append(values.get(conjunctivsing1));
+		buffer.append("\t");
+		buffer.append(values.get(conjunctivsing2));
+		buffer.append("\t");
+		buffer.append(values.get(conjunctivsing3));
+		buffer.append("\t");
+		buffer.append(values.get(conjunctivplural1));
+		buffer.append("\t");
+		buffer.append(values.get(conjunctivplural2));
+		buffer.append("\t");
+		buffer.append(values.get(conjunctivplural3));
+		buffer.append("\n");
+
+		// Cundizional
+		buffer.append(values.get(cundizionalsing1));
+		buffer.append("\t");
+		buffer.append(values.get(cundizionalsing1));
+		buffer.append("\t");
+		buffer.append(values.get(cundizionalsing1));
+		buffer.append("\t");
+		buffer.append(values.get(cundizionalplural1));
+		buffer.append("\t");
+		buffer.append(values.get(cundizionalplural2));
+		buffer.append("\t");
+		buffer.append(values.get(cundizionalplural3));
+		buffer.append("\n");
+
+		// Partizip
+		buffer.append(values.get(participperfectms));
+		buffer.append("\t");
+		buffer.append(values.get(participperfectmp));
+		buffer.append("\t");
+		buffer.append(values.get(participperfectfs));
+		buffer.append("\t");
+		buffer.append(values.get(participperfectfp));
+		buffer.append("\n");
+
+		// Gerundium
+		buffer.append(values.get(gerundium));
+		buffer.append("\n");
+
+		// Partizip
+		buffer.append(values.get(imperativ1));
+		buffer.append("\t");
+		buffer.append(values.get(imperativ2));
+		buffer.append("\n");
+
+		return buffer.toString();
 	}
 }
