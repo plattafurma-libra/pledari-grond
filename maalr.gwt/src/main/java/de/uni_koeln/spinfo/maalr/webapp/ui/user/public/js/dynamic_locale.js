@@ -44,10 +44,10 @@ var links = {
 	puter: "http://www.udg.ch/dicziunari/puter",
 	vallader: "http://www.udg.ch/dicziunari/vallader",
 	pledari: "http://www.pledari.ch",
-	gourmet: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=1321",
-	flora: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=1288",
+	gourmet: "http://www.liarumantscha.ch/#type-product=dicziunari_gourmet_w%C3%B6rterbuch_id1321",
+	flora: "http://www.liarumantscha.ch/#type-product=flora_helvetica_id2809",
 	avionary: "http://www.avionary.info/",
-	ballape: "http://www.liarumantscha.ch/sites/content/online_shop.html?shop:view=details&shop:productid=66"
+	ballape: "http://www.liarumantscha.ch/#type-product=osl_-_2309_ballape._reglas%2C_trics_e_tips_id66"
 };
 
 var ext_links = {
