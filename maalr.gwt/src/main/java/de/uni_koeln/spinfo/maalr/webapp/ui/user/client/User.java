@@ -15,6 +15,8 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 
+import java.util.List;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
@@ -24,6 +26,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.History;
@@ -183,23 +186,43 @@ public class User implements EntryPoint {
 			History.fireCurrentHistoryState();
 		}
 		
-		Element anchorToOtherDicts = DOM.getElementById("links_ulteriurs");
-		if(anchorToOtherDicts != null) {
-			Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
+		hiJackExternalLinks("links_ulteriurs", DictionaryConstants.DICT_LINKS_EXTERNAL, DictionaryConstants.getExtLinksDictionary());
+		hiJackExternalLinks("link_glossaris", DictionaryConstants.GLOSSAR_LINKS, DictionaryConstants.getLinksDictionary());
+		
+		
+//		Element anchorToOtherDicts = DOM.getElementById("links_ulteriurs");
+//		if(anchorToOtherDicts != null) {
+//			Anchor wrapper = Anchor.wrap(anchorToOtherDicts);
+//			wrapper.addClickHandler(new ClickHandler() {
+//				
+//				@Override
+//				public void onClick(ClickEvent event) {
+//					new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL, 
+//							DictionaryConstants.getExtLinksDictionary());
+//					event.getNativeEvent().preventDefault();
+//					event.getNativeEvent().stopPropagation();
+//				}
+//			});
+//		}
+		
+		
+		search.setFocus(true);
+	}
+	
+	private void hiJackExternalLinks(final String linkId, final List<String> dictLinksList, final Dictionary dictionary) {
+		Element anchor = DOM.getElementById(linkId);
+		if(anchor != null) {
+			Anchor wrapper = Anchor.wrap(anchor);
 			wrapper.addClickHandler(new ClickHandler() {
-				
 				@Override
 				public void onClick(ClickEvent event) {
-					new ExternalLinkDialog(DictionaryConstants.DICT_LINKS_EXTERNAL, 
-							DictionaryConstants.getExtLinksDictionary());
+					new ExternalLinkDialog(dictLinksList, dictionary);
 					event.getNativeEvent().preventDefault();
 					event.getNativeEvent().stopPropagation();
 				}
 			});
 		}
 		
-		
-		search.setFocus(true);
 	}
 
 	private void doSearch(final MaalrQuery maalrQuery) {
