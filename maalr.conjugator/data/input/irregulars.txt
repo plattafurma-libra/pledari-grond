@@ -1,0 +1,759 @@
+esser–sein
+
+sung	ist	è	ischan	ischas 	èn
+
+era	eras	era	eran	eras	eran
+
+saro	sarossas	saro	saron	sarossas	saron
+
+seia	seias	seia	seian	seias	seian
+
+fiss	fissas	fiss	fissan	fissas	fissan
+
+sto	stos	stada	stadas
+
+essend,siond
+
+seias!	seias!
+
+
+aveir–haben
+
+va	ast	ò	vagn	vez	on
+
+veva	vevas	veva	vevan	vevas	vevan
+
+varo	varossas	varo	varon	varossas	varon
+
+vegia	vegias	vegia	vegian	vegias	vegian
+
+vess	vessas	vess	vessan	vessas	vessan
+
+gia	 	 	 
+
+avend
+
+vegias!	vegias!
+
+
+
+dar–geben
+
+dung	dast	dat	dagn	dez	dattan
+
+dava	davas	dava	davan	davas	davan
+
+daro	darossas	daro	daron	darossas	daron
+
+detta	dettas	detta	dettan	dettas	dettan
+
+dess	dessas	dess	dessan	dessas	dessan
+
+do	dos	dada	dadas
+
+dond
+
+dò!	de!
+
+
+
+
+deir–sagen
+
+dei	deist	dei	schagn	schez	deian
+
+scheva	schevas	scheva	schevan	schevas	schevan
+
+scharo	scharossas	scharo	scharon	scharossas	scharon
+
+scheia	scheias	scheia	scheian	scheias	scheian
+
+schess	schessas	schess	schessan	schessas	schessan
+
+detg	detgs	detga	detgas
+
+schond
+
+dei!	sche!
+
+
+eir–gehen
+
+vign	vast	vo	giagn	gez	von
+
+geva	gevas	geva	gevan	gevas	gevan
+
+giaro	giarossas	giaro	giaron	giarossas	giaron
+
+geia	geias	geia	geian	geias	geian
+
+gess	gessas	gess	gessan	gessas	gessan
+
+ia	ias	eida	eidas
+
+giond
+
+vo!	ge!
+
+
+far–tun
+
+fatsch	fast	fò	faschagn	faschez	fon
+
+fascheva	faschevas	fascheva	faschevan	faschevas	faschevan
+
+fascharo	fascharossas	fascharo	fascharon	fascharossas	fascharon
+
+fetscha	fetschas	fetscha	fetschan	fetschas	fetschan
+
+faschess	faschessas	faschess	faschessan	faschessas	faschessan
+
+fatg	fatga	fatgs	fatgas
+
+faschond
+
+fò!	fasche!
+
+
+
+
+fugeir–fliehen
+
+fui	fuist	fui	fugign	fugiz	fuian
+
+fugiva	fugivas	fugiva	fugivan	fugivas	fugivan
+
+fugiro	fugirossas	fugiro	fugiron	fugirossas	fugiron
+
+fuia	fuias	fuia	fuian	fuias	fuian
+
+fugiss	fugissas	fugiss	fugissan	fugissas	fugissan
+
+fugia	fugias	fugeida	fugeidas
+
+fugiond
+
+fui!	fugi!
+
+
+vuleir–wollen
+
+vi	vot	vot	lagn	lez	vottan
+
+leva	levas	leva	levan	levas	levan
+
+vign a leir	vignst a leir	vign a leir	nign a leir	niz a leir	vignan a leir
+
+viglia	viglias	viglia	viglian	viglias	viglian
+
+less	lessas	less	lessan	lessas	lessan
+
+vulia	vulias	vuleida	vuleidas
+
+vulend
+
+viglias!	viglias!
+
+
+liier–binden
+
+lei	leist	leia	liagn	liez	leian
+
+liiva	liivas	liiva	liivan	liivas	liivan
+
+liaro	liarossas	liaro	liaron	liarossas	liaron
+
+leia	leias	leia	leian	leias	leian
+
+liess	liessas	liess	liessan	liessas	liessan
+
+liia	liias	lieida	lieidas
+
+liond
+
+leia!	lie!
+
+neir–kommen
+
+vign	vignst	vign	nign	niz	vignan
+
+niva	nivas	niva	nivan	nivas	nivan
+
+niro	nirossas	niro	niron	nirossas	niron
+
+vigna	vignas	vigna	vignan	vignas	vignan
+
+niss	nissas	niss	nissan	nissas	nissan
+
+nia	nias	neida	neidas
+
+gnond
+
+vea!	ni!
+
+
+plascheir–gefallen
+
+plai	plaist	plai	plaschagn	plaschez	plaian
+
+plascheva	plaschevas	plascheva	plaschevan	plaschevas	plaschevan
+
+plascharo	plascharossas	plascharo	plascharon	plascharossas	plascharon
+
+plaia	plaias	plaia	plaian	plaias	plaian
+
+plaschess	plaschessas	plaschess	plaschessan	plaschessas	plaschessan
+
+plaschia	plaschias	plascheida	plascheidas
+
+plaschond
+
+plai!	plasche!
+
+
+roir–nagen
+
+roi	roist	roi	ruiagn	ruiez	roian
+
+ruiva	ruivas	ruiva	ruivan	ruivas	ruivan
+
+ruiaro	ruiarossas	ruiaro	ruiaron	ruiarossas	ruiaron
+
+roia	roias	roia	roian	roias	roian
+
+ruiess	ruiessas	ruiess	ruiessan	ruiessas	ruiessan
+
+rois	rois	roisa	roisas
+
+ruiond
+
+roi!	ruie!
+
+
+ruier–bitten
+
+roi	roias	roia	ruiagn	ruiez	roian
+
+ruiva	ruivas	ruiva	ruivan	ruivas	ruivan
+
+ruiaro	ruiarossas	ruiaro	ruiaron	ruiarossas	ruiaron
+
+roia	roias	roia	roian	roias	roian
+
+ruiess	ruiessas	ruiess	ruiessan	ruiessas	ruiessan
+
+ruia	ruias	rueida	rueidas
+
+ruiond
+
+roia!	ruie!
+
+
+saveir–wissen
+
+sa	sast	so	savagn	savez	son
+
+saveva	savevas	saveva	savevan	savevas	savevan
+
+savaro	savarossas	savaro	savaron	savarossas	savaron
+
+saptga	saptgas	saptga	saptgan	saptgas	saptgan
+
+savess	savessas	savess	savessan	savessas	savessan
+
+savia	savias	saveida	saveidas
+
+savond
+
+saptgas!	saptgas!
+
+
+scher–liegen
+
+schei	scheas	schea	schaschagn	schaschez	schean
+
+schascheva	schaschevas	schascheva	schaschevan	schaschevas	schaschevan
+
+schascharo	schascharossas	schascharo	schascharon	schascharossas	schascharon
+
+schea	scheas	schea	schean	scheas	schean
+
+schaschess	schaschessas	schaschess	schaschessan	schaschessas	schaschessan
+
+schaschea	schascheas	schascheida	schascheidas
+
+schaschond
+
+schea!	schasche!
+
+
+star–stehen
+
+stung	stast	stat	stagn	stez	stattan
+
+stava	stavas	stava	stavan	stavas	stavan
+
+staro	starossas	staro	staron	starossas	staron
+
+stetta	stettas	stetta	stettan	stettas	stettan
+
+stess	stessas	stess	stessan	stessas	stessan
+
+sto	stos	stada	stadas
+
+stond
+
+stò!	ste!
+
+
+stueir-müssen
+
+stò	stost	stò	stuagn	stuez	ston
+
+stueva	stuevas	stueva	stuevan	stuevas	stuevan
+
+stuaro	stuarossas	stuaro	stuaron	stuarossas	stuaron
+
+stoptga	stoptgas	stoptga	stoptgan	stoptgas	stoptgan
+
+stuess	stuessas	stuess	stuessan	stuessas	stuessan
+
+stuia	stuias	stueida	stueidas
+
+stuond
+
+ 	 
+
+-
+
+
+tascheir–schweigen
+
+tai	taist	tai	taschagn	taschez	taian
+
+tascheva	taschevas	tascheva	taschevan	taschevas	taschevan
+
+tascharo	tascharossas	tascharo	tascharon	tascharossas	tascharon
+
+taia	taias	taia	taian	taias	taian
+
+taschess	taschessas	taschess	taschessan	taschessas	taschessan
+
+taschia	taschias	tascheida	tascheidas
+
+taschond
+
+tai!	tasche!
+
+
+trer–ziehen
+
+teir	teiras	teira	tiragn	tirez	teiran
+
+tirava	tiravas	tirava	tiravan	tiravas	tiravan
+
+tiraro	tirarossas	tiraro	tiraron	tirarossas	tiraron
+
+teira	teiras	teira	teiran	teiras	teiran
+
+tiress	tiressas	tiress	tiressan	tiressas	tiressan
+
+tratg	tratgs	tratga	tratgas
+
+tirond
+
+teira!	tire!
+
+
+
+antrar–eintreten
+
+aintr	aintras	aintra	antragn	antrez	aintran
+
+antrava	antravas	antrava	antravan	antravas	antravan
+
+antraro	antrarossas	antraro	antraron	antrarossas	antraron
+
+aintra	aintras	aintra	aintran	aintras	aintran
+
+antress	antressas	antress	antressan	antressas	antressan
+
+antro	antros	antrada	antradas
+
+antrond
+
+aintra!	antre!
+
+
+
+correr–rennen 
+
+cor	corras	corra	currign	curriz	corran
+
+curriva	currivas	curriva	currivan	currivas	currivan
+
+curriro	currirossas	curriro	curriron	currirossas	curriron
+
+corra	corras	corra	corran	corras	corran
+
+curriss	currissas	curriss	currissan	currissas	curressan
+
+curria	currias	curreida	curreidas
+
+currond
+
+corra!	curri!
+
+
+discurrer-sprechen
+
+discor	discorras	discorra	discurrign	discurriz	discorran
+
+discurriva	discurrivas	discurriva	discurrivan	discurrivas	discurrivan
+
+discurriro	discurrirossas	discurriro	discurriron	discurrirossas	discurriron
+
+discorra	discorras	discorra	discorran	discorras	discorran
+
+discurriss	discurrissas	discurriss	discurrissan	discurrissas	discurressan
+
+discurria	discurrias	discurreida	discurreidas
+
+discurrond
+
+discorra!	discurri!
+
+
+
+
+creir–glauben
+
+crei	creist	crei	cartagn	cartez	creian
+
+carteva	cartevas	carteva	cartevan	cartevas	cartevan
+
+cartaro	cartarossas	cartaro	cartarossan	cartarossas	cartarossan
+
+creia	creias	creia	creain	creias	creian
+
+cartess	cartessas	cartess	cartessan	cartessas	cartessan
+
+cartia	cartias	carteida	carteidas
+
+cartond
+
+crei!	carte!
+
+
+anvidar–anzünden
+
+anveid	anveidas	anveida	anvidagn	anvidez	anveidan
+
+anvidava	anvidavas	anvidava	anvidavan	anvidavas	anvidavan
+
+anvidaro	anvidarossas	anvidaro	anvidaron	anvidarossas	anvidaron
+
+anveida	anveidas	anveida	anveidan	anveidas	anveidan
+
+anvidess	anvidessas	anvidess	anvidessan	anvidessas	anvidessan
+
+anvido	anvidos	anvidada	anvidadas
+
+anvidond
+
+anveida!	anvide!
+
+sarar-schliessen
+
+ser	seras	sera	saragn	sarez	seran
+
+sarava	saravas	sarava	saravan	saravas	saravan
+
+sararo	sararossas	sararo	sararon	sararossas	sararon
+
+sera	seras	sera	seran	seras	seran
+
+saress	saressas	saress	saressan	saressas	saressan
+
+saro	saros	sarada	saradas
+
+sarond
+
+sera!	sare!
+
+culeir-pflücken
+
+culei	culeist	culei	culiagn	culiez	culeian
+
+culiiva	culiivas	culiiva	culiivan	culiivas	culiivan
+
+culiaro	culiarossas	culiaro	culiaron	culiarossas	culiaron
+
+culeia	culeias	culeia	culeian	culeias	culeian
+
+culiess	culiessas	culiess	culiessan	culiessas	culiessan
+
+culetg	culetgs	culetga	culetgas	
+
+culiond
+
+culei!	culie!
+
+coier-kochen
+
+coi	coist	coi	cuiagn	cuiez	coian
+
+cuiiva	cuiivas	cuiiva	cuiivan	cuiivas	cuiivan
+
+cuiaro	cuiarossas	cuiaro	cuiaron	cuiarossas	cuiaron
+
+coia	coias	coia	coian	coias	coian
+
+cuiess	cuiessas	cuiess	cuiessan	cuiessas	cuiessan
+
+cotg	cotgs	cotga	cotgas
+
+cuiond
+
+coia!	cuie!
+
+declarar-erklären
+
+dacler	dacleras	daclera	declaragn	declarez	dacleran
+
+declarava	declaravas	declarava	declaravan	declaravas	declaravan
+
+declaro	declarossas	declaro	declaron	declarossas	declaron
+
+daclera	dacleras	daclera	dacleran	dacleras	dacleran
+
+declaress	declaressas	declaress	declaressan	declaressas	declaressan
+
+declaro	declaros	declarada	declaradas
+
+declarond
+
+daclera!	declare!
+
+sbagler-fehlen 
+
+sbagl	sbaglias	sbaglia	sbagliagn	sbaglez	sbaglian
+
+sbagleva	sbaglevas	sbagleva	sbaglevan	sbaglevas	sbaglevan
+
+sbagliaro	sbagliarossas	sbagliaro	sbagliaron	sbagliarossas	sbagliaron
+
+sbaglia	sbaglias	sbaglia	sbaglian	sbaglias	sbaglian
+
+sbagless	sbaglessas	sbagless	sbaglessan	sbaglessas	sbaglessan
+
+sbaglea	sbagleas	sbagleda	sbagledas
+
+sbagliond
+
+sbaglia!	sbagle!
+
+magler-essen 
+
+magl	maglias	maglia	magliagn	maglez	maglian
+
+magleva	maglevas	magleva	maglevan	maglevas	maglevan
+
+magliaro	magliarossas	magliaro	magliaron	magliarossas	magliaron
+
+maglia	maglias	maglia	maglian	maglias	maglian
+
+magless	maglessas	magless	maglessan	maglessas	maglessan
+
+maglea	magleas	magleda	magledas
+
+magliond
+
+maglia!	magle!
+
+biagier-bauen
+
+bietg	biegias	biegia	biagiagn	biagez	biegian
+
+biagiva	biagivas	biagiva	 biagivan	biagivas	biagivan
+
+biagiaro	biagiarossas	biagiaro	biagiaron	biagiarossas	biagaron
+
+biegia	biegias	biegia	biegian	biegias	biegian
+
+biagess	biagessas	biagess	biagessan	biagessas	biagessan
+
+biagia	biagias	biageida	biageidas
+
+biagiond
+
+biegia!	biagie!
+
+parteir-teilen
+
+part	partas	parta	partign	partiz	partan
+
+partiva	partivas	partiva	partivan	partivas	partivan
+
+partiro	partirossas	partiro	partiron	partirossas	partiron
+
+parta	partas	parta	partan	partas	partan
+
+partiss	partissas	partiss	partissan	partissas	partissan
+
+partia	partias	parteida	parteidas
+
+partond/partend
+
+parta!	parte!
+
+parteir-abfahren
+
+part	partas	parta	partign	partiz	partan
+
+partiva	partivas	partiva	partivan	partivas	partivan
+
+partiro	partirossas	partiro	partiron	partirossas	partiron
+
+parta	partas	parta	partan	partas	partan
+
+partiss	partissas	partiss	partissan	partissas	partissan
+
+partia	partias	parteida	parteidas
+
+partond/partend
+
+parta!	parte!
+
+
+metter-stellen
+
+met	mettas	metta	mattagn	mattez	mettan
+
+matteva	mattevas	matteva	mattevan	mattevas	mattevan
+
+mattaro	mattarossas	mattaro	mattaron	mattarossas	mattaron
+
+metta	mettas	metta	mettan	mettas	mettan
+
+mattess	mettessas	mattess	mattessan	mattessas	mattessan
+
+mess	mess	messa	messas
+
+mattond
+
+metta!	matte!
+
+
+screiver–schreiben
+
+screiv	screivas	screiva	scrivagn	scrivez	screivan
+
+scriveva	scrivevas	scriveva	scrivevan	scrivevas	scrivevan
+
+scrivaro	scrivarossas	scrivaro	scrivaron	scrivarossas	scrivaron
+
+screiva	screivas	screiva	screivan	screivas	screivan
+
+scrivess	scrivessas	scrivess	scrivessan	scrivessas	scrivessan
+
+scretg	scretgs	scretga	scretgas
+
+scrivond
+
+screiva!	scrive!
+
+
+inscreiver–eintragen
+
+inscreiv	inscreivas	inscreiva	inscrivagn	inscrivez	inscreivan
+
+inscriveva	inscrivevas	inscriveva	inscrivevan	inscrivevas	inscrivevan
+
+inscrivaro	inscrivarossas	inscrivaro	inscrivaron	inscrivarossas	inscrivaron
+
+inscreiva	inscreivas	inscreiva	inscreivan	inscreivas	inscreivan
+
+inscrivess	inscrivessas	inscrivess	inscrivessan	inscrivessas	inscrivessan
+
+inscretg	inscretgs	inscretga	inscretgas
+
+inscrivond
+
+inscreiva!	inscrive!
+
+
+
+pudeir–können
+
+poss	post	pò	pudagn	pudez	pon
+
+pudeva	pudevas	pudeva	pudevan	pudevas	pudevan
+
+pudaro	pudarossas	pudaro	pudaron	pudarossas	pudaron
+
+possa	possas	possa	possan	possas	possan
+
+pudess	pudessas	pudess	pudessan	pudessas	pudessan
+
+pudia	pudias	pudeida	pudeidas
+
+pudond
+
+  	  	
+
+veir–sehen
+
+vei	veist	vei	vasagn	vasez	veian
+
+vaseva	vasevas	vaseva	vasevan	vasevas	vasevan
+
+vasaro	vasarossas	vasaro	vasaron	vasarossas	vasaron
+
+veia	veias	veia	veian	veias	veian
+
+vasess	vasessas	vasess	vasessan	vasessas	vasessan
+
+via	vias	vaseida	vaseidas
+
+vasond
+
+  	  	
+
+
+vaseir–sehen 
+
+ves	veist	vesa	vasagn		vasez	vesan
+
+vaseva	vasevas	vaseva	vasevan	vasevas	vasevan
+
+vasaro	vasarossas	vasaro	vasaron	vasarossas	vasaron
+
+vesa	vesas	vesa	vesan	vesas	vesan
+
+vasess	vasessas	vasess	vasessan	vasessas	vasessan
+
+vasia	vasias	vaseida	vaseidas
+
+vasond
+
+  	  	
+
+
+reir–lachen
+
+rei	reist	rei	riagn	riez	reian
+
+riiva	riivas	riiva	riivan	riivas	riivan
+
+riaro	riarossas	riaro	riaron	riarossas	riaron
+
+reia	reias	reia	reian	reias	reian
+
+riess	riessas	riess	riessan	riessas	riessan
+
+reis/riia	  	  	  	
+
+riond
+
+rei!	rie!
