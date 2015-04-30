@@ -1,7 +1,5 @@
-annunztgier
-annunztgier
-depender
-parteir	[é]
+﻿annunztgier
+depender	5
 agiuntar
 annunztgier
 calar
@@ -9,59 +7,54 @@ sorteir	[é]
 preparar
 procurar
 angraztger
-tanscher
-diriger
-dastger
-includer
-decider
+tanscher	5
+diriger	5 
+dastger	2
+includer	5
+decider	5
 stgisar
 legrar
-contanscher
-magler
-mantger
+contanscher	5
+mantger	2
 cattar
 cuntschier
 legrar
-tanscher
-valeir
-tigneir
+tanscher	5
+valeir	4
+tigneir	4
 sa trattar
 girar
 sperar
 sagleir	[é]
 tgirar
 interessar
-sbagler
 zarclar
-tatger
-curriger
+tatger	2
+curriger	5
 girar
-lascher
-diriger
-liger
+lascher	2
+diriger	5
+liger	5
 carezzar
 tgirar
 chintar
-plover
-tanscher
+plover	5	
+tanscher	5
 reservar
-pareir
-tagler
-neiver
+pareir	4
+tagler	2
+neiver	5
 cantar
 sorteir	[é]
 sagleir	[é]
 constar
 disturbar
 barattar
-parteir	[é]
-sbagler
 preparar
-proponer
+proponer	5
 lavar
 pattar
-repeter
-eliger
+repeter	5
 turnar
 scasar
-persvader
+persvader	5
