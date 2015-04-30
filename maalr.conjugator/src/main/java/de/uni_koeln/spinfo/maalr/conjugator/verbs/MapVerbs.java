@@ -45,7 +45,15 @@ public class MapVerbs {
 			if (array.length == 2) {
 				Verb v = new Verb();
 				v.setForm(array[0]);
-				v.setStress(true);
+
+				if (array[1].equals("[é]")) {
+
+					// ART 6
+					v.setStress(true);
+				} else {
+					// ART 4
+					v.setStress(false);
+				}
 
 				vwVerbs.add(v);
 			} else if (array.length == 1) {
@@ -93,7 +101,17 @@ public class MapVerbs {
 			if (array.length == 2) {
 				Verb v = new Verb();
 				v.setForm(array[0]);
-				v.setStress(true);
+
+				// Not necessary, but still
+				if (array[1].equals("[é]")) {
+
+					// ART 6
+					v.setStress(true);
+				} else {
+					// ART 4
+					v.setStress(false);
+				}
+
 				if (array[1].equals("2")) {
 					reg_second.add(array[0]);
 				} else if (array[1].equals("5")) {
@@ -150,14 +168,9 @@ public class MapVerbs {
 
 					HashMap<String, String> map = null;
 
-					// Add irregulars
-
-					Set<String> irr = new HashSet<>();
-
 					for (HashMap<String, String> m : list_irregulars) {
 
 						String v = m.get("verb");
-						irr.add(v);
 
 						if (verb.equals(v)) {
 
@@ -186,13 +199,6 @@ public class MapVerbs {
 					}
 
 					for (Verb vs : regVerbs) {
-
-						
-						//Already marked as irregular?
-						if (irr.contains(vs)) {
-							break;
-
-						}
 
 						if (vs.getForm().equals(verb)) {
 
@@ -263,13 +269,6 @@ public class MapVerbs {
 					}
 
 					for (Verb vs : vwVerbs) {
-						
-						//Already marked as irregular?
-
-						if (irr.contains(vs)) {
-							break;
-
-						}
 
 						if (vs.getForm().equals(verb)) {
 
@@ -286,14 +285,6 @@ public class MapVerbs {
 					}
 
 					for (Verb vs : regEschVerbs) {
-
-						
-						//Already marked as irregular?
-
-						if (irr.contains(vs)) {
-							break;
-
-						}
 
 						if (vs.getForm().equals(verb)) {
 
