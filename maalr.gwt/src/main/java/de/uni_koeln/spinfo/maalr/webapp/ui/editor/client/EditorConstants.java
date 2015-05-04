@@ -101,7 +101,7 @@ public interface EditorConstants extends Constants {
 
 	public String verifiedLemma();
 
-	public String sm();
+	public String rm();
 
 	public String en();
 
