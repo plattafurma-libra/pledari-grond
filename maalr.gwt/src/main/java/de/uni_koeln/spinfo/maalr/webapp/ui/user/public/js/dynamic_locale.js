@@ -9,7 +9,7 @@ var rm = {
 	sursilvan: "sursilvan",
 	puter: "puter",
 	vallader: "vallader",
-	pledari: "divers dicziunaris",
+	pledari: "ulteriurs dicziunaris",
 	glossar_label: "glossaris",
 	gourmet: "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
 	flora: "Flora Helvetica, nums da flurs e plantas",
