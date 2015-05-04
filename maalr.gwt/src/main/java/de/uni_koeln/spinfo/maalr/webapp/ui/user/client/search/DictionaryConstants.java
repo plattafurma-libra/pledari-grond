@@ -38,8 +38,8 @@ public class DictionaryConstants {
 	protected static final String LINKS = "links";
 	public static final String EXT_LINKS = "ext_links";
 	
-	protected static final List<String> DICT_LINKS;
-	protected static final List<String> GLOSSAR_LINKS;
+	public static final List<String> DICT_LINKS;
+	public static final List<String> GLOSSAR_LINKS;
 	public static final List<String> DICT_LINKS_EXTERNAL;
 	
 	static {
