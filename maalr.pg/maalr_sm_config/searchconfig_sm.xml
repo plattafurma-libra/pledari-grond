@@ -352,7 +352,7 @@
 			<results>
 				<fields>
 					<field column="RStichwort" format="{0}"></field>
-						<field column="RFlex" format="/ {0}"></field>
+					<field column="RFlex" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
 					<field column="RSubsemantik" format="({0})"></field>
 					<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
 				</fields>
