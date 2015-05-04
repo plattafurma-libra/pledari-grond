@@ -368,7 +368,22 @@ public class ConjugationGenerator {
 		case "art-6":
 
 			// 1ps
-			cs.setPreschentsing1(root);
+			if (ending.equals("ar") && !getInfinitiv().equals("mussar")) {
+
+				if (endsWithDoubleConsonant(root)) {
+					String firstSingular = root.substring(0, root.length() - 1);
+					cs.setPreschentsing1(firstSingular);
+				} else {
+
+					cs.setPreschentsing1(root);
+				}
+
+			}
+
+			else {
+				cs.setPreschentsing1(root);
+			}
+
 			// 2ps
 			cs.setPreschentsing2(root + "as");
 			// 3ps
@@ -396,7 +411,22 @@ public class ConjugationGenerator {
 
 			// PRESCHENT
 			// 1ps
-			cs.setPreschentsing1(root + "esch");
+			if (ending.equals("ar") && !getInfinitiv().equals("mussar")) {
+
+				if (endsWithDoubleConsonant(root)) {
+					String firstSingular = root.substring(0, root.length() - 1);
+					cs.setPreschentsing1(firstSingular);
+				} else {
+
+					cs.setPreschentsing1(root);
+				}
+
+			}
+
+			else {
+				cs.setPreschentsing1(root);
+			}
+
 			// 2ps
 			cs.setPreschentsing2(root + "eschas");
 			// 3ps
@@ -426,7 +456,26 @@ public class ConjugationGenerator {
 			case 'a':
 			case 'u':
 			case 'i':
-				cs.setPreschentsing1(modRoot);
+
+				// PRESCHENT
+				// 1ps
+				if (ending.equals("ar") && !getInfinitiv().equals("mussar")) {
+
+					if (endsWithDoubleConsonant(root)) {
+						String firstSingular = modRoot.substring(0,
+								modRoot.length() - 1);
+						cs.setPreschentsing1(firstSingular);
+					} else {
+
+						cs.setPreschentsing1(modRoot);
+					}
+
+				}
+
+				else {
+					cs.setPreschentsing1(modRoot);
+				}
+
 				cs.setPreschentsing2(modRoot + "as");
 				cs.setPreschentsing3(modRoot + "a");
 				cs.setPreschentplural1(root + "agn");
@@ -437,7 +486,26 @@ public class ConjugationGenerator {
 
 			case 'e':
 			case 'o':
-				cs.setPreschentsing1(root);
+
+				// PRESCHENT
+				// 1ps
+				if (ending.equals("ar")) {
+
+					if (endsWithDoubleConsonant(root)) {
+						String firstSingular = root.substring(0,
+								root.length() - 1);
+						cs.setPreschentsing1(firstSingular);
+					} else {
+
+						cs.setPreschentsing1(root);
+					}
+
+				}
+
+				else {
+					cs.setPreschentsing1(root);
+				}
+
 				cs.setPreschentsing2(root + "as");
 				cs.setPreschentsing3(root + "a");
 				cs.setPreschentplural1(modRoot + "agn");
@@ -751,45 +819,59 @@ public class ConjugationGenerator {
 
 		case "art-9":
 
-			switch (getVocalInRoot()) {
-
-			case 'e':
-			case 'o':
-
-				cs.setParticipperfectms(modRoot + "ia");
-				cs.setParticipperfectmp(modRoot + "ias");
-				cs.setParticipperfectfs(modRoot + "eida");
-				cs.setParticipperfectfp(modRoot + "eidas");
-
-				break;
-
-			case 'a':
+			if (ending.equals("ar")) {
 
 				cs.setParticipperfectms(root + "o");
 				cs.setParticipperfectmp(root + "os");
 				cs.setParticipperfectfs(root + "ada");
 				cs.setParticipperfectfp(root + "adas");
 
-				break;
-
-			case 'i':
-
-				cs.setParticipperfectms(modRoot + "a");
-				cs.setParticipperfectmp(modRoot + "as");
-				cs.setParticipperfectfs(modRoot + "ada");
-				cs.setParticipperfectfp(modRoot + "adas");
-
-				break;
-			case 'u':
-
-				cs.setParticipperfectms(root + "ia");
-				cs.setParticipperfectmp(root + "ias");
-				cs.setParticipperfectfs(root + "eida");
-				cs.setParticipperfectfp(root + "eidas");
-
-				break;
-
 			}
+
+			else {
+
+				switch (getVocalInRoot()) {
+
+				case 'e':
+				case 'o':
+
+					cs.setParticipperfectms(modRoot + "ia");
+					cs.setParticipperfectmp(modRoot + "ias");
+					cs.setParticipperfectfs(modRoot + "eida");
+					cs.setParticipperfectfp(modRoot + "eidas");
+
+					break;
+
+				case 'a':
+
+					cs.setParticipperfectms(root + "o");
+					cs.setParticipperfectmp(root + "os");
+					cs.setParticipperfectfs(root + "ada");
+					cs.setParticipperfectfp(root + "adas");
+
+					break;
+
+				case 'i':
+
+					cs.setParticipperfectms(modRoot + "a");
+					cs.setParticipperfectmp(modRoot + "as");
+					cs.setParticipperfectfs(modRoot + "ada");
+					cs.setParticipperfectfp(modRoot + "adas");
+
+					break;
+
+				case 'u':
+
+					cs.setParticipperfectms(root + "ia");
+					cs.setParticipperfectmp(root + "ias");
+					cs.setParticipperfectfs(root + "eida");
+					cs.setParticipperfectfp(root + "eidas");
+
+					break;
+
+				}
+			}
+
 			break;
 
 		default:
@@ -1122,6 +1204,16 @@ public class ConjugationGenerator {
 		}
 	}
 
+	public boolean endsWithDoubleConsonant(String root) {
+
+		if (root.charAt(root.length() - 1) == root.charAt(root.length() - 2)) {
+
+			return true;
+
+		} else
+			return false;
+	}
+
 	public HashMap<String, String> addPronouns(
 			HashMap<String, String> conjugation) {
 		Map<String, String> pronouns;
@@ -1221,10 +1313,15 @@ public class ConjugationGenerator {
 				+ conjugation.get(ConjugationStructure.imperativ2));
 
 		// PARTICIP_PERFECT
-		cs.setParticipperfectms(pronouns.get(Pronouns.pp_1)
-				+ conjugation.get(ConjugationStructure.participperfectms));
-		cs.setParticipperfectfs(pronouns.get(Pronouns.pp_2)
-				+ conjugation.get(ConjugationStructure.participperfectfs));
+		cs.setParticipperfectms(conjugation
+				.get(ConjugationStructure.participperfectms));
+		cs.setParticipperfectfs(conjugation
+				.get(ConjugationStructure.participperfectfs));
+		cs.setParticipperfectmp(conjugation
+				.get(ConjugationStructure.participperfectmp));
+		cs.setParticipperfectfp(conjugation
+				.get(ConjugationStructure.participperfectfp));
+
 
 		// GERUNDIUM
 		cs.setGerundium(pronouns.get(Pronouns.gerund)
