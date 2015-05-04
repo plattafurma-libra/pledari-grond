@@ -121,7 +121,8 @@ public class WebMVCController {
 		mv.addObject("pageTitle", title);
 	}
 	
-	@RequestMapping(value = {"/", "/index", "/*", "/*/*"}, method = RequestMethod.GET)
+	//@RequestMapping(value = {"/", "/index", "/*", "/*/*"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));

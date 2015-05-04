@@ -29,7 +29,7 @@
 		
 		<div id="content" class="content">
 		
-			<div class="well" style="margin-top: 25%; width: 50%;">
+			<div class="well" style="margin-top: 18%; width: 50%;">
 				<h5>INFURMAZIUN / INFORMATION</h5>
 				<hr>
 				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
