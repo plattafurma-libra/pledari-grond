@@ -43,7 +43,7 @@ public class DictLinksDropDown extends NavPills {
 		dropdown.add(new NavLink(localeDictionary.get("sutsilvan"), linksDictionary.get("sutsilvan")));
 		// dropdown.add(new NavHeader(localeDictionary.get("dict_label_other")));
 		dropdown.add(new NavLink(localeDictionary.get("vallader"), linksDictionary.get("vallader"), TARGET));
-		dropdown.add(new NavLink(localeDictionary.get("pledari"),  linksDictionary.get("pledari"), TARGET));
+		dropdown.add(new NavLink(localeDictionary.get("dict_ulteriurs"),  linksDictionary.get("pledari"), TARGET));
 		
 		return dropdown;
 	}
