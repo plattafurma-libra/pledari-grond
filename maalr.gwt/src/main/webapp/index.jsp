@@ -29,7 +29,9 @@
 		
 		<div id="content" class="content">
 		
-			<div class="well" style="margin-top: 18%; width: 50%;">
+		<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+		
+			<div class="well" id="info-box">
 				<h5>INFURMAZIUN / INFORMATION</h5>
 				<hr>
 				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
@@ -37,7 +39,7 @@
 				<p>Hier entsteht ein Online-Wörterbuch Sutsilvan-Deutsch/Deutsch-Sutsilvan. Wir bitten Sie um etwas Geduld.</p>
 			</div>
 			
-<%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
+			
 			
 <%-- 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %> --%>
 			

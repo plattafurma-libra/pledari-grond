@@ -54,7 +54,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <!-- <script type="text/javascript" src="https://login.persona.org/include.js"></script> -->
-<%-- <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script> --%>
+<script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
 <%-- <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script> --%>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>

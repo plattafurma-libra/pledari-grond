@@ -1506,6 +1506,11 @@ a.btn.btn-danger:hover {
 	text-decoration:none;
 }
 
+#info-box {
+	margin-top: 18%; 
+	width: 50%;
+}
+
 /* MOBILE */
 
 @media all and (max-width: 767px) {
@@ -1886,6 +1891,11 @@ a.btn.btn-danger:hover {
 	#searchoptions .styledCheckbox {
 		margin-top: 1px;
 	}
+	
+	#info-box {
+		margin-top: 50%; 
+		width: 50%;
+	}
 
 }
 
@@ -1893,3 +1903,4 @@ a.btn.btn-danger:hover {
 	margin-top: 150px;
 	position: absolute;
 }
+
