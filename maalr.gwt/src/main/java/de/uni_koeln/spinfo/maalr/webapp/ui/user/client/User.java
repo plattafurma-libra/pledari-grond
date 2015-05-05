@@ -50,9 +50,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.DictLinksDropDown;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.DictionaryConstants;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.Search;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
 
