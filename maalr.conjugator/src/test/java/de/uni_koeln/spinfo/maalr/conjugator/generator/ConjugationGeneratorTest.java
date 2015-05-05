@@ -16,19 +16,26 @@ public class ConjugationGeneratorTest {
 	public static void initialize() {
 		generator = new ConjugationGenerator();
 
-
 	}
 
 	@Test
 	public void testGenerateConjugation() throws FileNotFoundException,
 			IOException {
 
-		conjugation = generator.generateConjugation("serar",9);
+		conjugation = generator.generateConjugation("mussar", 9);
 
-		generator.printConjugation(conjugation, "ART-9_serar");
+		generator.printConjugation(conjugation, "ART-9_mussar");
 
 	}
 
+	@Test
+	public void testEndsWithDoubleConsonant() {
 
+		System.out.println(generator.endsWithDoubleConsonant("muss"));
+		String s = "muss";
+		s = s.substring(0, s.length() - 1);
+		System.out.println(s);
+
+	}
 
 }

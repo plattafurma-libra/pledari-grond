@@ -3,7 +3,6 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.Dropdown;
-import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavPills;
 import com.google.gwt.dom.client.Element;
