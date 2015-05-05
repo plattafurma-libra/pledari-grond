@@ -1,5 +1,7 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.Dropdown;
 import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
@@ -7,11 +9,14 @@ import com.github.gwtbootstrap.client.ui.NavPills;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.Style.Visibility;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Widget;
 
 public class DictLinksDropDown extends NavPills {
 	
@@ -28,7 +33,7 @@ public class DictLinksDropDown extends NavPills {
 		this.localeDictionary = DictionaryConstants.getLocaleDictionary();
 		this.add(createDropdown());
 		addResizeHandler();
-		this.getElement().getStyle().setMarginTop(55, Unit.PX);
+		this.getElement().getStyle().setMarginTop(70, Unit.PX);
 		this.getElement().getStyle().setMarginLeft(5, Unit.PX);
 	}
 
@@ -36,17 +41,35 @@ public class DictLinksDropDown extends NavPills {
 		
 		Dropdown dropdown = new Dropdown(localeDictionary.get("select"));
 		// dropdown.add(new NavHeader(localeDictionary.get("dict_label_lia")));
-		// dropdown.add(new NavLink(localeDictionary.get("rumantsch"), linksDictionary.get("rumantsch")));
 		dropdown.add(new NavLink(localeDictionary.get("surmiran"), linksDictionary.get("surmiran")));
 		dropdown.add(new NavLink(localeDictionary.get("sutsilvan"), linksDictionary.get("sutsilvan")));
-		// dropdown.add(new NavHeader(localeDictionary.get("dict_label_other")));
 		dropdown.add(new NavLink(localeDictionary.get("sursilvan"), linksDictionary.get("sursilvan"), TARGET));
 		dropdown.add(new NavLink(localeDictionary.get("puter"), linksDictionary.get("puter"), TARGET));
 		dropdown.add(new NavLink(localeDictionary.get("vallader"), linksDictionary.get("vallader"), TARGET));
-		dropdown.add(new NavLink(localeDictionary.get("pledari"),  linksDictionary.get("pledari"), TARGET));
+		// dropdown.add(new NavLink(localeDictionary.get("pledari"),  linksDictionary.get("pledari"), TARGET));
+		dropdown.add(getLink(DictionaryConstants.DICT_LINKS_EXTERNAL));
 		
 		return dropdown;
 	}
+	
+	private Widget getLink(final List<String> links) {
+
+		NavLink widget = new NavLink(localeDictionary.get(links.get(0)));
+
+		widget.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				new ExternalLinkDialog(links, DictionaryConstants.getLinksDictionary());
+
+				event.getNativeEvent().preventDefault();
+				event.getNativeEvent().stopPropagation();
+			}
+		});
+		return widget;
+	}
+		 
 
 	private void addResizeHandler() {
 		
