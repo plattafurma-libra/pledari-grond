@@ -167,12 +167,12 @@ public class User implements EntryPoint {
 //		});
 //		
 //		// Insert search widget into div#content 
-//		RootPanel contentPanel = RootPanel.get("content");
-//		if(contentPanel != null) {
-//			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
-//			RootPanel.get("navi_head").add(dictLinksDropDown);
+		RootPanel contentPanel = RootPanel.get("content");
+		if(contentPanel != null) {
+			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
+			RootPanel.get("navi_head").add(dictLinksDropDown);
 //			contentPanel.add(search);
-//		}
+		}
 //
 //
 //		History.addValueChangeHandler(new ValueChangeHandler<String>() {
