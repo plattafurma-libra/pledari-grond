@@ -3,7 +3,6 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.user.client;
 import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.Dropdown;
-import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavPills;
 import com.google.gwt.dom.client.Element;
@@ -41,12 +40,11 @@ public class DictLinksDropDown extends NavPills {
 		
 		Dropdown dropdown = new Dropdown(localeDictionary.get("select"));
 		// dropdown.add(new NavHeader(localeDictionary.get("dict_label_lia")));
-		dropdown.add(new NavLink(localeDictionary.get("surmiran"), linksDictionary.get("surmiran")));
-		dropdown.add(new NavLink(localeDictionary.get("sutsilvan"), linksDictionary.get("sutsilvan")));
-		dropdown.add(new NavLink(localeDictionary.get("sursilvan"), linksDictionary.get("sursilvan"), TARGET));
 		dropdown.add(new NavLink(localeDictionary.get("puter"), linksDictionary.get("puter"), TARGET));
+		dropdown.add(new NavLink(localeDictionary.get("surmiran"), linksDictionary.get("surmiran")));
+		dropdown.add(new NavLink(localeDictionary.get("sursilvan"), linksDictionary.get("sursilvan"), TARGET));
+		dropdown.add(new NavLink(localeDictionary.get("sutsilvan"), linksDictionary.get("sutsilvan")));
 		dropdown.add(new NavLink(localeDictionary.get("vallader"), linksDictionary.get("vallader"), TARGET));
-		// dropdown.add(new NavLink(localeDictionary.get("pledari"),  linksDictionary.get("pledari"), TARGET));
 		dropdown.add(getLink(DictionaryConstants.DICT_LINKS_EXTERNAL));
 		
 		return dropdown;
