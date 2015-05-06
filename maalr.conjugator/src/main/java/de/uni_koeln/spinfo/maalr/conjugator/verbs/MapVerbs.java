@@ -18,82 +18,31 @@ import de.uni_koeln.spinfo.maalr.conjugator.generator.ConjugationStructure;
 
 public class MapVerbs {
 
-	private List<String> raw_regVerbs;
-	private List<String> raw_regEschVerbs;
-	private List<String> raw_vwVerbs;
-	private List<Verb> regVerbs;
-	private List<Verb> regEschVerbs;
-	private List<Verb> vwVerbs;
 	ConjugationGenerator generator = new ConjugationGenerator();
 
 	public List<String> addConjugations(String fileName) throws IOException {
 
 		List<String> list = new ArrayList<>();
-
 		List<String> found = new ArrayList<>();
-
 		Set<String> reg_fifth = new HashSet<String>();
 		Set<String> reg_second = new HashSet<String>();
 
-		raw_vwVerbs = Files.readAllLines(
+		List<String> raw_vwVerbs = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "vw.txt"),
 				Charset.forName("UTF8"));
-		vwVerbs = new ArrayList<>();
 
-		for (String s : raw_vwVerbs) {
-			String[] array = s.split("\t");
-			if (array.length == 2) {
-				Verb v = new Verb();
-				v.setForm(array[0]);
-
-				if (array[1].equals("[é]")) {
-
-					// ART 6
-					v.setStress(true);
-				} else {
-					// ART 4
-					v.setStress(false);
-				}
-
-				vwVerbs.add(v);
-			} else if (array.length == 1) {
-				Verb v = new Verb();
-				v.setForm(s);
-				v.setStress(false);
-
-				vwVerbs.add(v);
-			}
-
-		}
-
-		raw_regEschVerbs = Files.readAllLines(
+		List<String> raw_regEschVerbs = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "reg_esch.txt"),
 				Charset.forName("UTF8"));
-		regEschVerbs = new ArrayList<>();
-		for (String s : raw_regEschVerbs) {
 
-			String[] array = s.split("\t");
-
-			if (array.length == 2) {
-				Verb v = new Verb();
-				v.setForm(array[0]);
-				v.setStress(true);
-
-				regEschVerbs.add(v);
-			} else if (array.length == 1) {
-				Verb v = new Verb();
-				v.setForm(s);
-				v.setStress(false);
-
-				regEschVerbs.add(v);
-			}
-
-		}
-
-		raw_regVerbs = Files.readAllLines(
+		List<String> raw_regVerbs = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "reg.txt"),
 				Charset.forName("UTF8"));
-		regVerbs = new ArrayList<>();
+
+		// Get only the infinitive forms
+		List<Verb> vwVerbs = cleanVW(raw_vwVerbs);
+		List<Verb> regEschVerbs = cleanRegEsch(raw_regEschVerbs);
+		List<Verb> regVerbs = new ArrayList<>();
 
 		for (String s : raw_regVerbs) {
 			String[] array = s.split("\t");
@@ -135,7 +84,11 @@ public class MapVerbs {
 		String currentLine;
 
 		List<HashMap<String, String>> list_irregulars = parseIrregulars("irregulars.txt");
+
+		List<Reflex> reflexives = cleanReflexives();
+
 		boolean irregular;
+
 		try {
 
 			while ((currentLine = reader.readLine()) != null) {
@@ -145,7 +98,6 @@ public class MapVerbs {
 
 					StringBuffer fl = new StringBuffer();
 					fl.append(currentLine);
-					// System.out.println(msi.length);
 					for (String s : structure.msi) {
 						System.out.println(s);
 						fl.append("\t");
@@ -168,6 +120,7 @@ public class MapVerbs {
 
 					HashMap<String, String> map = null;
 
+					// PROCESS IRREGULARS
 					for (HashMap<String, String> m : list_irregulars) {
 
 						String v = m.get("verb");
@@ -180,6 +133,8 @@ public class MapVerbs {
 
 							} else {
 
+								irregular = true;
+
 								ol.append(currentLine);
 
 								for (String s : structure.msi) {
@@ -191,13 +146,14 @@ public class MapVerbs {
 								ol.append("\t");
 								ol.append("V");
 								list.add(ol.toString());
-								irregular = true;
+
 								break;
 							}
 
 						}
 					}
 
+					// PROCESS REGULARS
 					for (Verb vs : regVerbs) {
 
 						if (vs.getForm().equals(verb)) {
@@ -211,63 +167,35 @@ public class MapVerbs {
 								found.add(verb + "\t" + "reg");
 
 								generator.processQuery(verb);
-								String endung = generator.getEnding();
+								String ending = generator.getEnding();
 
-								switch (endung) {
+								map = generateRegulars(verb, vs, map, ending,
+										reg_fifth, reg_second);
 
-								case "ar":
+								// REFLEXIVE??
 
-									map = generator
-											.generateConjugation(verb, 1);
-									break;
+								for (Reflex ref : reflexives) {
 
-								case "er":
+									String rv = ref.getVerb();
+									String rp = ref.getPrefix();
 
-									if (reg_fifth.contains(verb)) {
+									if (verb.equals(rv)) {
 
-										map = generator.generateConjugation(
-												verb, 5);
-									} else if (reg_second.contains(verb)) {
-
-										map = generator.generateConjugation(
-												verb, 2);
-									}
-
-									break;
-
-								case "ier":
-
-									map = generator
-											.generateConjugation(verb, 3);
-									break;
-
-								case "eir":
-
-									System.out.println("EIR: " + verb);
-
-									if (vs.isStress()) {
-										// System.out.println("VERB: " + verb
-										// + " stressed");
-										map = generator.generateConjugation(
-												verb, 6);
-										break;
-									} else {
-										// System.out.println("VERB: " + verb
-										// + " not stressed");
-										map = generator.generateConjugation(
-												verb, 4);
-
-										break;
+										map = generateRegulars(rp + rv, vs,
+												map, ending, reg_fifth,
+												reg_second);
 
 									}
 
 								}
+
 							}
 
 						}
 
 					}
 
+					// PROCESS VW
 					for (Verb vs : vwVerbs) {
 
 						if (vs.getForm().equals(verb)) {
@@ -278,12 +206,30 @@ public class MapVerbs {
 							} else {
 								found.add(verb + "\t" + "vw");
 								map = generator.generateConjugation(verb, 9);
+
+								// REFLEXIVE??
+
+								for (Reflex ref : reflexives) {
+
+									String rv = ref.getVerb();
+									String rp = ref.getPrefix();
+
+									if (verb.equals(rv)) {
+
+										map = generator.generateConjugation(rp
+												+ rv, 9);
+
+									}
+
+								}
+
 							}
 
 						}
 
 					}
 
+					// PROCESS REG_ESCH
 					for (Verb vs : regEschVerbs) {
 
 						if (vs.getForm().equals(verb)) {
@@ -296,32 +242,31 @@ public class MapVerbs {
 
 								found.add(verb + "\t" + "esch");
 								generator.processQuery(verb);
-								String endung = generator.getEnding();
+								String ending = generator.getEnding();
+								map = generateRegularsEsch(map, ending, verb);
 
-								switch (endung) {
+								// REFLEXIVE??
 
-								case "ar":
+								for (Reflex ref : reflexives) {
 
-									map = generator
-											.generateConjugation(verb, 8);
+									String rv = ref.getVerb();
+									String rp = ref.getPrefix();
 
-									break;
+									if (verb.equals(rv)) {
 
-								case "eir":
-
-									map = generator
-											.generateConjugation(verb, 7);
-
-									break;
+										map = generateRegularsEsch(map, ending,
+												rp + rv);
+									}
 
 								}
+
 							}
 
 						}
 
 					}
 
-					// Verb was found and conjugated
+					// VERB WAS FOUND AND CONJUGATED
 					if (map != null) {
 
 						ol.append(currentLine);
@@ -336,7 +281,7 @@ public class MapVerbs {
 						list.add(ol.toString());
 
 					}
-					// Verb was not found
+					// VERB WAS NOT FOUND
 					else if (irregular == false) {
 						StringBuffer buffer = new StringBuffer();
 						buffer.append(currentLine);
@@ -364,12 +309,81 @@ public class MapVerbs {
 		return list;
 	}
 
+	private HashMap<String, String> generateRegularsEsch(
+			HashMap<String, String> map, String ending, String verb) {
+
+		switch (ending) {
+
+		case "ar":
+
+			map = generator.generateConjugation(verb, 8);
+
+			break;
+
+		case "eir":
+
+			map = generator.generateConjugation(verb, 7);
+
+			break;
+
+		}
+
+		return map;
+	}
+
+	private HashMap<String, String> generateRegulars(String verb, Verb vs,
+			HashMap<String, String> map, String ending, Set<String> reg_fifth,
+			Set<String> reg_second) {
+
+		switch (ending) {
+
+		case "ar":
+
+			map = generator.generateConjugation(verb, 1);
+			break;
+
+		case "er":
+
+			if (reg_fifth.contains(verb)) {
+
+				map = generator.generateConjugation(verb, 5);
+			} else if (reg_second.contains(verb)) {
+
+				map = generator.generateConjugation(verb, 2);
+			}
+
+			break;
+
+		case "ier":
+
+			map = generator.generateConjugation(verb, 3);
+			break;
+
+		case "eir":
+
+			if (vs.isStress()) {
+
+				map = generator.generateConjugation(verb, 6);
+				break;
+			} else {
+				map = generator.generateConjugation(verb, 4);
+
+				break;
+
+			}
+
+		}
+
+		return map;
+	}
+
 	public List<HashMap<String, String>> parseIrregulars(String fileName)
 			throws IOException {
 
 		List<String> irreg = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + fileName),
 				Charset.forName("UTF8"));
+
 		List<String> indent = new ArrayList<>();
 		for (String s : irreg) {
 			if (!s.equals("")) {
@@ -379,17 +393,16 @@ public class MapVerbs {
 
 		}
 		ConjugationGenerator cg = new ConjugationGenerator();
-		List<HashMap<String, String>> lcs = new ArrayList();
+		List<HashMap<String, String>> lcs = new ArrayList<>();
 		int j = 0;
 		for (int i = 0; i < indent.size(); i++) {
-			// System.out.println(indent.get(i));
 
 			if (indent.get(i).contains("–") && indent.get(i).length() > 2
 					|| indent.get(i).contains("-")
 					&& indent.get(i).length() > 2) {
 				j++;
 				String st = indent.get(i);
-				System.out.println(st);
+				// System.out.println(st);
 				String[] lemma = null;
 				if (indent.get(i).contains("–")) {
 					lemma = st.split("–");
@@ -399,7 +412,6 @@ public class MapVerbs {
 
 				ConjugationStructure cs = new ConjugationStructure();
 				cs.setVerb(lemma[0]);
-				cs.setMeaning(lemma[1]);
 
 				cg.checkReflexiveness(lemma[0]);
 
@@ -482,6 +494,125 @@ public class MapVerbs {
 		System.out.println(j);
 
 		return lcs;
+
+	}
+
+	public List<Reflex> cleanReflexives() throws IOException {
+		List<Reflex> cleaned_ref = new ArrayList<>();
+		List<String> reflexives = Files.readAllLines(
+				Paths.get(VerbsIO.input_dir + "reflexives.txt"),
+				Charset.forName("UTF8"));
+
+		for (String s : reflexives) {
+
+			if (s.startsWith("s'")) {
+
+				s = s.substring(2, s.length());
+				Reflex r = new Reflex();
+				r.setPrefix("s'");
+				s = s.replaceAll("//s+", "");
+				r.setVerb(s);
+				cleaned_ref.add(r);
+			} else {
+
+				s = s.substring(3, s.length());
+				Reflex r = new Reflex();
+				r.setPrefix("sa ");
+				s = s.replaceAll("//s+", "");
+				r.setVerb(s);
+				cleaned_ref.add(r);
+			}
+
+		}
+
+		return cleaned_ref;
+
+	}
+
+	private List<Verb> cleanVW(List<String> toClean) {
+		List<Verb> cleaned = new ArrayList<>();
+
+		for (String s : toClean) {
+			String[] array = s.split("\t");
+			if (array.length == 2) {
+				Verb v = new Verb();
+				v.setForm(array[0]);
+
+				if (array[1].equals("[é]")) {
+
+					// ART 6
+					v.setStress(true);
+				} else {
+					// ART 4
+					v.setStress(false);
+				}
+
+				cleaned.add(v);
+			} else if (array.length == 1) {
+				Verb v = new Verb();
+				v.setForm(s);
+				v.setStress(false);
+
+				cleaned.add(v);
+			}
+
+		}
+
+		return cleaned;
+
+	}
+
+	private List<Verb> cleanRegEsch(List<String> toClean) {
+		List<Verb> cleaned = new ArrayList<>();
+
+		for (String s : toClean) {
+
+			String[] array = s.split("\t");
+
+			if (array.length == 2) {
+				Verb v = new Verb();
+				v.setForm(array[0]);
+				v.setStress(true);
+
+				cleaned.add(v);
+			} else if (array.length == 1) {
+				Verb v = new Verb();
+				v.setForm(s);
+				v.setStress(false);
+
+				cleaned.add(v);
+			}
+
+		}
+
+		return cleaned;
+
+	}
+
+	private List<Verb> cleanReg(List<String> toClean) {
+		List<Verb> cleaned = new ArrayList<>();
+
+		for (String s : toClean) {
+
+			String[] array = s.split("\t");
+
+			if (array.length == 2) {
+				Verb v = new Verb();
+				v.setForm(array[0]);
+				v.setStress(true);
+
+				cleaned.add(v);
+			} else if (array.length == 1) {
+				Verb v = new Verb();
+				v.setForm(s);
+				v.setStress(false);
+
+				cleaned.add(v);
+			}
+
+		}
+
+		return cleaned;
 
 	}
 

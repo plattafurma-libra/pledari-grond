@@ -3,15 +3,15 @@
 	<presetchooser id="type" base="RStichwort"
 		generator="de.uni_koeln.spinfo.maalr.conjugator.generator.VerbClassGenerator">
 		<options>
-			<option value="1" label="-ar (cantar)"/>
-			<option value="2" label="-er (lascher)"/>
-			<option value="3" label="-ier (cuntschier)"/>
-			<option value="4" label="-eir (tigneir)"/>
-			<option value="5" label="-er (tanscher)"/>
-			<option value="6" label="-eir (parteir)"/>
-			<option value="7" label="-eir (amplaneir, -esch)"/>
-			<option value="8" label="-ar (abitar, -esch)"/>
-			<option value="9" label="verbs alternonts"/>
+			<option value="1" label="-ar (cantar)" />
+			<option value="2" label="-er (lascher)" />
+			<option value="3" label="-ier (cuntschier)" />
+			<option value="4" label="-eir (tigneir)" />
+			<option value="5" label="-er (tanscher)" />
+			<option value="6" label="-eir (parteir)" />
+			<option value="7" label="-eir (amplaneir, -esch)" />
+			<option value="8" label="-ar (abitar, -esch)" />
+			<option value="9" label="verbs alternonts" />
 		</options>
 	</presetchooser>
 	<rows>
@@ -62,8 +62,8 @@
 			</column>
 			<column id="particip">
 				<item id="participperfectms"></item>
-				<item id="participperfectmp"></item>
 				<item id="participperfectfs"></item>
+				<item id="participperfectmp"></item>
 				<item id="participperfectfp"></item>
 
 
