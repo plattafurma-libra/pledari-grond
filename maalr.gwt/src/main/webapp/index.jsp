@@ -32,7 +32,7 @@
 		<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 		
 			<div class="well" id="info-box">
-				<h5>INFURMAZIUN / INFORMATION</h5>
+				<h5>INFURMAZIÙN / INFORMATION</h5>
 				<hr>
 				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
 				<br>
