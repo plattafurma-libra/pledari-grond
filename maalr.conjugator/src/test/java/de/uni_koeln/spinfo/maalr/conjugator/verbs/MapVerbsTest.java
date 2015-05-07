@@ -56,11 +56,52 @@ public class MapVerbsTest {
 
 		List<Reflex> reflex = mapper.cleanReflexives();
 
+		List<String> regulars = Files.readAllLines(
+				Paths.get(VerbsIO.input_dir + "reg.txt"),
+				Charset.forName("UTF8"));
+
+		List<String> cr = regulars;
+
+		List<String> vw = Files.readAllLines(
+				Paths.get(VerbsIO.input_dir + "vw.txt"),
+				Charset.forName("UTF8"));
+		
+		List<String> cvw = vw;
+
+		List<String> esch = Files.readAllLines(
+				Paths.get(VerbsIO.input_dir + "reg_esch.txt"),
+				Charset.forName("UTF8"));
+		
+		List<String> cesch = esch;
+
+
 		for (Reflex r : reflex) {
 
-			System.out.println(r.getPrefix() + r.getVerb());
+			if (cr.contains(r.getVerb())) {
+				System.out.println(r.getPrefix() + r.getVerb()+ "\t" + "reg");
+				regulars.add(r.getPrefix() + r.getVerb());
+			}
+			
+			if (cvw.contains(r.getVerb())) {
+				System.out.println(r.getPrefix() + r.getVerb() + "\t" + "vw");
+				vw.add(r.getPrefix() + r.getVerb());
+			}
+			
+			if (cesch.contains(r.getVerb())) {
+				System.out.println(r.getPrefix() + r.getVerb() + "\t" + "wsch");
+				esch.add(r.getPrefix() + r.getVerb());
+			}
+			
 
 		}
+		
+		
+		VerbsIO.printList(regulars, "regulars_ref");
+		VerbsIO.printList(vw, "vw_ref");
+		VerbsIO.printList(esch, "esch_ref");
+		
+		
+		
 	}
 
 	@Test

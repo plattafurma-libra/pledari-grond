@@ -172,23 +172,6 @@ public class MapVerbs {
 								map = generateRegulars(verb, vs, map, ending,
 										reg_fifth, reg_second);
 
-								// REFLEXIVE??
-
-								for (Reflex ref : reflexives) {
-
-									String rv = ref.getVerb();
-									String rp = ref.getPrefix();
-
-									if (verb.equals(rv)) {
-
-										map = generateRegulars(rp + rv, vs,
-												map, ending, reg_fifth,
-												reg_second);
-
-									}
-
-								}
-
 							}
 
 						}
@@ -206,22 +189,6 @@ public class MapVerbs {
 							} else {
 								found.add(verb + "\t" + "vw");
 								map = generator.generateConjugation(verb, 9);
-
-								// REFLEXIVE??
-
-								for (Reflex ref : reflexives) {
-
-									String rv = ref.getVerb();
-									String rp = ref.getPrefix();
-
-									if (verb.equals(rv)) {
-
-										map = generator.generateConjugation(rp
-												+ rv, 9);
-
-									}
-
-								}
 
 							}
 
@@ -244,21 +211,6 @@ public class MapVerbs {
 								generator.processQuery(verb);
 								String ending = generator.getEnding();
 								map = generateRegularsEsch(map, ending, verb);
-
-								// REFLEXIVE??
-
-								for (Reflex ref : reflexives) {
-
-									String rv = ref.getVerb();
-									String rp = ref.getPrefix();
-
-									if (verb.equals(rv)) {
-
-										map = generateRegularsEsch(map, ending,
-												rp + rv);
-									}
-
-								}
 
 							}
 
