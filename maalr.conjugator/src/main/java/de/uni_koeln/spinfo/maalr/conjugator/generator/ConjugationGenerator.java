@@ -561,7 +561,7 @@ public class ConjugationGenerator {
 
 		case "art-9":
 
-			if (getEnding().equals("ar") && getVocalInRoot() == 'o') {
+			if (getEnding().equals("ar") && getVocalInRoot() == 'u') {
 
 				// 1ps
 				cs.setImperfectsing1(root + "ava");
@@ -881,6 +881,7 @@ public class ConjugationGenerator {
 
 		switch (cs.getConjugationclass()) {
 		case "art-6":
+		case "art-7":
 			cs.setGerundium(root + "ond" + "/" + root + "end");
 			break;
 
@@ -1313,8 +1314,7 @@ public class ConjugationGenerator {
 				.get(ConjugationStructure.participperfectfp));
 
 		// GERUNDIUM
-		cs.setGerundium(pronouns.get(Pronouns.gerund)
-				+ conjugation.get(ConjugationStructure.gerundium));
+		cs.setGerundium(conjugation.get(ConjugationStructure.gerundium));
 
 		// FUTUR
 		cs.setFutursing1(Pronouns.pron_1ps

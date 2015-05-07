@@ -12,7 +12,7 @@ fiss	fissas	fiss	fissan	fissas	fissan
 
 sto	stos	stada	stadas
 
-essend,siond
+siond/essend
 
 seias!	seias!
 
@@ -870,7 +870,7 @@ cuvriss	cuvrissas	cuvriss	cuvrissan	cuvrissas	cuvrissan
 
 cuvert	cuverts	cuverta	cuvertas
 
-cuvrond/cuvrend	
+cuvrond/cuvrend
 
 covra!	cuvri!
 
@@ -889,7 +889,7 @@ darviss	darvissas	darviss	darvissan	darvissas	darvissan
 
 davert	daverts	daverta	davertas
 
-darvond	darvend		
+darvond/darvend
 
 derva!	darvi!
 
@@ -908,7 +908,7 @@ darviss	darvissas	darviss	darvissan	darvissas	darvissan
 
 davert	daverts	daverta	davertas
 
-darvond	darvend		
+darvond/darvend
 
 derva!	darvi!
 
@@ -1254,7 +1254,7 @@ sagliss	saglissas	sagliss	saglissan	saglissas	saglissan
 
 saglia	saglias	sagleida	sagleidas
 
-sagliond/sagliend		
+sagliond/sagliend
 
 saglia!	sagli!
 
@@ -1273,7 +1273,7 @@ santiss	santissas	santiss	santissan	santissas	santissan
 
 santia	santias	santeida	santeidas
 
-santond	santend
+santond/santend
 
 sainta!	santi!
 
@@ -1291,7 +1291,7 @@ santiss	santissas	santiss	santissan	santissas	santissan
 
 santia	santias	santeida	santeidas
 
-santond	santend
+santond/santend
 
 sainta!	santi!
 
@@ -1310,7 +1310,7 @@ sarviss	sarvissas	sarviss	sarvissan	sarvissas	sarvissan
 
 sarvia	sarvias	sarveida	sarveidas
 
-sarvond	sarvend
+sarvond/sarvend
 
 serva!	sarvi!
 
@@ -1329,7 +1329,7 @@ sarviss	sarvissas	sarviss	sarvissan	sarvissas	sarvissan
 
 sarvia	sarvias	sarveida	sarveidas
 
-sarvond	sarvend
+sarvond/sarvend
 
 serva!	sarvi!
 
@@ -1423,7 +1423,7 @@ survagniss	survagnissas	survagniss	survagnissan	survagnissas	survagnissan
 
 survagnia	survagnias	survagneida	survagneidas
 
-survagnond	survagnend
+survagnond/survagnend
 
  	 	
 

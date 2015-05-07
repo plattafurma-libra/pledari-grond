@@ -48,18 +48,18 @@ public class MapVerbsTest {
 		List<HashMap<String, String>> list_irregulars = mapper
 				.parseIrregulars("irregulars.txt");
 
-		//VerbsIO.printList(list_irregulars, "irreg_format_map");
+		// VerbsIO.printList(list_irregulars, "irreg_format_map");
 	}
 
 	@Test
 	public void addReflexiva() throws IOException {
-		
+
 		List<Reflex> reflex = mapper.cleanReflexives();
-		
-		for (Reflex r : reflex){
-			
-			System.out.println(r.getPrefix()+r.getVerb());
-			
+
+		for (Reflex r : reflex) {
+
+			System.out.println(r.getPrefix() + r.getVerb());
+
 		}
 	}
 

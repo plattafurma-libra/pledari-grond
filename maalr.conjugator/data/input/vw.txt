@@ -6,17 +6,13 @@ lavar
 drizzar
 rizzar
 sa discorrer
-cuvreir	[é]
 muntar
-sarveir	[é]
 fittar
 antupar
 scuntrar
 antschever
-survagneir	[é]
 sa spruar
 cunsiglier
-tutgier
 ampustar
 confirmar
 porscher
@@ -32,52 +28,40 @@ suandar
 dumandar
 ansolver
 tameir
-gudagner
 bugnier
 drizzar
 cumprar
 canoscher
 custar
-veiver
 amprender
 ludar
-tutgier
 manager
 masdar
-piglier
 nudar
 cunsiglier
 fimar
 viagier
 drizzar
 clamar
-pussar
 rumager
-vurdar
 durmeir	[é]
 sa nudar 
 stimar
 tarmetter
-gudagner 
 signier
 spender
-giuier
 discorrer
 muntar
 mureir	[é]
 stender
-stibgier
-tschartger
 saltar
 purtar
 bever
 signier
 scumandar
-gudagner
 vender
 perder
 dustar
-ampruar
 sa spruar 
 parager
 spitgier
@@ -88,7 +72,5 @@ scaldar
 dessignier
 mussar
 nizzar
-cuvreir	[é]
 tadlar
 sfurzar
-darveir	[é]
