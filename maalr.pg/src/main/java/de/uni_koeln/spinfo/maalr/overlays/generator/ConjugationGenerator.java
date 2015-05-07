@@ -936,15 +936,14 @@ public class ConjugationGenerator {
 				+ conjugation.get(ConjugationStructure.imperativ2));
 
 		// PARTICIP_PERFECT
-		cs.setParticipperfectms(pronouns.get(Pronouns.pp_1)
-				+ conjugation.get(ConjugationStructure.participperfectms));
-		cs.setParticipperfectfs(pronouns.get(Pronouns.pp_2)
-				+ conjugation.get(ConjugationStructure.participperfectms) + "/"
-				+ conjugation.get(ConjugationStructure.participperfectfs));
+		cs.setParticipperfectms(conjugation.get(ConjugationStructure.participperfectms));
+		cs.setParticipperfectfs(conjugation.get(ConjugationStructure.participperfectfs));
+		cs.setParticipperfectmp(conjugation.get(ConjugationStructure.participperfectmp));
+		cs.setParticipperfectfp(conjugation.get(ConjugationStructure.participperfectfp));
 
+		
 		// GERUNDIUM
-		cs.setGerundium(pronouns.get(Pronouns.gerund)
-				+ conjugation.get(ConjugationStructure.gerundium));
+		cs.setGerundium(conjugation.get(ConjugationStructure.gerundium));
 
 		// FUTUR
 		cs.setFutursing1(Pronouns.pron_1ps

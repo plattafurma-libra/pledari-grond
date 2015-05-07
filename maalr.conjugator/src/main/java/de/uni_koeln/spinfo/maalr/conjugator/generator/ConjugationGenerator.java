@@ -411,22 +411,7 @@ public class ConjugationGenerator {
 
 			// PRESCHENT
 			// 1ps
-			if (ending.equals("ar") && !getInfinitiv().equals("mussar")) {
-
-				if (endsWithDoubleConsonant(root)) {
-					String firstSingular = root.substring(0, root.length() - 1);
-					cs.setPreschentsing1(firstSingular);
-				} else {
-
-					cs.setPreschentsing1(root);
-				}
-
-			}
-
-			else {
-				cs.setPreschentsing1(root);
-			}
-
+			cs.setPreschentsing1(root + "escha");
 			// 2ps
 			cs.setPreschentsing2(root + "eschas");
 			// 3ps
@@ -576,10 +561,8 @@ public class ConjugationGenerator {
 
 		case "art-9":
 
-			switch (getVocalInRoot()) {
+			if (getEnding().equals("ar") && getVocalInRoot() == 'u') {
 
-			case 'a':
-			case 'i':
 				// 1ps
 				cs.setImperfectsing1(root + "ava");
 				// 2ps
@@ -594,41 +577,48 @@ public class ConjugationGenerator {
 				cs.setImperfectplural3(root + "avan");
 				break;
 
-			case 'e':
-			case 'o':
+			} else {
 
-				// 1ps
-				cs.setImperfectsing1(modRoot + "eva");
-				// 2ps
-				cs.setImperfectsing2(modRoot + "evas");
-				// 3ps
-				cs.setImperfectsing3(modRoot + "eva");
-				// 1pp
-				cs.setImperfectplural1(modRoot + "evan");
-				// 2pp
-				cs.setImperfectplural2(modRoot + "evas");
-				// 3pp
-				cs.setImperfectplural3(modRoot + "evan");
-				break;
+				switch (getVocalInRoot()) {
 
-			case 'u':
+				case 'a':
+				case 'i':
 
-				// 1ps
-				cs.setImperfectsing1(root + "eva");
-				// 2ps
-				cs.setImperfectsing2(root + "evas");
-				// 3ps
-				cs.setImperfectsing3(root + "eva");
-				// 1pp
-				cs.setImperfectplural1(root + "evan");
-				// 2pp
-				cs.setImperfectplural2(root + "evas");
-				// 3pp
-				cs.setImperfectplural3(root + "evan");
-				break;
+					// 1ps
+					cs.setImperfectsing1(root + "ava");
+					// 2ps
+					cs.setImperfectsing2(root + "avas");
+					// 3ps
+					cs.setImperfectsing3(root + "ava");
+					// 1pp
+					cs.setImperfectplural1(root + "avan");
+					// 2pp
+					cs.setImperfectplural2(root + "avas");
+					// 3pp
+					cs.setImperfectplural3(root + "avan");
+					break;
+
+				case 'e':
+				case 'o':
+				case 'u':
+					// 1ps
+					cs.setImperfectsing1(modRoot + "eva");
+					// 2ps
+					cs.setImperfectsing2(modRoot + "evas");
+					// 3ps
+					cs.setImperfectsing3(modRoot + "eva");
+					// 1pp
+					cs.setImperfectplural1(modRoot + "evan");
+					// 2pp
+					cs.setImperfectplural2(modRoot + "evas");
+					// 3pp
+					cs.setImperfectplural3(modRoot + "evan");
+					break;
+
+				}
 
 			}
-
+			break;
 		}
 
 	}
@@ -891,7 +881,8 @@ public class ConjugationGenerator {
 
 		switch (cs.getConjugationclass()) {
 		case "art-6":
-			cs.setGerundium(root + "end/ond");
+		case "art-7":
+			cs.setGerundium(root + "ond" + "/" + root + "end");
 			break;
 
 		case "art-9":
@@ -1322,10 +1313,8 @@ public class ConjugationGenerator {
 		cs.setParticipperfectfp(conjugation
 				.get(ConjugationStructure.participperfectfp));
 
-
 		// GERUNDIUM
-		cs.setGerundium(pronouns.get(Pronouns.gerund)
-				+ conjugation.get(ConjugationStructure.gerundium));
+		cs.setGerundium(conjugation.get(ConjugationStructure.gerundium));
 
 		// FUTUR
 		cs.setFutursing1(Pronouns.pron_1ps

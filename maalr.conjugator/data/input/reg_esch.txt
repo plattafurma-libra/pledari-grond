@@ -1,4 +1,3 @@
-inditgier
 construeir	[é]
 picturar
 refereir	[é]
@@ -22,7 +21,6 @@ construeir	[é]
 piteir	[é]
 picturar
 pitturar
-modifitgier
 organisar
 orientar
 pachetar

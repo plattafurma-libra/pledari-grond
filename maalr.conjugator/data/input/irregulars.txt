@@ -12,7 +12,7 @@ fiss	fissas	fiss	fissan	fissas	fissan
 
 sto	stos	stada	stadas
 
-essend,siond
+siond/essend
 
 seias!	seias!
 
@@ -535,7 +535,8 @@ declarond
 
 daclera!	declare!
 
-sbagler-fehlen 
+
+sbagler-fehlen
 
 sbagl	sbaglias	sbaglia	sbagliagn	sbaglez	sbaglian
 
@@ -552,6 +553,26 @@ sbaglea	sbagleas	sbagleda	sbagledas
 sbagliond
 
 sbaglia!	sbagle!
+
+
+sa sbagler-fehlen
+
+sbagl	sbaglias	sbaglia	sbagliagn	sbaglez	sbaglian
+
+sbagleva	sbaglevas	sbagleva	sbaglevan	sbaglevas	sbaglevan
+
+sbagliaro	sbagliarossas	sbagliaro	sbagliaron	sbagliarossas	sbagliaron
+
+sbaglia	sbaglias	sbaglia	sbaglian	sbaglias	sbaglian
+
+sbagless	sbaglessas	sbagless	sbaglessan	sbaglessas	sbaglessan
+
+sbaglea	sbagleas	sbagleda	sbagledas
+
+sbagliond
+
+sbaglia!	sbagle!
+
 
 magler-essen 
 
@@ -645,6 +666,26 @@ mattond
 metta!	matte!
 
 
+sa metter-stellen
+
+met	mettas	metta	mattagn	mattez	mettan
+
+matteva	mattevas	matteva	mattevan	mattevas	mattevan
+
+mattaro	mattarossas	mattaro	mattaron	mattarossas	mattaron
+
+metta	mettas	metta	mettan	mettas	mettan
+
+mattess	mettessas	mattess	mattessan	mattessas	mattessan
+
+mess	mess	messa	messas
+
+mattond
+
+metta!	matte!
+
+
+
 screiver–schreiben
 
 screiv	screivas	screiva	scrivagn	scrivez	screivan
@@ -665,6 +706,25 @@ screiva!	scrive!
 
 
 inscreiver–eintragen
+
+inscreiv	inscreivas	inscreiva	inscrivagn	inscrivez	inscreivan
+
+inscriveva	inscrivevas	inscriveva	inscrivevan	inscrivevas	inscrivevan
+
+inscrivaro	inscrivarossas	inscrivaro	inscrivaron	inscrivarossas	inscrivaron
+
+inscreiva	inscreivas	inscreiva	inscreivan	inscreivas	inscreivan
+
+inscrivess	inscrivessas	inscrivess	inscrivessan	inscrivessas	inscrivessan
+
+inscretg	inscretgs	inscretga	inscretgas
+
+inscrivond
+
+inscreiva!	inscrive!
+
+
+s'inscreiver–eintragen
 
 inscreiv	inscreivas	inscreiva	inscrivagn	inscrivez	inscreivan
 
@@ -757,3 +817,766 @@ reis/riia
 riond
 
 rei!	rie!
+
+ampruar-versuchen
+
+amprov	aprovas	amprova	ampruagn	ampruez	amprovan
+
+ampruava	ampruavas	ampruava	ampruavan	ampruavas	ampruavan
+
+ampruaro	ampruarossas	ampruaro	ampruaron	ampruarossas	ampruaron
+
+amprova	amprovas	amprova	amprovan	amprovas	amprovan
+
+ampruess	ampruessas	ampruess	amppruessan	ampruessas	ampruessan
+
+ampruo	ampruos	ampruada	ampruadas
+
+ampruond
+
+amprova!	amprue!
+
+
+curriger-korrigieren
+
+curritg	currigias	currigia	currigiagn	currigez	currigian
+
+currigiva	currigivas	currigiva	currigivan	currigivas	currigivan
+
+currigiaro	currigiarossas	currigiaro	currigiaron	currigiarossas	currigiaron
+
+currigia	currigias	currigia	currigian	currigias	currigian
+
+currigess	currigessas	currigess	currigessan	currigessas	currigessan
+
+currigia	currigias	currigeida	currigeidas
+
+currigiond
+
+currigia!	currige!
+
+
+cuvreir-bedecken
+
+covr	covras	covra	cuvrign	cuvriz	covran
+
+cuvriva	cuvrivas	cuvriva	cuvrivan	cuvrivas	cuvrivan
+
+cuvriro	cuvrirossas	cuvriro	cuvriron	cuvrirossas	cuvriron
+
+covra	covras	covra	covran	covras	covran
+
+cuvriss	cuvrissas	cuvriss	cuvrissan	cuvrissas	cuvrissan
+
+cuvert	cuverts	cuverta	cuvertas
+
+cuvrond/cuvrend
+
+covra!	cuvri!
+
+
+darveir-öffnen
+
+derv	dervas	derva	darvign	darviz	dervan
+
+darviva	darvivas	darviva	darvivan	darvivas	darvivan
+
+darviro	darvirossas	darviro	darviron	darvirossas	darviron
+
+derva	dervas	derva	dervan	dervas	dervan
+
+darviss	darvissas	darviss	darvissan	darvissas	darvissan
+
+davert	daverts	daverta	davertas
+
+darvond/darvend
+
+derva!	darvi!
+
+
+sa darveir-öffnen
+
+derv	dervas	derva	darvign	darviz	dervan
+
+darviva	darvivas	darviva	darvivan	darvivas	darvivan
+
+darviro	darvirossas	darviro	darviron	darvirossas	darviron
+
+derva	dervas	derva	dervan	dervas	dervan
+
+darviss	darvissas	darviss	darvissan	darvissas	darvissan
+
+davert	daverts	daverta	davertas
+
+darvond/darvend
+
+derva!	darvi!
+
+
+diriger-leiten
+
+diritg	dirigias	dirigia	dirigiagn	dirigez	dirigian
+
+dirigiva	dirigivas	dirigiva	dirigivan	dirigivas	dirigivan
+
+dirigiaro	dirigiarossas	dirigiaro	dirigiaron	dirigiarossas	dirigiaron
+
+dirigia	dirigias	dirigia	dirigian	dirigias	dirigian
+
+dirigess	dirigessas	dirigess	dirigessan	dirigessas	dirigessan
+
+dirigia	dirigias	dirigeida	dirigeidas
+
+dirigiond
+
+dirigia!	dirige!
+
+
+eliger-wählen
+
+elitg	eligias	eligia	eligiagn	eligez	eligian
+
+eligiva	eligivas	eligiva	eligivan	eligivas	eligivan
+
+eligiaro	eligiarossas	eligiaro	eligiaron	eligiarossas	eligiaron
+
+eligia	eligias	eligia	eligian	eligias	eligian
+
+eligess	eligessas	eligess	eligessan	eligessas	eligessan
+
+eligia	eligias	eligeida	eligeidas
+
+eligiond
+
+eligia!	elige!
+
+
+giuier-spielen
+
+gioi	gioias	gioia	giuiagn	giuiez	gioian
+
+giuiva	giuivas	giuiva	giuivan	giuivas	giuivan
+
+giuiaro	giuiarossas	giuiaro	giuiaron	giuiarossas	giuiaron
+
+gioia	gioias	gioia	gioian	gioias	gioian
+
+giuiess	giuiessas	giuiess	giuiessan	giuiessas	giuiessan
+
+giuia	giuias	giueida	giueidas
+
+giuiond
+
+gioia!	giuie!
+
+
+gudagner-gewinnen
+
+gudogn	gudognas	gudogna	gudagnagn	gudagnez	gudognan
+
+gudagnava	gudagnavas	gudagnava	gudagnavan	gudagnavas	gudagnavan
+
+gudagnaro	gudagnarossas	gudagnaro	gudagnaron	gudagnarossas	gudagnaron
+
+gudogna	gudognas	gudogna	gudognan	gudognas	gudognan
+
+gudagness	gudagnessas	gudagness	gudagnessan	gudagnessas	gudagnessan
+
+gudagnea	gudagneas	gudagneda	gudagnedas
+
+gudagnond
+
+gudogna!	gudagne!
+
+
+
+inditgier-angeben
+
+inditgesch	inditgeschas	inditgescha	inditgagn	inditgez	inditgeschan
+
+inditgiva	inditgivas	inditgiva	inditgivan	inditgivas	inditgivan
+
+inditgaro	inditgarossas	inditgaro	inditgaron	inditgarossas	inditgaron
+
+inditgescha	inditgeschas	inditgescha	inditgeschan	inditgeschas	inditgeschan
+
+inditgess	inditgessas	inditgess	inditgessan	inditgessas	inditgessan
+
+inditgia	inditgias	inditgeida	inditgeidas
+
+inditgond
+
+inditgescha!	inditge!
+
+
+modifitgier-angeben
+
+modifitgesch	modifitgeschas	modifitgescha	modifitgagn	modifitgez	modifitgeschan
+
+modifitgiva	modifitgivas	modifitgiva	modifitgivan	modifitgivas	modifitgivan
+
+modifitgaro	modifitgarossas	modifitgaro	modifitgaron	modifitgarossas	modifitgaron
+
+modifitgescha	modifitgeschas	modifitgescha	modifitgeschan	modifitgeschas	modifitgeschan
+
+modifitgess	modifitgessas	modifitgess	modifitgessan	modifitgessas	modifitgessan
+
+modifitgia	modifitgias	modifitgeida	modifitgeidas
+
+modifitgond
+
+modifitgescha!	modifitge!
+
+
+
+liger-lesen
+
+litg	ligias	ligia	ligiagn	ligez	ligian
+
+ligiva	ligivas	ligiva	ligivan	ligivas	ligivan
+
+ligiaro	ligiarossas	ligiaro	ligiaron	ligiarossas	ligiaron
+
+ligia	ligias	ligia	ligian	ligias	liagian
+
+ligess	ligessas	ligess	ligessan	ligessas	ligessan
+
+ligia	ligias	ligeida	ligeidas
+
+ligiond
+
+ligia!	lige!
+
+
+luvrar-arbeiten
+
+lavour	lavouras	lavoura	luvragn	luvrez	lavouran
+
+luvrava	luvravas	luvrava	luvravan	luvravas	luvravan
+
+luvraro	luvrarossas	luvraro	luvraron	luvrarossas	luvraron
+
+lavoura	lavouras	lavoura	lavouran	lavouras	lavouran
+
+luvress	luvressas	luvress	luvressan	luvressas	luvressan
+
+luvro	luvros	luvrada	luvrada
+
+luvrond
+
+lavoura!	luvre!
+
+
+manar-führen
+
+magn	magnas	magna	managn	manez	magnan
+
+manava	manavas	manava	manavan	manavas	manavan
+
+manaro	manarossas	manaro	manaron	manarossas	manaron
+
+magna	magnas	magna	magnan	magnas	magnan
+
+maness	manessas	maness	manessan	manessas	manessan
+
+mano	manos	manada	manadas
+
+manond
+
+magna!	mane!
+
+
+midar-ändern
+
+meid	meidas	meida	midagn	midez	meidan
+
+midava	midavas	midava	midavan	midavas	midavan
+
+midaro	midarossas	midaro	midaron	midarossas	midaron
+
+meida	meidas	meida	meidan	meidas	meidan
+
+midess	midessas	midess	midessan	midessas	midessan
+
+mido	midos	midada	midadas
+
+midond
+
+meida!	mide!
+
+
+sa midar-ändern
+
+meid	meidas	meida	midagn	midez	meidan
+
+midava	midavas	midava	midavan	midavas	midavan
+
+midaro	midarossas	midaro	midaron	midarossas	midaron
+
+meida	meidas	meida	meidan	meidas	meidan
+
+midess	midessas	midess	midessan	midessas	midessan
+
+mido	midos	midada	midadas
+
+midond
+
+meida!	mide!
+
+
+
+
+paer-zahlen
+
+pai	paias	paia	paiagn	paiez	paian
+
+paeva	paevas	paeva	paevan	paevas	paevan
+
+paiaro	paiarossas	paiaro	paiaron	paiarossas	paiaron
+
+paia	paias	paia	paian	paias	paian
+
+paess	paessas	paess	paessan	paessas	paessan
+
+paea	paeas	paeda	paedas
+
+paiond
+
+paia!	pae!
+
+
+pansar-denken
+
+pains	painsas	painsa	pansagn	pansez	painsan
+
+pansava	pansavas	pansava	pansavan	pansavas	pansavan
+
+pansaro	pansarossas	pansaro	pansaron	pansarossas	pansaron
+
+painsa	painsas	painsa	painsan	painsas	painsan
+
+pansess	pansessas	pansess	pansessan	pansessas	pansessan
+
+panso	pansos	pansada	pansadas
+
+pansond
+
+painsa!	panse!
+
+
+piglier-nehmen
+
+pegl	peglias	peglia	pigliagn	piglez	peglian
+
+pigliva	piglivas	pigliva	piglivan	piglivas	piglivan
+
+pigliaro	pigliarossas	pigliaro	pigliaron	pigliarossas	pigliaron
+
+peglia	peglias	peglia	peglian	peglias	peglian
+
+pigless	piglessas	pigless	piglessan	piglessas	piglessan
+
+piglia	piglias	pigleida	pigleidas
+
+pigliond
+
+peglia!	pigle!
+
+
+preschentar-vorstellen
+
+preschaint	preschaintas	preschainta	preschentagn	preschentez	preschaintan
+
+preschentava	preschentavas	preschentava	preschentavan	preschentavas	preschentavan
+
+preschentaro	preschentarossas	preschentaro	preschentaron	preschentarossas	preschentaron
+
+preschainta	preschaintas	preschainta	preschaintan	preschaintas	preschaintan
+
+preschentess	preschentessas	preschentess	preschentessan	preschentessas	preschentessan
+
+preschento	preschentos	preschentada	preschentadas
+
+preschentond
+
+preschainta!	preschente!
+
+
+sa preschentar-vorstellen
+
+preschaint	preschaintas	preschainta	preschentagn	preschentez	preschaintan
+
+preschentava	preschentavas	preschentava	preschentavan	preschentavas	preschentavan
+
+preschentaro	preschentarossas	preschentaro	preschentaron	preschentarossas	preschentaron
+
+preschainta	preschaintas	preschainta	preschaintan	preschaintas	preschaintan
+
+preschentess	preschentessas	preschentess	preschentessan	preschentessas	preschentessan
+
+preschento	preschentos	preschentada	preschentadas
+
+preschentond
+
+preschainta!	preschente!
+
+
+pussar-ruhen
+
+pôss	pôssas	pôssa	pussagn	pussez	pôssan
+
+pussava	pussavas	pussava	pussavan	pussavas	pussavan
+
+pussaro	pussarossas	pussaro	pussaron	pussarossas	pussaron
+
+pôssa	pôssas	pôssa	pôssan	pôssas	pôssan
+
+pussess	pussessas	pussess	pussessan	pussessas	pussessan
+
+pusso	pussos	pussada	pussada
+
+pussond
+
+pôssa!	pusse!
+
+
+sagleir-springen
+
+sagl	saglias	saglia	saglign	sagliz	saglian
+
+sagliva	saglivas	sagliva	saglivan	saglivas	saglivan
+
+sagliro	saglirossas	sagliro	sagliron	saglirossas	sagliron
+
+saglia	saglias	saglia	saglian	saglias	saglian
+
+sagliss	saglissas	sagliss	saglissan	saglissas	saglissan
+
+saglia	saglias	sagleida	sagleidas
+
+sagliond/sagliend
+
+saglia!	sagli!
+
+
+santeir-fühlen
+
+saint	saintas	sainta	santign	santiz	saintan
+
+santiva	santivas	santiva	santivan	santivas	santiva
+
+santiro	santirossas	santiro	santiron	santirossas	santiron
+
+sainta	saintas	sainta	saintan	saintas	saintan
+
+santiss	santissas	santiss	santissan	santissas	santissan
+
+santia	santias	santeida	santeidas
+
+santond/santend
+
+sainta!	santi!
+
+sa santeir-fühlen
+
+saint	saintas	sainta	santign	santiz	saintan
+
+santiva	santivas	santiva	santivan	santivas	santiva
+
+santiro	santirossas	santiro	santiron	santirossas	santiron
+
+sainta	saintas	sainta	saintan	saintas	saintan
+
+santiss	santissas	santiss	santissan	santissas	santissan
+
+santia	santias	santeida	santeidas
+
+santond/santend
+
+sainta!	santi!
+
+
+sarveir-bedienen
+
+serv	servas	serva	sarvign	sarviz	servan
+
+sarviva	sarvivas	sarviva	sarvivan	sarvivas	sarvivan
+
+sarviro	sarvirossas	sarviro	sarviron	sarvirossas	sarviron
+
+serva	servas	serva	servan	servas	servan
+
+sarviss	sarvissas	sarviss	sarvissan	sarvissas	sarvissan
+
+sarvia	sarvias	sarveida	sarveidas
+
+sarvond/sarvend
+
+serva!	sarvi!
+
+
+sa sarveir-bedienen
+
+serv	servas	serva	sarvign	sarviz	servan
+
+sarviva	sarvivas	sarviva	sarvivan	sarvivas	sarvivan
+
+sarviro	sarvirossas	sarviro	sarviron	sarvirossas	sarviron
+
+serva	servas	serva	servan	servas	servan
+
+sarviss	sarvissas	sarviss	sarvissan	sarvissas	sarvissan
+
+sarvia	sarvias	sarveida	sarveidas
+
+sarvond/sarvend
+
+serva!	sarvi!
+
+
+stibgier-studieren
+
+stebtg	stebgias	stebgia	stibgiagn	stibgez	stebgian
+
+stibgiva	stibgivas	stibgiva	stibgivan	stibgivas	stibgivan
+
+stibgiaro	stibgiarossas	stibgiaro	stibgiaron	stibgiarossas	stibgiaron
+
+stebgia	stebgias	stebgia	stebgian	stebgias	stebgian
+
+stibgess	stibgessas	stibgess	stibgessan	stibgessas	stibgessan
+
+stibgia	stibgias	stibgeida	stibgeidas
+
+stibgiond
+
+stebgia!	stibge!
+
+
+stidar-löschen
+
+steid	steidas	steida	stidagn	stidez	steidan
+
+stidava	stidavas	stidava	stidavan	stidavas	stidavan
+
+stidaro	stidarossas	stidaro	stidaron	stidarossas	stidaron
+
+steida	steidas	steida	steidan	steidas	steidan
+
+stidess	stidessas	stidess	stidessan	stidessas	stidessan
+
+stido	stidos	stidada	stidadas
+
+stidond
+
+stida!	stide!
+
+sa stidar-löschen
+
+steid	steidas	steida	stidagn	stidez	steidan
+
+stidava	stidavas	stidava	stidavan	stidavas	stidavan
+
+stidaro	stidarossas	stidaro	stidaron	stidarossas	stidaron
+
+steida	steidas	steida	steidan	steidas	steidan
+
+stidess	stidessas	stidess	stidessan	stidessas	stidessan
+
+stido	stidos	stidada	stidadas
+
+stidond
+
+stida!	stide!
+
+
+surdar-übegeben
+
+surdung	surdast	surdat	surdagn	surdez	surdattan
+
+surdava	surdavas	surdava	surdavan	surdavas	surdavan
+
+surdaro	surdarossas	surdaro	surdaron	surdarossas	surdaron
+
+surdetta	surdettas	surdetta	surdettan	surdettas	surdettan
+
+surdess	surdessas	surdess	surdessan	surdessas	surdessan
+
+surdo	surdos	surdada	surdadas
+
+surdond
+
+surdò!	surde!
+
+
+survagneir-bekommen
+
+survign	survignst	survign	survagnin	survagniz	survignan
+
+survagniva	survagnivas	survagniva	survagnivan	survagnivas	survagnivan
+
+survagniro	survagnirossas	survagniro	survagniron	survagnirossas	survagniron
+
+survigna	survignas	survigna	survignan	survignas	survignan
+
+survagniss	survagnissas	survagniss	survagnissan	survagnissas	survagnissan
+
+survagnia	survagnias	survagneida	survagneidas
+
+survagnond/survagnend
+
+ 	 	
+
+
+tagler-schneiden
+
+tagl	taglias	taglia	tagliagn	taglez	taglian
+
+tagleva	taglevas	tagleva	taglevan	taglevas	taglevan
+
+tagliaro	tagliarossas	tagliaro	tagliaron	tagliarossas	tagliaron
+
+taglia	taglias	taglia	taglian	taglias	taglian
+
+tagless	taglessas	tagless	taglessan	taglessas	taglessan
+
+taglea	tagleas	tagleda	tagledas
+
+tagliond
+
+taglia!	tagle!
+
+
+sa tagler-schneiden
+
+tagl	taglias	taglia	tagliagn	taglez	taglian
+
+tagleva	taglevas	tagleva	taglevan	taglevas	taglevan
+
+tagliaro	tagliarossas	tagliaro	tagliaron	tagliarossas	tagliaron
+
+taglia	taglias	taglia	taglian	taglias	taglian
+
+tagless	taglessas	tagless	taglessan	taglessas	taglessan
+
+taglea	tagleas	tagleda	tagledas
+
+tagliond
+
+taglia!	tagle!
+
+
+tractar-behandeln
+
+tract	tractas	tracta	tractagn	tractez	tractan
+
+tractava	tractavas	tractava	tractavan	tractavas	tractavan
+
+tractaro	tractarossas	tractaro	tractaron	tractarossas	tractaron
+
+tracta	tractas	tracta	tractan	tractas	tractan
+
+tractess	tractessas	tractess	tractessan	tractessas	tractessan
+
+tracto	tractos	tractada	tractadas
+
+tractond
+
+tracta!	tracte!
+
+
+tschartger-suchen
+
+tschertg	tschertgas	tschertga	tschartgagn	tschartgez	tschertgan
+
+tschartgeva	tschartgevas	tschartgeva	tschartgevan	tschartgevas	tschartgevan
+
+tschartgaro	tschartgarossas	tschartgaro	tschartgaron	tschartgarossas	tschartgaron
+
+tschertga	tschertgas	tschertga	tschertgan	tschertgas	tschertgan
+
+tschartgess	tschartgessas	tschartgess	tschartgessan	tschartgessas	tschartgessan
+
+tschartgea	tschartgeas	tschartgeda	tschartgedas
+
+tschartgond
+
+tschertga!	tschartge!
+
+
+tutgier-treffen  (ebenfalls: pertutgier)
+
+totg	totgas	totga	tutgagn	tutgez	totgan
+
+tutgiva	tutgivas	tutgiva	tutgivan	tutgivas	tutgivan
+
+tutgaro	tutgarossas	tutgaro	tutgaron	tutgarossas	tutgaron
+
+totga	totgas	totga	totgan	totgas	totgan
+
+tutgess	tutgessas	tutgess	tutgessan	tutgessas	tutgessan
+
+tutgia	tutgias	tutgeida	tutgeidas
+
+tutgond
+
+totga!	tutge!
+
+
+tutgier-treffen 
+
+pertotg	pertotgas	pertotga	pertutgagn	pertutgez	pertotgan
+
+pertutgiva	pertutgivas	pertutgiva	pertutgivan	pertutgivas	pertutgivan
+
+pertutgaro	pertutgarossas	pertutgaro	pertutgaron	pertutgarossas	pertutgaron
+
+pertotga	pertotgas	pertotga	pertotgan	pertotgas	pertotgan
+
+pertutgess	pertutgessas	pertutgess	pertutgessan	pertutgessas	pertutgessan
+
+pertutgia	pertutgias	pertutgeida	pertutgeidas
+
+pertutgond
+
+pertotga!	pertutge!
+
+
+veiver-leben
+
+veiv	veivas	veiva	vivagn	vivez	veivan
+
+viveva	vivevas	viveva	vivevan	vivevas	vivevan
+
+vivaro	vivarossas	vivaro	vivaron	vivarossas	vivaron
+
+veiva	veivas	veiva	veivan	veivas	veivan
+
+vivess	vivessas	vivess	vivessan	vivessas	vivessan
+
+vivia	vivias	viveida	viveidas
+
+vivond
+
+veiva!	vive!
+
+
+vurdar-schauen
+
+vard	vardas	varda	vurdagn	vurdez	vardan
+
+vurdava	vurdavas	vurdava	vurdavan	vurdavas	vurdavan
+
+vurdaro	vurdarossas	vurdaro	vurdaron	vurdarossas	vurdaron
+
+varda	vardas	varda	vardan	vardas	vardan
+
+vurdess	vurdessas	vurdess	vurdessan	vurdessas	vurdessan
+
+vurdo	vurdos	vurdada	vurdadas
+
+vurdond
+
+varda!	vurde!
+
+
