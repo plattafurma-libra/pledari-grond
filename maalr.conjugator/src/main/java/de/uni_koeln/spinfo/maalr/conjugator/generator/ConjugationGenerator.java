@@ -411,7 +411,7 @@ public class ConjugationGenerator {
 
 			// PRESCHENT
 			// 1ps
-			cs.setPreschentsing1(root + "escha");
+			cs.setPreschentsing1(root + "esch");
 			// 2ps
 			cs.setPreschentsing2(root + "eschas");
 			// 3ps
