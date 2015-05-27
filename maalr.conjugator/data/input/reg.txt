@@ -6,7 +6,6 @@ calar
 sorteir	[é]
 preparar
 procurar
-angraztger
 tanscher	5
 dastger	2
 includer	5

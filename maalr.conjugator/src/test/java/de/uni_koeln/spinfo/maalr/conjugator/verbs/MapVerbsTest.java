@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,8 +26,12 @@ public class MapVerbsTest {
 	@Test
 	public void testAddConjugations() throws IOException {
 
-		List<String> list = mapper.addConjugations("data_sm.tab");
+		List<String> list = mapper.addConjugations("data_sm_ov.tab");
+		List<String> list_one = new ArrayList<>();
 
+		Set<String> set = new LinkedHashSet<String>(list);
+
+		VerbsIO.printSet(set, "data_sm_set");
 		VerbsIO.printList(list, "data_sm");
 
 	}
@@ -34,12 +39,27 @@ public class MapVerbsTest {
 	@Test
 	public void test() {
 
-		String s = "esser–sein";
+		String s = "5596	ausgesprochen		adj	veir				H	ausgesproche	D	zzausgesprochen			typisch	";
 
-		if (s.contains("–")) {
+		String[] array = s.split("\\t");
 
-			System.out.println(s);
+		if (array[3].equals("adj")) {
+
+			System.out.println("true");
+		} else {
+			System.out.println("false");
 		}
+	}
+
+	@Test
+	public void testRegex() {
+
+		String s = "";
+
+		if (mapper.isEmpty(s)) {
+			System.out.println("hello");
+		}
+
 	}
 
 	@Test
@@ -65,43 +85,38 @@ public class MapVerbsTest {
 		List<String> vw = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "vw.txt"),
 				Charset.forName("UTF8"));
-		
+
 		List<String> cvw = vw;
 
 		List<String> esch = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "reg_esch.txt"),
 				Charset.forName("UTF8"));
-		
-		List<String> cesch = esch;
 
+		List<String> cesch = esch;
 
 		for (Reflex r : reflex) {
 
 			if (cr.contains(r.getVerb())) {
-				System.out.println(r.getPrefix() + r.getVerb()+ "\t" + "reg");
+				System.out.println(r.getPrefix() + r.getVerb() + "\t" + "reg");
 				regulars.add(r.getPrefix() + r.getVerb());
 			}
-			
+
 			if (cvw.contains(r.getVerb())) {
 				System.out.println(r.getPrefix() + r.getVerb() + "\t" + "vw");
 				vw.add(r.getPrefix() + r.getVerb());
 			}
-			
+
 			if (cesch.contains(r.getVerb())) {
 				System.out.println(r.getPrefix() + r.getVerb() + "\t" + "wsch");
 				esch.add(r.getPrefix() + r.getVerb());
 			}
-			
 
 		}
-		
-		
+
 		VerbsIO.printList(regulars, "regulars_ref");
 		VerbsIO.printList(vw, "vw_ref");
 		VerbsIO.printList(esch, "esch_ref");
-		
-		
-		
+
 	}
 
 	@Test

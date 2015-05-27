@@ -8,6 +8,7 @@ import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.List;
+import java.util.Set;
 
 public class VerbsIO {
 
@@ -37,6 +38,23 @@ public class VerbsIO {
 		Writer out = new OutputStreamWriter(fos, "UTF8");
 
 		for (T value : list) {
+
+			out.append(value + "\n");
+
+		}
+
+		out.close();
+
+	}
+	
+	public static <T> void printSet(Set<T> set, String fileName)
+			throws IOException {
+
+		FileOutputStream fos = new FileOutputStream(output_dir + fileName
+				+ ".tab");
+		Writer out = new OutputStreamWriter(fos, "UTF8");
+
+		for (T value : set) {
 
 			out.append(value + "\n");
 

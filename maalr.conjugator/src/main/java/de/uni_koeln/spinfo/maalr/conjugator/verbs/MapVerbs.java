@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -87,12 +88,12 @@ public class MapVerbs {
 
 		List<Reflex> reflexives = cleanReflexives();
 
-		boolean irregular;
+		boolean processed;
 
 		try {
 
 			while ((currentLine = reader.readLine()) != null) {
-				irregular = false;
+				processed = false;
 				// Add required conjugation fields @ first line
 				if (reader.getLineNumber() == 1) {
 
@@ -116,7 +117,7 @@ public class MapVerbs {
 					String verb = array[4];
 					String DGenus = array[2];
 					String RGenus = array[5];
-					String RGrammatik = array[3];
+					String DGrammatik = array[3];
 
 					HashMap<String, String> map = null;
 
@@ -127,13 +128,14 @@ public class MapVerbs {
 
 						if (verb.equals(v)) {
 
-							if (notVerb(structure, DGenus, RGenus, RGrammatik,
-									list, currentLine) == true) {
-								continue;
+							if (!isVerb(structure, DGenus, RGenus, DGrammatik,
+									list, currentLine)) {
+								break;
 
 							} else {
 
-								irregular = true;
+								processed = true;
+								found.add(verb + "\t" + "irr");
 
 								ol.append(currentLine);
 
@@ -158,12 +160,12 @@ public class MapVerbs {
 
 						if (vs.getForm().equals(verb)) {
 
-							if (notVerb(structure, DGenus, RGenus, RGrammatik,
-									list, currentLine) == true) {
-								continue;
+							if (!isVerb(structure, DGenus, RGenus, DGrammatik,
+									list, currentLine)) {
+								break;
 
 							} else {
-
+								processed = true;
 								found.add(verb + "\t" + "reg");
 
 								generator.processQuery(verb);
@@ -183,10 +185,11 @@ public class MapVerbs {
 
 						if (vs.getForm().equals(verb)) {
 
-							if (notVerb(structure, DGenus, RGenus, RGrammatik,
-									list, currentLine) == true) {
-								continue;
+							if (!isVerb(structure, DGenus, RGenus, DGrammatik,
+									list, currentLine)) {
+								break;
 							} else {
+								processed = true;
 								found.add(verb + "\t" + "vw");
 								map = generator.generateConjugation(verb, 9);
 
@@ -201,12 +204,12 @@ public class MapVerbs {
 
 						if (vs.getForm().equals(verb)) {
 
-							if (notVerb(structure, DGenus, RGenus, RGrammatik,
-									list, currentLine) == true) {
-								continue;
+							if (!isVerb(structure, DGenus, RGenus, DGrammatik,
+									list, currentLine)) {
+								break;
 
 							} else {
-
+								processed = true;
 								found.add(verb + "\t" + "esch");
 								generator.processQuery(verb);
 								String ending = generator.getEnding();
@@ -233,8 +236,8 @@ public class MapVerbs {
 						list.add(ol.toString());
 
 					}
-					// VERB WAS NOT FOUND
-					else if (irregular == false) {
+					// IT's NOT a VERB
+					else if (processed == false) {
 						StringBuffer buffer = new StringBuffer();
 						buffer.append(currentLine);
 						buffer.append("\t");
@@ -256,6 +259,10 @@ public class MapVerbs {
 		}
 
 		VerbsIO.printList(found, "found");
+		
+		Set<String> foundset = new LinkedHashSet<>(found);
+		
+		VerbsIO.printSet(foundset, "found_set");
 
 		reader.close();
 		return list;
@@ -568,25 +575,15 @@ public class MapVerbs {
 
 	}
 
-	private boolean notVerb(ConjugationStructure structure, String DGenus,
-			String RGenus, String RGrammatik, List<String> list,
+	private boolean isVerb(ConjugationStructure structure, String DGenus,
+			String RGenus, String DGrammatik, List<String> list,
 			String currentLine) {
 
 		if (isEmpty(DGenus) == false || isEmpty(RGenus) == false
-				|| RGrammatik.equals("Adjektiv")) {
-
-			StringBuffer buffer = new StringBuffer();
-			buffer.append(currentLine);
-			buffer.append("\t");
-			for (String s : structure.msi) {
-
-				buffer.append("\t");
-			}
-
-			list.add(buffer.toString());
-			return true;
-		} else {
+				|| DGrammatik.equals("adj")) {
 			return false;
+		} else {
+			return true;
 		}
 
 	}
