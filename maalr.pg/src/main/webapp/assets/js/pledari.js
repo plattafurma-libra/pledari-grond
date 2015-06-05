@@ -68,9 +68,6 @@ $(document).ready(function() {
 		$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">PT</a>');
 		$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">VL</a>');
 		$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">SR</a>');
-		
-		/*Remove link to grammar PDF*/
-		$('#grammatica').hide();
 	}
 
 	function stopMobile() {
@@ -93,9 +90,6 @@ $(document).ready(function() {
 			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">Vallader</a>');
 			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">Sursilvan</a>');
 		}
-		
-		
-		$('#grammatica').show();
 	}
 
 	function initCustomElements() {
