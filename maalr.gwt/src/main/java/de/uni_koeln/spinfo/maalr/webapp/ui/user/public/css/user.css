@@ -256,10 +256,15 @@ input:focus, textarea:focus {
 #navi_head {
 	position: absolute;
 	width: 100%;
-	display: flex;
-	display: -webkit-flex;
 	height: 48px;
 	z-index: 1000;
+	
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	
+	/* 	flex-direction: row; */
+	-ms-flex-direction: row;
 
 	background-color: rgb(0,200,255);
 
@@ -303,8 +308,14 @@ input:focus, textarea:focus {
 	height: 28px;
 	z-index: 1000;
 	top: 48px;
+	
 	display: flex;
 	display: -webkit-flex;
+	display: -ms-flexbox;
+	
+	/* 	flex-direction: row; */
+	-ms-flex-direction: row;
+	
 	background-color: rgb(188,188,188);
 	
 	background-image: linear-gradient(bottom, rgb(167, 167, 167) 0%, rgb(188,188,188) 100%);
