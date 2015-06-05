@@ -24,6 +24,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
@@ -55,6 +57,9 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCe
 
 public class User implements EntryPoint {
 
+	
+	private UserConstants constants = GWT.create(UserConstants.class);
+	
 	private Logger logger = Logger.getLogger(getClass());
 
 	private SearchServiceAsync service;
@@ -62,6 +67,15 @@ public class User implements EntryPoint {
 	private ResultCellTable resultCellTable;
 
 	private Search search;
+	
+	private static final String SEARCH_PANEL = "search_panel";
+	private static final String SIDE_PANEL = "ext_links_container";
+	private static final String EXTERNAL_LINKS = "links_ulteriurs";
+	private static final String GLOSSAR = "link_glossaris";
+	private static final String LANGUAGES_WIDGET = "languages-widget";
+	private static final String NOJS_SEARCHCONTAINER = "nojs_searchcontainer";
+	private static final String CONTENT = "content";
+	private static final String PROPOSE_NAVI = "propose_navi";
 
 	/**
 	 * This is the entry point method.
@@ -70,7 +84,8 @@ public class User implements EntryPoint {
 		this.service = GWT.create(SearchService.class);
 		search = new Search();
 		resultCellTable = new ResultCellTable();
-		AsyncLemmaDescriptionLoader.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+		AsyncLemmaDescriptionLoader
+				.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -78,7 +93,7 @@ public class User implements EntryPoint {
 
 					@Override
 					public void onSuccess(LemmaDescription result) {
-						HiJax.hijackAnchor("propose_navi", new Command() {
+						HiJax.hijackAnchor(PROPOSE_NAVI, new Command() {
 
 							@Override
 							public void execute() {
@@ -93,8 +108,8 @@ public class User implements EntryPoint {
 						}
 					}
 				});
-		Element element = DOM.getElementById("languages-widget");
-		if(element != null) {
+		Element element = DOM.getElementById(LANGUAGES_WIDGET);
+		if (element != null) {
 			updateLanguageLinks(element);
 		}
 	}
@@ -106,19 +121,21 @@ public class User implements EntryPoint {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		if(attribute != null && attribute.contains("lang_select")) {
+		if (attribute != null && attribute.contains("lang_select")) {
 			final Anchor anchor = Anchor.wrap(element);
-			final String langParam = anchor.getHref().substring(anchor.getHref().lastIndexOf('?'));
+			final String langParam = anchor.getHref().substring(
+					anchor.getHref().lastIndexOf('?'));
 			HiJax.hijackAnchor(anchor, new Command() {
-				
+
 				@Override
 				public void execute() {
-					String url = Window.Location.getPath() + langParam + "#"+History.getToken();
+					String url = Window.Location.getPath() + langParam + "#"
+							+ History.getToken();
 					Window.Location.assign(url);
 				}
 			});
 		} else {
-			for(int i = 0; i < element.getChildCount(); i++) {
+			for (int i = 0; i < element.getChildCount(); i++) {
 				Node child = element.getChild(i);
 				Element e = child.cast();
 				updateLanguageLinks(e);
@@ -127,11 +144,11 @@ public class User implements EntryPoint {
 	}
 
 	private void initializeMainPanel() {
-		
-		Element noScriptDiv = DOM.getElementById("nojs_searchcontainer");
-		if(noScriptDiv != null)
+
+		Element noScriptDiv = DOM.getElementById(NOJS_SEARCHCONTAINER);
+		if (noScriptDiv != null)
 			noScriptDiv.removeFromParent();
-	
+
 		search.setResultCellTable(resultCellTable);
 		search.addSearchHandler(new SearchHandler() {
 
@@ -162,15 +179,6 @@ public class User implements EntryPoint {
 			}
 
 		});
-		
-		// Insert search widget into div#content 
-		RootPanel contentPanel = RootPanel.get("content");
-		if(contentPanel != null) {
-			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
-			RootPanel.get("navi_head").add(dictLinksDropDown);
-			contentPanel.add(search);
-		}
-
 
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
 			public void onValueChange(ValueChangeEvent<String> event) {
@@ -182,19 +190,86 @@ public class User implements EntryPoint {
 		});
 
 		if (History.getToken() != null) {
-			//Logger.getLogger(getClass()).info("History.getToken(): " + History.getToken());
+			// Logger.getLogger(getClass()).info("History.getToken(): " +
+			// History.getToken());
 			History.fireCurrentHistoryState();
 		}
+
+		RootPanel contentPanel = RootPanel.get(CONTENT);
+		if (contentPanel != null) {
+			contentPanel.add(search);
+		}
 		
-		hiJackExternalLinks("links_ulteriurs", DictionaryConstants.DICT_LINKS_EXTERNAL, DictionaryConstants.getExtLinksDictionary());
-		hiJackExternalLinks("link_glossaris", DictionaryConstants.GLOSSAR_LINKS, DictionaryConstants.getLinksDictionary());
-		
+		// ADD EXTERNAL LINKS 
+		addExternalLinks();
+
 		search.setFocus(true);
+	}
+
+	private void addExternalLinks() {
+		
+		final RootPanel sidePanel = RootPanel.get(SIDE_PANEL);
+		final RootPanel searchPanel = RootPanel.get(SEARCH_PANEL);
+		
+		if(sidePanel != null && searchPanel != null) {
+			Anchor extDictLinks = createAnchor(constants.dictionaries(), EXTERNAL_LINKS);
+			Anchor glossary = createAnchor(constants.glossar(), GLOSSAR);
+
+			if (Window.getClientWidth() < 768) {
+				searchPanel.add(extDictLinks);
+				searchPanel.add(glossary);
+			} else {
+				sidePanel.add(extDictLinks);
+				sidePanel.add(glossary);
+			}
+
+			addResizeHandler(sidePanel, searchPanel);
+			
+			hiJackExternalLinks(EXTERNAL_LINKS, DictionaryConstants.DICT_LINKS_EXTERNAL,
+					DictionaryConstants.getExtLinksDictionary());
+			hiJackExternalLinks(GLOSSAR, DictionaryConstants.GLOSSAR_LINKS,
+					DictionaryConstants.getLinksDictionary());
+		}
+	}
+
+	private Anchor createAnchor(final String title, final String id) {
+		Anchor anchor = new Anchor(title);
+		anchor.getElement().setId(id);
+		return anchor;
+	}
+
+	private void addResizeHandler(final RootPanel sidePanel, final RootPanel searchPanel) {
+		
+		Window.addResizeHandler(new ResizeHandler() {
+			
+			@Override
+			public void onResize(ResizeEvent event) {
+				
+				Element a = DOM.getElementById(EXTERNAL_LINKS);
+				Element b = DOM.getElementById(GLOSSAR);
+
+				a.removeFromParent();
+				b.removeFromParent();
+				
+				if (event.getWidth() >= 930) {
+					appendTo(sidePanel, a);
+					appendTo(sidePanel, b);
+				} else {
+					appendTo(searchPanel, a);
+					appendTo(searchPanel, b);
+				}
+			}
+
+			private void appendTo(final RootPanel panel, Element element) {
+				panel.getElement().appendChild(element);
+			}
+
+		});
 	}
 
 	private void hiJackExternalLinks(final String linkId, final List<String> dictLinksList, final Dictionary dictionary) {
 		Element anchor = DOM.getElementById(linkId);
-		if(anchor != null) {
+		if (anchor != null) {
 			Anchor wrapper = Anchor.wrap(anchor);
 			wrapper.addClickHandler(new ClickHandler() {
 				@Override
@@ -205,14 +280,14 @@ public class User implements EntryPoint {
 				}
 			});
 		}
-		
 	}
 
 	private void doSearch(final MaalrQuery maalrQuery) {
-		if(maalrQuery.getValues().size() == 0) {
+		if (maalrQuery.getValues().size() == 0) {
 			return;
 		}
-		if(SearchHelper.getLastQuery() != null && SearchHelper.getLastQuery().equals(maalrQuery)) {
+		if (SearchHelper.getLastQuery() != null
+				&& SearchHelper.getLastQuery().equals(maalrQuery)) {
 			return;
 		}
 		service.search(maalrQuery, new AsyncCallback<QueryResult>() {
