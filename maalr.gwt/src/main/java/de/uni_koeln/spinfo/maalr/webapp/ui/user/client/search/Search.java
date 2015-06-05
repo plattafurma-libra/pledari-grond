@@ -17,10 +17,7 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
 import java.util.List;
 
-import com.github.gwtbootstrap.client.ui.Column;
-import com.github.gwtbootstrap.client.ui.NavPills;
 import com.github.gwtbootstrap.client.ui.Well;
-import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
@@ -33,7 +30,6 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
@@ -46,7 +42,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
-import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictLinksDropDown;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.DictionaryConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.ExternalLinkDialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
@@ -80,8 +75,8 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		initWidget(uiBinder.createAndBindUi(this));
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		localeDictionary = DictionaryConstants.getLocaleDictionary();
+		well.getElement().setId("search_panel");
 		well.add(searchForm);
-		// TODO: Disable in surmiran edition 
 		// well.add(getLink(DictionaryConstants.DICT_LINKS));
 		// well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
 	}

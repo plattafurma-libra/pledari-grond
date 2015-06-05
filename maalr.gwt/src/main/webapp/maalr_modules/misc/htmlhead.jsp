@@ -37,7 +37,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="Robots" content="INDEX,FOLLOW">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.png">
 <style type="text/css">
 	#show_results_noscript { display: none; }
 </style>
