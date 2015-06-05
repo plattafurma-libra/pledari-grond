@@ -75,7 +75,10 @@ public class MaalrUserInfo extends BasicDBObject {
 	}
 	
 	public Role getRole() {
-		return Role.valueOf(super.getString(Constants.Users.ROLE));
+		String name = super.getString(Constants.Users.ROLE);
+		if(name == null)
+			return null;
+		return Role.valueOf(name);
 	}
 	
 	public int getUpVotes() {
