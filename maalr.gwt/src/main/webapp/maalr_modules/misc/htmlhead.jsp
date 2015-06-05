@@ -6,26 +6,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	if(session.getAttribute("pl") == null) {
-		session.setAttribute("pl", request.getLocale().getLanguage());
-		// session.setAttribute("pl", "sm");
+	if(session.getAttribute("locale") == null) {
+		session.setAttribute("locale", request.getLocale().getLanguage());
 	}
-	if(request.getParameter("pl") != null) {
-		session.setAttribute("pl", request.getParameter("pl"));
+	if(request.getParameter("locale") != null) {
+		session.setAttribute("locale", request.getParameter("locale"));
 	}
 %>
 
-<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
-<!--[if IE 7]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8">			<![endif]-->
-<!--[if IE 8]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9">				<![endif]-->
-<!--[if IE 9]>			<html lang='<%=session.getAttribute("pl")%>' class="ie9">					<![endif]-->
-<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("pl")%>'>								<![endif]-->
+<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
+<!--[if IE 7]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8">			<![endif]-->
+<!--[if IE 8]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9">				<![endif]-->
+<!--[if IE 9]>			<html lang='<%=session.getAttribute("locale")%>' class="ie9">					<![endif]-->
+<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("locale")%>'>								<![endif]-->
 
-<html lang='<%=session.getAttribute("pl") %>' />
+<html lang='<%=session.getAttribute("locale") %>' />
 
-<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
+<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
+
 <head>
+
+<meta name="gwt:property" content="locale=<%=session.getAttribute("locale")%>">
 
 <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
 <!--[if IE 7]> <link rel="stylesheet" href="/de.uni_koeln.spinfo.maalr.user/css/font-awesome-ie7.css"> <![endif]-->
@@ -35,7 +37,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="Robots" content="INDEX,FOLLOW">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.png">
 <style type="text/css">
 	#show_results_noscript { display: none; }
 </style>

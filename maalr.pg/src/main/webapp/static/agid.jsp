@@ -25,8 +25,8 @@
 		
 			<div class="container well information_container">
 				<%
-					String languageTag = (String) session.getAttribute("pl");
-					Locale locale = Locale.forLanguageTag(languageTag);
+					String languageTag = (String) session.getAttribute("locale");
+					//Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<%
 					if (languageTag.equals("sm")) {

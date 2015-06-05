@@ -2,13 +2,17 @@
 
 <%@ page import="java.util.Locale" %>
 
+<%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt' %>
+
 <%-- HTML HEADER --%>
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
 		
 		<%-- NAVIGATION --%>
-		<div id="top"><jsp:include page="/maalr_modules/misc/header.jsp" /></div>
+		<div id="top">
+			<jsp:include page="/maalr_modules/misc/header.jsp" />
+		</div>
 
 		<%-- CONTENT --%>		
 		<div>
@@ -16,32 +20,34 @@
 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
 			
+			<c:set var="locale" value='<%=(String) session.getAttribute("locale")%>'/>
+			
 			<div class="container well information_container">
 	
 				<%
 					String languageTag = (String) session.getAttribute("pl");
-					Locale locale = Locale.forLanguageTag(languageTag);
+					// Locale locale = Locale.forLanguageTag(languageTag);
 				%>
-				<% 
-					if(languageTag.equals("sm")){
-				%>
-						<%@ include file="/static/infos-sm.jsp" %>
-				<% 
-					} else if(languageTag.equals("de")){
-				%>
-						<%@ include file="/static/infos-de.jsp" %>
-				<% 
-					} else {
-				%>
-					<h1>Nothing to display, please contact us!</h1>
-				<% 
-					}
-				%>
+				
+				<cr:choose>
+		    	 	<cr:when test="${locale eq 'sm'}">
+		    	 		<%@ include file="/static/infos-sm.jsp" %>
+		    	 	</cr:when>
+		    	 	<cr:when test="${locale eq 'de'}">
+		    	 		<%@ include file="/static/infos-de.jsp" %>
+		    	 	</cr:when>
+		    	 	<cr:otherwise>
+		    	 		<h1>Nothing to display, please contact us!</h1>
+		   			</cr:otherwise>
+		    	</cr:choose>
+	
 			</div>
 		</div>
 		
 		<%-- FOOTER --%>
-		<div id="bottom"><jsp:include page="/maalr_modules/misc/footer.jsp" /></div>
+		<div id="bottom">
+			<jsp:include page="/maalr_modules/misc/footer.jsp" />
+		</div>
 		
 	</body>
 </html>
