@@ -129,8 +129,7 @@ public class User implements EntryPoint {
 
 				@Override
 				public void execute() {
-					String url = Window.Location.getPath() + langParam + "#"
-							+ History.getToken();
+					String url = Window.Location.getPath() + langParam + "#" + History.getToken();
 					Window.Location.assign(url);
 				}
 			});
@@ -251,7 +250,7 @@ public class User implements EntryPoint {
 				a.removeFromParent();
 				b.removeFromParent();
 				
-				if (event.getWidth() >= 930) {
+				if (event.getWidth() >= 1080) {
 					appendTo(sidePanel, a);
 					appendTo(sidePanel, b);
 				} else {
