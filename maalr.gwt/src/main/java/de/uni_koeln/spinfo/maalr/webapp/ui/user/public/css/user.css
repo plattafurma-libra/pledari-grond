@@ -187,7 +187,6 @@ textarea:focus {
 	cursor: pointer;
 }
 
-/* SPRINGEN & CO. */
 
 /* GENERAL */
 
@@ -278,13 +277,16 @@ input:focus, textarea:focus {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	
+	-webkit-justify-content: space-around; /* Safari 6.1+ */
+	justify-content: space-between;
 }
 
 #navi_head #brand_title {
 	font-size: 14px;
 	padding-top: 18px;
 	text-align: center;
-	width: 86%;
+/* 	width: 86%; */
 }
 
 #navi_head #brand_title a {
@@ -1581,15 +1583,15 @@ a.btn.btn-danger:hover {
 @media all and (max-width: 767px) {
 	
 	#languages-widget {
-		width: 25%;
+		width: 15%;
 	}
 	
-	#brand_title {
-		width: 50%;
-	}
+/* 	#brand_title { */
+/* 		width: 50%; */
+/* 	} */
 	
 	#login-widget {
-		width: 25%;
+		width: 15%;
 	}
 	
 	.ext_links_mobile {
