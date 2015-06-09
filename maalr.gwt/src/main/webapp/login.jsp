@@ -22,7 +22,7 @@
 		
 		<div>
 			
-<%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp"%> --%>
+			<%-- <%@ include file="/maalr_modules/misc/language_widget.jsp"%> --%>
 			
 			<%-- INTERNAL SIGN IN --%>
 			<div class="container well" id="login_container">
@@ -84,10 +84,10 @@
 					</div>
 				</div>
 				<%-- login info text  --%>
-<%-- 				<div id="maalr_login_info"> --%>
-<%-- 					<span class="glyphicon icon-info-sign"></span> --%>
-<%-- 					<p><fmt:message key="maalr.login.welcome" /></p> --%>
-<%-- 				</div> --%>
+				<div id="maalr_login_info">
+					<span class="glyphicon icon-info-sign"></span>
+					<p><fmt:message key="maalr.login.welcome" /></p>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="/analytics.jsp" />
