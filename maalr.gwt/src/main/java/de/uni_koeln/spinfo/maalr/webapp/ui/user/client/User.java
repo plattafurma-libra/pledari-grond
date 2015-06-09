@@ -256,7 +256,7 @@ public class User implements EntryPoint {
 				a.removeFromParent();
 				b.removeFromParent();
 				
-				if (event.getWidth() >= 930) {
+				if (event.getWidth() >= 1080) {
 					appendTo(sidePanel, a);
 					appendTo(sidePanel, b);
 				} else {
