@@ -4,16 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	if(session.getAttribute("pl") == null) {
-		session.setAttribute("pl", request.getLocale().getLanguage());
+	if(session.getAttribute("locale") == null) {
+		session.setAttribute("locale", request.getLocale().getLanguage());
 	}
-	if(request.getParameter("pl") != null) {
-		session.setAttribute("pl", request.getParameter("pl"));
+	if(request.getParameter("locale") != null) {
+		session.setAttribute("locale", request.getParameter("locale"));
 	}
 %>
 
-<html lang='<%=session.getAttribute("pl")%>'>
-<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
+<html lang='<%=session.getAttribute("locale")%>'>
+<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 

@@ -408,7 +408,6 @@ input:focus, textarea:focus {
 	min-height: 100%;
   	width: 100%;
   	position: absolute;
-/*   	display: flex; */
 }
 
 #content.container {
@@ -428,6 +427,18 @@ input:focus, textarea:focus {
 	left: 50%;
 	margin-left: -271px;
 	margin-top: -54px;
+}
+
+#info-box {
+	position: relative;
+	margin: 250px auto;
+ 	width: 500px;
+}
+
+#info-box p {
+	margin: 0 0 10px;
+	letter-spacing: 1px;
+	line-height: 20px;
 }
 
 .well {
@@ -521,6 +532,7 @@ input:focus, textarea:focus {
 	width: 7%;
 	text-align: right;
 	padding-top: 18px;
+	visibility: hidden;
 }
 
 #languages-widget a:hover {
@@ -555,6 +567,7 @@ a.lang_selected:disabled {
 	width: 7%;
 	padding-top: 15.5px;
 	opacity: 0.6;
+	visibility: hidden;
 }
 
 
@@ -1582,6 +1595,11 @@ a.btn.btn-danger:hover {
 
 @media all and (max-width: 767px) {
 	
+	#info-box {
+		margin: 180px auto;
+ 		width: 300px;
+	}
+	
 	#languages-widget {
 		width: 15%;
 	}
@@ -2011,3 +2029,4 @@ a.btn.btn-danger:hover {
     vertical-align: middle;
     text-align: center;
 }
+

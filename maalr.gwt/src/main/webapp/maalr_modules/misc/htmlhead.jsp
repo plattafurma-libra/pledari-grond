@@ -6,24 +6,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	if(session.getAttribute("pl") == null) {
+	if(session.getAttribute("locale") == null) {
 		String localeCode = Configuration.getInstance().getLocaleCode();
-		session.setAttribute("pl", localeCode);
+		session.setAttribute("locale", localeCode);
 	}
-	if(request.getParameter("pl") != null) {
-		session.setAttribute("pl", request.getParameter("pl"));
+	if(request.getParameter("locale") != null) {
+		session.setAttribute("locale", request.getParameter("locale"));
 	}
 %>
 
-<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
-<!--[if IE 7]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8">			<![endif]-->
-<!--[if IE 8]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9">				<![endif]-->
-<!--[if IE 9]>			<html lang='<%=session.getAttribute("pl")%>' class="ie9">					<![endif]-->
-<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("pl")%>'>								<![endif]-->
+<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
+<!--[if IE 7]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8">			<![endif]-->
+<!--[if IE 8]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9">				<![endif]-->
+<!--[if IE 9]>			<html lang='<%=session.getAttribute("locale")%>' class="ie9">					<![endif]-->
+<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("locale")%>'>								<![endif]-->
 
-<html lang='<%=session.getAttribute("pl") %>' />
+<html lang='<%=session.getAttribute("locale") %>' />
 
-<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
+<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 

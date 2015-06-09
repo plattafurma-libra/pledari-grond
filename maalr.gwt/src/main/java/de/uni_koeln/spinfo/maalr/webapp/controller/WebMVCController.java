@@ -90,11 +90,11 @@ public class WebMVCController {
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
 		String localeCode = configuration.getLocaleCode();
-		String locale = (String) request.getParameter("pl");
+		String locale = (String) request.getParameter("locale");
 		if(locale == null) {
-			locale = (String) session.getAttribute("pl");
+			locale = (String) session.getAttribute("locale");
 			if(locale == null) {
-				session.setAttribute("pl", localeCode);
+				session.setAttribute("locale", localeCode);
 				locale = localeCode;
 			}
 			return locale;

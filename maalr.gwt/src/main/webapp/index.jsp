@@ -25,11 +25,11 @@
 		<%-- NAVIGATION --%>
 		<%@ include file="/maalr_modules/misc/header.jsp" %>
 	
-		<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
+<%-- 		<%@ include file="/maalr_modules/misc/dict_links.jsp" %> --%>
 		
 		<div id="content" class="content">
 		
-		<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+<%-- 		<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
 		
 			<div class="well" id="info-box">
 				<h5>INFURMAZIUN / INFORMATION</h5>

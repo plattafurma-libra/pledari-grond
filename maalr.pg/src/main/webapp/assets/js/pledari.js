@@ -71,11 +71,10 @@ $(document).ready(function() {
 	}
 
 	function stopMobile() {
-		console.log("stopMobile");
 		
 		/*Reverse settings from startMobile function*/
 
-		if(locale == "sm") {
+		if(locale == "ss") {
 			$('#sm_brand_title').html('<a href="/surmiran">surmiran</a>');
 			$('#st_brand_title').html('<a href="/sutsilvan">sutsilvan</a>');
 			$('#rm_brand_title').html('<a href="/rumantsch">rumantsch grischun</a>');
