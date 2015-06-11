@@ -430,6 +430,18 @@ input:focus, textarea:focus {
 	margin-top: -54px;
 }
 
+#info-box {
+	position: relative;
+	margin: 140px auto;
+ 	width: 500px;
+}
+
+#info-box p {
+	margin: 0 0 10px;
+	letter-spacing: 1px;
+	line-height: 20px;
+}
+
 .well {
 	background-color: rgb(227, 227, 227);
 	border: 0 none;
@@ -1582,6 +1594,11 @@ a.btn.btn-danger:hover {
 
 @media all and (max-width: 767px) {
 	
+	#info-box {
+		margin: 180px auto;
+ 		width: 300px;
+	}
+
 	#languages-widget {
 		width: 15%;
 	}
@@ -2010,4 +2027,12 @@ a.btn.btn-danger:hover {
     display: block;
     vertical-align: middle;
     text-align: center;
+}
+
+a.simpleLink {
+	text-decoration: none;
+}
+
+a.simpleLink:hover {
+	color: rgb(0, 200, 255);
 }

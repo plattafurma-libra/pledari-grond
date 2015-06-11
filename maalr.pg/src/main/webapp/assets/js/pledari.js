@@ -64,10 +64,16 @@ $(document).ready(function() {
 		/*Rename dictionary names*/
 		$('#sm_brand_title').html('<a href="/surmiran">SM</a>');
 		$('#st_brand_title').html('<a href="/sutsilvan">ST</a>');
-		$('#rm_brand_title').html('<a href="/rumantsch">RG</a>');
-		$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">PT</a>');
-		$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">VL</a>');
-		$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">SR</a>');
+		$('#rm_brand_title').html('<a href="/rumantschgrischun">RG</a>');
+		
+		$('#pt_brand_title').html('<a href="/surmiran/dictionaries/puter">PT</a>');
+		$('#vl_brand_title').html('<a href="/surmiran/dictionaries/vallader">VL</a>');
+		$('#sr_brand_title').html('<a href="/surmiran/dictionaries/sursilvan">SR</a>');
+		
+//		$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">PT</a>');
+//		$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">VL</a>');
+//		$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">SR</a>');
+		
 	}
 
 	function stopMobile() {
@@ -78,17 +84,27 @@ $(document).ready(function() {
 		if(locale == "sm") {
 			$('#sm_brand_title').html('<a href="/surmiran">surmiran</a>');
 			$('#st_brand_title').html('<a href="/sutsilvan">sutsilvan</a>');
-			$('#rm_brand_title').html('<a href="/rumantsch">rumantsch grischun</a>');
-			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">puter</a>');
-			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">vallader</a>');
-			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">sursilvan</a>');
+			$('#rm_brand_title').html('<a href="/rumantschgrischun">rumantsch grischun</a>');
+			
+			$('#pt_brand_title').html('<a href="/surmiran/dictionaries/puter">puter</a>');
+			$('#vl_brand_title').html('<a href="/surmiran/dictionaries/vallader">vallader</a>');
+			$('#sr_brand_title').html('<a href="/surmiran/dictionaries/sursilvan">sursilvan</a>');
+			
+//			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">puter</a>');
+//			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">vallader</a>');
+//			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">sursilvan</a>');
 		} else {
-			$('#sm_brand_title').html('<a href="/surmiran">Surmiran</a>');
+ 			$('#sm_brand_title').html('<a href="/surmiran">Surmiran</a>');
 			$('#st_brand_title').html('<a href="/sutsilvan">Sutsilvan</a>');
-			$('#rm_brand_title').html('<a href="/rumantsch">Rumantsch Grischun</a>');
-			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">Puter</a>');
-			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">Vallader</a>');
-			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">Sursilvan</a>');
+			$('#rm_brand_title').html('<a href="/rumantschgrischun">Rumantsch Grischun</a>');
+			
+			$('#pt_brand_title').html('<a href="/surmiran/dictionaries/puter">Puter</a>');
+			$('#vl_brand_title').html('<a href="/surmiran/dictionaries/vallader">Vallader</a>');
+			$('#sr_brand_title').html('<a href="/surmiran/dictionaries/sursilvan">Sursilvan</a>');
+				
+//			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">Puter</a>');
+//			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">Vallader</a>');
+//			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">Sursilvan</a>');
 		}
 	}
 
