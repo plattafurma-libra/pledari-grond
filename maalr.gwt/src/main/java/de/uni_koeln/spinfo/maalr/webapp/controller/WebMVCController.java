@@ -137,7 +137,7 @@ public class WebMVCController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/ditionaries/{featured}")
+	@RequestMapping(value = "/dictionaries/{featured}")
 	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("featured");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
