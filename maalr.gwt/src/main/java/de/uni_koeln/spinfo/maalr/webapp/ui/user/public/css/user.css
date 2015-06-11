@@ -241,7 +241,7 @@ h1 {
 
 /*
 input, textarea {
-	background-image: url(/rumantsch/assets/img/cursor.gif);
+	background-image: url(/rumantschgrischun/assets/img/cursor.gif);
 	background-repeat: no-repeat;
 	background-position: 1px 2px;
 }
@@ -428,6 +428,18 @@ input:focus, textarea:focus {
 	left: 50%;
 	margin-left: -271px;
 	margin-top: -54px;
+}
+
+#info-box {
+	position: relative;
+	margin: 140px auto;
+ 	width: 500px;
+}
+
+#info-box p {
+	margin: 0 0 10px;
+	letter-spacing: 1px;
+	line-height: 20px;
 }
 
 .well {
@@ -753,7 +765,7 @@ a.lang_selected:disabled {
 	cursor: pointer;
 
 	background-color: transparent;
-	background-image: url(/rumantsch/assets/img/more_inactive.png);
+	background-image: url(/rumantschgrischun/assets/img/more_inactive.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 22px 22px;
@@ -770,15 +782,15 @@ a.lang_selected:disabled {
 }
 
 #content.content .row-fluid .span4.open .well form > a {
-	background-image: url(/rumantsch/assets/img/less_inactive.png);
+	background-image: url(/rumantschgrischun/assets/img/less_inactive.png);
 }
 
 #content.content .row-fluid .span4 .well form > a:hover {
-	background-image: url(/rumantsch/assets/img/more_active.png);
+	background-image: url(/rumantschgrischun/assets/img/more_active.png);
 }
 
 #content.content .row-fluid .span4.open .well form > a:hover {
-	background-image: url(/rumantsch/assets/img/less_active.png);
+	background-image: url(/rumantschgrischun/assets/img/less_active.png);
 }
 
 #content.content .row-fluid .span8 .gwt-HTML span {
@@ -1229,12 +1241,12 @@ tr.GKHQX3BBKB td:nth-child(5) {
 }
 
 #searchoptions .styledRadio {
-	background-image: url(/rumantsch/assets/img/radiobutton_sprite.png);
+	background-image: url(/rumantschgrischun/assets/img/radiobutton_sprite.png);
 	background-position: 0px 0px;
 }
 
 #searchoptions .styledCheckbox {
-	background-image: url(/rumantsch/assets/img/checkbox_sprite.png);
+	background-image: url(/rumantschgrischun/assets/img/checkbox_sprite.png);
 	background-position: 0px 0px;
 }
 
@@ -1581,6 +1593,11 @@ a.btn.btn-danger:hover {
 /* MOBILE */
 
 @media all and (max-width: 767px) {
+	
+	#info-box {
+		margin: 180px auto;
+ 		width: 300px;
+	}
 	
 	#languages-widget {
 		width: 15%;
@@ -2012,3 +2029,11 @@ a.btn.btn-danger:hover {
     text-align: center;
 }
 
+
+a.simpleLink {
+	text-decoration: none;
+}
+
+a.simpleLink:hover {
+	color: rgb(0, 200, 255);
+}
