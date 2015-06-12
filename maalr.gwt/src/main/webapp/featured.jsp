@@ -30,6 +30,11 @@
 					</a>
 				</p>
 			</div>
+			<div id="backButton" class="well">
+				<a href="${dictContext}">
+					<fmt:message key="back.to.search"/>
+				</a>
+			</div>
 		</div>
 			
 		<%-- FOOTER --%>
