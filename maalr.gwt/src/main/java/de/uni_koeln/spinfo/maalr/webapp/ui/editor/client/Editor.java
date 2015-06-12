@@ -202,7 +202,7 @@ public class Editor implements EntryPoint {
 		navigation.addLinkLeft(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR);
 		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
 		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLinkRight(constants.logout(), "/rumantsch/j_spring_security_logout", true);
+		navigation.addLinkRight(constants.logout(), "/rumantschgrischun/j_spring_security_logout", true);
 		navigation.addLinkRight(constants.rm(), GWT.getHostPageBaseURL() + "editor.html?locale=rm", false);
 		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", false);
 	}

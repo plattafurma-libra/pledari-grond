@@ -25,7 +25,7 @@
 				<br>
 				<p>
 					<fmt:message key="anchor.to.${featured}" var="anchor"/>
-					→ <a href="${anchor}" target="_blank" class="gwt-Anchor simpleLink">
+					<span style="color:#848484;">→</span> <a href="${anchor}" target="_blank" class="gwt-Anchor simpleLink">
 						<fmt:message key="anchor.to.${featured}" />
 					</a>
 				</p>
