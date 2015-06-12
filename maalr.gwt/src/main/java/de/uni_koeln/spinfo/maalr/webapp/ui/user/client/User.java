@@ -76,6 +76,8 @@ public class User implements EntryPoint {
 	private static final String NOJS_SEARCHCONTAINER = "nojs_searchcontainer";
 	private static final String CONTENT = "content";
 	private static final String PROPOSE_NAVI = "propose_navi";
+	
+	private static final int DISPLAY_SIZE_1024 = 1024;
 
 	/**
 	 * This is the entry point method.
@@ -129,8 +131,7 @@ public class User implements EntryPoint {
 
 				@Override
 				public void execute() {
-					String url = Window.Location.getPath() + langParam + "#"
-							+ History.getToken();
+					String url = Window.Location.getPath() + langParam + "#" + History.getToken();
 					Window.Location.assign(url);
 				}
 			});
@@ -251,7 +252,7 @@ public class User implements EntryPoint {
 				a.removeFromParent();
 				b.removeFromParent();
 				
-				if (event.getWidth() >= 930) {
+				if (event.getWidth() >= DISPLAY_SIZE_1024) {
 					appendTo(sidePanel, a);
 					appendTo(sidePanel, b);
 				} else {
