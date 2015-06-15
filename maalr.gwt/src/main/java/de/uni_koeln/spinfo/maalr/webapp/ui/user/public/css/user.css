@@ -431,7 +431,7 @@ input:focus, textarea:focus {
 
 #info-box {
 	position: relative;
-	margin: 140px auto;
+	margin: 125px auto;
  	width: 500px;
 }
 
@@ -1596,7 +1596,7 @@ a.btn.btn-danger:hover {
 @media all and (max-width: 767px) {
 	
 	#info-box {
-		margin: 180px auto;
+		margin: 125px auto;
  		width: 300px;
 	}
 	
@@ -2030,3 +2030,10 @@ a.btn.btn-danger:hover {
     text-align: center;
 }
 
+a.simpleLink {
+	text-decoration: none;
+}
+
+a.simpleLink:hover {
+	color: rgb(0, 200, 255);
+}
