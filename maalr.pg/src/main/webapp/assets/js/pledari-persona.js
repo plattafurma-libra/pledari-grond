@@ -17,7 +17,7 @@
 var loggedInUser = null; // The user's email.
 var browseridArguments = {
   privacyURL: '',
-  tosURL: 'www.pledaigrond.ch/infos',
+  tosURL: 'www.pledarigrond.ch/surmiran/infos',
   siteName: 'Pledari Grond'
 };
 /**

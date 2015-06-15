@@ -2005,7 +2005,7 @@ a.btn.btn-danger:hover {
 /* 	position: absolute; */
 	
 	  top: 50%;
-	  width: 50%;
+/* 	  width: 50%; */
 	  margin-top: -40px;
 	  position: absolute;
 }
@@ -2035,20 +2035,5 @@ a.simpleLink {
 }
 
 a.simpleLink:hover {
-	color: rgb(0, 200, 255);
-}
-
-#backButton {
-	width: 500px;
- 	padding: 10px 0 0 0;
-  	background-color: #f5f5f5;
-}
-
-#backButton a {
-	text-decoration: none;
-}
-
-#backButton a:hover {
-	text-decoration: none;
 	color: rgb(0, 200, 255);
 }
