@@ -76,25 +76,25 @@
 	<!-- this allows the integration into various environments. -->
 	<!-- See http://de.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service for a -->
 	<!-- short introduction (in German language) -->
-	<bean id="JaasAuthenticationProvider" class="org.springframework.security.authentication.jaas.JaasAuthenticationProvider">
+<!-- 	<bean id="JaasAuthenticationProvider" class="org.springframework.security.authentication.jaas.JaasAuthenticationProvider"> -->
 		<!-- Defines which authentication modules to use. -->
 		<!-- The path to the maalr configuration directory can be set via the system property 'maalr.config.dir' -->
 		<!-- If not set, the default value 'maalr_sm_config' will be used (assuming that the configuration dir -->
 		<!-- lies in the base directory) -->
-		<property name="loginConfig" value="file:${maalr.config.dir:maalr_ss_config}/login.config" />
-		<property name="loginContextName" value="SSMaalrLogin" />
-		<property name="callbackHandlers">
-			<list>
-				<bean class="org.springframework.security.authentication.jaas.JaasNameCallbackHandler" />
-				<bean class="org.springframework.security.authentication.jaas.JaasPasswordCallbackHandler" />
-			</list>
-		</property>
-		<property name="authorityGranters">
+<!-- 		<property name="loginConfig" value="file:${maalr.config.dir:maalr_ss_config}/login.config" /> -->
+<!-- 		<property name="loginContextName" value="SSMaalrLogin" /> -->
+<!-- 		<property name="callbackHandlers"> -->
+<!-- 			<list> -->
+<!-- 				<bean class="org.springframework.security.authentication.jaas.JaasNameCallbackHandler" /> -->
+<!-- 				<bean class="org.springframework.security.authentication.jaas.JaasPasswordCallbackHandler" /> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 		<property name="authorityGranters"> -->
 			<!-- Responsible for assigning roles to authorized users -->
-			<list>
-				<bean class="de.uni_koeln.spinfo.maalr.login.MaalrAuthorityGranter" />
-			</list>
-		</property>
-	</bean>
+<!-- 			<list> -->
+<!-- 				<bean class="de.uni_koeln.spinfo.maalr.login.MaalrAuthorityGranter" /> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
 </beans>
