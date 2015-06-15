@@ -61,7 +61,7 @@
 <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
-<script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script>
+<script type="text/javascript" src="//use.typekit.net/wqi3lhq.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
