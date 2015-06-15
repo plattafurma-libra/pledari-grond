@@ -6,24 +6,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	if(session.getAttribute("pl") == null) {
+	if(session.getAttribute("locale") == null) {
 		String localeCode = Configuration.getInstance().getLocaleCode();
-		session.setAttribute("pl", localeCode);
+		session.setAttribute("locale", localeCode);
 	}
-	if(request.getParameter("pl") != null) {
-		session.setAttribute("pl", request.getParameter("pl"));
+	if(request.getParameter("locale") != null) {
+		session.setAttribute("locale", request.getParameter("locale"));
 	}
 %>
 
-<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
-<!--[if IE 7]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9 lt-ie8">			<![endif]-->
-<!--[if IE 8]>			<html lang='<%=session.getAttribute("pl")%>' class="lt-ie9">				<![endif]-->
-<!--[if IE 9]>			<html lang='<%=session.getAttribute("pl")%>' class="ie9">					<![endif]-->
-<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("pl")%>'>								<![endif]-->
+<!--[if lt IE 7]>		<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8 lt-ie7">	<![endif]-->
+<!--[if IE 7]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9 lt-ie8">			<![endif]-->
+<!--[if IE 8]>			<html lang='<%=session.getAttribute("locale")%>' class="lt-ie9">				<![endif]-->
+<!--[if IE 9]>			<html lang='<%=session.getAttribute("locale")%>' class="ie9">					<![endif]-->
+<!--[if gt IE 9]>		<html lang='<%=session.getAttribute("locale")%>'>								<![endif]-->
 
-<html lang='<%=session.getAttribute("pl") %>' />
+<html lang='<%=session.getAttribute("locale") %>' />
 
-<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
+<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <head>
 
@@ -31,11 +31,11 @@
 <!--[if IE 7]> <link rel="stylesheet" href="/de.uni_koeln.spinfo.maalr.user/css/font-awesome-ie7.css"> <![endif]-->
 
 <title>${pageTitle}</title>
-<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="X-UA-Compatible" content="IE=10">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="Robots" content="INDEX,FOLLOW">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.png">
 <style type="text/css">
 	#show_results_noscript { display: none; }
 </style>
@@ -53,14 +53,14 @@
 </script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
-<!-- <script type="text/javascript" src="https://login.persona.org/include.js"></script> -->
+<%-- <script type="text/javascript" src="https://login.persona.org/include.js"></script> --%>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
 <%-- <script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script> --%>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
-<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
-<%-- <script type="text/javascript" src="//use.typekit.net/qvz4srm.js"></script> --%>
-<%-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> --%>
+<%-- <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script> --%>
+<%-- <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script> --%>
+<script type="text/javascript" src="//use.typekit.net/wqi3lhq.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/bootstrap.min.css" rel="stylesheet">
 <link href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/gwt-bootstrap.css" rel="stylesheet">

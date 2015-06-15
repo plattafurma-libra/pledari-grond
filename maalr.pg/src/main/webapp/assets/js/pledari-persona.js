@@ -17,7 +17,7 @@
 var loggedInUser = null; // The user's email.
 var browseridArguments = {
   privacyURL: '',
-  tosURL: 'www.pledaigrond.ch/infos',
+  tosURL: 'www.pledarigrond.ch/infos',
   siteName: 'Pledari Grond'
 };
 /**

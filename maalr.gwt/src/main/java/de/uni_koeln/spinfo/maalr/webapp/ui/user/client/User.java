@@ -24,8 +24,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
@@ -35,19 +33,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
-import de.uni_koeln.spinfo.maalr.services.user.shared.SearchService;
 import de.uni_koeln.spinfo.maalr.services.user.shared.SearchServiceAsync;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLoader;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.HiJax;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.SearchHelper;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerEvent;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.Search;
@@ -164,12 +155,12 @@ public class User implements EntryPoint {
 //		});
 //		
 //		// Insert search widget into div#content 
-		RootPanel contentPanel = RootPanel.get("content");
-		if(contentPanel != null) {
-			DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
-			RootPanel.get("navi_head").add(dictLinksDropDown);
+//		RootPanel contentPanel = RootPanel.get("content");
+//		if(contentPanel != null) {
+//			// DictLinksDropDown dictLinksDropDown = new DictLinksDropDown();
+//			// RootPanel.get("navi_head").add(dictLinksDropDown);
 //			contentPanel.add(search);
-		}
+//		}
 //
 //
 //		History.addValueChangeHandler(new ValueChangeHandler<String>() {

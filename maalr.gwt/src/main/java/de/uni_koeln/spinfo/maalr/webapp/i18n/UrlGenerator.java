@@ -30,7 +30,7 @@ public class UrlGenerator {
 	
 	public static String getHelpLink() {
 //		String lang = (String) session().getAttribute("lang");
-		String lang = (String) session().getAttribute("pl");
+		String lang = (String) session().getAttribute("locale");
 		if("de".equals(lang)) {
 			return linkTo("hilfe.html", "Hilfe");	
 		}

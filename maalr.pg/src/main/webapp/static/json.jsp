@@ -18,7 +18,7 @@
 			<div class="container well information_container">
 	
 				<%
-					String languageTag = (String) session.getAttribute("pl");
+					String languageTag = (String) session.getAttribute("locale");
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<% 
@@ -45,7 +45,7 @@
 		<div id="imprint" class="span4">
 			<p>
 				<%
-					String languageTag = (String) session.getAttribute("pl");
+					String languageTag = (String) session.getAttribute("locale");
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<%=Localizer.getEditorTranslations(languageTag).get("intro")%>

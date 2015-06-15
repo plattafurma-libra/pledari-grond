@@ -6,7 +6,7 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value="<%=session.getAttribute("pl")%>" />
+<fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <h1>Infurmaziuns generalas</h1>
@@ -20,7 +20,7 @@
 
 <p>
 	<%
-		// String languageTag = (String) session.getAttribute("pl");
+		// String languageTag = (String) session.getAttribute("locale");
 		// Locale locale = Locale.forLanguageTag(languageTag);
 		NumberFormat nf = NumberFormat.getNumberInstance(locale);
 	%>

@@ -13,7 +13,7 @@
 <%-- <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %> --%>
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 
-<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
+<fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <div id="head_search">
@@ -30,7 +30,7 @@
 								<fieldset>
 									<% 
 										UiConfiguration uiConfig = Configuration.getInstance().getUserDefaultSearchUiConfig();
-										uiConfig = Localizer.localize(uiConfig, (String)session.getAttribute("pl"));
+										uiConfig = Localizer.localize(uiConfig, (String)session.getAttribute("locale"));
 										List<UiField> fields = uiConfig.getFields();
 										for(UiField field : fields) {
 											if(field.getType() == UiFieldType.CHECKBOX) continue;

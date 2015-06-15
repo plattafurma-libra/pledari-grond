@@ -90,11 +90,11 @@ public class WebMVCController {
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
 		String localeCode = configuration.getLocaleCode();
-		String locale = (String) request.getParameter("pl");
+		String locale = (String) request.getParameter("locale");
 		if(locale == null) {
-			locale = (String) session.getAttribute("pl");
+			locale = (String) session.getAttribute("locale");
 			if(locale == null) {
-				session.setAttribute("pl", localeCode);
+				session.setAttribute("locale", localeCode);
 				locale = localeCode;
 			}
 			return locale;
@@ -136,6 +136,16 @@ public class WebMVCController {
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
 		session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
+		return mv;
+	}
+	
+
+	@RequestMapping(value = "/dictionaries/{featured}")
+	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("featured");
+		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
+		mv.addObject("featured", featured);
 		return mv;
 	}
 	

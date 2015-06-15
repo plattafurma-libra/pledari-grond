@@ -2,7 +2,7 @@
 <%@page
 	import="de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
-<fmt:setLocale value='<%=session.getAttribute("pl") %>' />
+<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 <%
 	MaalrQuery pgq = (MaalrQuery) request.getAttribute("search");
@@ -17,5 +17,5 @@
 		<fmt:message key="maalr.query.noresults_hint" />
 	</p>
 	<fmt:message key="maalr.misc.requires_js" var="js"/>
-	<noscript><p> (${js})</p></noscript>
+	<noscript><p>(${js})</p></noscript>
 </div>

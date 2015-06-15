@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
+<fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <jsp:include page="jsp/modules/htmlhead.jsp" />
