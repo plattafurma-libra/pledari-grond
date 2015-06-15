@@ -17,7 +17,7 @@
 var loggedInUser = null; // The user's email.
 var browseridArguments = {
   privacyURL: '',
-  tosURL: 'www.pledaigrond.ch/rumantsch/infos',
+  tosURL: 'www.pledarigrond.ch/rumantschgrischun/infos',
   siteName: 'Pledari Grond'
 };
 /**
@@ -28,7 +28,7 @@ $(function() {
 	if(loggedInUser === null) {
 		$.ajax({
 			type: 'GET', 
-			url: '/rumantsch/persona/signedin',
+			url: '/rumantschgrischun/persona/signedin',
 			success: function(response) { 
 				if (response !== '') {
 					this.loggedInUser = response;
@@ -57,7 +57,7 @@ function logout(event) {
 	this.loggedInUser = null;
 	$.ajax({
 		type: 'POST', 
-		url: '/rumantsch/persona/logout',
+		url: '/rumantschgrischun/persona/logout',
 		success: function(response) { 
 			window.location.href = response;
 		}
@@ -85,14 +85,14 @@ function verifiedEmail(assertion) {
 	if (assertion !== null) {
 		$.ajax({
 			type : 'POST',
-			url : '/rumantsch/persona/login',
+			url : '/rumantschgrischun/persona/login',
 			data : { assertion : assertion },
 			success : function(response) { 
 				window.location.href = response;
 			},
 			error : function(xhr, status, error) {
 				logout();
-				alert("login failure " + error); 
+				//alert("login failure " + error); 
 			}
 		});
 	} else {
