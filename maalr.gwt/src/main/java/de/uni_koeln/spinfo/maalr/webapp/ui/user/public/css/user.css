@@ -2005,7 +2005,7 @@ a.btn.btn-danger:hover {
 /* 	position: absolute; */
 	
 	  top: 50%;
-	  width: 50%;
+/* 	  width: 50%; */
 	  margin-top: -40px;
 	  position: absolute;
 }
