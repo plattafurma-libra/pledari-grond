@@ -286,7 +286,7 @@ input:focus, textarea:focus {
 	font-size: 14px;
 	padding-top: 18px;
 	text-align: center;
-/* 	width: 86%; */
+	width: 86%;
 }
 
 #navi_head #brand_title a {
@@ -565,9 +565,10 @@ a.lang_selected:disabled {
 
 /* LOGIN WIDGET */
 #login-widget {
-	width: 7%;
+/* 	margin-left:50px; */
 	padding-top: 15.5px;
 	opacity: 0.6;
+	width: 7%;
 }
 
 
@@ -1609,7 +1610,7 @@ a.btn.btn-danger:hover {
 /* 	} */
 	
 	#login-widget {
-		width: 15%;
+		width: 25%;
 	}
 	
 	.ext_links_mobile {
