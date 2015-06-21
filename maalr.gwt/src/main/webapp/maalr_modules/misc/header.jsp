@@ -65,7 +65,7 @@
 		    </cr:when>
 		    <cr:otherwise>
 		    	<a href="${dictContext}/login.html" class="navi_a_common" title="<fmt:message key='maalr.user.login' />">
-					LOG <span class="icon-signin icon-large"></span>
+					LOG
 				</a>
 		    </cr:otherwise>
 		</cr:choose>

@@ -389,7 +389,7 @@ input:focus, textarea:focus {
 	width: 33.33%;
 	text-align: center;
 	padding-top: 8px;
-	font-size: 10px;
+	font-size: 10.6px;
 }
 
 .selected {
@@ -399,7 +399,7 @@ input:focus, textarea:focus {
 .dict_navi_item a {
 	text-decoration: none;
 	color: #FFFFFF;
-	letter-spacing: 2px;
+	letter-spacing: 1.2px;
 }
 
 /* CONTENT */
@@ -431,9 +431,16 @@ input:focus, textarea:focus {
 }
 
 #info-box {
-	position: relative;
-	margin: 125px auto;
- 	width: 500px;
+/* 	position: relative; */
+/* 	margin: 125px auto; */
+/*  width: 500px; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 500px;
+	height: 306px;
+	margin-top: -11.7em;
+	margin-left: -20.7em;
 }
 
 #info-box p {
@@ -531,8 +538,9 @@ input:focus, textarea:focus {
 /* LANGUAGES WIDGET */
 #languages-widget {
 	width: 7%;
-	text-align: right;
+	text-align: left;
 	padding-top: 18px;
+	padding-left: 15px;
 }
 
 #languages-widget a:hover {
@@ -541,15 +549,23 @@ input:focus, textarea:focus {
 
 .navi_a_common {
 	opacity: 0.6;
-	color: rgb(255, 255, 255);
-	text-decoration: none !important
+/* 	color: rgb(255, 255, 255); */
+	color: #7DDCFF;
+	text-decoration: none !important;
+}
+
+a.navi_a_common:hover {
+	opacity: 1;
+	/*color: rgb(255, 255, 255);*/
+	color: #FFFFFF;
+ 	text-decoration: none !important;
 }
 
 /* LANGUAGE SELECTION */
 .lang_selected {
 	color: rgb(255, 255, 255);
   	opacity: 1;
-  	text-decoration: none !important
+  	text-decoration: none !important;
 }
 
 a.lang_selected:hover, 
@@ -559,14 +575,26 @@ a.lang_selected:link,
 a.lang_selected:disabled {
 	color: rgb(255, 255, 255);
   	opacity: 1;
-  	text-decoration: none !important
+  	text-decoration: none !important;
 }
 
 /* LOGIN WIDGET */
 #login-widget {
-	width: 7%;
-	padding-top: 15.5px;
-	opacity: 0.6;
+	/* 	margin-left:50px; */
+ 	width: 7%;
+	/*	opacity: 0.6; */
+	text-align: right;
+	padding-top: 18px;
+	padding-right: 15px;
+}
+
+#login-widget a {
+	padding-right: 12px;
+	background: url(/rumantschgrischun/assets/img/al.png) right no-repeat;
+}
+
+#login-widget a:hover {
+	background: url(/rumantschgrischun/assets/img/alm.png) right no-repeat;
 }
 
 
@@ -1594,9 +1622,15 @@ a.btn.btn-danger:hover {
 
 @media all and (max-width: 767px) {
 	
+	.dict_navi_item {
+		font-size: 10.0px;
+	}
+	
 	#info-box {
-		margin: 125px auto;
- 		width: 300px;
+/* 		margin: 125px auto; */
+ 		margin-top: -13em;
+		margin-left: -13em;
+		width: 300px;
 	}
 	
 	#languages-widget {
