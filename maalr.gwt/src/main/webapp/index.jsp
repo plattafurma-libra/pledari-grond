@@ -25,10 +25,9 @@
 		<%-- NAVIGATION --%>
 		<%@ include file="/maalr_modules/misc/header.jsp" %>
 	
-		<div id="content" class="content">
-		
+		<div>
 			<div class="well" id="info-box">
-				<h5>INFURMAZIÙN / INFORMATION</h5>
+				<h5>Infurmaziùn / Information</h5>
 				<hr>
 				<p>Qua dat igl egn pledari online sutsilvan-tudestg/tudestg-sutsilvan. Nus suplitgagn Vus par ampo pazienzia.</p>
 				<br>
