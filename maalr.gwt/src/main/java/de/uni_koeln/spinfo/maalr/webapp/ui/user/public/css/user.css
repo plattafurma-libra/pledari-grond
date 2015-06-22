@@ -287,7 +287,8 @@ input:focus, textarea:focus {
 	font-size: 14px;
 	padding-top: 18px;
 	text-align: center;
-/* 	width: 86%; */
+	/* 	width: 86%; */
+	width:50%;
 }
 
 #navi_head #brand_title a {
@@ -537,10 +538,11 @@ input:focus, textarea:focus {
 
 /* LANGUAGES WIDGET */
 #languages-widget {
-	width: 7%;
+/* 	width: 7%; */
+	width:25%;
 	text-align: left;
 	padding-top: 18px;
-	padding-left: 15px;
+	padding-left: 18px;
 }
 
 #languages-widget a:hover {
@@ -581,19 +583,20 @@ a.lang_selected:disabled {
 /* LOGIN WIDGET */
 #login-widget {
 	/* 	margin-left:50px; */
- 	width: 7%;
+	/*  width: 7%; */
 	/*	opacity: 0.6; */
+	width: 25%;
 	text-align: right;
 	padding-top: 18px;
-	padding-right: 15px;
+	padding-right: 18px;
 }
 
-#login-widget a {
+a.login-icon {
 	padding-right: 12px;
 	background: url(/rumantschgrischun/assets/img/al.png) right no-repeat;
 }
 
-#login-widget a:hover {
+a.login-icon:hover {
 	background: url(/rumantschgrischun/assets/img/alm.png) right no-repeat;
 }
 

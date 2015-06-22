@@ -1,10 +1,14 @@
 var retina = false;
 var locale;
+var u_name;
 
 $(document).ready(function() {
 	
 	/*Get the current locale value*/
 	locale = $('html').attr('lang');
+	
+	/*Get the user name*/
+	u_name = $('#u_name').text();
 	
 	checkMobile();
 	
@@ -76,6 +80,11 @@ $(document).ready(function() {
 		
 		/*Remove link to grammar PDF*/
 		$('#grammatica').hide();
+		
+		
+		var short_u_name = u_name.replace('/[^\w+]/g');
+		short_u_name = short_u_name.substring(0, 2);
+		$('#u_name').text(short_u_name);
 	}
 
 	function stopMobile() {
@@ -108,6 +117,8 @@ $(document).ready(function() {
 //			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">Vallader</a>');
 //			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">Sursilvan</a>');
 		}
+		
+		$('#u_name').text(u_name);
 		
 		
 		$('#grammatica').show();
