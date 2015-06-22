@@ -44,26 +44,24 @@
 		    <cr:when test='${user != null}'>
 		    	<cr:choose>
 		    	 	<cr:when test='${user.role eq admin}'>
-		    	 		<a href="${dictContext}/admin/admin.html" class="navi_a_common">A <span class="icon-edit-sign icon-large"></span></a>
+		    	 		<a href="${dictContext}/admin/admin.html" class="navi_a_common"><span id="u_name">Administrator</span></a>
 		    	 	</cr:when>
 		    	 	<cr:when test='${user.role eq editor}'>
-		    	 		<a href="${dictContext}/editor/editor.html" class="navi_a_common">E <span class="icon-edit-sign icon-large"></span></a>
+		    	 		<a href="${dictContext}/editor/editor.html" class="navi_a_common"><span id="u_name">Editor</span></a>
 		    	 	</cr:when>
 		    	 	<cr:otherwise>
 		    	 		<c:set var="userName" value="${user.getDisplayName()}"/>
 		    	 		<a href="#" class="navi_a_common" title="${userName}">
-		    	 			<span>${fn:substring(userName, 0, 2)}</span>
+								<span id="u_name">${userName}</span>
 		    	 		</a>
 		   			</cr:otherwise>
 		    	</cr:choose>
 		    	<span class="navi_a_common"> | </span>
-		   		<a id="maalr-current-user" href="<cr:url value='/j_spring_security_logout'/>" title="Logout" class="navi_a_common">
-					<span class="icon-signout icon-large"></span>
-				</a>
+		   		<a id="maalr-current-user" href="<cr:url value='/j_spring_security_logout'/>" title="Logout" class="navi_a_common login-icon"></a>
 		    </cr:when>
 		    <cr:otherwise>
-		    	<a href="${dictContext}/login.html" class="navi_a_common" title="<fmt:message key='maalr.user.login' />">
-					LOG <span class="icon-signin icon-large"></span>
+		    	<a href="${dictContext}/login.html" class="navi_a_common login-icon" title="<fmt:message key='maalr.user.login' />">
+					LOG
 				</a>
 		    </cr:otherwise>
 		</cr:choose>
