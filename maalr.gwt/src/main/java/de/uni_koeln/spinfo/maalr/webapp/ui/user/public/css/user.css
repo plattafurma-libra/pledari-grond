@@ -538,7 +538,7 @@ input:focus, textarea:focus {
 /* LANGUAGES WIDGET */
 #languages-widget {
 /* 	width: 7%; */
-	width:25%;
+	width:15%;
 	text-align: left;
 	padding-top: 18px;
 	padding-left: 18px;
@@ -585,7 +585,7 @@ a.lang_selected:disabled {
 	/* 	margin-left:50px; */
 	/*  width: 7%; */
 	/*	opacity: 0.6; */
-	width: 25%;
+	width: 15%;
 	text-align: right;
 	padding-top: 18px;
   	padding-right: 18px;
