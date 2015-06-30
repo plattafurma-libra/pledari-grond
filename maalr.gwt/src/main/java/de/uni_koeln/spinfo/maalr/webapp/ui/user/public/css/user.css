@@ -1640,9 +1640,9 @@ a.btn.btn-danger:hover {
 		width: 15%;
 	}
 	
-/* 	#brand_title { */
-/* 		width: 50%; */
-/* 	} */
+	#brand_title {
+		width: auto !important;
+	}
 	
 	#login-widget {
 		width: 15%;
