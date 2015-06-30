@@ -101,7 +101,7 @@ public class Admin implements EntryPoint {
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
 		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/rumantsch/j_spring_security_logout");
+		navigation.addLinkLeft("Logout", "/rumantschgrischun/j_spring_security_logout");
 	}
 
 	private void initHistory() {

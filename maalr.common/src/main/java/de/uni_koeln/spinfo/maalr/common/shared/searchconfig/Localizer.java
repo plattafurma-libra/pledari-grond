@@ -52,7 +52,7 @@ public class Localizer {
 				file = new File(Configuration.getInstance().getConfigDirectory(),"i18n/user-searchui.properties");
 			}
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
-				logger.info("Loading strings from file " + file + "...");
+				logger.debug("Loading strings from file " + file + "...");
 				translation.load(br);
 				Set<Entry<Object, Object>> entrySet = translation.entrySet();
 				for (Entry<Object, Object> entry : entrySet) {

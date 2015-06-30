@@ -1,17 +1,20 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> --%>
 
-<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
-<fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
+<%-- <fmt:setLocale value='<%=session.getAttribute("pl")%>' /> --%>
+<%-- <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" /> --%>
 
 
-<%-- FALLBACK LOCALE: accept "rm", otherwise force to "de" --%>
-	<%if(!session.getAttribute("pl").equals("rm")){ 
-		session.setAttribute("pl","de");} %>
+<%-- FALLBACK LOCALE: accept "rm", otherwise force to "de" --%> 
+	<%
+// 		if(!session.getAttribute("locale").equals("rm")) { 
+// 			session.setAttribute("locale","de");
+// 		} 
+ 	%> 
 
 <%-- LANGUAGE SELECTION --%>
-<div id="languages-widget">
-	<ul>
-		<li><a href="?pl=rm" class='<%=(session.getAttribute("pl").equals("rm"))?"lang_select active":"lang_select"%>'><fmt:message key="maalr.langSelect.romansh" /></a></li>
-		<li><a href="?pl=de" class='<%=(session.getAttribute("pl").equals("de"))?"lang_select active":"lang_select"%>'><fmt:message key="maalr.langSelect.german" /></a></li>
-	</ul>
-</div>
+<!-- <div id="languages-widget"> -->
+<!-- 	<ul> -->
+<%-- 		<li><a href="?locale=rm" class='<%=(session.getAttribute("locale").equals("rm"))?"lang_select active":"lang_select"%>'><fmt:message key="maalr.langSelect.romansh" /></a></li> --%>
+<%-- 		<li><a href="?locale=de" class='<%=(session.getAttribute("locale").equals("de"))?"lang_select active":"lang_select"%>'><fmt:message key="maalr.langSelect.german" /></a></li> --%>
+<!-- 	</ul> -->
+<!-- </div> -->

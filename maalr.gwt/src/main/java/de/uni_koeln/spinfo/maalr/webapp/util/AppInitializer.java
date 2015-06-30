@@ -75,7 +75,7 @@ public class AppInitializer {
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			logger.warn("Importing Data...");
 			try {
-				loginManager.login("admin", "admin");
+				loginManager.login("admin", "admin!132.");
 				adminController.importDatabase(20000);	
 				MaalrUserInfo editor = new MaalrUserInfo("editor", Role.TRUSTED_IN_4);
 				userBackend.insert(editor);

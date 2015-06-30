@@ -3,8 +3,7 @@
 <%@ page import="java.util.Locale"%>
 <%@ page import="java.text.NumberFormat"%>
 
-<%@ page
-	import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
+<%@ page import="de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics"%>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -25,7 +24,7 @@
 	<%
 		// 	String languageTag = (String) session.getAttribute("pl");
 		// 	Locale locale = Locale.forLanguageTag(languageTag);
-		NumberFormat nf = NumberFormat.getNumberInstance(locale);
+		NumberFormat nf = NumberFormat.getNumberInstance(Locale.forLanguageTag(languageTag));
 	%>
 	<fmt:message key="maalr.index.entry_count" var="numberOfEntries">
 		<fmt:param><%=nf.format(DictionaryStatistics.getStatistics().entryCounter)%></fmt:param>

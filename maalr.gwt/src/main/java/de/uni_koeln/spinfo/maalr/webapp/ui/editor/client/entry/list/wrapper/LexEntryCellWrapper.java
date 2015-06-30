@@ -27,11 +27,8 @@ import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 
 public class LexEntryCellWrapper implements ICellWrapper {
-	
-//	private static final DateTimeFormatInfo dtfi = LocaleInfo.getCurrentLocale().getDateTimeFormatInfo();
-//	private static final String pattern = dtfi.dateTimeShort(dtfi.timeFormatShort(), dtfi.formatMonthAbbrevDay());
-//	private static final DateTimeFormat format = DateTimeFormat.getFormat(pattern);
-	private static final DateTimeFormat format = DateTimeFormat.getFormat("dd MMM y, HH:mm:ss");
+
+	private static final DateTimeFormat format = DateTimeFormat.getFormat("dd/MM/y, HH:mm:ss");
 
 	private LemmaVersionCellWrapper version;
 	private EditorConstants constants = GWT.create(EditorConstants.class);

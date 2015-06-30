@@ -1,30 +1,33 @@
+var retina = false;
+var locale;
+var u_name;
+
 $(document).ready(function() {
-
-	var mobile = false;
-	var retina = false;
-
+	
+	/*Get the current locale value*/
+	locale = $('html').attr('lang');
+	
+	/*Get the user name*/
+	u_name = $('#u_name').text();
+	
+	checkMobile();
+	
 	if (window.devicePixelRatio) {
 		retina = window.devicePixelRatio > 1;
 	}
-
-	$('#languages-widget li:first a').hover(function() {
-		$(this).text('grischun');
-	}, function() {
-		$(this).text('rumantsch');
-	});
 	
-	
+	/* PAGINATION */
 	$(window).resize(function() { 
 		resizePagination();
 	});
-	
 	function resizePagination() {
 		if($(window).width() < 767) {
 			$('div.pagination').addClass('pagination-mini');
 		} else {
 			$('div.pagination').removeClass('pagination-mini');
 		}
-	}
+	} /* PAGINATION */
+	
 	
 	$('#content.content').on('click', '.row-fluid .span4 .well form #searchoptions + a.btn', function(event) {
 
@@ -36,8 +39,6 @@ $(document).ready(function() {
 		}
 
 	});
-
-	checkMobile();
 
 	$(document).keyup(function(event) {
 
@@ -54,48 +55,73 @@ $(document).ready(function() {
 
 	function checkMobile() {
 
-		if ($(window).width() < 768 && mobile == false) {			
+		if ($(window).width() < 768) {			
 			startMobile();
-		} else if ($(window).width() >= 768 && mobile == true) {
+		} else if ($(window).width() >= 768) {
 			stopMobile();
 		}
 
 	}
 
 	function startMobile() {
-
-		console.log("startMobile");
-
-		mobile = true;
-
-		$('#languages-widget li a.active').bind('click', function(event) {
-
-			event.preventDefault();
-
-			$('#languages-widget').toggleClass('open');
-
-		});
-
-		function checkLoginButton() {
-			if (!$('#login-widget').length) {
-				$('#languages-widget').css('width', '100%');
-			}
-		}
-
-		checkLoginButton();
-
+		
+		/*Rename dictionary names*/
+		$('#sm_brand_title').html('<a href="/surmiran">SM</a>');
+		$('#st_brand_title').html('<a href="/sutsilvan">ST</a>');
+		$('#rm_brand_title').html('<a href="/rumantschgrischun">RG</a>');
+		
+		$('#pt_brand_title').html('<a href="/rumantschgrischun/dictionaries/puter">PT</a>');
+		$('#vl_brand_title').html('<a href="/rumantschgrischun/dictionaries/vallader">VL</a>');
+		$('#sr_brand_title').html('<a href="/rumantschgrischun/dictionaries/sursilvan">SR</a>');
+		
+//		$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">PT</a>');
+//		$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">VL</a>');
+//		$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">SR</a>');
+		
+		/*Remove link to grammar PDF*/
+		$('#grammatica').hide();
+		
+		
+		var short_u_name = u_name.replace('/[^\w+]/g');
+		short_u_name = short_u_name.substring(0, 2);
+		$('#u_name').text(short_u_name);
 	}
 
 	function stopMobile() {
+		// console.log("stopMobile");
+		
+		/*Reverse settings from startMobile function*/
 
-		console.log("stopMobile");
-
-		mobile = false;
-
-		$('#languages-widget li:first-child').unbind('click');
-
-		$('#languages-widget').css('width', '');
-
+		if(locale == "rm") {
+			$('#sm_brand_title').html('<a href="/surmiran">surmiran</a>');
+			$('#st_brand_title').html('<a href="/sutsilvan">sutsilvan</a>');
+			$('#rm_brand_title').html('<a href="/rumantschgrischun">rumantsch grischun</a>');
+			
+			$('#pt_brand_title').html('<a href="/rumantschgrischun/dictionaries/puter">puter</a>');
+			$('#vl_brand_title').html('<a href="/rumantschgrischun/dictionaries/vallader">vallader</a>');
+			$('#sr_brand_title').html('<a href="/rumantschgrischun/dictionaries/sursilvan">sursilvan</a>');
+			
+//			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">puter</a>');
+//			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">vallader</a>');
+//			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">sursilvan</a>');
+		} else {
+			$('#sm_brand_title').html('<a href="/surmiran">Surmiran</a>');
+			$('#st_brand_title').html('<a href="/sutsilvan">Sutsilvan</a>');
+			$('#rm_brand_title').html('<a href="/rumantschgrischun">Rumantsch Grischun</a>');
+			
+			$('#pt_brand_title').html('<a href="/rumantschgrischun/dictionaries/puter">Puter</a>');
+			$('#vl_brand_title').html('<a href="/rumantschgrischun/dictionaries/vallader">Vallader</a>');
+			$('#sr_brand_title').html('<a href="/rumantschgrischun/dictionaries/sursilvan">Sursilvan</a>');
+				
+//			$('#pt_brand_title').html('<a href="http://www.udg.ch/dicziunari/puter" target="_blank">Puter</a>');
+//			$('#vl_brand_title').html('<a href="http://www.udg.ch/dicziunari/vallader" target="_blank">Vallader</a>');
+//			$('#sr_brand_title').html('<a href="http://www.vocabularisursilvan.ch" target="_blank">Sursilvan</a>');
+		}
+		
+		$('#u_name').text(u_name);
+		
+		
+		$('#grammatica').show();
 	}
 
 	function initCustomElements() {
@@ -156,10 +182,10 @@ $(document).ready(function() {
 
 		if (retina) {
 			$('.styledRadio').css({
-				'background-image': 'url(/rumantsch/assets/img/radiobutton_sprite2x.png)'
+				'background-image': 'url(/rumantschgrischun/assets/img/radiobutton_sprite2x.png)'
 			});
 			$('.styledCheckbox').css({
-				'background-image': 'url(/rumantsch/assets/img/checkbox_sprite2x.png)'
+				'background-image': 'url(/rumantschgrischun/assets/img/checkbox_sprite2x.png)'
 			});
 		}
 		

@@ -15,7 +15,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value='<%=session.getAttribute("pl")%>' />
+<fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%-- HTML HEADER --%>
@@ -30,9 +30,9 @@
 			
 			<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp" %>
+<%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
 			
-			<%@ include file="/maalr_modules/misc/login_widget.jsp" %>
+<%-- 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %> --%>
 			
 			<%-- SEARCH AREA --%>
 			<div class="container-fluid" id="nojs_searchcontainer">

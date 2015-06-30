@@ -89,11 +89,11 @@ public class WebMVCController {
 	private Configuration configuration = Configuration.getInstance();
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
-		String locale = (String) request.getParameter("pl");
+		String locale = (String) request.getParameter("locale");
 		if (locale == null) {
-			locale = (String) session.getAttribute("pl");
+			locale = (String) session.getAttribute("locale");
 			if (locale == null) {
-				session.setAttribute("pl", "rm");
+				session.setAttribute("locale", "rm");
 				locale = "rm";
 			}
 			return locale;
@@ -134,6 +134,15 @@ public class WebMVCController {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/dictionaries/{featured}")
+	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("featured");
+		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
+		mv.addObject("featured", featured);
 		return mv;
 	}
 
@@ -403,12 +412,9 @@ public class WebMVCController {
 			logger.info("FOUND BY EMAIL: " + user);
 			if (user == null) {
 				user = register(response);
-				authUser(user);
-				return configuration.getDictContext();
-			} else {
-				authUser(user);
-				return configuration.getDictContext();
 			}
+			authUser(user);
+			return configuration.getDictContext();
 		} else {
 			logger.warn("Persona authentication failed due to reason: " + response.getReason());
 			throw new IllegalStateException("Authentication failed");

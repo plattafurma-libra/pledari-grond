@@ -65,6 +65,8 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	public Search() {
 		initWidget(uiBinder.createAndBindUi(this));
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
+		searchForm.getElement().setId("search_configuration");
+		well.getElement().setId("search_panel");
 		well.add(searchForm);
 		// localeDictionary = DictionaryConstants.getLocaleDictionary();
 		// well.add(getLink(DictionaryConstants.DICT_LINKS));
