@@ -14,7 +14,7 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 		<% 
-			if(!session.getAttribute("locale").equals("ss")) { 
+			if(!session.getAttribute("locale").equals("st")) { 
 				session.setAttribute("locale","de");
 			} 
 		%>
@@ -23,7 +23,7 @@
 	
 	<%-- LANGUAGE SELECTION --%>
 	<div id="languages-widget">
-		<a href="?locale=ss" class='<%=(session.getAttribute("locale").equals("ss"))?"lang_selected":"navi_a_common"%>'>R</a>
+		<a href="?locale=st" class='<%=(session.getAttribute("locale").equals("st"))?"lang_selected":"navi_a_common"%>'>R</a>
 		<span class="navi_a_common"> | </span>
 		<a href="?locale=de" class='<%=(session.getAttribute("locale").equals("de"))?"lang_selected":"navi_a_common"%>'>D</a>
 	</div>

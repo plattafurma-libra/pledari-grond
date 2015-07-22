@@ -205,7 +205,7 @@ public class Editor implements EntryPoint {
 		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
 		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
 		navigation.addLinkRight(constants.logout(), contextPath + "/j_spring_security_logout", true);
-		navigation.addLinkRight(constants.ss(), GWT.getHostPageBaseURL() + "editor.html?locale=" + locale, false);
+		navigation.addLinkRight(constants.st(), GWT.getHostPageBaseURL() + "editor.html?locale=" + locale, false);
 		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", false);
 	}
 	

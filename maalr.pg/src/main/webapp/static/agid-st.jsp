@@ -2,179 +2,69 @@
 
 <h2>Agid</h2>
 
-<h3>Tschertgar spert ed a moda nuncumplitgada</h3>
-<p>Il Pledari Grond online permetta da chattar spert in pled.
-	Cumenzai simplamain a scriver in pled en tudestg u en rumantsch ed ils
-	resultats cumparan immediat. Vus na stuais gnanc scriver a fin il pled
-	tschertgà e cliccar sin "tschertgar".</p>
+<h3>Tschartgear speart ad a moda nuncumplitgeada</h3>
+<p>Igl Pledari sutsilvan online lubescha da catar speart egn pled. Antschaved semplameing a scriver egn pled an tudestg near an rumàntsch ad igls resultats cumparan imediat. Vus stuez gnànc scriver a fegn igl pled ancuretg a clicar sen "tschartgear".</p>
 
-<h3>Proponer novs pleds e novas expressiuns</h3>
-<p>Vus pudais far propostas per novs pleds u novas expressiuns.
-	Cliccai directamain en la trav giudim sin "far ina nova proposta", lura
-	cumpara in formular, en il qual Vus pudais scriver Vossa proposta e far
-	remartgas. Sch'ina tschertga n'ha dà nagins resultats, cumpara
-	medemamain il buttun "far ina proposta". Cliccai sin quel per avrir in
-	formular, en il qual Vus pudais medemamain scriver Vossas propostas e
-	far remartgas.</p>
+<h3>Proponer novs pleds a novas expressiùns</h3>
+<p>Vus savez far propostas par novs pleds near novas expressiùns. Clicad directameing an la trav gioudem sen "far egna nova proposta", lura cumpara egn formular, agl qual Vus savez scriver Vossa proposta a far remartgas. Sch'egna tscheartga â do nigns resultats, cumpara mademameing igl butùn "far egna proposta". Clicad sen quel par earver egn formular, agl qual Vus savez mademameing scriver Vossas propostas a far remartgas.</p>
 
-<h3>Proponer modificaziuns</h3>
-<p>La redacziun dal Pledari Grond è engraziaivla, sche Vus la
-	rendais attent a sbagls u inconsequenzas. Vus pudais proponer
-	modificaziuns u correcturas cun il formular correspundent. Il buttun
-	"modifitgar" vegn visibel, sche Vus giais cun il cursur da la mieur sur
-	la glista da resultats. Cliccai sin quest buttun per avrir in formular.
-	En il formular vesais Vus l'endataziun che Vus vulais curreger. Vus
-	pudais scriver directamain en il champ. Cun cliccar sin il &#043; pudais Vus
-	activar dapli opziuns. Ina da quellas ha num "marcar novas propostas u
-	modificaziuns". Activai quella cun la mieur e Vus vesais Vossa
-	modificaziun en colur sura u sut l'endataziun existenta. Quella resta
-	fin ch'il team da redacziun ha verifitgà ella.</p>
+<h3>Proponer modificaziùns</h3>
+<p>La redacziùn digl Pledari sutsilvan online e angraztgevla, scha Vus la randez atainta a sbagls near inconsequenzas. Vus savez proponer modificaziùns near corecturas cugl formular corespundaint. Igl butùn "modifitgear" vean visibel, scha Vus naz cugl cursur da la mir sur la glista da resultats. Clicad sen que butùn par earver egn formular. Agl formular vasez Vus l'andataziùn ca Vus lez cureger. Vus savez scriver directameing agl tgomp. Cun clicar segl &#043; savez Vus activar daple opziùns . Egna da quellas â num "marcar novas propostas near modificaziùns ". Activad quella cun la mir a Vus vasez Vossa modificaziùn an colur sura near sut l'andataziùn existenta. Quella resta antocen c'igl team da redacziùn â verifitgieu ella.</p>
 
-<h3>Ulteriuras opziuns</h3>
-<p>Ulteriuras pussaivladads da tschertgar e funcziunalitads vesais
-	Vus, sche Vus cliccais sin il &#043;.</p>
+<h3>Ulteriuras opziùns</h3>
+<p>Ulteriuras pussevladads da tschartgear a funcziunalitads vasez Vus, scha Vus clicaz sen igl &#043;.</p>
 
 <blockquote>
-	<h4>Lingua</h4>
-	Vus pudais activar "tudestg e rumantsch" u "tudestg-rumantsch" u
-	"rumantsch-tudestg", tut segund sche Vus vulais tschertgar in pled u
-	in'expressiun en tuttas duas parts da la banca da datas, mo en la part
-	tudestga ubain mo en la part rumantscha.
+	<h4>Lungatg</h4>
+	Vus savez activar "tudestg a rumàntsch" near "tudestg-rumàntsch" near "rumàntsch-tudestg", tut savund scha Vus lez tschartgear egn pled near egn'expressiùn an tutas duas parts da la banca da datas, me an la part tudestga near me an la part rumàntscha.
 
-	<h4>Pussaivladads da tschertgar</h4>
-	Vus pudais tschertgar ils pleds en differentas modas tut tenor Voss
-	basegn:
+	<h4>Pussevladads da tschartgear</h4>
+	Vus savez tschartgear igls pleds an diferaintas modas, tut tanor Voss basegn:
 	<ul>
-		<li><strong>normal: </strong> Il modus "normal" tschertga il pled
-			endatà, tut las ulteriuras noziuns che cumenzan cun quest pled e tut
-			las expressiuns che cuntegnan ina noziun che entschaiva cun quest
-			pled (p.ex. cumpara era "vor Ort arbeiten", sche Vus avais endatà
-			"arbeit").</li>
-		<li><strong>dapertut: </strong> Il modus "dapertut" tschertga tut
-			las noziuns che cuntegnan il pled u ils bustabs endatads en il champ
-			da tschertgar. Cun quel modus pudais Vus pia era tschertgar modas da
-			dir e locuziuns.</li>
-		<li><strong>entschatta: </strong> Il modus "entschatta" tschertga
-			tut ils pleds che entschaivan cun la noziun da tschertga.</li>
-		<li><strong>finiziuns: </strong> Il modus "finiziuns" tschertga
-			tut ils pleds che fineschan cun il pled u ils bustabs endatads en il
-			champ da tschertgar.</li>
-		<li><strong>exact: </strong> Il modus "exact" tschertga en la
-			banca da datas exactamain il cuntegn endatà en il champ da
-			tschertgar.</li>
+		<li><strong>normal: </strong>Igl modus "normal" tscheartga igl pled andato, tut las ulteriuras noziùns c’antschevan cun que pled a tut las expressiùns ca cuntignan egna noziùn c’antscheva cun que pled (p.ex. cumpara ear "an die Arbeit gehen", scha Vus vez andato "arbeit").</li>
+		<li><strong>dapartut: </strong>Igl modus "dapartut" tscheartga tut las noziùns ca cuntignan igl pled near igls bustabs andatos agl tgomp da tschartgear. Cun que modus savez Vus peia ear tschartgear modas da gir a locuziùns.</li>
+		<li><strong>antscheata: </strong>Igl modus "antscheata" tscheartga tut igls pleds c’antschevan cun la noziùn da tscheartga.</li>
+		<li><strong>finiziùns: </strong>Igl modus "finiziùns" tscheartga tut igls pleds ca fineschan cugl pled near cugls bustabs andatos agl tgomp da tschartgear.</li>
+		<li><strong>exact: </strong>Igl modus "exact" tscheartga an la banca da datas exactameing igl cuntegn andato agl tgomp da tschartgear.</li>
 	</ul>
-	Sche Vus activais il quadret <strong>marcar il pled u
-		l'expressiun che Vus tschertgais</strong>, vegnan marcads grass en ils
-	resultats quels bustabs che Vus avais scrit en il champ da tschertgar.
-	Quai facilitescha magari la survista en cas da blers resultats ubain
-	expressiuns pli lungas. <br> Sche Vus activais il quadret <strong>marcar
-		novas propostas u modificaziuns</strong>, vesais Vus, sch'in auter utilisader
-	ha gia proponì da modifitgar in pled u in'expressiun che Vus vulevas
-	gist modifitgar. La proposta cumpara lura en colur davant u suenter
-	l'endataziun existenta e resta, fin ch'il team da redacziun ha
-	verifitgà ella.
+	Scha Vus activaz igl quaderet <strong>marcar igl pled near l'expressiùn ca Vus tschartgeaz</strong>, vignan marcos grass agls resultats quels bustabs ca Vus vez scret agl tgomp da tschartgear. Quegl semplifitgescha magari la survesta an cass da blears resultats near expressiùns pli lùngas.
+	<br> 
+	Scha Vus activaz igl quaderet <strong>marcar novas propostas near modificaziùns</strong>, vasez Vus, sch'egn oter utilisader â gea proponieu da modifitgear egn pled near egn'expressiùn ca Vus vulevas gest modifitgear. La proposta cumpara lura an calur davànt near davo l'andataziùn existainta a resta, tocen c'igl team da redacziùn â verifitgieu ella.
 </blockquote>
 
 <h3>La glista da resultats</h3>
-<p>Ils resultats vegnan preschentads en ina glista cun duas
-	colonnas. La glista mussa sisum il pled tschertgà ed en parantesas ils
-	resultats visibels sin la pagina ed il dumber da las endataziuns
-	chattadas. Sin mintga pagina cumparan maximalmain 15 resultats. Sch'ina
-	tschertga dat dapli che 15 resultats, pudais Vus sfegliar enavant ed
-	enavos sut la glista per guardar ils ulteriurs resultats. Suenter in
-	substantiv cumpara en parantesas quadras er il genus dal pled (feminin,
-	masculin, etc.). Davant mintga verb rumantsch che cumpara sulet stat
-	l'icona V. Sche Vus cliccais sin quella, s'avra ina fanestra cun la
-	conjugaziun cumpletta.</p>
+<p>Igls resultats vignan preschantos an egna glista cun duas colonas. La glista mussa senzum igl pled ancuretg ad an parantesas igls resultats visibels sen la pagina ad igl dumber da las andataziùns catadas. Sen mintga pagina cumparan maximalmeing 15 resultats. Sch'egna tscheartga dat daple ca 15 resultats, savez Vus sfigliear anavànt ad anavos sut la glista par vurdar igls ulteriurs resultats. Suainter egn substantiv cumpara an parantesas quadras ear igl genus digl pled (feminin, masculin, etc.). Davànt anzaquànts verbs cumpara l'icona V. Scha Vus clicaz sen quella, sasearva egna faneastra cun la conjugaziùn cumpleta.</p>
 
-<h3>Tge far, sche Vus na chattais betg in pled?</h3>
-<p>Il sistem da retschertga dal Pledari Grond online tschertga in u
-	plirs pleds che paran da correspunder a quai che Vus avais endatà.
-	Eventualmain na correspundan quels dentant tuttina betg a quai che Vus
-	tschertgais. Tge far, sche Vus na chattais betg in pled?</p>
+<h3>Tge far, scha Vus cataz betg egn pled?</h3>
 
 <blockquote>
-	<h4>Verifitgar l'ortografia</h4>
+	<h4>Verifitgear l'ortografeia</h4>
 	<ul>
-		<li>Avais Vus scrit correctamain il pled rumantsch / il pled
-			tudestg?</li>
-		<li><strong>Attenziun: </strong>Il Pledari Grond online
-			enconuscha mo l'ortografia dal rumantsch grischun resp. dal tudestg
-			da scrittira! Tut las furmas idiomaticas e dialectalas tant dal
-			rumantsch sco dal tudestg na sa il program da tschertgar betg
-			identifitgar.</li>
-		<li>Utilisai cun endatar pleds tudestgs ils bustabs ä, ö ed ü
-			(betg: ae, oe, ue), endatai pia: ändern, öffnen, Bemühung (betg:
-			aendern, oeffnen, Bemuehung).</li>
+		<li>Vez Vus scret corectameing igl pled rumàntsch / igl pled tudestg?</li>
+		<li><strong>Atenziùn: </strong>Igl Pledari sutsilvan online ancanuscha me l'ortografeia digl sutsilvan resp. digl tudestg da scartira!</li>
+		<li>Duvrad cun andatar pleds tudestgs igls bustabs ä, ö ad ü (betg: ae, oe, ue), scrived peia: ändern, öffnen, Bemühung (betg: aendern, oeffnen, Bemuehung).</li>
 	</ul>
 
-	<h4>Verifitgar la lingua − avais Vus activà la dretga lingua da
-		partenza?</h4>
+	<h4>Verifitgear igl lungatg − vez Vus activo igl dretg lungatg da partenza?</h4>
 	<ul>
-		<li>Vus tschertgais ubain in pled rumantsch u in pled tudestg:
-			activai "tudestg e rumantsch".</li>
-		<li>Vus tschertgais la translaziun tudestga d'in pled rumantsch:
-			activai "tudestg-rumantsch".</li>
-		<li>Vus tschertgais la translaziun rumantscha d'in pled tudestg:
-			activai "rumantsch-tudestg".</li>
-		<li>Empruvai da tschertgar cun activar il modus "dapertut". Vus
-			survegnis tut las expressiuns u modas da dir che cuntegnan il pled
-			endatà.</li>
+		<li>Vus tschartgeaz u egn pled rumàntsch near egn pled tudestg: activad "tudestg a rumàntsch".</li>
+		<li>Vus tschartgeaz la translaziùn tudestga d'egn pled rumàntsch: activad "tudestg-rumàntsch".</li>
+		<li>Vus tschartgeaz la translaziùn rumàntscha d'egn pled tudestg: activad "rumàntsch-tudestg".</li>
+		<li>Ampruvad da tschartgear cun activar igl modus "dapartut". Vus survagnez tut las expressiùns near modas da gir ca cuntignan igl pled andato.</li>
 	</ul>
 
-	<h4>Empruvai da tschertgar cun endatar ils singuls pleds d'ina
-		frasa u construcziun</h4>
-	p.ex. Ich liebe dich:
-	<ul>
-		<li>ich (-&gt; jau) ed alura</li>
-		<li>lieben ed in clic sin l'icona V -&gt; 1. pers. sg (-&gt;
-			am/hai gugent), alura tschertgar</li>
-		<li>dich (-&gt; tai)</li>
-		<li>-&gt; jau am tai/jau hai gugent tai</li>
-	</ul>
+	<h4>Vus tschartgeaz egn substantiv near egn nomen</h4>
+	Andatad adegna igl pled sainza gl’artetgel, peia: cucagna (betga: la cucagna), unviern (betga: gl’unviern), sport (betga: igl sport), Überfluss (betga: der Überfluss), Kraftwerk (betga: das Kraftwerk), etc.
+	<br>
+	Andatad mintgame la furma singulara d'egn pled, peia: Frau (betga: Frauen), Haar (betga: Haare), Schneeschaufel (betga: Schneeschaufeln), Seelöwe (betga: Seelöwen), Verein (betga: Vereine), etc.
+	<br>
+	Igl madem vala par substantivs near nomens sutsilvans, peia: calzer (betga: calzers), tgapi (betga: tgapeals), nanegn (betga: nanegns), siemi (betga: siemis), vastgieu (betga: vastgieus), etc.
 
-	<h4>Vus tschertgais in substantiv u in nomen</h4>
-	Endatai adina il pled senza l'artitgel, damai: cucagna (betg: la
-	cucagna), enviern (betg: l'enviern), sport (betg: il sport), Überfluss
-	(betg: der Überfluss), Kraftwerk (betg: das Kraftwerk), etc. <br>Endatai
-	mintgamai la furma singulara d'in pled, damai: Frau (betg: Frauen),
-	Arbeitskollege (betg: Arbeitskollegen), Bedachung (betg: Bedachungen),
-	Haar (betg: Haare), Schneeschuh (betg: Schneeschuhe), Seelöwe (betg:
-	Seelöwen), Verein (betg: Vereine), etc.<br>Il medem vala per ils
-	substantivs u nomens rumantschs, damai: um (betg: umens), chalzer
-	(betg: chalzers), chapè (betg: chapels), nanin (betg: nanins), siemi
-	(betg: siemis), vestgì (betg: vestgids), etc.
-
-	<h4>Vus tschertgais in pled tudestg cumponì betg anc existent en
-		il Pledari Grond online</h4>
-	Empruvai cun endatar las singulas parts dal pled cumponì, pia p.ex.
-	Büro ed alura Stuhl, Küche ed alura Tür, midai per rumantsch la
-	successiun dals pleds e colliai ils pleds cun la preposiziun "da", pia:
-	sutga da biro, isch da cuschina. <br>Empruvai da tschertgar in
-	pled cumponì sumegliant. Sche Vus tschertgais p.ex. Klimawandel e quel
-	n'exista betg, endatai Klima (cun il modus "normal") e Vus survegnis
-	p.ex. Klimawechsel -&gt; midada dal clima.
-
-	<h4>Vus tschertgais in adjectiv</h4>
-	Endatai mintgamai la furma masculina dal singular, damai: mächtig
-	(betg: mächtige), schön (betg: schöne), resp. bel (betg: bels, bella,
-	bellas), empernaivel (betg: empernaivels, empernaivla, empernaivlas),
-	chasan (betg: chasans, chasana, chasanas), etc.
-
-	<h4>Vus tschertgais ina furma d'in verb</h4>
-	Endatai adina la furma da basa dal verb tschertgà, p.ex. determinar
-	(betg: determinesch, determinà, etc.) resp. tudestg: probieren (betg:
-	ich probiere, probiert, etc.) e cliccai lura sin l'icona V (che cumpara
-	davant mintga verb rumantsch), alura s'avra ina fanestra che mussa tut
-	las furmas dal verb.
+	<h4>Vus tschartgeaz egn adjectiv</h4>
+	Andatad mintgame la furma masculina digl singular, peia: mächtig (betga: mächtige), schön (betga: schöne), resp. beal (betga: beals, beala, bealas), amparnevel (betga: amparnevels, amparnevla, amparnevlas), etc.
 </blockquote>
 
-<h3>Auters problems cun il Pledari Grond online?</h3>
-<p>Sche Vus inscuntrais auters problems cun utilisar il Pledari
-	Grond online, contactai nus. Voss impuls e Vossas remartgas pon
-	contribuir a render il Pledari Grond pli nizzaivel.</p>
-<p>
-	Redacziun Pledari Grond online <br>Servetsch da linguistica
-	applitgada <br>Lia Rumantscha
-</p>
+<h3>Oters problems cugl Pledari sutsilvan online?</h3>
+<p>Scha Vus antupaz oters problems cun duvrar igl Pledari sutsilvan online, contactad nus. Voss impuls a Vossas remartgas san cuntribuir a render quella purschida ple nizevla.</p>
+<p>Lia Rumantscha<br>Redacziùn Pledari sutsilvan online</p>
 <p><a href="mailto:pg@rumantsch.ch">pg@rumantsch.ch</a></p>

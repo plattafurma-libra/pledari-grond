@@ -1,4 +1,4 @@
 var context = {
 	path: "/sutsilvan",
-	locale: "ss"
+	locale: "st"
 };

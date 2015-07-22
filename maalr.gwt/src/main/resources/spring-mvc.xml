@@ -52,7 +52,7 @@
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="ss" />
+		<property name="defaultLocale" value="st" />
 	</bean>
 
 	<!-- Allow file uploads (import db) -->
