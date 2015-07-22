@@ -21,7 +21,7 @@ var de = {
 	select: "Wählen Sie ein Wörterbuch",
 	dict_label_lia: "Wörterbücher der Lia Rumantscha",
 	dict_label_other: "Wörterbücher weiterer Idiome",
-	dict_ulteriurs: "Andere Wöterbücher",
+	dict_ulteriurs: "Andere Wörterbücher",
 	rumantsch: "Rumantsch Grischun",
 	surmiran: "Surmiran",
 	sutsilvan: "Sutsilvan",
