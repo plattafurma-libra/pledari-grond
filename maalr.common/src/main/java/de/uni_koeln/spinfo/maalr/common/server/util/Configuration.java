@@ -94,7 +94,7 @@ public class Configuration {
 		String configDir = System.getProperty("maalr.config.dir");
 		boolean isDefault = false;
 		if (configDir == null) {
-			this.configDir = new File("maalr_ss_config");
+			this.configDir = new File("maalr_st_config");
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);

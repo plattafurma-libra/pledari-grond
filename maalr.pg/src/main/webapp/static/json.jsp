@@ -12,9 +12,6 @@
 		<%-- CONTENT --%>		
 		<div>
 		
-			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
-			<%@ include file="/maalr_modules/misc/login_widget.jsp"%>
-			
 			<div class="container well information_container">
 	
 				<%
@@ -22,9 +19,9 @@
 					Locale locale = Locale.forLanguageTag(languageTag);
 				%>
 				<% 
-					if(languageTag.equals("ss")){
+					if(languageTag.equals("st")){
 				%>
-						<%@ include file="/static/json-ss.jsp" %>
+						<%@ include file="/static/json-st.jsp" %>
 				<% 
 					} else if(languageTag.equals("de")){
 				%>

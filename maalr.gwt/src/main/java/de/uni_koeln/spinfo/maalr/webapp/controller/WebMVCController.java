@@ -121,12 +121,12 @@ public class WebMVCController {
 		mv.addObject("pageTitle", title);
 	}
 	
-	//@RequestMapping(value = {"/", "/index", "/*", "/*/*"}, method = RequestMethod.GET)
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
+		session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
 		return mv;
 	}
 
@@ -138,7 +138,6 @@ public class WebMVCController {
 		session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
 		return mv;
 	}
-	
 
 	@RequestMapping(value = "/dictionaries/{featured}")
 	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
@@ -154,7 +153,7 @@ public class WebMVCController {
 		return configuration.getLongName();
 	}
 
-	//@ModelAttribute("user")
+	@ModelAttribute("user")
 	private MaalrUserInfo currentUser(final HttpServletRequest request, Principal principal) {
 		if (principal != null) {
 			final String currentUser = principal.getName();
@@ -171,12 +170,12 @@ public class WebMVCController {
 		return null;
 	}
 
-	//@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search() {
 		return new ModelAndView("search");
 	}
 
-	//@RequestMapping(value = "/translate", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/translate", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView translate(@ModelAttribute("query") MaalrQuery query, BindingResult br, final HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView("index");
@@ -195,7 +194,7 @@ public class WebMVCController {
 		}
 	}
 
-	//@RequestMapping("/login")
+	@RequestMapping("/login")
 	public ModelAndView login(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("login");
 		setPageTitle(mv, getLocalizedString("maalr.login_page.title", session, request));
@@ -217,7 +216,7 @@ public class WebMVCController {
 	 * 
 	 * @throws Exception
 	 */
-	//@RequestMapping("/dictionary/{values[language]}/{values[searchPhrase]}")
+	@RequestMapping("/dictionary/{values[language]}/{values[searchPhrase]}")
 	public ModelAndView search(@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpServletResponse response, HttpSession session, HttpServletRequest request) {
 		// FIXME:  java.lang.NumberFormatException: Invalid shift value in prefixCoded bytes (is encoded value really an INT?)
 		/* A snippet of the exception thrown
@@ -256,14 +255,14 @@ public class WebMVCController {
 		}
 	}
 
-	//@RequestMapping("/admin/admin")
+	@RequestMapping("/admin/admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView("admin/admin");
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 
-	//@RequestMapping("/maalr")
+	@RequestMapping("/maalr")
 	public ModelAndView maalr() {
 		ModelAndView mv = new ModelAndView("static/maalr");
 		mv.addObject("dictContext", configuration.getDictContext());
@@ -271,7 +270,7 @@ public class WebMVCController {
 		return mv;
 	}
 
-	//@RequestMapping("/browse")
+	@RequestMapping("/browse")
 	public ModelAndView newAlphaList(@ModelAttribute("query") MaalrQuery query,
 			BindingResult br, HttpSession session, HttpServletRequest request) {
 		try {
@@ -289,14 +288,14 @@ public class WebMVCController {
 		return mv;
 	}
 
-	//@RequestMapping("/editor/editor")
+	@RequestMapping("/editor/editor")
 	public ModelAndView editor() {
 		ModelAndView mv = new ModelAndView("editor/editor");
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
 	
-	//@RequestMapping(value = "/dowanload/backup/{fileName}", method = { RequestMethod.GET }, produces = { "application/zip" })
+	@RequestMapping(value = "/dowanload/backup/{fileName}", method = { RequestMethod.GET }, produces = { "application/zip" })
 	public void downloadBackup (@PathVariable("fileName") String fileName, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			String dir = Configuration.getInstance().getBackupLocation();
@@ -316,7 +315,7 @@ public class WebMVCController {
 	//		adminController.importDatabase(request);
 	//	}
 	
-	//@RequestMapping("/browse/{language}")
+	@RequestMapping("/browse/{language}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
 			@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpSession session, HttpServletRequest request)
 			throws NoIndexAvailableException, BrokenIndexException,
@@ -324,7 +323,7 @@ public class WebMVCController {
 		return newAlphaList(language, "A", 0, query, br, session, request);
 	}
 
-	//@RequestMapping("/browse/{language}/{letter}")
+	@RequestMapping("/browse/{language}/{letter}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
 			@PathVariable("letter") String letter,
 			@RequestParam(value = "page", defaultValue = "0") int page,
@@ -367,7 +366,7 @@ public class WebMVCController {
 		return mv;
 	}
 	
-	//@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
+	@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
 	@ResponseBody
 	public String isSignedIn(HttpServletRequest request, Model model) throws IOException {
 		if (loginManager.getCurrentUser() != null) {
@@ -377,7 +376,7 @@ public class WebMVCController {
 		return null;
 	}
 	
-	//@RequestMapping(value = "/persona/logout",  method = RequestMethod.POST)
+	@RequestMapping(value = "/persona/logout",  method = RequestMethod.POST)
 	@ResponseBody
 	public String logoutPersona(HttpServletRequest request, Model model) throws IOException {
 		loginManager.logout();
@@ -385,7 +384,7 @@ public class WebMVCController {
 		return configuration.getDictContext();
 	}
 	
-	//@RequestMapping(value = "/persona/login",  method = RequestMethod.POST)
+	@RequestMapping(value = "/persona/login",  method = RequestMethod.POST)
 	@ResponseBody
 	public String authenticateWithPersona(@RequestParam String assertion, HttpServletRequest request, Model model) throws IOException {
 		// Already signed in ???

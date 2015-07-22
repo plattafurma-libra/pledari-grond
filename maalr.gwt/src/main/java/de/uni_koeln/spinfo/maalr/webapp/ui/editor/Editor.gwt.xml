@@ -14,7 +14,7 @@
 	
 	<!-- GWT's static string i18n -->
 	<inherits name='com.google.gwt.i18n.I18N' />
-	<extend-property name="locale" values="ss, en"/>
+	<extend-property name="locale" values="st, en"/>
 	<set-property-fallback name="locale" value="en"/> 
 
 	<!-- <stylesheet src='../assets/style/editor_style.css' />-->

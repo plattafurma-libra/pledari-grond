@@ -88,7 +88,7 @@ $(document).ready(function() {
 		
 		/*Reverse settings from startMobile function*/
 
-		if(locale == "ss") {
+		if(locale == "st") {
 			$('#sm_brand_title').html('<a href="/surmiran">surmiran</a>');
 			$('#st_brand_title').html('<a href="/sutsilvan">sutsilvan</a>');
 			$('#rm_brand_title').html('<a href="/rumantschgrischun">rumantsch grischun</a>');

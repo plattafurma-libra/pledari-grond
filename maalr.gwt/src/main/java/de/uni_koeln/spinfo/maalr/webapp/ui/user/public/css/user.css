@@ -187,6 +187,7 @@ textarea:focus {
 	cursor: pointer;
 }
 
+/* SPRINGEN & CO. */
 
 /* GENERAL */
 
@@ -542,7 +543,6 @@ input:focus, textarea:focus {
 	text-align: left;
 	padding-top: 18px;
 	padding-left: 18px;
-	visibility: hidden;
 }
 
 #languages-widget a:hover {
@@ -588,8 +588,7 @@ a.lang_selected:disabled {
 	width: 15%;
 	text-align: right;
 	padding-top: 18px;
-  	padding-right: 18px;
-  	visibility: hidden;
+	padding-right: 18px;
 }
 
 a.login-icon {
@@ -1641,9 +1640,9 @@ a.btn.btn-danger:hover {
 		width: 15%;
 	}
 	
-/* 	#brand_title { */
-/* 		width: 50%; */
-/* 	} */
+	#brand_title {
+		width: auto !important;
+	}
 	
 	#login-widget {
 		width: 15%;

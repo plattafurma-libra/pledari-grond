@@ -1,5 +1,5 @@
-var ss = {
-	select: "tschearner egn dicziunari",
+var st = {
+	select: "elegia en dicziunari",
 	dict_label_lia: "dicziunaris dal Lia Rumantscha",
 	dict_label_other: "dicziunaris dals idioms",
 	dict_ulteriurs: "ulteriurs dicziunaris",
