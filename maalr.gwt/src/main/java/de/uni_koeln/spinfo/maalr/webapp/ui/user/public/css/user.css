@@ -1631,9 +1631,11 @@ a.btn.btn-danger:hover {
 	
 	#info-box {
 /* 		margin: 125px auto; */
- 		margin-top: -13em;
-		margin-left: -13em;
+/*  	margin-top: -13em; */
+/* 		margin-left: -13em; */
 		width: 300px;
+		margin: 97px auto 142px;
+		position: inherit;
 	}
 	
 	#languages-widget {
