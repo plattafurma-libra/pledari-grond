@@ -24,6 +24,7 @@ import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -139,7 +140,12 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	}
 
 	private void setMargin(int margin) {
-		this.getElement().getStyle().setMarginTop(margin, Unit.PX);
+		// Check size!
+		if (Window.getClientWidth() > 768) {
+			this.getElement().getStyle().setMarginTop(margin, Unit.PX);
+		} else  {
+			this.getElement().getStyle().setMarginTop(0, Unit.PX);
+		}
 	}
 
 	public void setFocus(boolean selectAll) {
