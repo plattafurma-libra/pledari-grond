@@ -22,6 +22,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -77,7 +78,7 @@ public class User implements EntryPoint {
 	private static final String CONTENT = "content";
 	private static final String PROPOSE_NAVI = "propose_navi";
 	
-	private static final int DISPLAY_SIZE_1024 = 1024;
+	private static final int DISPLAY_SIZE_1056 = 1056;
 
 	/**
 	 * This is the entry point method.
@@ -217,6 +218,7 @@ public class User implements EntryPoint {
 			if (Window.getClientWidth() < 768) {
 				searchPanel.add(extDictLinks);
 				searchPanel.add(glossary);
+				glossary.getElement().getStyle().setVisibility(Visibility.HIDDEN);
 			} else {
 				sidePanel.add(extDictLinks);
 				sidePanel.add(glossary);
@@ -244,18 +246,25 @@ public class User implements EntryPoint {
 			@Override
 			public void onResize(ResizeEvent event) {
 				
-				Element a = DOM.getElementById(EXTERNAL_LINKS);
-				Element b = DOM.getElementById(GLOSSAR);
+				Element extDictLinks = DOM.getElementById(EXTERNAL_LINKS);
+				Element glossary = DOM.getElementById(GLOSSAR);
 
-				a.removeFromParent();
-				b.removeFromParent();
+				if(extDictLinks != null) {
+					extDictLinks.removeFromParent();
+				}
 				
-				if (event.getWidth() > DISPLAY_SIZE_1024) {
-					appendTo(sidePanel, a);
-					appendTo(sidePanel, b);
+				if(glossary != null) {
+					glossary.removeFromParent();
+				}
+				
+				if (event.getWidth() > DISPLAY_SIZE_1056) {
+					appendTo(sidePanel, extDictLinks);
+					appendTo(sidePanel, glossary);
+					glossary.getStyle().setVisibility(Visibility.VISIBLE);
 				} else {
-					appendTo(searchPanel, a);
-					appendTo(searchPanel, b);
+					appendTo(searchPanel, extDictLinks);
+					appendTo(searchPanel, glossary);
+					glossary.getStyle().setVisibility(Visibility.HIDDEN);
 				}
 			}
 

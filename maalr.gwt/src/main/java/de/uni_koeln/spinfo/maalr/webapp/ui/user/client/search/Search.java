@@ -19,6 +19,9 @@ import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.Style.Visibility;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -26,6 +29,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
@@ -115,7 +119,23 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			resultColumn.setVisible(false); 
 			content.setClassName(content.getClassName() + " search-centered");
 			setMargin(75);
+			addResizeHandler();
 		}
+	}
+
+	private void addResizeHandler() {
+		Window.addResizeHandler(new ResizeHandler() {
+			
+			@Override
+			public void onResize(ResizeEvent event) {
+				if(Window.getClientWidth() > 768) {
+					setMargin(75);
+				} else {
+					setMargin(0);
+				}
+			}
+		});
+		
 	}
 
 	private Element getContentDiv() {
