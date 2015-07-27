@@ -592,6 +592,7 @@ a.lang_selected:disabled {
 }
 
 a.login-icon {
+	letter-spacing: 2px;
 	padding-right: 12px;
 	background: url(/sutsilvan/assets/img/al.png) right no-repeat;
 }
