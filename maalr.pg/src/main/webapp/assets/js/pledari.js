@@ -83,6 +83,24 @@ $(document).ready(function() {
 		var short_u_name = u_name.replace('/[^\w+]/g');
 		short_u_name = short_u_name.substring(0, 2);
 		$('#u_name').text(short_u_name);
+		
+		var paths = window.location.pathname.split('/');
+		var selected = paths[paths.length-1];
+		$('#dict_descript').remove();
+		
+		if (selected == '') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Surmiran</div>");
+		} else if (selected == 'rumantschgrischun') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Rumantsch Grischun</div>");
+		} else if (selected == 'vallader') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Vallader</div>");
+		} else if (selected == 'sutsilvan') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Sutsilvan</div>");
+		} else if (selected == 'sursilvan') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Sursilvan</div>");
+		} else if (selected == 'puter') {
+			$('#dic_navi_head').after("<div id='dict_descript'>Puter</div>");
+		}
 	}
 
 	function stopMobile() {

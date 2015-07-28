@@ -23,6 +23,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.i18n.client.Dictionary;
@@ -30,6 +32,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
@@ -123,7 +126,22 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 			resultColumn.setVisible(false); 
 			content.setClassName(content.getClassName() + " search-centered");
 			setMargin(75);
+			addResizeHandler();
 		}
+	}
+
+	private void addResizeHandler() {
+		Window.addResizeHandler(new ResizeHandler() {
+
+			@Override
+			public void onResize(ResizeEvent event) {
+				if(Window.getClientWidth() > 768) {
+					setMargin(75);
+				} else {
+					setMargin(0);
+				}
+			}
+		});
 	}
 
 	private Element getContentDiv() {
@@ -148,7 +166,11 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	}
 
 	private void setMargin(int margin) {
-		this.getElement().getStyle().setMarginTop(margin, Unit.PX);
+		if (Window.getClientWidth() > 768) {
+			this.getElement().getStyle().setMarginTop(margin, Unit.PX);
+		} else  {
+			this.getElement().getStyle().setMarginTop(0, Unit.PX);
+		}
 	}
 
 	public void setFocus(boolean selectAll) {

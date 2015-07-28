@@ -591,6 +591,7 @@ a.lang_selected:disabled {
 }
 
 a.login-icon {
+	letter-spacing: 2px;
 	padding-right: 12px;
 	background: url(/surmiran/assets/img/al.png) right no-repeat;
 }
@@ -1624,16 +1625,27 @@ a.btn.btn-danger:hover {
 
 @media all and (max-width: 767px) {
 	
+	#dict_descript {
+/* 		color: rgb(21, 233, 177); */
+		color: rgb(132, 132, 132);
+		margin-top: 97px;
+		text-align: center;
+		letter-spacing: 2px;
+		font-weight: lighter;
+	}
+	
 	.dict_navi_item {
 		font-size: 10.0px;
 	}
 	
-	#info-box {
+ 	#info-box {
 /* 		margin: 125px auto; */
- 		margin-top: -13em;
-		margin-left: -13em;
-		width: 300px;
-	}
+/*  	margin-top: -13em; */
+/* 		margin-left: -13em; */
+ 		width: 300px;
+		margin: 25px auto 142px;
+		position: inherit;
+ 	}
 	
 	#languages-widget {
 		width: 15%;
@@ -1667,6 +1679,8 @@ a.btn.btn-danger:hover {
 
 	#content .container-fluid {
 		clear: both;
+		margin-top: 0px;
+		min-height: 0px;
 	}
 
 /* 	#languages-widget { */
@@ -1761,6 +1775,7 @@ a.btn.btn-danger:hover {
 
 	#content.search-centered .container-fluid:last-child .span4 {
 		margin-top: -82px;
+		top: 33%;
 	}
 
 	#content.content .row-fluid .span4 .well {
