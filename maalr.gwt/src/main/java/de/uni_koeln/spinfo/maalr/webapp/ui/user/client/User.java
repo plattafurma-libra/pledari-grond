@@ -20,9 +20,9 @@ import java.util.List;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -30,9 +30,6 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
-import com.google.gwt.i18n.client.LocaleInfo;
-import com.google.gwt.i18n.client.impl.LocaleInfoImpl;
-import com.google.gwt.i18n.rebind.LocaleInfoContext;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.History;
@@ -55,7 +52,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.PagerHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.SearchHandler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
-import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.Search;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCellTable;
@@ -82,7 +78,7 @@ public class User implements EntryPoint {
 	private static final String CONTENT = "content";
 	private static final String PROPOSE_NAVI = "propose_navi";
 	
-	private static final int DISPLAY_SIZE_1024 = 1024;
+	private static final int DISPLAY_SIZE_1056 = 1056;
 
 	/**
 	 * This is the entry point method.
@@ -91,8 +87,7 @@ public class User implements EntryPoint {
 		this.service = GWT.create(SearchService.class);
 		search = new Search();
 		resultCellTable = new ResultCellTable();
-		AsyncLemmaDescriptionLoader
-				.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
+		AsyncLemmaDescriptionLoader.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -128,21 +123,19 @@ public class User implements EntryPoint {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		if (attribute != null && attribute.contains("lang_select")) {
+		if(attribute != null && attribute.contains("lang_select")) {
 			final Anchor anchor = Anchor.wrap(element);
-			final String langParam = anchor.getHref().substring(
-					anchor.getHref().lastIndexOf('?'));
+			final String langParam = anchor.getHref().substring(anchor.getHref().lastIndexOf('?'));
 			HiJax.hijackAnchor(anchor, new Command() {
-
+				
 				@Override
 				public void execute() {
-					String url = Window.Location.getPath() + langParam + "#"
-							+ History.getToken();
+					String url = Window.Location.getPath() + langParam + "#"+History.getToken();
 					Window.Location.assign(url);
 				}
 			});
 		} else {
-			for (int i = 0; i < element.getChildCount(); i++) {
+			for(int i = 0; i < element.getChildCount(); i++) {
 				Node child = element.getChild(i);
 				Element e = child.cast();
 				updateLanguageLinks(e);
@@ -225,6 +218,7 @@ public class User implements EntryPoint {
 			if (Window.getClientWidth() < 768) {
 				searchPanel.add(extDictLinks);
 				searchPanel.add(glossary);
+				glossary.getElement().getStyle().setVisibility(Visibility.HIDDEN);
 			} else {
 				sidePanel.add(extDictLinks);
 				sidePanel.add(glossary);
@@ -252,18 +246,25 @@ public class User implements EntryPoint {
 			@Override
 			public void onResize(ResizeEvent event) {
 				
-				Element a = DOM.getElementById(EXTERNAL_LINKS);
-				Element b = DOM.getElementById(GLOSSAR);
+				Element extDictLinks = DOM.getElementById(EXTERNAL_LINKS);
+				Element glossary = DOM.getElementById(GLOSSAR);
 
-				a.removeFromParent();
-				b.removeFromParent();
+				if(extDictLinks != null) {
+					extDictLinks.removeFromParent();
+				}
 				
-				if (event.getWidth() > DISPLAY_SIZE_1024) {
-					appendTo(sidePanel, a);
-					appendTo(sidePanel, b);
+				if(glossary != null) {
+					glossary.removeFromParent();
+				}
+				
+				if (event.getWidth() > DISPLAY_SIZE_1056) {
+					appendTo(sidePanel, extDictLinks);
+					appendTo(sidePanel, glossary);
+					glossary.getStyle().setVisibility(Visibility.VISIBLE);
 				} else {
-					appendTo(searchPanel, a);
-					appendTo(searchPanel, b);
+					appendTo(searchPanel, extDictLinks);
+					appendTo(searchPanel, glossary);
+					glossary.getStyle().setVisibility(Visibility.HIDDEN);
 				}
 			}
 
@@ -276,7 +277,7 @@ public class User implements EntryPoint {
 
 	private void hiJackExternalLinks(final String linkId, final List<String> dictLinksList, final Dictionary dictionary) {
 		Element anchor = DOM.getElementById(linkId);
-		if (anchor != null) {
+		if(anchor != null) {
 			Anchor wrapper = Anchor.wrap(anchor);
 			wrapper.addClickHandler(new ClickHandler() {
 				@Override
@@ -290,11 +291,10 @@ public class User implements EntryPoint {
 	}
 
 	private void doSearch(final MaalrQuery maalrQuery) {
-		if (maalrQuery.getValues().size() == 0) {
+		if(maalrQuery.getValues().size() == 0) {
 			return;
 		}
-		if (SearchHelper.getLastQuery() != null
-				&& SearchHelper.getLastQuery().equals(maalrQuery)) {
+		if(SearchHelper.getLastQuery() != null && SearchHelper.getLastQuery().equals(maalrQuery)) {
 			return;
 		}
 		service.search(maalrQuery, new AsyncCallback<QueryResult>() {
