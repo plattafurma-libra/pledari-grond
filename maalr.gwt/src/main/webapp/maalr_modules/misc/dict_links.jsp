@@ -4,6 +4,4 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <div id="ext_links_container">
-	<ul class="ext_links_dicts">
-	</ul>
 </div>
