@@ -45,7 +45,7 @@ public class MongoHelper {
 				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
 			}
 			db = mongo.getDB(dbName);
-			logger.info("Connecting to data base... " + db.getName());
+			logger.debug("Connecting to data base... " + db.getName());
 			return db;	
 		}
 	}
