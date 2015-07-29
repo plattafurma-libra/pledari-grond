@@ -4,33 +4,33 @@
 	xmlns:m1="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.dbsettings"
 	xmlns:m2="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.indexsettings"
 	xmlns:m3="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.backupsettings"
-	xmlns:m4="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.common.help" 
-	xmlns:s="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.stats" 
+	xmlns:m4="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.common.help"
+	xmlns:s="urn:import:de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.stats"
 	xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui">
+
 	<gwtbootstrap:Container ui:field="container">
 		<gwtbootstrap:Row>
-			<gwtbootstrap:Column size="12" ui:field="chartsColumn">
-				<g:VerticalPanel width="100%" height="100%" ui:field="charts">
-				</g:VerticalPanel>
-			</gwtbootstrap:Column>
-			<gwtbootstrap:Column size="4" ui:field="settingsColumn">
-				<g:VerticalPanel width="100%" height="100%">
-					<g:cell>
+			<!-- <gwtbootstrap:Column size="12" ui:field="chartsColumn"> -->
+			<!-- <g:VerticalPanel width="100%" height="100%" ui:field="charts"> -->
+			<!-- </g:VerticalPanel> -->
+			<!-- </gwtbootstrap:Column> -->
+			<gwtbootstrap:Column size="8" ui:field="settingsColumn">
+				<gwtbootstrap:Row>
+					<gwtbootstrap:Column size="4">
 						<m1:DatabaseSettings ui:field="dbSettings"></m1:DatabaseSettings>
-					</g:cell>
-					<gwtbootstrap:Paragraph />
-					<g:cell width="100%" height="100%">
-						<m2:IndexSettings ui:field="indexSettings" ></m2:IndexSettings>
-					</g:cell>
-					<gwtbootstrap:Paragraph />
-					<g:cell width="100%" height="100%">
-						<m3:BackupSettings ui:field="backupSettings" ></m3:BackupSettings>
-					</g:cell>
-					<gwtbootstrap:Paragraph />
-					<g:cell width="100%" height="100%">
+					</gwtbootstrap:Column>
+					<gwtbootstrap:Column size="4">
+						<m2:IndexSettings ui:field="indexSettings"></m2:IndexSettings>
+					</gwtbootstrap:Column>
+				</gwtbootstrap:Row>
+				<gwtbootstrap:Row>
+					<gwtbootstrap:Column size="4">
+						<m3:BackupSettings ui:field="backupSettings"></m3:BackupSettings>
+					</gwtbootstrap:Column>
+					<gwtbootstrap:Column size="4">
 						<m4:HelpBox ui:field="helpBox"></m4:HelpBox>
-					</g:cell>
-				</g:VerticalPanel>
+					</gwtbootstrap:Column>
+				</gwtbootstrap:Row>
 			</gwtbootstrap:Column>
 		</gwtbootstrap:Row>
 	</gwtbootstrap:Container>

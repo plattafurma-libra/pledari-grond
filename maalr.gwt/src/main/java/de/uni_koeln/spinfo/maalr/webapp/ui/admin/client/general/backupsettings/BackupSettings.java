@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.Accordion;
 import com.github.gwtbootstrap.client.ui.AccordionGroup;
-import com.github.gwtbootstrap.client.ui.Label;
 import com.github.gwtbootstrap.client.ui.Paragraph;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.google.gwt.core.client.GWT;
@@ -62,13 +61,13 @@ public class BackupSettings extends Composite {
 			}
 
 			private void displayGeneralInfos() {
-				Label label = new Label("General Settings");
-				label.addStyleName("label-info");
-				generalInfo.add(label);
+//				Label label = new Label("General Settings");
+//				label.addStyleName("label-info");
+//				generalInfo.add(label);
 				generalInfo.add(new Paragraph());
-				generalInfo.add(new Paragraph("Count: " + backupInfos.getBackupNums()));
+				generalInfo.add(new Paragraph("Max. Backups: " + backupInfos.getBackupNums()));
 				generalInfo.add(new Paragraph("Location: " + backupInfos.getBackupLocation()));
-				generalInfo.add(new Paragraph("Time: " + backupInfos.getTriggerTime()));
+				generalInfo.add(new Paragraph("Timer: " + backupInfos.getTriggerTime()));
 			}
 
 			private void dispalyBackupInfos() {

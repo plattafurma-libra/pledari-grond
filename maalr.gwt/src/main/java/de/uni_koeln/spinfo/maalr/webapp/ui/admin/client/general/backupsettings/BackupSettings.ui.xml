@@ -8,7 +8,7 @@
 	<g:HTMLPanel>
 		<gwtbootstrap:Well>
 			<gwtbootstrap:Paragraph>
-				<gwtbootstrap:Label text="Backup history" />
+				<gwtbootstrap:Label text="Backup History" />
 			</gwtbootstrap:Paragraph>
 			<g:HorizontalPanel>
 				<g:cell>
