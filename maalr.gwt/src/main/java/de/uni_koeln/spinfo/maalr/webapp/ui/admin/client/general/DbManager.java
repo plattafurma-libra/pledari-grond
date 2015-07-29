@@ -63,21 +63,21 @@ public class DbManager extends Composite {
 	@UiField
 	HelpBox helpBox;
 	
-	@UiField
-	VerticalPanel charts;
+//	@UiField
+//	VerticalPanel charts;
 	
-	private MemoryStatsBox memStats;
+	// private MemoryStatsBox memStats;
 	
-	private DiskStatsBox diskStats;
+	// private DiskStatsBox diskStats;
 	
-	private CpuStatsBox cpuStats;
+	// private CpuStatsBox cpuStats;
 	
-	private NetStatsBox netStats;
+	// private NetStatsBox netStats;
 	
 	private BackendServiceAsync service;
 	
-	@UiField
-	Column chartsColumn;
+//	@UiField
+//	Column chartsColumn;
 	
 	@UiField
 	Column settingsColumn;
@@ -90,123 +90,122 @@ public class DbManager extends Composite {
 			initWidget(uiBinder.createAndBindUi(this));
 			helpBox.setHelpText("Backup or import a dictionary. Note that you cannot undo or cancel any operation.");
 			service = GWT.create(BackendService.class);
-			initVisualization();
+			//initVisualization();
 		} catch (Exception e) {
 			Window.alert("Failed to init db mgr: " + e);
 		}
 	}
 	
-	private void initVisualization() {
-		service.getSystemSummary(new AsyncCallback<SystemSummary>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				hideSystemSummary();
-			}
-
-			@Override
-			public void onSuccess(SystemSummary result) {
-				if(result == null) {
-					hideSystemSummary();
-				} else {
-					 // Create a callback to be called when the visualization API
-				    // has been loaded.
-				    Runnable onLoadCallback = new Runnable() {
-				      public void run() {
-				    	 initializeCharts();
-				      }
-
-				    };
-				    // Load the visualization api, passing the onLoadCallback to be called
-				    // when loading is done.
-				    VisualizationUtils.loadVisualizationApi(onLoadCallback, PieChart.PACKAGE, Gauge.PACKAGE, BarChart.PACKAGE);
-				}
-			}
-
-			private void hideSystemSummary() {
-				chartsColumn.setVisible(false);
-				settingsColumn.setSize(12);
-			}
-		});
-	}
+//	private void initVisualization() {
+//		service.getSystemSummary(new AsyncCallback<SystemSummary>() {
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				hideSystemSummary();
+//			}
+//
+//			@Override
+//			public void onSuccess(SystemSummary result) {
+//				if(result == null) {
+//					hideSystemSummary();
+//				} else {
+//					 // Create a callback to be called when the visualization API
+//				    // has been loaded.
+//				    Runnable onLoadCallback = new Runnable() {
+//				      public void run() {
+//				    	 initializeCharts();
+//				      }
+//
+//				    };
+//				    // Load the visualization api, passing the onLoadCallback to be called
+//				    // when loading is done.
+//				    VisualizationUtils.loadVisualizationApi(onLoadCallback, PieChart.PACKAGE, Gauge.PACKAGE, BarChart.PACKAGE);
+//				}
+//			}
+//
+//			private void hideSystemSummary() {
+//				chartsColumn.setVisible(false);
+//				settingsColumn.setSize(12);
+//			}
+//		});
+//	}
 	
-	private void initializeCharts() {
-		container.setWidth("99%");
-		initializeCpuCharts();
-		initializeMemCharts();
-		initializeNetCharts();
-		initializeDiskCharts();
-		Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
-			
-			private boolean shouldContinue = true;
-			
-			@Override
-			public boolean execute() {
-				service.getSystemSummary(new AsyncCallback<SystemSummary>() {
-					
-					@Override
-					public void onSuccess(SystemSummary result) {
-						if(result == null) {
-							shouldContinue = false;
-						}
-						updateCharts(result);
-					}
+//	private void initializeCharts() {
+//		container.setWidth("99%");
+//		initializeCpuCharts();
+//		initializeMemCharts();
+//		initializeNetCharts();
+//		initializeDiskCharts();
+//		Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+//			
+//			private boolean shouldContinue = true;
+//			
+//			@Override
+//			public boolean execute() {
+//				service.getSystemSummary(new AsyncCallback<SystemSummary>() {
+//					
+//					@Override
+//					public void onSuccess(SystemSummary result) {
+//						if(result == null) {
+//							shouldContinue = false;
+//						}
+//						updateCharts(result);
+//					}
+//
+//					@Override
+//					public void onFailure(Throwable caught) {
+//						shouldContinue = false;
+//					}
+//				});
+//				return shouldContinue;
+//			}
+//		}, 1000);
+//	}
 
-					@Override
-					public void onFailure(Throwable caught) {
-						shouldContinue = false;
-					}
-				});
-				return shouldContinue;
-			}
-		}, 1000);
-	}
+//	private void initializeMemCharts() {
+//		memStats = new MemoryStatsBox();
+//		charts.add(memStats);
+//	}
 
-	private void initializeMemCharts() {
-		memStats = new MemoryStatsBox();
-		charts.add(memStats);
-	}
-
-	private void initializeDiskCharts() {
-		diskStats = new DiskStatsBox();
-		charts.add(diskStats);
-	}
+//	private void initializeDiskCharts() {
+//		diskStats = new DiskStatsBox();
+//		charts.add(diskStats);
+//	}
 	
 	
-	private void initializeNetCharts() {
-		netStats = new NetStatsBox();
-		charts.add(netStats);
-	}
+//	private void initializeNetCharts() {
+//		netStats = new NetStatsBox();
+//		charts.add(netStats);
+//	}
 
-	private void initializeCpuCharts() {
-		try {
-			cpuStats = new CpuStatsBox();
-			charts.add(cpuStats);
-		} catch (Exception e) {
-			Window.alert("Failed to init" + e);
-		}
-	}
+//	private void initializeCpuCharts() {
+//		try {
+//			cpuStats = new CpuStatsBox();
+//			charts.add(cpuStats);
+//		} catch (Exception e) {
+//			Window.alert("Failed to init" + e);
+//		}
+//	}
 
-	private void updateCharts(SystemSummary summary) {
-		if(memStats != null) {
-			memStats.update(summary);
-		}
-		if(cpuStats != null) {
-			cpuStats.update(summary);
-		}
-		if(diskStats != null) {
-			diskStats.update(summary);	
-		}
-		try {
-			if(netStats != null) {
-			    netStats.update(summary);
-			}
-			
-		} catch (Exception e) {
-			Logger.getLogger(getClass()).info("Error while updating: " + e);
-		}
-		
-	}
+//	private void updateCharts(SystemSummary summary) {
+//		if(memStats != null) {
+//			memStats.update(summary);
+//		}
+//		if(cpuStats != null) {
+//			cpuStats.update(summary);
+//		}
+//		if(diskStats != null) {
+//			diskStats.update(summary);	
+//		}
+//		try {
+//			if(netStats != null) {
+//			    netStats.update(summary);
+//			}
+//			
+//		} catch (Exception e) {
+//			Logger.getLogger(getClass()).info("Error while updating: " + e);
+//		}
+//	}
 
 	
 	
