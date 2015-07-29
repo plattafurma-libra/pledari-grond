@@ -18,6 +18,7 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
@@ -77,8 +78,6 @@ public class Admin implements EntryPoint {
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
 			}
 		});
 		
@@ -99,12 +98,15 @@ public class Admin implements EntryPoint {
 		DbManager dbManager = new DbManager();
 		registerModule(roleEditor, Modules.ANCHOR_ROLE_MANAGER);
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
-		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/rumantschgrischun/j_spring_security_logout");
+		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
+		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER, IconType.GROUP, false);
+		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER, IconType.TABLE, false);
+		navigation.addLinkLeft("Edit Dictionary", contextPath + Modules.ANCHOR_EDITOR_MODULE, IconType.EDIT_SIGN, true);
+		navigation.addLinkLeft("Logout", contextPath + "/j_spring_security_logout", IconType.SIGNOUT, false);
 	}
 
 	private void initHistory() {
+		
 		 History.addValueChangeHandler(new ValueChangeHandler<String>() {
 		      public void onValueChange(ValueChangeEvent<String> event) {
 		        String historyToken = event.getValue();
