@@ -46,14 +46,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 
-/**
- * Filter-Composite with provides filter options to query for
- * users by text (email, login, firstname, lastname) and/or
- * role. The layout of this {@link Composite} is defined in
- * the corresponding ui.xml-file.
- * 
- *
- */
+
 public class DatabaseSettings extends Composite {
 
 	private static DatabaseSettingsUiBinder uiBinder = GWT.create(DatabaseSettingsUiBinder.class);

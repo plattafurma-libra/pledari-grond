@@ -47,8 +47,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
  */
 public class UserList extends Composite {
 
-	private static UserListUiBinder uiBinder = GWT
-			.create(UserListUiBinder.class);
+	private static UserListUiBinder uiBinder = GWT.create(UserListUiBinder.class);
 
 	@UiField(provided = true)
 	PagingDataGrid<LightUserInfo> table;
@@ -78,7 +77,7 @@ public class UserList extends Composite {
 	 */
 	private String getDisplayString(String toDisplay) {
 		if (toDisplay == null || toDisplay.trim().length() == 0) {
-			return "--";
+			return "-";
 		}
 		return toDisplay.trim();
 	}
@@ -95,20 +94,19 @@ public class UserList extends Composite {
 		table.addColumn(user, "Login");
 
 		// First name column
-		Column<LightUserInfo, String> firstName = new Column<LightUserInfo, String>(
-				new TextCell()) {
+		Column<LightUserInfo, String> firstName = new Column<LightUserInfo, String>(new TextCell()) {
 
 			@Override
 			public String getValue(LightUserInfo object) {
 				return getDisplayString(object.getFirstName());
 			}
 		};
+		
 		// Unique identifier required for sorting
 		firstName.setDataStoreName(LightUserInfo.SORT_FIRST_NAME);
 		table.addColumn(firstName, "First Name");
 		// Last name column
-		Column<LightUserInfo, String> lastName = new Column<LightUserInfo, String>(
-				new TextCell()) {
+		Column<LightUserInfo, String> lastName = new Column<LightUserInfo, String>(new TextCell()) {
 
 			@Override
 			public String getValue(LightUserInfo object) {
@@ -119,8 +117,7 @@ public class UserList extends Composite {
 		lastName.setDataStoreName(LightUserInfo.SORT_LAST_NAME);
 		table.addColumn(lastName, "Last Name");
 		// Email column
-		Column<LightUserInfo, String> email = new Column<LightUserInfo, String>(
-				new TextCell()) {
+		Column<LightUserInfo, String> email = new Column<LightUserInfo, String>(new TextCell()) {
 
 			@Override
 			public String getValue(LightUserInfo object) {
@@ -132,8 +129,7 @@ public class UserList extends Composite {
 		email.setDataStoreName(LightUserInfo.SORT_EMAIL);
 		table.addColumn(email, "Email");
 		// Role column
-		Column<LightUserInfo, String> role = new Column<LightUserInfo, String>(
-				new TextCell()) {
+		Column<LightUserInfo, String> role = new Column<LightUserInfo, String>(new TextCell()) {
 
 			@Override
 			public String getValue(LightUserInfo object) {

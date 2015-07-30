@@ -224,11 +224,9 @@ public class UserInfoBackend {
 	 * @return
 	 */
 	@Secured({ Constants.Roles.ADMIN_5 })
-	public List<MaalrUserInfo> getAllUsers(Role role, String text,
-			String sortColumn, boolean sortAscending, int from, int length) {
+	public List<MaalrUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length) {
 		UserInfoDB userInfos = new UserInfoDB();
-		return userInfos.getAllUsers(role, text, sortColumn, sortAscending,
-				from, length);
+		return userInfos.getAllUsers(role, text, sortColumn, sortAscending, from, length);
 	}
 
 	/**
