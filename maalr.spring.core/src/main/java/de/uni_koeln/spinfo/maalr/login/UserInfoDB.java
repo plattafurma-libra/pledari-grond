@@ -17,7 +17,9 @@ package de.uni_koeln.spinfo.maalr.login;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
@@ -138,6 +140,7 @@ public class UserInfoDB {
 		if(role != null) {
 			query.put(Constants.Users.ROLE, role.toString());
 		}
+		// The value for the variable 'text' is set in 'maalr.gwt > ListFilter.java'
 		if(text != null && text.trim().length() > 0) {
 			BasicDBList attributes = new BasicDBList();
 			DBObject firstName = new BasicDBObject();
@@ -162,7 +165,10 @@ public class UserInfoDB {
 		while(cursor.hasNext()) {
 			DBObject o = cursor.next();
 			MaalrUserInfo user = new MaalrUserInfo(o);
-			all.add(user);
+			// Used to avoid duplicates
+			user.setID();
+			if(!all.contains(user)) 
+				all.add(user);
 		}
 		cursor.close();
 		return all;

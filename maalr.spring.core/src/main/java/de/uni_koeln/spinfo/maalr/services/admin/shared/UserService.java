@@ -37,8 +37,7 @@ public interface UserService extends RemoteService {
 	
 	public int getNumberOfUsers();
 	
-	List<LightUserInfo> getAllUsers(Role role, String text, 
-			String sortColumn, boolean sortAscending, int from, int length);
+	List<LightUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length);
 	
 	public LightUserInfo insertNewUser(LightUserInfo user) throws InvalidUserException;
 

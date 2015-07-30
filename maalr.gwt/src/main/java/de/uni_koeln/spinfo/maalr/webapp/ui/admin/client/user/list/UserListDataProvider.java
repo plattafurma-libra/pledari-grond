@@ -167,6 +167,8 @@ public class UserListDataProvider extends AsyncDataProvider<LightUserInfo> {
 	}
 		
 	private void update(List<LightUserInfo> result) {
+		if(!result.isEmpty())
+			loaded.clear();
 		loaded.addAll(result);
 		pageSize = loaded.size();
 		updateRowData(0, loaded);

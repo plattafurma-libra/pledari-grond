@@ -10,19 +10,19 @@
 	<gwtbootstrap:FluidContainer>
 		<gwtbootstrap:FluidRow>
 			<gwtbootstrap:Column size="8">
-				<gwtbootstrap:Well height="800px">
-					<m2:UserList ui:field="userList" width="100%" height="100%"></m2:UserList>
+				<gwtbootstrap:Well>
+					<m2:UserList ui:field="userList"></m2:UserList>
 				</gwtbootstrap:Well>
 			</gwtbootstrap:Column>
 			<gwtbootstrap:Column size="4">
-				<g:VerticalPanel width="100%" height="100%" >
+				<g:VerticalPanel>
 					<g:cell>
 						<m3:ListFilter ui:field="filterOptions"></m3:ListFilter>
 					</g:cell>
-					<g:cell width="100%" height="100%">
+					<g:cell>
 						<m1:UserDetails ui:field="userDetails" ></m1:UserDetails>
 					</g:cell>
-					<g:cell width="100%" height="100%">
+					<g:cell>
 						<m4:HelpBox ui:field="helpBox"></m4:HelpBox>
 					</g:cell>
 				</g:VerticalPanel>

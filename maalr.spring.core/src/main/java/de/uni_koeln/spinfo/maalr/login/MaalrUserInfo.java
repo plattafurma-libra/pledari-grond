@@ -25,6 +25,9 @@ import de.uni_koeln.spinfo.maalr.common.shared.Role;
 public class MaalrUserInfo extends BasicDBObject {
 	
 	private static final long serialVersionUID = 1188500902567455955L;
+	
+	// Used to avoid duplicates
+	private String _id;
 
 	public MaalrUserInfo(String login, Role role) {
 		setLogin(login);
@@ -147,4 +150,41 @@ public class MaalrUserInfo extends BasicDBObject {
 	public String getProviderId() {
 		return super.getString(Constants.Users.PROVIDER_ID);
 	}
+
+	public String getID() {
+		return _id;
+	}
+
+	public void setID() {
+		this._id = super.getString("_id");
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MaalrUserInfo other = (MaalrUserInfo) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
+		return true;
+	}
+	
+	
+	
+	
 }

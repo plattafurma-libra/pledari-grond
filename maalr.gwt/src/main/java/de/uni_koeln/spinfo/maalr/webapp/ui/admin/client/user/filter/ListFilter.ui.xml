@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui">
 	<g:HTMLPanel>
 		<gwtbootstrap:Well>
-		<gwtbootstrap:Form type="HORIZONTAL">
+		<gwtbootstrap:Form type="VERTICAL">
 			<gwtbootstrap:Fieldset>
 				<gwtbootstrap:Legend>Filter</gwtbootstrap:Legend>
 				<gwtbootstrap:ControlGroup>

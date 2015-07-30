@@ -35,7 +35,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
 
 /**
- * Filter-Composite with provides filter options to query for
+ * Filter-Composite which provides filter options to query for
  * users by text (email, login, firstname, lastname) and/or
  * role. The layout of this {@link Composite} is defined in
  * the corresponding ui.xml-file.
