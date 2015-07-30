@@ -28,8 +28,6 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Command;
@@ -120,6 +118,7 @@ public class UserDetails extends Composite {
 			@Override
 			public void onChange(ChangeEvent event) {
 				if(workingCopy == null) return;
+				// workingCopy.setLogin(login.getText());
 				workingCopy.setEmail(email.getText());
 				workingCopy.setFirstName(firstName.getText());
 				workingCopy.setLastName(lastName.getText());
@@ -128,7 +127,7 @@ public class UserDetails extends Composite {
 				workingCopy.setRole(r);
 			}
 		};
-		
+		// login.addChangeHandler(handler);
 		email.addChangeHandler(handler);
 		firstName.addChangeHandler(handler);
 		lastName.addChangeHandler(handler);
@@ -232,7 +231,9 @@ public class UserDetails extends Composite {
 		creationDate.setValue(new Date(workingCopy.getCreationDate()));
 		modifiedDate.setValue(new Date(workingCopy.getLastModificationDate()));
 		role.setSelectedIndex(getRoleIndex(workingCopy.getRole()));
-		if(user.getLogin().equals("admin")) {
+		
+		//if(user.getLogin().equals("admin")) {
+		if(user.getRole().equals("ROLE_ADMIN")) {
 			role.setEnabled(false);
 		} else {
 			role.setEnabled(true);
@@ -269,6 +270,7 @@ public class UserDetails extends Composite {
 					
 					@Override
 					public void onSuccess(Void result) {
+						//currentUser.setLogin(toSave.getLogin());
 						currentUser.setEmail(toSave.getEmail());
 						currentUser.setFirstName(toSave.getFirstName());
 						currentUser.setLastName(toSave.getLastName());

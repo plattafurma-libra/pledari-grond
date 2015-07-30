@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUserFields(LightUserInfo user) throws InvalidUserException {
 		MaalrUserInfo maalrUser = userInfos.getByLogin(user.getLogin());
+		maalrUser.setLogin(user.getLogin());
 		maalrUser.setEmail(user.getEmail());
 		maalrUser.setFirstname(user.getFirstName());
 		maalrUser.setLastname(user.getLastName());
