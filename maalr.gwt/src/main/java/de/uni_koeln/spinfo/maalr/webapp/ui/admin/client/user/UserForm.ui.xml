@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+	    <b:Form type="HORIZONTAL">
+					<b:Fieldset>
+						<b:ControlGroup>
+							<b:ControlLabel for="input01">Login</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox alternateSize="XLARGE" b:id="input01" ui:field="login"></b:TextBox>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="input02">First Name</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox alternateSize="XLARGE" b:id="input02" ui:field="firstName"></b:TextBox>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="input03">Last Name</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox alternateSize="XLARGE" b:id="input03" ui:field="lastName"></b:TextBox>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="input04">Email</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox alternateSize="XLARGE" b:id="input04" ui:field="email"></b:TextBox>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="input04">Role</b:ControlLabel>
+							<b:Controls>
+								<b:ListBox b:id="select01"  ui:field="roles" />
+							</b:Controls>
+						</b:ControlGroup>
+					</b:Fieldset>
+				</b:Form>
+	    
+	    
+	</g:HTMLPanel>
+</ui:UiBinder> 

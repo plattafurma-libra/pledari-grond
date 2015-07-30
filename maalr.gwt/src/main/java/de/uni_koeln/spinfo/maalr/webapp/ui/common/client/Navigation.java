@@ -69,6 +69,7 @@ public class Navigation extends Composite {
 	}
 	
 	public void addLinkLeft(String title, String href, IconType iconType, boolean divider) {
+		if (divider) navLeft.add(new VerticalDivider());
 		if(iconType == null) {
 			navLeft.add(new NavLink(title, href));
 		} else {
@@ -76,12 +77,18 @@ public class Navigation extends Composite {
 			navLink.setIcon(iconType);
 			navLeft.add(navLink);
 		}
-		if (divider) navLeft.add(new VerticalDivider());
+		
 	}
 	
-	public void addLinkRight(String title, String href, boolean divider) {
-		navRight.add(new NavLink(title, href));
+	public void addLinkRight(String title, String href, IconType iconType, boolean divider) {
 		if (divider) navRight.add(new VerticalDivider());
+		if(iconType == null) {
+			navRight.add(new NavLink(title, href));
+		} else {
+			NavLink navLink = new NavLink(title, href);
+			navLink.setIcon(iconType);
+			navRight.add(navLink);
+		}
 	}
-
+	
 }

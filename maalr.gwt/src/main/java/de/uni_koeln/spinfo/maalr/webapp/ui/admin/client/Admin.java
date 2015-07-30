@@ -99,10 +99,11 @@ public class Admin implements EntryPoint {
 		registerModule(roleEditor, Modules.ANCHOR_ROLE_MANAGER);
 		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
 		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
-		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER, IconType.GROUP, false);
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER, IconType.TABLE, false);
+		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER, IconType.GROUP, false);
 		navigation.addLinkLeft("Edit Dictionary", contextPath + Modules.ANCHOR_EDITOR_MODULE, IconType.EDIT_SIGN, true);
-		navigation.addLinkLeft("Logout", contextPath + "/j_spring_security_logout", IconType.SIGNOUT, false);
+		navigation.addLinkLeft("Front Page", contextPath, IconType.DESKTOP, true);
+		navigation.addLinkRight("Logout", contextPath + "/j_spring_security_logout", IconType.SIGNOUT, true);
 	}
 
 	private void initHistory() {
