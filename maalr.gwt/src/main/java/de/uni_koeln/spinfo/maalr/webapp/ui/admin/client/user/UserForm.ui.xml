@@ -3,44 +3,62 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 	<ui:style>
-	
+		.form-horizontal .controls {
+			margin-left: 100px;
+		}
+		.form-horizontal .control-label {
+			float:	left;
+			width: 100px;
+			letter-spacing: 1.3;
+			font-weight: 100;
+		}
+		.form-horizontal .control-group {
+			display: inline-block;
+			margin-bottom: 0;
+		}
+		.form-horizontal .textBox{
+			letter-spacing: 1.1px;
+			width: 270px;
+			display: inline-block;
+    		margin-bottom: 0;
+    		vertical-align: middle;
+		}
+
 	</ui:style>
 	<g:HTMLPanel>
-	    <b:Form type="HORIZONTAL">
-					<b:Fieldset>
-						<b:ControlGroup>
-							<b:ControlLabel for="input01">Login</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox alternateSize="XLARGE" b:id="input01" ui:field="login"></b:TextBox>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup>
-							<b:ControlLabel for="input02">First Name</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox alternateSize="XLARGE" b:id="input02" ui:field="firstName"></b:TextBox>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup>
-							<b:ControlLabel for="input03">Last Name</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox alternateSize="XLARGE" b:id="input03" ui:field="lastName"></b:TextBox>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup>
-							<b:ControlLabel for="input04">Email</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox alternateSize="XLARGE" b:id="input04" ui:field="email"></b:TextBox>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup>
-							<b:ControlLabel for="input04">Role</b:ControlLabel>
-							<b:Controls>
-								<b:ListBox b:id="select01"  ui:field="roles" />
-							</b:Controls>
-						</b:ControlGroup>
-					</b:Fieldset>
-				</b:Form>
-	    
-	    
+	    <b:Form type="HORIZONTAL" styleName='{style.form-horizontal}'>
+			<b:Fieldset>
+				<b:ControlGroup styleName='{style.control-group}'>
+					<b:ControlLabel for="input01" styleName='{style.control-label}'>Login</b:ControlLabel>
+					<b:Controls styleName='{style.controls}'>
+						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input01" ui:field="login"></b:TextBox>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup styleName='{style.control-group}'>
+					<b:ControlLabel for="input02" styleName='{style.control-label}'>First Name</b:ControlLabel>
+					<b:Controls styleName='{style.controls}'>
+						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input02" ui:field="firstName"></b:TextBox>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup styleName='{style.control-group}'>
+					<b:ControlLabel for="input03" styleName='{style.control-label}'>Last Name</b:ControlLabel>
+					<b:Controls styleName='{style.controls}'>
+						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input03" ui:field="lastName"></b:TextBox>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup styleName='{style.control-group}'>
+					<b:ControlLabel for="input04" styleName='{style.control-label}'>Email</b:ControlLabel>
+					<b:Controls styleName='{style.controls}'>
+						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input04" ui:field="email"></b:TextBox>
+					</b:Controls>
+				</b:ControlGroup>
+				<b:ControlGroup styleName='{style.control-group}'>
+					<b:ControlLabel for="input04" styleName='{style.control-label}'>Role</b:ControlLabel>
+					<b:Controls styleName='{style.controls}'>
+						<b:ListBox b:id="select01"  ui:field="roles" />
+					</b:Controls>
+				</b:ControlGroup>
+			</b:Fieldset>
+		</b:Form>
 	</g:HTMLPanel>
 </ui:UiBinder> 
