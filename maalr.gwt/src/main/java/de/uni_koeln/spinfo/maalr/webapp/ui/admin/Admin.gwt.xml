@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='de.uni_koeln.spinfo.maalr.admin'>
-  <!-- Inherit the core Web Toolkit stuff.                        -->
-  <inherits name='de.uni_koeln.spinfo.maalr.common.Common'/>
-  <inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo'/>
-  <inherits name='de.uni_koeln.spinfo.maalr.webapp.ui.common.Common'/>
-  <!-- <inherits name='de.uni_koeln.spinfo.maalr.sigar.Sigar'/> -->
-  <inherits name='de.uni_koeln.spinfo.maalr.lucene.Lucene'/>
-  <!-- <inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo'/> -->
-  <inherits name='de.uni_koeln.spinfo.maalr.services.admin.AdminServices'/>
-  <inherits name="com.google.gwt.visualization.Visualization" />
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='de.uni_koeln.spinfo.maalr.common.Common' />
+	<inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo' />
+	<inherits name='de.uni_koeln.spinfo.maalr.webapp.ui.common.Common' />
+	<!-- <inherits name='de.uni_koeln.spinfo.maalr.sigar.Sigar'/> -->
+	<inherits name='de.uni_koeln.spinfo.maalr.lucene.Lucene' />
+	<!-- <inherits name='de.uni_koeln.spinfo.maalr.mongo.Mongo'/> -->
+	<inherits name='de.uni_koeln.spinfo.maalr.services.admin.AdminServices' />
+	<inherits name="com.google.gwt.visualization.Visualization" />
 
-  <stylesheet src='../assets/style/admin_style.css' />
+	<inherits name="org.hibernate.validator.HibernateValidator" />
+	<replace-with
+		class="de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.UserValidatorFactory">
+		<when-type-is class="javax.validation.ValidatorFactory" />
+	</replace-with>
 
-  <!-- Specify the app entry point class.                         -->
-  <entry-point class='de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.Admin'/>
+	<stylesheet src='../assets/style/admin_style.css' />
 
-  <!-- Specify the paths for translatable code                    -->
-  <source path='client'/>
-  <source path='shared'/>
-  
+	<!-- Specify the app entry point class. -->
+	<entry-point class='de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.Admin' />
+
+	<!-- Specify the paths for translatable code -->
+	<source path='client' />
+	<source path='shared' />
+
 </module>

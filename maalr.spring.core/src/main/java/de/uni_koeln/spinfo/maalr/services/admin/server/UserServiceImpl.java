@@ -78,10 +78,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public LightUserInfo insertNewUser(LightUserInfo user) throws InvalidUserException {
 		MaalrUserInfo maalrUser = new MaalrUserInfo();
-		maalrUser.setEmail(user.getEmail());
+		maalrUser.setLogin(user.getLogin());
 		maalrUser.setFirstname(user.getFirstName());
 		maalrUser.setLastname(user.getLastName());
-		maalrUser.setLogin(user.getLogin());
+		maalrUser.setEmail(user.getEmail());
+		maalrUser.setRole(user.getRole());
 		userInfos.insert(maalrUser);
 		return maalrUser.toLightUser();
 	}

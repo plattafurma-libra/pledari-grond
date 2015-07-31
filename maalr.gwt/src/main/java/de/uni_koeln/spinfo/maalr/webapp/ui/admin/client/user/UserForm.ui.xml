@@ -26,6 +26,7 @@
 
 	</ui:style>
 	<g:HTMLPanel>
+	    <b:Label ui:field="errorLabel"></b:Label>
 	    <b:Form type="HORIZONTAL" styleName='{style.form-horizontal}'>
 			<b:Fieldset>
 				<b:ControlGroup styleName='{style.control-group}'>
