@@ -19,6 +19,7 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @XmlRootElement
@@ -31,14 +32,12 @@ public class LightUserInfo implements Serializable {
 			SORT_LOGIN = Constants.Users.LOGIN, SORT_FIRST_NAME = Constants.Users.FIRSTNAME, SORT_LAST_NAME = Constants.Users.LASTNAME,
 			SORT_EMAIL = Constants.Users.EMAIL, SORT_ROLE=Constants.Users.ROLE;
 
-	@NotEmpty
+	@NotEmpty(message = "Login name is required!")
 	private String login;
 	
-	private String firstName; 
+	private String lastName, firstName; 
 	
-	private String lastName;
-	
-	@NotEmpty
+	@NotEmpty(message = "Email is required!")
 	private String email;
 	
 	private long creationDate, lastModificationDate;

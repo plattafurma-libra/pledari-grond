@@ -61,11 +61,11 @@ public class RoleEditor extends Composite {
 	@UiField
 	HelpBox helpBox;
 
-	private UserServiceAsync service;
+	//private UserServiceAsync service;
 
 	public RoleEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
-		service = GWT.create(UserService.class);
+		//service = GWT.create(UserService.class);
 		userDetails.setDataSource(userList);
 		userList.addSelectionChangedHandler(new Handler() {
 			
@@ -86,26 +86,7 @@ public class RoleEditor extends Composite {
 				final Modal modal = new Modal(true);	
 				modal.setTitle("Create New User");
 				
-				final UserForm form = new UserForm(new LightUserInfo());
-				
-				Button create = new Button("CREATE", new ClickHandler() {
-					
-					@Override
-					public void onClick(ClickEvent event) {
-//						service.insertNewUser(newUser, new AsyncCallback<LightUserInfo>() {
-//							
-//							@Override
-//							public void onSuccess(LightUserInfo result) {
-//								userList.reset();
-//							}
-//							
-//							@Override
-//							public void onFailure(Throwable caught) {
-//							}
-//						});
-						modal.hide();
-					}
-				});
+				Button create = new Button("CREATE");
 				create.setType(ButtonType.DEFAULT);
 				create.setBlock(true);
 				
@@ -120,6 +101,7 @@ public class RoleEditor extends Composite {
 				cancel.setType(ButtonType.INVERSE);
 				cancel.setBlock(true);
 				
+				UserForm form = new UserForm(new LightUserInfo(), modal, create, userList);
 				
 				ModalFooter modalFooter = new ModalFooter();
 				modalFooter.add(create);
