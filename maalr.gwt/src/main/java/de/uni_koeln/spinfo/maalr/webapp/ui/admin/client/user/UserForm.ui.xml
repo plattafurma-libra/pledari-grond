@@ -32,6 +32,7 @@
 					<b:ControlLabel for="input01" styleName='{style.control-label}'>Login</b:ControlLabel>
 					<b:Controls styleName='{style.controls}'>
 						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input01" ui:field="login"></b:TextBox>
+						<b:HelpInline ui:field="errorLogin" ></b:HelpInline>
 					</b:Controls>
 				</b:ControlGroup>
 				<b:ControlGroup styleName='{style.control-group}'>
@@ -50,6 +51,7 @@
 					<b:ControlLabel for="input04" styleName='{style.control-label}'>Email</b:ControlLabel>
 					<b:Controls styleName='{style.controls}'>
 						<b:TextBox styleName="{style.textBox}" alternateSize="XLARGE" b:id="input04" ui:field="email"></b:TextBox>
+						<b:HelpInline ui:field="errorEmail" ></b:HelpInline>
 					</b:Controls>
 				</b:ControlGroup>
 				<b:ControlGroup styleName='{style.control-group}'>
