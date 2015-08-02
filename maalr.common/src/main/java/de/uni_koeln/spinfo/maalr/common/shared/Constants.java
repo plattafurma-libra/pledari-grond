@@ -36,6 +36,7 @@ public interface Constants {
 	
 	public interface Users {
 		public static final String LOGIN = "login";
+		public static final String PASSWORD = "password";
 		public static final String EMAIL = "email";
 		public static final String FIRSTNAME = "firstname";
 		public static final String LASTNAME = "lastname";

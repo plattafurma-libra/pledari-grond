@@ -71,7 +71,7 @@ public class UserList extends Composite {
 
 	/**
 	 * Returns either the String which should be displayed,
-	 * or "--" if it is <code>null</code>.
+	 * or "-" if it is <code>null</code>.
 	 * @param toDisplay
 	 * @return
 	 */
@@ -120,8 +120,10 @@ public class UserList extends Composite {
 		Column<LightUserInfo, String> email = new Column<LightUserInfo, String>(new TextCell()) {
 
 			@Override
-			public String getValue(LightUserInfo object) {
-				return getDisplayString(object.getEmail());
+			public String getValue(LightUserInfo user) {
+				if(user.getEmail() != null)
+					return getDisplayString(user.getEmail());
+				return "-";
 			}
 
 		};

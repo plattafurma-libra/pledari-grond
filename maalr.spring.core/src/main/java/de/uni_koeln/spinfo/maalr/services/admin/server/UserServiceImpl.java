@@ -18,6 +18,9 @@ package de.uni_koeln.spinfo.maalr.services.admin.server;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,8 @@ import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 
 @Service("userService" /* Don't forget to add new services to gwt-servlet.xml! */)
 public class UserServiceImpl implements UserService {
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private UserInfoBackend userInfos;
@@ -78,6 +83,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public LightUserInfo insertNewUser(LightUserInfo user) throws InvalidUserException {
 		MaalrUserInfo maalrUser = new MaalrUserInfo();
+		maalrUser.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 		maalrUser.setLogin(user.getLogin());
 		maalrUser.setFirstname(user.getFirstName());
 		maalrUser.setLastname(user.getLastName());

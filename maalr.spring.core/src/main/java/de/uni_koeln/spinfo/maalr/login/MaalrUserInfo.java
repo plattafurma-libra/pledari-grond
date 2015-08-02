@@ -41,6 +41,14 @@ public class MaalrUserInfo extends BasicDBObject {
 		super.putAll(obj);
 	}
 	
+	public void setPassword(String password) {
+		super.put(Constants.Users.PASSWORD, password);
+	}
+	
+	public String getPassword() {
+		return super.getString(Constants.Users.PASSWORD);
+	}
+	
 	public void setLogin(String login) {
 		super.put(Constants.Users.LOGIN, login);
 	}

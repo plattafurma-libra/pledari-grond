@@ -17,9 +17,10 @@ package de.uni_koeln.spinfo.maalr.common.shared;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @XmlRootElement
@@ -29,8 +30,11 @@ public class LightUserInfo implements Serializable {
 	
 	public static final String SORT_MODIFIED = Constants.Users.LAST_MODIFICATION, 
 			SORT_CREATED = Constants.Users.CREATION_DATE,
-			SORT_LOGIN = Constants.Users.LOGIN, SORT_FIRST_NAME = Constants.Users.FIRSTNAME, SORT_LAST_NAME = Constants.Users.LASTNAME,
-			SORT_EMAIL = Constants.Users.EMAIL, SORT_ROLE=Constants.Users.ROLE;
+			SORT_LOGIN = Constants.Users.LOGIN, 
+			SORT_FIRST_NAME = Constants.Users.FIRSTNAME, 
+			SORT_LAST_NAME = Constants.Users.LASTNAME,
+			SORT_EMAIL = Constants.Users.EMAIL, 
+			SORT_ROLE=Constants.Users.ROLE;
 
 	@NotEmpty(message = "Login name is required!")
 	private String login;
@@ -39,6 +43,10 @@ public class LightUserInfo implements Serializable {
 	
 	@NotEmpty(message = "Email is required!")
 	private String email;
+	
+	@NotNull
+	@Size(min = 6, max = 12, message = "Size between 6 and 12!")	
+	private String password;
 	
 	private long creationDate, lastModificationDate;
 	
@@ -165,6 +173,14 @@ public class LightUserInfo implements Serializable {
 		if (role != other.role)
 			return false;
 		return true;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String pasword) {
+		this.password = pasword;
 	}
 
 
