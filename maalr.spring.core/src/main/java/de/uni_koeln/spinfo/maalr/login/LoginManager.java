@@ -15,6 +15,10 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.login;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.authentication.jaas.JaasAuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
@@ -46,6 +54,21 @@ public class LoginManager implements AuthenticationProvider {
 	public Authentication login(String name, String password) {
 		logout();
 		try {
+			MaalrUserInfo user = backend.getByLogin(name);
+			if(user != null) {
+				if(user.getPassword() != null) {
+					if(BCrypt.checkpw(password, user.getPassword())) {
+						Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+						GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleId());
+						authorities.add(authority);
+						UserDetails details = new User(user.getLogin(), user.getPassword(), authorities);
+						SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+								details, details.getPassword(), details.getAuthorities()));
+						logger.info("Successfully logged in user " + name);
+						return SecurityContextHolder.getContext().getAuthentication();
+					}
+				} 
+			} 
 			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(name, password);
 			Authentication authenticate = provider.authenticate(token);
 			SecurityContextHolder.getContext().setAuthentication(authenticate);

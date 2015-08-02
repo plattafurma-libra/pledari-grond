@@ -15,7 +15,6 @@ import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.dom.client.Style.BorderStyle;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -32,6 +31,11 @@ import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
 
+/**
+ * 
+ * @author Mihail Atanassov <atanassov.mihail@gmail.com>
+ *
+ */
 public class UserForm extends Composite {
 	
 	@UiField
@@ -47,6 +51,9 @@ public class UserForm extends Composite {
 	TextBox email;
 	
 	@UiField
+	TextBox password;
+	
+	@UiField
 	ListBox roles;
 	
 	@UiField
@@ -54,6 +61,9 @@ public class UserForm extends Composite {
 	
 	@UiField
 	HelpInline errorEmail;
+	
+	@UiField
+	HelpInline errorPassword;
 
 	private LightUserInfo toBeInserted;
 
@@ -79,6 +89,7 @@ public class UserForm extends Composite {
 				
 				clearErrorMessages();
 
+				toBeInserted.setPassword(password.getValue());
 				toBeInserted.setLogin(login.getValue());
 				toBeInserted.setFirstName(firstName.getValue());
 				toBeInserted.setLastName(lastName.getValue());
@@ -86,28 +97,33 @@ public class UserForm extends Composite {
 				toBeInserted.setRole(Role.valueOf(roles.getSelectedValue()));
 				
 				if(isValid(toBeInserted)) {
-//					service.insertNewUser(toBeInserted, new AsyncCallback<LightUserInfo>() {
-//						
-//						@Override
-//						public void onSuccess(LightUserInfo result) {
-//							userList.reset();
-//						}
-//						
-//						@Override
-//						public void onFailure(Throwable caught) {
-//						}
-//					});
+					service.insertNewUser(toBeInserted, new AsyncCallback<LightUserInfo>() {
+						
+						@Override
+						public void onSuccess(LightUserInfo result) {
+							userList.reset();
+						}
+						
+						@Override
+						public void onFailure(Throwable caught) {
+						}
+					});
 					parent.hide();
 				}
 			}
 
 			private void clearErrorMessages() {
-				errorEmail.setVisible(false);
-				errorLogin.setVisible(false);
 				Style loginStyle = login.getElement().getStyle();
 				loginStyle.setBorderColor("#CCCCCC");
+				errorLogin.setVisible(false);
+				
+				Style passwordStyle = password.getElement().getStyle();
+				passwordStyle.setBorderColor("#CCCCCC");
+				errorPassword.setVisible(false);
+				
 				Style emailStyle = email.getElement().getStyle();
 				emailStyle.setBorderColor("#CCCCCC");
+				errorEmail.setVisible(false);
 			}
 
 			private boolean isValid(LightUserInfo toBeInserted) {
@@ -117,13 +133,17 @@ public class UserForm extends Composite {
 			      for (ConstraintViolation<LightUserInfo> constraintViolation : violations) {
 			    	  Path propertyPath = constraintViolation.getPropertyPath();
 			    	  
-			    	  if(propertyPath.toString().equalsIgnoreCase("login")) {
+			    	  if(propertyPath.toString().equalsIgnoreCase(Constants.Users.LOGIN)) {
 			    		  String loginErrorMessage = constraintViolation.getMessage();
 			    		  showErrorMessage(login, errorLogin, loginErrorMessage);
 			    	  }
-			    	  if(propertyPath.toString().equalsIgnoreCase("email")) {
+			    	  if(propertyPath.toString().equalsIgnoreCase(Constants.Users.EMAIL)) {
 			    		  String emailErrorMessage = constraintViolation.getMessage();
 			    		  showErrorMessage(email, errorEmail, emailErrorMessage);
+			    	  }
+			    	  if(propertyPath.toString().equalsIgnoreCase(Constants.Users.PASSWORD)) {
+			    		  String passwordErrorMessage = constraintViolation.getMessage();
+			    		  showErrorMessage(password, errorPassword, passwordErrorMessage);
 			    	  }
 			      }
 			      return false;
@@ -134,9 +154,7 @@ public class UserForm extends Composite {
 		
 		errorEmail.setVisible(false);
 		errorLogin.setVisible(false);
-		
-		
-		
+		errorPassword.setVisible(false);
 		
 		for (Role r : Role.values()) {
 			if(r.getRoleId().equals(Constants.Roles.PERSONA) || r.getRoleId().equals(Constants.Roles.OPENID_2))
