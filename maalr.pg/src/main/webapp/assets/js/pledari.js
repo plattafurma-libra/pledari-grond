@@ -89,19 +89,37 @@ $(document).ready(function() {
 		var paths = window.location.pathname.split('/');
 		var selected = paths[paths.length-1];
 		$('#dict_descript').remove();
-		if (selected == '') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Rumantsch Grischun</div>");
-		} else if (selected == 'sutsilvan') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Sutsilvan</div>");
-		} else if (selected == 'vallader') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Vallader</div>");
-		} else if (selected == 'surmiran') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Surmiran</div>");
-		} else if (selected == 'sursilvan') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Sursilvan</div>");
-		} else if (selected == 'puter') {
-			$('#dic_navi_head').after("<div id='dict_descript'>Puter</div>");
+		
+		if(locale == "rm") {
+			if (selected == '') {
+				$('#dic_navi_head').after("<div id='dict_descript'>rumantsch grischun</div>");
+			} else if (selected == 'sutsilvan') {
+				$('#dic_navi_head').after("<div id='dict_descript'>sutsilvan</div>");
+			} else if (selected == 'vallader') {
+				$('#dic_navi_head').after("<div id='dict_descript'>vallader</div>");
+			} else if (selected == 'surmiran') {
+				$('#dic_navi_head').after("<div id='dict_descript'>surmiran</div>");
+			} else if (selected == 'sursilvan') {
+				$('#dic_navi_head').after("<div id='dict_descript'>sursilvan</div>");
+			} else if (selected == 'puter') {
+				$('#dic_navi_head').after("<div id='dict_descript'>puter</div>");
+			}
+		} else {
+			if (selected == '') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Rumantsch Grischun</div>");
+			} else if (selected == 'sutsilvan') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Sutsilvan</div>");
+			} else if (selected == 'vallader') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Vallader</div>");
+			} else if (selected == 'surmiran') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Surmiran</div>");
+			} else if (selected == 'sursilvan') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Sursilvan</div>");
+			} else if (selected == 'puter') {
+				$('#dic_navi_head').after("<div id='dict_descript'>Puter</div>");
+			}
 		}
+		
 	}
 
 	function stopMobile() {
