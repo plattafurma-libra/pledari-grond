@@ -16,15 +16,15 @@
 			</gwtbootstrap:Column>
 			<gwtbootstrap:Column size="4">
 				<g:VerticalPanel>
-				    <g:cell>
-				        <gwtbootstrap:Well>
-				            <gwtbootstrap:ButtonGroup>
-				                <gwtbootstrap:Button ui:field="createUser" type="INFO" icon="PLUS">
-				                    Create User
-				                </gwtbootstrap:Button>
-				            </gwtbootstrap:ButtonGroup>
-				        </gwtbootstrap:Well>
-				    </g:cell>
+<!-- 				    <g:cell> -->
+<!-- 				        <gwtbootstrap:Well> -->
+<!-- 				            <gwtbootstrap:ButtonGroup> -->
+<!-- 				                <gwtbootstrap:Button ui:field="createUser" type="INFO" icon="PLUS"> -->
+<!-- 				                    Create User -->
+<!-- 				                </gwtbootstrap:Button> -->
+<!-- 				            </gwtbootstrap:ButtonGroup> -->
+<!-- 				        </gwtbootstrap:Well> -->
+<!-- 				    </g:cell> -->
 					<g:cell>
 						<m3:ListFilter ui:field="filterOptions"></m3:ListFilter>
 					</g:cell>

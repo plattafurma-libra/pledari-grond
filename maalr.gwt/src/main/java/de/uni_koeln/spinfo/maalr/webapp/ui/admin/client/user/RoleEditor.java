@@ -52,8 +52,8 @@ public class RoleEditor extends Composite {
 	@UiField
 	UserDetails userDetails;
 	
-	@UiField
-	Button createUser;
+//	@UiField
+//	Button createUser;
 	
 	@UiField
 	ListFilter filterOptions;
@@ -78,39 +78,39 @@ public class RoleEditor extends Composite {
 		filterOptions.setUserList(userList);
 		helpBox.setHelpText("Use the fields in 'Filter' to query for users. Sort the list of users by selecting a column header. Select a user in the list and modify first name, last name, or assigned role in the 'Account Details' area.");
 		userDetails.setVisible(userList.getSelectedUser() != null);
-		createUser.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent event) {
-				
-				final Modal modal = new Modal(true);	
-				modal.setTitle("Create New User");
-				
-				Button create = new Button("CREATE");
-				create.setType(ButtonType.DEFAULT);
-				create.setBlock(true);
-				
-				Button cancel = new Button("CANCEL", new ClickHandler() {
-
-					@Override
-					public void onClick(ClickEvent event) {
-						modal.hide();
-					}
-					
-				});
-				cancel.setType(ButtonType.INVERSE);
-				cancel.setBlock(true);
-				
-				UserForm form = new UserForm(new LightUserInfo(), modal, create, userList);
-				
-				ModalFooter modalFooter = new ModalFooter();
-				modalFooter.add(create);
-				modalFooter.add(cancel);
-				modal.add(form);
-				modal.add(modalFooter);
-				modal.show();
-			}
-		});
+//		createUser.addClickHandler(new ClickHandler() {
+//			
+//			@Override
+//			public void onClick(ClickEvent event) {
+//				
+//				final Modal modal = new Modal(true);	
+//				modal.setTitle("Create New User");
+//				
+//				Button create = new Button("CREATE");
+//				create.setType(ButtonType.DEFAULT);
+//				create.setBlock(true);
+//				
+//				Button cancel = new Button("CANCEL", new ClickHandler() {
+//
+//					@Override
+//					public void onClick(ClickEvent event) {
+//						modal.hide();
+//					}
+//					
+//				});
+//				cancel.setType(ButtonType.INVERSE);
+//				cancel.setBlock(true);
+//				
+//				UserForm form = new UserForm(new LightUserInfo(), modal, create, userList);
+//				
+//				ModalFooter modalFooter = new ModalFooter();
+//				modalFooter.add(create);
+//				modalFooter.add(cancel);
+//				modal.add(form);
+//				modal.add(modalFooter);
+//				modal.show();
+//			}
+//		});
 	}
 	
 	
