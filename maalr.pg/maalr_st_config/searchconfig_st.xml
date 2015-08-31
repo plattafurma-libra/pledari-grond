@@ -320,11 +320,11 @@
 						</field>
 						<field column="RGenus" type="ENUM">
 							<allowed>
-								<value>(coll)m</value>
+								<value>(col)m</value>
 								<value>(f)m</value>
 								<value>(m)f</value>
 								<value>(pl)f</value>
-								<value>coll</value>
+								<value>col</value>
 								<value>f</value>
 								<value>f(pl)</value>
 								<value>f.pl</value>
