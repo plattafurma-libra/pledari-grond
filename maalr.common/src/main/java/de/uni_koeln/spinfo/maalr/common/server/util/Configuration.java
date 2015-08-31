@@ -120,12 +120,10 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		}
-		try (InputStreamReader reader = getConfiguration("searchconfig_ss.xml")) {
-			JAXBContext ctx = JAXBContext
-					.newInstance(DictionaryConfiguration.class);
+		try (InputStreamReader reader = getConfiguration("searchconfig_st.xml")) {
+			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
-			dictConfig = (DictionaryConfiguration) unmarshaller
-					.unmarshal(reader);
+			dictConfig = (DictionaryConfiguration) unmarshaller.unmarshal(reader);
 		} catch (JAXBException e) {
 			throw new IOException("Failed to parse search configuration files",
 					e);

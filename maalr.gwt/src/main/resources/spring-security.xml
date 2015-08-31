@@ -22,19 +22,19 @@
 	<security:http auto-config='true'>
 		<!-- Allow unauthorized users to access the login page -->
 		<!-- Otherwise it would be difficult to login... -->
-<!-- 		<security:intercept-url pattern="/login.html*" /> -->
-<!-- 		<security:intercept-url pattern="/translate.html*" /> -->
-<!-- 		<security:intercept-url pattern="/de.uni_koeln.spinfo.maalr.user/**" /> -->
+		<security:intercept-url pattern="/login.html*" />
+		<security:intercept-url pattern="/translate.html*" />
+		<security:intercept-url pattern="/de.uni_koeln.spinfo.maalr.user/**" />
 		
 		<!-- Only admins get access to the backend -->
 		<!-- Unauthorized users will get redirected to the login page -->
-<!-- 		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" /> -->
-<!-- 		<security:intercept-url pattern="/editor/**" access="ROLE_TRUSTED_IN" /> -->
+		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/editor/**" access="ROLE_TRUSTED_IN" />
 		
 		<!-- Define which login form to use -->
 		<!-- After login, the postLoginHandler will increase the session timeout -->
 		<!-- and insert new user infos into the user database -->
-<!-- 		<security:form-login login-page='/login.html' authentication-success-handler-ref="postLoginHandler" authentication-failure-url = "/login.html?login_error=1" /> -->
+		<security:form-login login-page='/login.html' authentication-success-handler-ref="postLoginHandler" authentication-failure-url = "/login.html?login_error=1" />
 		
 		<!-- Enable login through openid -->
 		<security:openid-login authentication-success-handler-ref="postLoginHandler" authentication-failure-url="/login.html?login_error=1">
