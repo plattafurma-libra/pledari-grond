@@ -38,7 +38,7 @@
 		<c:set var="user" value='<%=(MaalrUserInfo) session.getAttribute("user")%>'/>
 		<c:set var="admin" value='<%=Role.ADMIN_5%>'/>
 		<c:set var="editor" value='<%=Role.TRUSTED_IN_4%>'/>
-		<%-- <jsp:useBean id="user" class="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" scope="request" /> --%>
+<%-- 		<jsp:useBean id="user" class="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" scope="request" /> --%>
 		
 		<cr:choose>
 		    <cr:when test='${user != null}'>
