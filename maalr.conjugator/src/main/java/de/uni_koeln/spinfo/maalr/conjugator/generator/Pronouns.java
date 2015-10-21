@@ -51,8 +51,8 @@ public class Pronouns {
 	public static final String gerund = "gerund";
 
 	// Personal pronouns
-	public static final String pron_1ps = "jau ";
-	public static final String pron_2ps = "ti ";
+	public static final String pron_1ps = "jou ";
+	public static final String pron_2ps = "tei ";
 	public static final String pron_3ps = "el/ella ";
 	public static final String pron_1pp = "nus ";
 	public static final String pron_2pp = "vus ";
@@ -73,8 +73,8 @@ public class Pronouns {
 	public static final String pron_r_v_3pp = "s'";
 
 	// Conjunctiv
-	public static final String pron_conjunctiv_c = "che ";
-	public static final String pron_conjunctiv_v = "ch'";
+	public static final String pron_conjunctiv_c = "ca ";
+	public static final String pron_conjunctiv_v = "c'";
 
 	// Particip Perfect Classification
 
@@ -85,8 +85,8 @@ public class Pronouns {
 	public static final String pp_fp = "f. pl.:";
 
 	// Reflexives
-	public static final String pp_r1 = "avair";
-	public static final String pp_r2 = "esser";
+	public static final String pp_r1 = "(a)ver";
+	public static final String pp_r2 = "easser";
 
 	public Pronouns() {
 		this.values = new HashMap<>();
