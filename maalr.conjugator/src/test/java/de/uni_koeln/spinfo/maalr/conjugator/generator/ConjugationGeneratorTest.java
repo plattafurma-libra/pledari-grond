@@ -18,6 +18,7 @@ package de.uni_koeln.spinfo.maalr.conjugator.generator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -30,13 +31,120 @@ public class ConjugationGeneratorTest {
 	private static ConjugationGenerator conjugationGenerator;
 	private static String query;
 	private static String root;
+	private static String outputPath = "output/";
 
 	@Before
 	public void setUp() {
 		conjugationGenerator = new ConjugationGenerator();
 
 	}
+	
+	@Test
+	public void testGenerateOne() throws IOException {
+		
+		String q = "gidar";
 
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 1);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-AR");
+	}
+	
+	@Test
+	public void testGenerateTwo() throws IOException {
+		
+		String q = "spargnear";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 2);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-EAR");
+	}
+	
+	@Test
+	public void testGenerateThree() throws IOException {
+		
+		String q = "repeter";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 3);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-ER");
+	}
+	
+	@Test
+	public void testGenerateFour() throws IOException {
+		
+		String q = "partir";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 4);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-IR");
+	}
+	
+	@Test
+	public void testGenerateFive() throws IOException {
+		
+		String q = "cumbinar";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 5);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-AR(-esch)");
+	}
+	
+	@Test
+	public void testGenerateSix() throws IOException {
+		
+		String q = "inditgear";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 6);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-EAR(-esch)");
+	}
+	
+	@Test
+	public void testGenerateSeven() throws IOException {
+		
+		String q = "amplanir";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 7);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-IR(-esch)");
+	}
+		
+	
 	@Test
 	public void testGetRoot() {
 		query = "gidar";

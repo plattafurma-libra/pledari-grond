@@ -1061,7 +1061,8 @@ public class ConjugationGenerator {
 				+ conjugation.get(ConjugationStructure.imperfectplural2));
 		cs.setImperfectplural3(Pronouns.pron_3pp
 				+ conjugation.get(ConjugationStructure.imperfectplural3));
-
+		
+		// TODO: Stimmt diese Ausgabe mit pron_conjunctiv_c?
 		// CONJUNCTIV
 		cs.setConjunctivsing1(Pronouns.pron_conjunctiv_c + Pronouns.pron_1ps
 				+ conjugation.get(ConjugationStructure.conjunctivsing1));
@@ -1214,6 +1215,82 @@ public class ConjugationGenerator {
 
 		}
 
+	}
+	
+	public <K, V> File printMapReadable(Map<K, V> map, String destPath, String fileName)
+			throws IOException {
+
+		File file = new File(destPath + fileName + ".txt");
+		Writer out = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(file), "UTF8"));
+
+		out.append("verb : " + map.get("verb") + "\n");
+		out.append("\n");
+		out.append("infinitiv : " + map.get("infinitiv") + "\n");
+		out.append("root : " + map.get("root") + "\n");
+		out.append("conjugationclass : " + map.get("conjugationclass") + "\n");
+		out.append("ending : " + map.get("ending") + "\n");
+		out.append("reflexive : " + map.get("reflexive") + "\n");
+		out.append("\n");
+		
+		out.append("preschentsing1 : " + map.get("preschentsing1") + "\n");
+		out.append("preschentsing2 : " + map.get("preschentsing2") + "\n");
+		out.append("preschentsing3 : " + map.get("preschentsing3") + "\n");
+		out.append("preschentplural1 : " + map.get("preschentplural1") + "\n");
+		out.append("preschentplural2 : " + map.get("preschentplural2") + "\n");
+		out.append("preschentplural3 : " + map.get("preschentplural3") + "\n");
+		out.append("\n");
+		
+		out.append("imperfectsing1 : " + map.get("imperfectsing1") + "\n");
+		out.append("imperfectsing2 : " + map.get("imperfectsing2") + "\n");
+		out.append("imperfectsing3 : " + map.get("imperfectsing3") + "\n");
+		out.append("imperfectplural1 : " + map.get("imperfectplural1") + "\n");
+		out.append("imperfectplural2 : " + map.get("imperfectplural2") + "\n");
+		out.append("imperfectplural3 : " + map.get("imperfectplural3") + "\n");
+		out.append("\n");
+		
+		out.append("futursing1 : " + map.get("futursing1") + "\n");
+		out.append("futursing2 : " + map.get("futursing2") + "\n");
+		out.append("futursing3 : " + map.get("futursing3") + "\n");
+		out.append("futurplural1 : " + map.get("futurplural1") + "\n");
+		out.append("futurplural2 : " + map.get("futurplural2") + "\n");
+		out.append("futurplural3 : " + map.get("futurplural3") + "\n");
+		out.append("\n");
+		
+		out.append("conjunctivsing1 : " + map.get("conjunctivsing1") + "\n");
+		out.append("conjunctivsing2 : " + map.get("conjunctivsing2") + "\n");
+		out.append("conjunctivsing3 : " + map.get("conjunctivsing3") + "\n");
+		out.append("conjunctivplural1 : " + map.get("conjunctivplural1") + "\n");
+		out.append("conjunctivplural2 : " + map.get("conjunctivplural2") + "\n");
+		out.append("conjunctivplural3 : " + map.get("conjunctivplural3") + "\n");
+		out.append("\n");
+		
+		out.append("cundizionalsing1 : " + map.get("cundizionalsing1") + "\n");
+		out.append("cundizionalsing2 : " + map.get("cundizionalsing2") + "\n");
+		out.append("cundizionalsing3 : " + map.get("cundizionalsing3") + "\n");
+		out.append("cundizionalplural1 : " + map.get("cundizionalplural1") + "\n");
+		out.append("cundizionalplural2 : " + map.get("cundizionalplural2") + "\n");
+		out.append("cundizionalplural3 : " + map.get("cundizionalplural3") + "\n");
+		out.append("\n");
+		
+		out.append("participperfectms : " + map.get("participperfectms") + "\n");
+		out.append("participperfectfs : " + map.get("participperfectfs") + "\n");
+		out.append("participperfectmp : " + map.get("participperfectmp") + "\n");
+		out.append("participperfectfp : " + map.get("participperfectfp") + "\n");
+		out.append("\n");
+		
+		out.append("gerundium : " + map.get("gerundium") + "\n");
+		out.append("\n");
+		
+		out.append("imperativ1 : " + map.get("imperativ1") + "\n");
+		out.append("imperativ2 : " + map.get("imperativ2") + "\n");
+		out.append("\n");
+		
+
+		out.flush();
+		out.close();
+
+		return file;
 	}
 
 	public <K, V> File printMap(Map<K, V> map, String destPath, String fileName)
