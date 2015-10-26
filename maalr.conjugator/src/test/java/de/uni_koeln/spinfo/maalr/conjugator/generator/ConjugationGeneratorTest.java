@@ -16,14 +16,14 @@
 package de.uni_koeln.spinfo.maalr.conjugator.generator;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ConjugationGeneratorTest {
@@ -31,24 +31,131 @@ public class ConjugationGeneratorTest {
 	private static ConjugationGenerator conjugationGenerator;
 	private static String query;
 	private static String root;
+	private static String outputPath = "output/";
 
-	@BeforeClass
-	public static void initialize() {
+	@Before
+	public void setUp() {
 		conjugationGenerator = new ConjugationGenerator();
-		query = "sa caminar";
-		root = conjugationGenerator.getRoot(query);
 
 	}
+	
+	@Test
+	public void testGenerateOne() throws IOException {
+		
+		String q = "gidar";
 
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 1);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-AR");
+	}
+	
+	@Test
+	public void testGenerateTwo() throws IOException {
+		
+		String q = "spargnear";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 2);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-EAR");
+	}
+	
+	@Test
+	public void testGenerateThree() throws IOException {
+		
+		String q = "repeter";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 3);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-ER");
+	}
+	
+	@Test
+	public void testGenerateFour() throws IOException {
+		
+		String q = "partir";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 4);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-IR");
+	}
+	
+	@Test
+	public void testGenerateFive() throws IOException {
+		
+		String q = "cumbinar";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 5);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-AR(-esch)");
+	}
+	
+	@Test
+	public void testGenerateSix() throws IOException {
+		
+		String q = "inditgear";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 6);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-EAR(-esch)");
+	}
+	
+	@Test
+	public void testGenerateSeven() throws IOException {
+		
+		String q = "amplanir";
+
+		HashMap<String, String> conjugation = conjugationGenerator
+				.generateConjugation(q, 7);
+
+		TreeMap<String, String> tm = new TreeMap<>();
+		tm.putAll(conjugation);
+
+		conjugationGenerator.printConjugation(tm);
+		conjugationGenerator.printMapReadable(tm, outputPath, "VerbenAuf-IR(-esch)");
+	}
+		
+	
 	@Test
 	public void testGetRoot() {
+		query = "gidar";
 		String root = conjugationGenerator.getRoot(query);
-		assertEquals(root, "affid");
+		System.out.println(root);
+		assertEquals(root, "gid");
 	}
 
 	@Test
 	public void testCheckReflexiveness() {
-		conjugationGenerator.checkReflexiveness(query);
+		conjugationGenerator.checkReflexiveness("sacrer");
 		String reflexiveness = conjugationGenerator.getIsReflexive();
 		assertEquals(reflexiveness, "true");
 
@@ -58,7 +165,7 @@ public class ConjugationGeneratorTest {
 	public void testGenerateConjugation() {
 		// CONJ. CLASS 1
 		HashMap<String, String> conjugation = conjugationGenerator
-				.generateConjugation(query, 8);
+				.generateConjugation(query, 7);
 
 		TreeMap<String, String> tm = new TreeMap<>();
 		tm.putAll(conjugation);
@@ -68,57 +175,92 @@ public class ConjugationGeneratorTest {
 
 	@Test
 	public void testGenerateAll() {
+		query = "gidar";
 		ArrayList<HashMap<String, String>> conjugations = conjugationGenerator
 				.generateAll(query);
 		HashMap<String, String> c1 = conjugations.get(0);
-		assertTrue(c1.get("participperfectfp").equals("affidadas"));
+		assertTrue(c1.get("participperfectfp").equals("gidadas"));
 	}
 
 	@Test
 	public void testFirstConjugation() {
+		query = "gidar";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.firstConjugation(root);
-		assertTrue(conjugation.get("participperfectfp").equals("affidadas"));
+				.firstConjugation(conjugationGenerator.getRoot(query));
+		System.out.println("Partizip Perfekt f pl :\"" + conjugation.get("participperfectfp") + "\"");
+		assertTrue(conjugation.get("participperfectfp").equals("gidadas"));
+		
 	}
+	
+	@Test
+	public void testFirstConjugationOutput() {
+		query = "gidar";
+		HashMap<String, String> conjugation = conjugationGenerator
+				.firstConjugation(conjugationGenerator.getRoot(query));
+		//System.out.println("Partizip Perfekt f pl :\"" + conjugation.get("participperfectfp") + "\"");
+		assertTrue(conjugation.get("participperfectfp").equals("gidadas"));
+		
+		
+		TreeMap<String, String> treeMap = new TreeMap<String, String>();
+		//treeMap.putAll(conjugationGenerator.getV);
+		conjugationGenerator.printConjugation(treeMap);
+		
+	}
+	
+	
 
 	@Test
-	public void testSecondAndThirdConjugationConjugation() {
+	public void testSecondConjugationConjugation() {
+		query = "spargnear";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.secondAndThirdConjugation(root);
-		assertTrue(conjugation.get("preschentsing2").equals("affidas"));
+				.secondConjugation(conjugationGenerator.getRoot(query));
+		assertTrue(conjugation.get("preschentsing2").equals("spargnas"));
+	}
+	
+	@Test
+	public void testThirdConjugationConjugation() {
+		query = "repeter";
+		HashMap<String, String> conjugation = conjugationGenerator
+				.thirdConjugation(conjugationGenerator.getRoot(query));
+		assertTrue(conjugation.get("preschentsing2").equals("repetas"));
 	}
 
 	@Test
 	public void testFourthConjugation() {
+		query = "partir";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.fourthConjugation(root);
-		assertFalse(conjugation.get("participperfectfp").equals("affidadas"));
+				.fourthConjugation(conjugationGenerator.getRoot(query));
+		System.out.println("Partizip Perfekt f pl :\"" + conjugation.get("participperfectfp") + "\"");
+		assertTrue(conjugation.get("participperfectfp").equals("partidas"));
 	}
 
 	@Test
 	public void testFifthConjugation() {
+		query = "cumbinar";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.fifthConjugation(root);
-		assertFalse(conjugation.get("participperfectfp").equals("affidadas"));
+				.fifthConjugation(conjugationGenerator.getRoot(query));
+		assertTrue(conjugation.get("imperativ1").equals("cumbinescha!"));
 	}
 
 	@Test
 	public void testSixthConjugation() {
+		query = "inditgear";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.sixthConjugation(root);
-		assertTrue(conjugation.get("participperfectfp").equals("affidadas"));
+				.sixthConjugation(conjugationGenerator.getRoot(query));
+		assertTrue(conjugation.get("conjunctivplural3").equals("inditgesch[i]an"));
 	}
 
 	@Test
 	public void testSeventhConjugation() {
+		query = "amplanir";
 		HashMap<String, String> conjugation = conjugationGenerator
-				.seventhConjugation(root);
-		assertTrue(conjugation.get("participperfectfp").equals("affidadas"));
+				.seventhConjugation(conjugationGenerator.getRoot(query));
+		assertTrue(conjugation.get("conjunctivsing3").equals("amplaneschi"));
 	}
 
 	@Test
 	public void testSetImperativ() {
-		String root = "affidar";
+		String root = "gid";
 		ConjugationStructure cs = new ConjugationStructure();
 		cs.setConjugationClass("art-1");
 
@@ -133,7 +275,7 @@ public class ConjugationGeneratorTest {
 	@Test
 	public void testSetFutur() {
 
-		String root = conjugationGenerator.getRoot("SA PRESTAR");
+		String root = conjugationGenerator.getRoot("inditgear");
 
 		ConjugationStructure cs = new ConjugationStructure();
 
