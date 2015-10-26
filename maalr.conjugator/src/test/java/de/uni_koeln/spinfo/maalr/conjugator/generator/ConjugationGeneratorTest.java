@@ -42,7 +42,7 @@ public class ConjugationGeneratorTest {
 	@Test
 	public void testGenerateOne() throws IOException {
 		
-		String q = "gidar";
+		String q = "quietar";
 
 		HashMap<String, String> conjugation = conjugationGenerator
 				.generateConjugation(q, 1);
@@ -72,7 +72,7 @@ public class ConjugationGeneratorTest {
 	@Test
 	public void testGenerateThree() throws IOException {
 		
-		String q = "repeter";
+		String q = "parer";
 
 		HashMap<String, String> conjugation = conjugationGenerator
 				.generateConjugation(q, 3);
@@ -87,7 +87,7 @@ public class ConjugationGeneratorTest {
 	@Test
 	public void testGenerateFour() throws IOException {
 		
-		String q = "partir";
+		String q = "sortir";
 
 		HashMap<String, String> conjugation = conjugationGenerator
 				.generateConjugation(q, 4);
