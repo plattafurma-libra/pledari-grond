@@ -37,7 +37,7 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 	
 	private LemmaVersion lemma;
 	private static final LemmaDescription lemmaDescription = AsyncLemmaDescriptionLoader.getDescription();
-	private static final DateTimeFormat format = DateTimeFormat.getFormat("dd MMM y, kk:mm:ss");
+	private static final DateTimeFormat format = DateTimeFormat.getFormat("dd/MM/y, kk:mm:ss");
 	private EditorConstants constants = GWT.create(EditorConstants.class);
 
 	public LemmaVersionCellWrapper(LemmaVersion lemma) {

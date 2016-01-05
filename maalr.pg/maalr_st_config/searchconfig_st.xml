@@ -16,6 +16,7 @@
 		<column name="RGrammatik" />
 		<column name="RGenus"/>
 		<column name="RTags" />
+		<column name="RFlex" />
 		<column name="Bearbeitungshinweis" type="CSV"/>
 		<column name="redirect_a" />
 		<column name="redirect_b" />
@@ -341,11 +342,11 @@
 						</field>
 						<field column="RGenus" type="ENUM">
 							<allowed>
-								<value>(coll)m</value>
+								<value>(col)m</value>
 								<value>(f)m</value>
 								<value>(m)f</value>
 								<value>(pl)f</value>
-								<value>coll</value>
+								<value>col</value>
 								<value>f</value>
 								<value>f(pl)</value>
 								<value>f.pl</value>
@@ -365,12 +366,14 @@
 						</field>
 						<field column="RSubsemantik" type="ORACLE"></field>
 						<field column="redirect_b"></field>
+						<field column="RFlex"></field>
 					</fields>
 				</backend_editor>
 			</editors>
 			<results>
 				<fields>
 					<field column="RStichwort" format="{0}"></field>
+					<field column="RFlex" format="&lt;i&gt;/{0}/&lt;/i&gt;"></field>
 					<field column="RSubsemantik" format="({0})"></field>
 					<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
 				</fields>
