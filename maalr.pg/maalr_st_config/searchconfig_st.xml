@@ -8,12 +8,14 @@
 		<column name="DGrammatik" />
 		<column name="DGenus" />
 		<column name="DStatus" />
+		<column name="DTags" />
 		<column name="RStichwort" />
 		<column name="RStichwort_sort" />
 		<column name="RSemantik" />
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
 		<column name="RGenus"/>
+		<column name="RTags" />
 		<column name="Bearbeitungshinweis" type="CSV"/>
 		<column name="redirect_a" />
 		<column name="redirect_b" />
@@ -99,6 +101,16 @@
 				<option id="default" default="true">
 					<columns>
 						<column reference="Bearbeitungshinweis" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		<columnSelector id="tags">
+			<options>
+				<option id="default" default="true">
+					<columns>
+						<column reference="DTags" />
+						<column reference="RTags" />
 					</columns>
 				</option>
 			</options>
@@ -200,6 +212,15 @@
 			<options>
 				<option id="default" default="true"
 					builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="tagsMethod" queryKeyId="searchPhrase"
+			columnSelectorId="tags">
+			<options>
+				<option id="normal" default="true" preset="DEFAULT" />
+				<option id="intern" preset="INFIX" />
+				<option id="prefix" preset="PREFIX" />
+				<option id="suffix" preset="SUFFIX" />
 			</options>
 		</queryBuilder>
 		<queryBuilder id="method" queryKeyId="searchPhrase"

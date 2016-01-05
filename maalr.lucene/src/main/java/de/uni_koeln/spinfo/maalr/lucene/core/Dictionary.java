@@ -34,6 +34,7 @@ import org.apache.lucene.sandbox.queries.DuplicateFilter;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.Sort;
@@ -55,7 +56,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexManager;
-import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.ExactMatchQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
@@ -156,6 +156,7 @@ public class Dictionary {
 	
 	public QueryResult query(MaalrQuery maalrQuery) throws InvalidQueryException,
 			NoIndexAvailableException, BrokenIndexException, IOException, InvalidTokenOffsetsException {
+		
 		long start = System.nanoTime();
 		validateQuery(maalrQuery);
 		int pageSize = maalrQuery.getPageSize();
@@ -182,8 +183,29 @@ public class Dictionary {
 		long e1 = System.nanoTime();
 		try {
 			long s2 = System.nanoTime();
-			docs = indexProvider.getSearcher().search(query,
-					pageSize * (pageNr + 1), sort);
+			docs = indexProvider.getSearcher().search(query, pageSize * (pageNr + 1), sort);
+			
+			if(docs.totalHits == 0) {
+				String searchPhrase = maalrQuery.getValue("searchPhrase");
+				if(searchPhrase != null){
+					BooleanQuery outer = new BooleanQuery(true);
+					BooleanQuery inner1 = new BooleanQuery();
+					PrefixQuery pq1 = new PrefixQuery(new Term("DTags_a_w_nl_t-TEXT", searchPhrase));
+					pq1.setBoost(1000);
+					PrefixQuery pq2 = new PrefixQuery(new Term("RTags_a_w_nl_t-TEXT", searchPhrase));
+					pq2.setBoost(1000);
+					inner1.add(pq1,Occur.SHOULD);
+					inner1.add(pq2,Occur.SHOULD);
+					outer.add(inner1, Occur.MUST);
+					Query qTmp = outer;
+					BooleanQuery inner2 = new BooleanQuery();
+					inner2.add(qTmp, Occur.MUST);
+					inner2.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())), Occur.MUST);
+					qTmp = inner2;
+					docs = indexProvider.getSearcher().search(qTmp, pageSize * (pageNr + 1), sort);
+				}
+			}
+			
 			long e2 = System.nanoTime();
 			result = toQueryResult(docs, pageSize * pageNr, maalrQuery.getPageSize());
 			if(logger.isDebugEnabled()) {
