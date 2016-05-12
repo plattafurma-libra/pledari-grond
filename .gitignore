@@ -12,3 +12,4 @@ bin/
 .metadata/
 *.classpath
 *.prefs
+maalr-lexem/*
