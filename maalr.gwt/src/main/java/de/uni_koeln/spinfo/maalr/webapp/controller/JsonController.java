@@ -46,6 +46,7 @@ import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
+import de.uni_koeln.spinfo.maalr.webapp.controller.json.JsonResult;
 
 @Controller("jsonService")
 public class JsonController {
