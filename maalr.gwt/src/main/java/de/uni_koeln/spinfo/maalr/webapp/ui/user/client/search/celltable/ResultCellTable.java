@@ -62,6 +62,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Highlighter;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.LemmaEditor;
 import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.OverlayPopup;
+import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.entry.QuotationPopup;
 
 /**
  * Composite that displays query results.
@@ -93,16 +94,15 @@ public class ResultCellTable extends Composite {
 	private LemmaDescription description;
 
 	private Column<LemmaVersion, SafeHtml> columnA;
-
 	private Column<LemmaVersion, SafeHtml> columnB;
-
-	private Column<LemmaVersion, String> optionsColumn;
+	private Column<LemmaVersion, String> columnModify; 
+	private Column<LemmaVersion, SafeHtml> columnV; 
+	private Column<LemmaVersion, SafeHtml> columnInfo; 
 
 	private int hoveredRow;
 
 	private MaalrQuery maalrQuery;
-
-	private Column<LemmaVersion, SafeHtml> popupColumn;
+	
 	
 	private static final ProvidesKey<LemmaVersion> KEY_PROVIDER = new ProvidesKey<LemmaVersion>() {
 		public Object getKey(LemmaVersion item) {
@@ -114,7 +114,6 @@ public class ResultCellTable extends Composite {
 		AsyncLemmaDescriptionLoader.afterLemmaDescriptionLoaded(new AsyncCallback<LemmaDescription>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
 			}
 
 			@Override
@@ -172,7 +171,7 @@ public class ResultCellTable extends Composite {
 			}
 		};
 		final String modify = translationMap.get("maalr.query.result_modify");
-		optionsColumn = new Column<LemmaVersion, String>(cell) {
+		columnModify = new Column<LemmaVersion, String>(cell) {
 
 			@Override
 			public String getValue(LemmaVersion object) {
@@ -180,7 +179,7 @@ public class ResultCellTable extends Composite {
 			}
 
 		};
-		cellTable.addColumn(optionsColumn);
+		cellTable.addColumn(columnModify);
 
 	}
 
@@ -215,7 +214,8 @@ public class ResultCellTable extends Composite {
 	}
 
 	private void addOverlayColumn(final String overlayField, final TranslationMap translationMap) {
-		final SafeHtmlCell overlayCell = new SafeHtmlCell() {
+		
+		final SafeHtmlCell overlayCellColumnV = new SafeHtmlCell() {
 			final String closeButton = translationMap.get("maalr.verbOverlayPopup.closeButton");
 
 			@Override
@@ -228,7 +228,6 @@ public class ResultCellTable extends Composite {
 			@Override
 			public void onBrowserEvent(com.google.gwt.cell.client.Cell.Context context, Element parent, SafeHtml value, NativeEvent event, ValueUpdater<SafeHtml> valueUpdater) {
 				super.onBrowserEvent(context, parent, value, event, valueUpdater);
-				super.onBrowserEvent(context, parent, value, event, valueUpdater);
 				if (event.getType().equals(BrowserEvents.CLICK)) {
 					LemmaVersion selected = dataProvider.getList().get(hoveredRow);
 					onButtonClicked(selected);
@@ -236,16 +235,11 @@ public class ResultCellTable extends Composite {
 			}
 
 			private void onButtonClicked(LemmaVersion selected) {
-				// Window.alert("Selected: " + selected.getEntryValues());
 				OverlayPopup.show(selected, overlayField, closeButton);
-				// final LemmaVersion lemma = new LemmaVersion();
-				// lemma.setEntryValues(selected.getEntryValues());
-				// lemma.setMaalrValues(selected.getMaalrValues());
-				// openModifyEditor(lemma);
 			}
 
 		};
-		popupColumn = new Column<LemmaVersion, SafeHtml>(overlayCell) {
+		columnV = new Column<LemmaVersion, SafeHtml>(overlayCellColumnV) {
 
 			private final SafeHtml nothing = new SafeHtmlBuilder().toSafeHtml();
 
@@ -261,7 +255,45 @@ public class ResultCellTable extends Composite {
 				}
 			}
 		};
-		cellTable.addColumn(popupColumn);
+		cellTable.addColumn(columnV);
+		
+	}
+	
+	private void addColumnInfo() {
+		
+		final SafeHtmlCell cellColumnInfo = new SafeHtmlCell() {
+
+			@Override
+			public Set<String> getConsumedEvents() {
+				Set<String> consumed = new HashSet<String>();
+				consumed.add(BrowserEvents.CLICK);
+				return consumed;
+			}
+
+			@Override
+			public void onBrowserEvent(Context context, Element parent, SafeHtml value, NativeEvent event, ValueUpdater<SafeHtml> valueUpdater) {
+				super.onBrowserEvent(context, parent, value, event, valueUpdater);
+				if (event.getType().equals(BrowserEvents.CLICK)) {
+					LemmaVersion selected = dataProvider.getList().get(hoveredRow);
+					onButtonClicked(selected);
+				}
+			}
+
+			private void onButtonClicked(LemmaVersion selected) {
+				QuotationPopup.show(selected);
+			}
+
+		};
+		columnInfo = new Column<LemmaVersion, SafeHtml>(cellColumnInfo) {
+
+			@Override
+			public SafeHtml getValue(LemmaVersion object) {
+				SafeHtmlBuilder builder = new SafeHtmlBuilder();
+				builder.appendHtmlConstant("<span class=\"maalr_overlay maalr_overlay_I\">I</span>");
+				return builder.toSafeHtml();
+			}
+		};
+		cellTable.addColumn(columnInfo);
 	}
 
 	private void addColumnA(String langA, final boolean b) {
@@ -427,6 +459,7 @@ public class ResultCellTable extends Composite {
 				}
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG1 : LemmaVersion.OVERLAY_LANG2, translationMap);
 				addColumnA(translationMap.get(description.getLanguageName(defaultOrder)), defaultOrder);
+				addColumnInfo(); // NEW: REST call column
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG2 : LemmaVersion.OVERLAY_LANG1, translationMap);
 				addColumnB(translationMap.get(description.getLanguageName(!defaultOrder)), !defaultOrder);
 				addOptionsColumn(translationMap);

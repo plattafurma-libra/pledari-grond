@@ -18,6 +18,7 @@ package de.uni_koeln.spinfo.maalr.common.shared;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,6 +27,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 @XmlRootElement
 public class LemmaVersion implements Serializable {
 
@@ -113,9 +115,10 @@ public class LemmaVersion implements Serializable {
 	
 	private HashMap<String, String> entryValues = new HashMap<String, String>();
 	private HashMap<String, String> maalrValues = new HashMap<String, String>();
-	
-	
 
+	@XmlTransient
+	private List<CorpusResponse> quotations;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -333,7 +336,9 @@ public class LemmaVersion implements Serializable {
 	public void setValue(String key, String value) {
 		entryValues.put(key, value);
 	}
-
 	
+	public void addQuotation(List<CorpusResponse> quotations) {
+		this.quotations = quotations;
+	}
 
 }

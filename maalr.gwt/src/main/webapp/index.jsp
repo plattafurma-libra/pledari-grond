@@ -25,10 +25,24 @@
 	
 		<%-- NAVIGATION --%>
 		<%@ include file="/maalr_modules/misc/header.jsp" %>
-	
-		<div id="content" class="content">
+
+		<div id="gridWrapper">
+			<%@ include file="/maalr_modules/misc/dict_links.jsp"%>
+			<div id="mock_middle_container"></div>
+			<div id="feed_container">
+				<div id="feed">
+					<p id="pubDate"></p>
+					<p id="excerpt"></p>
+					<p>
+						<a id="readMore" href="/" target="_blank"><fmt:message key="maalr.feed.readmore" /></a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	<div id="content" class="content">
 			
-			<%@ include file="/maalr_modules/misc/dict_links.jsp" %>
+<%-- 			<%@ include file="/maalr_modules/misc/dict_links.jsp" %> --%>
 		
 <%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
 			
@@ -56,12 +70,27 @@
 				</div>
 			</div>
 		</div>
-		
 		<jsp:include page="/maalr_modules/misc/footer.jsp" />
 
 		<%-- GWT AJAX BROWSER HISTORY SUPPORT --%>
 		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
 		
 		<jsp:include page="/analytics.jsp" />
+		
+		<script type="text/javascript">
+			$.get("/rumantschgrischun/feed/latest", function( data ) {
+				var objects = JSON.parse(data);
+				//console.log(objects);
+				for (var o in objects) {
+					if(objects[o].Datum) {
+						console.log(objects[o]);
+						$('#pubDate').html(objects[o].Datum.replace(" ", " | "));
+						$('#excerpt').html(objects[o].Text.substring(0, 124) + '...');
+						$('#readMore').attr('href', objects[o].Url);
+					}
+			    }
+			});
+		</script>
+		
 	</body>
 </html>

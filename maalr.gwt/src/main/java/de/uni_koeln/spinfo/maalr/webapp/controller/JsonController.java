@@ -76,7 +76,7 @@ public class JsonController {
 		if(toReturn.size() == 0) {
 			String message = Localizer.getTranslation(locale, "maalr.query.nothing_found.embedded");
 			json.setNothingFoundMessage(message.replace("{0}", query.getValue("searchPhrase")));
-		}
+		}		
 		ObjectMapper om = new ObjectMapper();
 		String string = om.writeValueAsString(json);
 		response.setContentType("text/javascript; charset=UTF-8");
