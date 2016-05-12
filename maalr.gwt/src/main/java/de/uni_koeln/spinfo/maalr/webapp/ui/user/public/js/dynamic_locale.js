@@ -10,6 +10,7 @@ var rm = {
 	puter: "puter",
 	vallader: "vallader",
 	pledari: "http://www.pledari.ch",
+	bargunsenar: "http://www.bargunsenar.ch",
 	glossar_label: "glossaris",
 	gourmet: "Dicziunari Gourmet, terminologia da la cuschina e gastronomia",
 	flora: "Flora Helvetica, nums da flurs e plantas",
@@ -29,6 +30,7 @@ var de = {
 	puter: "Puter",
 	vallader: "Vallader",
 	pledari: "http://www.pledari.ch",
+	bargunsenar: "http://www.bargunsenar.ch",
 	glossar_label: "Glossare",
 	gourmet: "Dicziunari Gourmet, Wortschatz für Küche und Gastronomie",
 	flora: "Flora Helvetica, Blumen- und Pflanzennamen",
@@ -44,6 +46,7 @@ var links = {
 	puter: "http://www.udg.ch/dicziunari/puter",
 	vallader: "http://www.udg.ch/dicziunari/vallader",
 	pledari: "http://www.pledari.ch",
+	bargunsenar: "http://www.bargunsenar.ch",
 	gourmet: "http://www.liarumantscha.ch/?changeLang=_de#type-product=dicziunari_gourmet_w%C3%B6rterbuch_id1321",
 	flora: "http://www.liarumantscha.ch/?changeLang=_de#type-product=flora_helvetica_id1288",
 	avionary: "http://www.avionary.info/",
@@ -51,5 +54,6 @@ var links = {
 };
 
 var ext_links = {
-	pledari: "http://www.pledari.ch"
+	pledari: "http://www.pledari.ch",
+	bargunsenar: "http://www.bargunsenar.ch"
 };
