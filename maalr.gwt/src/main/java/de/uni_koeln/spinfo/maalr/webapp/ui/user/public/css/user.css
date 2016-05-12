@@ -1957,6 +1957,7 @@ a.btn.btn-danger:hover {
 }
 
 #feed_container {
+	visibility: hidden;
 	z-index: 1000;
 	width: 15%;
 	text-align: right;

@@ -459,7 +459,7 @@ public class ResultCellTable extends Composite {
 				}
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG1 : LemmaVersion.OVERLAY_LANG2, translationMap);
 				addColumnA(translationMap.get(description.getLanguageName(defaultOrder)), defaultOrder);
-				addColumnInfo(); // NEW: REST call column
+				//addColumnInfo(); // NEW: REST call column
 				addOverlayColumn(defaultOrder ? LemmaVersion.OVERLAY_LANG2 : LemmaVersion.OVERLAY_LANG1, translationMap);
 				addColumnB(translationMap.get(description.getLanguageName(!defaultOrder)), !defaultOrder);
 				addOptionsColumn(translationMap);
