@@ -47,6 +47,7 @@ public class DictionaryConstants {
 		DICT_LINKS_EXTERNAL = new ArrayList<String>();
 		DICT_LINKS_EXTERNAL.add("dict_ulteriurs");
 		DICT_LINKS_EXTERNAL.add("pledari");
+		DICT_LINKS_EXTERNAL.add("bargunsenar");
 		
 		DICT_LINKS = new ArrayList<String>();
 		DICT_LINKS.add("dict_label");
