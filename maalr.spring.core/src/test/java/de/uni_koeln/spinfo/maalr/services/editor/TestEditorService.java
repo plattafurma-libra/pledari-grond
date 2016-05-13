@@ -38,6 +38,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 
+import de.uni_koeln.spinfo.maalr.MongoTestHelper;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
@@ -49,7 +50,6 @@ import de.uni_koeln.spinfo.maalr.lucene.util.LuceneConfiguration;
 import de.uni_koeln.spinfo.maalr.mongo.SpringBackend;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.mongo.integration.ITSpringMongoBackend;
-import de.uni_koeln.spinfo.maalr.mongo.util.MongoTestHelper;
 import de.uni_koeln.spinfo.maalr.services.editor.server.EditorServiceImpl;
 
 
