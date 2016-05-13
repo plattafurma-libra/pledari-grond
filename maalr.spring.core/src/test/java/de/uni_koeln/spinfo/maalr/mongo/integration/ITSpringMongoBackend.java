@@ -23,8 +23,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
@@ -40,6 +38,7 @@ import org.springframework.web.context.support.GenericWebApplicationContext;
 
 import com.mongodb.BasicDBObject;
 
+import de.uni_koeln.spinfo.maalr.MongoTestHelper;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Status;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
@@ -50,7 +49,6 @@ import de.uni_koeln.spinfo.maalr.mongo.SpringBackend;
 import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
-import de.uni_koeln.spinfo.maalr.mongo.util.MongoTestHelper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/spring-maalr-test.xml")
