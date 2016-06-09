@@ -15,9 +15,16 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.pg.mvc;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
@@ -36,7 +43,6 @@ public class PledariController {
 	private String getHtmlPageTitle() {
 		return configuration.getLongName();
 	}
-
 
 	@RequestMapping("/help")
 	public ModelAndView agid() {
@@ -61,7 +67,7 @@ public class PledariController {
 		setPageTitle(mv, "Infos");
 		return mv;
 	}
-	
+
 	@RequestMapping("/embed")
 	public ModelAndView embed() {
 		ModelAndView mv = new ModelAndView("static/json");
@@ -69,7 +75,7 @@ public class PledariController {
 		setPageTitle(mv, "Embed");
 		return mv;
 	}
-	
+
 	@RequestMapping("/iframe")
 	public ModelAndView iframe() {
 		ModelAndView mv = new ModelAndView("static/iframe");
@@ -85,4 +91,26 @@ public class PledariController {
 		return mv;
 	}
 
+	@RequestMapping("/feeds/latest")
+	@ResponseBody
+	public List<String> latestFeeds() throws IOException {
+		String[] urls = { "http://liarumantscha.ch/?ctrl=feed&type=1",
+				"http://liarumantscha.ch/?ctrl=feed&type=2",
+				"http://liarumantscha.ch/?ctrl=feed&type=3" };
+
+		List<String> toReturn = new ArrayList<>();
+		for (String url : urls) {
+			URL connect = new URL(url);
+			BufferedInputStream bis = new BufferedInputStream(
+					connect.openStream());
+			int i;
+			StringBuffer sb = new StringBuffer();
+			while ((i = bis.read()) != -1) {
+				sb.append((char) i);
+			}
+			bis.close();
+			toReturn.add(sb.toString());
+		}
+		return toReturn;
+	}
 }

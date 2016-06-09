@@ -15,6 +15,7 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
+import com.github.gwtbootstrap.client.ui.Column;
 import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
@@ -55,6 +56,9 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	@UiField
 	Well well;
 	
+	@UiField 
+	Column resultWrapper;
+	
 	ResultCellTable resultCellTable;
 
 	private ConfigurableSearchArea searchForm;
@@ -70,6 +74,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		well.getElement().setId("search_panel");
 		well.add(searchForm);
+		resultWrapper.setId("resultWrapper");
 		// localeDictionary = DictionaryConstants.getLocaleDictionary();
 		// well.add(getLink(DictionaryConstants.DICT_LINKS));
 		// well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));

@@ -10,7 +10,7 @@
 				<b:Well ui:field="well">
 				</b:Well>
 			</b:Column>
-			<b:Column size="8" >
+			<b:Column size="8" ui:field="resultWrapper">
 				<b:Well ui:field="resultColumn"></b:Well>
 			</b:Column>
 		</b:FluidRow>
