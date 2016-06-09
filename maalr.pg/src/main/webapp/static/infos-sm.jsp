@@ -14,7 +14,7 @@
 <p>
 	<strong>
 		Chesta versiun online digl vocabulari surmiran sa basa sen igl Vocabulari surmiran-tudestg/Wörterbuch Deutsch-Surmiran, versiun disc cumpact, ediziun da licenza © 2004 
-		Meds d'instrucziun digl Grischun; sistem dad elavuraziun da datas linguisticas © 2004 Leia Rumantscha; redacziun Faust Signorell ed oters.
+		Meds d'instrucziun digl Grischun; sistem dad elavuraziun da datas linguisticas © 2004 Lia Rumantscha; redacziun Faust Signorell ed oters.
 	</strong>
 </p>
 <p>
@@ -38,13 +38,13 @@
 </p>
 
 <p>
-	<b> © Leia Rumantscha, CH-7000 Coira </b>
+	<b> © Lia Rumantscha, CH-7000 Coira </b>
 </p>
 
 <p>
 	<b>Concept e realisaziun</b>
 	<br>
-	Leia Rumantscha, Daniel Telli 
+	Lia Rumantscha, Daniel Telli 
 </p>
 
 <p>
