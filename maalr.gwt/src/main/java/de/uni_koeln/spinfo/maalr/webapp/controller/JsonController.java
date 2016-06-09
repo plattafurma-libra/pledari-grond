@@ -46,6 +46,7 @@ import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
+import de.uni_koeln.spinfo.maalr.webapp.controller.json.JsonResult;
 
 @Controller("jsonService")
 public class JsonController {
@@ -75,7 +76,7 @@ public class JsonController {
 		if(toReturn.size() == 0) {
 			String message = Localizer.getTranslation(locale, "maalr.query.nothing_found.embedded");
 			json.setNothingFoundMessage(message.replace("{0}", query.getValue("searchPhrase")));
-		}
+		}		
 		ObjectMapper om = new ObjectMapper();
 		String string = om.writeValueAsString(json);
 		response.setContentType("text/javascript; charset=UTF-8");

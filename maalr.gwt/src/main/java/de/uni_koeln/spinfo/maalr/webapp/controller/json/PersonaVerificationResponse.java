@@ -1,4 +1,4 @@
-package de.uni_koeln.spinfo.maalr.webapp.controller;
+package de.uni_koeln.spinfo.maalr.webapp.controller.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

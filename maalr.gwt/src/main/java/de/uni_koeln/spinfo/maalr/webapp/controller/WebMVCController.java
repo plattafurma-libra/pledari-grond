@@ -71,6 +71,7 @@ import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
+import de.uni_koeln.spinfo.maalr.webapp.controller.json.PersonaVerificationResponse;
 
 @Controller
 public class WebMVCController {

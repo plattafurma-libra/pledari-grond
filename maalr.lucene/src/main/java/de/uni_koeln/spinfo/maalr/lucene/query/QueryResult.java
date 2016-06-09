@@ -38,7 +38,6 @@ public class QueryResult implements Serializable {
 	private int pageSize;
 	
 	public QueryResult() {
-		
 	}
 
 	public void setPageSize(int pageSize) {
@@ -77,8 +76,5 @@ public class QueryResult implements Serializable {
 		return "QueryResult [entries=" + entries + ", maxEntries=" + maxEntries
 				+ ", pageSize=" + pageSize + "]";
 	}
-	
-	
-
 	
 }

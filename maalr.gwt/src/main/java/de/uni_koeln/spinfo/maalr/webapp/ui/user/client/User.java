@@ -59,6 +59,10 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search.celltable.ResultCe
 public class User implements EntryPoint {
 
 	
+	private static final String ID_GRID_WRAPPER = "gridWrapper";
+
+	private static final String CLASS_FEED_MARGE_MORE = "feedMargeMore";
+
 	private UserConstants constants = GWT.create(UserConstants.class);
 	
 	private Logger logger = Logger.getLogger(getClass());
@@ -70,7 +74,8 @@ public class User implements EntryPoint {
 	private Search search;
 	
 	private static final String SEARCH_PANEL = "search_panel";
-	private static final String SIDE_PANEL = "ext_links_container";
+	private static final String EXT_LINKS_CONTAINER = "ext_links_container";
+	private static final String FEED_CONTAINER = "feed_container";
 	private static final String EXTERNAL_LINKS = "links_ulteriurs";
 	private static final String GLOSSAR = "link_glossaris";
 	private static final String LANGUAGES_WIDGET = "languages-widget";
@@ -78,7 +83,7 @@ public class User implements EntryPoint {
 	private static final String CONTENT = "content";
 	private static final String PROPOSE_NAVI = "propose_navi";
 	
-	private static final int DISPLAY_SIZE_1056 = 1056;
+	private static final int DISPLAY_SIZE_1024 = 1024;
 
 	/**
 	 * This is the entry point method.
@@ -160,12 +165,10 @@ public class User implements EntryPoint {
 
 							@Override
 							public void onFailure(Throwable caught) {
-								// TODO Auto-generated method stub
 							}
 
 							@Override
 							public void onSuccess(LemmaDescription result) {
-								// TODO Auto-generated method stub
 							}
 						});
 			}
@@ -190,8 +193,6 @@ public class User implements EntryPoint {
 		});
 
 		if (History.getToken() != null) {
-			// Logger.getLogger(getClass()).info("History.getToken(): " +
-			// History.getToken());
 			History.fireCurrentHistoryState();
 		}
 
@@ -202,34 +203,38 @@ public class User implements EntryPoint {
 		
 		// ADD EXTERNAL LINKS 
 		addExternalLinks();
-
 		search.setFocus(true);
 	}
 
 	private void addExternalLinks() {
 		
-		final RootPanel sidePanel = RootPanel.get(SIDE_PANEL);
+		final RootPanel extLinksPanel = RootPanel.get(EXT_LINKS_CONTAINER);
 		final RootPanel searchPanel = RootPanel.get(SEARCH_PANEL);
+		final RootPanel resultWrapper = RootPanel.get("resultWrapper");
+		final Element feedContainer = DOM.getElementById(FEED_CONTAINER);
 		
-		if(sidePanel != null && searchPanel != null) {
+		if(extLinksPanel != null && searchPanel != null) {
 			Anchor extDictLinks = createAnchor(constants.dictionaries(), EXTERNAL_LINKS);
 			Anchor glossary = createAnchor(constants.glossar(), GLOSSAR);
 
-			if (Window.getClientWidth() < 768) {
+			if (Window.getClientWidth() <= 768) {
 				searchPanel.add(extDictLinks);
 				searchPanel.add(glossary);
 				glossary.getElement().getStyle().setVisibility(Visibility.HIDDEN);
+				resultWrapper.getElement().getParentNode().appendChild(feedContainer);
+				feedContainer.setClassName(CLASS_FEED_MARGE_MORE);
+				feedContainer.getStyle().setVisibility(Visibility.VISIBLE);
 			} else {
-				sidePanel.add(extDictLinks);
-				sidePanel.add(glossary);
+				feedContainer.getStyle().setVisibility(Visibility.VISIBLE);
+				feedContainer.removeClassName(CLASS_FEED_MARGE_MORE);
+				extLinksPanel.add(extDictLinks);
+				extLinksPanel.add(glossary);
 			}
 
-			addResizeHandler(sidePanel, searchPanel);
+			addResizeHandler(extLinksPanel, searchPanel, resultWrapper);
 			
-			hiJackExternalLinks(EXTERNAL_LINKS, DictionaryConstants.DICT_LINKS_EXTERNAL,
-					DictionaryConstants.getExtLinksDictionary());
-			hiJackExternalLinks(GLOSSAR, DictionaryConstants.GLOSSAR_LINKS,
-					DictionaryConstants.getLinksDictionary());
+			hiJackExternalLinks(EXTERNAL_LINKS, DictionaryConstants.DICT_LINKS_EXTERNAL, DictionaryConstants.getExtLinksDictionary());
+			hiJackExternalLinks(GLOSSAR, DictionaryConstants.GLOSSAR_LINKS, DictionaryConstants.getLinksDictionary());
 		}
 	}
 
@@ -239,7 +244,7 @@ public class User implements EntryPoint {
 		return anchor;
 	}
 
-	private void addResizeHandler(final RootPanel sidePanel, final RootPanel searchPanel) {
+	private void addResizeHandler(final RootPanel sidePanel, final RootPanel searchPanel, final RootPanel resultWrapper) {
 		
 		Window.addResizeHandler(new ResizeHandler() {
 			
@@ -248,22 +253,30 @@ public class User implements EntryPoint {
 				
 				Element extDictLinks = DOM.getElementById(EXTERNAL_LINKS);
 				Element glossary = DOM.getElementById(GLOSSAR);
+				Element feedContainer = DOM.getElementById(FEED_CONTAINER);
 
 				if(extDictLinks != null) {
 					extDictLinks.removeFromParent();
 				}
-				
 				if(glossary != null) {
 					glossary.removeFromParent();
 				}
+				if(feedContainer != null) {
+					feedContainer.removeFromParent();
+				}
 				
-				if (event.getWidth() > DISPLAY_SIZE_1056) {
+				if (event.getWidth() >= DISPLAY_SIZE_1024) {
 					appendTo(sidePanel, extDictLinks);
 					appendTo(sidePanel, glossary);
 					glossary.getStyle().setVisibility(Visibility.VISIBLE);
+					DOM.getElementById(ID_GRID_WRAPPER).appendChild(feedContainer);
+					feedContainer.removeClassName(CLASS_FEED_MARGE_MORE);
 				} else {
 					appendTo(searchPanel, extDictLinks);
 					appendTo(searchPanel, glossary);
+					resultWrapper.getElement().getParentNode().appendChild(feedContainer);
+					feedContainer.addClassName(CLASS_FEED_MARGE_MORE);
+					feedContainer.getStyle().setVisibility(Visibility.VISIBLE);
 					glossary.getStyle().setVisibility(Visibility.HIDDEN);
 				}
 			}
