@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -85,18 +87,25 @@ public class PledariController {
 		return mv;
 	}
 
-	@RequestMapping("/feed/latest")
+	@RequestMapping("/feeds/latest")
 	@ResponseBody
-	public String latestFeed() throws IOException {
-		String url = "http://liarumantscha.ch/?ctrl=feed&type=1";
-		URL connect = new URL(url);
-		BufferedInputStream bis = new BufferedInputStream(connect.openStream());
-		int i;
-		StringBuffer sb = new StringBuffer();
-		while ((i = bis.read()) != -1) {
-			sb.append((char)i);
+	public List<String> latestFeeds() throws IOException {
+		String[] urls = { "http://liarumantscha.ch/?ctrl=feed&type=1",
+				"http://liarumantscha.ch/?ctrl=feed&type=2",
+				"http://liarumantscha.ch/?ctrl=feed&type=3" };
+		
+		List<String> toReturn = new ArrayList<>();
+		for (String url : urls) {
+			URL connect = new URL(url);
+			BufferedInputStream bis = new BufferedInputStream(connect.openStream());
+			int i;
+			StringBuffer sb = new StringBuffer();
+			while ((i = bis.read()) != -1) {
+				sb.append((char) i);
+			}
+			bis.close();
+			toReturn.add(sb.toString());
 		}
-		bis.close();
-		return sb.toString();
+		return toReturn;
 	}
 }
