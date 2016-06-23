@@ -14,10 +14,10 @@
 		<column name="RSemantik" />
 		<column name="RSubsemantik" />
 		<column name="RGrammatik" />
-		<column name="RGenus"/>
+		<column name="RGenus" />
 		<column name="RTags" />
 		<column name="RFlex" />
-		<column name="Bearbeitungshinweis" type="CSV"/>
+		<column name="Bearbeitungshinweis" type="CSV" />
 		<column name="redirect_a" />
 		<column name="redirect_b" />
 		<column name="maalr_comment" />
@@ -68,6 +68,10 @@
 	<queryKeys>
 		<!-- Note that the main query key MUST be named searchPhrase. -->
 		<queryKey id="searchPhrase" />
+		<!-- Another approach to support bracketed expressions: duplicate searchPhrase 
+			and assign it a separate QueryBuilder-Routine for fields containing spelling 
+			variants (DTags, RTags in Sutsilvan) -->
+		<!-- <queryKey id="alternativeSearch"/> -->
 		<queryKey id="category" />
 		<queryKey id="subSemantics" />
 		<queryKey id="gender" />
@@ -83,6 +87,11 @@
 					<columns>
 						<column reference="DStichwort" />
 						<column reference="RStichwort" />
+						<!-- Additional fields to be searched for orthographical variants (fields 
+							currently are handled explicitely in the specified QueryBuilder) -->
+						<column reference="DTags" />
+						<column reference="RTags" />
+
 					</columns>
 				</option>
 				<option id="sutsilvan">
@@ -106,6 +115,8 @@
 				</option>
 			</options>
 		</columnSelector>
+		<!-- Only needed when there is a separate search routine for the specified 
+			fields, also needs a separate queryKey (<queryKey id="alternativeSearch"/>) -->
 		<columnSelector id="tags">
 			<options>
 				<option id="default" default="true">
@@ -215,13 +226,14 @@
 					builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder" />
 			</options>
 		</queryBuilder>
-		<queryBuilder id="tagsMethod" queryKeyId="searchPhrase"
+
+		<!-- optionale Suche - setzt eine eigene queryKeyId und einen passenden 
+			columnSelector voraus. Man könnte hier auch einen eigenen QueryBuilder hinzufügen 
+			(statt DEFAULT) -->
+		<queryBuilder id="tagsMethod" queryKeyId="alternativeSearch"
 			columnSelectorId="tags">
 			<options>
 				<option id="normal" default="true" preset="DEFAULT" />
-				<option id="intern" preset="INFIX" />
-				<option id="prefix" preset="PREFIX" />
-				<option id="suffix" preset="SUFFIX" />
 			</options>
 		</queryBuilder>
 		<queryBuilder id="method" queryKeyId="searchPhrase"
