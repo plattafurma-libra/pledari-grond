@@ -22,8 +22,11 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
+import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexManager;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
@@ -43,28 +46,44 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  */
 public class DefaultQueryBuilder extends MaalrQueryBuilder {
 	
+	private static Logger logger = LoggerFactory.getLogger(LuceneIndexManager.class);
+
 
 	@Override
 	protected void buildColumnToFieldsMapping() {
+		/*
+		 * Add field variations with additional features to index.
+		 */
 		registerFieldMapping("first", false, MaalrFieldType.STRING, true, false);
 		registerFieldMapping("second",true, MaalrFieldType.TEXT, true, false);
-		registerFieldMapping("third", false, MaalrFieldType.STRING, true, false);
 	}
-
-
 
 	@Override
 	public List<Query> transform(String value) {
 		value = TokenizerHelper.tokenizeString(analyzer, value);
+		//match single word entries 
 		TermQuery first = new TermQuery(new Term(super.getFieldName("first"), value));
 		first.setBoost(1000f);
 		//match entries where searchphrase is followed by whitespace
 		TermQuery second = new TermQuery(new Term(super.getFieldName("second"), value));
 		second.setBoost(100f);
-		PrefixQuery fourth = new PrefixQuery(new Term(super.getFieldName("first"), value));
-		fourth.setBoost(10f);
-		PrefixQuery fifth = new PrefixQuery(new Term(super.getFieldName("third"), value));
-		return Arrays.asList(first,second,fourth, fifth);
+		//also match prefix of StringFields ...
+		PrefixQuery third = new PrefixQuery(new Term(super.getFieldName("first"), value));
+		third.setBoost(10f);
+		//and of (analyzed) TextFields
+		PrefixQuery fourth = new PrefixQuery(new Term(super.getFieldName("second"), value));
+		
+		/* FIXME workaround to handle bracketed expressions by using hard-coded fields containing orthographic variants. */
+		String fieldName = super.getFieldName("second");
+		if(fieldName.startsWith("DTags") || fieldName.startsWith("RTags")){
+			Query brackets = new PrefixQuery(new Term(super.getFieldName("second"), value));
+			brackets.setBoost(10f);
+//			logger.info("bracket query: "+brackets);
+			return Arrays.asList(brackets);
+		}
+		//else:
+		return Arrays.asList(first,second,third,fourth);
+		
 	}
 	
 	

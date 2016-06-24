@@ -185,26 +185,30 @@ public class Dictionary {
 			long s2 = System.nanoTime();
 			docs = indexProvider.getSearcher().search(query, pageSize * (pageNr + 1), sort);
 			
-			if(docs.totalHits == 0) {
-				String searchPhrase = maalrQuery.getValue("searchPhrase");
-				if(searchPhrase != null){
-					BooleanQuery outer = new BooleanQuery(true);
-					BooleanQuery inner1 = new BooleanQuery();
-					PrefixQuery pq1 = new PrefixQuery(new Term("DTags_a_w_nl_t-TEXT", searchPhrase));
-					pq1.setBoost(1000);
-					PrefixQuery pq2 = new PrefixQuery(new Term("RTags_a_w_nl_t-TEXT", searchPhrase));
-					pq2.setBoost(1000);
-					inner1.add(pq1,Occur.SHOULD);
-					inner1.add(pq2,Occur.SHOULD);
-					outer.add(inner1, Occur.MUST);
-					Query qTmp = outer;
-					BooleanQuery inner2 = new BooleanQuery();
-					inner2.add(qTmp, Occur.MUST);
-					inner2.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())), Occur.MUST);
-					qTmp = inner2;
-					docs = indexProvider.getSearcher().search(qTmp, pageSize * (pageNr + 1), sort);
-				}
-			}
+			/* another workaround to search for expressions containing brackets:
+			 * if regular search fails, search in fields containing spelling variations
+			 */
+//			if(docs.totalHits == 0) {
+//				logger.info("REDO SEARCH (no hits in first take)");
+//				String searchPhrase = maalrQuery.getValue("searchPhrase");
+//				if(searchPhrase != null){
+//					BooleanQuery outer = new BooleanQuery(true);
+//					BooleanQuery inner1 = new BooleanQuery();
+//					PrefixQuery pq1 = new PrefixQuery(new Term("DTags_a_w_nl_t-TEXT", searchPhrase));
+//					pq1.setBoost(1000);
+//					PrefixQuery pq2 = new PrefixQuery(new Term("RTags_a_w_nl_t-TEXT", searchPhrase));
+//					pq2.setBoost(1000);
+//					inner1.add(pq1,Occur.SHOULD);
+//					inner1.add(pq2,Occur.SHOULD);
+//					outer.add(inner1, Occur.MUST);
+//					Query qTmp = outer;
+//					BooleanQuery inner2 = new BooleanQuery();
+//					inner2.add(qTmp, Occur.MUST);
+//					inner2.add(new TermQuery(new Term(LemmaVersion.VERIFICATION, Verification.ACCEPTED.toString())), Occur.MUST);
+//					qTmp = inner2;
+//					docs = indexProvider.getSearcher().search(qTmp, pageSize * (pageNr + 1), sort);
+//				}
+//			}
 			
 			long e2 = System.nanoTime();
 			result = toQueryResult(docs, pageSize * pageNr, maalrQuery.getPageSize());
