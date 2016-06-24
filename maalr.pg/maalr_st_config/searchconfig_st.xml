@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionaryConfiguration>
+	<databaseColumns>
+		<column name="DStichwort" />
+		<column name="DStichwort_sort" />
+		<column name="DSemantik" />
+		<column name="DSubsemantik" />
+		<column name="DGrammatik" />
+		<column name="DGenus" />
+		<column name="DStatus" />
+		<column name="RStichwort" />
+		<column name="RStichwort_sort" />
+		<column name="RSemantik" />
+		<column name="RSubsemantik" />
+		<column name="RGrammatik" />
+		<column name="RGenus" />
+		<column name="RFlex" />
+		<column name="Bearbeitungshinweis" type="CSV"/>
+		<column name="redirect_a" />
+		<column name="redirect_b" />
+		<column name="maalr_comment" />
+		<column name="maalr_email" />
+		<column name="infinitiv" />
+		<column name="type" />
+		<column name="subtype" />
+		<column name="irregular" />
+		<column name="preschentsing1" />
+		<column name="preschentsing2" />
+		<column name="preschentsing3" />
+		<column name="preschentplural1" />
+		<column name="preschentplural2" />
+		<column name="preschentplural3" />
+		<column name="imperfectsing1" />
+		<column name="imperfectsing2" />
+		<column name="imperfectsing3" />
+		<column name="imperfectplural1" />
+		<column name="imperfectplural2" />
+		<column name="imperfectplural3" />
+		<column name="conjunctivsing1" />
+		<column name="conjunctivsing2" />
+		<column name="conjunctivsing3" />
+		<column name="conjunctivplural1" />
+		<column name="conjunctivplural2" />
+		<column name="conjunctivplural3" />
+		<column name="cundizionalsing1" />
+		<column name="cundizionalsing2" />
+		<column name="cundizionalsing3" />
+		<column name="cundizionalplural1" />
+		<column name="cundizionalplural2" />
+		<column name="cundizionalplural3" />
+		<column name="participperfectms" />
+		<column name="participperfectfs" />
+		<column name="participperfectmp" />
+		<column name="participperfectfp" />
+		<column name="imperativ1" />
+		<column name="imperativ2" />
+		<column name="gerundium" />
+		<column name="futursing1" />
+		<column name="futursing2" />
+		<column name="futursing3" />
+		<column name="futurplural1" />
+		<column name="futurplural2" />
+		<column name="futurplural3" />
+	</databaseColumns>
+
+	<queryKeys>
+		<!-- Note that the main query key MUST be named searchPhrase. -->
+		<queryKey id="searchPhrase" />
+		<queryKey id="category" />
+		<queryKey id="subSemantics" />
+		<queryKey id="gender" />
+		<queryKey id="grammar" />
+	</queryKeys>
+
+	<columnSelectors>
+		<!-- Depending on the selected language, a query is executed on different 
+			fields. Note that the language selection choice MUST be named language. -->
+		<columnSelector id="language">
+			<options>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DStichwort" />
+						<column reference="RStichwort" />
+					</columns>
+				</option>
+				<option id="sutsilvan">
+					<columns>
+						<column reference="RStichwort" />
+					</columns>
+				</option>
+				<option id="german">
+					<columns>
+						<column reference="DStichwort" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		<columnSelector id="sigChoice">
+			<options>
+				<option id="default" default="true">
+					<columns>
+						<column reference="Bearbeitungshinweis" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		<!-- This choice depends on the selection made in 'language'. Therefore, 
+			it must define options with identical ids. Depending on the selected language 
+			option, the corresponding choice will be selected here. -->
+		<columnSelector id="subSemChoice" depends="language">
+			<options>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DSubsemantik" />
+						<column reference="RSubsemantik" />
+					</columns>
+				</option>
+				<option id="german">
+					<columns>
+						<column reference="DSubsemantik" />
+					</columns>
+				</option>
+				<option id="sutsilvan">
+					<columns>
+						<column reference="RSubsemantik" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		<!-- This choice depends on the selection made in 'language'. Therefore, 
+			it must define options with identical ids. Depending on the selected language 
+			option, the corresponding choice will be selected here. -->
+		<columnSelector id="gramChoice" depends="language">
+			<options>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DGrammatik" />
+						<column reference="RGrammatik" />
+					</columns>
+				</option>
+				<option id="german">
+					<columns>
+						<column reference="DGrammatik" />
+					</columns>
+				</option>
+				<option id="sutsilvan">
+					<columns>
+						<column reference="RGrammatik" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+		<!-- This choice depends on the selection made in 'language'. Therefore, 
+			it must define options with identical ids. Depending on the selected language 
+			option, the corresponding choice will be selected here. -->
+		<columnSelector id="genChoice" depends="language">
+			<options>
+				<option id="both" default="true">
+					<columns>
+						<column reference="DGenus" />
+						<column reference="RGenus" />
+					</columns>
+				</option>
+				<option id="german">
+					<columns>
+						<column reference="DGenus" />
+					</columns>
+				</option>
+				<option id="sutsilvan">
+					<columns>
+						<column reference="RGenus" />
+					</columns>
+				</option>
+			</options>
+		</columnSelector>
+	</columnSelectors>
+	<queryBuilders>
+		<queryBuilder id="genMod" queryKeyId="gender"
+			columnSelectorId="genChoice">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="gramMod" queryKeyId="grammar"
+			columnSelectorId="gramChoice">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.maalr.lucene.config.interpreter.modifier.SimplePrefixQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="sigMod" queryKeyId="category"
+			columnSelectorId="sigChoice">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="subSemMod" queryKeyId="subSemantics"
+			columnSelectorId="subSemChoice">
+			<options>
+				<option id="default" default="true"
+					builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder" />
+			</options>
+		</queryBuilder>
+		<queryBuilder id="method" queryKeyId="searchPhrase"
+			columnSelectorId="language">
+			<options>
+				<option id="normal" default="true" preset="DEFAULT" />
+				<!-- <option id="normal" default="true" builderClass="de.uni_koeln.spinfo.pg.querybuilder.DefaultPGQueryBuilder"/> -->
+				<option id="intern" preset="INFIX" />
+				<option id="prefix" preset="PREFIX" />
+				<option id="suffix" preset="SUFFIX" />
+				<option id="exact" preset="EXACT" />
+			</options>
+		</queryBuilder>
+	</queryBuilders>
+	<!-- Lemma description -->
+	<languages>
+		<language id="german" mainColumn="DStichwort">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="DStichwort"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<!-- Editors must ensure that this field is not empty (visitors don't 
+							have to) -->
+						<field column="DStichwort" allowsNull="false"></field>
+						<field column="DGrammatik" type="ENUM">
+							<allowed>
+								<value>adj</value>
+								<value>adv</value>
+								<value>art</value>
+								<value>cj</value>
+								<value>cumpos</value>
+								<value>int</value>
+								<value>interj</value>
+								<value>inv</value>
+								<value>n.l</value>
+								<value>n.p</value>
+								<value>num</value>
+								<value>prep</value>
+								<value>pron</value>
+								<value>refl</value>
+								<value>subst</value>
+								<value>tr</value>
+								<value>tr/int</value>
+							</allowed>
+						</field>
+						<field column="DGenus" type="ENUM">
+							<allowed>
+								<value>f</value>
+								<value>f(m)</value>
+								<value>f(n)</value>
+								<value>f(pl)</value>
+								<value>f,m</value>
+								<value>f,m,n</value>
+								<value>f,n</value>
+								<value>m</value>
+								<value>m(f)</value>
+								<value>m(pl)</value>
+								<value>m,f</value>
+								<value>m,n</value>
+								<value>m/n</value>
+								<value>n</value>
+								<value>n(f)</value>
+								<value>n(pl)</value>
+								<value>n,f</value>
+								<value>n,m</value>
+								<value>pl</value>
+							</allowed>
+						</field>
+						<field column="DSubsemantik" type="ORACLE"></field>
+						<field column="Bearbeitungshinweis" type="ORACLE"></field>
+						<field column="redirect_a"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="DStichwort" format="{0}"></field>
+					<field column="DSubsemantik" format="({0})"></field>
+					<field column="DGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+				</fields>
+			</results>
+		</language>
+		<language id="sutsilvan" mainColumn="RStichwort">
+			<editors>
+				<frontend_editor>
+					<fields>
+						<field column="RStichwort"></field>
+					</fields>
+				</frontend_editor>
+				<backend_editor>
+					<fields>
+						<field column="RStichwort" allowsNull="false"></field>
+						<field column="RGrammatik" type="ENUM">
+							<allowed>
+								<value>(refl) tr</value>
+								<value>abs/tr</value>
+								<value>adj</value>
+								<value>adv</value>
+								<value>art</value>
+								<value>cj</value>
+								<value>int</value>
+								<value>interj</value>
+								<value>inv</value>
+								<value>n.l</value>
+								<value>n.p</value>
+								<value>num</value>
+								<value>prep</value>
+								<value>pron</value>
+								<value>refl</value>
+								<value>subst</value>
+								<value>tr</value>
+								<value>tr/int</value>
+							</allowed>
+						</field>
+						<field column="RGenus" type="ENUM">
+							<allowed>
+								<value>(col)m</value>
+								<value>(f)m</value>
+								<value>(m)f</value>
+								<value>(pl)f</value>
+								<value>col</value>
+								<value>f</value>
+								<value>f(pl)</value>
+								<value>f.pl</value>
+								<value>f/m</value>
+								<value>f/m.pl</value>
+								<value>m</value>
+								<value>m(f)</value>
+								<value>m(f)pl</value>
+								<value>m(pl)</value>
+								<value>m,f</value>
+								<value>m.(pl)</value>
+								<value>m.pl</value>
+								<value>m/f</value>
+								<value>m/f.pl</value>
+								<value>pl</value>
+							</allowed>
+						</field>
+						<field column="RSubsemantik" type="ORACLE"></field>
+						<field column="redirect_b"></field>
+						<field column="RFlex"></field>
+					</fields>
+				</backend_editor>
+			</editors>
+			<results>
+				<fields>
+					<field column="RStichwort" format="{0}"></field>
+					<field column="RFlex" format="&lt;i&gt;/{0}/&lt;/i&gt;"></field>
+					<field column="RSubsemantik" format="({0})"></field>
+					<field column="RGenus" format="&lt;i&gt;[{0}]&lt;/i&gt;"></field>
+				</fields>
+			</results>
+		</language>
+	</languages>
+	<queryUI>
+		<defaultFrontendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+		</defaultFrontendQueryFields>
+		<advancedFrontendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+			<!-- <uifield id="pageSize" buildin="true" type="COMBO" label="Results per Page"/> -->
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="suggestions" buildin="true" type="CHECKBOX" />
+		</advancedFrontendQueryFields>
+		<defaultBackendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+		</defaultBackendQueryFields>
+		<advancedBackendQueryFields>
+			<uifield id="searchPhrase" type="TEXT" submit="true" />
+			<uifield id="highlight" buildin="true" type="CHECKBOX" />
+			<uifield id="language" type="RADIO" />
+			<uifield id="method" type="RADIO" />
+			<uifield id="category" type="ORACLE" />
+			<uifield id="subSemantics" type="ORACLE" />
+			<uifield id="gender" type="COMBO" />
+			<uifield id="grammar" type="COMBO" />
+		</advancedBackendQueryFields>
+	</queryUI>
+</dictionaryConfiguration>

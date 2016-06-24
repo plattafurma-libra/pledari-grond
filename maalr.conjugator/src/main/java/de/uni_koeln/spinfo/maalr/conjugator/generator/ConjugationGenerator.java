@@ -122,11 +122,8 @@ public class ConjugationGenerator {
 		case 7:
 			conjugation = seventhConjugation(root);
 			break;
-
 		}
-
 		return addPronouns(conjugation);
-
 	}
 
 	public String getRoot(String query) {

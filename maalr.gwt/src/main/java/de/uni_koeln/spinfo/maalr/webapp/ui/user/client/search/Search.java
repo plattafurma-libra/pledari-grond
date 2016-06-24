@@ -15,11 +15,11 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.user.client.search;
 
+import com.github.gwtbootstrap.client.ui.Column;
 import com.github.gwtbootstrap.client.ui.Well;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -29,7 +29,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
@@ -57,6 +56,9 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 	@UiField
 	Well well;
 	
+	@UiField 
+	Column resultWrapper;
+	
 	ResultCellTable resultCellTable;
 
 	private ConfigurableSearchArea searchForm;
@@ -72,6 +74,7 @@ public class Search extends Composite implements HasHandlers, IResultDisplay {
 		searchForm = new ConfigurableSearchArea(this, false, true, null);
 		well.getElement().setId("search_panel");
 		well.add(searchForm);
+		resultWrapper.setId("resultWrapper");
 		// localeDictionary = DictionaryConstants.getLocaleDictionary();
 		// well.add(getLink(DictionaryConstants.DICT_LINKS));
 		// well.add(getLink(DictionaryConstants.GLOSSAR_LINKS));
