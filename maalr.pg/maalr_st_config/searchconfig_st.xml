@@ -400,8 +400,7 @@
 			<uifield id="searchPhrase" type="TEXT" submit="true" />
 			<uifield id="language" type="RADIO" />
 			<uifield id="method" type="RADIO" />
-			<!-- <uifield id="pageSize" buildin="true" type="COMBO" label="Results 
-				per Page"/> -->
+			<!-- <uifield id="pageSize" buildin="true" type="COMBO" label="Results per Page"/> -->
 			<uifield id="highlight" buildin="true" type="CHECKBOX" />
 			<uifield id="suggestions" buildin="true" type="CHECKBOX" />
 		</advancedFrontendQueryFields>
