@@ -15,6 +15,7 @@
 		<li><a href="${dictContext}/infos.html"><fmt:message key="maalr.navi.info" /></a></li>
 		<li><a href="http://www.liarumantscha.ch" target="_blank"><span>&copy; Lia Rumantscha 1980 &ndash; <%Calendar calendar = Calendar.getInstance(); out.write(calendar.get(Calendar.YEAR) + "");%></span></a></li>
 		<li><a href="http://spinfo.phil-fak.uni-koeln.de/maalr.html" target="_blank"><span><fmt:message key="maalr.footer.maalr" /></span></a></li>
+		<li><a href="#exportDialog" id="exportData" data-toggle="modal"><span>PG Export</span></a></li>
 	</ul>
 
 </div>

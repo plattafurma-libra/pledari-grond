@@ -22,6 +22,9 @@
 
 <body>
 
+	<%-- EXPORT DIALOG --%>
+	<%@ include file="/maalr_modules/misc/export_dialog.jsp"%>
+
 	<%-- NAVIGATION --%>
 	<%@ include file="/maalr_modules/misc/header.jsp"%>
 
