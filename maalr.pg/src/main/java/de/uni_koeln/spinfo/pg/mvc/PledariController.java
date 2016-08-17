@@ -17,8 +17,6 @@ package de.uni_koeln.spinfo.pg.mvc;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,10 +88,9 @@ public class PledariController {
 	@RequestMapping("/feeds/latest")
 	@ResponseBody
 	public List<String> latestFeeds() throws IOException {
+		// "http://liarumantscha.ch/?ctrl=feed&type=3"
 		String[] urls = { "http://liarumantscha.ch/?ctrl=feed&type=1",
-				"http://liarumantscha.ch/?ctrl=feed&type=2",
-				"http://liarumantscha.ch/?ctrl=feed&type=3" };
-		
+				"http://liarumantscha.ch/?ctrl=feed&type=2"};
 		List<String> toReturn = new ArrayList<>();
 		for (String url : urls) {
 			URL connect = new URL(url);
