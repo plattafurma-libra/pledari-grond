@@ -94,9 +94,9 @@ public class PledariController {
 	@RequestMapping("/feeds/latest")
 	@ResponseBody
 	public List<String> latestFeeds() throws IOException {
+		// "http://liarumantscha.ch/?ctrl=feed&type=3"
 		String[] urls = { "http://liarumantscha.ch/?ctrl=feed&type=1",
-				"http://liarumantscha.ch/?ctrl=feed&type=2",
-				"http://liarumantscha.ch/?ctrl=feed&type=3" };
+				"http://liarumantscha.ch/?ctrl=feed&type=2"};
 
 		List<String> toReturn = new ArrayList<>();
 		for (String url : urls) {
