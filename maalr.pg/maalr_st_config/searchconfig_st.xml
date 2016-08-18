@@ -97,11 +97,17 @@
 				<option id="sutsilvan">
 					<columns>
 						<column reference="RStichwort" />
+						<!-- Additional fields to be searched for orthographical variants (fields 
+							currently are handled explicitely in the specified QueryBuilder) -->
+						<column reference="RTags" />
 					</columns>
 				</option>
 				<option id="german">
 					<columns>
 						<column reference="DStichwort" />
+						<!-- Additional fields to be searched for orthographical variants (fields 
+							currently are handled explicitely in the specified QueryBuilder) -->
+						<column reference="DTags" />
 					</columns>
 				</option>
 			</options>
@@ -379,6 +385,10 @@
 						<field column="RSubsemantik" type="ORACLE"></field>
 						<field column="redirect_b"></field>
 						<field column="RFlex"></field>
+						
+						<!-- TODO Label fehlt, zudem Frage nach DTags-Feld -->
+						<field column="RTags"></field>
+						
 					</fields>
 				</backend_editor>
 			</editors>

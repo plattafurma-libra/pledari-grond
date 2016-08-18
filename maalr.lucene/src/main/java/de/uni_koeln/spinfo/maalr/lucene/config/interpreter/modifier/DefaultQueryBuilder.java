@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
@@ -28,6 +30,7 @@ import org.slf4j.LoggerFactory;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.config.LuceneIndexManager;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
+import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
 /**
@@ -41,14 +44,14 @@ import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
  * field names which are searched by lucene.
  * <br>
  * 
- * @author sschwieb
+ * @author sschwieb, cneuefeind
  *
  */
 public class DefaultQueryBuilder extends MaalrQueryBuilder {
 	
 	private static Logger logger = LoggerFactory.getLogger(LuceneIndexManager.class);
 
-
+	
 	@Override
 	protected void buildColumnToFieldsMapping() {
 		/*
@@ -73,19 +76,25 @@ public class DefaultQueryBuilder extends MaalrQueryBuilder {
 		//and of (analyzed) TextFields
 		PrefixQuery fourth = new PrefixQuery(new Term(super.getFieldName("second"), value));
 		
-		/* FIXME workaround to handle bracketed expressions by using hard-coded fields containing orthographic variants. */
-		String fieldName = super.getFieldName("second");
-		if(fieldName.startsWith("DTags") || fieldName.startsWith("RTags")){
-			Query brackets = new PrefixQuery(new Term(super.getFieldName("second"), value));
-			brackets.setBoost(10f);
-//			logger.info("bracket query: "+brackets);
-			return Arrays.asList(brackets);
+		List<Query> toReturn = Arrays.asList(first,second,third,fourth);
+
+		/* FIXME workaround to handle bracketed expressions by using fields containing hard-coded orthographic variants.
+		 * Must be a TextField to handle multi-word expressions. */
+		String textField = super.getFieldName("second");
+		if((textField.startsWith("DTags") || textField.startsWith("RTags"))){
+			QueryParser parser = new QueryParser(LuceneHelper.CURRENT, textField, analyzer);
+			try {
+				//match multi-word queries
+				value = value.replace(" ", " AND ");
+				//append wildcard (cf. PrefixQueries)
+				value += "*";
+				Query query = parser.parse(value);
+				toReturn = Arrays.asList(query);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
-		//else:
-		return Arrays.asList(first,second,third,fourth);
-		
+		return toReturn;
 	}
-	
-	
 
 }
