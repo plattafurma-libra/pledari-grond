@@ -26,7 +26,7 @@
 <title><%=Configuration.getInstance().getShortName()%> - Editor Backend</title>
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="gwt:property" content='locale=<%=request.getLocale()%>'>
+<meta name="gwt:property" content='locale=<%=session.getAttribute("locale")%>'>
 
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 
