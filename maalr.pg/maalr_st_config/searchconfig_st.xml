@@ -385,6 +385,10 @@
 						<field column="RSubsemantik" type="ORACLE"></field>
 						<field column="redirect_b"></field>
 						<field column="RFlex"></field>
+						
+						<!-- TODO Label fehlt, zudem Frage nach DTags-Feld -->
+						<field column="RTags"></field>
+						
 					</fields>
 				</backend_editor>
 			</editors>
