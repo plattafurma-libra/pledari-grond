@@ -1,7 +1,7 @@
 package de.uni_koeln.spinfo.maalr.conjugator.generator;
 
 /*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
+ * Copyright 2013-2016 Sprachliche Informationsverarbeitung, University of Cologne
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,24 +29,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class ConjugationGenerator {
-	
+
 	// (Endung - Klasse)
 	//
-	// -ar - 1
+	// -ar (gidar) - 1
 	//
-	// -ear - 2
+	// -ear (angraztgear) - 2
 	//
-	// -er - 3
+	// -er (repeter) - 3
 	//
-	// -ir - 4
+	// -ir (partir) - 4
 	//
-	// -ar (esch) - 5
+	// -ar_esch (cumbinar) - 5
 	//
-	// -ear (esch) - 6
+	// -ear_esch (inditgear) - 6
 	//
-	// -ir (esch) - 7
-	
-
+	// -ir_esch (capir) - 7
 
 	private ConjugationStructure cs;
 
@@ -79,16 +77,13 @@ public class ConjugationGenerator {
 		case "er":
 		case "ir":
 			if (!l3.equals("ear")) {
-
 				setLastTwo(l2);
 				setEnding(getLastTwo());
 				query = checkReflexiveness(query);
 				query = query.substring(0, query.length() - 2);
 				return query;
-
 			}
 			break;
-
 		}
 
 		if (l3.equals("ear")) {
@@ -96,12 +91,9 @@ public class ConjugationGenerator {
 			setEnding(getLastThree());
 			query = checkReflexiveness(query);
 			query = query.substring(0, query.length() - 3);
-
 			return query;
 		}
-
 		return query;
-
 	}
 
 	public HashMap<String, String> generateConjugation(String infinitiv,
@@ -120,25 +112,25 @@ public class ConjugationGenerator {
 
 		switch (conjugationCLass) {
 		case 1:
-			conjugation = firstConjugation(root);
+			conjugation = conjugate(root, "art-1");
 			break;
 		case 2:
-			conjugation = secondConjugation(root);
+			conjugation = conjugate(root, "art-2");
 			break;
 		case 3:
-			conjugation = thirdConjugation(root);
+			conjugation = conjugate(root, "art-3");
 			break;
 		case 4:
-			conjugation = fourthConjugation(root);
+			conjugation = conjugate(root, "art-4");
 			break;
 		case 5:
-			conjugation = fifthConjugation(root);
+			conjugation = conjugate(root, "art-5");
 			break;
 		case 6:
-			conjugation = sixthConjugation(root);
+			conjugation = conjugate(root, "art-6");
 			break;
 		case 7:
-			conjugation = seventhConjugation(root);
+			conjugation = conjugate(root, "art-7");
 			break;
 		}
 		return addPronouns(conjugation);
@@ -160,39 +152,22 @@ public class ConjugationGenerator {
 			switch (query.length()) {
 
 			case 0:
-				throw new RuntimeException("'" + query + "'"
-						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
-
 			case 1:
-				throw new RuntimeException("'" + query + "'"
-						+ " is not a valid verb." + "\n"
-						+ "Please type a verb in its infinitive form.");
-
 			case 2:
 				throw new RuntimeException("'" + query + "'"
 						+ " is not a valid verb." + "\n"
 						+ "Please type a verb in its infinitive form.");
-
 			default:
-// TODO: Eine solche Liste für Sutsilvan
+				// TODO: Eine solche Liste für Sutsilvan --> kurze Wörter, die
+				// nicht als Endung analysiert werden können!
 				avoid = new HashSet<String>();
-				/*avoid.add("ar");
-				avoid.add("er");
-				avoid.add("air");
-				avoid.add("s'ar");
-				avoid.add("s'ir");
-				avoid.add("s'er");
-				avoid.add("s'air");
-				avoid.add("sa ar");
-				avoid.add("sa er");
-				avoid.add("sa ir");
-				avoid.add("sa air");
-				avoid.add("sa'ar");
-				avoid.add("sa'ir");
-				avoid.add("sa'er");
-				avoid.add("sa'air");
-				*/
+				/*
+				 * avoid.add("ar"); avoid.add("er"); avoid.add("air");
+				 * avoid.add("s'ar"); avoid.add("s'ir"); avoid.add("s'er");
+				 * avoid.add("s'air"); avoid.add("sa ar"); avoid.add("sa er");
+				 * avoid.add("sa ir"); avoid.add("sa air"); avoid.add("sa'ar");
+				 * avoid.add("sa'ir"); avoid.add("sa'er"); avoid.add("sa'air");
+				 */
 
 				if (avoid.contains(query)) {
 
@@ -209,18 +184,14 @@ public class ConjugationGenerator {
 	}
 
 	public String removeWhitespaces(String query) {
-
-		query = query.toLowerCase();
-		query = query.replaceAll("^\\s+|\\s+$", "");
-
-		return query;
+		return query.toLowerCase().replaceAll("^\\s+|\\s+$", "");
 	}
 
 	public String checkReflexiveness(String query) {
 
 		if (query.startsWith("sa")) {
 			setVerb(query);
-			//query = query.length() > 2 ? query.substring(3) : query;
+			// query = query.length() > 2 ? query.substring(3) : query;
 			setIsReflexive(new String("true"));
 
 		} else if (query.startsWith("s'")) {
@@ -242,326 +213,78 @@ public class ConjugationGenerator {
 		String root = getRoot(infinitiv);
 
 		conjugationList = new ArrayList<HashMap<String, String>>();
-
-		conjugationList.add(firstConjugation(root));
-		conjugationList.add(secondConjugation(root));
-		conjugationList.add(thirdConjugation(root));
-		conjugationList.add(fourthConjugation(root));
-		conjugationList.add(fifthConjugation(root));
-		conjugationList.add(sixthConjugation(root));
-		conjugationList.add(seventhConjugation(root));
+		conjugationList.add(conjugate(root, "art-1"));
+		conjugationList.add(conjugate(root, "art-2"));
+		conjugationList.add(conjugate(root, "art-3"));
+		conjugationList.add(conjugate(root, "art-4"));
+		conjugationList.add(conjugate(root, "art-5"));
+		conjugationList.add(conjugate(root, "art-6"));
+		conjugationList.add(conjugate(root, "art-7"));
 
 		return conjugationList;
 	}
 
-	public HashMap<String, String> firstConjugation(String root) {
+	public HashMap<String, String> conjugate(String root, String art) {
 
 		cs = new ConjugationStructure();
 		cs.setVerb(getVerb());
 		cs.setInfinitiv(getInfinitiv());
 		cs.setRoot(root);
 		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-1");
+		cs.setConjugationClass(art);
 		cs.setReflexive(getIsReflexive());
 
 		// PRESCHENT
 		setPreschent(root, cs);
-
 		// IMPERFECT
 		setImperfect(root, cs);
-
 		// CONJUNCTIV
 		setConjunctiv(root, cs);
-
 		// CUNDIZIONAL
 		setCundizional(root, cs);
-
 		// PARTICIP PERFECT
 		setParticipPerfect(root, cs);
-
 		// IMPERATIV
 		setImperativ(root, cs);
-
 		// GERUNDIUM
 		setGerundium(root, cs);
-
 		// FUTUR
 		setFutur(root, cs);
 
 		return cs.getValues();
-
 	}
 
-	public HashMap<String, String> secondConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-2");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
-	
-	public HashMap<String, String> thirdConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-3");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
-
-
-	public HashMap<String, String> fourthConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-4");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
-
-	public HashMap<String, String> fifthConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-5");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
-
-	public HashMap<String, String> sixthConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-6");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
-
-	public HashMap<String, String> seventhConjugation(String root) {
-
-		cs = new ConjugationStructure();
-		cs.setVerb(getVerb());
-		cs.setInfinitiv(getInfinitiv());
-		cs.setRoot(root);
-		cs.setEnding(getEnding());
-		cs.setConjugationClass("art-7");
-		cs.setReflexive(getIsReflexive());
-
-		// PRESCHENT
-		setPreschent(root, cs);
-
-		// IMPERFECT
-		setImperfect(root, cs);
-
-		// CONJUNCTIV
-		setConjunctiv(root, cs);
-
-		// CUNDIZIONAL
-		setCundizional(root, cs);
-
-		// PARTICIP_PERFECT
-		setParticipPerfect(root, cs);
-
-		// IMPERATIV
-		setImperativ(root, cs);
-
-		// GERUNDIUM
-		setGerundium(root, cs);
-
-		// FUTUR
-		setFutur(root, cs);
-
-		return cs.getValues();
-
-	}
 
 	public void setPreschent(String root, ConjugationStructure cs) {
 
 		switch (cs.getConjugationclass()) {
-
 		case "art-1":
 		case "art-2":
 		case "art-3":
 		case "art-4":
-
 			// 1ps
-			cs.setPreschentsing1(root +"[el]");
+			cs.setPreschentsing1(root + "[el]");
 			// 2ps
 			cs.setPreschentsing2(root + "as");
 			// 3ps
 			cs.setPreschentsing3(root + "a");
-			
 			// 1pp
 			cs.setPreschentplural1(root + "agn");
-			
+			// 2pp
 			if (cs.getConjugationclass().equals("art-1")) {
-				
-				// 2pp
 				cs.setPreschentplural2(root + "az");
-			} else if(cs.getConjugationclass().equals("art-2")){
-				
-				// 2pp
+			} else if (cs.getConjugationclass().equals("art-2")) {
 				cs.setPreschentplural2(root + "eaz");
 			} else {
 				cs.setPreschentplural2(root + "ez");
 			}
-			
 			// 3pp
 			cs.setPreschentplural3(root + "an");
-			
 			break;
 
 		case "art-5":
-		case "art-6": 
+		case "art-6":
 		case "art-7":
-
-			// PRESCHENT
 			// 1ps
 			cs.setPreschentsing1(root + "esch[el]");
 			// 2ps
@@ -570,31 +293,25 @@ public class ConjugationGenerator {
 			cs.setPreschentsing3(root + "escha");
 			// 1pp
 			cs.setPreschentplural1(root + "agn");
-
-			if (cs.getConjugationclass().equals("art-6")) {
-				// 2pp
+			// 2pp
+			if (cs.getConjugationclass().equals("art-5")) {
+				cs.setPreschentplural2(root + "az");
+			} else if (cs.getConjugationclass().equals("art-6")) {
 				cs.setPreschentplural2(root + "eaz");
 			} else {
-				// 2pp
-				cs.setPreschentplural2(root + "az");
+				cs.setPreschentplural2(root + "ez");
 			}
-
 			// 3pp
 			cs.setPreschentplural3(root + "eschan");
-
 			break;
-
 		}
-
 	}
 
 	public void setImperfect(String root, ConjugationStructure cs) {
 
 		switch (cs.getConjugationclass()) {
-
 		case "art-1":
 		case "art-5":
-			
 			// 1ps
 			cs.setImperfectsing1(root + "ava");
 			// 2ps
@@ -607,9 +324,8 @@ public class ConjugationGenerator {
 			cs.setImperfectplural2(root + "avas");
 			// 3pp
 			cs.setImperfectplural3(root + "avan");
-			
 			break;
-			
+
 		case "art-2":
 		case "art-6":
 			// 1ps
@@ -626,10 +342,9 @@ public class ConjugationGenerator {
 			cs.setImperfectplural3(root + "eavan");
 			break;
 
-		case "art-3":	
+		case "art-3":
 		case "art-4":
 		case "art-7":
-
 			// 1ps
 			cs.setImperfectsing1(root + "eva");
 			// 2ps
@@ -643,24 +358,19 @@ public class ConjugationGenerator {
 			// 3pp
 			cs.setImperfectplural3(root + "evan");
 			break;
-
-		
-
 		}
-
 	}
 
 	public void setConjunctiv(String root, ConjugationStructure cs) {
 
 		switch (cs.getConjugationclass()) {
-
 		case "art-5":
 		case "art-6":
 		case "art-7":
 			// 1ps
 			cs.setConjunctivsing1(root + "eschi");
 			// 2ps
-			cs.setConjunctivsing2(root + "esch[i]as");
+			cs.setConjunctivsing2(root + "esch(i)as");
 			// 3ps
 			cs.setConjunctivsing3(root + "eschi");
 			// 1pp
@@ -668,14 +378,14 @@ public class ConjugationGenerator {
 			// 2pp
 			cs.setConjunctivplural2(root + "eias");
 			// 3pp
-			cs.setConjunctivplural3(root + "esch[i]an");
+			cs.setConjunctivplural3(root + "esch(i)an");
 			break;
 
-		default:
+		default: // 1-4
 			// 1ps
 			cs.setConjunctivsing1(root + "i");
 			// 2ps
-			cs.setConjunctivsing2(root + "[i]as");
+			cs.setConjunctivsing2(root + "(i)as");
 			// 3ps
 			cs.setConjunctivsing3(root + "i");
 			// 1pp
@@ -683,7 +393,7 @@ public class ConjugationGenerator {
 			// 2pp
 			cs.setConjunctivplural2(root + "eias");
 			// 3pp
-			cs.setConjunctivplural3(root + "[i]an");
+			cs.setConjunctivplural3(root + "(i)an");
 			break;
 		}
 	}
@@ -693,7 +403,6 @@ public class ConjugationGenerator {
 		switch (cs.getConjugationclass()) {
 		case "art-1":
 		case "art-5":
-		
 			// 1ps
 			cs.setCundizionalsing1(root + "ass");
 			// 2ps
@@ -701,15 +410,18 @@ public class ConjugationGenerator {
 			// 3ps
 			cs.setCundizionalsing3(root + "ass");
 			// 1pp
-			cs.setCundizionalplural1(root + "assan");
+			if (cs.getConjugationclass().equals("art-5")) {
+				cs.setCundizionalplural1(root + "assa");
+			} else {
+				cs.setCundizionalplural1(root + "assan");
+			}
 			// 2pp
 			cs.setCundizionalplural2(root + "assas");
 			// 3pp
 			cs.setCundizionalplural3(root + "assan");
 			break;
 
-		default:
-
+		default: // 2, 3, 4, 6, 7
 			// 1ps
 			cs.setCundizionalsing1(root + "ess");
 			// 2ps
@@ -723,9 +435,7 @@ public class ConjugationGenerator {
 			// 3pp
 			cs.setCundizionalplural3(root + "essan");
 			break;
-
 		}
-
 	}
 
 	public void setParticipPerfect(String root, ConjugationStructure cs) {
@@ -733,13 +443,12 @@ public class ConjugationGenerator {
 		switch (cs.getConjugationclass()) {
 		case "art-1":
 		case "art-5":
-			
 			cs.setParticipperfectms(root + "o");
 			cs.setParticipperfectfs(root + "ada");
 			cs.setParticipperfectmp(root + "os");
 			cs.setParticipperfectfp(root + "adas");
 			break;
-			
+
 		case "art-2":
 		case "art-6":
 			cs.setParticipperfectms(root + "ieu");
@@ -748,74 +457,62 @@ public class ConjugationGenerator {
 			cs.setParticipperfectfp(root + "eadas");
 			break;
 
-		default:
+		default: // 3,4,7
 			cs.setParticipperfectms(root + "ieu");
 			cs.setParticipperfectfs(root + "ida");
 			cs.setParticipperfectmp(root + "ieus");
 			cs.setParticipperfectfp(root + "idas");
 			break;
-
 		}
-
 	}
 
 	public void setGerundium(String root, ConjugationStructure cs) {
-
 		cs.setGerundium(root + "ànd");
-
 	}
 
 	public void setImperativ(String root, ConjugationStructure cs) {
 
 		switch (cs.getConjugationclass()) {
+		case "art-1":
+			cs.setImperativ1(root + "a!");
+			cs.setImperativ2(root + "ad!");
+			break;
 
 		case "art-2":
-
 			cs.setImperativ1(root + "a!");
 			cs.setImperativ2(root + "ead!");
-			
 			break;
-		
-		case "art-5":
 
+		case "art-5":
 			cs.setImperativ1(root + "escha!");
 			cs.setImperativ2(root + "ad!");
-			
 			break;
-			
-		case "art-6":
 
+		case "art-6":
 			cs.setImperativ1(root + "escha!");
 			cs.setImperativ2(root + "ead!");
-			
 			break;
-			
-		case "art-7":
 
+		case "art-7":
 			cs.setImperativ1(root + "escha!");
 			cs.setImperativ2(root + "ed!");
-			
 			break;
 
-		
-		default:
+		default: // 3,4
 			cs.setImperativ1(root + "a!");
-			cs.setImperativ2(root + "ad!");
+			cs.setImperativ2(root + "ed!");
 			break;
-
 		}
-
 	}
 
 	public void setFutur(String root, ConjugationStructure cs) {
 
-		// TODO REflexive?
+		// TODO Reflexiva im Sutsilvan?
 		switch (getIsReflexive()) {
 
 		case "true":
-
 			if (isVocal(root)) {
-				cs.setFutursing1("vingt a " + Pronouns.pron_r_v_1ps
+				cs.setFutursing1("vignt a " + Pronouns.pron_r_v_1ps
 						+ cs.getInfinitiv());
 				cs.setFutursing2("veans a " + Pronouns.pron_r_v_2ps
 						+ cs.getInfinitiv());
@@ -827,9 +524,8 @@ public class ConjugationGenerator {
 						+ cs.getInfinitiv());
 				cs.setFuturplural3("vignan a " + Pronouns.pron_r_v_3pp
 						+ cs.getInfinitiv());
-
 			} else {
-				cs.setFutursing1("vingt a " + Pronouns.pron_r_1ps
+				cs.setFutursing1("vignt a " + Pronouns.pron_r_1ps
 						+ cs.getInfinitiv());
 				cs.setFutursing2("veans a " + Pronouns.pron_r_2ps
 						+ cs.getInfinitiv());
@@ -841,32 +537,27 @@ public class ConjugationGenerator {
 						+ cs.getInfinitiv());
 				cs.setFuturplural3("vignan a " + Pronouns.pron_r_3pp
 						+ cs.getInfinitiv());
-
 			}
 			break;
 
 		case "false":
-		
 			if (isVocal(root)) {
-				cs.setFutursing1("vingt ad " + cs.getInfinitiv());
+				cs.setFutursing1("vignt ad " + cs.getInfinitiv());
 				cs.setFutursing2("veans ad " + cs.getInfinitiv());
 				cs.setFutursing3("vean ad " + cs.getInfinitiv());
 				cs.setFuturplural1("vagnagn ad " + cs.getInfinitiv());
 				cs.setFuturplural2("vagnez ad " + cs.getInfinitiv());
 				cs.setFuturplural3("vignan ad " + cs.getInfinitiv());
-
 			} else {
-				cs.setFutursing1("vingt a " + cs.getInfinitiv());
+				cs.setFutursing1("vignt a " + cs.getInfinitiv());
 				cs.setFutursing2("veans a " + cs.getInfinitiv());
 				cs.setFutursing3("vean a " + cs.getInfinitiv());
 				cs.setFuturplural1("vagnagn a " + cs.getInfinitiv());
 				cs.setFuturplural2("vagnez a " + cs.getInfinitiv());
 				cs.setFuturplural3("vignan a " + cs.getInfinitiv());
 			}
-
 			break;
 		}
-
 	}
 
 	public boolean isVocal(String root) {
@@ -888,11 +579,10 @@ public class ConjugationGenerator {
 
 	public HashMap<String, String> addPronouns(
 			HashMap<String, String> conjugation) {
+
 		Map<String, String> pronouns;
-
-		// HashMap<String, String> reflexiveConjugation = new HashMap<>();
-
 		String verb = conjugation.get("verb");
+		// HashMap<String, String> reflexiveConjugation = new HashMap<>();
 
 		if (verb.startsWith("sa ")) {
 			// Reflexive Verbs that start with Consonants
@@ -1058,8 +748,7 @@ public class ConjugationGenerator {
 				+ conjugation.get(ConjugationStructure.imperfectplural2));
 		cs.setImperfectplural3(Pronouns.pron_3pp
 				+ conjugation.get(ConjugationStructure.imperfectplural3));
-		
-		// TODO: Stimmt diese Ausgabe mit pron_conjunctiv_c?
+
 		// CONJUNCTIV
 		cs.setConjunctivsing1(Pronouns.pron_conjunctiv_c + Pronouns.pron_1ps
 				+ conjugation.get(ConjugationStructure.conjunctivsing1));
@@ -1167,6 +856,7 @@ public class ConjugationGenerator {
 	}
 
 	public Map<String, String> pronounsForReflexiveVocalicVerbs() {
+		
 		pronouns = new Pronouns();
 		// STANDARD
 		pronouns.setFirstPs(Pronouns.pron_1ps + Pronouns.pron_r_v_1ps);
@@ -1206,16 +896,16 @@ public class ConjugationGenerator {
 
 	public void printConjugation(Map<String, String> conjugation) {
 
+		System.out.println("---");
 		for (Map.Entry<String, String> entry : conjugation.entrySet()) {
-
 			System.out.println(entry.getKey() + " " + entry.getValue());
-
 		}
+		System.out.println();
 
 	}
-	
-	public <K, V> File printMapReadable(Map<K, V> map, String destPath, String fileName)
-			throws IOException {
+
+	public <K, V> File printMapReadable(Map<K, V> map, String destPath,
+			String fileName) throws IOException {
 
 		File file = new File(destPath + fileName + ".txt");
 		Writer out = new BufferedWriter(new OutputStreamWriter(
@@ -1229,7 +919,7 @@ public class ConjugationGenerator {
 		out.append("ending : " + map.get("ending") + "\n");
 		out.append("reflexive : " + map.get("reflexive") + "\n");
 		out.append("\n");
-		
+
 		out.append("preschentsing1 : " + map.get("preschentsing1") + "\n");
 		out.append("preschentsing2 : " + map.get("preschentsing2") + "\n");
 		out.append("preschentsing3 : " + map.get("preschentsing3") + "\n");
@@ -1237,7 +927,7 @@ public class ConjugationGenerator {
 		out.append("preschentplural2 : " + map.get("preschentplural2") + "\n");
 		out.append("preschentplural3 : " + map.get("preschentplural3") + "\n");
 		out.append("\n");
-		
+
 		out.append("imperfectsing1 : " + map.get("imperfectsing1") + "\n");
 		out.append("imperfectsing2 : " + map.get("imperfectsing2") + "\n");
 		out.append("imperfectsing3 : " + map.get("imperfectsing3") + "\n");
@@ -1245,7 +935,7 @@ public class ConjugationGenerator {
 		out.append("imperfectplural2 : " + map.get("imperfectplural2") + "\n");
 		out.append("imperfectplural3 : " + map.get("imperfectplural3") + "\n");
 		out.append("\n");
-		
+
 		out.append("futursing1 : " + map.get("futursing1") + "\n");
 		out.append("futursing2 : " + map.get("futursing2") + "\n");
 		out.append("futursing3 : " + map.get("futursing3") + "\n");
@@ -1253,7 +943,7 @@ public class ConjugationGenerator {
 		out.append("futurplural2 : " + map.get("futurplural2") + "\n");
 		out.append("futurplural3 : " + map.get("futurplural3") + "\n");
 		out.append("\n");
-		
+
 		out.append("conjunctivsing1 : " + map.get("conjunctivsing1") + "\n");
 		out.append("conjunctivsing2 : " + map.get("conjunctivsing2") + "\n");
 		out.append("conjunctivsing3 : " + map.get("conjunctivsing3") + "\n");
@@ -1261,28 +951,30 @@ public class ConjugationGenerator {
 		out.append("conjunctivplural2 : " + map.get("conjunctivplural2") + "\n");
 		out.append("conjunctivplural3 : " + map.get("conjunctivplural3") + "\n");
 		out.append("\n");
-		
+
 		out.append("cundizionalsing1 : " + map.get("cundizionalsing1") + "\n");
 		out.append("cundizionalsing2 : " + map.get("cundizionalsing2") + "\n");
 		out.append("cundizionalsing3 : " + map.get("cundizionalsing3") + "\n");
-		out.append("cundizionalplural1 : " + map.get("cundizionalplural1") + "\n");
-		out.append("cundizionalplural2 : " + map.get("cundizionalplural2") + "\n");
-		out.append("cundizionalplural3 : " + map.get("cundizionalplural3") + "\n");
+		out.append("cundizionalplural1 : " + map.get("cundizionalplural1")
+				+ "\n");
+		out.append("cundizionalplural2 : " + map.get("cundizionalplural2")
+				+ "\n");
+		out.append("cundizionalplural3 : " + map.get("cundizionalplural3")
+				+ "\n");
 		out.append("\n");
-		
+
 		out.append("participperfectms : " + map.get("participperfectms") + "\n");
 		out.append("participperfectfs : " + map.get("participperfectfs") + "\n");
 		out.append("participperfectmp : " + map.get("participperfectmp") + "\n");
 		out.append("participperfectfp : " + map.get("participperfectfp") + "\n");
 		out.append("\n");
-		
+
 		out.append("gerundium : " + map.get("gerundium") + "\n");
 		out.append("\n");
-		
+
 		out.append("imperativ1 : " + map.get("imperativ1") + "\n");
 		out.append("imperativ2 : " + map.get("imperativ2") + "\n");
 		out.append("\n");
-		
 
 		out.flush();
 		out.close();
