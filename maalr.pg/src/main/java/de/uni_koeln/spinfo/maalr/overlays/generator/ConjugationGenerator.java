@@ -132,6 +132,9 @@ public class ConjugationGenerator {
 		case 7:
 			conjugation = conjugate(root, "art-7");
 			break;
+			
+			// TODO case 8?
+			
 		}
 		return addPronouns(conjugation);
 	}
@@ -158,21 +161,13 @@ public class ConjugationGenerator {
 						+ " is not a valid verb." + "\n"
 						+ "Please type a verb in its infinitive form.");
 			default:
-				// TODO: Eine solche Liste für Sutsilvan --> kurze Wörter, die
-				// nicht als Endung analysiert werden können!
 				avoid = new HashSet<String>();
 				avoid.add("ir");
 				avoid.add("er");
-				/*
-				 * avoid.add("ar"); avoid.add("er"); avoid.add("air");
-				 * avoid.add("s'ar"); avoid.add("s'ir"); avoid.add("s'er");
-				 * avoid.add("s'air"); avoid.add("sa ar"); avoid.add("sa er");
-				 * avoid.add("sa ir"); avoid.add("sa air"); avoid.add("sa'ar");
-				 * avoid.add("sa'ir"); avoid.add("sa'er"); avoid.add("sa'air");
-				 */
-
+				avoid.add("near");
+				avoid.add("sa");
 				if (avoid.contains(query)) {
-
+					
 					throw new RuntimeException("'" + query + "'"
 							+ " is not a valid verb." + "\n"
 							+ "Please type a verb in its infinitive form.");
@@ -412,11 +407,7 @@ public class ConjugationGenerator {
 			// 3ps
 			cs.setCundizionalsing3(root + "ass");
 			// 1pp
-			if (cs.getConjugationclass().equals("art-5")) {
-				cs.setCundizionalplural1(root + "assa");
-			} else {
-				cs.setCundizionalplural1(root + "assan");
-			}
+			cs.setCundizionalplural1(root + "assan");
 			// 2pp
 			cs.setCundizionalplural2(root + "assas");
 			// 3pp
