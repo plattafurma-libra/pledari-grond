@@ -23,6 +23,7 @@
 			<option value="7" label="-ir_esch (capir)" />
 			<option value="8" label="verbs alternànts" />
 		</options>
+		<!-- see de.uni_koeln.spinfo.maalr.common.shared.OverlayOption.getLabel() and de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.entry.AdvancedEditor, line 501 (addItem) -->
 	</presetchooser>
 	<rows>
 		<row>

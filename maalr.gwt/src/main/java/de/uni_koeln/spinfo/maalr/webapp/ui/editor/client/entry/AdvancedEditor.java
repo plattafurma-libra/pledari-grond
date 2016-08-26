@@ -74,7 +74,6 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.AsyncLemmaDescriptionLo
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.LemmaEditorWidget;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util.SimpleWebLogger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorConstants;
 import de.uni_koeln.spinfo.maalr.webapp.ui.editor.client.EditorMessages;
@@ -497,7 +496,8 @@ public class AdvancedEditor {
 						int selected = -1;
 						for (int i = 0; i < options.size(); i++) {
 							OverlayOption option = options.get(i);
-							list.addItem(option.getValue());
+//							list.addItem(option.getValue());
+							list.addItem(option.getLabel(), option.getValue());
 							if (option.getValue().equals(lv.getEntryValue(id))) {
 								selected = i;
 							}

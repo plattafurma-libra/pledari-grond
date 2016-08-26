@@ -45,12 +45,15 @@ public class ConjugationGenerator {
 	// -ear_esch (inditgear) - 6
 	//
 	// -ir_esch (capir) - 7
+	//
+	// irregular - 8
 
 	private ConjugationStructure cs;
 
 	private Pronouns pronouns;
 
-	private String isReflexive;
+	// bei Reflexiva keine Änderung des Pronomens, können wie 'normale' Verben behandelt werden!
+	private String isReflexive = "false";
 
 	private String infinitiv;
 
@@ -67,6 +70,8 @@ public class ConjugationGenerator {
 	private String lastTwo;
 	private String lastThree;
 
+	private String root;
+
 	public String processQuery(String query) {
 
 		String l2 = query.substring(query.length() - 2);
@@ -79,7 +84,7 @@ public class ConjugationGenerator {
 			if (!l3.equals("ear")) {
 				setLastTwo(l2);
 				setEnding(getLastTwo());
-				query = checkReflexiveness(query);
+//				query = checkReflexiveness(query);
 				query = query.substring(0, query.length() - 2);
 				return query;
 			}
@@ -89,7 +94,7 @@ public class ConjugationGenerator {
 		if (l3.equals("ear")) {
 			setLastThree(l3);
 			setEnding(getLastThree());
-			query = checkReflexiveness(query);
+//			query = checkReflexiveness(query);
 			query = query.substring(0, query.length() - 3);
 			return query;
 		}
@@ -99,12 +104,12 @@ public class ConjugationGenerator {
 	public HashMap<String, String> generateConjugation(String infinitiv,
 			int conjugationCLass) {
 
-		String root = getRoot(infinitiv);
+		root = getRoot(infinitiv);
 
-		if (conjugationCLass < 1 || conjugationCLass > 7) {
+		if (conjugationCLass < 1 || conjugationCLass > 8) {
 			throw new RuntimeException(conjugationCLass
 					+ " is not a valid conjugation class." + "\n"
-					+ "The range of conjugations is from 1 to 7.");
+					+ "The range of conjugations is from 1 to 8.");
 		} else if (getEnding() == null) {
 			throw new RuntimeException(infinitiv + "  is not a valid verb."
 					+ "\n" + "Please type a verb in its infinitive form.");
@@ -132,9 +137,15 @@ public class ConjugationGenerator {
 		case 7:
 			conjugation = conjugate(root, "art-7");
 			break;
-			
-			// TODO case 8?
-			
+
+		// TODO case 8? lässt sich das als 'regelmässig' lösen? oder alle von
+		// hand?
+		case 8:
+			conjugation = conjugate(root, "art-7");
+			System.out
+					.println("### TODO achte Konjugation: unregelmaessig ###");
+			break;
+
 		}
 		return addPronouns(conjugation);
 	}
@@ -145,10 +156,10 @@ public class ConjugationGenerator {
 
 			query = removeWhitespaces(query);
 
-			if (query.equals("ir")) {
+			if (query.equals("ir") || query.equals("er")) {
 				setVerb(query);
 				setEnding(query);
-				query = checkReflexiveness(query);
+//				query = checkReflexiveness(query);
 				return query;
 			}
 
@@ -162,12 +173,12 @@ public class ConjugationGenerator {
 						+ "Please type a verb in its infinitive form.");
 			default:
 				avoid = new HashSet<String>();
-				avoid.add("ir");
-				avoid.add("er");
+//				avoid.add("ir");
+//				avoid.add("er");
 				avoid.add("near");
 				avoid.add("sa");
 				if (avoid.contains(query)) {
-					
+
 					throw new RuntimeException("'" + query + "'"
 							+ " is not a valid verb." + "\n"
 							+ "Please type a verb in its infinitive form.");
@@ -184,26 +195,26 @@ public class ConjugationGenerator {
 		return query.toLowerCase().replaceAll("^\\s+|\\s+$", "");
 	}
 
-	public String checkReflexiveness(String query) {
-
-		if (query.startsWith("sa")) {
-			setVerb(query);
-			// query = query.length() > 2 ? query.substring(3) : query;
-			setIsReflexive(new String("true"));
-
-		} else if (query.startsWith("s'")) {
-			setVerb(query);
-			query = query.length() > 2 ? query.substring(2) : query;
-			setIsReflexive(new String("true"));
-		} else {
-			setIsReflexive(new String("false"));
-			setVerb(query);
-		}
-
-		setInfinitiv(query);
-
-		return query;
-	}
+//	public String checkReflexiveness(String query) {
+//
+//		if (query.startsWith("sa")) {
+//			setVerb(query);
+//			// query = query.length() > 2 ? query.substring(3) : query;
+//			setIsReflexive(new String("true"));
+//
+//		} else if (query.startsWith("s'")) {
+//			setVerb(query);
+//			query = query.length() > 2 ? query.substring(2) : query;
+//			setIsReflexive(new String("true"));
+//		} else {
+//			setIsReflexive(new String("false"));
+//			setVerb(query);
+//		}
+//
+//		setInfinitiv(query);
+//
+//		return query;
+//	}
 
 	public ArrayList<HashMap<String, String>> generateAll(String infinitiv) {
 
@@ -250,7 +261,6 @@ public class ConjugationGenerator {
 
 		return cs.getValues();
 	}
-
 
 	public void setPreschent(String root, ConjugationStructure cs) {
 
@@ -573,27 +583,28 @@ public class ConjugationGenerator {
 	public HashMap<String, String> addPronouns(
 			HashMap<String, String> conjugation) {
 
-		Map<String, String> pronouns;
-		String verb = conjugation.get("verb");
-		// HashMap<String, String> reflexiveConjugation = new HashMap<>();
-
-		if (verb.startsWith("sa ")) {
-			// Reflexive Verbs that start with Consonants
-			pronouns = pronounsForReflexiveConsonantalVerbs();
-			return addReflexivePronouns(conjugation, pronouns);
-
-		} else if (verb.startsWith("s'")) {
-			// Reflexive Verbs that start with Vocals
-			pronouns = pronounsForReflexiveVocalicVerbs();
-			return addReflexivePronouns(conjugation, pronouns);
-
-		} else {
+//		Map<String, String> pronouns;
+//		String verb = conjugation.get("verb");
+//		// HashMap<String, String> reflexiveConjugation = new HashMap<>();
+//
+//		if (verb.startsWith("sa ")) {
+//			// Reflexive Verbs that start with Consonants
+//			pronouns = pronounsForReflexiveConsonantalVerbs();
+//			return addReflexivePronouns(conjugation, pronouns);
+//
+//		} else if (verb.startsWith("s'")) {
+//			// Reflexive Verbs that start with Vocals
+//			pronouns = pronounsForReflexiveVocalicVerbs();
+//			return addReflexivePronouns(conjugation, pronouns);
+//
+//		} else {
 			// Standard Verbs
 			return addStandardPronouns(conjugation);
-		}
+//		}
 
 	}
 
+	/*
 	public HashMap<String, String> addReflexivePronouns(
 			Map<String, String> conjugation, Map<String, String> pronouns) {
 		cs = new ConjugationStructure();
@@ -700,6 +711,7 @@ public class ConjugationGenerator {
 		return cs.getValues();
 
 	}
+	 */
 
 	public HashMap<String, String> addStandardPronouns(
 			Map<String, String> conjugation) {
@@ -849,7 +861,7 @@ public class ConjugationGenerator {
 	}
 
 	public Map<String, String> pronounsForReflexiveVocalicVerbs() {
-		
+
 		pronouns = new Pronouns();
 		// STANDARD
 		pronouns.setFirstPs(Pronouns.pron_1ps + Pronouns.pron_r_v_1ps);
@@ -1031,10 +1043,10 @@ public class ConjugationGenerator {
 		return isReflexive;
 	}
 
-	public void setIsReflexive(String isReflexive) {
-		this.isReflexive = isReflexive;
-	}
-
+//	public void setIsReflexive(String isReflexive) {
+//		this.isReflexive = isReflexive;
+//	}
+//
 	public String getInfinitiv() {
 		return infinitiv;
 	}

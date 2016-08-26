@@ -25,7 +25,7 @@ public class OverlayOption implements Serializable {
 
 	@Override
 	public String toString() {
-		return "OverlayOption [value=" + value + "]";
+		return "OverlayOption [value=" + value + ", label=" + label + "]";
 	}
 
 	@XmlAttribute(name="value")
@@ -33,6 +33,13 @@ public class OverlayOption implements Serializable {
 
 	public String getValue() {
 		return value;
+	}
+	
+	@XmlAttribute(name="label")
+	private String label;
+
+	public String getLabel() {
+		return label;
 	}
 
 }
