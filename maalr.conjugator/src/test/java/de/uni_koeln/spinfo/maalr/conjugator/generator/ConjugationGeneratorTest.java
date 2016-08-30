@@ -291,7 +291,6 @@ public class ConjugationGeneratorTest {
 		String root = conjGen.getRoot("inditgear");
 		ConjugationStructure cs = new ConjugationStructure();
 		cs.setInfinitiv(conjGen.getInfinitiv());
-		cs.setReflexive(conjGen.getIsReflexive());
 		conjGen.setFutur(root, cs);
 		HashMap<String, String> map = cs.getValues();
 		TreeMap<String, String> treeMap = new TreeMap<String, String>();

@@ -32,7 +32,7 @@ import java.util.Set;
 
 public class ConjugationGenerator {
 
-	// No reflexives in Sutsilvan!
+	// No reflexives in Sutsilvan! No reflexive pronouns.
 	//
 	// (Endung - Klasse)
 	//
@@ -53,10 +53,6 @@ public class ConjugationGenerator {
 	// - vokalwechsel (ampruvar) - 8
 
 	private ConjugationStructure cs;
-
-	// im Sutsilvan bei Reflexiva keine Änderung des Pronomens, können wie
-	// 'normale' Verben behandelt werden!
-	private String isReflexive = "false";
 
 	private String infinitiv;
 
@@ -112,12 +108,10 @@ public class ConjugationGenerator {
 
 		if (conjugationCLass == 8) {
 			modRoot = changeVocalInRoot(root, conjugationCLass);
-
 			if (modRoot == null) {
 				throw new RuntimeException(
 						"For this conjugation you need to enter a verb with a vowel in its root!");
 			}
-
 		}
 
 		if (conjugationCLass < 1 || conjugationCLass > 8) {
@@ -195,7 +189,7 @@ public class ConjugationGenerator {
 
 	public String changeVocalInRoot(String root, int conjugationClass) {
 		StringBuilder builder = null;
-		List<String> aToO = Arrays.asList("clam", "dumand", "sadumand",
+		List<String> a_turnsTo_o = Arrays.asList("clam", "dumand", "sadumand",
 				"racumand");
 		for (int i = root.length() - 1; i >= 0; i--) {
 			char ch = root.charAt(i);
@@ -205,7 +199,7 @@ public class ConjugationGenerator {
 
 				switch (ch) {
 				case 'a':
-					if (aToO.contains(root)) {
+					if (a_turnsTo_o.contains(root)) {
 						builder.setCharAt(i, 'o');
 					} else {
 						builder.setCharAt(i, 'e');
@@ -270,7 +264,6 @@ public class ConjugationGenerator {
 		cs.setRoot(root);
 		cs.setEnding(getEnding());
 		cs.setConjugationClass(art);
-		cs.setReflexive(getIsReflexive());
 
 		// PRESCHENT
 		setPreschent(root, cs);
@@ -575,55 +568,20 @@ public class ConjugationGenerator {
 
 	public void setFutur(String root, ConjugationStructure cs) {
 
-		switch (getIsReflexive()) {
-
-		case "true":
-			if (isVocal(root)) {
-				cs.setFutursing1("vignt a " + Pronouns.pron_r_v_1ps
-						+ cs.getInfinitiv());
-				cs.setFutursing2("veans a " + Pronouns.pron_r_v_2ps
-						+ cs.getInfinitiv());
-				cs.setFutursing3("vean a " + Pronouns.pron_r_v_3ps
-						+ cs.getInfinitiv());
-				cs.setFuturplural1("vagnagn ad " + Pronouns.pron_r_v_1pp
-						+ cs.getInfinitiv());
-				cs.setFuturplural2("vagnez ad " + Pronouns.pron_r_v_2pp
-						+ cs.getInfinitiv());
-				cs.setFuturplural3("vignan a " + Pronouns.pron_r_v_3pp
-						+ cs.getInfinitiv());
-			} else {
-				cs.setFutursing1("vignt a " + Pronouns.pron_r_1ps
-						+ cs.getInfinitiv());
-				cs.setFutursing2("veans a " + Pronouns.pron_r_2ps
-						+ cs.getInfinitiv());
-				cs.setFutursing3("vean a " + Pronouns.pron_r_3ps
-						+ cs.getInfinitiv());
-				cs.setFuturplural1("vagnagn ad " + Pronouns.pron_r_1pp
-						+ cs.getInfinitiv());
-				cs.setFuturplural2("vagnez ad " + Pronouns.pron_r_2pp
-						+ cs.getInfinitiv());
-				cs.setFuturplural3("vignan a " + Pronouns.pron_r_3pp
-						+ cs.getInfinitiv());
-			}
-			break;
-
-		case "false":
-			if (isVocal(root)) {
-				cs.setFutursing1("vignt ad " + cs.getInfinitiv());
-				cs.setFutursing2("veans ad " + cs.getInfinitiv());
-				cs.setFutursing3("vean ad " + cs.getInfinitiv());
-				cs.setFuturplural1("vagnagn ad " + cs.getInfinitiv());
-				cs.setFuturplural2("vagnez ad " + cs.getInfinitiv());
-				cs.setFuturplural3("vignan ad " + cs.getInfinitiv());
-			} else {
-				cs.setFutursing1("vignt a " + cs.getInfinitiv());
-				cs.setFutursing2("veans a " + cs.getInfinitiv());
-				cs.setFutursing3("vean a " + cs.getInfinitiv());
-				cs.setFuturplural1("vagnagn a " + cs.getInfinitiv());
-				cs.setFuturplural2("vagnez a " + cs.getInfinitiv());
-				cs.setFuturplural3("vignan a " + cs.getInfinitiv());
-			}
-			break;
+		if (isVocal(root)) {
+			cs.setFutursing1("vignt ad " + cs.getInfinitiv());
+			cs.setFutursing2("veans ad " + cs.getInfinitiv());
+			cs.setFutursing3("vean ad " + cs.getInfinitiv());
+			cs.setFuturplural1("vagnagn ad " + cs.getInfinitiv());
+			cs.setFuturplural2("vagnez ad " + cs.getInfinitiv());
+			cs.setFuturplural3("vignan ad " + cs.getInfinitiv());
+		} else {
+			cs.setFutursing1("vignt a " + cs.getInfinitiv());
+			cs.setFutursing2("veans a " + cs.getInfinitiv());
+			cs.setFutursing3("vean a " + cs.getInfinitiv());
+			cs.setFuturplural1("vagnagn a " + cs.getInfinitiv());
+			cs.setFuturplural2("vagnez a " + cs.getInfinitiv());
+			cs.setFuturplural3("vignan a " + cs.getInfinitiv());
 		}
 	}
 
@@ -646,8 +604,6 @@ public class ConjugationGenerator {
 
 	public HashMap<String, String> addPronouns(
 			HashMap<String, String> conjugation) {
-
-		// No reflexive pronouns needed in Sutsilvan!
 
 		ConjugationStructure cs = new ConjugationStructure();
 
@@ -887,10 +843,6 @@ public class ConjugationGenerator {
 
 	public void setConjugation(HashMap<String, String> conjugation) {
 		this.conjugation = conjugation;
-	}
-
-	public String getIsReflexive() {
-		return isReflexive;
 	}
 
 	public String getInfinitiv() {
