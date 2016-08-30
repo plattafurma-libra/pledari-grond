@@ -5,9 +5,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,13 +27,8 @@ public class MapVerbsTest {
 	 */
 	@Test
 	public void testAddConjugations() throws IOException {
-
 		List<String> list = mapper.addConjugations("data_st_noVerbs.tab");
 		VerbsIO.printList(list, "data_st_out");
-
-		Set<String> set = new LinkedHashSet<String>(list);
-		VerbsIO.printSet(set, "data_st_set_out");
-
 	}
 
 	@Test
@@ -45,54 +40,65 @@ public class MapVerbsTest {
 		} else {
 			System.out.println("false");
 		}
+		s ="528	anfangen		tr/int	antschever		tr/int	antschavagn; partizip perfect: antschiet																																								";
+		array = s.split("\\t");
+		if (array[3].equals("tr/int")) {
+			System.out.println("true: "+array[3]);
+		} else {
+			System.out.println("false");
+		}
+		System.out.println(Arrays.asList(array));
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+		System.out.println("RFlex: "+array[7]);
 	}
 
 	@Test
 	public void testRegex() {
-
 		String s = "";
-
 		if (mapper.isEmpty(s)) {
 			System.out.println("empty");
 		}
-
 	}
 
 	@Test
 	public void formatIrregulars() throws IOException {
-
 		List<HashMap<String, String>> list_irregulars = mapper
 				.parseIrregulars("irregulars_st.txt");
-
-		// VerbsIO.printList(list_irregulars, "irreg_format_map");
+		 VerbsIO.printList(list_irregulars, "irreg_format_map");
 	}
 
 
 	@Test
 	public void showDups() throws IOException {
 
-//		List<HashMap<String, String>> list_irregulars = mapper
-//				.parseIrregulars("irregulars_st.txt");
+		List<HashMap<String, String>> list_irregulars = mapper
+				.parseIrregulars("irregulars_st.txt");
 		
 		List<String> toGenerate = new ArrayList<>();
 		List<String> regulars = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "regulars_st.txt"),
 				Charset.forName("UTF8"));
+		List<String> vw = Files.readAllLines(
+				Paths.get(VerbsIO.input_dir + "vw_st.txt"),
+				Charset.forName("UTF8"));
 		List<String> esch = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "reg_esch_st.txt"),
 				Charset.forName("UTF8"));
 		toGenerate.addAll(regulars);
+		toGenerate.addAll(vw);
 		toGenerate.addAll(esch);
 		Set<String> set = new HashSet<>();
 		for (String s : toGenerate) {
 			String[] splitted = s.split("\t");
 			set.add(splitted[0]);
 		}
-//		for (HashMap<String, String> m : list_irregulars) {
-//			String v = m.get("verb");
-//			if (set.contains(v)) {
-//				System.out.println("DUP: " + v);
-//			}
-//		}
+		for (HashMap<String, String> m : list_irregulars) {
+			String v = m.get("verb");
+			if (set.contains(v)) {
+				System.out.println("DUP: " + v);
+			}
+		}
 	}
 }

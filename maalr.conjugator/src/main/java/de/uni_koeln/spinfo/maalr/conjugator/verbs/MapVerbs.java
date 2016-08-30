@@ -6,9 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,8 +24,6 @@ public class MapVerbs {
 
 		List<String> list = new ArrayList<>();
 		List<String> found = new ArrayList<>();
-		Set<String> reg_fifth = new HashSet<String>();
-		Set<String> reg_second = new HashSet<String>();
 
 		List<String> raw_vwVerbs = Files.readAllLines(
 				Paths.get(VerbsIO.input_dir + "vw_st.txt"),
@@ -42,9 +38,9 @@ public class MapVerbs {
 				Charset.forName("UTF8"));
 
 		// Get only the infinitive forms
-		List<Verb> vwVerbs = cleanVW(raw_vwVerbs);
-		List<Verb> regEschVerbs = cleanRegEsch(raw_regEschVerbs);
-		List<Verb> regVerbs = cleanReg(raw_regVerbs);
+		List<Verb> vwVerbs = clean(raw_vwVerbs);
+		List<Verb> regEschVerbs = clean(raw_regEschVerbs);
+		List<Verb> regVerbs = clean(raw_regVerbs);
 
 		List<HashMap<String, String>> list_irregulars = parseIrregulars("irregulars_st.txt");
 
@@ -59,7 +55,6 @@ public class MapVerbs {
 
 				// Add required conjugation fields @ first line
 				if (reader.getLineNumber() == 1) {
-					// System.out.println("first line: " + currentLine);
 					StringBuffer fl = new StringBuffer();
 					fl.append(currentLine);
 					for (String s : structure.msi) {
@@ -68,22 +63,22 @@ public class MapVerbs {
 					}
 					fl.append("\t");
 					fl.append("maalr_overlay_lang2");
-					// System.out.println("line with add. fields: "+fl.toString());
 					list.add(fl.toString());
 
 				} else {
 					String[] array = currentLine.split("\t");
-					String verb, DGenus = "", RGenus = "", DGrammatik = "";
-					if (array.length < 6) {
-						// System.out.println(reader.getLineNumber()+"SKIP (short line!) - "+currentLine);
+					String verb, DGenus = "", RGenus = "", DGrammatik = "", RFlex = "";
+					//skip grammar check for short lines (avoid IndexOutOfBounds)
+					if (array.length < 8) {
 						verb = array[4];
 					} else {
 						verb = array[4];
 						DGenus = array[2];
 						RGenus = array[5];
 						DGrammatik = array[3];
+						RFlex = array[7];
 					}
-					
+
 					StringBuffer ol = new StringBuffer();
 					HashMap<String, String> map = null;
 
@@ -99,6 +94,10 @@ public class MapVerbs {
 							} else {
 								processed = true;
 								found.add(verb + "\t" + "irr");
+
+								// remove RFlex (containing conjugation hints)
+								currentLine = removeRFlex(currentLine, RFlex);
+
 								ol.append(currentLine);
 								for (String s : structure.msi) {
 									ol.append("\t");
@@ -125,8 +124,7 @@ public class MapVerbs {
 								found.add(verb + "\t" + "reg");
 								generator.processQuery(verb);
 								String ending = generator.getEnding();
-								map = generateRegulars(verb, vs, map, ending,
-										reg_fifth, reg_second);
+								map = generateRegulars(verb, map, ending);
 							}
 						}
 					}
@@ -152,7 +150,7 @@ public class MapVerbs {
 						if (vs.getForm().equals(verb)) {
 							if (!isVerb(structure, DGenus, RGenus, DGrammatik,
 									list, currentLine)) {
-								System.out.println("ESCH\tno verb entry: "
+								System.out.println("REG_ESCH\tno verb entry: "
 										+ currentLine);
 								break;
 							} else {
@@ -167,6 +165,10 @@ public class MapVerbs {
 
 					// VERB WAS FOUND AND CONJUGATED
 					if (map != null) {
+
+						// remove RFlex (containing conjugation hints)
+						currentLine = removeRFlex(currentLine, RFlex);
+
 						ol.append(currentLine);
 						for (String s : structure.msi) {
 							ol.append("\t");
@@ -196,10 +198,17 @@ public class MapVerbs {
 		Set<String> foundset = new LinkedHashSet<>(found);
 		VerbsIO.printSet(foundset, "found_set");
 		System.out.println("### done. " + reader.getLineNumber()
-				+ "lines read, " + list.size() + " lines to write.");
+				+ " lines read, " + list.size() + " lines to write.");
 		reader.close();
 
 		return list;
+	}
+
+	/*
+	 * remove field contents in 'RFlex' (containing conjugation hints)
+	 */
+	private String removeRFlex(String currentLine, String RFlex) {
+		return currentLine.replace(RFlex, "");
 	}
 
 	private HashMap<String, String> generateRegularsEsch(
@@ -218,9 +227,8 @@ public class MapVerbs {
 		return map;
 	}
 
-	private HashMap<String, String> generateRegulars(String verb, Verb vs,
-			HashMap<String, String> map, String ending, Set<String> reg_fifth,
-			Set<String> reg_second) {
+	private HashMap<String, String> generateRegulars(String verb,
+			HashMap<String, String> map, String ending) {
 
 		switch (ending) {
 		case "ar":
@@ -248,22 +256,20 @@ public class MapVerbs {
 
 		List<String> indent = new ArrayList<>();
 		for (String s : irreg) {
-			if (!s.equals("") && !s.startsWith("#")) {// not empty and no
-														// comment
+			// line not empty and no comment:
+			if (!s.equals("") && !s.startsWith("#")) {
 				indent.add(s);
 			}
 		}
 		System.out.println("indent: " + indent);
-		
+
 		ConjugationGenerator cg = new ConjugationGenerator();
 		List<HashMap<String, String>> lcs = new ArrayList<>();
-		int j = 0;
 		for (int i = 0; i < indent.size(); i++) {
 
 			if (indent.get(i).contains("–") && indent.get(i).length() > 2
 					|| indent.get(i).contains("-")
 					&& indent.get(i).length() > 2) {
-				j++;
 				String st = indent.get(i);
 				String[] lemma = null;
 				if (indent.get(i).contains("–")) {
@@ -345,58 +351,22 @@ public class MapVerbs {
 
 				lcs.add(cg.addPronouns(cs.getValues()));
 
-//				System.out.println(cs.getValues());
+				// System.out.println(cs.getValues());
 			}
 
 		}
 		VerbsIO.printList(lcs, "lcs");
-		System.out.println(j + " irr. verbs processed: " + lcs.size());
+		System.out.println("irr. verbs processed: " + lcs.size());
 		return lcs;
 	}
 
-	private List<Verb> cleanVW(List<String> toClean) {
+	private List<Verb> clean(List<String> toClean) {
 		List<Verb> cleaned = new ArrayList<>();
 		for (String s : toClean) {
+			//skip comments and empty lines
 			if (s.startsWith("#") || s.isEmpty()) {
-//				System.out.println("skip comment: " + s);
 				continue;
 			}
-			String[] array = s.split("\t");
-			if (array.length == 2) {
-				Verb v = new Verb();
-				v.setForm(array[0]);
-				cleaned.add(v);
-			} else if (array.length == 1) {
-				Verb v = new Verb();
-				v.setForm(s.trim());
-				cleaned.add(v);
-			}
-		}
-		return cleaned;
-	}
-
-	private List<Verb> cleanRegEsch(List<String> toClean) {
-		List<Verb> cleaned = new ArrayList<>();
-
-		for (String s : toClean) {
-			String[] array = s.split("\t");
-			if (array.length == 2) {
-				Verb v = new Verb();
-				v.setForm(array[0]);
-				cleaned.add(v);
-			} else if (array.length == 1) {
-				Verb v = new Verb();
-				v.setForm(s.trim());
-				cleaned.add(v);
-			}
-		}
-		return cleaned;
-	}
-
-	private List<Verb> cleanReg(List<String> toClean) {
-		List<Verb> cleaned = new ArrayList<>();
-
-		for (String s : toClean) {
 			String[] array = s.split("\t");
 			if (array.length == 2) {
 				Verb v = new Verb();
