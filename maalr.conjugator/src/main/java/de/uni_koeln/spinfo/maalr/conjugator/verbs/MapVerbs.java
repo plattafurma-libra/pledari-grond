@@ -22,6 +22,8 @@ public class MapVerbs {
 
 	public List<String> addConjugations(String fileName) throws IOException {
 
+		System.out.println("processing infile: " + fileName);
+		
 		List<String> list = new ArrayList<>();
 		List<String> found = new ArrayList<>();
 
@@ -47,7 +49,6 @@ public class MapVerbs {
 		ConjugationStructure structure = new ConjugationStructure();
 		boolean processed;
 		LineNumberReader reader = VerbsIO.getReader(fileName);
-		System.out.println("infile: " + fileName);
 		String currentLine;
 		try {
 			while ((currentLine = reader.readLine()) != null) {
@@ -290,6 +291,7 @@ public class MapVerbs {
 				cs.setPreschentplural1(presArray[3]);
 				cs.setPreschentplural2(presArray[4]);
 				cs.setPreschentplural3(presArray[5]);
+//				System.out.println("pres\t"+Arrays.asList(presArray));
 
 				// Imperfect
 				String imp = indent.get(++i);
@@ -300,6 +302,7 @@ public class MapVerbs {
 				cs.setImperfectplural1(impArray[3]);
 				cs.setImperfectplural2(impArray[4]);
 				cs.setImperfectplural3(impArray[5]);
+//				System.out.println("imp\t"+Arrays.asList(impArray));
 
 				// Futur
 				String fut = indent.get(++i);
@@ -310,6 +313,7 @@ public class MapVerbs {
 				cs.setFuturplural1(futArray[3]);
 				cs.setFuturplural2(futArray[4]);
 				cs.setFuturplural3(futArray[5]);
+//				System.out.println("fut\t"+Arrays.asList(futArray));
 
 				// Conjunctiv
 				String conj = indent.get(++i);
@@ -320,6 +324,7 @@ public class MapVerbs {
 				cs.setConjunctivplural1(conjArray[3]);
 				cs.setConjunctivplural2(conjArray[4]);
 				cs.setConjunctivplural3(conjArray[5]);
+//				System.out.println("conj\t"+Arrays.asList(conjArray));
 
 				// Cundizional
 				String cund = indent.get(++i);
@@ -330,30 +335,32 @@ public class MapVerbs {
 				cs.setCundizionalplural1(cundArray[3]);
 				cs.setCundizionalplural2(cundArray[4]);
 				cs.setCundizionalplural3(cundArray[5]);
+//				System.out.println("cund\t"+Arrays.asList(cundArray));
 
 				// Partizip
 				String part = indent.get(++i);
 				String[] partArray = part.split("\t");
 				cs.setParticipperfectms(partArray[0]);
-				cs.setParticipperfectmp(partArray[1]);
-				cs.setParticipperfectfs(partArray[2]);
+				cs.setParticipperfectfs(partArray[1]);
+				cs.setParticipperfectmp(partArray[2]);
 				cs.setParticipperfectfp(partArray[3]);
+//				System.out.println("part\t"+Arrays.asList(partArray));
 
 				// Gerundium
 				String ger = indent.get(++i);
 				cs.setGerundium(ger);
+//				System.out.println("ger\t"+ger);
 
 				// Imperativ
 				String imperat = indent.get(++i);
 				String[] imperatArray = imperat.split("\t");
 				cs.setImperativ1(imperatArray[0]);
 				cs.setImperativ2(imperatArray[1]);
+//				System.out.println("imperat\t"+Arrays.asList(imperatArray));
 
 				lcs.add(cg.addPronouns(cs.getValues()));
-
-				// System.out.println(cs.getValues());
+				System.out.println(cs.getValues());
 			}
-
 		}
 		VerbsIO.printList(lcs, "lcs");
 		System.out.println("irr. verbs processed: " + lcs.size());
