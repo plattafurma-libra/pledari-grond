@@ -518,7 +518,7 @@ curagiànd
 
 curegia!	curagead!
 
-
+#problematisch: meist nur 3. pers. - vgl. z.B. schneien)
 #gartagear-gelingen
 
 #gartegia	gartegian
@@ -1412,7 +1412,7 @@ pardànd
 pearda!	parded!
 
 
-pender-h‰ngen
+pender-hängen
 
 pend[el]	pendas	penda	pandagn	pandez	pendan
 
@@ -2576,3 +2576,631 @@ bugliànd
 
 buglia!	buglied!
 
+
+frestgantar-kühlen 
+
+frestgaint[el]	frestgaintas	frestgainta	frestgantagn	frestgantaz	frestgaintan
+
+frestgantava	frestgantavas	frestgantava	frestgantavan	frestgantavas	frestgantavan
+
+vignt a frestgantar	veans a frestgantar	vean a frestgantar	vagnagn a frestgantar	vagnez a frestgantar	vignan a frestgantar
+
+frestgainti	frestgaint(i)as	frestgainti	frestganteian	frestganteias	frestgaint(i)an
+
+frestgantass	frestgantassas	frestgantass	frestgantassan	frestgantassas	frestgantassan
+
+frestganto	frestgantada	frestgantos	frestgantadas
+
+frestgantànd
+
+frestgainta!	frestgantad!
+
+
+giantar-das Mittagessen einnehmen
+
+giaint[el]	giaintas	giainta	giantagn	giantaz	giaintan
+
+giantava	giantavas	giantava	giantavan	giantavas	giantavan
+
+vignt a giantar	veans a giantar	vean a giantar	vagnagn a giantar	vagnez a giantar	vignan a giantar
+
+giainti	giaint(i)as	giainti	gianteian	gianteias	giaint(i)an
+
+giantass	giantassas	giantass	giantassan	giantassas	giantassan
+
+gianto	giantos	giantada	giantada
+
+giantànd
+
+giainta!	giantad!
+
+
+mancantar-verpassen
+
+mancaint[el]	mancaintas	mancainta	mancantagn	mancantaz	mancaintan
+
+mancantava	mancantavas	mancantava	mancantavan	mancantavas	mancantavan
+
+vignt a mancantar	veans a mancantar	vean a mancantar	vagnagn a mancantar	vagnez a mancantar	vignan a mancantar
+
+mancainti	mancaint(i)as	mancainti	mancanteian	mancanteias	mancant(i)an
+
+mancantass	mancantassas	mancantass	mancantassan	mancantassas	mancantassan
+
+mancanto	mancantada	mancantos	mancantadas
+
+mancantànd
+
+mancainta!	mancantad!
+
+
+passantar-verbringen
+
+passaint[el]	passaintas	passainta	passantagn	passantaz	passaintan
+
+passantava	passantavas	passantava	passantavan	passantavas	passantavan
+
+vignt a passantar	veans a passantar	vean a passantar	vagnagn a passantar	vagnez a passantar	vignan a passantar
+
+passainti	passaint(i)as	passainti	passanteian	passanteias	passaint(i)an
+
+passantass	passantassas	passantass	passantassan	passantassas	passantassan
+
+passanto	passantada	passantos	passantadas
+
+passantànd
+
+passainta!	passantad!
+
+
+preschantar-vorstellen
+
+preschaint[el]	preschaintas	preschainta	preschantagn	preschantaz	preschaintan
+
+preschantava	preschantavas	preschantava	preschantavan	preschantavas	preschantavan
+
+vignt a preschantar	veans a preschantar	vean a preschantar	vagnagn a preschantar	vagnez a preschantar	vignan a preschantar
+
+preschainti	preschaint(i)as	preschainti	preschanteian	preschanteias	preschaint(i)an
+
+preschantass	preschantassas	preschantass	preschantassan	preschantassas	preschantassan
+
+preschanto	preschantada	preschantos	preschantadas
+
+preschantànd
+
+preschainta!	preschantad!
+
+
+rapreschantar-aufführen	
+
+rapreschaint[el]	rapreschaintas	rapreschainta	rapreschantagn	rapreschantaz	rapreschaintan
+
+rapreschantava	rapreschantavas	rapreschantava	rapreschantavan	rapreschantavas	rapreschantavan
+
+vignt a rapreschantar	veans a rapreschantar	vean a rapreschantar	vagnagn a rapreschantar	vagnez a rapreschantar	vignan a rapreschantar
+
+rapreschainti	rapreschaint(i)as	rapreschainti	rapreschanteian	rapreschanteias	rapreschaint(i)an
+
+rapreschantass	rapreschantassas	rapreschantass	rapreschantassan	rapreschantassas	rapreschantassan
+
+rapreschanto	rapreschantada	rapreschantos	rapreschantadas
+
+rapreschantànd
+
+rapreschainta!	rapreschantad!
+
+
+sapreschantar-sich vorstellen
+
+sapreschaint[el]	sapreschaintas	sapreschainta	sapreschantagn	sapreschantaz	sapreschaintan
+
+sapreschantava	sapreschantavas	sapreschantava	sapreschantavan	sapreschantavas	sapreschantavan
+
+vignt a sapreschantar	veans a sapreschantar	vean a sapreschantar	vagnagn a sapreschantar	vagnez a sapreschantar	vignan a sapreschantar
+
+sapreschainti	sapreschaint(i)as	sapreschainti	sapreschanteian	sapreschanteias	sapreschaint(i)an
+
+sapreschantass	sapreschantassas	sapreschantass	sapreschantassan	sapreschantassas	sapreschantassan
+
+sapreschanto	sapreschantada	sapreschantos	sapreschantadas
+
+sapreschantànd
+
+sapreschainta!	sapreschantad!
+
+
+schalantar-gefrieren
+
+schalaint[el]	schalaintas	schalainta	schalantagn	schalantaz	schalaintan
+
+schalantava	schalantavas	schalantava	schalantavan	schalantavas	schalantavan
+
+vignt a schalantar	veans a schalantar	vean a schalantar	vagnagn a schalantar	vagnez a schalantar	vignan a schalantar
+
+schalainti	schalaint(i)as	schalainti	schalanteian	schalanteias	schalaint(i)an
+
+schalantass	schalantassas	schalantass	schalantassan	schalantassas	schalantassan
+
+schalanto	schalantada	schalantos	schalantadas
+
+schalantànd
+
+schalainta!	schalantad!
+
+
+sadurmantar-einschlafen
+
+sadurmaint[el]	sadurmaintas	sadurmainta	sadurmantagn	sadurmantaz	sadurmaintan
+
+sadurmantava	sadurmantavas	sadurmantava	sadurmantavan	sadurmantavas	sadurmantavan
+
+vignt a sadurmantar	veans a sadurmantar	vean a sadurmantar	vagnagn a sadurmantar	vagnez a sadurmantar	vignan a sadurmantar
+
+sadurmainti	sadurmaint(i)as	sadurmainti	sadurmanteian	sadurmanteias	sadurmaint(i)an
+
+sadurmantass	sadurmantassas	sadurmantass	sadurmantassan	sadurmantassas	sadurmantassan
+
+sadurmanto	sadurmantada	sadurmantos	sadurmantadas
+
+sadurmantànd
+
+sadurmainta!	sadurmantad!
+	
+
+sagritantar-sich aufregen
+
+sagritaint[el]	sagritaintas	sagritainta	sagritantagn	sagritantaz	sagritaintan
+
+sagritantava	sagritantavas	sagritantava	sagritantavan	sagritantavas	sagritantavan
+
+vignt a sagritantar	veans a sagritantar	vean a sagritantar	vagnagn a sagritantar	vagnez a sagritantar	vignan a sagritantar
+
+sagritainti	sagritaint(i)as	sagritainti	sagritanteian	sagritanteias	sagritaint(i)an
+
+sagritantass	sagritantassas	sagritantass	sagritantassan	sagritantassas	sagritantassan
+
+sagritanto	sagritantada	sagritantos	sagritantadas
+
+sagritantànd
+
+sagritainta!	sagritantad!
+
+
+salamantar-sich beklagen
+
+salamaint[el]	salamaintas	salamainta	salamantagn	salamantaz	salamaintan
+
+salamantava	salamantavas	salamantava	salamantavan	salamantavas	salamantavan
+
+vignt a salamantar	veans a salamantar	vean a salamantar	vagnagn a salamantar	vagnez a salamantar	vignan a salamantar
+
+salamainti	salamaint(i)as	salamainti	salamanteian	salamanteias	salamaint(i)an
+
+salamantass	salamantassas	salamantass	salamantassan	salamantassas	salamantassan
+
+salamanto	salamantada	salamantos	salamantadas
+
+salamantànd
+
+salamainta!	salamantad!
+
+
+batarlar-plaudern
+
+batearl[el]	batearlas	batearla	batarlagn	batarlaz	batearlan
+
+batarlava	batarlavas	batarlava	batarlavan	batarlavas	batarlavan
+
+vignt a batarlar	veans a batarlar	vean a batarlar	vagnagn a batarlar	vagnez a batarlar	vignan a batarlar
+
+batearli	batearl(i)as	batearli	batarleian	batarleias	batearl(i)an
+
+bartarlass	batarlassas	batarlass	batarlassan	batarlassas	batarlassan
+
+batarlo	batarlada	batarlos	batarladas
+
+batarlànd
+
+batearla!	batarlad!
+
+
+
+sarar-schliessen  
+
+sear[el]	searas	seara	saragn	saraz	searan
+
+sarava	saravas	sarava	saravan	saravas	saravan
+
+vignt a sarar	veans a sarar	vean a sarar	vagnagn a sarar	vagnez a sarar	vignan a sarar
+
+seari	sear(i)as	seari	sareian	sareias	sear(i)an
+
+sarass	sarassas	sarass	sarassan	sarassas	sarassan
+
+saro	sarada	saros	saradas
+
+sarànd
+
+seara!	sarad!
+
+	
+zarclar-jäten
+
+zearcl[el]	zearclas	zearcla	zarclagn	zarclaz	zearclan
+
+zarclava	zarclavas	zarclava	zarclavan	zarclavas	zarclavan
+
+vignt a zarclar	veans a zarclar	vean a zarclar	vagnagn a zarclar	vagnez a zarclar	vignan a zarclar
+
+zearcli	zearcl(i)as	zearcli	zarcleian	zarcleias	zearcl(i)an
+
+zarclass	zarclassas	zarclass	zarclassan	zarclassas	zarclassan
+
+zarclo	zarclada	zarclos	zarcladas
+
+zarclànd
+
+zearcla!	zarclad!
+
+
+safarmar-anhalten
+
+safearm[el]	safearmas	safearma	safarmagn	safarmaz	safearman
+
+safarmava	safarmavas	safarmava	safarmavan	safarmavas	safarmavan
+
+vignt a safarmar	veans a safarmar	vean a safarmar	vagnagn a safarmar	vagnez a safarmar	vignan a safarmar
+
+safearmi	safearm(i)as	safearmi	safarmeian	safarmeias	safearm(i)an
+
+safarmass	safarmassas	safarmass	safarmassan	safarmassas	safarmassan
+
+safarmo	safarmada	safarmos	safarmadas
+
+safarmànd
+
+safearma!	safarmad!
+
+
+scalinar-läuten 
+
+scalegn[el]	scalegnas	scalegna	scalinagn	scalinaz	scalegnan
+
+scalinava	scalinavas	scalinava	scalinavan	scalinavas	scalinavan
+
+vignt a scalinar	veans a scalinar	vean a scalinar	vagnagn a scalinar	vagnez a scalinar	vignan a scalinar
+
+scalegni	scalegn(i)as	scalegni	scalineian	scalineias	scalegn(i)an
+
+scalinass	scalinassas	scalinass	scalinassan	scalinassas	scalinassan
+
+scalino	scalinada	scalinos	scalinadas
+
+scalinànd
+
+scalegna!	scalinad!
+
+
+schinar-beenden
+
+schegn[el]	schegnas	schegna	schinagn	schinaz	schegnan
+
+schinava	schinavas	schinava	schinavan	schinavas	schinavan
+
+vignt a schinar	veans a schinar	vean a schinar	vagnagn a schinar	vagnez a schinar	vignan a schinar
+
+schegni	schegn(i)as	schegni	schineian	schineias	schegn(i)an
+
+schinass	schinassas	schinass	schinassan	schinassas	schinassan
+
+schino	schinada	schinos	schinadas
+
+schinànd
+
+schegna!	schinad!
+
+
+schminar-ahnen
+
+schmegn[el]	schmegnas	schmegna	schminagn	schminaz	schmegnan
+
+schminava	schminavas	schminava	schminavan	schminavas	schminavan
+
+vignt a schminar	veans a schminar	vean a schminar	vagnagn a schminar	vagnez a schminar	vignan a schminar
+
+schmegni	schmegn(i)as	schmegni	schmineian	schmineias	schmegn(i)an
+
+schminass	schminassas	schminass	schminassan	schminassas	schminassan
+
+schmino	schminada	schminos	schminadas
+
+schminànd
+
+schmegna!	schminad!
+
+
+targinar-aufhalten
+
+targegn[el]	targegnas	targegna	targinagn	targinaz	targegnan
+
+targinava	targinavas	targinava	targinavan	targinavas	targinavan
+
+vignt a targinar	veans a targinar	vean a targinar	vagnagn a targinar	vagnez a targinar	vignan a targinar
+
+targegni	targegn(i)as	targegni	targineian	targineias	targegn(i)an
+
+targinass	targinassas	targinass	targinassan	targinassas	targinassan
+
+targino	targinada	targinos	targinadas
+
+targinànd
+
+targegna!	targinad!
+	
+
+tschanar-das Nachtessen einnehmen
+
+tschagn[el]	tschagnas	tschagna	tschanagn	tschanaz	tschagnan
+
+tschavana	tschanavas	tschanava	tschanavan	tschanavas	tschanavan
+
+vignt a tschanar	veans a tschanar	vean a tschanar	vagnagn a tschanar	vagnez a tschanar	vignan a tschanar
+
+tschagni	tschagn(i)as	tschagni	tschaneian	tschaneias	tschagn(i)an
+
+tschanass	tschanassas	tschanass	tschanassan	tschanassas	tschanassan
+
+tschano	tschanada	tschanos	tschanadas
+
+tschanànd
+
+tschagna!	tschanad!
+
+
+sunar-(ein Instrument) spielen
+
+sùn[el]	sùnas	sùna	sunagn	sunaz	sùnan
+
+sunava	sunavas	sunava	sunavan	sunavas	sunavan
+
+vignt a sunar	veans a sunar	vean a sunar	vagnagn a sunar	vagnez a sunar	vignan a sunar
+
+sùni	sùn(i)as	sùni	suneian	suneias	sùn(i)an
+
+sunass	sunassas	sunass	sunassan	sunassas	sunassan
+
+suno	sunada	sunos	sunadas
+
+sunànd
+
+sùna!	sunad!
+
+
+saradunar-sich versammeln
+
+saradùn[el]	saradùnas	saradùna	saradunagn	saradunaz	saradùnan
+
+saradunava	saradunavas	saradunava	saradunavan	saradunavas	saradunavan
+
+vignt a saradunar	veans a saradunar	vean a saradunar	vagnagn a saradunar	vagnez a saradunar	vignan a saradunar
+
+saradùni	saradùn(i)as	saradùni	saraduneian	saraduneias	saradùn(i)an
+
+saradunass	saradunassas	saradunass	saradunassan	saradunassas	saradunassan
+
+saraduno	saradunada	saradunos	saradunadas
+
+saradunànd
+
+saradùna!	saradunad!
+
+
+sasamtgear-sich vorbereiten
+
+sasemtg[el]	sasemtgas	sasemtga	sasamtgagn	sasamtgeaz	sasemtgan
+
+sasamtgeava	sasamtgeavas	sasamtgeava	sasamtgeavan	sasamtgeavas	sasamtgeavan
+
+vignt a sasamtgear	veans a sasamtgear	vean a sasamtgear	vagnagn a sasamtgear	vagnez a sasamtgear	vignan a sasamtgear
+
+sasemtgi	sasemtg(i)as	sasemtgi	sasamtgeian	sasamtgeias	sasemtg(i)an
+
+sasamtgess	sasamtgessas	sasamtgess	sasamtgessan	sasamtgessas	sasamtgessan
+
+sasamtgieu	sasamtgeada	sasamtgieus	sasamtgeadas	
+
+sasamtgànd
+
+sasemtga!	sasamtgead!
+
+
+sacunvagnir-sich vereinbaren
+
+sacunvignt	sacunveans	sacunvean	sacunvagnagn	sacunvagnez	sacunvignan 
+
+sacunvagneva	sacunvagnevas	sacunvagneva	sacunvagnevan	sacunvagnevas	sacunvagnevan
+
+vignt a sacunvagnir	veans a sacunvagnir	vean a sacunvagnir	vagnagn a sacunvagnir	vagnez a sacunvagnir	vignan a sacunvagnir
+
+sacunvigni	sacunvign(i)as	sacunvigni	sacunvagneian	sacunvagneias	sacunvign(i)an
+
+sacunvagness	sacunvagnessas	sacunvagness	sacunvagnessan	sacunvagnessas	sacunvagnessan
+
+sacunvagnieu	sacunvagnida	sacunvagnieus	sacunvagnidas
+
+sacunvagnànd
+
+sacunvegna!	sacunvagned!
+
+
+sasantir-sich fühlen
+
+sasaint[el]	sasaintas	sasainta	sasantagn	sasantez	sasaintan
+
+sasanteva	sasantevas	sasanteva	sasantevan	sasantevas	sasantevan
+
+vignt a sasantir	veans a sasantir	vean a sasantir	vagnagn a sasantir	vagnez a sasantir	vignan a sasantir
+
+sasainti	sasaint(i)as	sasainti	sasanteian	sasanteias	sasaint(i)an
+
+sasantess	sasantessas	sasantess	sasantessan	sasantessas	sasantessan
+
+sasantieu	sasantida	sasantieus	sasantidas
+
+sasantànd
+
+sasainta!	sasanted!
+
+
+s'anscriver-sich einschreiben
+
+s'anscriv[el]	s'anscrivas	s'anscriva	s'anscrivagn	s'anscrivez	s'anscrivan
+
+s'anscriveva	s'anscrivevas	s'anscriveva	s'anscrivevan	s'anscrivevas	s'anscrivevan
+
+vignt a s'anscriver	veans a s'anscriver	vean a s'anscriver	vagnagn a s'anscriver	vagnez a s'anscriver	vignan a s'anscriver
+
+s'anscrivi	s'anscriv(i)as	s'anscrivi	s'anscriveian	s'anscriveias	s'anscriv(i)an
+
+s'anscrivess	s'anscrivessas	s'anscrivess	s'anscrivessan	s'anscrivessas	s'anscrivessan
+
+s'anscret	s'anscreta	s'anscrets	s'anscretas
+
+s'anscrivànd
+
+s'anscriva!	s'anscrived!
+
+ 
+sacatar-sich befinden
+
+satgat[el]	satgatas	satgata	sacatagn	sacataz	satgatan
+
+sacatava	sacatavas	sacatava	sacatavan	sacatavas	sacatavan
+
+vignt a sacatar	veans a sacatar	vean a sacatar	vagnagn a sacatar	vagnez a sacatar	vignan a sacatar
+
+satgati	satgat(i)as	satgati	sacateian	sacateias	satgat(i)an
+
+sacatass	sacatassas	sacatass	sacatassan	sacatassas	sacatassan
+
+sacato	sacatada	sacatos	sacatadas
+
+sacatànd
+
+satgata!	sacatad!
+
+
+scuntrar-treffen
+
+scùntr[el]	scùntras	scùntra	scuntragn	scuntraz	scùntran
+
+scuntrava	scuntravas	scuntrava	scuntravan	scuntravas	scuntravan
+
+vignt a scuntrar	veans a scuntrar	vean a scuntrar	vagnagn a scuntrar	vagnez a scuntrar	vignan a scuntrar
+
+scùntri	scùntr(i)as	scùntri	scuntreian	scuntreias	scùntr(i)an
+
+scuntrass	scuntrassas	scuntrass	scuntrassan	scuntrassas	scuntrassan
+
+scuntro	scuntrada	scuntros	scuntradas
+
+scuntrànd
+
+scùntra!	scuntrad!
+
+
+
+tarmeter-senden
+
+tarmet[el]	tarmetas	tarmeta	tarmatagn	tarmatez	tarmetan
+
+tarmateva	tarmatevas	tarmateva	tarmatevan	tarmatevas	tarmatevan
+
+vignt a tarmeter	veans a tarmeter	vean a tarmeter	vagnagn a tarmeter	vagnez a tarmeter	vignan a tarmeter
+
+tarmeti	tarmet(i)as	tarmeti	tarmateian	tarmateias	tarmet(i)an
+
+tarmatess	tarmatessas	tarmatess	tarmatessan	tarmatessas	tarmatessan
+
+taramess	tarmessa	tarmess	tarmessas
+
+tarmetànd
+
+tarmeta!	tarmated!
+
+
+sameter-sich stellen
+
+samet[el]	sametas	sameta	samatagn	samatez	sametan
+
+samateva	samatevas	samateva	samatevan	samatevas	samatevan
+
+vignt a sameter	veans a sameter	vean a sameter	vagnagn a sameter	vagnez a sameter	vignan a sameter
+
+sameti	samet(i)as	sameti	samateian	samateias	samet(i)an
+
+samatess	samatessas	samatess	samatessan	samatessas	samatessan
+
+samess	samessa	samess	samessas
+
+sametànd
+
+sameta!	samated!
+
+
+saschar-sich verlassen
+
+salasch[el]	salaschas	salascha	saschagn	saschaz	salaschan
+
+saschava	saschavas	saschava	saschavan	saschavas	saschavan
+
+vignt a saschar	veans a saschar	vean a saschar	vagnagn a saschar	vagnez a saschar	vignan a saschar
+
+salaschi	salasch(i)as	salaschi	sascheian	sascheias	salasch(i)an
+
+saschass	saschassas	saschass	saschassan	saschassas	saschassan
+
+sascho	saschada	saschos	saschadas
+
+saschànd
+
+sale!	saschad![saschè]
+
+
+sataner-sich festhalten
+
+sategn[el]	sategnas	sategna	satanagn	satanez	sategnan
+
+sataneva	satanevas	sataneva	satanevan	satanevas	satanevan
+
+vignt a sataner	veans a sataner	vean a sataner	vagnagn a sataner	vagnez a sataner	vignan a sataner
+
+sategni	sategn(i)as	sategni	sataneian	sataneias	sategn(i)an
+
+sataness	satanessas	sataness	satanessan	satanessas	satanessan
+
+satanieu	satanida	satanieus	satanidas
+
+satanànd
+
+sategna!	sataned!
+
+
+savaser-sich sehen
+
+savez[el]	savezas	saveza	savazagn	savazez	savezan
+
+savazeva	savazevas	savazeva	savazevan	savazevas	savazevan
+
+vignt a savaser	veans a savaser	vean a savaser	vagnagn a savaser	vagnez a savaser	vignan a savaser
+
+savezi	savez(i)as	savezi	savazeian	savazeias	savez(i)an
+
+savazess	savazessas	savazess	savazessan	savazessas	savazessan
+
+savieu	savazida	savieus	savazidas
+
+savazànd
+
+-	-
