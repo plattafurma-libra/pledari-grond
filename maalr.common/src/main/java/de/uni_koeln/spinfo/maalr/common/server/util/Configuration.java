@@ -44,6 +44,10 @@ public class Configuration {
 	private static final String LEX_FILE = "lex.file";
 	
 	private static final String DICT_CONTEXT = "maalr.dict.context";
+	
+	private static final String MONGODB_USER = "mongodb.user";
+	
+	private static final String MONGODB_USER_COLLECTION = "mongodb.user.collection";
 
 	private static final String MONGODB_PORT = "mongodb.port";
 
@@ -61,6 +65,7 @@ public class Configuration {
 
 	private static final String BACKUP_NUMS = "backup.nums";
 
+	// TODO unused in surmiran?
 	private static final String LOCALE_CODE = "locale.code";
 	
 	private static final String MAALR_IMPL = "maalr.impl";
@@ -254,6 +259,15 @@ public class Configuration {
 		return properties.getProperty(MONGODB_NAME);
 	}
 
+	public String getUserDb() {
+		return properties.getProperty(MONGODB_USER);
+	}
+	
+	public String getUserDbCollection() {
+		return properties.getProperty(MONGODB_USER_COLLECTION);
+	}
+
+	// TODO unused in surmiran?
 	public String getLocaleCode() {
 		return properties.getProperty(LOCALE_CODE);
 	}

@@ -1,5 +1,7 @@
+package de.uni_koeln.spinfo.maalr.overlays.generator;
+
 /*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
+ * Copyright 2013-2016 Sprachliche Informationsverarbeitung, University of Cologne
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.overlays.generator;
+
 
 import java.util.HashMap;
 
@@ -71,7 +73,6 @@ public class ConjugationStructure {
 	public static final String futurplural2 = "futurplural2";
 	public static final String futurplural3 = "futurplural3";
 
-
 	public String[] msi = new String[] { preschentsing1, preschentsing2,
 			preschentsing3, preschentplural1, preschentplural2,
 			preschentplural3, imperfectsing1, imperfectsing2, imperfectsing3,
@@ -79,7 +80,11 @@ public class ConjugationStructure {
 			conjunctivsing1, conjunctivsing2, conjunctivsing3,
 			conjunctivplural1, conjunctivplural2, conjunctivplural3,
 			cundizionalsing1, cundizionalsing2, cundizionalsing3,
-			cundizionalplural1, cundizionalplural2, cundizionalplural3 };
+			cundizionalplural1, cundizionalplural2, cundizionalplural3,
+			participperfectms, participperfectfs, participperfectmp,
+			participperfectfp, imperativ1, imperativ2, gerundium, futursing1,
+			futursing2, futursing3, futurplural1, futurplural2, futurplural3
+	};
 
 	private HashMap<String, String> values;
 
@@ -91,12 +96,10 @@ public class ConjugationStructure {
 
 	public void setValues(HashMap<String, String> values) {
 		this.values = values;
-
 	}
 
 	public ConjugationStructure() {
 		this.values = new HashMap<String, String>();
-
 	}
 
 	public String getVerb() {
@@ -117,7 +120,6 @@ public class ConjugationStructure {
 
 	public String getReflexive() {
 		return values.get(reflexive);
-
 	}
 
 	public String getConjugationclass() {
@@ -541,7 +543,6 @@ public class ConjugationStructure {
 			return getFuturplural2();
 		case futurplural3:
 			return getFuturplural3();
-
 		default:
 			break;
 		}

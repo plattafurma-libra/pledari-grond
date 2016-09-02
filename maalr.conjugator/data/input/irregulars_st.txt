@@ -1,0 +1,3206 @@
+cuntantar-zufriedenstellen
+# (do. frestgantar-k¸hlen, giantar-das Mittagessen einnehmen, mancantar-schw‰nzen, passantar-verbringen, preschantar-vorstellen, rapreschantar-auff¸hren, sapreschantar-sich vorstellen, schalantar-gefrieren, sadurmantar-einschlafen, sagritantar-sich aufregen, salamantar-sich beklagen)
+
+cuntaint[el]	cuntaintas	cuntainta	cuntantagn	cuntantaz	cuntaintan
+
+cuntantava	cuntantavas	cuntantava	cuntantavan	cuntantavas	cuntantavan
+
+vignt a cuntantar	veans a cuntantar	vean a cuntantar	vagnagn a cuntantar	vagnez a cuntantar	vignan a cuntantar
+
+cuntainti	cuntaint(i)as	cuntainti	cuntanteian	cuntanteias	cuntaint(i)an
+
+cuntantass	cuntantassas	cuntantass	cuntantassan	cuntantassas	cuntantassan
+
+cuntanto	cuntantada	cuntantos	cuntantadas
+
+cuntantànd
+
+cuntainta!	cuntantad!
+
+
+amparar-fragen
+#(do. batarlar-plaudern)
+
+ampear[el]	ampearas	ampeara	amparagn	amparaz	ampearan
+
+amparava	amparavas	amparava	amparavan	amparavas	amparavan
+
+vignt ad amparar	veans ad amparar	vean ad amparar	vagnagn ad amparar	vagnez ad amparar	vignan ad amparar
+
+ampeari	ampear(i)as	ampeari	ampareian	ampareias	ampear(i)an
+
+amparass	amparassas	amparass	amparassan	amparassas	amparassan
+
+amparo	amparada	amparos	amparadas
+
+amparànd
+
+ampeara!	amparad!
+
+
+tarlar-hören
+#  (do. sarar-schliessen, zarclar-jäten, safarmar-anhalten)
+
+tearl[el]	tearlas	tearla	tarlagn	tarlaz	tearlan
+
+tarlava	tarlavas	tarlava	tarlavan	tarlavas	tarlavan
+
+vignt a tarlar	veans a tarlar	vean a tarlar	vagnagn a tarlar	vagnez a tarlar	vignan a tarlar
+
+tearli	tearl(i)as	tearli	tarleian	tarleias	tearl(i)an
+
+tarlass	tarlassas	tarlass	tarlassan	tarlassas	tarlassan
+
+tarlo	tarlada	tarlos	tarladas
+
+tarlànd
+
+tearla!	tarlad!
+
+
+antrar-eintreten
+
+aintr[el]	aintras	aintra	antragn	antraz	aintran
+
+aintrava	aintravas	aintrava	aintravan	aintravas	aintravan
+
+vignt ad antrar	veans ad antrar	vean ad antrar	vagnagn ad antrar	vagnez ad antrar	vignan ad antrar
+
+aintri	aintr(i)as	aintri	antreian	antreias	aintr(i)an
+
+aintrass	aintrassas	aintrass	aintrassan	aintrassas	aintrassan
+
+antro	antrada	antros	antradas
+
+antrànd
+
+aintra!	antrad!
+
+
+barsar-braten
+
+brass[el]	brassas	brassa	barsagn	barsaz	brassan
+
+barsava	barsavas	barsava	barsavan	barsavas	barsavan
+
+vignt a barsar	veans a barsar	vean a barsar	vagnagn a barsar	vagnez a barsar	vignan a barsar
+
+brassi	brass(i)as	brassi	barseian	barseias	brass(i)an
+
+barsass	barsassas	barsass	barsassan	barsassas	barsassan
+
+barso	barsada	barsos	barsadas
+
+barsànd
+
+brassa!	barsad!
+
+
+sgartar-kratzen
+
+sgrat[el]	sgratas	sgrata	sgartagn	sgartaz	sgratan
+
+sgartava	sgartavas	sgartava	sgartavan	sgartavas	sgartavan
+
+vignt a sgartar	veans a sgartar	vean a sgartar	vagnagn a sgartar	vagnez a sgartar	vignan a sgartar
+
+sgrati	sgrat(i)as	sgrati	sgarteian	sgarteias	sgrat(i)an
+
+sgartass	sgartassas	sgartass	sgartassan	sgartassas	sgartassan
+
+sgarto	sgartada	sgartos	sgartadas
+
+sgartànd
+
+sgrata!	sgartad!
+
+
+calar-aufhören
+
+tgal[el]	tgalas	tgala	calagn	calaz	tgalan
+
+calava	calavas	calava	calavan	calavas	calavan
+
+vignt a calar	veans a calar	vean a calar	vagnagn a calar	vagnez a calar	vignan a calar
+
+tgali	tgal(i)as	tgali	caleian	caleias	tgal(i)an
+
+calass	calassas	calass	calassan	calassas	calassan
+
+calo	calada	calos	caladas
+
+calànd
+
+tgala!	calad!
+
+
+cantar-singen
+
+tgànt[el]	tgàntas	tgànta	cantagn	cantaz	tgàntan
+
+cantava	cantavas	cantava	cantava	cantavas	cantavan
+
+vignt a cantar	veans a cantar	vean a cantar	vagnagn a cantar	vagnez a cantar	vignan a cantar
+
+tgànti	tgànt(i)as	tgànti	canteian	canteias	tgànt(i)an
+
+cantass	cantassas	cantass	cantassan	cantassas	cantassan
+
+canto	cantada	cantos	cantadas
+
+cantànd
+
+tgànta!	cantad!
+
+
+cuschinar-kochen 
+#(do. scalinar-läuten, schinar-beenden, schminar-ahnen, targinar-aufhalten)
+
+cuschegn[el]	cuschegnas	cuschegna	cuschinagn	cuschinaz	cuschegnan
+
+cuschinava	cuschinavas	cuschinava	cuschinavan	cuschinavas	cuschinavan
+
+vignt a cuschinar	veans a cuschinar	vean a cuschinar	vagnagn a cuschinar	vagnez a cuschinar	vignan a cuschinar
+
+cuschegni	cuschegn(i)as	cuschegni	cuschineian	cuschineias	cuschegn(i)an
+
+cuschinass	cuschinassas	cuschinass	cuschinassan	cuschinassas	cuschinassan
+
+cuschino	cuschinada	cuschinos	cuschinadas
+
+cuschinànd
+
+cuschegna!	cuschinad!
+
+
+levar-aufstehen
+
+leav[el]	leavas	leava	levagn	levaz	leavan
+
+levava	levavas	levava	levavan	levavas	levavan
+
+vignt a levar	veans a levar	vean a levar	vagnagn a levar	vagnez a levar	vignan a levar
+
+leavi	leav(i)as	leavi	leveian	leveias	leav(i)an
+
+levass	levassas	levass	levassan	levassas	levassan
+
+levo	levada	levos	levadas
+
+levànd
+
+leava!	levad!
+
+
+luvrar-arbeiten
+
+lavur[el]	lavuras	lavura	luvragn	luvraz	lavuran
+
+luvrava	luvravas	luvrava	luvravan	luvravas	luvravan
+
+vignt a luvrar	veans a luvrar	vean a luvrar	vagnagn a luvrar	vagnez a luvrar	vignan a luvrar
+
+lavuri	lavur(i)as	lavuri	luvreian	luvreias	lavur(i)an 
+
+luvrass	luvrassas	luvrass	luvrassan	luvrassas	luvrassan
+
+luvro	luvrada	luvros	luvradas
+
+luvrànd
+
+lavura!	luvrad!
+
+
+manar-führen 
+#(do. tschanar-das Nachtessen einnehmen)
+
+magn[el]	magnas	magna	managn	manaz	magnan
+
+manava	manavas	manava	manavan	manavas	manavan
+
+vignt a manar	veans a manar	vean a manar	vagnagn a manar	vagnez a manar	vignan a manar
+
+magni	magn(i)as	magni	maneian	maneias	magn(i)an
+
+manass	manassas	manass	manassan	manassas	manassan
+
+mano	manada	manos	manadas
+
+manànd
+
+magna!	manad!
+
+
+pardunar-entschuldigen 
+#(do. sunar-(ein Instrument) spielen)
+
+pardùn[el]	pardùnas	pardùna	pardunagn	pardunaz	pardùnan
+
+pardunava	pardunavas	pardunava	pardunavan	pardunavas	pardunavan
+
+vignt a pardunar	veans a pardunar	vean a pardunar	vagnagn a pardunar	vagnez a pardunar	vignan a pardunar
+
+pardùni	pardùn(i)as	pardùni	parduneian	parduneias	pardùn(i)an
+
+pardunass	pardunassas	pardunass	pardunassan	pardunassas	pardunassan
+
+parduno	pardunada	pardunos	pardunadas
+
+pardunànd
+
+pardùna!	pardunad!
+
+
+plantar-pflanzen
+
+plànt[el]	plàntas	plànta	plantagn	plantaz	plàntan
+
+plantava	plantavas	plantava	plantavan	plantavas	plantavan
+
+vignt a plantar	veans a plantar	vean a plantar	vagnagn a plantar	vagnez a plantar	vignan a plantar
+
+plànti	plànt(i)as	plànti	planteian	planteias	plànt(i)an
+
+plantass	plantassas	plantass	plantassan	plantassas	plantassan
+
+planto	plantada	plantos	plantadas
+
+plantànd
+
+plànta!	plantad!
+
+
+radunar-versammeln 
+#(saradunar-sich versammeln)
+
+radùn[el]	radùnas	radùna	radunagn	radunaz	radùnan
+
+radunava	radunavas	radunava	radunavan	radunavas	radunavan
+
+vignt a radunar	veans a radunar	vean a radunar	vagnagn a radunar	vagnez a radunar	vignan a radunar
+
+radùni	radùn(i)as	radùni	raduneian	raduneias	radùn(i)an
+
+radunass	radunassas	radunass	radunassan	radunassas	radunassan
+
+raduno	radunada	radunos	radunadas
+
+radunànd
+
+radùna!	radunad!
+
+
+saltar-tanzen
+
+sòlt[el]	sòltas	sòlta	saltagn	saltaz	sòtan
+
+saltava	saltavas	saltava	saltavan	saltavas	saltavan
+
+vignt a saltar	veans a saltar	vean a saltar	vagnagn a saltar	vagnez a saltar	vignan a saltar
+
+sòti	sòt(i)as	sòti	salteian	salteias	sòt(i)an
+
+saltass	saltassas	saltass	saltassan	saltassas	saltassan
+
+salto	saltada	saltos	saltadas
+
+saltànd
+
+sòta!	saltad!
+
+
+scaldar-(auf)wärmen
+
+stgòld[el]	stgòldas	stgòlda	scaldagn	scaldaz	stgòldan
+
+scaldava	scaldavas	scaldava	scaldavan	scaldavas	scaldavan
+
+vignt a scaldar	veans a scaldar	vean a scaldar	vagnagn a scaldar	vagnez a scaldar	vignan a scaldar
+
+stgòldi	stgòld(i)as	stgòldi	scaldeian	scaldeias	stgòld(i)an
+
+scaldass	scaldassas	scaldass	scaldassan	scaldassas	scaldassan
+
+scaldo	scaldada	scaldos	scaldadas
+
+scaldànd
+
+stgòlda!	scaldad!
+
+
+schalar-frieren
+
+scheal[el]	schealas	scheala	schalagn	schalaz	schealan
+
+schalava	schalavas	schalava	schalavan	schalavas	schalavan
+
+vignt a schalar	veans a schalar	vean a schalar	vagnagn a schalar	vagnez a schalar	vignan a schalar
+
+scheali	scheal(i)as	scheali	schaleian	schaleias	scheal(i)an
+
+schalass	schalassas	schalass	schalassan	schalassas	schalassan
+
+schieult	schieulta	schieults	schieultas
+
+schalànd
+
+scheala!	schalad! 
+
+
+vurdar-schauen
+
+vard[el]	vardas	varda	vurdagn	vurdaz	vardan
+
+vurdava	vurdavas	vurdava	vurdavan	vurdavas	vurdavan
+
+vignt a vurdar	veans a schalar	vean a vurdar	vagnagn a vurdar	vagnez a vurdar	vignan a vurdar
+
+vardi	vard(i)as	vardi	vurdeian	vurdeias	vard(i)an
+
+vurdass	vurdassas	vurdass	vurdassan	vurdassas	vurdassan
+
+vurdo	vurdada	vurdos	vurdadas
+
+vurdànd
+
+varda!	vurdad!
+
+
+zavrar-trennen
+
+zevr[el]	zevras	zevra	zavragn	zavraz	zevran
+
+zavrava	zavravas	zavrava	zavravan	zavravas	zavravan
+
+vignt a zavrar	veans a zavrar	vean a zavrar	vagnagn a zavrar	vagnez a zavrar	vignan a zavrar
+
+zevri	zevr(i)as	zevri	zavreian	zavreias	zevr(i)an
+
+zavrass	zavrassas	zavrass	zavrassan	zavrassas	zavrassan
+
+zavro	zavrada	zavros	zavradas
+
+zavrànd
+
+zevra!	zavrad!
+
+
+antschartgear-suchen 
+
+antscheartg[el]	antscheartgas	antscheartga	antschartgagn	antschartgeaz	antscheartgan
+
+antschartgeava	antschartgeavas	antschartgeava	antschartgeavan	antschartgeavas	antschartgeavan
+
+vignt ad antschartgear	veans ad antschartgear	vean ad antschartgear	vagnagn ad antschartgear	vagnez ad antschartgear	vignan ad antschartgear
+
+antscheartgi	antscheartg(i)as	antscheartgi	antschartgeian	antschartgeias	antschertg(i)an
+
+antschartgess	antschartgessas	antschartgess	antschartgessan	antschartgessas	antschartgessan
+
+antschartgieu	antschartgeada	antschartgieus	antschartgeadas
+
+antschartgànd
+
+antscheartga!	antschartgead!
+
+
+mantgear-fehlen
+
+mànc[el]	màncas	mànca	mantgagn	mantgeaz	màncan
+
+mantgeava	mantgeavas	mantgeava	mantgeavan	mantgeavas	mantgeavan
+
+vignt a mantgear	veans a mantgear	vean a mantgear	vagnagn a mantgear	vagnez a mantgear	vignan a mantgear
+
+mànci	mànc(i)as	mànci	mantgeian	mantgeias	mànc(i)an
+
+mantgess	mantgessas	mantgess	mantgessan	mantgessas	mantgessan
+
+mantgieu	mantgeada	mantgieus	mantgeadas	
+
+mantgànd
+
+mànca!	mantgead!
+
+
+patartgear-denken
+
+patratg[el]	patratgas	patratga	patartgagn	patartgeaz	patratgan
+
+patartgeava	patartgeavas	patartgeava	patartgeavan	patartgeavas	patartgeavan
+
+vignt a patartgear	veans a patartgear	vean a patartgear	vagnagn a patartgear	vagnez a patartgear	vignan a patartgear
+
+patratgi	patratg(i)as	patratgi	patartgeian	patartgeias	patratg(i)an
+
+patartgess	patartgessas	patartgess	patartgessan	patartgessas	patartgessan
+
+patartgieu	patartgeada	patartgieus	patartgeadas
+
+patartgànd
+
+patratga!	patartgead!
+
+
+samtgear-zubereiten 
+#(do. sasamtgear-sich vorbereiten)
+
+semtg[el]	semtgas	semtga	samtgagn	samtgeaz	semtgan
+
+samtgeava	samtgeavas	samtgeava	samtgeavan	samtgeavas	samtgeavan
+
+vignt a samtgear	veans a samtgear	vean a samtgear	vagnagn a samtgear	vagnez a samtgear	vignan a samtgear
+
+semtgi	semtg(i)as	semtgi	samtgeian	samtgeias	semtg(i)an
+
+samtgess	samtgessas	samtgess	samtgessan	samtgessas	samtgessan
+
+samtgieu	samtgeada	samtgieus	samtgeadas	
+
+samtgànd
+
+semtga!	samtgead!
+
+
+spitgear-warten
+
+spetg[el]	spetgas	spetga	spitgagn	spitgeaz	spetgan
+
+spitgeava	spitgeavas	spitgeava	spitgeavan	spitgeavas	spitgeavan
+
+vignt a spitgear	veans a spitgear	vean a spitgear	vagnagn a spitgear	vagnez a spitgear	vignan a spitgear
+
+spetgi	spetg(i)as	spetgi	spitgeian	spitgeias	spetg(i)an
+
+spitgess	spitgessas	spitgess	spitgessan	spitgessas	spitgessan
+
+spitgieu	spitgeada	spitgieus	spitgeadas
+
+spitgànd	
+
+spetga!	spitgead!
+
+
+biagear-bauen
+
+bieg[el]	biegas	biegia	biagiagn	biageaz	biegian
+
+biageava	biageavas	biageava	biageavan	biageavas	biageavan
+
+vignt a biagear	veans a biagear	vean a biagear	vagnagn a biagear	vagnez a biagear	vignan a biagear
+
+biegi	biegias	biegi	biageian	biageias	biegian
+
+biagess	biagessas	biagess	biagessan	biagessas	biagessan
+
+biagieu	biageada	biagieus	biageadas
+
+biagiànd
+
+biegia!	biagead!
+
+
+curagear-korrigieren
+
+cureg[el]	curegias	curegia	curagiagn	curagez	curegian
+
+curageava	curageavas	curageava	curageavan	curageavas	curageavan
+
+vignt a curagear	veans a curagear	vean a curagear	vagnagn a curagear	vagnez a curagear	vignan a curagear
+
+curegi	curegias	curegi	curageian	curageias	curegian
+
+curagess	curagessas	curagess	curagessan	curagessas	curagessan
+
+curagieu	curageada	curagieus	curageadas
+
+curagiànd
+
+curegia!	curagead!
+
+#problematisch: meist nur 3. pers. - vgl. z.B. schneien)
+#gartagear-gelingen
+
+#gartegia	gartegian
+
+#gartageava	gartageavan
+
+#vean a gartagear	vignan a gartagear
+
+#gartegi	gartegian
+
+#gartagess	gartagessan
+
+#gartagieu	gartageada	gartagieus	gartageadas
+
+#gartagiànd
+
+
+malagear-malen
+
+maleg[el]	malegias	malegia	malagiagn	malagez	malegian
+
+malageava	malageavas	malageava	malageavan	malageavas	malageavan
+
+vignt a malagear	veans a malagear	vean a malagear	vagnagn a malagear	vagnez a malagear	vignan a malagear
+
+malegi	maleg(i)as	malegi	malageian	malageias	maleg(i)an
+
+malagiess	malagiessas	malagiess	malagiessan	malagiessas	malagiessan
+
+malagieu	malageada	malagieus	malageadas
+
+malagiànd
+
+malegia!	malagead!
+
+
+managear-meinen
+
+maneg[el]	manegias	manegia	managiagn	manageaz	manegian
+
+manageava	manageavas	manageava	manageavan	manageavas	manageavan
+
+vignt a managear	veans a managear	vean a managear	vagnagn a managear	vagnez a managear	vignan a managear
+
+manegi	manegias	manegi	manageian	manageias	manegian
+
+managess	managessas	managess	managessan	managessas	managessan
+
+managieu	manageada	managieus	manageadas
+
+managiànd
+
+manegia!	managead!
+
+
+pardagear-predigen
+
+pardeg[el]	pardegias	pardegia	pardagiagn	pardageaz	pardegian
+
+pardageava	pardageavas	pardageava	pardageavan	pardageavas	pardageavan
+
+vignt a pardagear	veans a pardagear	vean a pardagear	vagnagn a pardagear	vagnez a pardagear	vignan a pardagear
+
+pardegi	pardegias	pardegi	pardageian	pardageias	pardegian
+
+pardagess	pardagessas	pardagess	pardagessan	pardagessas	pardagessan
+
+pardagieu	pardageada	pardagieus	pardageadas
+
+pardagiànd
+
+pardegia!	pardagead!
+
+
+schincagear-schenken
+
+schinceg[el]	schincegias	schincegia	schincagiagn	schincageaz	schincegian
+
+schincageava	schincageavas	schincageava	schincageavan	schincageavas	schincageavan
+
+vignt a schincagear	veans a schincagear	vean a schincagear	vagnagn a schincagear	vagnez a schincagear	vignan a schincagear
+
+schincegi	schinceg(i)as	schincegi	schincageian	schincageias	schinceg(i)an
+
+schincagess	schincagessas	schincacess	schincagessan	schincagessas	schincagessan
+
+schincagieu	schincageada	schincagieus	schincageadas
+
+schincagiànd
+
+schincegia!	schincagead!
+
+
+schlargear-erweitern
+
+schlarg[el]	schlarigas	schlargia	schlargiagn	schlargeaz	schlargian
+
+schlargeava	schlargeavas	schlargeava	schlargeavan	schlargeavas	schlargeavan
+
+vignt a schlargear	veans a schlargear	vean a schlargear	vagnagn a schlargear	vagnez a schlargear	vignan a schlargear
+
+schlargi	schlarg(i)as	schlargi	schlargeian	schlargeias	schlarg(i)an
+
+schlargess	schlargessas	schlargess	schlargessan	schlargessas	schlargessan
+
+schlargieu	schlargeada	schlargieus	schlargeadas
+
+schlargiànd
+
+schlargia!	schlargead!
+
+
+schubargear-putzen
+
+schubreg[el]	schubregias	schubregia	schubargiagn	schubargeaz	schubregian
+
+schubargeava	schubargeavas	schubargeava	schubargeavan	schubargeavas	schubargeavan
+
+vignt a schubargear	veans a schubargear	vean a schubargear	vagnagn a schubargear	vagnez a schubargear	vignan a schubargear
+
+schubregi	schubregias	schubregi	schubargeian	schubargeias	schubregian
+
+schubargess	schubargessas	schubargess	schubargessan	schubargessas	schubargessan
+
+schubargieu	schubargeada	schubargieus	schubargeadas
+
+schubargiànd
+
+schubregia!	schubargead!
+
+
+schurmagear-schützen
+
+schurmeg[el]	schurmegias	schurmegia	schurmagiagn	schurmageaz	schurmegian
+
+schurmageava	schurmageavas	schurmageava	schurmageavan	schurmageavas	schurmageavan
+
+vignt a schurmagear	veans a schurmagear	vean a schurmagear	vagnagn a schurmagear	vagnez a schurmagear	vignan a schurmagear
+
+schurmegi	schurmeg(i)as	schurmegi	schurmageian	schurmageias	schurmeg(i)an
+
+schurmagess	schurmagessas	schurmagess	schurmagessan	schurmagessas	schurmagessan
+
+schurmagieu	schurmageada	schurmagieus	schurmageadas
+
+schurmagiànd
+
+schurmegia!	schurmagead!
+
+
+spassagear-spazieren
+
+spasseg[el]	spassegias	spassegia	spassagiagn	spassageaz	spassegian
+
+spassageava	spassageavas	spassageava	spassageavan	spassageavas	spassageavan
+
+vignt a spassagear	veans a spassagear	vean a spassagear	vagnagn a spassagear	vagnez a spassagear	vignan a spassagear
+
+spassegi	spassegias	spassegi	sapssegeian	spassegeias	spassegian
+
+spassagess	spassagessas	spassagess	spassagessan	spassagessas	spassagessan
+
+spassagieu	spassageada	spassagieus	spassageadas
+
+spassagiànd
+
+spassegia!	spassagead!
+
+
+studagear-studieren
+
+studeg[el]	studegias	studegia	studagiagn	studageaz	studegian
+
+studageava	studageavas	studageava	studageavan	studageavas	studageavan
+
+vignt a studagear	veans a studagear	vean a studagear	vagnagn a studagear	vagnez a studagear	vignan a studagear
+
+studegi	studegias	studegi	studageian	studageias	studegian
+
+studagess	studagessas	studagess	studagessan	studagessas	studagessan
+
+studagieu	studageada	studagieus	studageadas
+
+studagiànd
+
+studegia!	studagead!
+
+
+tuagear-verdauen
+
+tuagesch[el]	tuageschas	tuagescha	tuagiagn	tuagez	tuageschan
+
+tuageava	tuageavas	tuageava	tuageavan	tuageavas	tuageavan
+
+vignt a tuagear	veans a tuagear	vean a tuagear	vagnagn a tuagear	vagnez a tuagear	vignan a tuagear
+
+tuageschi	tuagesch(i)as	tuageschi	tuageian	tuageias	tuagesch(i)an
+
+tuagess	tuagessas	tuagess	tuagessan	tuagessas	tuagessan
+
+tuagieu	tuageada	tuagieus	tuageadas
+
+tuagiànd
+
+tuagescha!	tuaged!
+
+
+vargear-vorbeigehen
+
+varg[iel]	vargias	vargia	vargiagn	vargeaz	vargian
+
+vargeava	vargeavas	vargeava	vargeavan	vargeavas	vargeavan
+
+vignt a vargear	veans a vargear	vean a vargear	vagnagn a vargear	vagnez a vargear	vignan a vargear
+
+vargi	vargias	vargi	vargeian	vargeias	vargian
+
+vargess	vargessas	vargess	vargessan	vargessas	vargessan
+
+vargieu	vargeada	vargieus	vargeadas
+
+vargiànd
+
+vargia!	vargead!
+
+
+zambargear-basteln
+
+zambreg[el]	zambregias	zambregia	zambargiagn	zambargeaz	zambregian
+
+zambargeava	zambargeavas	zambargeava	zambargeavan	zambargeavas	zambargeavan
+
+vignt a zambargear	veans a zambargear	vean a zambargear	vagnagn a zambargear	vagnez a zambargear	vignan a zambargear
+
+zambregi	zambregias	zambregi	zambargeian	zambargeias	zambregian
+
+zambargess	zambargessas	zambargess	zambargessan	zambargessas	zambargessan
+
+zambargieu	zambargeada	zambargieus	zambargeadas
+
+zambargiànd
+
+zambregia!	zambargead!
+
+
+bugnear-giessen
+
+bogn[el]	bognas	bogna	bugnagn	bugneaz	bognan
+
+bugneava	bugneavas	bugneava	bugneavan	bugneavas	bugneavan
+
+vignt a bugnear	veans a bugnear	vean a bugnear	vagnagn a bugnear	vagnez a bugnear	vignan a bugnear
+
+bogni	bogn(i)as	bogni	bugneian	bugneias	bogn(i)an
+
+bugness	bugnessas	bugness	bugnessan	bugnessas	bugnessan
+
+bugnieu	bugneada	bugnieus	bugneadas
+
+bugnànd
+
+bogna!	bugnead!
+
+
+dissignear-zeichnen
+
+dissegn[el]	dissegnas	dissegna	dissignagn	dissigneaz	dissegnan
+
+dissigneava	dissigneavas	dissigneava	dissigneavan	dissigneavas	dissigneavan
+
+vignt a dissignear	veans a dissignear	vean a dissignear	vagnagn a dissignear	vagnez a dissignear	vignan a dissignear
+
+diseigni	dissegn(i)as	dissegni	dissigneian	dissigneias	dissegn(i)an
+
+dissigness	dissignessas	dissigness	dissignessan	dissignessas	dissignessan
+
+dissignieu	dissigneada	dissignieus	dissigneadas
+
+dissignànd
+
+dissegna!	dissignead!
+
+
+gudagnear-verdienen
+
+gudogn[el]	gudognas	gudogna	gudagnagn	gudagneaz	gudognan
+
+gudagneava	gudagneavas	gudagneava	gudagneavan	gudagneavas	gudagneavan
+
+vignt a gudagnear	veans a gudagnear	vean a gudagnear	vagnagn a gudagnear	vagnez a gudagnear	vignan a gudagnear
+
+gudogni	gudogn(i)as	gudogni	gudagneian	gudagneias	gudogn(i)an
+
+gudagness	gudagnessas	gudagness	gudagnessan	gudagnessas	gudagnessan
+
+gudagnieu	gudagneada	gudagnieus	gudagneadas
+
+gudagnànd
+
+gudogna!	gudagnead!
+
+
+lamgnear-einweichen
+
+lomgn[el]	lomgnas	lomgna	lamgnagn	lamgneaz	lomgnan	
+
+lamgneava	lamgneavas	lamgneava	lamgneavan	lamgneavas	lamgneavan
+
+vignt a lamgnear	veans a lamgnear	vean a lamgnear	vagnagn a lamgnear	vagnez a lamgnear	vignan a lamgnear
+
+lomgni	lomgnias	lomgni	lamgneian	lamgneias	lomgnian
+
+lamgness	lamgnessas	lamgness	lamgnessan	lamgnessas	lamgnessan
+
+lamgnieu	lamgneada	lamgnieus	lamgneadas
+
+lamgnànd
+
+lomgna!	lamgnead!
+
+
+cumparagliear-vergleichen         
+
+cumparegl[el]	cumpareglias	cumpareglia	cumparagliagn	cumparaglieaz	cumpareglian
+
+cumparaglieava	cumparaglieavas	cumparaglieava	cumparaglieavan	cumparaglieavas	cumparaglieavan
+
+vignt a cumparagliear	veans a cumparagliear	vean a cumparagliear	vagnagn a cumparagliear	vagnez a cumparagliear	vignan a cumparagliear
+
+cumparegli	cumpareglias	cumparegli	cumparaglieian	cumparaglieias	cumpareglian
+
+cumparagliess	cumparagliessas	cumparagliess	cumparagliessan	cumparagliessas	cumparagliessan
+
+cumparaglieu	cumparaglieada	cumparaglieus	cumparaglieadas
+
+cumparagliànd
+
+cumpareglia!	cumparagliead!
+
+
+cunzagliear-anraten
+
+cunzegl[iel]	cunzeglias	cunzeglia	cunzagliagn	cunzaglieaz	cunzeglian
+
+cunzaglieava	cunzaglieavas	cunzaglieava	cunzaglieavan	cunzaglieavas	cunzaglieavan
+
+vignt a cunzagliear	veans a cunzagliear	vean a cunzagliear	vagnagn a cunzagliear	vagnez a cunzagliear	vignan a cunzagliear
+
+cunzegli	cunzeglias	cunzegli	cunzaglieian	cunzaglieias	cunzeglian
+
+cunzagliess	cunzagliessas	cunzagliess	cunzagliessan	cunzagliessas	cunzagliessan
+
+cunzaglieu	cunzaglieada	cunzaglieus	cunzaglieadas
+
+cunzagliànd
+
+cunzeglia!	cunzagliead!
+
+
+magliear-essen
+
+magl[iel]	maglias	maglia	magliagn	maglieaz	maglian
+
+maglieava	maglieavas	maglieava	maglieavan	maglieavas	maglieavan
+
+vignt a magliear	veans a magliear	vean a magliear	vagnagn a magliear	vagnez a magliear	vignan a magliear
+
+magli	maglias	magli	maglieian	maglieias	maglian
+
+magliess	magliessas	magliess	magliessan	magliessas	magliessan
+
+maglieu	maglieada	maglieus	maglieadas
+
+magliànd
+
+maglia!	magliead!
+
+
+sgurgagliear-gurgeln
+
+sgargugl[el]	sgarguglias	sgarguglia	sgurgagliagn	sgurgaglieaz	sgarguglian
+
+sgurgaglieava	sgurgaglieavas	sgurgaglieava	sgurgaglieavan	sgurgaglieavas	sgurgaglieavan
+
+vignt a sgurgagliear	veans a sgurgagliear	vean a sgurgagliear	vagnagn a sgurgagliear	vagnez a sgurgagliear	vignan a sgurgagliear
+
+sgargugli	sgargugl(i)as	sgargugli	sgurgaglieian	sgurgaglieias	sgargugl(i)an
+
+sgurgagliess	sgurgagliessas	sgurgagliess	sgurgagliessan	sgurgaglieassas	sgurgaliessan
+
+sgurgaglieu	sgurgaglieada	sgurgaglieus	sgurgaglieadas
+
+sgurgagliànd
+
+sgarguglia!	sgurgagliead!
+
+
+svagliear-wecken           
+
+svegl[iel]	sveglias	sveglia	svagliagn	svaglieaz	sveglian
+
+svaglieava	svaglieavas	svaglieava	svaglievan	svaglieavas	svaglieavan
+
+vignt a svagliear	veans a svagliear	vean a svagliear	vagnagn a svagliear	vagnez a svagliear	vignan a svagliear
+
+svegli	sveglias	svegli	svaglieian	svaglieias	sveglian
+
+svagliess	svagliessas	svagliess	svagliessan	svagliessas	svagliessan
+
+svaglieu	svaglieada	svaglieus	svaglieadas
+
+svagliànd
+
+sveglia!	svagliead!
+
+
+tagliear-schneiden
+
+tagl[iel]	taglias	taglia	tagliagn	taglieaz	taglian
+
+taglieava	taglieavas	taglieava	taglieavan	taglieavas	taglieavan
+
+vignt a tagliear	veans a tagliear	vean a tagliear	vagnagn a tagliear	vagnez a tagliear	vignan a tagliear
+
+tagli	taglias	tagli	taglieian	taglieias	taglian
+
+tagliess	tagliessas	tagliess	tagliessan	tagliessas	tagliessan
+
+taglieu	taglieada	taglieus	taglieadas
+
+tagliànd
+
+taglia!	tagliead!
+
+
+tarmagliear-spielen (mit Spielzeug)
+
+tarmagl[iel]	tarmaglias	tarmaglia	tarmagliagn	tarmaglieaz	tarmaglian
+
+tarmaglieava	tarmaglieavas	tarmaglieava	tarmaglieavan	tarmaglieavas	tarmaglieavan
+
+vignt a tarmagliear	veans a tarmagliear	vean a tarmagliear	vagnagn a tarmagliear	vagnez a tarmagliear	vignan a tarmagliear
+
+tarmagli	tarmaglias	tarmagli	tarmaglieian	tarmaglieias	tarmaglian
+
+tarmagliess	tarmagliessas	tarmagliess	tarmagliessan	tarmagliessas	tarmagliessan
+
+tarmaglieu	tarmaglieada	tarmaglieus	tarmaglieadas
+
+tarmagliànd
+
+tarmaglia!	tarmagliead!
+
+
+
+lujear-vorbereiten
+
+loj[el]	lojas	loja	lujagn	lujeaz	lojan
+
+lujeava	lujeavas	lujeava	lujeavan	lujeavas	lujeavan
+
+vignt a lujear	veans a lujear	vean a lujear	vagnagn a lujear	vagnez a lujear	vignan a lujear
+
+loji	lojas	loji	lujeian	lujeias	lojan
+
+lujess	lujessas	lujess	lujessan	lujessas	lujessan
+
+lujieu	lujieada	lujieus	lujieadas
+
+lujeànd
+
+loja!	lujead!
+
+
+mitschear-ausbrechen
+
+metsch[el]	metschas	metscha	mitschagn	mitscheaz	metschan
+
+mitscheava	mitscheavas	mitscheava	mitscheavan	mitscheavas	mitscheavan
+
+vignt a mitschear	veans a mitschear	vean a mitschear	vagnagn a mitschear	vagnez a mitschear	vignan a mitschear
+
+metschi	metsch(i)as	metschi	mitscheian	mitscheias	metsch(i)an
+
+mitschess	mitschessas	mitschess	mitschessan	mitschessas	mitschessan
+
+mitschieu	mitscheada	mitschieus	mitscheadas
+
+mitschànd
+
+metscha!	mitschead!
+
+
+schliear-lösen
+
+schlei[el]	schleias	schleia	schliagn	schlieaz	schleian
+
+schlieava	schlieavas	schlieava	schlieavan	schlieavas	schlieavan
+
+vignt a schliear	veans a schliear	vean a schliear	vagnagn a schliear	vagnez a schliear	vignan a schliear
+
+schleiji	schleij(i)as	schleiji	schlieian	schlieias	schleij(i)an
+
+schliess	schliessas	schliess	schliessan	schliessas	schliessan
+
+schlieu	schleada	schlieus	schleadas
+
+schliànd
+
+schleia!	schliead!
+
+
+squitschear-drucken
+
+squetsch[el]	squetschas	squetscha	squitschagn	squitscheaz	squetschan
+
+squitscheava	squitscheavas	squitscheava	squitscheavan	squitscheavas	squitscheavan
+
+vignt a squitschear	veans a squitschear	vean a squitschear	vagnagn a squitschear	vagnez a squitschear	vignan a squitschear
+
+squetschi	squetsch(i)as	squetschi	squtscheian	squtscheias	squetsch(i)an
+
+squitschess	squitschessas	squitschess	squitschessan	squitschessas	squitschessan
+
+squitschieu	squitscheada	squitschieus	squitscheadas
+
+squitschànd
+
+squetscha!	squitschead!
+
+
+amparmeter-versprechen
+
+amparmet	amparmetas	amparmeta	amparmatagn	amparmatez	amparmetan
+
+amparmateva	amparmatevas	amparmateva	amparmatevan	amparmatevas	amparmatevan
+
+vignt ad amparmeter	veans ad amparmeter	vean ad amparmeter	vagnagn ad amparmeter	vagnez ad amparmeter	vignan ad amparmeter
+
+amparmeti	amparmet(i)as	amparmeti	amparmateian	amparmateias	amparmet(i)an
+
+amparmatess	amparmatessas	amparmatess	amparmatessan	amparmatessas	amparmatessan
+
+amparmess	amparmessa	amparmess	amparmessas
+
+amparmetànd
+
+amparmeta!	amparmated!
+
+
+amprender-lernen
+
+amprend[el]	amprendas	amprenda	amprandagn	amprandez	amprendan
+
+amprandeva	amprandevas	amprandeva	amprandevan	amprandevas	amprandevan
+
+vignt ad amprender	veans ad amprender	vean ad amprender	vagnagn ad amprender	vagnez ad amprender	vignan ad amprender
+
+amprendi	amprend(i)as	amprendi	amprandeian	amprandeias	amprend(i)an
+
+amprandess	amprandessas	amprandess	amprandessan	amprandessas	amprandessan
+
+amprieu	amprida	amprieus	ampridas
+
+amprendànd
+
+amprenda!	ampranded!
+
+
+ancanuscher-kennen
+
+ancanusch[el]	ancanuschas	ancanuscha	ancunaschagn	ancunaschez	ancanuschan
+
+ancunascheva	ancunaschevas	ancunascheva	ancunaschevan	ancunaschevas	ancunaschevan
+
+vignt ad ancanuscher	veans ad ancanuscher	vean ad ancanuscher	vagnagn ad ancanuscher	vagnez ad ancanuscher	vignan ad ancanuscher
+
+ancanuschi	ancanusch(i)as	ancanuschi	ancunascheian	ancunascheias	ancanusch(i)an
+
+ancunaschess	ancunaschessas	ancunaschess	ancunaschessan	ancunaschessas	ancunaschessan
+
+ancunaschieu	ancunaschida	ancunaschieus	ancunaschidas
+
+ancunaschànd
+
+ancanuscha!	ancunasched!
+
+
+ancorscher-merken
+
+ancorsch[el]	ancorschas	ancorscha	ancurschagn	ancurschez	ancorschan
+
+ancurscheva	ancurschevas	ancurscheva	ancurschevan	ancurschevas	ancurschevan
+
+vignt ad ancorscher	veans ad ancorscher	vean ad ancorscher	vagnagn ad ancorscher	vagnez ad ancorscher	vignan ad ancorscher
+
+ancorschi	ancorsch(i)as	ancorschi	ancurscheian	ancurscheias	ancorsch(i)an
+
+ancurschess	ancurschessas	ancurschess	ancurschessan	ancurschessas	ancurschessan
+
+antgiert/ancurschieu	antgierta/ancurschida	antgierts/ancurschieus	antgiertas/ancurschidas
+
+ancurschànd
+
+ancorscha!	ancursched!
+
+
+antalir-verstehen
+
+antalig[el]	antalis	antali	antalgiagn	antalgez	antalin
+
+antalgeva	antalgevas	antalgeva	antalgevan	antalgevas	antalgevan
+
+vignt ad antalir	veans ad antalir	vean ad antalir	vagnagn ad antalir	vagnez ad antalir	vignan ad antalir
+
+antaligi	antaligias	antaligi	antalgeian	antalgeias	antaligian
+
+antalgess	antalgessas	antalgess	antalgessan	antalgessas	antalgessan
+
+antaletg	antaletga	antaletgs	antaletgas
+
+antalgiànd
+
+antali!	antalged!
+
+
+antschever-beginnen
+
+antschev	antschevas	antscheva	antschavagn	antschavez	antschevan
+
+antschaveva	antschavevas	antschaveva	antschavevan	antschavevas	antschavevan
+
+vignt ad antschever	veans ad antschever	vean ad antschever	vagnagn ad antschever	vagnez ad antschever	vignan ad antschever
+
+antschevi	antschev(i)as	antschevi	antschaveian	antschaveias	antschev(i)an
+
+antschavess	antschavessas	antschavess	antschavessan	antschavessas	antschavessan
+
+antschiet	antscheata	antschiets	antscheatas
+
+antschavànd
+
+antscheva!	antschaved!
+
+
+anzolver-frühstücken
+
+anzolv[el]	anzolvas	anzolva	anzulvagn	anzulvez	anzolvan
+
+anzulveva	anzulvevas	anzulveva	anzulvevan	anzulvevas	anzulvevan
+
+vignt ad anzolver	veans ad anzolver	vean ad anzolver	vagnagn ad anzolver	vagnez ad anzolver	vignan ad anzolver
+
+anzolvi	anzolv(i)as	anzolvi	anzulveian	anzulveias	anzolv(i)an
+
+anzulvess	anzulvessas	anzulvess	anzulvessan	anzulvessas	anzulvessan
+
+anzieult	anzieulta	anzieults	anzieultas
+
+anzulvànd
+
+anzolva!	anzulved!
+
+
+bargir-weinen
+
+brag[el]	bragias	bragia	bargiagn	bargez	bragian
+
+bargeva	bargevas	bargeva	bargevan	bargevas	bargevan
+
+vignt a bargir	veans a bargir	vean a bargir	vagnagn a bargir	vagnez a bargir	vignan a bargir
+
+bragi	bragias	bragi	bargeian	bargeias	bragian
+
+bargess	bargessas	bargess	bargessan	bargessas	bargessan
+
+bargieu	bargida	bargieus	bargidas
+
+bargiànd
+
+bragia!	barged!
+
+
+canuscher-kennen
+
+canusch[el]	canuschas	canuscha	cunaschagn	cunaschez	canuschan
+
+cunascheva	cunaschevas	cunascheva	cunaschevan	cunaschevas	cunaschevan
+
+vignt a canuscher	veans a canuscher	vean a canuscher	vagnagn a canuscher	vagnez a canuscher	vignan a canuscher
+
+canuschi	canusch(i)as	canuschi	cunascheian	cunascheias	canusch(i)an
+
+cunaschess	cunaschessas	cunaschess	cunaschessan	cunaschessas	cunaschessan
+
+cunaschieu	cunaschida	cunaschieus	cunaschidas
+
+cunaschànd
+
+canuscha!	cunasched!
+
+
+cuntànscher-erreichen
+
+cuntànsch[el]	cuntànschas	cuntànscha	cuntanschagn	cuntanschez	cuntànschan
+
+cuntanscheva	cuntanschevas	cuntanscheva	cuntanschevan	cuntanschevas	cuntanschevan
+
+vignt a cuntànscher	veans a cuntànscher	vean a cuntànscher	vagnagn a cuntànscher	vagnez a cuntànscher	vignan a cuntànscher
+
+cuntànschi	cuntànsch(i)as	cuntànschi	cuntanscheian	cuntanscheias	cuntànsch(i)an
+
+cuntanschess	cuntanschessas	cuntanschess	cuntanschessan	cuntanschessas	cuntanschessan
+
+cuntanschieu	cuntanschida	cuntanschieus	cuntanschidas
+
+cuntanschànd
+
+cuntànscha!	cuntansched!
+
+
+cunvagnir-vereinbaren 
+#(do. sacunvagnir-sich vereinbaren)
+
+cunvignt	cunveans	cunvean	cunvagnagn	cunvagnez	cunvignan 
+
+cunvagneva	cunvagnevas	cunvagneva	cunvagnevan	cunvagnevas	cunvagnevan
+
+vignt a cunvagnir	veans a cunvagnir	vean a cunvagnir	vagnagn a cunvagnir	vagnez a cunvagnir	vignan a cunvagnir
+
+cunvigni	cunvign(i)as	cunvigni	cunvagneian	cunvagneias	cunvign(i)an
+
+cunvagness	cunvagnessas	cunvagness	cunvagnessan	cunvagnessas	cunvagnessan
+
+cunvagnieu	cunvagnida	cunvagnieus	cunvagnidas
+
+cunvagnànd
+
+cunvegna!	cunvagned!
+
+
+cuschinar-kochen
+
+cuschegn[el]	cuschegnas	cuschegna	cuschinagn	cuschinaz	cuschegnan
+
+cuschinava	cuschinavas	cuschinava	cuschinavan	cuschinavas	cuschinavan
+
+vignt a cuschinar	veans a cuschinar	vean a cuschinar	vagnagn a cuschinar	vagnez a cuschinar	vignan a cuschinar
+
+cuschegni	cuschegn(i)as	cuschegni	cuschineian	cuschineias	cuschegn(i)an
+
+cuschinass	cuschinassas	cuschinass	cuschinassan	cuschinassas	cuschinassan
+
+cuschino	cuschinada	cuschinos	cuschinadas
+
+cuschinànd
+
+cuschegna!	cuschinad!
+
+
+dearscher-giessen
+
+dearsch[el]	dearschas	dearscha	darschagn	darschez	dearschan
+
+darscheva	darschevas	darscheva	darschevan	darschevas	darschevan
+
+vignt a dearscher	veans a dearscher	vean a dearscher	vagnagn a dearscher	vagnez a dearscher	vignan a dearscher
+
+dearschi	dearsch(i)as	dearschi	darscheian	darscheias	dearsch(i)an
+
+darschess	darschessas	darschess	darschessan	darschessas	darschessan
+
+darschieu	darschida	darschieus	daschidas
+
+darschànd
+
+dearscha!	darsched!
+
+
+direger-dirigieren          
+
+direg[el]	diregias	diregia	dirigiagn	dirigez	diregian
+
+dirigeva	dirigevas	dirigeva	dirigevan	dirigevas	dirigevan
+
+vignt a direger	veans a direger	vean a direger	vagnagn a direger	vagnez a direger	vignan a direger
+
+diregi	diregias	diregi	dirigeian	dirigeias	diregian
+
+dirigess	dirigessas	dirigess	dirigessan	dirigessas	dirigessan
+
+dirigieu	dirigida	dirigieus	dirigidas
+
+dirigiànd
+
+diregia!	diriged!
+
+
+durmir-schlafen            
+
+dorm[el]	dormas	dorma	durmagn	durmez	dorman
+
+durmeva	durmevas	durmeva	durmevan	durmevas	durmevan
+
+vignt a durmir	veans a durmir	vean a durmir	vagnagn a durmir	vagnez a durmir	vignan a durmir
+
+dormi	dorm(i)as	dormi	durmeian	durmeias	dorm(i)an
+
+durmess	durmessas	durmess	durmessan	durmessas	durmessan
+
+durmieu	durmida	durmieus	durmidas
+
+durmànd
+
+dorma!	durmed!
+
+
+giuder-geniessen
+
+giod[el]	giodas	gioda	giudagn	giudez	giodan
+
+giudeva	giudevas	giudeva	giudevan	giudevas	giudevan
+
+vignt a giuder	veans a giuder	vean a giuder	vagnagn a giuder	vagnez a giuder	vignan a giuder
+
+giodi	giod(i)as	giodi	giudiean	giudeias	giod(i)an
+
+giudess	giudessas	giudess	giudessan	giudessas	giudessan
+
+giudieu	giudida	giudieus	giudidas
+
+giudànd
+
+gioda!	giuded!
+
+
+liger-lesen
+
+lig[el]	ligias	ligia	ligiagn	ligez	ligian
+
+ligeva	ligevas	ligeva	ligevan	ligevas	ligevan
+
+vignt a liger	veans a liger	vean a liger	vagnagn a liger	vagnez a liger	vignan a liger
+
+ligi	ligias	ligi	ligeian	ligeias	ligian
+
+ligess	ligessas	ligess	ligessan	ligessas	ligessan
+
+ligieu	ligida	ligieus	ligidas
+
+ligiànd
+
+ligia!	liged!
+
+
+litgear-lecken
+
+letg[el]	letgas	letga	litgagn	litgeaz	letgan
+
+litgeava	litgeavas	litgeava	litgeavan	litgeavas	litgeavan
+
+vignt a litgear	veans a litgear	vean a litgear	vagnagn a litgear	vagnez a litgear	vignan a litgear
+
+letgi	letg(i)as	letgi	litgeian	litgeias	letg(i)an
+
+litgess	litgessas	litgess	litgessan	litgessas	litgessan
+
+litgieu	litgeada	litgieus	litgeadas
+
+litgànd
+
+letga!	litgead! 
+
+
+pearder-verlieren
+
+peard[el]	peardas	pearda	pardagn	pardez	peardan 
+
+pardeva	pardevas	pardeva	pardevan	pardevas	pardevan
+
+vignt a pearder	veans a pearder	vean a pearder	vagnagn a pearder	vagnez a pearder	vignan a pearder
+
+peardi	peard(i)as	peardi	pardeian	pardeias	peard(i)an
+
+pardess	pardessas	pardess	pardessan	pardessas	pardessan
+
+pears	pearsa	pears	pearsas
+
+pardànd
+
+pearda!	parded!
+
+
+pender-hängen
+
+pend[el]	pendas	penda	pandagn	pandez	pendan
+
+pandeva	pandevas	pandeva	pandevan	pandevas	pandevan
+
+vignt a pender	veans a pender	vean a pender	vagnagn a pender	vagnez a pender	vignan a pender
+
+pendi	pend(i)as	pendi	pandeian	pandeias	pend(i)an
+
+pandess	pandessas	pandess	pandessan	pandessas	pandessan
+
+pandieu	pandida	pandieus	pandidas
+
+pandànd
+
+penda!	panded!
+
+
+porscher-anbieten
+
+porsch[el]	porschas	porscha	purschagn	purschez	porschan
+
+purscheva	purschevas	purscheva	purschevan	purschevas	purschevan
+
+vignt a porscher	veans a porscher	vean a porscher	vagnagn a porscher	vagnez a porscher	vignan a porscher
+
+porschi	porsch(i)as	porschi	purscheian	purscheias	porsch(i)an
+
+purschess	purschessas	purschess	purschessan	purschessas	purschessan
+
+purschieu	purschida	purschieus	purschidas
+
+purschànd
+
+porscha!	pursched!
+
+
+prender-nehmen
+
+prend[el]	prendas	prenda	prandagn	prandez	prendan
+
+prandeva	prandevas	prandeva	prandevan	prandevas	prandevan
+
+vignt a prender	veans a prender	vean a prender	vagnagn a prender	vagnez a prender	vignan a prender
+
+prendi	prend(i)as	prendi	prandeian	prandeias	prend(i)an
+
+prandess	prandessas	prandess	prandessan	prandessas	prandessan 
+
+prieu	prida	prieus	pridas
+
+prandànd
+
+prenda!	pranded!
+
+
+radir-bringen          
+
+radig[el]	radis	radi	radigiagn	radigez	radin
+
+radigeva	radigevas	radigeva	radigevan	radigevas	radigevan
+
+vignt a radir	veans a radir	vean a radir	vagnagn a radir	vagnez a radir	vignan a radir
+
+radigi	radigias	radigi	radigeian	radigeias	radigian
+
+radigess	radigessas	radigess	radigessan	radigessas	radigessan
+
+radetg	radetga	radetgs	radetgas
+
+radigiànd
+
+radi!	radiged!
+
+
+rasantir-fühlen
+
+rasaint[el]	rasaintas	rasainta	rasantagn	rasantez	rasaintan
+
+rasanteva	rasantevas	rasanteva	rasantevan	rasantevas	rasantevan
+
+vignt a rasantir	veans a rasantir	vean a rasantir	vagnagn a rasantir	vagnez a rasantir	vignan a rasantir
+
+rasainti	rasaint(i)as	rasainti	rasanteian	rasanteias	rasaint(i)an
+
+rasantess	rasantessas	rasantess	rasantessan	rasantessas	rasantessan
+
+rasantieu	rasantida	rasantieus	rasantidas
+
+rasantànd
+
+rasainta!	rasanted!
+
+
+ratschever-erhalten
+
+ratschev[el]	ratschevas	ratscheva	ratschavagn	ratschavez	ratschevan
+
+ratschaveva	ratschavevas	ratschaveva	ratschavevan	ratschavevas	ratschavevan
+
+vignt a ratschever	veans a ratschever	vean a ratschever	vagnagn a ratschever	vagnez a ratschever	vignan a ratschever
+
+ratschevi	ratschev(i)as	ratschevi	ratschaveian	ratschaveias	ratschev(i)an
+
+ratschavess	ratschavessas	ratschavess	ratschavessan	ratschavessas	ratschavessan
+
+ratschiert	ratschierta	ratschierts	ratschiertas
+
+ratschavànd
+
+ratscheva!	ratschaved!
+
+
+santir-spüren 
+#(do. sasantir-sich fühlen)
+
+saint[el]	saintas	sainta	santagn	santez	saintan
+
+santeva	santevas	santeva	santevan	santevas	santevan
+
+vignt a santir	veans a santir	vean a santir	vagnagn a santir	vagnez a santir	vignan a santir
+
+sainti	saint(i)as	sainti	santeian	santeias	saint(i)an
+
+santess	santessas	santess	santessan	santessas	santessan
+
+santieu	santida	santieus	santidas
+
+santànd
+
+sainta!	santed!
+
+
+sarasantir-fühlen
+
+sarasaint[el]	sarasaintas	sarasainta	sarasantagn	sarasantez	sarasaintan
+
+sarasanteva	sarasantevas	sarasanteva	sarasantevan	sarasantevas	sarasantevan
+
+vignt a sarasantir	veans a sarasantir	vean a sarasantir	vagnagn a sarasantir	vagnez a sarasantir	vignan a sarasantir
+
+sarasainti	sarasaint(i)as	sarasainti	sarasanteian	sarasanteias	sarasaint(i)an
+
+sarasantess	sarasantessas	sarasantess	sarasantessan	sarasantessas	sarasantessan
+
+sarasantieu	sarasantida	sarasantieus	sarasantidas
+
+sarasantànd
+
+sarasainta!	sarasanted!
+
+
+sarvir-dienen
+
+searv[el]	searvas	searva	sarvagn	sarvez	searvan
+
+sarveva	sarvevas	sarveva	sarvevan	sarvevas	sarvevan
+
+vignt a sarvir	veans a sarvir	vean a sarvir	vagnagn a sarvir	vagnez a sarvir	vignan a sarvir
+
+searvi	searv(i)as	searvi	sarveian	sarveias	searv(i)an
+
+sarvess	sarvessas	sarvess	sarvessan	sarvessas	sarvessan
+
+sarvieu	sarvida	sarvieus	sarvidas
+
+sarvànd
+
+searva!	sarved!
+
+
+satisfar-befriedigen
+
+satisfetsch[el]	satisfas	satisfa	satisfagiagn	satisfagez	satisfan
+
+satisfageva	satisfagevas	satisfageva	satisfagevan	satisfagevas	satisfagevan
+
+vignt a satisfar	veans a satisfar	vean a satisfar	vagnagn a satisfar	vagnez a satisfar	vignan a satisfar
+
+satisfetschi	satisfetsch(i)as	satisfetschi	satisfageian	satisfageias	satisfetsch(i)an
+
+satisfagess	satisfagessas	satisfagess	satisfagessan	satisfagessas	satisfagessan
+
+satisfatg	satisfatga	satisfatgs	satisfatgas
+
+satisfànd
+
+satisfe!	satisfaged!
+
+
+scriver-schreiben 
+#(do. s'anscriver-sich einschreiben)
+
+scriv[el]	scrivas	scriva	scrivagn	scrivez	scrivan
+
+scriveva	scrivevas	scriveva	scrivevan	scrivevas	scrivevan
+
+vignt a scriver	veans a scriver	vean a scriver	vagnagn a scriver	vagnez a scriver	vignan a scriver
+
+scrivi	scriv(i)as	scrivi	scriveian	scriveias	scriv(i)an
+
+scrivess	scrivessas	scrivess	scrivessan	scrivessas	scrivessan
+
+scret	screta	screts	scretas
+
+scrivànd
+
+scriva!	scrived!
+
+
+spartgir-trennen
+
+spertg[el]	spertgas	spertga	spartgagn	spartgez	spertgan
+
+spartgeva	spartgevas	spartgeva	spartgevan	spartgevas	spartgevan
+
+vignt a spartgir	veans a spartgir	vean a spartgir	vagnagn a spartgir	vagnez a spartgir	vignan a spartgir
+
+spertgi	spertg(i)as	spertgi	spartgeian	spartgeias	spertg(i)an
+
+spartgess	spartgessas	spartgess	spartgessan	spartgessas	spartgessan
+
+spartgieu	spartgida	spartgieus	spartgidas
+
+spartgànd
+
+spertga!	spartged!
+
+
+surdar-übergeben		
+
+surdund[el]	surdas	surdat	surdagn	surdez	surdatan
+
+surdava	surdavas	surdava	surdavan	surdavas	surdavan
+
+vignt a surdar	veans a surdar	vean a surdar	vagnagn a surdar	vagnez a surdar	vignan a surdar
+
+surdeti	surdet(i)as	surdeti	surdeian	surdeias	surdet(i)an
+
+surdass	surdassas	surdass	surdassan	surdassas	surdassan
+
+surdo	surdada	surdos	surdadas
+
+surdànd
+
+surde!	surded! 
+
+
+survagnir-bekommen
+
+survignt[el]	surveans	survean	survagnagn	survagnez	survignan
+
+survagneva	survagnevas	survagneva	survagnevan	survagnevas	survagnevan
+
+vignt a survagnir	veans a survagnir	vean a survagnir	vagnagn a survagnir	vagnez a survagnir	vignan a survagnir
+
+survigni	survign(i)as	survigni	survagneian	survagneias	survign(i)an
+
+survagness	survagnessas	survagness	survagnessan	survagnessas	survagnessan
+
+survagnieu	survagnida	survagnieus	survagnidas
+
+survagnànd
+
+-	-
+
+tamer-sich fürchten
+
+tem[el]	temas	tema	tamagn	tamez	teman
+
+tameva	tamevas	tameva	tamevan	tamevas	tamevan
+
+vignt a tamer	veans a tamer	vean a tamer	vagnagn a tamer	vagnez a tamer	vignan a tamer
+
+temi	tem(i)as	temi	tameian	tameias	tem(i)an
+
+tamess	tamessas	tamess	tamessan	tamessas	tamessan
+
+tamieu	tamida	tamieus	tamidas
+
+tamànd
+
+tema!	tamed!
+
+
+tartgear-denken
+
+tratg[el]	tratgas	tratga	tartgagn	tartgeaz	tratgan
+
+tartgeava	tartgeavas	targeava	tartgeavan	tartgeavas	tartgeavan
+
+vignt a tartgear	veans a tartgear	vean a tartgear	vagnagn a tartgear	vagnez a tartgear	vignan a tartgear
+
+tratgi	tratg(i)as	tratgi	tartgeian	tartgeias	tratg(i)an
+
+tartgess	tartgessas	tartgess	tartgessan	tartgessas	tartgessan
+
+tartgieu	tartgeada	tartgieus	tartgeadas
+
+tartgànd
+
+tratga!	tartgead!
+
+
+tschearner-erwählen
+
+tschearn[el]	tschearnas	tschearna	tscharnagn	tscharnez	tschearnan
+
+tscharneva	tscharnevas	tscharneva	tscharnevan	tscharnevas	tscharnevan
+
+vignt a tschearner	veans a tschearner	vean a tschearner	vagnagn a tschearner	vagnez a tschearner	vignan a tschearner
+
+tschearni	tschearn(i)as	tschearni	tscharneian	tscharneias	tschearn(i)an
+
+tscharness	tscharnessas	tscharness	tscharnessan	tscharnessas	tscharnessan
+
+tscharnieu	tscharnida	tscharnieus	tscharnida
+
+tscharnànd
+
+tschearna!	tscharned!
+
+
+tànscher-reichen
+
+tànsch[el]	tànschas	tànscha	tanschagn	tanschez	tànschan
+
+tanscheva	tanschevas	tanscheva	tanschevan	tanschevas	tanschevan
+
+vignt a tànscher	veans a tànscher	vean a tànscher	vagnagn a tànscher	vagnez a tànscher	vignan a tànscher
+
+tànschi	tànsch(i)as	tànschi	tanscheian	tanscheias	tànsch(i)an
+
+tanschess	tanschessas	tanschess	tanschessan	tanschessas	tanschessan
+
+tanschieu	tanschida	tanschieus	tanschidas
+
+tanschànd
+
+tànscha!	tansched!
+
+
+vender-verkaufen
+
+vend[el]	vendas	venda	vandagn	vandez	vendan
+
+vandeva	vandevas	vandeva	vandevan	vandevas	vandevan
+
+vignt a vender	veans a vender	vean a vender	vagnagn a vender	vagnez a vender	vignan a vender
+
+vendi	vend(i)as	vendi	vandeian	vandeias	vend(i)an
+
+vandess	vandessas	vandess	vandessan	vandessas	vandessan
+
+vandieu	vandida	vandieus	vandidas
+
+vandànd
+
+venda!	vanded!
+
+
+culiear-verbinden
+
+culei	culeias	culeia	culiagn	culieaz	culeian
+
+culieava	culieavas	culieava	culieavan	culieavas	culieavan
+
+vignt a culiear	veans a culiear	vean a culiear	vagnagn a culiear	vagnez a culiear	vignan a culiear
+
+culeiji	culeij(i)as	culeiji	culieian	culieias	culeij(i)an
+
+culiess	culiessas	culiess	culiessan	culiessas	culiessan
+
+culieu	culieada	culieus	culieadas
+
+culiànd
+
+culeia!	culiead!
+
+
+catar-finden 
+#(do. sacatar-sich befinden)
+
+tgat[el]	tgatas	tgata	catagn	cataz	tgatan
+
+catava	catavas	catava	catavan	catavas	catavan
+
+vignt a catar	veans a catar	vean a catar	vagnagn a catar	vagnez a catar	vignan a catar
+
+tgati	tgat(i)as	tgati	cateian	cateias	tgat(i)an
+
+catass	catassas	catass	catassan	catassas	catassan
+
+cato	catada	catos	catadas
+
+catànd
+
+tgata!	catad!
+
+
+sasamgnear-träumen             
+
+sasiemgn[el]	sasiemgnas	sasiemgna	sasamgnagn	sasamgneaz	sasiemgnan
+
+sasamgneava	sasamgneavas	sasamgneava	sasamgneavan	sasamgneavas	sasamgneavan
+
+vignt a sasamgnear	veans a sasamgnear	vean a sasamgnear	vagnagn a sasamgnear	vagnez a sasamgnear	vignan a sasamgnear
+
+sasiemgni	sasiemgn(i)as	sasiemgni	sasamgneian	sasamgneias	sasiemgn(i)an
+
+sasamgness	sasamgnessas	sasamgness	sasamgnessan	sasamgnessas	sasamgnessan
+
+sasamgnieu	sasamgnieada	sasamgnieus	sasamgniedas
+
+sasamgniànd
+
+sasiemgna!	sasamgnead!
+
+
+sascuntrar-sich begegnen 
+#(do. scuntrar-treffen)
+
+sascùntr[el]	sascùntras	sascùntra	sascuntragn	sascuntraz	sascùntran
+
+sascuntrava	sascuntravas	sascuntrava	sascuntravan	sascuntravas	sascuntravan
+
+vignt a sascuntrar	veans a sascuntrar	vean a sascuntrar	vagnagn a sascuntrar	vagnez a sascuntrar	vignan a sascuntrar
+
+sascùntri	sascùntr(i)as	sascùntri	sascuntreian	sascuntreias	sascùntr(i)an
+
+sascuntrass	sascuntrassas	sascuntrass	sascuntrassan	sascuntrassas	sascuntrassan
+
+sascuntro	sascuntrada	sascuntros	sascuntradas
+
+sascuntrànd
+
+sascùntra!	sascuntrad!
+
+
+savolver-umkehren
+
+savolv[el]	savolvas	savolva	savulvagn	savulvez	savolvan
+
+savulveva	savulvevas	savulveva	savulvevan	savulvevas	savulvevan
+
+vignt a savolver	veans a savolver	vean a savolver	vagnagn a savolver	vagnez a savolver	vignan a savolver
+
+savolvi	savolv(i)as	savolvi	savulveian	savulveias	savolv(i)an
+
+savulvess	savulvessas	savulvess	savulvessan	savulvessas	savulvessan
+
+savieult	savieulta	savieults	savieultas
+
+savulvànd
+
+savolva!	savulved!
+
+
+meter-legen 
+#(do. tarmeter-senden, sameter-sich stellen)
+
+met[el]	metas	meta	matagn	matez	metan
+
+mateva	matevas	mateva	matevan	matevas	matevan
+
+vignt a meter	veans a meter	vean a meter	vagnagn a meter	vagnez a meter	vignan a meter
+
+meti	met(i)as	meti	mateian	mateias	met(i)an
+
+matess	matessas	matess	matessan	matessas	matessan
+
+mess	messa	mess	messas
+
+metànd
+
+meta!	mated!
+
+
+(a)ver-haben
+
+ve	âs	â	vagn	vez	ân
+
+veva	vevas	veva	vevan	vevas	vevan
+
+vignt ad aver	veans ad aver	vean ad aver	vagnagn ad aver	vagnez ad aver	vignan ad av
+
+vegi	vegias	vegi	veian	veias	vegian
+
+vess	vessas	vess	vessan	vessas	vessan
+
+gieu	-	-	-
+
+avànd
+
+vegias!	veias!
+
+
+crer-glauben
+
+creg[el]	cres	cre	cartagn	cartez	cren
+
+carteva	cartevas	carteva	cartevan	cartevas	cartevan
+
+vignt a crer	veans a crer	vean a crer	vagnagn a crer	vagnez a crer	vignan a crer
+
+cregi	cregias	cregi	carteian	carteias	cregian
+
+cartess	cartessas	cartess	cartessan	cartessas	cartessan
+
+cartieu	cartida	cartieus	cartidas
+
+cartànd
+
+cre!	carted!
+
+
+easser-sein
+
+sund	es	e	eassan	eassas	en
+
+eara	earas	eara	earan	earas	earan
+
+vignt ad easser	veans ad easser	vean ad easser	vagnagn ad easser	vagnez ad easser	vignan ad easser
+
+segi	segias	segi	seian	seias	segian
+
+fuss	fussas	fuss	fussan	fussas	fussan
+
+sto	stada	stos	stadas
+
+siànd
+
+segias!	seias!
+
+
+dar-geben
+
+dund[el]	das	dat	dagn	dez	datan
+
+deva	devas	deva	devan	devas	devan
+
+vignt a dar	veans a dar	vean a dar	vagnagn a dar	vagnez a dar	vignan a dar
+
+deti	det(i)as	deti	deian	deias	det(i)an
+
+dess	dessas	dess	dessan	dessas	dessan
+
+do	dada	dos	dadas
+
+dànd
+
+de!	ded!
+
+
+duer-sollen
+
+dueg	des	de	duagn	duez	den
+
+dueva	duevas	dueva	duevan	duevas	duevan
+
+vignt a duer	veans a duer	vean a duer	vagnagn a duer	vagnez a duer	vignan a duer
+
+degi	degias	degi	dueian	dueias	degian
+
+duess	duessas	duess	duessan	duessas	duessan
+
+dueiu	-	-	-	-
+
+duànd
+
+-	-
+
+
+far-machen
+
+fetsch[el]	fas	fa	fagiagn	fagez	fan
+
+fageva	fagevas	fageva	fagevan	fagevas	fagevan
+
+vignt a far	veans a far	vean a far	vagnagn a far	vagnez a far	vignan a far
+
+fetschi	fetsch(i)as	fetschi	fageian	fageias	fetsch(i)an
+
+fagess	fagessas	fagess	fagessan	fagessas	fagessan
+
+fatg	fatga	fatgs	fatgas
+
+fagiànd
+
+fe!	faged!
+
+
+fugir-fliehen
+
+fuig[el]	fuis	fui	fugiagn	fugez	fuin
+
+fugeva	fugevas	fugeva	fugevan	fugevas	fugevan
+
+vignt a fugir	veans a fugir	vean a fugir	vagnagn a fugir	vagnez a fugir	vignan a fugir
+
+fuigi	fuigias	fuigi	fugeian	fugeias	fuigian
+
+fugess	fugessas	fugess	fugessan	fugessas	fugessan
+
+fugieu	fugida	fugieus	fugidas
+
+fugiànd
+
+fui!	fuged!
+
+
+gir-sagen
+
+gitg[el]	gis	gi	giagn	gez	gin
+
+geva	gevas	geva	gevan	gevas	gevan
+
+vignt a gir	veans a gir	vean a gir	vagnagn a gir	vagnez a gir	vignan a gir
+
+gitgi	gitg(i)as	gitgi	gieian	gieias	gitg(i)an
+
+gess	gessas	gess	gessan	gessas	gessan
+
+getg	-	-	-
+
+giànd
+
+gi!	ged!
+
+
+ir-gehen
+
+vont[vom]	vas	va	nagn	naz	van
+
+nava[mavel]	navas[mavas]	nava[mava]	navan[mavan]	navas[mavas]	navan[mavan]
+
+vignt ad ir	veans ad ir	vean ad ir	vagnagn ad ir	vagnez ad ir	vignan ad ir
+
+vomi	vom(i)as	vomi	neian	neias	vom(i)an
+
+nass[mass]	nassas[massas]	nass[mass]	nassan[massan]	nassas[massas]	nassan[massan]
+
+ieu	ida	ieus	idas
+
+nànd[mànd]
+
+va!	nad![mad!]
+
+
+(vu)ler-wollen
+
+vi	vol	vut	lagn	lez	vutan
+
+leva	levas	leva	levan	levas	levan
+
+vignt a ler	veans a ler	vean a ler	vagnagn a ler	vagnez a ler	vignan a ler
+
+vigli	viglias	vigli	leian	leias	viglian
+
+less	lessas	less	lessan	lessas	lessan
+
+lieu	lida	lieus	lidas
+
+lànd
+
+viglias!	leias!
+
+
+puder-können
+
+pos	pos	po	pudagn	pudez	pon
+
+pudeva	pudevas	pudeva	pudevan	pudevas	pudevan
+
+vignt a puder	veans a puder	vean a puder	vagnagn a puder	vagnez a puder	vignan a puder
+
+possi	poss(i)as	possi	pudeian	pudeias	poss(i)an
+
+pudess	pudessas	pudess	pudessan	pudessas	pudessan
+
+pudieu	-	-	-
+
+pudànd
+
+possias!	pudeias!
+
+
+rir-lachen
+
+ris[rig]	ris	ri	riagn	riez	rin
+
+rieva	rievas	rieva	rievan	rievas	rievan
+
+vignt a rir	veans a rir	vean a rir	vagnagn a rir	vagnez a rir	vignan a rir
+
+risi	ris(i)as	risi	rieian	rieias	ris(i)an
+
+riess	riessas	riess	riessan	riessas	riessan
+
+ris	-	-	-
+
+riànd
+
+ri!	ried!
+
+
+saver-wissen
+
+se	sas	sa	savagn	savez	san
+
+saveva	savevas	saveva	savevan	savevas	savevan
+
+vignt a saver	veans a saver	vean a saver	vagnagn a saver	vagnez a saver	vignan a saver
+
+setgi	setg(i)as	setgi	saveian	saveias	setg(i)an
+
+savess	savessas	savess	savessan	savessas	savessan
+
+savieu	-	-	-
+
+savànd
+
+setgas!	saveias!
+
+
+schar-lassen 
+#(do. saschar-sich verlassen)
+
+lasch[el]	laschas	lascha	schagn	schaz	laschan
+
+schava	schavas	schava	schavan	schavas	schavan
+
+vignt a schar	veans a schar	vean a schar	vagnagn a schar	vagnez a schar	vignan a schar
+
+laschi	lasch(i)as	laschi	scheian	scheias	lasch(i)an
+
+schass	schassas	schass	schassan	schassas	schassan
+
+scho	schada	schos	schadas
+
+schànd
+
+le!	schad![schè]
+
+
+scher-liegen
+
+schesch[el]	sches	sche	schaschagn	schaschez	schen
+
+schascheva	schaschevas	schascheva	schaschevan	schaschevas	schaschevan
+
+vignt a scher	veans a scher	vean a scher	vagnagn a scher	vagnez a scher	vignan a scher
+
+scheschi	schesch(i)as	scheschi	schascheian	schascheias	schesch(i)an
+
+schaschess	schaschessas	schaschess	schaschessan	schaschessas	schaschessan
+
+schaschieu	schaschida	schaschieus	schaschidas
+
+schaschànd
+
+sche!	schasched!
+	
+
+star-stehen
+
+stund	stas	stat	stagn	stez	statan
+
+steva	stevas	steva	stevan	stevas	stevan
+
+vignt a star	veans a star	vean a star	vagnagn a star	vagnez a star	vignan a star
+
+steti	stet(i)as	steti	steian	steias	stet(i)an
+
+stess	stessas	stess	stessan	stessas	stessan
+
+sto	stada	stos	stadas
+
+stànd
+
+ste!	sted!
+
+
+stuer-müssen
+
+sto	stos	sto	stuagn	stuez	ston
+
+stueva	stuevas	stueva	stuevan	stuevas	stuevan
+
+vignt a stuer	veans a stuer	vean a stuer	vagnagn a stuer	vagnez a stuer	vignan a stuer
+
+stotgi	stotg(i)as	stotgi	stueian	stueias	stotg(i)an
+
+stuess	stuessas	stuess	stuessan	stuessas	stuessan
+
+stuieu	-	-	-
+
+stuànd
+
+-	-
+
+
+taner-halten
+
+tegn[el]	tegnas	tegna	tanagn	tanez	tegnan
+
+taneva	tanevas	taneva	tanevan	tanevas	tanevan
+
+vignt a taner	veans a taner	vean a taner	vagnagn a taner	vagnez a taner	vignan a taner
+
+tegni	tegn(i)as	tegni	taneian	taneias	tegn(i)an
+
+taness	tanessas	taness	tanessan	tanessas	tanessan
+
+tanieu	tanida	tanieus	tanidas
+
+tanànd
+
+tegna!	taned!
+
+
+trer-ziehen
+
+tir[el]	tiras	tira	targiagn	targez	tiran
+
+targeva	targevas	targeva	targevan	targevas	targevan
+
+vignt a trer	veans a trer	vean a trer	vagnagn a trer	vagnez a trer	vignan a trer
+
+tiri	tir(i)as	tiri	targeian	targeias	tir(i)an
+
+targess	targessas	targess	targessan	targessas	targessan
+
+tratg	tratga	tratgs	tratgas
+
+targiànd
+
+tira!	targed!
+
+
+vagnir-kommen
+
+vignt	veans	vean	vagnagn	vagnez	vignan
+
+vagneva	vagnevas	vagneva	vagnevan	vagnevas	vagnevan
+
+vignt a vagnir	veans a vagnir	vean a vagnir	vagnagn a vagnir	vagnez a vagnir	vignan a vagnir
+
+vigni	vign(i)as	vigni	vagneian	vagneias	vign(i)an
+
+vagness	vagnessas	vagness	vagnessan	vagnessas	vagnessan
+
+vagnieu	vagnida	vagnieus	vagnidas
+
+vagnànd
+
+via!	vagned!
+
+
+ver-sehen 
+#(do. savaser-sich sehen)
+
+vez[el]	vezas	veza	vazagn	vazez	vezan
+
+vazeva	vazevas	vazeva	vazevan	vazevas	vazevan
+
+vignt a ver	veans a ver	vean a ver	vagnagn a ver	vagnez a ver	vignan a ver
+
+vezi	vez(i)as	vezi	vazeian	vazeias	vez(i)an
+
+vazess	vazessas	vazess	vazessan	vazessas	vazessan
+
+vieu	vazida	vieus	vazidas
+
+vazànd
+
+-	-
+
+
+udir-hören
+
+od[el]	odas	oda	udagn	udez	odan
+
+udeva	udevas	udeva	udevan	udevas	udevan
+
+vignt ad udir	veans ad udir	vean ad udir	vagnagn ad udir	vagnez ad udir	vignan ad udir
+
+odi	od(i)as	odi	udeian	udeias	od(i)an
+
+udess	udessas	udess	udessan	udessas	udessan
+
+udieu	udida	udieus	udidas
+
+udànd
+
+oda!	uded!
+
+
+stivgear-studieren
+
+stevg[el]	stevgias	stevgia	stivgiagn	stivgeaz	stevgian
+
+stivgeava	stivgeava	stivgeava	stivgeavan	stivgeavas	stivgeavan
+
+vignt a stivgear	veans a stivgear	vean stivgear	vagnagn a stivgear	vagnez a stivgear	vignan a stivgear
+
+stevgi	stevgias	stevgi	stivgeian	stivgeias	stevgian
+
+stivgess	stivgessas	stivgess	stivgessan	stivgessas	stivgessan
+
+stivgieu	stivgeada	stivgieus	stivgeadas
+
+stivgiànd
+
+stevgia!	stivgead!
+
+
+cuir-kochen
+
+cuig[el]	cuis	cui	cujagn	cujez	cuin
+
+cujeva	cujevas	cujeva	cujevan	cujevas	cujevan
+
+vignt a cuir	veans a cuir	vean a cuir	vagnagn a cuir	vagnez a cuir	vignan a cuir
+
+cuigi	cuigias	cuigi	cujeian	cujeias	cuigian
+
+cujess	cujessas	cujess	cujessan	cujessas	cujessan
+
+cotg	cotga	cotgs	cotgas
+
+cujànd
+
+cui!	cujed!
+
+
+giujear-spielen
+
+gioj[el]	gojas	gioja	giujagn	giujeaz	giojan
+
+giujeava	giujeavas	giujeava	giujeavan	giujeavas	giujeavan
+
+vignt a giujear	veans a giujear	vean a giujear	vagnagn a giujear	vagnez a giujear	vignan a giujear
+
+gioji	gioj(i)as	gioji	giujeian	giujeias	gioj(i)an
+
+giujeass	giujeassas	giujeass	giujeassan	giujeassas	giujeassan
+
+giujieu	giujieada	giujieus	giujieada
+
+giujànd
+
+gioja!	giujead!
+
+
+partgir-teilen
+
+pertg[el]	pertgas	pertga	partgagn	partgez	pertgan
+
+partgeva	partgevas	partgeva	partgevan	partgevas	partgevan
+
+vignt a partgir	veans a partgir	vean a partgir	vagnagn a partgir	vagnez a partgir	vignan a partgir
+
+pertgi	pertg(i)as	pertgi	partgeian	partgeias	pertg(i)an
+
+partgess	partgessas	partgess	partgessan	partgessas	partgessan
+
+partgieu	partgida	partgieus	partgidas
+
+partgànd
+
+pertga!	partged!
+
+
+plascher-gefallen (do. displascher-missfallen)
+
+plesch[el]	ples	ple	plaschagn	plaschez	plen
+
+plascheva	plaschevas	plascheva	plaschevan	plaschevas	plaschevan
+
+vignt a plascher	veans a plascher	vean a plascher	vagnagn a plascher	vagnez a plascher	vignan a plascher
+
+pleschi	plesch(i)as	pleschi	plascheian	plascheias	plesch(i)an
+
+plaschess	plaschessas	plaschess	plaschessan	plaschessas	plaschessan
+
+plaschieu	-	-	-
+
+plaschànd
+
+ple!	plasched!
+
+
+pajear-bezahlen
+
+paj[el]	pajas	paja	pajagn	pajeaz	pajan
+
+pajeava	pajeavas	pajeava	pajeavan	pajeavas	pajeavan
+
+vignt a pajear	veans a pajear	vean a pajear	vagnagn a pajear	vagnez a pajear	vignan a pajear
+
+paji	paj(i)as	paji	pajeian	pajeias	paj(i)an
+
+pajess	pajessas	pajess	pajessan	pajessas	pajessan
+
+pajieu	pajieada	pajieus	pajieadas
+
+pajànd
+
+paja!	pajead!
+
+
+bever-trinken
+
+bev[el]	bevas	beva	bavagn	bavez	bevan
+
+baveva	bavevas	baveva	bavevan	bavevas	bavevan
+
+vignt a bever	veans a bever	vean a bever	vagnagn a bever	vagnez a bever	vignan a bever
+
+bevi	bev(i)as	bevi	baveian	baveias	bev(i)an
+
+bavess	bavessas	bavess	bavessan	bavessas	bavessan
+
+bavieu	bavida	bavieus	bavidas
+
+bavànd
+
+beva!	baved!
+
+
+ancurir-suchen
+
+anquier[el]	anquieras	anquiera	ancuragn	ancurez	anquieran
+
+ancureva	ancurevas	ancureva	ancurevan	ancurevas	ancurevan
+
+vignt ad ancurir	veans ad ancurir	vean ad ancurir	vagnagn ad ancurir	vagnez ad ancurir	vignan ad ancurir
+
+anquieri	anquier(i)as	anquieri	ancureian	ancureias	anquier(i)an
+
+ancuress	ancuressas	ancuress	ancuressan	ancuressas	ancuressan
+
+ancuretg	ancuretga	ancuretgs	ancuretgs
+
+ancurànd
+
+anquiera!	ancured!
+
+
+earver-öffnen
+
+earv[el]	earvas	earva	arvagn	arvez	earvan
+
+arveva	arvevas	arveva	arvevan	arvevas	arvevan
+
+vignt ad earver	veans ad earver	vean ad earver	vagnagn ad earver	vagnez ad earver	vignan ad earver
+
+earvi	earv(i)as	earvi	arveian	arveias	earv(i)an
+
+arvess	arvessas	arvess	arvessan	arvessas	arvessan
+
+aviert	avierta	avierts	aviertas
+
+arvànd
+
+earva!	arved!
+
+
+saglir-springen
+
+sagl[iel]	saglias	saglia	sagliagn	sagliez	saglian
+
+saglieva	saglievas	saglieva	saglievan	saglievas	saglievan
+
+vignt a saglir	veans a saglir	vean a saglir	vagnagn a saglir	vagnez a saglir	vignan a saglir
+
+sagli	saglias	sagli	saglieian	saglieias	saglian
+
+sagliess	sagliessas	sagliess	sagliessan	sagliessas	sagliessan
+
+saglieu	saglida	saglieus	saglidas
+
+sagliànd
+
+saglia!	saglied!
+
+
+springir-bestreuen
+
+spreng	sprengias	sprengia	springagn	springez	sprengian
+
+springeva	springevas	springeva	springevan	springevas	springevan
+
+vignt a springir	veans a springir	vean a springir	vagnagn a springir	vagnez a springir	vignan a springir
+
+sprengi	spreng(i)as	sprengi	springeian	springeias	sprengian
+
+springess	springessas	sprigess	springessan	springessas	springessan
+
+springieu	springida	springieus	springidas
+
+springiànd
+
+sprengia!	springed!
+
+
+angiavinar-erraten
+
+angiavegn[el]	angiavegnas	angiavegna	angiavinagn	angiavinaz	angiavegnan
+
+angiavinava	angiavinavas	angiavinava	angiavinavan	angiavinavas	angiavinavan
+
+vignt ad angiavinar	veans ad angiavinar	vean ad angiavinar	vagnagn ad angiavinar	vagnez ad angiavinar	vignan ad angiavinar
+
+angiavegni	angiavegn(i)as	angiavegni	angiavineian	angiavineias	angiavegn(i)an
+
+angiavinass	angiavinassas	angiavinass	angiavinassan	angiavinassas	angiavinassan
+
+angiavino	angiavinada	angiavinos	angiavinadas
+
+angiavinànd
+
+angiavegna!	angiavinad!
+
+
+turschar-rühren
+
+trusch[el]	truschas	truscha	turschagn	turschaz	truschan
+
+turschava	turschavas	turschava	turschavan	turschavas	turschavan
+
+vignt a turschar	veans a turschar	vean a turschar	vagnagn a turschar	vagnez a turschar	vignan a turschar
+
+truschi	trusch(i)as	truschi	truscheian	truscheias	trusch(i)an
+
+turschass	turschassas	turschass	turschassan	turschassas	turschassan
+
+turscho	turschada	turschos	turschadas
+
+turschànd
+
+truscha!	turschad!
+
+
+buglir-sieden
+
+bugl[el]	buglias	buglia	bugliagn	bugliez	buglian
+
+buglieva	buglievas	buglieva	buglievan	buglievas	buglievan
+
+vignt a buglir	veans a buglir	vean a buglir	vagnagn a buglir	vagnez a buglir	vignan a buglir
+
+bugli	bugl(i)as	bugli	buglieian	buglieias	bugl(i)an
+
+bugliess	bugliessas	bugliess	bugliessan	bugliessas	bugliessan
+
+buglieu	buglida	buglieus	buglidas
+
+bugliànd
+
+buglia!	buglied!
+
+
+frestgantar-kühlen 
+
+frestgaint[el]	frestgaintas	frestgainta	frestgantagn	frestgantaz	frestgaintan
+
+frestgantava	frestgantavas	frestgantava	frestgantavan	frestgantavas	frestgantavan
+
+vignt a frestgantar	veans a frestgantar	vean a frestgantar	vagnagn a frestgantar	vagnez a frestgantar	vignan a frestgantar
+
+frestgainti	frestgaint(i)as	frestgainti	frestganteian	frestganteias	frestgaint(i)an
+
+frestgantass	frestgantassas	frestgantass	frestgantassan	frestgantassas	frestgantassan
+
+frestganto	frestgantada	frestgantos	frestgantadas
+
+frestgantànd
+
+frestgainta!	frestgantad!
+
+
+giantar-das Mittagessen einnehmen
+
+giaint[el]	giaintas	giainta	giantagn	giantaz	giaintan
+
+giantava	giantavas	giantava	giantavan	giantavas	giantavan
+
+vignt a giantar	veans a giantar	vean a giantar	vagnagn a giantar	vagnez a giantar	vignan a giantar
+
+giainti	giaint(i)as	giainti	gianteian	gianteias	giaint(i)an
+
+giantass	giantassas	giantass	giantassan	giantassas	giantassan
+
+gianto	giantos	giantada	giantada
+
+giantànd
+
+giainta!	giantad!
+
+
+mancantar-verpassen
+
+mancaint[el]	mancaintas	mancainta	mancantagn	mancantaz	mancaintan
+
+mancantava	mancantavas	mancantava	mancantavan	mancantavas	mancantavan
+
+vignt a mancantar	veans a mancantar	vean a mancantar	vagnagn a mancantar	vagnez a mancantar	vignan a mancantar
+
+mancainti	mancaint(i)as	mancainti	mancanteian	mancanteias	mancant(i)an
+
+mancantass	mancantassas	mancantass	mancantassan	mancantassas	mancantassan
+
+mancanto	mancantada	mancantos	mancantadas
+
+mancantànd
+
+mancainta!	mancantad!
+
+
+passantar-verbringen
+
+passaint[el]	passaintas	passainta	passantagn	passantaz	passaintan
+
+passantava	passantavas	passantava	passantavan	passantavas	passantavan
+
+vignt a passantar	veans a passantar	vean a passantar	vagnagn a passantar	vagnez a passantar	vignan a passantar
+
+passainti	passaint(i)as	passainti	passanteian	passanteias	passaint(i)an
+
+passantass	passantassas	passantass	passantassan	passantassas	passantassan
+
+passanto	passantada	passantos	passantadas
+
+passantànd
+
+passainta!	passantad!
+
+
+preschantar-vorstellen
+
+preschaint[el]	preschaintas	preschainta	preschantagn	preschantaz	preschaintan
+
+preschantava	preschantavas	preschantava	preschantavan	preschantavas	preschantavan
+
+vignt a preschantar	veans a preschantar	vean a preschantar	vagnagn a preschantar	vagnez a preschantar	vignan a preschantar
+
+preschainti	preschaint(i)as	preschainti	preschanteian	preschanteias	preschaint(i)an
+
+preschantass	preschantassas	preschantass	preschantassan	preschantassas	preschantassan
+
+preschanto	preschantada	preschantos	preschantadas
+
+preschantànd
+
+preschainta!	preschantad!
+
+
+rapreschantar-aufführen	
+
+rapreschaint[el]	rapreschaintas	rapreschainta	rapreschantagn	rapreschantaz	rapreschaintan
+
+rapreschantava	rapreschantavas	rapreschantava	rapreschantavan	rapreschantavas	rapreschantavan
+
+vignt a rapreschantar	veans a rapreschantar	vean a rapreschantar	vagnagn a rapreschantar	vagnez a rapreschantar	vignan a rapreschantar
+
+rapreschainti	rapreschaint(i)as	rapreschainti	rapreschanteian	rapreschanteias	rapreschaint(i)an
+
+rapreschantass	rapreschantassas	rapreschantass	rapreschantassan	rapreschantassas	rapreschantassan
+
+rapreschanto	rapreschantada	rapreschantos	rapreschantadas
+
+rapreschantànd
+
+rapreschainta!	rapreschantad!
+
+
+sapreschantar-sich vorstellen
+
+sapreschaint[el]	sapreschaintas	sapreschainta	sapreschantagn	sapreschantaz	sapreschaintan
+
+sapreschantava	sapreschantavas	sapreschantava	sapreschantavan	sapreschantavas	sapreschantavan
+
+vignt a sapreschantar	veans a sapreschantar	vean a sapreschantar	vagnagn a sapreschantar	vagnez a sapreschantar	vignan a sapreschantar
+
+sapreschainti	sapreschaint(i)as	sapreschainti	sapreschanteian	sapreschanteias	sapreschaint(i)an
+
+sapreschantass	sapreschantassas	sapreschantass	sapreschantassan	sapreschantassas	sapreschantassan
+
+sapreschanto	sapreschantada	sapreschantos	sapreschantadas
+
+sapreschantànd
+
+sapreschainta!	sapreschantad!
+
+
+schalantar-gefrieren
+
+schalaint[el]	schalaintas	schalainta	schalantagn	schalantaz	schalaintan
+
+schalantava	schalantavas	schalantava	schalantavan	schalantavas	schalantavan
+
+vignt a schalantar	veans a schalantar	vean a schalantar	vagnagn a schalantar	vagnez a schalantar	vignan a schalantar
+
+schalainti	schalaint(i)as	schalainti	schalanteian	schalanteias	schalaint(i)an
+
+schalantass	schalantassas	schalantass	schalantassan	schalantassas	schalantassan
+
+schalanto	schalantada	schalantos	schalantadas
+
+schalantànd
+
+schalainta!	schalantad!
+
+
+sadurmantar-einschlafen
+
+sadurmaint[el]	sadurmaintas	sadurmainta	sadurmantagn	sadurmantaz	sadurmaintan
+
+sadurmantava	sadurmantavas	sadurmantava	sadurmantavan	sadurmantavas	sadurmantavan
+
+vignt a sadurmantar	veans a sadurmantar	vean a sadurmantar	vagnagn a sadurmantar	vagnez a sadurmantar	vignan a sadurmantar
+
+sadurmainti	sadurmaint(i)as	sadurmainti	sadurmanteian	sadurmanteias	sadurmaint(i)an
+
+sadurmantass	sadurmantassas	sadurmantass	sadurmantassan	sadurmantassas	sadurmantassan
+
+sadurmanto	sadurmantada	sadurmantos	sadurmantadas
+
+sadurmantànd
+
+sadurmainta!	sadurmantad!
+	
+
+sagritantar-sich aufregen
+
+sagritaint[el]	sagritaintas	sagritainta	sagritantagn	sagritantaz	sagritaintan
+
+sagritantava	sagritantavas	sagritantava	sagritantavan	sagritantavas	sagritantavan
+
+vignt a sagritantar	veans a sagritantar	vean a sagritantar	vagnagn a sagritantar	vagnez a sagritantar	vignan a sagritantar
+
+sagritainti	sagritaint(i)as	sagritainti	sagritanteian	sagritanteias	sagritaint(i)an
+
+sagritantass	sagritantassas	sagritantass	sagritantassan	sagritantassas	sagritantassan
+
+sagritanto	sagritantada	sagritantos	sagritantadas
+
+sagritantànd
+
+sagritainta!	sagritantad!
+
+
+salamantar-sich beklagen
+
+salamaint[el]	salamaintas	salamainta	salamantagn	salamantaz	salamaintan
+
+salamantava	salamantavas	salamantava	salamantavan	salamantavas	salamantavan
+
+vignt a salamantar	veans a salamantar	vean a salamantar	vagnagn a salamantar	vagnez a salamantar	vignan a salamantar
+
+salamainti	salamaint(i)as	salamainti	salamanteian	salamanteias	salamaint(i)an
+
+salamantass	salamantassas	salamantass	salamantassan	salamantassas	salamantassan
+
+salamanto	salamantada	salamantos	salamantadas
+
+salamantànd
+
+salamainta!	salamantad!
+
+
+batarlar-plaudern
+
+batearl[el]	batearlas	batearla	batarlagn	batarlaz	batearlan
+
+batarlava	batarlavas	batarlava	batarlavan	batarlavas	batarlavan
+
+vignt a batarlar	veans a batarlar	vean a batarlar	vagnagn a batarlar	vagnez a batarlar	vignan a batarlar
+
+batearli	batearl(i)as	batearli	batarleian	batarleias	batearl(i)an
+
+bartarlass	batarlassas	batarlass	batarlassan	batarlassas	batarlassan
+
+batarlo	batarlada	batarlos	batarladas
+
+batarlànd
+
+batearla!	batarlad!
+
+
+
+sarar-schliessen  
+
+sear[el]	searas	seara	saragn	saraz	searan
+
+sarava	saravas	sarava	saravan	saravas	saravan
+
+vignt a sarar	veans a sarar	vean a sarar	vagnagn a sarar	vagnez a sarar	vignan a sarar
+
+seari	sear(i)as	seari	sareian	sareias	sear(i)an
+
+sarass	sarassas	sarass	sarassan	sarassas	sarassan
+
+saro	sarada	saros	saradas
+
+sarànd
+
+seara!	sarad!
+
+	
+zarclar-jäten
+
+zearcl[el]	zearclas	zearcla	zarclagn	zarclaz	zearclan
+
+zarclava	zarclavas	zarclava	zarclavan	zarclavas	zarclavan
+
+vignt a zarclar	veans a zarclar	vean a zarclar	vagnagn a zarclar	vagnez a zarclar	vignan a zarclar
+
+zearcli	zearcl(i)as	zearcli	zarcleian	zarcleias	zearcl(i)an
+
+zarclass	zarclassas	zarclass	zarclassan	zarclassas	zarclassan
+
+zarclo	zarclada	zarclos	zarcladas
+
+zarclànd
+
+zearcla!	zarclad!
+
+
+safarmar-anhalten
+
+safearm[el]	safearmas	safearma	safarmagn	safarmaz	safearman
+
+safarmava	safarmavas	safarmava	safarmavan	safarmavas	safarmavan
+
+vignt a safarmar	veans a safarmar	vean a safarmar	vagnagn a safarmar	vagnez a safarmar	vignan a safarmar
+
+safearmi	safearm(i)as	safearmi	safarmeian	safarmeias	safearm(i)an
+
+safarmass	safarmassas	safarmass	safarmassan	safarmassas	safarmassan
+
+safarmo	safarmada	safarmos	safarmadas
+
+safarmànd
+
+safearma!	safarmad!
+
+
+scalinar-läuten 
+
+scalegn[el]	scalegnas	scalegna	scalinagn	scalinaz	scalegnan
+
+scalinava	scalinavas	scalinava	scalinavan	scalinavas	scalinavan
+
+vignt a scalinar	veans a scalinar	vean a scalinar	vagnagn a scalinar	vagnez a scalinar	vignan a scalinar
+
+scalegni	scalegn(i)as	scalegni	scalineian	scalineias	scalegn(i)an
+
+scalinass	scalinassas	scalinass	scalinassan	scalinassas	scalinassan
+
+scalino	scalinada	scalinos	scalinadas
+
+scalinànd
+
+scalegna!	scalinad!
+
+
+schinar-beenden
+
+schegn[el]	schegnas	schegna	schinagn	schinaz	schegnan
+
+schinava	schinavas	schinava	schinavan	schinavas	schinavan
+
+vignt a schinar	veans a schinar	vean a schinar	vagnagn a schinar	vagnez a schinar	vignan a schinar
+
+schegni	schegn(i)as	schegni	schineian	schineias	schegn(i)an
+
+schinass	schinassas	schinass	schinassan	schinassas	schinassan
+
+schino	schinada	schinos	schinadas
+
+schinànd
+
+schegna!	schinad!
+
+
+schminar-ahnen
+
+schmegn[el]	schmegnas	schmegna	schminagn	schminaz	schmegnan
+
+schminava	schminavas	schminava	schminavan	schminavas	schminavan
+
+vignt a schminar	veans a schminar	vean a schminar	vagnagn a schminar	vagnez a schminar	vignan a schminar
+
+schmegni	schmegn(i)as	schmegni	schmineian	schmineias	schmegn(i)an
+
+schminass	schminassas	schminass	schminassan	schminassas	schminassan
+
+schmino	schminada	schminos	schminadas
+
+schminànd
+
+schmegna!	schminad!
+
+
+targinar-aufhalten
+
+targegn[el]	targegnas	targegna	targinagn	targinaz	targegnan
+
+targinava	targinavas	targinava	targinavan	targinavas	targinavan
+
+vignt a targinar	veans a targinar	vean a targinar	vagnagn a targinar	vagnez a targinar	vignan a targinar
+
+targegni	targegn(i)as	targegni	targineian	targineias	targegn(i)an
+
+targinass	targinassas	targinass	targinassan	targinassas	targinassan
+
+targino	targinada	targinos	targinadas
+
+targinànd
+
+targegna!	targinad!
+	
+
+tschanar-das Nachtessen einnehmen
+
+tschagn[el]	tschagnas	tschagna	tschanagn	tschanaz	tschagnan
+
+tschavana	tschanavas	tschanava	tschanavan	tschanavas	tschanavan
+
+vignt a tschanar	veans a tschanar	vean a tschanar	vagnagn a tschanar	vagnez a tschanar	vignan a tschanar
+
+tschagni	tschagn(i)as	tschagni	tschaneian	tschaneias	tschagn(i)an
+
+tschanass	tschanassas	tschanass	tschanassan	tschanassas	tschanassan
+
+tschano	tschanada	tschanos	tschanadas
+
+tschanànd
+
+tschagna!	tschanad!
+
+
+sunar-(ein Instrument) spielen
+
+sùn[el]	sùnas	sùna	sunagn	sunaz	sùnan
+
+sunava	sunavas	sunava	sunavan	sunavas	sunavan
+
+vignt a sunar	veans a sunar	vean a sunar	vagnagn a sunar	vagnez a sunar	vignan a sunar
+
+sùni	sùn(i)as	sùni	suneian	suneias	sùn(i)an
+
+sunass	sunassas	sunass	sunassan	sunassas	sunassan
+
+suno	sunada	sunos	sunadas
+
+sunànd
+
+sùna!	sunad!
+
+
+saradunar-sich versammeln
+
+saradùn[el]	saradùnas	saradùna	saradunagn	saradunaz	saradùnan
+
+saradunava	saradunavas	saradunava	saradunavan	saradunavas	saradunavan
+
+vignt a saradunar	veans a saradunar	vean a saradunar	vagnagn a saradunar	vagnez a saradunar	vignan a saradunar
+
+saradùni	saradùn(i)as	saradùni	saraduneian	saraduneias	saradùn(i)an
+
+saradunass	saradunassas	saradunass	saradunassan	saradunassas	saradunassan
+
+saraduno	saradunada	saradunos	saradunadas
+
+saradunànd
+
+saradùna!	saradunad!
+
+
+sasamtgear-sich vorbereiten
+
+sasemtg[el]	sasemtgas	sasemtga	sasamtgagn	sasamtgeaz	sasemtgan
+
+sasamtgeava	sasamtgeavas	sasamtgeava	sasamtgeavan	sasamtgeavas	sasamtgeavan
+
+vignt a sasamtgear	veans a sasamtgear	vean a sasamtgear	vagnagn a sasamtgear	vagnez a sasamtgear	vignan a sasamtgear
+
+sasemtgi	sasemtg(i)as	sasemtgi	sasamtgeian	sasamtgeias	sasemtg(i)an
+
+sasamtgess	sasamtgessas	sasamtgess	sasamtgessan	sasamtgessas	sasamtgessan
+
+sasamtgieu	sasamtgeada	sasamtgieus	sasamtgeadas	
+
+sasamtgànd
+
+sasemtga!	sasamtgead!
+
+
+sacunvagnir-sich vereinbaren
+
+sacunvignt	sacunveans	sacunvean	sacunvagnagn	sacunvagnez	sacunvignan 
+
+sacunvagneva	sacunvagnevas	sacunvagneva	sacunvagnevan	sacunvagnevas	sacunvagnevan
+
+vignt a sacunvagnir	veans a sacunvagnir	vean a sacunvagnir	vagnagn a sacunvagnir	vagnez a sacunvagnir	vignan a sacunvagnir
+
+sacunvigni	sacunvign(i)as	sacunvigni	sacunvagneian	sacunvagneias	sacunvign(i)an
+
+sacunvagness	sacunvagnessas	sacunvagness	sacunvagnessan	sacunvagnessas	sacunvagnessan
+
+sacunvagnieu	sacunvagnida	sacunvagnieus	sacunvagnidas
+
+sacunvagnànd
+
+sacunvegna!	sacunvagned!
+
+
+sasantir-sich fühlen
+
+sasaint[el]	sasaintas	sasainta	sasantagn	sasantez	sasaintan
+
+sasanteva	sasantevas	sasanteva	sasantevan	sasantevas	sasantevan
+
+vignt a sasantir	veans a sasantir	vean a sasantir	vagnagn a sasantir	vagnez a sasantir	vignan a sasantir
+
+sasainti	sasaint(i)as	sasainti	sasanteian	sasanteias	sasaint(i)an
+
+sasantess	sasantessas	sasantess	sasantessan	sasantessas	sasantessan
+
+sasantieu	sasantida	sasantieus	sasantidas
+
+sasantànd
+
+sasainta!	sasanted!
+
+
+s'anscriver-sich einschreiben
+
+s'anscriv[el]	s'anscrivas	s'anscriva	s'anscrivagn	s'anscrivez	s'anscrivan
+
+s'anscriveva	s'anscrivevas	s'anscriveva	s'anscrivevan	s'anscrivevas	s'anscrivevan
+
+vignt a s'anscriver	veans a s'anscriver	vean a s'anscriver	vagnagn a s'anscriver	vagnez a s'anscriver	vignan a s'anscriver
+
+s'anscrivi	s'anscriv(i)as	s'anscrivi	s'anscriveian	s'anscriveias	s'anscriv(i)an
+
+s'anscrivess	s'anscrivessas	s'anscrivess	s'anscrivessan	s'anscrivessas	s'anscrivessan
+
+s'anscret	s'anscreta	s'anscrets	s'anscretas
+
+s'anscrivànd
+
+s'anscriva!	s'anscrived!
+
+ 
+sacatar-sich befinden
+
+satgat[el]	satgatas	satgata	sacatagn	sacataz	satgatan
+
+sacatava	sacatavas	sacatava	sacatavan	sacatavas	sacatavan
+
+vignt a sacatar	veans a sacatar	vean a sacatar	vagnagn a sacatar	vagnez a sacatar	vignan a sacatar
+
+satgati	satgat(i)as	satgati	sacateian	sacateias	satgat(i)an
+
+sacatass	sacatassas	sacatass	sacatassan	sacatassas	sacatassan
+
+sacato	sacatada	sacatos	sacatadas
+
+sacatànd
+
+satgata!	sacatad!
+
+
+scuntrar-treffen
+
+scùntr[el]	scùntras	scùntra	scuntragn	scuntraz	scùntran
+
+scuntrava	scuntravas	scuntrava	scuntravan	scuntravas	scuntravan
+
+vignt a scuntrar	veans a scuntrar	vean a scuntrar	vagnagn a scuntrar	vagnez a scuntrar	vignan a scuntrar
+
+scùntri	scùntr(i)as	scùntri	scuntreian	scuntreias	scùntr(i)an
+
+scuntrass	scuntrassas	scuntrass	scuntrassan	scuntrassas	scuntrassan
+
+scuntro	scuntrada	scuntros	scuntradas
+
+scuntrànd
+
+scùntra!	scuntrad!
+
+
+
+tarmeter-senden
+
+tarmet[el]	tarmetas	tarmeta	tarmatagn	tarmatez	tarmetan
+
+tarmateva	tarmatevas	tarmateva	tarmatevan	tarmatevas	tarmatevan
+
+vignt a tarmeter	veans a tarmeter	vean a tarmeter	vagnagn a tarmeter	vagnez a tarmeter	vignan a tarmeter
+
+tarmeti	tarmet(i)as	tarmeti	tarmateian	tarmateias	tarmet(i)an
+
+tarmatess	tarmatessas	tarmatess	tarmatessan	tarmatessas	tarmatessan
+
+taramess	tarmessa	tarmess	tarmessas
+
+tarmetànd
+
+tarmeta!	tarmated!
+
+
+sameter-sich stellen
+
+samet[el]	sametas	sameta	samatagn	samatez	sametan
+
+samateva	samatevas	samateva	samatevan	samatevas	samatevan
+
+vignt a sameter	veans a sameter	vean a sameter	vagnagn a sameter	vagnez a sameter	vignan a sameter
+
+sameti	samet(i)as	sameti	samateian	samateias	samet(i)an
+
+samatess	samatessas	samatess	samatessan	samatessas	samatessan
+
+samess	samessa	samess	samessas
+
+sametànd
+
+sameta!	samated!
+
+
+saschar-sich verlassen
+
+salasch[el]	salaschas	salascha	saschagn	saschaz	salaschan
+
+saschava	saschavas	saschava	saschavan	saschavas	saschavan
+
+vignt a saschar	veans a saschar	vean a saschar	vagnagn a saschar	vagnez a saschar	vignan a saschar
+
+salaschi	salasch(i)as	salaschi	sascheian	sascheias	salasch(i)an
+
+saschass	saschassas	saschass	saschassan	saschassas	saschassan
+
+sascho	saschada	saschos	saschadas
+
+saschànd
+
+sale!	saschad![saschè]
+
+
+sataner-sich festhalten
+
+sategn[el]	sategnas	sategna	satanagn	satanez	sategnan
+
+sataneva	satanevas	sataneva	satanevan	satanevas	satanevan
+
+vignt a sataner	veans a sataner	vean a sataner	vagnagn a sataner	vagnez a sataner	vignan a sataner
+
+sategni	sategn(i)as	sategni	sataneian	sataneias	sategn(i)an
+
+sataness	satanessas	sataness	satanessan	satanessas	satanessan
+
+satanieu	satanida	satanieus	satanidas
+
+satanànd
+
+sategna!	sataned!
+
+
+savaser-sich sehen
+
+savez[el]	savezas	saveza	savazagn	savazez	savezan
+
+savazeva	savazevas	savazeva	savazevan	savazevas	savazevan
+
+vignt a savaser	veans a savaser	vean a savaser	vagnagn a savaser	vagnez a savaser	vignan a savaser
+
+savezi	savez(i)as	savezi	savazeian	savazeias	savez(i)an
+
+savazess	savazessas	savazess	savazessan	savazessas	savazessan
+
+savieu	savazida	savieus	savazidas
+
+savazànd
+
+-	-

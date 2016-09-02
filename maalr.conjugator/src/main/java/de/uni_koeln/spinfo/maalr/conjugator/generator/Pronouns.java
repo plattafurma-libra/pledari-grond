@@ -1,7 +1,7 @@
 package de.uni_koeln.spinfo.maalr.conjugator.generator;
 
 /*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
+ * Copyright 2013-2016 Sprachliche Informationsverarbeitung, University of Cologne
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -244,12 +244,10 @@ public class Pronouns {
 
 	public void setImperat1(String imp1) {
 		values.put(imperat_1, imp1);
-
 	}
 
 	public void setImperat2(String imp2) {
 		values.put(imperat_2, imp2);
-
 	}
 
 	public void setGer(String ger) {
