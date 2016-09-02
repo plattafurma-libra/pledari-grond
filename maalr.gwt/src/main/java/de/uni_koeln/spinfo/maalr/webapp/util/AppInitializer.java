@@ -46,6 +46,7 @@ import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+import de.uni_koeln.spinfo.maalr.webapp.service.ExportFormatScheduler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
 @Service
@@ -55,53 +56,61 @@ public class AppInitializer {
 
 	@Autowired
 	private Environment environment;
-	
+
 	@Autowired
 	private BackendService adminController;
-	
+
 	@Autowired
 	private LoginManager loginManager;
-	
+
 	@Autowired
 	private UserInfoBackend userBackend;
-	
+
 	@Autowired
 	private Index index;
 
 	@PostConstruct
-	public void postConstruct() throws Exception  {
+	public void postConstruct() throws Exception {
 		String shouldImport = System.getProperty("maalr.import");
-		if(shouldImport != null && Boolean.parseBoolean(shouldImport)) {
+		if (shouldImport != null && Boolean.parseBoolean(shouldImport)) {
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			logger.warn("Importing Data...");
 			try {
 				loginManager.login("admin", "admin!132.");
-				adminController.importDatabase(20000);	
-				MaalrUserInfo editor = new MaalrUserInfo("editor", Role.TRUSTED_IN_4);
+				adminController.importDatabase(20000);
+				MaalrUserInfo editor = new MaalrUserInfo("editor",
+						Role.TRUSTED_IN_4);
 				userBackend.insert(editor);
 			} finally {
 				loginManager.logout();
 			}
-			
+
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
-		
+
+		configureSearchUi();
+		MaalrQueryFormatter.setUiConfiguration(Configuration.getInstance()
+				.getUserDefaultSearchUiConfig());
+		IndexStatistics statistics = index.getIndexStatistics();
+		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(),
+				statistics.getApprovedEntries(), statistics.getLastUpdated(),
+				statistics.getOverlayCount());
+
 		// SCHEDULED BACKUP
-		logger.info("STARTING SCHEDULED BACKUP...");
+		logger.info("STARTING SCHEDULED BACKUP!");
 		String dir = Configuration.getInstance().getBackupLocation();
 		int nums = Integer.parseInt(Configuration.getInstance().getBackupNums());
 		String time = Configuration.getInstance().getTriggerTime();
-		BackUpHelper.getInstance().setBackup(BackUpHelper.Period.DAILY, time, dir, nums, false);
-		// END SCHEDULED BACKUP
-		
-		configureSearchUi();
-		MaalrQueryFormatter.setUiConfiguration(Configuration.getInstance().getUserDefaultSearchUiConfig());
-		IndexStatistics statistics = index.getIndexStatistics();
-		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(), statistics.getLastUpdated(), statistics.getOverlayCount());
+		BackUpHelper.getInstance().setBackup(BackUpHelper.Period.DAILY, time,dir, nums, false);
+
+		// SCHEDULED FORMAT EXPORT
+		logger.info("STARTING SCHEDULED FORMAT EXPORT!");
+		ExportFormatScheduler.getInstance().run();
 	}
 
 	private void configureSearchUi() {
-		DictionaryConfiguration dictionaryConfig = Configuration.getInstance().getDictionaryConfig();
+		DictionaryConfiguration dictionaryConfig = Configuration.getInstance()
+				.getDictionaryConfig();
 		ArrayList<String> mainFields = new ArrayList<String>();
 		List<QueryKey> queryKeys = dictionaryConfig.getQueryKeys();
 		for (QueryKey key : queryKeys) {
@@ -112,19 +121,22 @@ public class AppInitializer {
 		for (ColumnSelector choice : fcList) {
 			columnSelectors.put(choice.getId(), choice);
 		}
-//		List<FieldValueChoice> fcvList = dictionaryConfig.getFieldValueChoices();
-//		Map<String, FieldValueChoice> fieldValueChoices = new HashMap<String, FieldValueChoice>();
-//		for (FieldValueChoice choice : fcvList) {
-//			fieldValueChoices.put(choice.getId(), choice);
-//		}
+		// List<FieldValueChoice> fcvList =
+		// dictionaryConfig.getFieldValueChoices();
+		// Map<String, FieldValueChoice> fieldValueChoices = new HashMap<String,
+		// FieldValueChoice>();
+		// for (FieldValueChoice choice : fcvList) {
+		// fieldValueChoices.put(choice.getId(), choice);
+		// }
 		List<QueryBuilder> qmList = dictionaryConfig.getQueryModifier();
-		Map<String, QueryBuilder> queryModifiers = new HashMap<String, QueryBuilder>(); 
+		Map<String, QueryBuilder> queryModifiers = new HashMap<String, QueryBuilder>();
 		for (QueryBuilder modifier : qmList) {
 			queryModifiers.put(modifier.getId(), modifier);
 		}
-		UiConfiguration[] configs = Configuration.getInstance().getUIConfigurations();
+		UiConfiguration[] configs = Configuration.getInstance()
+				.getUIConfigurations();
 		for (UiConfiguration uiConfig : configs) {
-			if(uiConfig != null) {
+			if (uiConfig != null) {
 				initialize(mainFields, columnSelectors, queryModifiers,
 						uiConfig);
 			}
@@ -137,59 +149,60 @@ public class AppInitializer {
 		uiConfig.setMainFields(mainFields);
 		List<UiField> fields = uiConfig.getFields();
 		for (UiField field : fields) {
-			if(field.isBuildIn()) {
+			if (field.isBuildIn()) {
 				setBuildinDefaults(field);
 				continue;
 			}
 			ColumnSelector choice = fieldChoices.get(field.getId());
-			if(choice != null) {
+			if (choice != null) {
 				ArrayList<String> values = new ArrayList<String>();
 				field.setValues(values);
 				List<ColumnSelectorOption> options = choice.getOptions();
-				for(int i = 0; i < options.size(); i++) {
+				for (int i = 0; i < options.size(); i++) {
 					ColumnSelectorOption option = options.get(i);
 					values.add(option.getId());
-					if(option.isDefault()) {
+					if (option.isDefault()) {
 						field.setInitialValue(i);
 					}
 				}
 				continue;
 			}
-//			FieldValueChoice valueChoice = fieldValueChoices.get(field.getId());
-//			if(valueChoice != null) {
-//				ArrayList<String> values = new ArrayList<String>();
-//				field.setValues(values);
-//				List<FieldValueChoiceOption> options = valueChoice.getOptions();
-//				for(int i = 0; i < options.size(); i++) {
-//					FieldValueChoiceOption option = options.get(i);
-//					values.add(option.getId());
-//					// TODO: Implement... grab and return values from db
-////					if(option.isDefault()) {
-////						field.setInitialValue(i);
-////					}
-//				}
-//				continue;
-//			}
+			// FieldValueChoice valueChoice =
+			// fieldValueChoices.get(field.getId());
+			// if(valueChoice != null) {
+			// ArrayList<String> values = new ArrayList<String>();
+			// field.setValues(values);
+			// List<FieldValueChoiceOption> options = valueChoice.getOptions();
+			// for(int i = 0; i < options.size(); i++) {
+			// FieldValueChoiceOption option = options.get(i);
+			// values.add(option.getId());
+			// // TODO: Implement... grab and return values from db
+			// // if(option.isDefault()) {
+			// // field.setInitialValue(i);
+			// // }
+			// }
+			// continue;
+			// }
 			QueryBuilder queryModifier = queryModifiers.get(field.getId());
-			if(queryModifier != null) {
+			if (queryModifier != null) {
 				ArrayList<String> values = new ArrayList<String>();
 				field.setValues(values);
 				List<QueryBuilderOption> options = queryModifier.getOptions();
-				for(int i = 0; i < options.size(); i++) {
+				for (int i = 0; i < options.size(); i++) {
 					QueryBuilderOption option = options.get(i);
 					values.add(option.getId());
-					if(option.isDefault()) {
+					if (option.isDefault()) {
 						field.setInitialValue(i);
 					}
 				}
 				continue;
 			}
-			
+
 		}
 	}
 
 	private void setBuildinDefaults(UiField field) {
-		if("pageSize".equals(field.getId())) {
+		if ("pageSize".equals(field.getId())) {
 			ArrayList<String> sizes = new ArrayList<String>();
 			sizes.add("15");
 			sizes.add("25");
@@ -199,12 +212,12 @@ public class AppInitializer {
 			field.setValues(sizes);
 			field.setInitialValue(0);
 		}
-		if("highlight".equals(field.getId())) {
+		if ("highlight".equals(field.getId())) {
 			ArrayList<String> list = new ArrayList<String>();
 			list.add("false");
 			field.setValues(list);
 		}
-		if("suggestions".equals(field.getId())) {
+		if ("suggestions".equals(field.getId())) {
 			ArrayList<String> list = new ArrayList<String>();
 			list.add("false");
 			field.setValues(list);

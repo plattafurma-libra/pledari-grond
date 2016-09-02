@@ -62,6 +62,8 @@ public class Configuration {
 	private static final String BACKUP_NUMS = "backup.nums";
 
 	private static final String LOCALE_CODE = "locale.code";
+	
+	private static final String MAALR_IMPL = "maalr.impl";
 
 	private Properties properties;
 
@@ -254,6 +256,10 @@ public class Configuration {
 
 	public String getLocaleCode() {
 		return properties.getProperty(LOCALE_CODE);
+	}
+	
+	public String getMaalrImpl() {
+		return properties.getProperty(MAALR_IMPL);
 	}
 
 }

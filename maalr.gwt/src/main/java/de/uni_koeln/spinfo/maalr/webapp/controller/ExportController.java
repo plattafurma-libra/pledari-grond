@@ -2,10 +2,10 @@ package de.uni_koeln.spinfo.maalr.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,31 +39,37 @@ public class ExportController {
 		}
 	}
 	
-	
-	@Secured( { Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
 	@RequestMapping(value = "/export/data/xml")
 	public void getXml(HttpServletResponse response) throws InterruptedException, ExecutionException, IOException {
-		Future<File> export = exportService.export(Format.XML);
-		File tmpFile = export.get();
+		File export = exportService.export(Format.XML);
 		response.setContentType(Format.XML.getContentType());
-		response.setHeader("Content-Disposition", "attachment; filename=" + tmpFile.getName()); 
-		InputStream is = new FileInputStream(export.get());
+		response.setHeader("Content-Disposition", "attachment; filename=" + export.getName()); 
+		stream(response, export);
+	}
+
+	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@RequestMapping(value = "/export/data/json")
+	public void getJSON(HttpServletResponse response) throws FileNotFoundException, IOException {
+		File export = exportService.export(Format.JSON);
+		response.setContentType(Format.JSON.getContentType());
+		response.setHeader("Content-Disposition", "attachment; filename=" + export.getName()); 
+		stream(response, export);
+	}
+	
+	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@RequestMapping(value = "/export/data/csv")
+	public void getCSV(HttpServletResponse response) throws FileNotFoundException, IOException {
+		File export = exportService.export(Format.CSV);
+		response.setContentType(Format.CSV.getContentType());
+		response.setHeader("Content-Disposition", "attachment; filename=" + export.getName()); 
+		stream(response, export);
+	}
+	
+	private void stream(HttpServletResponse response, File export) throws FileNotFoundException, IOException {
+		InputStream is = new FileInputStream(export);
 		IOUtils.copy(is, response.getOutputStream());
 		response.flushBuffer();
-		tmpFile.delete();
 	}
 	
-	@Secured( { Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
-	@RequestMapping(value = "/export/data/json")
-	public void getJSON(HttpServletResponse response) {
-		exportService.export(Format.JSON);
-	}
-	
-	@Secured( { Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
-	@RequestMapping(value = "/export/data/csv")
-	public void getCSV(HttpServletResponse response) {
-		exportService.export(Format.CSV);
-	}
-	
-
 }

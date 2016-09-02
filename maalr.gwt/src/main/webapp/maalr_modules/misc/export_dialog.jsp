@@ -5,7 +5,7 @@
 		<div class="row-fluid">
 		    <div class="span12">
 		    	<p>
-		    		Please choose an export format, the download will then start automatically... The data provided by the Pledari Grond is licensed under CC Attribution 4.0 International (see <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank"><small>CC BY 4.0</small></a>)
+		    		Please choose an export format, the download will start automatically. The data provided by the Pledari Grond is licensed under CC Attribution 4.0 International (see <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank"><small>CC BY 4.0</small></a>)
 		   	 	</p>
 			</div>
 		</div>
