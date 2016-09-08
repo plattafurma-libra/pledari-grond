@@ -37,51 +37,31 @@ import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 public class Configuration {
 
 	private static final String MAALR_PROPERTIES = "maalr.properties";
-
 	private static final String MAALR_CONFIG_DIR = "maalr.config.dir";
-	
 	private static final String MAALR_DEFAULT_CONFIG_DIR = "maalr_rm_config";
-	
 	private static final String MAALR_SEARCH_CONFIG = "maalr.search.config";
-
 	private static final String LUCENE_DIR = "lucene.dir";
-
 	private static final String LEX_FILE = "lex.file";
-
-	private static final String MONGODB_USER = "mongodb.user";
-	
 	private static final String DICT_CONTEXT = "maalr.dict.context";
-	
+	private static final String MONGODB_USER = "mongodb.user";
 	private static final String MONGODB_USER_COLLECTION = "mongodb.user.collection";
-
 	private static final String MONGODB_PORT = "mongodb.port";
-
 	private static final String MONGODB_HOST = "mongodb.host";
-
 	private static final String MONGODB_NAME = "mongodb.name";
-
 	private static final String LONG_NAME = "maalr.long.name";
-
 	private static final String SHORT_NAME = "maalr.short.name";
-
 	private static final String BACKUP_LOCATION = "backup.location";
-
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
-
 	private static final String BACKUP_NUMS = "backup.nums";
-
 	private static final String LOCALE_CODE = "locale.code";
-	
 	private static final String MAALR_IMPL = "maalr.impl";
+	private static final String ADMIN_CREDENTIALS = "admin.secret";
+	private static final String EDITOR_CREDENTIALS = "editor.secret";
 
 	private Properties properties;
-
 	private static Configuration instance;
-
 	private ClientOptions clientOptions;
-
 	private DictionaryConfiguration dictConfig;
-
 	private final File configDir;
 
 	public File getConfigDirectory() {
@@ -280,6 +260,14 @@ public class Configuration {
 	
 	public String getMaalrImpl() {
 		return properties.getProperty(MAALR_IMPL);
+	}
+
+	public String getAdminCredentials() {
+		return properties.getProperty(ADMIN_CREDENTIALS);
+	}
+
+	public String getEditorCredentials() {
+		return properties.getProperty(EDITOR_CREDENTIALS);
 	}
 
 }

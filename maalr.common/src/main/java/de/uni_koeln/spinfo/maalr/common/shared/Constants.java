@@ -24,13 +24,11 @@ public interface Constants {
 		public static final String ROLE = "Role";
 		
 		public static final String GUEST_1 = "ROLE_GUEST";
-		public static final String OPENID_2 = "ROLE_OPENID";
-		public static final String PERSONA = "ROLE_PERSONA";
 		public static final String TRUSTED_EX_3 = "ROLE_TRUSTED_EX";
 		public static final String TRUSTED_IN_4 = "ROLE_TRUSTED_IN";
 		public static final String ADMIN_5 = "ROLE_ADMIN";
 		
-		public static final String[] ALL_ROLES = new String[] {GUEST_1, OPENID_2, PERSONA, TRUSTED_EX_3, TRUSTED_IN_4, ADMIN_5};
+		public static final String[] ALL_ROLES = new String[] {GUEST_1, TRUSTED_EX_3, TRUSTED_IN_4, ADMIN_5};
 				
 	}
 	

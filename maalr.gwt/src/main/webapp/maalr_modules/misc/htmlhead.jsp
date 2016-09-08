@@ -38,6 +38,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="Robots" content="INDEX,FOLLOW">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
 <link rel="shortcut icon" type="image/x-icon" href="${dictContext}/assets/img/favicon.png">
 <style type="text/css">
 	#show_results_noscript { display: none; }
@@ -55,11 +56,9 @@
 	var site_name = "<%=Configuration.getInstance().getLongName()%>"
 </script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://login.persona.org/include.js"></script>
-<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <script type="text/javascript" src="${dictContext}/assets/js/pledari.js"></script>
-<script type="text/javascript" src="${dictContext}/assets/js/pledari-persona.js"></script>
+<script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/de.uni_koeln.spinfo.maalr.user.nocache.js"></script>
 <script type="text/javascript" src="${dictContext}/de.uni_koeln.spinfo.maalr.user/js/dynamic_locale.js"></script>
 <script type="text/javascript" src="//use.typekit.net/wqi3lhq.js"></script>
