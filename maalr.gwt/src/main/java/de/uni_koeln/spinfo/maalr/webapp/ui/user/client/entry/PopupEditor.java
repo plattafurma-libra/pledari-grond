@@ -116,7 +116,7 @@ public class PopupEditor extends VerticalPanel {
 				if(result == null) {
 					email.setText(null);
 				} else {
-					email.setText(result.getEmail());
+					email.setText(result.getLogin());
 				}
 			}
 			
@@ -148,8 +148,6 @@ public class PopupEditor extends VerticalPanel {
 			lemma.putEntryValue(LemmaVersion.EMAIL, email.getText().trim());
 		}
 	}
-
-	
 
 	public boolean isValid() {
 		boolean contentValid = content.isValid(false, false);

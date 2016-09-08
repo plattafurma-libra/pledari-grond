@@ -45,6 +45,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
  * @author sschwieb
  *
  */
+@Deprecated
 public class UserList extends Composite {
 
 	private static UserListUiBinder uiBinder = GWT
@@ -88,95 +89,95 @@ public class UserList extends Composite {
 	 * and by assigning the data provider.
 	 */
 	private void initCellTable() {
-		table = new PagingDataGrid<LightUserInfo>();
-		// Login Column
-		UserColumn user = new UserColumn();
-		user.setDataStoreName(LightUserInfo.SORT_LOGIN);
-		table.addColumn(user, "Login");
-
-		// First name column
-		Column<LightUserInfo, String> firstName = new Column<LightUserInfo, String>(
-				new TextCell()) {
-
-			@Override
-			public String getValue(LightUserInfo object) {
-				return getDisplayString(object.getFirstName());
-			}
-		};
-		// Unique identifier required for sorting
-		firstName.setDataStoreName(LightUserInfo.SORT_FIRST_NAME);
-		table.addColumn(firstName, "First Name");
-		// Last name column
-		Column<LightUserInfo, String> lastName = new Column<LightUserInfo, String>(
-				new TextCell()) {
-
-			@Override
-			public String getValue(LightUserInfo object) {
-				return getDisplayString(object.getLastName());
-			}
-		};
-		// Unique identifier required for sorting
-		lastName.setDataStoreName(LightUserInfo.SORT_LAST_NAME);
-		table.addColumn(lastName, "Last Name");
-		// Email column
-		Column<LightUserInfo, String> email = new Column<LightUserInfo, String>(
-				new TextCell()) {
-
-			@Override
-			public String getValue(LightUserInfo object) {
-				return getDisplayString(object.getEmail());
-			}
-
-		};
-		// Unique identifier required for sorting
-		email.setDataStoreName(LightUserInfo.SORT_EMAIL);
-		table.addColumn(email, "Email");
-		// Role column
-		Column<LightUserInfo, String> role = new Column<LightUserInfo, String>(
-				new TextCell()) {
-
-			@Override
-			public String getValue(LightUserInfo object) {
-				return object.getRole().getRoleName();
-			}
-		};
-		// Unique identifier required for sorting
-		role.setDataStoreName(LightUserInfo.SORT_ROLE);
-		table.addColumn(role, "Role");
-		// Creation date
-		Column<LightUserInfo, Date> creation = new Column<LightUserInfo, Date>(new DateCell()) {
-
-			@Override
-			public Date getValue(LightUserInfo object) {
-				return new Date(object.getCreationDate());
-			}
-		};
-		// Unique identifier required for sorting
-		creation.setDataStoreName(LightUserInfo.SORT_CREATED);
-		table.addColumn(creation, "Created");
-		// Last modified date
-		Column<LightUserInfo, Date> modified = new Column<LightUserInfo, Date>(new DateCell()) {
-
-			@Override
-			public Date getValue(LightUserInfo object) {
-				return new Date(object.getLastModificationDate());
-			}
-		};
-		// Unique identifier required for sorting
-		modified.setDataStoreName(LightUserInfo.SORT_MODIFIED);
-		table.addColumn(modified, "Last Change");
-		
-		// Enable navigation through arrow keys
-		table.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE);
-		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION);
-		// Assing data provider
-		dataProvider = new UserListDataProvider(table);
-		// Make columns sortable
-		int columnCount = table.getColumnCount();
-		for(int i = 0; i < columnCount; i++) {
-			table.getColumn(i).setSortable(true);
-		}
-		table.setRowCount(20);
+//		table = new PagingDataGrid<LightUserInfo>();
+//		// Login Column
+//		UserColumn user = new UserColumn();
+//		user.setDataStoreName(LightUserInfo.SORT_LOGIN);
+//		table.addColumn(user, "Login");
+//
+//		// First name column
+//		Column<LightUserInfo, String> firstName = new Column<LightUserInfo, String>(
+//				new TextCell()) {
+//
+//			@Override
+//			public String getValue(LightUserInfo object) {
+//				return getDisplayString(object.getFirstName());
+//			}
+//		};
+//		// Unique identifier required for sorting
+//		firstName.setDataStoreName(LightUserInfo.SORT_FIRST_NAME);
+//		table.addColumn(firstName, "First Name");
+//		// Last name column
+//		Column<LightUserInfo, String> lastName = new Column<LightUserInfo, String>(
+//				new TextCell()) {
+//
+//			@Override
+//			public String getValue(LightUserInfo object) {
+//				return getDisplayString(object.getLastName());
+//			}
+//		};
+//		// Unique identifier required for sorting
+//		lastName.setDataStoreName(LightUserInfo.SORT_LAST_NAME);
+//		table.addColumn(lastName, "Last Name");
+//		// Email column
+//		Column<LightUserInfo, String> email = new Column<LightUserInfo, String>(
+//				new TextCell()) {
+//
+//			@Override
+//			public String getValue(LightUserInfo object) {
+//				return getDisplayString(object.getEmail());
+//			}
+//
+//		};
+//		// Unique identifier required for sorting
+//		email.setDataStoreName(LightUserInfo.SORT_EMAIL);
+//		table.addColumn(email, "Email");
+//		// Role column
+//		Column<LightUserInfo, String> role = new Column<LightUserInfo, String>(
+//				new TextCell()) {
+//
+//			@Override
+//			public String getValue(LightUserInfo object) {
+//				return object.getRole().getRoleName();
+//			}
+//		};
+//		// Unique identifier required for sorting
+//		role.setDataStoreName(LightUserInfo.SORT_ROLE);
+//		table.addColumn(role, "Role");
+//		// Creation date
+//		Column<LightUserInfo, Date> creation = new Column<LightUserInfo, Date>(new DateCell()) {
+//
+//			@Override
+//			public Date getValue(LightUserInfo object) {
+//				return new Date(object.getCreationDate());
+//			}
+//		};
+//		// Unique identifier required for sorting
+//		creation.setDataStoreName(LightUserInfo.SORT_CREATED);
+//		table.addColumn(creation, "Created");
+//		// Last modified date
+//		Column<LightUserInfo, Date> modified = new Column<LightUserInfo, Date>(new DateCell()) {
+//
+//			@Override
+//			public Date getValue(LightUserInfo object) {
+//				return new Date(object.getLastModificationDate());
+//			}
+//		};
+//		// Unique identifier required for sorting
+//		modified.setDataStoreName(LightUserInfo.SORT_MODIFIED);
+//		table.addColumn(modified, "Last Change");
+//		
+//		// Enable navigation through arrow keys
+//		table.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE);
+//		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION);
+//		// Assing data provider
+//		dataProvider = new UserListDataProvider(table);
+//		// Make columns sortable
+//		int columnCount = table.getColumnCount();
+//		for(int i = 0; i < columnCount; i++) {
+//			table.getColumn(i).setSortable(true);
+//		}
+//		table.setRowCount(20);
 
 	}
 

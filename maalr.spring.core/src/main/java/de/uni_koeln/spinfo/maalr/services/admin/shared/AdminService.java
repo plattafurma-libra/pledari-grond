@@ -58,21 +58,12 @@ import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 @Secured(Constants.Roles.ADMIN_5)
 public class AdminService {
 	
-	@Autowired
-	private Environment environment;
-	
 	@Autowired(required=false)
-	@Qualifier("maalr.system.stats")
+	@Qualifier("maalr.system.stats") 
 	private IStatisticsService systemStats;
-	
-//	@Autowired
-//	private DataBaseCreator dbCreator;
-	
-	@Autowired
-	private Index index;
-	
-	@Autowired
-	private DataLoader dbCreator;
+	@Autowired private Environment environment;
+	@Autowired private Index index;
+	@Autowired private DataLoader dbCreator;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	

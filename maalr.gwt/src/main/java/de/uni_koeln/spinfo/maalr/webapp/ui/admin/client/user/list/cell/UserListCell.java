@@ -26,7 +26,7 @@ import com.google.gwt.uibinder.client.UiRenderer;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 
-
+@Deprecated
 public class UserListCell extends AbstractCell<LightUserInfo> {
 	
 	private static UserListUiRenderer renderer = GWT.create(UserListUiRenderer.class);
