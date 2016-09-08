@@ -39,7 +39,7 @@ public class ExportController {
 		}
 	}
 	
-	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@Secured({ Constants.Roles.ADMIN_5, Constants.Roles.TRUSTED_EX_3, Constants.Roles.TRUSTED_IN_4 })
 	@RequestMapping(value = "/export/data/xml")
 	public void getXml(HttpServletResponse response) throws InterruptedException, ExecutionException, IOException {
 		File export = exportService.export(Format.XML);
@@ -48,7 +48,7 @@ public class ExportController {
 		stream(response, export);
 	}
 
-	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@Secured({ Constants.Roles.ADMIN_5, Constants.Roles.TRUSTED_EX_3, Constants.Roles.TRUSTED_IN_4 })
 	@RequestMapping(value = "/export/data/json")
 	public void getJSON(HttpServletResponse response) throws FileNotFoundException, IOException {
 		File export = exportService.export(Format.JSON);
@@ -57,7 +57,7 @@ public class ExportController {
 		stream(response, export);
 	}
 	
-	@Secured({ Constants.Roles.PERSONA, Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_IN_4 })
+	@Secured({ Constants.Roles.ADMIN_5, Constants.Roles.TRUSTED_EX_3, Constants.Roles.TRUSTED_IN_4 })
 	@RequestMapping(value = "/export/data/csv")
 	public void getCSV(HttpServletResponse response) throws FileNotFoundException, IOException {
 		File export = exportService.export(Format.CSV);

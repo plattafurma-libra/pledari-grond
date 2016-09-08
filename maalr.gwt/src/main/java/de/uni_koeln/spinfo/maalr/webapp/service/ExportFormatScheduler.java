@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -55,19 +53,12 @@ public class ExportFormatScheduler {
 	private ScheduledExecutorService scheduledExecutorService;
 	
 	private static final String PATH_XML = "formats/xml/";
-
 	private static final String PATH_JSON = "formats/json/";
-
-	private static final String XML_INFIX = "_data_xml_";
-
-	private static final String JSON_INFIX = "_data_json_";
-	
-	private static final String CSV_INFIX = "_data_csv_";
-
+	private static final String XML_INFIX = "_data_xml";
+	private static final String JSON_INFIX = "_data_json";
+	private static final String CSV_INFIX = "_data_csv";
 	private static final String PATH_CSV = "formats/csv/";
-	
 	private static final String ZIP_SUFFIX = ".zip";
-	
 	private static final String UTF_8 = "UTF-8";
 	
 	private ExportFormatScheduler() {
@@ -87,8 +78,7 @@ public class ExportFormatScheduler {
 
 					@Override
 					public void run() {
-						// TODO: 
-						logger.info("Running the export format task... periodically (every three minutes)");
+						logger.info("Running the export format task... periodically (every day)");
 						try {
 							logger.info("Creating open data (.xml) export...");
 							exportXML(Database.getInstance().getAll());
@@ -102,7 +92,7 @@ public class ExportFormatScheduler {
 						}
 					}
 
-				}, 0, 3, TimeUnit.MINUTES);
+				}, 0, 1, TimeUnit.DAYS);
 	}
 
 	public static synchronized ExportFormatScheduler getInstance() {
@@ -143,8 +133,7 @@ public class ExportFormatScheduler {
 	}
 
 	private String createFileName(String formInfix) {
-		return Configuration.getInstance().getMaalrImpl() + formInfix 
-				+ DateFormat.getDateInstance().format(new Date());
+		return Configuration.getInstance().getMaalrImpl() + formInfix;
 	}
 	
 	private void exportDataCSV(OutputStream os, String fileName, DBCursor cursor) throws IOException {
