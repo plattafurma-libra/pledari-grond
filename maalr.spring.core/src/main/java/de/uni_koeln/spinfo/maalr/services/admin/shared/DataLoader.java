@@ -39,7 +39,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
 import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
@@ -51,7 +51,7 @@ public class DataLoader {
 	
 	
 	@Autowired private Index index;
-	@Autowired private PGAutenticationProvider authProvider;
+	@Autowired private PGAuthenticationProvider authProvider;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	

@@ -16,7 +16,7 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
 /**
  * @author Mihail Atanassov <atanassov.mihail@gmail.com>
  */
-public class PGAutenticationProvider implements AuthenticationProvider {
+public class PGAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired private UserInfoBackend backend;
 	
