@@ -1,5 +1,6 @@
 package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -29,55 +30,31 @@ import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserServiceAsync;
-import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
+
 
 /**
- * 
  * @author Mihail Atanassov <atanassov.mihail@gmail.com>
- *
  */
 public class UserForm extends Composite {
 	
-	@UiField
-	TextBox login;
+	@UiField TextBox login;
+	@UiField TextBox password;
+	@UiField ListBox roles;
+	@UiField HelpInline errorLogin;
+	@UiField HelpInline errorPassword;
 	
-	@UiField
-	TextBox firstName;
-	
-	@UiField
-	TextBox lastName;
-	
-	@UiField
-	TextBox email;
-	
-	@UiField
-	TextBox password;
-	
-	@UiField
-	ListBox roles;
-	
-	@UiField
-	HelpInline errorLogin;
-	
-	@UiField
-	HelpInline errorEmail;
-	
-	@UiField
-	HelpInline errorPassword;
-
-	private LightUserInfo toBeInserted;
-
 	private Modal parent;
 
+	private LightUserInfo toBeInserted;
 	private UserServiceAsync service;
 
-	private static UserFormUiBinder uiBinder = GWT
-			.create(UserFormUiBinder.class);
+	private static UserFormUiBinder uiBinder = GWT.create(UserFormUiBinder.class);
+
 
 	interface UserFormUiBinder extends UiBinder<Widget, UserForm> {
 	}
 
-	public UserForm(LightUserInfo user, Modal modal, Button execute, final UserList userList) {
+	public UserForm(LightUserInfo user, Modal modal, Button execute, final AsyncCallback<List<LightUserInfo>> callback) {
 		initWidget(uiBinder.createAndBindUi(this));
 		toBeInserted = user;
 		parent = modal;
@@ -88,12 +65,9 @@ public class UserForm extends Composite {
 			public void onClick(ClickEvent event) {
 				
 				clearErrorMessages();
-
-				toBeInserted.setPassword(password.getValue());
+				
 				toBeInserted.setLogin(login.getValue());
-				toBeInserted.setFirstName(firstName.getValue());
-				toBeInserted.setLastName(lastName.getValue());
-				toBeInserted.setEmail(email.getValue());
+				toBeInserted.setPassword(password.getValue());
 				toBeInserted.setRole(Role.valueOf(roles.getSelectedValue()));
 				
 				if(isValid(toBeInserted)) {
@@ -101,7 +75,7 @@ public class UserForm extends Composite {
 						
 						@Override
 						public void onSuccess(LightUserInfo result) {
-							userList.reset();
+							service.getAllUsers(0, Integer.MAX_VALUE, null, false, callback);
 						}
 						
 						@Override
@@ -116,14 +90,9 @@ public class UserForm extends Composite {
 				Style loginStyle = login.getElement().getStyle();
 				loginStyle.setBorderColor("#CCCCCC");
 				errorLogin.setVisible(false);
-				
 				Style passwordStyle = password.getElement().getStyle();
 				passwordStyle.setBorderColor("#CCCCCC");
 				errorPassword.setVisible(false);
-				
-				Style emailStyle = email.getElement().getStyle();
-				emailStyle.setBorderColor("#CCCCCC");
-				errorEmail.setVisible(false);
 			}
 
 			private boolean isValid(LightUserInfo toBeInserted) {
@@ -137,10 +106,6 @@ public class UserForm extends Composite {
 			    		  String loginErrorMessage = constraintViolation.getMessage();
 			    		  showErrorMessage(login, errorLogin, loginErrorMessage);
 			    	  }
-			    	  if(propertyPath.toString().equalsIgnoreCase(Constants.Users.EMAIL)) {
-			    		  String emailErrorMessage = constraintViolation.getMessage();
-			    		  showErrorMessage(email, errorEmail, emailErrorMessage);
-			    	  }
 			    	  if(propertyPath.toString().equalsIgnoreCase(Constants.Users.PASSWORD)) {
 			    		  String passwordErrorMessage = constraintViolation.getMessage();
 			    		  showErrorMessage(password, errorPassword, passwordErrorMessage);
@@ -151,18 +116,15 @@ public class UserForm extends Composite {
 				return true;
 			}
 		});
-		
-		errorEmail.setVisible(false);
+
 		errorLogin.setVisible(false);
 		errorPassword.setVisible(false);
 		
 		for (Role r : Role.values()) {
-			if(r.getRoleId().equals(Constants.Roles.PERSONA) || r.getRoleId().equals(Constants.Roles.OPENID_2))
-				continue;
 			roles.addItem(r.getRoleName(), r.toString());
 		}
 	}
-
+	
 	private void showErrorMessage(TextBox input, HelpInline helpLine, String errorMessage) {
 		Style inputStyle = input.getElement().getStyle();
 		inputStyle.setBorderColor("#FF0000");
@@ -174,3 +136,4 @@ public class UserForm extends Composite {
 	}
 
 }
+

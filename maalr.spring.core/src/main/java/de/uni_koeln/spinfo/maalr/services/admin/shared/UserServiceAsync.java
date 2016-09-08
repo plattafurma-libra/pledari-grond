@@ -26,17 +26,15 @@ public interface UserServiceAsync {
 
 	void getUserInfo(String login, AsyncCallback<LightUserInfo> callback);
 
-	void updateRole(String login, Role role, AsyncCallback<Void> callback);
-
-	void updateUserFields(LightUserInfo user, AsyncCallback<Void> callback);
-
 	void getNumberOfUsers(AsyncCallback<Integer> callback);
 
 	void getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length, AsyncCallback<List<LightUserInfo>> callback);
+	
+	void getAllUsers(int from, int length, String sortColumn, boolean sortAscending, AsyncCallback<List<LightUserInfo>> callback);
 
 	void insertNewUser(LightUserInfo user, AsyncCallback<LightUserInfo> callback);
 
-	void adminUpdate(LightUserInfo workingCopy, AsyncCallback<Void> asyncCallback);
+	void updateRole(LightUserInfo user, AsyncCallback<Void> asyncCallback);
 
 	void deleteUser(LightUserInfo unmodified, AsyncCallback<Boolean> asyncCallback);
 

@@ -46,16 +46,17 @@ import de.uni_koeln.spinfo.maalr.services.admin.shared.UserServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
 
+@Deprecated
 public class UserDetails extends Composite {
 
 	private static UserDetailsUiBinder uiBinder = GWT
 			.create(UserDetailsUiBinder.class);
 	
-	@UiField
-	TextBox firstName;
-	
-	@UiField
-	TextBox lastName;
+//	@UiField
+//	TextBox firstName;
+//	
+//	@UiField
+//	TextBox lastName;
 	
 	@UiField
 	TextBox email;
@@ -118,19 +119,18 @@ public class UserDetails extends Composite {
 			@Override
 			public void onChange(ChangeEvent event) {
 				if(workingCopy == null) return;
-				// workingCopy.setLogin(login.getText());
-				workingCopy.setEmail(email.getText());
-				workingCopy.setFirstName(firstName.getText());
-				workingCopy.setLastName(lastName.getText());
+//				workingCopy.setEmail(email.getText());
+//				workingCopy.setFirstName(firstName.getText());
+//				workingCopy.setLastName(lastName.getText());
 				String roleId = role.getValue(role.getSelectedIndex());
 				Role r = Role.valueOf(roleId);
 				workingCopy.setRole(r);
 			}
 		};
-		// login.addChangeHandler(handler);
-		email.addChangeHandler(handler);
-		firstName.addChangeHandler(handler);
-		lastName.addChangeHandler(handler);
+		
+//		email.addChangeHandler(handler);
+//		firstName.addChangeHandler(handler);
+//		lastName.addChangeHandler(handler);
 		role.addChangeHandler(handler);
 		save.addClickHandler(new ClickHandler() {
 			
@@ -161,6 +161,7 @@ public class UserDetails extends Composite {
 
 							@Override
 							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
 							}
 
 							@Override
@@ -170,7 +171,7 @@ public class UserDetails extends Composite {
 						});
 					}
 				};
-				Dialog.confirm("Confirm deletion", "Do you really want to delete user \"" + unmodified.getEmail() + "\"? This cannot be undone!", "OK", "Cancel", command , null, false);
+				Dialog.confirm("Confirm deletion", "Do you really want to delete user \"" + unmodified.getLogin() + "\"? This cannot be undone!", "OK", "Cancel", command , null, false);
 			}
 		});
 		mailto.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -178,23 +179,7 @@ public class UserDetails extends Composite {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				if(email != null) {
-					if(!email.getText().isEmpty()) {
-						Window.open("mailto:" + email.getText(), "_blank", "");
-					} else {
-						final Modal modal = new Modal();	
-						modal.setTitle("Info");
-						modal.add(new Label("No email set!"));
-						modal.add(new ModalFooter(new Button("OK", new ClickHandler() {
-							
-							@Override
-							public void onClick(ClickEvent event) {
-								modal.hide();
-							}
-						})));
-						modal.show();
-					}
-				} 
+				Window.open("mailto:" + login.getText(), "_blank", "");
 			}
 		});
 		edits.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -224,9 +209,9 @@ public class UserDetails extends Composite {
 	private void createWorkingCopy(LightUserInfo user) {
 		this.unmodified = user;
 		this.workingCopy = user.getCopy();
-		firstName.setText(workingCopy.getFirstName());
-		lastName.setText(workingCopy.getLastName());
-		email.setText(workingCopy.getEmail());
+//		firstName.setText(workingCopy.getFirstName());
+//		lastName.setText(workingCopy.getLastName());
+//		email.setText(workingCopy.getEmail());
 		login.setText(workingCopy.getLogin());
 		creationDate.setValue(new Date(workingCopy.getCreationDate()));
 		modifiedDate.setValue(new Date(workingCopy.getLastModificationDate()));
@@ -266,27 +251,26 @@ public class UserDetails extends Composite {
 			
 			@Override
 			public void execute() {
-				service.adminUpdate(toSave, new AsyncCallback<Void>() {
-					
-					@Override
-					public void onSuccess(Void result) {
-						//currentUser.setLogin(toSave.getLogin());
-						currentUser.setEmail(toSave.getEmail());
-						currentUser.setFirstName(toSave.getFirstName());
-						currentUser.setLastName(toSave.getLastName());
-						currentUser.setRole(toSave.getRole());
-						userList.getTable().redraw();
-						createWorkingCopy(nextUser);
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						Dialog.showError("Failed to save user", caught);
-					}
-				});
+//				service.adminUpdate(toSave, new AsyncCallback<Void>() {
+//					
+//					@Override
+//					public void onSuccess(Void result) {
+//						currentUser.setLogin(toSave.getLogin());
+////						currentUser.setFirstName(toSave.getFirstName());
+////						currentUser.setLastName(toSave.getLastName());
+//						currentUser.setRole(toSave.getRole());
+//						userList.getTable().redraw();
+//						createWorkingCopy(nextUser);
+//					}
+//					
+//					@Override
+//					public void onFailure(Throwable caught) {
+//						Dialog.showError("Failed to save user", caught);
+//					}
+//				});
 			}
 		};
-		Dialog.confirm("Please confirm", "Do you really want to update user " + toSave.getFirstName() + "?", "OK", "Cancel", ok, null, true);
+		Dialog.confirm("Please confirm", "Do you really want to update user " + toSave.getLogin() + "?", "OK", "Cancel", ok, null, true);
 	}
 	
 	public void setDataSource(UserList userList) {

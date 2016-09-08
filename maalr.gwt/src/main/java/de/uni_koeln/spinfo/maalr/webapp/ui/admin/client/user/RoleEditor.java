@@ -37,6 +37,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.details.UserDetails
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.filter.ListFilter;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
 
+@Deprecated
 public class RoleEditor extends Composite {
 
 	private static RoleEditorUiBinder uiBinder = GWT

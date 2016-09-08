@@ -42,6 +42,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
  * @author sschwieb
  *
  */
+@Deprecated
 public class UserListDataProvider extends AsyncDataProvider<LightUserInfo> {
 
 	/**

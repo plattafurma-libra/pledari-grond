@@ -18,9 +18,6 @@ package de.uni_koeln.spinfo.maalr.services.admin.server;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mindrot.jbcrypt.BCrypt;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,13 +28,10 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 
-@Service("userService" /* Don't forget to add new services to gwt-servlet.xml! */)
+@Service("userService") // Don't forget to add new services to gwt-servlet.xml!
 public class UserServiceImpl implements UserService {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
-
-	@Autowired
-	private UserInfoBackend userInfos;
+	@Autowired private UserInfoBackend userInfos;
 	
 	@Override
 	public LightUserInfo getUserInfo(String login) {
@@ -49,22 +43,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateRole(String login, Role role) throws InvalidUserException {
-		MaalrUserInfo maalrUser = userInfos.getByLogin(login);
-		if(maalrUser.getRole().equals(role)) return;
-		userInfos.updateUserRole(maalrUser, role);
-	}
-
-	@Override
-	public void updateUserFields(LightUserInfo user) throws InvalidUserException {
+	public void updateRole(LightUserInfo user) throws InvalidUserException {
 		MaalrUserInfo maalrUser = userInfos.getByLogin(user.getLogin());
-		maalrUser.setLogin(user.getLogin());
-		maalrUser.setEmail(user.getEmail());
-		maalrUser.setFirstname(user.getFirstName());
-		maalrUser.setLastname(user.getLastName());
-		userInfos.updateUserFields(maalrUser);
+		if(maalrUser.getRole().equals(user.getRole())) 
+			return;
+		userInfos.updateUserRole(maalrUser, user.getRole());
 	}
-
+	
 	@Override
 	public int getNumberOfUsers() {
 		return userInfos.getNumberOfUsers();
@@ -79,29 +64,31 @@ public class UserServiceImpl implements UserService {
 		}
 		return toReturn;
 	}
+	
+	@Override
+	public List<LightUserInfo> getAllUsers(int from, int length, String sortColumn, boolean sortAscending) {
+		List<MaalrUserInfo> users = userInfos.getAllUsers(from, length, sortColumn, sortAscending);
+		List<LightUserInfo> toReturn = new ArrayList<LightUserInfo>();
+		for (MaalrUserInfo maalrUser : users) {
+			toReturn.add(maalrUser.toLightUser());
+		}
+		return toReturn;
+	}
 
 	@Override
 	public LightUserInfo insertNewUser(LightUserInfo user) throws InvalidUserException {
 		MaalrUserInfo maalrUser = new MaalrUserInfo();
-		maalrUser.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 		maalrUser.setLogin(user.getLogin());
-		maalrUser.setFirstname(user.getFirstName());
-		maalrUser.setLastname(user.getLastName());
-		maalrUser.setEmail(user.getEmail());
+		maalrUser.setPassword(user.getPassword());
 		maalrUser.setRole(user.getRole());
 		userInfos.insert(maalrUser);
 		return maalrUser.toLightUser();
-	}
-
-	public void adminUpdate(LightUserInfo user) throws InvalidUserException {
-		updateUserFields(user);
-		updateRole(user.getLogin(), user.getRole());
 	}
 
 	@Override
 	public boolean deleteUser(LightUserInfo user) {
 		return userInfos.deleteUser(user);
 	}
-	
+
 	
 }

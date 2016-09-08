@@ -41,8 +41,7 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 @Scope(value = "singleton")
 public class UserInfoBackend {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(UserInfoBackend.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserInfoBackend.class);
 
 	/**
 	 * Returns the user infos of the user currently logged in. If no user infos
@@ -54,18 +53,15 @@ public class UserInfoBackend {
 	// @Secured( { Constants.Roles.GUEST_1, Constants.Roles.OPENID_2,
 	// Constants.Roles.TRUSTED_EXTERNAL_3, Constants.Roles.TRUSTED_INTERNAL_4,
 	// Constants.Roles.ADMIN_5 })
+	@Deprecated
 	public MaalrUserInfo getOrCreateCurrentUser() {
 
 		UserInfoDB userInfos = new UserInfoDB();
-		// String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		String name = null;
-		if (SecurityContextHolder.getContext().getAuthentication()
-				.isAuthenticated()) {
-			name = SecurityContextHolder.getContext().getAuthentication()
-					.getName();
+		String name;
+		if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+			name = SecurityContextHolder.getContext().getAuthentication().getName();
 		} else {
-			name = ((ServletRequestAttributes) RequestContextHolder
-					.currentRequestAttributes()).getRequest().getRemoteAddr();
+			name = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getRemoteAddr();
 		}
 		try {
 			return userInfos.getOrCreate(name);
@@ -82,19 +78,19 @@ public class UserInfoBackend {
 	 * @param role
 	 * @throws InvalidUserException
 	 */
-	@Secured({ Constants.Roles.ADMIN_5 })
-	public void updateUserRole(MaalrUserInfo user, Role role)
-			throws InvalidUserException {
+	@Secured(Constants.Roles.ADMIN_5)
+	public void updateUserRole(MaalrUserInfo user, Role role) throws InvalidUserException {
+		
 		if (user.getLogin().equals("admin")) {
 			throw new InvalidUserException("Not allowed to change admin role!");
 		}
 		if (user.getRole().equals(role))
 			return;
-		UserInfoDB userInfos = new UserInfoDB();
-		if (!userInfos.userExists(user.getLogin()))
-			throw new InvalidUserException("Action not allowed");
-		logger.info("Updating role of user " + user.getLogin() + " to " + role);
+		
+		logger.info("Updating role of '" + user.getLogin() +"' from " + user.getRole() + " to " + role);
+
 		user.setRole(role);
+		UserInfoDB userInfos = new UserInfoDB();
 		userInfos.updateUser(user);
 	}
 
@@ -111,10 +107,8 @@ public class UserInfoBackend {
 	 *             If the currently logged in user is not the user to update,
 	 *             and the currently logged in user is not an admin.
 	 */
-	@Secured({ Constants.Roles.OPENID_2, Constants.Roles.TRUSTED_EX_3,
-			Constants.Roles.TRUSTED_IN_4, Constants.Roles.ADMIN_5 })
-	public void updateUserFields(MaalrUserInfo updated)
-			throws InvalidUserException {
+	@Secured(Constants.Roles.ADMIN_5)
+	public void updateUserFields(MaalrUserInfo updated) throws InvalidUserException {
 		MaalrUserInfo current = getOrCreateCurrentUser();
 		MaalrUserInfo toUpdate = null;
 		if (current.getRole() == Role.ADMIN_5) {
@@ -126,14 +120,7 @@ public class UserInfoBackend {
 			}
 			toUpdate = current;
 		}
-		logger.info("Updating user data - old:" + toUpdate + ", new: "
-				+ updated + " (ignoring any role changes)");
-		// Only copy the values which are allowed to change - never login, role,
-		// or anything similar.
-		toUpdate.setEmail(updated.getEmail());
-		toUpdate.setFirstname(updated.getFirstname());
-		toUpdate.setLastname(updated.getLastname());
-		toUpdate.setTitle(updated.getTitle());
+		logger.info("Updating user data - old:" + toUpdate + ", new: " + updated + " (ignoring any role changes)");
 		UserInfoDB userInfos = new UserInfoDB();
 		userInfos.updateUser(toUpdate);
 	}
@@ -143,7 +130,7 @@ public class UserInfoBackend {
 	 * <strong>Security:</strong> Only admins may call this method. However,
 	 * they should not.
 	 */
-	@Secured({ Constants.Roles.ADMIN_5 })
+	@Secured(Constants.Roles.ADMIN_5)
 	public void deleteAllEntries() {
 		UserInfoDB userInfos = new UserInfoDB();
 		userInfos.deleteAllEntries();
@@ -175,7 +162,7 @@ public class UserInfoBackend {
 		UserInfoDB userInfos = new UserInfoDB();
 		return userInfos.getByLogin(login);
 	}
-	
+
 	/**
 	 * Returns the user with the given Email, or <code>null</code>, if it
 	 * doesn't exist. <br>
@@ -198,8 +185,6 @@ public class UserInfoBackend {
 	 */
 	public MaalrUserInfo insert(MaalrUserInfo user) throws InvalidUserException {
 		UserInfoDB userInfos = new UserInfoDB();
-		// FIXME: This could be unsafe - the user's role is currently not tested!
-		// New users should not get any rights.
 		return userInfos.insert(user);
 	}
 
@@ -223,10 +208,17 @@ public class UserInfoBackend {
 	 *            the number of elements to return
 	 * @return
 	 */
-	@Secured({ Constants.Roles.ADMIN_5 })
+
+	@Secured(Constants.Roles.ADMIN_5)
 	public List<MaalrUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length) {
 		UserInfoDB userInfos = new UserInfoDB();
 		return userInfos.getAllUsers(role, text, sortColumn, sortAscending, from, length);
+	}
+
+	@Secured(Constants.Roles.ADMIN_5)
+	public List<MaalrUserInfo> getAllUsers(int from, int length, String sortColumn, boolean sortAscending) {
+		UserInfoDB userInfos = new UserInfoDB();
+		return userInfos.getAllUsers(from, length, sortColumn, sortAscending);
 	}
 
 	/**
@@ -235,7 +227,7 @@ public class UserInfoBackend {
 	 * 
 	 * @return
 	 */
-	@Secured({ Constants.Roles.ADMIN_5 })
+	@Secured(Constants.Roles.ADMIN_5)
 	public int getNumberOfUsers() {
 		UserInfoDB userInfos = new UserInfoDB();
 		return userInfos.getNumberOfUsers();
