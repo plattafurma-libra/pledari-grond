@@ -50,7 +50,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.form.UserFormValidationResponse;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
@@ -66,7 +66,7 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	@Autowired private Index index;
 	@Autowired private UserInfoBackend users;
 	@Autowired private AccountService accountService;
-	@Autowired private PGAutenticationProvider authProvider;
+	@Autowired private PGAuthenticationProvider authProvider;
 
 	private Configuration configuration = Configuration.getInstance();
 	

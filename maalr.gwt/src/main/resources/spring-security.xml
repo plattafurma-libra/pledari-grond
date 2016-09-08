@@ -39,11 +39,11 @@
 
 	<security:authentication-manager>
 		<!-- Custom authentication -->
-		<!-- Located in /maalr.spring.core/src/main/java/de/uni_koeln/spinfo/maalr/login/custom/PGAutenticationProvider.java -->
+		<!-- Located in /maalr.spring.core/src/main/java/de/uni_koeln/spinfo/maalr/login/custom/PGAuthenticationProvider.java -->
 		<security:authentication-provider ref="pgAuthProvider"/>
 	</security:authentication-manager>
 
-	<bean id="pgAuthProvider" class="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider">
+	<bean id="pgAuthProvider" class="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider">
 		<property name="userDetailsService" ref="pgUserDetailsService" />
 	</bean>
 	

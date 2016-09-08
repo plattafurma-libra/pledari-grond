@@ -16,13 +16,13 @@ import de.uni_koeln.spinfo.maalr.common.shared.form.UserForm;
 import de.uni_koeln.spinfo.maalr.common.shared.form.UserFormValidationResponse;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 @Service public class AccountService {
 
 	@Autowired private UserInfoBackend usersRepository;
-	@Autowired private PGAutenticationProvider authProvider;
+	@Autowired private PGAuthenticationProvider authProvider;
 	@Autowired private ApplicationContext appContext;
 
 	private static final String BASE_MESSAGES = "de.uni_koeln.spinfo.maalr.webapp.i18n.text";

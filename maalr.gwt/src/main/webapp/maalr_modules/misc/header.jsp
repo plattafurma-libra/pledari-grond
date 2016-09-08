@@ -3,7 +3,7 @@
 <%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Role" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %>
 
 <%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt' %>

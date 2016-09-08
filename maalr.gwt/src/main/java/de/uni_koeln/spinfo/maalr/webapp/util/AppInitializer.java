@@ -41,7 +41,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
@@ -62,7 +62,7 @@ public class AppInitializer {
 	private BackendService adminController;
 
 	@Autowired
-	private PGAutenticationProvider authProvider;
+	private PGAuthenticationProvider authProvider;
 
 	@Autowired
 	private UserInfoBackend userBackend;
