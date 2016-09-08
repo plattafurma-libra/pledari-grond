@@ -41,13 +41,9 @@ public class UserInfoDB {
 
 	private DBCollection userCollection;
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoDB.class);
-//	private static final String USER_DB_NAME = "maalr";
-//	private static final String USER_COLLECTION = "st_users";
 	
 	UserInfoDB() {
 		try {
-//			DB db = MongoHelper.getDB(USER_DB_NAME);
-//			userCollection = db.getCollection(USER_COLLECTION);
 			Configuration config = Configuration.getInstance();
 			DB db = MongoHelper.getDB(config.getUserDb());
 			userCollection = db.getCollection(config.getUserDbCollection());
@@ -60,11 +56,9 @@ public class UserInfoDB {
 	private void createIndex() {
 		userCollection.createIndex(new BasicDBObject(Constants.Users.CREATION_DATE, 1));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.LAST_MODIFICATION, 1));
-		userCollection.createIndex(new BasicDBObject(Constants.Users.EMAIL, 1));
-		userCollection.createIndex(new BasicDBObject(Constants.Users.FIRSTNAME, 1));
-		userCollection.createIndex(new BasicDBObject(Constants.Users.LASTNAME, 1));
 		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1);
 		userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
+		userCollection.createIndex(new BasicDBObject(Constants.Users.PASSWORD, 1));
 	}
 
 	boolean userExists(String login) {
@@ -132,23 +126,44 @@ public class UserInfoDB {
 
 	private void update(MaalrUserInfo user) {
 		// TODO: Stimmt das so?
+		// DOTO: Google doch mal!
+		// TODO: Na gut...
 		userCollection.save(user);
+	}
+	
+	public List<MaalrUserInfo> getAllUsers(int from, int length, String sortColumn, boolean sortAscending) {
+		BasicDBObject query = new BasicDBObject();
+		DBCursor cursor = userCollection.find(query);
+		if(sortColumn != null) {
+			BasicDBObject sort = new BasicDBObject();
+			sort.put(sortColumn, sortAscending ? 1 : -1);
+			cursor.sort(sort);
+		}
+		cursor = cursor.skip(from).limit(length);
+		List<MaalrUserInfo> all = new ArrayList<MaalrUserInfo>();
+		while(cursor.hasNext()) {
+			DBObject o = cursor.next();
+			MaalrUserInfo user = new MaalrUserInfo(o);
+			all.add(user);
+		}
+		cursor.close();
+		return all;
 	}
 	
 	List<MaalrUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length) {
 		BasicDBObject query = new BasicDBObject();
-		Pattern pattern = Pattern.compile(".*"+text+".*", Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile(".*" + text + ".*", Pattern.CASE_INSENSITIVE);
 		if(role != null) {
 			query.put(Constants.Users.ROLE, role.toString());
 		}
 		if(text != null && text.trim().length() > 0) {
 			BasicDBList attributes = new BasicDBList();
-			DBObject firstName = new BasicDBObject();
-			firstName.put(Constants.Users.FIRSTNAME, pattern); 
-			attributes.add(firstName);
-			DBObject lastName = new BasicDBObject();
-			lastName.put(Constants.Users.LASTNAME, pattern);
-			attributes.add(lastName);
+//			DBObject firstName = new BasicDBObject();
+//			firstName.put(Constants.Users.FIRSTNAME, pattern); 
+//			attributes.add(firstName);
+//			DBObject lastName = new BasicDBObject();
+//			lastName.put(Constants.Users.LASTNAME, pattern);
+//			attributes.add(lastName);
 			DBObject login = new BasicDBObject();
 			login.put(Constants.Users.LOGIN, pattern);
 			attributes.add(login);

@@ -13,7 +13,13 @@
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
+	
+		<%-- SIGNUP DIALOG --%>
+		<%@ include file="/maalr_modules/misc/signup_dialog.jsp"%>
 		
+		<%-- EXPORT DIALOG --%>
+		<%@ include file="/maalr_modules/misc/export_dialog.jsp"%>
+	
 		<%-- NAVIGATION --%>
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
 		
@@ -26,9 +32,9 @@
 			
 			<%-- INTERNAL SIGN IN --%>
 			<div class="container well" id="login_container">
+			
 				<h1><fmt:message key="maalr.login.header" /></h1>
 				<br>
-				
 				<c:if test="${not empty param.login_error}">
 					<p id="error_font"> <fmt:message key="maalr.login.error" /><br /></p>
 				</c:if>
@@ -50,37 +56,9 @@
 				 
 				<%-- OPEN-ID SIGN IN --%>
 				<div id="openid_login">
-					<%-- <div class="input_wrapper">
-						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
-							<input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id" />
-							<button type="submit" value="${signInGoogle}" id="google_signin"><fmt:message key="maalr.login.google"/></button>
-						</form>
-					</div> 
+
 					<div class="input_wrapper">
-						<form action="<c:url value="/signin/google" />" method="POST">
-							<input type="hidden" name="scope" value="email" />
-							<button type="submit" id="google_signin"><fmt:message key="maalr.login.google"/></button>
-						</form>
-					</div>
-					<div class="input_wrapper">
-						<form action="<c:url value='j_spring_openid_security_check'/>" method="post">
-							<input name="openid_identifier" type="hidden" value="https://me.yahoo.com/" />
-							<button type="submit" value="${signInYahoo}" id="yahoo_signin"><fmt:message key="maalr.login.yahoo"/></button>
-						</form>
-					</div>
-					<div class="input_wrapper">
-						<form action="<c:url value="/signin/facebook" />" method="POST">
-							<input type="hidden" name="scope" value="email,publish_stream,offline_access" />
-							<button type="submit" id="facebook_signin"><fmt:message key="maalr.login.facebook"/></button>
-						</form>
-					</div>
-					<div class="input_wrapper">
-						<form action="<c:url value="/signin/twitter" />" method="POST">
-							<button type="submit" id="twitter_signin"><fmt:message key="maalr.login.twitter"/></button>
-						</form>
-					</div> --%>
-					<div class="input_wrapper">
-						<button type="submit" id="persona_signin"><fmt:message key="maalr.login.persona"/></button>
+						<a id="signUp" href="#signupDialog" id="signUp" data-toggle="modal"><fmt:message key="maalr.signup"/></a>
 					</div>
 				</div>
 				<%-- login info text  --%>
@@ -90,6 +68,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<jsp:include page="/analytics.jsp" />
 	</body>
 </html>

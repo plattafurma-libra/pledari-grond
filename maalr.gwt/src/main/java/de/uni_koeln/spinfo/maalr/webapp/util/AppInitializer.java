@@ -25,11 +25,12 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelectorOption;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilderOption;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
@@ -38,9 +39,9 @@ import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
 import de.uni_koeln.spinfo.maalr.configuration.Environment;
-import de.uni_koeln.spinfo.maalr.login.LoginManager;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
@@ -52,7 +53,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 @Service
 public class AppInitializer {
 
-	Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private Environment environment;
@@ -61,7 +62,7 @@ public class AppInitializer {
 	private BackendService adminController;
 
 	@Autowired
-	private LoginManager loginManager;
+	private PGAutenticationProvider authProvider;
 
 	@Autowired
 	private UserInfoBackend userBackend;
@@ -76,15 +77,19 @@ public class AppInitializer {
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			logger.warn("Importing Data...");
 			try {
-				loginManager.login("admin", "admin!132.");
-				adminController.importDatabase(20000);
-				MaalrUserInfo editor = new MaalrUserInfo("editor",
-						Role.TRUSTED_IN_4);
+				String adminSecret = Configuration.getInstance().getAdminCredentials();
+				String editorSecret = Configuration.getInstance().getEditorCredentials();
+				MaalrUserInfo admin = new MaalrUserInfo("admin", adminSecret, Role.ADMIN_5);
+				MaalrUserInfo editor = new MaalrUserInfo("editor", editorSecret, Role.TRUSTED_IN_4);
+				userBackend.insert(admin);
 				userBackend.insert(editor);
+				authProvider.authenticate(new UsernamePasswordAuthenticationToken(admin.getLogin(), adminSecret));
+				adminController.importDatabase(20000);
+//				loginManager.login("admin", "admin!132.");				
 			} finally {
-				loginManager.logout();
+				authProvider.logout();
+//				loginManager.logout();
 			}
-
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
 

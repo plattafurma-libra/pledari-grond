@@ -1,6 +1,6 @@
 <%@ page import="javax.security.auth.login.LoginContext" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Role" %>
-<%@ page import="de.uni_koeln.spinfo.maalr.login.LoginManager" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %>
 
 <%-- LOGIN --%>
@@ -21,6 +21,13 @@
 		<%
 			}
 		%>
-		<li><%@ include file="/maalr_modules/login/loginmodule.jsp"%></li>
+		<%
+			if (user != null && user.getRole().equals(Role.TRUSTED_EX_3)) {
+		%>
+		<li><a href="${dictContext}"><i></i><span class="">Editor Backend </span></a></li>
+		<%
+			}
+		%>
+		<%-- <li><%@ include file="/maalr_modules/login/loginmodule.jsp"%></li> --%>
 	</ul>
 </div>
