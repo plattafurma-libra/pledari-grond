@@ -4,7 +4,6 @@
 <%-- <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %> --%>
 <%-- <%@ page import="de.uni_koeln.spinfo.maalr.login.UserInfoBackend" %> --%>
 <%-- <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Constants" %> --%>
-<%-- <%@ page import="de.uni_koeln.spinfo.maalr.login.LoginManager" %> --%>
 
 <%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %> --%>
 
