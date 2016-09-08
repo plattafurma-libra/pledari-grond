@@ -386,7 +386,7 @@
 						<field column="redirect_b"></field>
 						<field column="RFlex"></field>
 						
-						<!-- TODO Label fehlt, zudem Frage nach DTags-Feld -->
+						<!-- TODO also use DTags-Field? -->
 						<field column="RTags"></field>
 						
 					</fields>
