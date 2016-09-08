@@ -39,7 +39,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
-import de.uni_koeln.spinfo.maalr.login.LoginManager;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.IndexException;
 import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
@@ -50,11 +50,8 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 public class DataLoader {
 	
 	
-	@Autowired
-	private Index index;
-	
-	@Autowired
-	private LoginManager loginManager;
+	@Autowired private Index index;
+	@Autowired private PGAutenticationProvider authProvider;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -90,7 +87,7 @@ public class DataLoader {
 		Database db = Database.getInstance();
 		List<DBObject> entries = new ArrayList<DBObject>();
 		int counter = 0;
-		String userId = loginManager.getCurrentUserId();
+		String userId = authProvider.getCurrentUserId();
 		while((line = br.readLine()) != null) {
 			String[] values = line.split("\t",-1);
 			if(values.length != keys.length) {
@@ -132,7 +129,6 @@ public class DataLoader {
 		}
 		db.insertBatch(entries);
 		entries.clear();
-		//loginManager.login("admin", "admin");
 		Iterator<LexEntry> iterator = db.getEntries();
 		index.dropIndex();
 		index.addToIndex(iterator);
@@ -143,7 +139,6 @@ public class DataLoader {
 		if(zipFile != null) {
 			zipFile.close();
 		}
-		//loginManager.logout();
 		logger.info("Dataloader initialized.");
 	}
 

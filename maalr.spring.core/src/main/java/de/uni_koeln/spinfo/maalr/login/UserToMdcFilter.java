@@ -28,6 +28,8 @@ import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
+
 
 
 /**
@@ -39,11 +41,9 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service("springLogUserLogin")
-public class UserToMdcFilter implements javax.servlet.Filter
-{
+public class UserToMdcFilter implements javax.servlet.Filter {
 	
-	@Autowired
-	LoginManager loginManager;
+	@Autowired private PGAutenticationProvider authProvider;
 	
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -65,7 +65,7 @@ public class UserToMdcFilter implements javax.servlet.Filter
     	String login = (String) h.getSession().getAttribute("uname");
     	if(login == null) {
     	//	logger.info("Querying for login");
-    		login = loginManager.getCurrentUserId();
+    		login = authProvider.getCurrentUserId();
         	if(login == null || "anonymousUser".equals(login)) {
         		login = h.getRemoteAddr();
         	}

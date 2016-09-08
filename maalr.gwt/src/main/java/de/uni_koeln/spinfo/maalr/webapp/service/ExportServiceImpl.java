@@ -1,32 +1,36 @@
 package de.uni_koeln.spinfo.maalr.webapp.service;
 
 import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.Future;
+import java.io.FileFilter;
 
-import javax.xml.bind.JAXBException;
-
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
-import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
-import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.webapp.controller.ExportController.Format;
 
 @Component
 public class ExportServiceImpl implements ExportService {
-	
-	@Async
+
 	@Override
-	public Future<File> export(Format format) {
-		try {
-			String export = Database.getInstance().export(false);
-			return new AsyncResult<File>(new File(export));
-		} catch (NoDatabaseAvailableException | NoSuchAlgorithmException
-				| JAXBException | IOException e) {
-			e.printStackTrace();
+	public File export(Format format) {
+		File dir = null;
+		switch (format) {
+			case XML: dir = new File("formats/xml/"); break;
+			case JSON: dir = new File("formats/json/"); break;
+			case CSV: dir = new File("formats/csv/"); break;
+			default: break;
+			}
+		if (dir == null)
+			return null;
+
+		if (dir.listFiles().length > 0) {
+			File file = dir.listFiles(new FileFilter() {
+				@Override
+				public boolean accept(File pathname) {
+					return pathname.getName().endsWith(".zip");
+				}
+			})[0];
+			
+			return file;
 		}
 		return null;
 	}
