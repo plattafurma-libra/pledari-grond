@@ -28,10 +28,10 @@ import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 /**
  * @author  Mihail Atanassov (atanassov.mihail@gmail.com)
  */
-@Configuration
+//@Configuration
 public class H2Config {
 
-	@Bean(destroyMethod = "shutdown")
+//	@Bean(destroyMethod = "shutdown")
 	public DataSource dataSource() {
 		EmbeddedDatabaseFactory factory = new EmbeddedDatabaseFactory();
 		factory.setDatabaseName("pgConnect");
