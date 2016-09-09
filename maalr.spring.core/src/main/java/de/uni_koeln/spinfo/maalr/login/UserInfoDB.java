@@ -79,8 +79,21 @@ public class UserInfoDB {
 	}
 
 	MaalrUserInfo insert(MaalrUserInfo user) throws InvalidUserException {
-		if(userExists(user.getLogin())) throw new InvalidUserException("User already exists!");
+		
 		long now = System.currentTimeMillis();
+
+		//FIXME: Workaround weil PostConstruct bei jetty-deployment nicht aufgerufen wird!
+		if(!userExists("admin")){
+			logger.warn("WORKAROUND! Creating initial user admin in DB: " 
+					+ Configuration.getInstance().getDbName()+", db-user: "+Configuration.getInstance().getUserDb()+", collection: "+Configuration.getInstance().getUserDbCollection());
+			String adminSecret = Configuration.getInstance().getAdminCredentials();
+			MaalrUserInfo admin = new MaalrUserInfo("admin", adminSecret, Role.ADMIN_5);
+			admin.setCreationDate(now);
+			admin.setLastModificationDate(now);
+			userCollection.insert(admin);
+		}
+		
+		if(userExists(user.getLogin())) throw new InvalidUserException("User already exists!");
 		user.setCreationDate(now);
 		user.setLastModificationDate(now);
 		userCollection.insert(user);
