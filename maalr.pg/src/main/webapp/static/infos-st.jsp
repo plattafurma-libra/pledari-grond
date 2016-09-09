@@ -12,7 +12,7 @@
 <h1>Infurmaziùns generalas</h1>
 
 <p>
-	<strong>Questa versiùn online digl vocabulari sutsilvan sabasa segl Pledari sutsilvan-tudestg/Wörterbuch Deutsch-Sutsilvan c’e vagnieu redigieu da Wolfgang Eichenhofer ad edieu igls 2002 da Mieds d'instrucziùn digl Grischùn.</strong>
+	<strong>Questa versiùn online digl vocabulari sutsilvan sabasa segl Pledari sutsilvan-tudestg/Wörterbuch Deutsch-Sutsilvan c’e vagnieu redigieu da Wolfgang Eichenhofer ad edieu igls 2002 da Mieds d'instrucziùn digl Grischùn. Tutegna sco an lez satgatan las furmas tumleastgegnas trànter parantesas angularas.</strong>
 </p>
 
 <p>

@@ -13,7 +13,7 @@
 <h1>Allgemeine Informationen</h1>
 
 <p>
-	<strong>Diese Online-Version des Pledari sutsilvan basiert auf dem Pledari sutsilvan-tudestg/Wörterbuch Deutsch-Sutsilvan, redigiert von Wolfang Eichenhofer, herausgegeben im Jahre 2002 von Lehrmittel Graubünden.</strong>
+	<strong>Diese Online-Version des Pledari sutsilvan basiert auf dem Pledari sutsilvan-tudestg/Wörterbuch Deutsch-Sutsilvan, redigiert von Wolfang Eichenhofer, herausgegeben im Jahre 2002 von Lehrmittel Graubünden. Wie dort weisen die eckigen Klammern auf domleschgerische Schreibungen hin.</strong>
 </p>
 
 <p>
