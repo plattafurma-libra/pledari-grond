@@ -12,7 +12,7 @@ body {
 	color: rgb(76, 76, 76);
 }
 
-.navbar-fixed-top,.navbar-fixed-bottom {
+.navbar-fixed-top, .navbar-fixed-bottom {
 	position: static;
 	right: auto;
 	left: auto;
@@ -26,7 +26,7 @@ a {
 	color: rgb(132, 132, 132);
 }
 
-input[type="text"],input[type="password"],textarea {
+input[type="text"], input[type="password"], textarea {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -47,7 +47,7 @@ input[type="text"],input[type="password"],textarea {
 	box-sizing: border-box;
 }
 
-input[type="text"]:focus,input[type="password"]:focus,textarea:focus {
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 	border: 1px solid rgb(21, 233, 177);
 	color: rgb(76, 76, 76);
 	-webkit-box-shadow: none;
@@ -63,12 +63,12 @@ input[type="text"]:focus,input[type="password"]:focus,textarea:focus {
 	margin-top: 132px;
 }
 
-.alpha_navi.chars,.alpha_navi.letters {
+.alpha_navi.chars, .alpha_navi.letters {
 	overflow: hidden;
 	text-align: center;
 }
 
-.alpha_navi.chars .item,.alpha_navi.letters .item {
+.alpha_navi.chars .item, .alpha_navi.letters .item {
 	display: inline;
 	width: 22px;
 	text-align: center;
@@ -189,28 +189,28 @@ body {
 	padding: 0;
 }
 
-label,input,button,select,textarea {
+label, input, button, select, textarea {
 	font-weight: 400;
 	margin-bottom: 0;
 }
 
-input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	color: transparent;
 }
 
-input:-moz-placeholder,textarea:-moz-placeholder { /* Firefox 18- */
+input:-moz-placeholder, textarea:-moz-placeholder { /* Firefox 18- */
 	color: transparent;
 }
 
-input::-moz-placeholder,textarea::-moz-placeholder { /* Firefox 19+ */
+input::-moz-placeholder, textarea::-moz-placeholder { /* Firefox 19+ */
 	color: transparent;
 }
 
-input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	color: transparent;
 }
 
-button,input,textarea {
+button, input, textarea {
 	letter-spacing: 0.07em;
 }
 
@@ -335,7 +335,8 @@ input:focus, textarea:focus {
 
 #sr_brand_title:hover {
 	border-right: 1px solid #fff;
-	background-color: #999999;
+	background-color: rgb(21, 233, 177);
+	/*background-color: #999999;*/
 }
 
 #vl_brand_title {
@@ -344,7 +345,8 @@ input:focus, textarea:focus {
 }
 
 #vl_brand_title:hover {
-	background-color: #999999;
+	/*background-color: #999999;*/
+	background-color: rgb(21, 233, 177);
 }
 
 #pt_brand_title {
@@ -352,7 +354,8 @@ input:focus, textarea:focus {
 }
 
 #pt_brand_title:hover {
-	background-color: #999999;
+	/*background-color: #999999;*/
+	background-color: rgb(21, 233, 177);
 }
 
 .dict_navi_item {
@@ -406,7 +409,8 @@ input:focus, textarea:focus {
 	top: 50%;
 	left: 50%;
 	width: 500px;
-	height: 306px;
+	height: 206px;
+	/* with heading: */ /*	height: 306px;*/
 	margin-top: -11.7em;
 	margin-left: -20.7em;
 }
@@ -431,7 +435,7 @@ input:focus, textarea:focus {
 	margin: 0 auto;
 }
 
-#langauges,#login-widget {
+#langauges, #login-widget {
 	/* 	text-transform: lowercase; */
 	text-transform: uppercase;
 }
@@ -529,8 +533,8 @@ a.navi_a_common:hover {
 	text-decoration: none !important;
 }
 
-a.lang_selected:hover,a.lang_selected:active,a.lang_selected:visited,a.lang_selected:link,a.lang_selected:disabled
-	{
+a.lang_selected:hover, a.lang_selected:active, a.lang_selected:visited,
+	a.lang_selected:link, a.lang_selected:disabled {
 	color: rgb(255, 255, 255);
 	opacity: 1;
 	text-decoration: none !important;
@@ -639,13 +643,17 @@ a.login-icon:hover {
 #searchoptions
 
 
+
  
+
 
 
 fieldset
 
 
+
  
+
 
 
 .control-group
@@ -653,10 +661,14 @@ fieldset
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (4)
@@ -666,14 +678,20 @@ margin-bottom
 
 
 
+
+
 :
+
 
 
  
 
 
+
 8
 px
+
+
 
 
 
@@ -690,7 +708,7 @@ px
 	margin-bottom: 0;
 }
 
-#searchoptions label.gwt-checkbox-maalr input,#searchoptions label.default-config-maalr input
+#searchoptions label.gwt-checkbox-maalr input, #searchoptions label.default-config-maalr input
 	{
 	margin-top: -4px;
 }
@@ -766,7 +784,7 @@ px
 	color: rgb(21, 233, 177);
 }
 
-#content.content .control-group+.control-group,#content.content .control-group+.control-group+.control-group
+#content.content .control-group+.control-group, #content.content .control-group+.control-group+.control-group
 	{
 	/*	display: none; */
 	
@@ -852,8 +870,8 @@ px
 	color: rgb(163, 163, 163);
 }
 
-#content.content table.resultlist tr.GKHQX3BBBC,#content.content table.resultlist tr.GKHQX3BBBC td,#content.content table.resultlist tr.GKHQX3BBBC td div
-	{
+#content.content table.resultlist tr.GKHQX3BBBC, #content.content table.resultlist tr.GKHQX3BBBC td,
+	#content.content table.resultlist tr.GKHQX3BBBC td div {
 	background-color: transparent;
 }
 
@@ -948,14 +966,14 @@ px
 	float: left;
 }
 
-#login_container input[type="text"],#login_container input[type="password"]
+#login_container input[type="text"], #login_container input[type="password"]
 	{
 	width: 182px;
 	background-color: rgb(245, 245, 245);
 	border: 1px solid rgb(245, 245, 245);
 }
 
-#login_container input[type="text"]:focus,#login_container input[type="password"]:focus
+#login_container input[type="text"]:focus, #login_container input[type="password"]:focus
 	{
 	border: 1px solid rgb(21, 233, 177);
 }
@@ -1018,8 +1036,9 @@ px
 	margin: 0;
 }
 
-#login_container button#google_signin,#login_container button#yahoo_signin,#login_container button#facebook_signin,#login_container button#twitter_signin,#login_container button#persona_signin
-	{
+#login_container button#google_signin, #login_container button#yahoo_signin,
+	#login_container button#facebook_signin, #login_container button#twitter_signin,
+	#login_container button#persona_signin {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -1043,16 +1062,18 @@ px
 	margin: 0;
 }
 
-#login_container button#google_signin:before,#login_container button#yahoo_signin:before,#login_container button#facebook_signin:before,#login_container button#twitter_signin:before,#login_container button#persona_signin:before
-	{
+#login_container button#google_signin:before, #login_container button#yahoo_signin:before,
+	#login_container button#facebook_signin:before, #login_container button#twitter_signin:before,
+	#login_container button#persona_signin:before {
 	content: "→";
 	position: absolute;
 	left: 0px;
 	top: 0px;
 }
 
-#login_container button#google_signin:hover,#login_container button#yahoo_signin:hover,#login_container button#facebook_signin:hover,#login_container button#twitter_signin:hover,#login_container button#persona_signin:hover
-	{
+#login_container button#google_signin:hover, #login_container button#yahoo_signin:hover,
+	#login_container button#facebook_signin:hover, #login_container button#twitter_signin:hover,
+	#login_container button#persona_signin:hover {
 	color: rgb(0, 200, 255);
 }
 
@@ -1167,10 +1188,14 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
 
 
+
  
+
 
 
 td
@@ -1178,10 +1203,14 @@ td
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (1)
@@ -1191,10 +1220,14 @@ width
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0%;
@@ -1204,10 +1237,14 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
 
 
+
  
+
 
 
 td
@@ -1215,10 +1252,14 @@ td
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (2)
@@ -1228,10 +1269,14 @@ width
 
 
 
+
+
 :
 
 
+
  
+
 
 
 46%;
@@ -1241,10 +1286,14 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
 
 
+
  
+
 
 
 td
@@ -1252,10 +1301,14 @@ td
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (3)
@@ -1267,10 +1320,14 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
 
 
+
  
+
 
 
 td
@@ -1278,10 +1335,14 @@ td
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (4)
@@ -1293,10 +1354,14 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
 
 
+
  
+
 
 
 td
@@ -1304,10 +1369,14 @@ td
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (5)
@@ -1317,10 +1386,14 @@ width
 
 
 
+
+
 :
 
 
+
  
+
 
 
 43%;
@@ -1330,16 +1403,28 @@ tr
 
 
 
+
+
 .GKHQX3BBKB
+
  
+
 td
+
+
 :nth-child
+
  
+
 (6)
 {
 width
+
+
 :
+
  
+
 0%;
 }
 
@@ -1357,7 +1442,9 @@ width
 #searchoptions
 
 
+
  
+
 
 
 .control-group
@@ -1365,10 +1452,14 @@ width
 
 
 
+
+
 :nth-child
 
 
+
  
+
 
 
 (2)
@@ -1378,14 +1469,20 @@ margin-top
 
 
 
+
+
 :
+
 
 
  
 
 
+
 24
 px
+
+
 
 
 
@@ -1425,7 +1522,7 @@ px
 	display: block;
 }
 
-#searchoptions .styledRadio,#searchoptions .styledCheckbox {
+#searchoptions .styledRadio, #searchoptions .styledCheckbox {
 	width: 16px;
 	height: 16px;
 	float: left;
@@ -1435,8 +1532,7 @@ px
 }
 
 #searchoptions .styledRadio {
-	background-image:
-		url(/sutsilvan/assets/img/radiobutton_sprite.png);
+	background-image: url(/sutsilvan/assets/img/radiobutton_sprite.png);
 	background-position: 0px 0px;
 }
 
@@ -1453,7 +1549,7 @@ px
 	background-position: 0px 16px;
 }
 
-#searchoptions .styledRadio.checked+input+span,#searchoptions .styledCheckbox.checked+input+span
+#searchoptions .styledRadio.checked+input+span, #searchoptions .styledCheckbox.checked+input+span
 	{
 	color: rgb(0, 200, 255);
 }
@@ -1506,7 +1602,7 @@ px
 	height: auto;
 }
 
-.modal-body input[type="text"]:focus,.modal-body textarea:focus {
+.modal-body input[type="text"]:focus, .modal-body textarea:focus {
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	-moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -1546,7 +1642,7 @@ px
 	width: 600px;
 }
 
-.modal table,.modal tr,.modal td {
+.modal table, .modal tr, .modal td {
 	padding: 0 !important;
 	margin: 0 !important;
 }
@@ -1590,7 +1686,7 @@ px
 	border: none;
 }
 
-.modal .page-header h1,.modal h3 {
+.modal .page-header h1, .modal h3 {
 	font-size: 13px;
 	line-height: 18px;
 	margin-bottom: 12px;
@@ -1662,12 +1758,12 @@ blockquote h4 {
 	background-color: white;
 }
 
-#content .pagination ul li.disabled a,#content .pagination ul li.disabled a:hover
+#content .pagination ul li.disabled a, #content .pagination ul li.disabled a:hover
 	{
 	color: rgb(192, 192, 192);
 }
 
-#content .pagination a[disabled=""],#content .pagination a[disabled=""] *
+#content .pagination a[disabled=""], #content .pagination a[disabled=""] *
 	{
 	-webkit-text-shadow: none !important;
 	-moz-text-shadow: none !important;
@@ -1687,7 +1783,7 @@ blockquote h4 {
 	color: rgb(0, 200, 255);
 }
 
-#content .pagination li.disabled a:hover,#content .pagination li.active a:hover
+#content .pagination li.disabled a:hover, #content .pagination li.active a:hover
 	{
 	color: #999;
 }
@@ -1715,8 +1811,8 @@ blockquote h4 {
 	margin-right: 6px;
 }
 
-.table tbody tr:hover td,.table tbody tr:hover th,.table tbody tr:active td,.table tbody tr:active th
-	{
+.table tbody tr:hover td, .table tbody tr:hover th, .table tbody tr:active td,
+	.table tbody tr:active th {
 	background: none !important;
 }
 
@@ -1980,6 +2076,7 @@ a.simpleLink:hover {
 		/* 		margin: 125px auto; */ /*  	margin-top: -13em; */
 		/* 		margin-left: -13em; */
 		width: 300px;
+		height: 246px;
 		margin: 25px auto 142px;
 		position: inherit;
 	}
@@ -2160,45 +2257,59 @@ a.simpleLink:hover {
 	}
 	#navi_bottom
 	
+	
 		
 		 
 		
 		
+	
 	#navi_bottom_menu
 	
+	
 		
 		 
 		
 		
+	
 	li
 	
+	
 		
 		
 		
+	
 	:nth-child
+	
 	
 		
 		 
 		
 		
+	
 	(5)
 	{
 	display
 	
+	
 		
 		
 		
+	
 	:
+	
 	
 		
 		 
 		
 		
+	
 	none
+	
 	
 		
 		
 		
+	
 	;
 }
 
@@ -2259,7 +2370,7 @@ a.simpleLink:hover {
 	margin-top: 12px;
 }
 
-#login_container input[type="text"],#login_container input[type="password"]
+#login_container input[type="text"], #login_container input[type="password"]
 	{
 	box-sizing: border-box;
 	width: 100%;
@@ -2293,7 +2404,7 @@ a.simpleLink:hover {
 	float: right;
 }
 
-.information_container,.container_plugin {
+.information_container, .container_plugin {
 	margin-top: 112px;
 	width: 80%;
 	margin-bottom: 146px;
@@ -2315,7 +2426,7 @@ a.simpleLink:hover {
 	-webkit-overflow-scrolling: touch;
 }
 
-.modal table,.modal tr,.modal td,.modal tbody {
+.modal table, .modal tr, .modal td, .modal tbody {
 	display: block;
 }
 
@@ -2325,7 +2436,7 @@ a.simpleLink:hover {
 	margin-bottom: 6px !important;
 }
 
-.modal tbody,.modal table {
+.modal tbody, .modal table {
 	width: 100% !important;
 }
 
@@ -2337,7 +2448,7 @@ a.simpleLink:hover {
 	margin-left: 0;
 }
 
-.modal-body table .form-horizontal .control-group .controls,.modal-body table .form-horizontal .control-group .controls .gwt-TextBox
+.modal-body table .form-horizontal .control-group .controls, .modal-body table .form-horizontal .control-group .controls .gwt-TextBox
 	{
 	width: 100%;
 	max-width: none !important;
@@ -2381,7 +2492,7 @@ a.simpleLink:hover {
 	width: 90%;
 }
 
-#searchoptions .styledRadio,#searchoptions .styledCheckbox {
+#searchoptions .styledRadio, #searchoptions .styledCheckbox {
 	margin-top: 1px;
 }
 
