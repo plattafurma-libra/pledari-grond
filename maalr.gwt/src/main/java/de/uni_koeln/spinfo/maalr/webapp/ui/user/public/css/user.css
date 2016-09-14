@@ -335,7 +335,8 @@ input:focus, textarea:focus {
 
 #sr_brand_title:hover {
 	border-right: 1px solid #fff;
-	background-color: #999999;
+	background-color: rgb(21, 233, 177);
+	/*background-color: #999999;*/
 }
 
 #vl_brand_title {
@@ -344,7 +345,8 @@ input:focus, textarea:focus {
 }
 
 #vl_brand_title:hover {
-	background-color: #999999;
+	/*background-color: #999999;*/
+	background-color: rgb(21, 233, 177);
 }
 
 #pt_brand_title {
@@ -352,7 +354,8 @@ input:focus, textarea:focus {
 }
 
 #pt_brand_title:hover {
-	background-color: #999999;
+	/*background-color: #999999;*/
+	background-color: rgb(21, 233, 177);
 }
 
 .dict_navi_item {
@@ -406,7 +409,8 @@ input:focus, textarea:focus {
 	top: 50%;
 	left: 50%;
 	width: 500px;
-	height: 306px;
+	height: 206px;
+	/* with heading: */ /*	height: 306px;*/
 	margin-top: -11.7em;
 	margin-left: -20.7em;
 }

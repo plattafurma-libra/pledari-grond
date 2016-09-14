@@ -15,10 +15,12 @@
 	
 		<div>
 			<div class="well" id="info-box">
+			<%--
 				<h5>
 					<fmt:message key="info.header.${featured}" />
 				</h5>
 				<hr>
+			 --%>
 				<p>
 					<fmt:message key="info.for.${featured}" />
 				</p>
@@ -39,5 +41,25 @@
 		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
 		
 		<jsp:include page="/analytics.jsp" />
+		
+			<script type="text/javascript">
+
+	$(document).ready(function(){
+    if("${featured}" == "puter") {
+        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+        document.getElementById("pt_brand_title").className = 'dict_navi_item selected';
+    }
+    if("${featured}" == "vallader") {
+        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+        document.getElementById("vl_brand_title").className = 'dict_navi_item selected';
+    }
+    if("${featured}" == "sursilvan") {
+        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+        document.getElementById("sr_brand_title").className = 'dict_navi_item selected';
+    }
+});
+
+</script>
+		
 	</body>
 </html>
