@@ -91,6 +91,7 @@ public class UserInfoDB {
 			admin.setCreationDate(now);
 			admin.setLastModificationDate(now);
 			userCollection.insert(admin);
+			return user;
 		}
 		
 		if(userExists(user.getLogin())) throw new InvalidUserException("User already exists!");
