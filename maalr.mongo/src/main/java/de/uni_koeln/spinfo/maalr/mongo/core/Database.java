@@ -692,5 +692,9 @@ public class Database {
 			ze = in.getNextEntry();
 		}
 	}
+	
+	public DBCursor getAll() {
+		return entryCollection.find();
+	}
 
 }
