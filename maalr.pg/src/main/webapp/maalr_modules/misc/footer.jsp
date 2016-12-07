@@ -17,5 +17,6 @@
 		<li><a href="${dictContext}/browse.html">a &ndash; z</a></li>
 		<li><a href="http://www.liarumantscha.ch" target="_blank">&copy; Lia Rumantscha 1980 &ndash; <%Calendar calendar = Calendar.getInstance(); out.write(calendar.get(Calendar.YEAR) + "");%></a></li>
 		<li><a href="http://spinfo.phil-fak.uni-koeln.de/maalr.html" target="_blank"><fmt:message key="maalr.footer.maalr" /></a></li>
+		<li><a href="#exportDialog" id="exportData" data-toggle="modal"><span><fmt:message key="maalr.data.export"/></span></a></li>
 	</ul>
 </div>
