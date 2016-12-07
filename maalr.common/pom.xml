@@ -4,6 +4,13 @@
 	<artifactId>common</artifactId>
 	<packaging>jar</packaging>
 
+	<parent>
+		<groupId>de.uni_koeln.spinfo.maalr</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../maalr.parent</relativePath>
+	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.validation</groupId>
