@@ -46,6 +46,7 @@ import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+import de.uni_koeln.spinfo.maalr.webapp.service.ExportFormatScheduler;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
 @Service
@@ -92,7 +93,10 @@ public class AppInitializer {
 		int nums = Integer.parseInt(Configuration.getInstance().getBackupNums());
 		String time = Configuration.getInstance().getTriggerTime();
 		BackUpHelper.getInstance().setBackup(BackUpHelper.Period.DAILY, time, dir, nums, false);
-		// END SCHEDULED BACKUP
+		
+		// SCHEDULED FORMAT EXPORT
+		logger.info("STARTING SCHEDULED FORMAT EXPORT!");
+		ExportFormatScheduler.getInstance().run();
 		
 		configureSearchUi();
 		MaalrQueryFormatter.setUiConfiguration(Configuration.getInstance().getUserDefaultSearchUiConfig());
