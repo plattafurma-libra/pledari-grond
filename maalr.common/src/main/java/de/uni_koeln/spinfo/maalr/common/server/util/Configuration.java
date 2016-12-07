@@ -48,9 +48,9 @@ public class Configuration {
 
 	private static final String LEX_FILE = "lex.file";
 
-	private static final String DICT_CONTEXT = "maalr.dict.context";
-	
 	private static final String MONGODB_USER = "mongodb.user";
+	
+	private static final String DICT_CONTEXT = "maalr.dict.context";
 	
 	private static final String MONGODB_USER_COLLECTION = "mongodb.user.collection";
 
@@ -69,6 +69,10 @@ public class Configuration {
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
 
 	private static final String BACKUP_NUMS = "backup.nums";
+
+	private static final String LOCALE_CODE = "locale.code";
+	
+	private static final String MAALR_IMPL = "maalr.impl";
 
 	private Properties properties;
 
@@ -266,8 +270,16 @@ public class Configuration {
 		return properties.getProperty(MONGODB_USER);
 	}
 	
+	public String getLocaleCode() {
+		return properties.getProperty(LOCALE_CODE);
+	}
+	
 	public String getUserDbCollection() {
 		return properties.getProperty(MONGODB_USER_COLLECTION);
+	}
+	
+	public String getMaalrImpl() {
+		return properties.getProperty(MAALR_IMPL);
 	}
 
 }
