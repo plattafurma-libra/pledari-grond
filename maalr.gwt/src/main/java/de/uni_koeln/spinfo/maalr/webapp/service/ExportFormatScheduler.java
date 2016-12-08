@@ -63,6 +63,7 @@ public class ExportFormatScheduler {
 	private static final String PATH_CSV = "formats/csv/";
 	private static final String ZIP_SUFFIX = ".zip";
 	private static final String UTF_8 = "UTF-8";
+	private static final String NEW_LINE_SEPARATOR = "\n";
 	
 	private ExportFormatScheduler() {
 		// Singleton
@@ -70,8 +71,9 @@ public class ExportFormatScheduler {
 
 	public void run() throws InterruptedException, ExecutionException {
 
-		if (scheduledExecutorService != null)
+		if (scheduledExecutorService != null) {
 			return;
+		}
 
 		logger.info("Scheduled format export started!");
 		scheduledExecutorService = Executors.newScheduledThreadPool(2);
@@ -127,7 +129,7 @@ public class ExportFormatScheduler {
 		File dir = createDirs(PATH_JSON);
 		String fileName = createFileName(JSON_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
-		logger.error("exportJSON(DBCursor cursor) fileName=" + file.getName());
+		logger.info("exportJSON(DBCursor cursor) fileName=" + file.getName());
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataJson(fos, fileName, cursor);
 	}
@@ -142,55 +144,56 @@ public class ExportFormatScheduler {
 		return Configuration.getInstance().getMaalrImpl() + formInfix;
 	}
 	
-	
-	 private static final String NEW_LINE_SEPARATOR = "\n";
-	 
 	private void exportDataCSV(OutputStream outputStream, String fileName, DBCursor cursor) throws IOException {
 		
-//		ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(os));
-//		zout.putNextEntry(new ZipEntry(fileName + ".csv"));
-//		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(zout, UTF_8));
+		File tmp = null;
+		BufferedReader bufferedReader = null;
+		ZipOutputStream zipOutputStream = null;
+		CSVPrinter csvFilePrinter = null;
 		
-		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-		ZipOutputStream zipOutputStream = new ZipOutputStream(bufferedOutputStream);
-		ZipEntry zipEntry = new ZipEntry(fileName + ".csv");
-		zipOutputStream.putNextEntry(zipEntry);
-		
-		logger.info("csv export...");
-		List<String> header = new ArrayList<>();
-		header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, true));
-		header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, false));
-		
-		CSVFormat csvFileFormat = CSVFormat.MYSQL.withHeader(header.toArray(new String[header.size()])).withRecordSeparator(NEW_LINE_SEPARATOR);
-		File tmp = new File(fileName + ".csv");
-		CSVPrinter csvFilePrinter = new CSVPrinter(new FileWriter(tmp), csvFileFormat);
-		
-		logger.info("printing csv entries...");
-		while (cursor.hasNext()) {
-			DBObject object = cursor.next();
-			LexEntry entry = Converter.convertToLexEntry(object);
-			LemmaVersion lemmaVersion = entry.getCurrent();
-			if (lemmaVersion != null) {
-				List<String> dataRecord = new ArrayList<>();
-				for (String key : header) {
-					dataRecord.add(lemmaVersion.getEntryValue(key));
+		try {
+			BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+			zipOutputStream = new ZipOutputStream(bufferedOutputStream);
+			ZipEntry zipEntry = new ZipEntry(fileName + ".csv");
+			zipOutputStream.putNextEntry(zipEntry);
+
+			logger.info("csv export...");
+			List<String> header = new ArrayList<>();
+			header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, true));
+			header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, false));
+			
+			CSVFormat csvFileFormat = CSVFormat.MYSQL.withHeader(header.toArray(new String[header.size()])).withRecordSeparator(NEW_LINE_SEPARATOR);
+			tmp = new File(fileName + ".csv");
+			csvFilePrinter = new CSVPrinter(new FileWriter(tmp), csvFileFormat);
+			
+			logger.info("printing csv entries...");
+			while (cursor.hasNext()) {
+				DBObject object = cursor.next();
+				LexEntry entry = Converter.convertToLexEntry(object);
+				LemmaVersion lemmaVersion = entry.getCurrent();
+				if (lemmaVersion != null) {
+					List<String> dataRecord = new ArrayList<>();
+					for (String key : header) {
+						dataRecord.add(lemmaVersion.getEntryValue(key));
+					}
+					csvFilePrinter.printRecord(dataRecord);
 				}
-				csvFilePrinter.printRecord(dataRecord);
 			}
+			logger.info("writing csv zip...");
+			bufferedReader = new BufferedReader (new FileReader(tmp));
+			int len;
+			while((len = bufferedReader.read()) != -1) {
+				zipOutputStream.write(len);
+			}
+		} finally {
+			
+			csvFilePrinter.close();
+			tmp.delete();
+			bufferedReader.close();
+			zipOutputStream.closeEntry();
+			zipOutputStream.close();
+			
 		}
-		csvFilePrinter.close();
-		
-		logger.info("writing csv zip...");
-		BufferedReader bufferedReader = new BufferedReader (new FileReader(tmp));
-		int len;
-		while((len = bufferedReader.read()) != -1) {
-			zipOutputStream.write(len);
-		}
-		bufferedReader.close();
-		
-		zipOutputStream.closeEntry();
-		zipOutputStream.close();
-		
 		logger.info("csv export finished!");
 	}
 	

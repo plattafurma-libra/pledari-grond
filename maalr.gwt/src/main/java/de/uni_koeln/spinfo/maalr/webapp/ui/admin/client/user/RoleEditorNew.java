@@ -32,7 +32,10 @@ import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.SelectionCell;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.TableRowElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.shared.DateTimeFormat;
@@ -54,6 +57,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserServiceAsync;
+import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util.SimpleWebLogger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 /**
@@ -127,42 +131,53 @@ public class RoleEditorNew extends Composite {
 		// Create remaining widgets not manually provided
 		initWidget(uiBinder.createAndBindUi(this));
 		createUserButton();
+		
 	}
 
 	private Column<LightUserInfo, String> createUpdateRoleColumn() {
+		
 		SelectionCell roleCell = new SelectionCell(Arrays.asList(Constants.Roles.ALL_ROLES));
 	    Column<LightUserInfo, String> roleUpdateColumn = new Column<LightUserInfo, String>(roleCell) {
-	      @Override
-	      public String getValue(LightUserInfo object) {
-	        return object.getRole().getRoleId();
-	      }
+	    	@Override
+	    	public String getValue(LightUserInfo object) {
+	    		return object.getRole().getRoleId();
+	    	}
 	    };
-	    cellTable.addColumn(roleUpdateColumn, "Update Role");
 	    
+	    cellTable.addColumn(roleUpdateColumn, "Update Role");
+
 	    roleUpdateColumn.setFieldUpdater(new FieldUpdater<LightUserInfo, String>() {
+	    	
 	    	@Override
 	    	public void update(int index, LightUserInfo object, String value) {
-	    	  
-	    	Role[] values = Role.values();
-	  		for (Role role : values) {
-	  			if(role.getRoleId().equals(value)) {
-	  				 object.setRole(role);
-	  				 service.updateRole(object, new AsyncCallback<Void>() {
+	    		
+	    		if(object.getLogin().equals("admin")) {
+  					Window.alert("Admin user role can not be modified!");
+  					return;
+  				}
+		    	
+	    		Role[] values = Role.values();
+		  		for (Role role : values) {
+		  			if(role.getRoleId().equals(value)) {
+		  				
+		  				object.setRole(role);
+	  					service.updateRole(object, new AsyncCallback<Void>() {
 						
-						@Override
-						public void onSuccess(Void result) {
-							cellTable.redraw();
-						}
-						
-						@Override
-						public void onFailure(Throwable caught) {
-							Logger.getLogger(getClass()).info("UerService.updateRole().Exception :: " + caught.getMessage());
-						}
-	  				 });
-	  			}
-	  		}
-	      }
+							@Override
+							public void onSuccess(Void result) {
+								cellTable.redraw();
+							}
+							
+							@Override
+							public void onFailure(Throwable caught) {
+								Logger.getLogger(getClass()).info("UerService.updateRole().Exception :: " + caught.getMessage());
+							}
+	  					});
+		  			}	
+		  		}
+	    	}
 	    });
+	    
 	    return roleUpdateColumn;
 	}
 
@@ -231,7 +246,7 @@ public class RoleEditorNew extends Composite {
 			protected void onRangeChanged(HasData<LightUserInfo> display) {
 				
 				final int start = display.getVisibleRange().getStart();
-				int length = display.getVisibleRange().getLength();
+				final int length = display.getVisibleRange().getLength();
 				
 //				Logger.getLogger(getClass()).info("start :: " + start);
 //				Logger.getLogger(getClass()).info("length :: " + length);
@@ -239,6 +254,7 @@ public class RoleEditorNew extends Composite {
 //				Logger.getLogger(getClass()).info("sortColumn :: " + sortColumn);
 				
 				callback = new AsyncCallback<List<LightUserInfo>>() {
+					
 					@Override
 					public void onFailure(Throwable caught) {
 						Logger.getLogger(getClass()).info("UserService.getAllUsers().Exception :: " + caught.getMessage());
@@ -247,8 +263,10 @@ public class RoleEditorNew extends Composite {
 					@Override
 					public void onSuccess(List<LightUserInfo> result) {
 						updateRowData(start, result);
+						muteAdminRole();
 //						Logger.getLogger(getClass()).info("CellTable updated!");
 					}
+
 				};
 				service.getAllUsers(start, length, sortColumn, sortAscending, callback);
 			}
@@ -357,4 +375,17 @@ public class RoleEditorNew extends Composite {
 		dialogBox.show();
 	}
 
+	private void muteAdminRole() {
+		for (int i = 0; i < cellTable.getRowCount(); i++) {
+			TableRowElement rowElement = cellTable.getRowElement(i);
+			for (int j = 0; j < rowElement.getCells().getLength(); j++) {
+				if(rowElement.getCells().getItem(j).getInnerText().equals("admin")) {
+					Node select = rowElement.getCells().getItem(2).getFirstChild().getFirstChild();
+					if(select.getNodeType() == Node.ELEMENT_NODE)
+						((Element)select).setAttribute("disabled", "disabled");
+				}
+			}
+		}
+	}
+	
 }
