@@ -119,4 +119,14 @@ public class MaalrUserInfo extends BasicDBObject {
 	public String getProviderId() {
 		return super.getString(Constants.Users.PROVIDER_ID);
 	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return super.equals(o);
+	}
 }

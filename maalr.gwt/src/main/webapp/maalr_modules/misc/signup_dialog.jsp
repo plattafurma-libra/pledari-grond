@@ -44,7 +44,7 @@
 		}
 		$.ajax({
 		  type: "POST",
-		  url: "/sutsilvan/signup",
+		  url: "/rumantschgrischun/signup",
 		  contentType: "application/json; charset=utf-8",
 		  data: JSON.stringify(data),
 		  success: function(response) {

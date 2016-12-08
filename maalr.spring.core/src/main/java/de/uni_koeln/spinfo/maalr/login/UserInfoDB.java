@@ -182,8 +182,6 @@ public class UserInfoDB {
 		while(cursor.hasNext()) {
 			DBObject o = cursor.next();
 			MaalrUserInfo user = new MaalrUserInfo(o);
-			// Used to avoid duplicates
-			user.setID();
 			if(!all.contains(user)) 
 				all.add(user);
 		}
