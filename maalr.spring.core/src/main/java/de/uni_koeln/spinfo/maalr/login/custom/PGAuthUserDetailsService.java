@@ -3,6 +3,8 @@ package de.uni_koeln.spinfo.maalr.login.custom;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +22,8 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
  */
 public class PGAuthUserDetailsService implements UserDetailsService {
 	
+	Logger logger  = LoggerFactory.getLogger(getClass());
+	
 	
 	@Autowired private UserInfoBackend backend;
 
@@ -29,19 +33,18 @@ public class PGAuthUserDetailsService implements UserDetailsService {
 		MaalrUserInfo user = backend.getByLogin(username);
 
 		if (null == user) {
-			throw new UsernameNotFoundException("User " + username + " not found.");
+			throw new UsernameNotFoundException(String.format("User %s not found.", username));
 		}
 
 		return getUserDetails(user);
 	}
 	
 	private UserDetails getUserDetails(MaalrUserInfo user) {
-		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		Role role = user.getRole();
 		GrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleId());
+		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		authorities.add(authority);
-		User details = new User(user.getLogin(), user.getPassword(), authorities);
-		return details;
+		return new User(user.getLogin(), user.getPassword(), authorities);
 	}
 
 }

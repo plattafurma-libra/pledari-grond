@@ -25,7 +25,6 @@
 		<security:intercept-url pattern="/translate.html*" />
 		<security:intercept-url pattern="/de.uni_koeln.spinfo.maalr.user/**" />
 		
-		
 		<!-- Only admins get access to the backend -->
 		<!-- Unauthorized users will get redirected to the login page -->
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
@@ -35,7 +34,6 @@
 		<!-- After login, the postLoginHandler will increase the session timeout -->
 		<!-- and insert new user infos into the user database -->
 		<security:form-login login-page='/login.html' authentication-success-handler-ref="postLoginHandler" authentication-failure-url = "/login.html?login_error=1" />
-		
 	</security:http>
 
 	<security:authentication-manager>

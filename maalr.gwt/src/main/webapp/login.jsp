@@ -54,14 +54,14 @@
 					</div>
 				</form>
 				 
-				<%-- OPEN-ID SIGN IN --%>
+				<%-- Registration Dialog --%>
 				<div id="openid_login">
-
 					<div class="input_wrapper">
 						<a id="signUp" href="#signupDialog" id="signUp" data-toggle="modal"><fmt:message key="maalr.signup"/></a>
 					</div>
 				</div>
-				<%-- login info text  --%>
+				
+				<%-- Login info text  --%>
 				<div id="maalr_login_info">
 					<span class="glyphicon icon-info-sign"></span>
 					<p><fmt:message key="maalr.login.welcome" /></p>
@@ -71,5 +71,6 @@
 		</div>
 		
 		<jsp:include page="/analytics.jsp" />
+		
 	</body>
 </html>

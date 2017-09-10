@@ -160,12 +160,6 @@ public class UserInfoDB {
 		// The value for the variable 'text' is set in 'maalr.gwt > ListFilter.java'
 		if(text != null && text.trim().length() > 0) {
 			BasicDBList attributes = new BasicDBList();
-//			DBObject firstName = new BasicDBObject();
-//			firstName.put(Constants.Users.FIRSTNAME, pattern); 
-//			attributes.add(firstName);
-//			DBObject lastName = new BasicDBObject();
-//			lastName.put(Constants.Users.LASTNAME, pattern);
-//			attributes.add(lastName);
 			DBObject login = new BasicDBObject();
 			login.put(Constants.Users.LOGIN, pattern);
 			attributes.add(login);
@@ -199,15 +193,5 @@ public class UserInfoDB {
 		userCollection.remove(obj);
 		return true;
 	}
-
-//	public SocialUserDetails loadUserByUserId(String userId) {
-//		BasicDBObject obj = new BasicDBObject();
-//		obj.put(Constants.ID, userId);
-//		DBCursor cursor = userCollection.find(obj);
-//		if(!cursor.hasNext()) return null;
-//		MaalrUserInfo toReturn = new MaalrUserInfo(cursor.next());
-//		cursor.close();
-//		return toReturn;
-//	}
 
 }

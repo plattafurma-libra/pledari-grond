@@ -29,60 +29,53 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 	private static final String USER_EXISTS = "maalr.signup.error.user.already.exists";
 	private static final String PW_OR_EMAIL_EMPTY = "maalr.signup.error.password.or.email.empty";
 	private static final String PW_TOO_SHORT = "maalr.signup.error.password.to.short";
+	private static final String PW_CONFIRM_NOT_SAME = "maalr.signup.error.password.confirm.not.same";
 	private static final String EMAIL_NOT_VALID = "maalr.signup.error.email.not.valid";
 
-	public @ResponseBody UserFormValidationResponse createAccount(UserForm userForm, String locale) {
+	public @ResponseBody UserFormValidationResponse createAccount(UserForm userForm, final String locale) {
 
-		UserFormValidationResponse response = new UserFormValidationResponse();
-		boolean valid = true;
-		String errorMessage;
 
+		if (userForm.getPassword().isEmpty() || userForm.getPassword() == null 
+				|| userForm.getEmail().isEmpty() || userForm.getEmail() == null) {
+			return error(PW_OR_EMAIL_EMPTY, locale);
+		}
+
+		if (userForm.getPassword().length() < 4) {
+			return error(PW_TOO_SHORT, locale);
+		}
+		
+		if (!userForm.getPassword().equals(userForm.getConfirm())) {
+			return error(PW_CONFIRM_NOT_SAME, locale);
+		}
+		
 		try {
 			InternetAddress email = new InternetAddress(userForm.getEmail());
 			email.validate();
 		} catch (AddressException ex) {
-			valid = false;
-		}
-
-		if (userForm.getPassword().isEmpty() || userForm.getPassword() == null
-				|| userForm.getEmail().isEmpty() || userForm.getEmail() == null) {
-			response.setStatus("ERROR");
-			errorMessage = ResourceBundle.getBundle(BASE_MESSAGES,
-					new Locale(locale)).getString(PW_OR_EMAIL_EMPTY);
-			response.setErrorMessage(errorMessage);
-			return response;
-		}
-
-		if (userForm.getPassword().length() < 4) {
-			response.setStatus("ERROR");
-			errorMessage = ResourceBundle.getBundle(BASE_MESSAGES,
-					new Locale(locale)).getString(PW_TOO_SHORT);
-			response.setErrorMessage(errorMessage);
+			System.out.println(ex);
+			return error(EMAIL_NOT_VALID, locale);
 		}
 		
-		if (valid) {
-			MaalrUserInfo user = new MaalrUserInfo(userForm.getEmail(),
-					userForm.getPassword(), Role.TRUSTED_EX_3);
-			try {
-				usersRepository.insert(user);
-			} catch (InvalidUserException e) {
-				e.printStackTrace();
-				response.setStatus("ERROR");
-				errorMessage = ResourceBundle.getBundle(BASE_MESSAGES,
-						new Locale(locale)).getString(USER_EXISTS);
-				response.setErrorMessage(errorMessage);
-				return response;
-			}
-			response.setStatus("SUCCESS");
-			response.setRedirect("login");
-			return response;
-		} else {
-			response.setStatus("ERROR");
-			errorMessage = ResourceBundle.getBundle(BASE_MESSAGES,
-					new Locale(locale)).getString(EMAIL_NOT_VALID);
-			response.setErrorMessage(errorMessage);
-			return response;
+		MaalrUserInfo user = new MaalrUserInfo(userForm.getEmail(), userForm.getPassword(), Role.TRUSTED_EX_3);
+		try {
+			MaalrUserInfo insert = usersRepository.insert(user);
+		} catch (InvalidUserException e) {
+			return error(USER_EXISTS, locale);
 		}
+		
+		UserFormValidationResponse response = new UserFormValidationResponse();
+		
+		response.setStatus("SUCCESS");
+		response.setRedirect("login");
+		
+		return response;
+	}
+
+	private UserFormValidationResponse error(final String errorCode, final String locale) {
+		UserFormValidationResponse response = new UserFormValidationResponse();
+		response.setStatus("ERROR");
+		response.setErrorMessage(ResourceBundle.getBundle(BASE_MESSAGES, new Locale(locale)).getString(errorCode));
+		return response;
 	}
 
 }

@@ -59,9 +59,14 @@ import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 
-@Controller public class WebMVCController {
+@Controller 
+public class WebMVCController {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static final String I18N_TEXT = "de.uni_koeln.spinfo.maalr.webapp.i18n.text";
+	private static final String RM = "rm";
+	private static final String LOCALE = "locale";
+
+	private final Logger logger = LoggerFactory.getLogger(WebMVCController.class);
 
 	@Autowired private Index index;
 	@Autowired private UserInfoBackend users;
@@ -71,12 +76,12 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	private Configuration configuration = Configuration.getInstance();
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
-		String locale = (String) request.getParameter("locale");
+		String locale = (String) request.getParameter(LOCALE);
 		if (locale == null) {
-			locale = (String) session.getAttribute("locale");
+			locale = (String) session.getAttribute(LOCALE);
 			if (locale == null) {
-				session.setAttribute("locale", "rm");
-				locale = "rm";
+				session.setAttribute(LOCALE, RM);
+				locale = RM;
 			}
 			return locale;
 		} else {
@@ -87,9 +92,9 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	private String getLocalizedString(String key, HttpSession session, HttpServletRequest request) {
 		String locale = getLocale(session, request);
 		if(locale == null) {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text").getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT).getString(key);
 		} else {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text", new Locale(locale)).getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT, new Locale(locale)).getString(key);
 		}
 	}
 
@@ -113,18 +118,10 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 
 	@RequestMapping("/")
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
+		logger.info("Request: {}", request.getContextPath());
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
-		return mv;
-	}
-	
-	@RequestMapping(value = "/dictionaries/{featured}")
-	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("featured");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-		mv.addObject("dictContext", configuration.getDictContext());
-		mv.addObject("featured", featured);
 		return mv;
 	}
 
@@ -137,7 +134,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	private MaalrUserInfo currentUser(final HttpServletRequest request, Principal principal) {
 		if (principal != null) {
 			final String userName = principal.getName();
-//			logger.info("CURRENT USER : " + principal);
 			if (authProvider.loggedIn())
 				if (userName != null) {
 					MaalrUserInfo user = (MaalrUserInfo) request.getSession().getAttribute("user");
@@ -164,9 +160,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 		mv.addObject("search", query);
 		
 		try {
-			// if (query.getSearchPhrase() != null && query.getSearchPhrase().trim().length() > 0) {
-			// 		setPageTitle(mv, "Translations of " + query.getSearchPhrase());
-			// }
 			QueryResult result = index.query(query, true);
 			mv.addObject("result", result);
 			return mv;

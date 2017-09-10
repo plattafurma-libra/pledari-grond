@@ -15,12 +15,12 @@
 	
 		<div>
 			<div class="well" id="info-box">
-			<%--
+				<%--
 				<h5>
 					<fmt:message key="info.header.${featured}" />
 				</h5>
 				<hr>
-			 --%>
+				 --%>
 				<p>
 					<fmt:message key="info.for.${featured}" />
 				</p>
@@ -44,22 +44,22 @@
 		
 			<script type="text/javascript">
 
-	$(document).ready(function(){
-    if("${featured}" == "puter") {
-        document.getElementById("rm_brand_title").className = 'dict_navi_item';
-        document.getElementById("pt_brand_title").className = 'dict_navi_item selected';
-    }
-    if("${featured}" == "vallader") {
-        document.getElementById("rm_brand_title").className = 'dict_navi_item';
-        document.getElementById("vl_brand_title").className = 'dict_navi_item selected';
-    }
-    if("${featured}" == "sursilvan") {
-        document.getElementById("rm_brand_title").className = 'dict_navi_item';
-        document.getElementById("sr_brand_title").className = 'dict_navi_item selected';
-    }
-});
-
-</script>
+				$(document).ready(function(){
+				    if("${featured}" == "puter") {
+				        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+				        document.getElementById("pt_brand_title").className = 'dict_navi_item selected';
+				    }
+				    if("${featured}" == "vallader") {
+				        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+				        document.getElementById("vl_brand_title").className = 'dict_navi_item selected';
+				    }
+				    if("${featured}" == "sursilvan") {
+				        document.getElementById("rm_brand_title").className = 'dict_navi_item';
+				        document.getElementById("sr_brand_title").className = 'dict_navi_item selected';
+				    }
+				});
+			
+			</script>
 		
 	</body>
 </html>

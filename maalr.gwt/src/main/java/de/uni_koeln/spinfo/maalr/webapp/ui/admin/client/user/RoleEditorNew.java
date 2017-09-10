@@ -166,6 +166,7 @@ public class RoleEditorNew extends Composite {
 							@Override
 							public void onSuccess(Void result) {
 								cellTable.redraw();
+								muteAdminRole();
 							}
 							
 							@Override

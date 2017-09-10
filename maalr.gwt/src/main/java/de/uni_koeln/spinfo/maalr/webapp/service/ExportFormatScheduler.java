@@ -10,13 +10,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -31,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -40,20 +41,19 @@ import com.mongodb.DBObject;
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
+import de.uni_koeln.spinfo.maalr.common.shared.LightLemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.mongo.core.MD5OutputStream;
 
+@Service
 public class ExportFormatScheduler {
-
-
-	private static ExportFormatScheduler instance;
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	private ScheduledExecutorService scheduledExecutorService;
+	private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
 	
 	private static final String PATH_XML = "formats/xml/";
 	private static final String PATH_JSON = "formats/json/";
@@ -65,73 +65,58 @@ public class ExportFormatScheduler {
 	private static final String UTF_8 = "UTF-8";
 	private static final String NEW_LINE_SEPARATOR = "\n";
 	
-	private ExportFormatScheduler() {
-		// Singleton
-	}
-
-	public void run() throws InterruptedException, ExecutionException {
-
-		if (scheduledExecutorService != null) {
-			return;
-		}
-
-		logger.info("Scheduled format export started!");
-		scheduledExecutorService = Executors.newScheduledThreadPool(2);
-
-		ScheduledFuture<?> scheduledFuture = scheduledExecutorService
+	public void schedule() throws InterruptedException, ExecutionException {
+		
+		scheduledExecutorService
 				.scheduleAtFixedRate(new Runnable() {
 
 					@Override
 					public void run() {
-						logger.info("Running the export format task... periodically (every day)");
+						
 						try {
-							logger.info("Creating open data (.csv) export...");
+							
+							Thread.sleep(6000);
+							
 							exportCSV(Database.getInstance().getAll());
-							logger.info("Creating open data (.xml) export...");
 							exportXML(Database.getInstance().getAll());
-							logger.info("Creating open data (.json) export...");
 							exportJSON(Database.getInstance().getAll());
+							
 						} catch (NoDatabaseAvailableException
-								| NoSuchAlgorithmException | IOException e) {
-							e.printStackTrace();
+								| NoSuchAlgorithmException | IOException | InterruptedException e) {
+							logger.error("Error occured: {}", e);
 						}
 					}
 				}, 0, 1, TimeUnit.DAYS);
 	}
-
-	public static synchronized ExportFormatScheduler getInstance() {
-		if (instance == null) {
-			instance = new ExportFormatScheduler();
-		}
-		return instance;
-	}
 	
 	private void exportCSV(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("cursor csv export " + cursor.count());
+		logger.info("START CSV EXPORT");
 		File dir = createDirs(PATH_CSV);
 		String fileName = createFileName(CSV_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataCSV(fos, fileName, cursor);
+		logger.info("END CSV EXPORT");
 	}
 	
-	public void exportXML(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("cursor xml export " + cursor.count());
+	private void exportXML(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+		logger.info("START XML EXPORT");
 		File dir = createDirs(PATH_XML);
 		String fileName = createFileName(XML_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataXml(fos, fileName, cursor);
+		logger.info("END XML EXPORT");
 	}
 	
-	public void exportJSON(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("cursor json export " + cursor.count());
+	private void exportJSON(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+		logger.info("START JSON EXPORT");
 		File dir = createDirs(PATH_JSON);
 		String fileName = createFileName(JSON_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
-		logger.info("exportJSON(DBCursor cursor) fileName=" + file.getName());
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataJson(fos, fileName, cursor);
+		logger.info("END JSON EXPORT");
 	}
 
 	private File createDirs(String dirPath) {
@@ -150,14 +135,13 @@ public class ExportFormatScheduler {
 		BufferedReader bufferedReader = null;
 		ZipOutputStream zipOutputStream = null;
 		CSVPrinter csvFilePrinter = null;
-		
+
 		try {
 			BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
-			zipOutputStream = new ZipOutputStream(bufferedOutputStream);
+			zipOutputStream = new ZipOutputStream(bufferedOutputStream, Charset.forName(UTF_8));
 			ZipEntry zipEntry = new ZipEntry(fileName + ".csv");
 			zipOutputStream.putNextEntry(zipEntry);
 
-			logger.info("csv export...");
 			List<String> header = new ArrayList<>();
 			header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, true));
 			header.addAll(Configuration.getInstance().getLemmaDescription().getFields(UseCase.FIELDS_FOR_ADVANCED_EDITOR, false));
@@ -166,7 +150,6 @@ public class ExportFormatScheduler {
 			tmp = new File(fileName + ".csv");
 			csvFilePrinter = new CSVPrinter(new FileWriter(tmp), csvFileFormat);
 			
-			logger.info("printing csv entries...");
 			while (cursor.hasNext()) {
 				DBObject object = cursor.next();
 				LexEntry entry = Converter.convertToLexEntry(object);
@@ -179,7 +162,6 @@ public class ExportFormatScheduler {
 					csvFilePrinter.printRecord(dataRecord);
 				}
 			}
-			logger.info("writing csv zip...");
 			bufferedReader = new BufferedReader (new FileReader(tmp));
 			int len;
 			while((len = bufferedReader.read()) != -1) {
@@ -194,7 +176,6 @@ public class ExportFormatScheduler {
 			zipOutputStream.close();
 			
 		}
-		logger.info("csv export finished!");
 	}
 	
 	private void exportDataJson(OutputStream outputStream, String fileName, DBCursor cursor) throws JsonGenerationException,
@@ -205,22 +186,17 @@ public class ExportFormatScheduler {
 		ZipEntry zipEntry = new ZipEntry(fileName + ".json");
 		zipOutputStream.putNextEntry(zipEntry);
 		
-		logger.info("creating json objects...");
-		
 		JSONArray entries = new JSONArray();
 		while (cursor.hasNext()) {
 			DBObject object = cursor.next();
 			LexEntry entry = Converter.convertToLexEntry(object);
-			LemmaVersion lemmaVersion = entry.getCurrent();
-			if (lemmaVersion != null) {
-				JSONObject version = new JSONObject();
-				version.put("timeStamp", lemmaVersion.getTimestamp());
-				version.put("values", lemmaVersion.getEntryValues());
-				entries.put(version);
+			LemmaVersion copy = entry.getCurrent();
+			if (copy != null) {
+				//JSONObject version = new JSONObject();
+				LightLemmaVersion lemmaVersion = new LightLemmaVersion(copy);
+				entries.put(lemmaVersion.getEntryValues());
 			}
 		}
-		
-		logger.info("writing josn zip...");
 		
 		String jsonData = entries.toString(1);
 		byte[] bytes = jsonData.getBytes();
@@ -228,12 +204,9 @@ public class ExportFormatScheduler {
 			zipOutputStream.write(b);
 		}
 		
-		logger.info("closing josn zip...");
-		
 		zipOutputStream.closeEntry();
 		zipOutputStream.close();
 		
-		logger.info("json export finished!");
 	}
 	
 	private void exportDataXml(OutputStream os, String fileName, DBCursor cursor) throws IOException,NoSuchAlgorithmException {
@@ -249,7 +222,7 @@ public class ExportFormatScheduler {
 		JAXBContext context;
 		Marshaller marshaller;
 		try {
-			context = JAXBContext.newInstance(LemmaVersion.class);
+			context = JAXBContext.newInstance(LightLemmaVersion.class);
 			marshaller = context.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_ENCODING, UTF_8);
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -258,9 +231,9 @@ public class ExportFormatScheduler {
 			while (cursor.hasNext()) {
 				DBObject object = cursor.next();
 				LexEntry entry = Converter.convertToLexEntry(object);
-				LemmaVersion version = entry.getCurrent();
-				if (version != null) {
-					marshaller.marshal(version, out);
+				LemmaVersion copy = entry.getCurrent();
+				if (copy != null) {
+					marshaller.marshal(new LightLemmaVersion(copy), out);
 				}
 			}
 		} catch (JAXBException e) {

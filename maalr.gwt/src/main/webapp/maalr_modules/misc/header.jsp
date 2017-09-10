@@ -25,9 +25,9 @@
 	
 	<%-- LANGUAGE SELECTION --%>
 	<div id="languages-widget">
-		<a href="?locale=rm" class='<%=(session.getAttribute("locale").equals("rm"))?"lang_selected":"navi_a_common"%>'>R</a>
+		<a id="rmLocale" href="?locale=rm" class='<%=(session.getAttribute("locale").equals("rm"))?"lang_selected":"navi_a_common"%>'>R</a>
 		<span class="navi_a_common"> | </span>
-		<a href="?locale=de" class='<%=(session.getAttribute("locale").equals("de"))?"lang_selected":"navi_a_common"%>'>D</a>
+		<a id="deLocale" href="?locale=de" class='<%=(session.getAttribute("locale").equals("de"))?"lang_selected":"navi_a_common"%>'>D</a>
 	</div>
 	
 	<%-- BRAND --%>
