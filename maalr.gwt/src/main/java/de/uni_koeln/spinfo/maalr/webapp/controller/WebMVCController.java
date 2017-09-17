@@ -120,15 +120,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 		session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
 		return mv;
 	}
-
-	@RequestMapping(value = "/dictionaries/{featured}")
-	public ModelAndView getFeaturedDictionary(@PathVariable("featured") String featured, HttpSession session, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("featured");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-		mv.addObject("dictContext", configuration.getDictContext());
-		mv.addObject("featured", featured);
-		return mv;
-	}
 	
 	@ModelAttribute("pageTitle")
 	private String getHtmlPageTitle() {

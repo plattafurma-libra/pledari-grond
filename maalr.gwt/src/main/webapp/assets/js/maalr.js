@@ -19,16 +19,6 @@ $(document).ready(function() {
 
 	});
 
-	// $('input, textarea').focus(function(event) {
-	// 	$(this).css('background-image', 'none');
-	// });
-
-	// $('input, textarea').blur(function(event) {
-	// 	if ($(this).val() == '') {
-	// 		$(this).css('background-image', '');
-	// 	}
-	// });
-
 	$(window).resize(function() {
 		checkMobile();
 	});
