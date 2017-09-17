@@ -20,11 +20,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.security.Principal;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,30 +31,16 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
-import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueFormat;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
@@ -70,7 +53,6 @@ import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 @Controller
 public class WebMVCController {
@@ -172,9 +154,6 @@ public class WebMVCController {
 		mv.addObject("search", query);
 		
 		try {
-			// if (query.getSearchPhrase() != null && query.getSearchPhrase().trim().length() > 0) {
-			// 		setPageTitle(mv, "Translations of " + query.getSearchPhrase());
-			// }
 			QueryResult result = index.query(query, true);
 			mv.addObject("result", result);
 			return mv;
@@ -207,14 +186,6 @@ public class WebMVCController {
 	 */
 	@RequestMapping("/dictionary/{values[language]}/{values[searchPhrase]}")
 	public ModelAndView search(@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpServletResponse response, HttpSession session, HttpServletRequest request) {
-		// FIXME:  java.lang.NumberFormatException: Invalid shift value in prefixCoded bytes (is encoded value really an INT?)
-		/* A snippet of the exception thrown
-		 * ....
-		 * at de.uni_koeln.spinfo.maalr.lucene.core.Dictionary.queryExact(Dictionary.java:254) ~[lucene-0.0.1-SNAPSHOT.jar:na]
-		 * at de.uni_koeln.spinfo.maalr.lucene.Index.queryExact(Index.java:69) ~[spring.core-0.0.1-SNAPSHOT.jar:na]
-	     * at de.uni_koeln.spinfo.maalr.webapp.controller.WebMVCController.search(WebMVCController.java:208) ~[classes/:na]
-	     * ...
-		 */
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
@@ -224,7 +195,6 @@ public class WebMVCController {
 			boolean isFirst = firstLanguage.equals(language);
 			QueryResult result = index.queryExact(query.getValue("searchPhrase"), isFirst, true);
 			mv.addObject("result", result);
-			// mv.addObject("query", query);
 			String key = null;
 			if(language.equals(configuration.getLemmaDescription().getLanguageName(true))) {
 				key = "dict.title_lang1";
@@ -234,9 +204,6 @@ public class WebMVCController {
 			String title = Localizer.getTranslation(getLocale(session, request), key);
 			title = title.replaceAll("\\{0\\}", query.getValue("searchPhrase"));
 			setPageTitle(mv, title);
-			// TODO: Required to display umlauts etc in XML output.
-			// However, this is done automatically in JSON & HTML...
-			// should be configured somewhere else?
 			response.setCharacterEncoding("UTF-8");
 			return mv;
 		} catch (Exception e) {
@@ -298,12 +265,6 @@ public class WebMVCController {
 		}
 	}
 
-	//	@Secured({Constants.Roles.ADMIN_5})
-	//	@RequestMapping(value = "/admin/importDB", method = { RequestMethod.POST })
-	//	public void importDB(HttpServletRequest request, HttpServletResponse response) throws InvalidEntryException, NoDatabaseAvailableException, IOException, JAXBException, XMLStreamException  {
-	//		adminController.importDatabase(request);
-	//	}
-	
 	@RequestMapping("/browse/{language}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
 			@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpSession session, HttpServletRequest request)
@@ -340,7 +301,6 @@ public class WebMVCController {
 			String template = getLocalizedString("maalr.dict_title", session, request);
 			String title = template.replaceAll("\\{0\\}", Localizer.getTranslation(getLocale(session, request), (first ? "dict.lang1_lang2" : "dict.lang2_lang1")));
 			setPageTitle(mv, title);
-			//setPageTitle(mv, language + " dictionary index");
 		} else {
 			LemmaDescription desc = configuration.getLemmaDescription();
 			ValueFormat format = desc.getResultList(first).get(0);
@@ -355,100 +315,4 @@ public class WebMVCController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/persona/signedin",  method = RequestMethod.GET)
-	@ResponseBody
-	public String isSignedIn(HttpServletRequest request, Model model) throws IOException {
-		if (loginManager.getCurrentUser() != null) {
-			if (loginManager.getCurrentUser().getRole().equals(Role.PERSONA))
-				return loginManager.getCurrentUser().getEmail();
-		}
-		return null;
-	}
-	
-	@RequestMapping(value = "/persona/logout",  method = RequestMethod.POST)
-	@ResponseBody
-	public String logoutPersona(HttpServletRequest request, Model model) throws IOException {
-		loginManager.logout();
-		logger.info("Persona logout!");
-		return configuration.getDictContext();
-	}
-	
-	@RequestMapping(value = "/persona/login",  method = RequestMethod.POST)
-	@ResponseBody
-	public String authenticateWithPersona(@RequestParam String assertion, HttpServletRequest request, Model model) throws IOException {
-		// Already signed in ???
-		if (SecurityContextHolder.getContext().getAuthentication() != null) {
-			if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
-				Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-				for (GrantedAuthority grantedAuthority : authorities) {
-					logger.info("GrantedAuthority: " + grantedAuthority.getAuthority());
-					if (grantedAuthority.getAuthority().equals("ROLE_ADMIN"))
-						return configuration.getDictContext() + "/admin/admin";
-					if (grantedAuthority.getAuthority().equals("ROLE_TRUSTED_IN"))
-						return configuration.getDictContext() + "/editor/editor";
-					return configuration.getDictContext();
-				}
-			}
-		}
-	    
-	    MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	    params.add("assertion", assertion);
-	    params.add("audience", request.getScheme() + "://" + request.getServerName() + ":" + (request.getServerPort() == 80 ? "" : request.getServerPort()));
-	    
-	    // Initialize RestTamplate
-	    RestTemplate restTemplate = new RestTemplate();
-	    restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-	    restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-	    
-	    PersonaVerificationResponse response = restTemplate.postForObject("https://verifier.login.persona.org/verify", params, PersonaVerificationResponse.class);
-	   
-	    logger.info("PersonaVerificationResponse: " + response.toString());
-	    
-		if (response.getStatus().equals("okay")) {
-			// Set session timeout to 30 minutes
-			request.getSession().setMaxInactiveInterval(30 * 60);
-			MaalrUserInfo user = users.getByEmail(response.getEmail());
-			logger.info("FOUND BY EMAIL: " + user);
-			if (user == null) {
-				user = register(response);
-			} 
-			authUser(user);
-			return configuration.getDictContext();
-		} else {
-			logger.warn("Persona authentication failed due to reason: " + response.getReason());
-			throw new IllegalStateException("Authentication failed");
-		}
-	}
-
-	private MaalrUserInfo register(PersonaVerificationResponse response) {
-		MaalrUserInfo user = new MaalrUserInfo();
-		user.setEmail(response.getEmail());
-		user.setLogin(response.getEmail().split("@")[0]);
-		user.setProviderId("Persona");
-		user.setFirstname(response.getEmail().split("@")[0]);
-		user.setLastname("unknown");
-		user.setRole(Role.PERSONA);
-		user.setProviderUserId("unknown");
-		return store(user);
-	}
-	
-	
-	private MaalrUserInfo store(MaalrUserInfo user) {
-		try {
-			return users.insert(user);
-		} catch (InvalidUserException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private void authUser(MaalrUserInfo user) {
-		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-		GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleId());
-		authorities.add(authority);
-		UserDetails details = new User(user.getLogin(), "ignored", authorities);
-		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
-				details, details.getPassword(), details.getAuthorities()));
-	}
-
 }
