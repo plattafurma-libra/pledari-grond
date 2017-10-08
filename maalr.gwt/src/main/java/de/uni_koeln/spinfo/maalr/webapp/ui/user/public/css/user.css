@@ -1898,6 +1898,11 @@ a.simpleLink:hover {
 	border-radius: 11px;
 }
 
+
+#signupDialog { height: 342px !important; top: 33% !important; } 
+.sign-up-input { width:80%; } 
+#registerSubmit { width: 10%; background: rgb(0, 200, 255) !important; color: white; }
+
 /* MOBILE */
 @media all and (max-width: 767px) {
 	#dict_descript {
@@ -1936,86 +1941,12 @@ a.simpleLink:hover {
 		text-align: center;
 	}
 
-	/* 	#login-widget, #languages-widget { */
-	/* 		position: absolute; */
-	/* 		top: 46px; */
-	/* 		left: auto; */
-	/* 		right: auto; */
-	/* 		width: 50%; */
-	/* 		float: left; */
-	/* 	} */
 	#content .container-fluid {
 		clear: both;
 		margin-top: 0px;
 		min-height: 0px;
 	}
-
-	/* 	#languages-widget { */
-	/* 		background-color: rgb(21, 233, 177); */
-	/* 		background-image: linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
-	/* 		background-image: -o-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
-	/* 		background-image: -moz-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
-	/* 		background-image: -webkit-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
-	/* 		background-image: -ms-linear-gradient(bottom, rgb(21, 233, 177) 0%, rgb(40, 241, 188) 100%); */
-	/* 		background-image: -webkit-gradient( */
-	/* 			linear, */
-	/* 			left bottom, */
-	/* 			left top, */
-	/* 			color-stop(0, rgb(21, 233, 177)), */
-	/* 			color-stop(1, rgb(40, 241, 188)) */
-	/* 		); */
-	/* 		left: 0px; */
-	/* 	} */
-	/* 	#login-widget { */
-	/* 		background-color: rgb(183,183,183); */
-	/* 		background-image: linear-gradient(bottom, rgb(183,183,183) 0%, rgb(201,197,193) 100%); */
-	/* 		background-image: -o-linear-gradient(bottom, rgb(183,183,183) 0%, rgb(201,197,193) 100%); */
-	/* 		background-image: -moz-linear-gradient(bottom, rgb(183,183,183) 0%, rgb(201,197,193) 100%); */
-	/* 		background-image: -webkit-linear-gradient(bottom, rgb(183,183,183) 0%, rgb(201,197,193) 100%); */
-	/* 		background-image: -ms-linear-gradient(bottom, rgb(183,183,183) 0%, rgb(201,197,193) 100%); */
-	/* 		background-image: -webkit-gradient( */
-	/* 			linear, */
-	/* 			left bottom, */
-	/* 			left top, */
-	/* 			color-stop(0, rgb(183,183,183)), */
-	/* 			color-stop(1, rgb(201,197,193)) */
-	/* 		); */
-	/* 		right: 0px; */
-	/* 	} */
-	/* 	#languages-widget ul, */
-	/* 	#login-widget ul { */
-	/* 	} */
-	/* 	#languages-widget ul li, */
-	/* 	#login-widget ul li { */
-	/* 		text-align: center; */
-	/* 	} */
-	/* 	#languages-widget ul li a, */
-	/* 	#login-widget ul li a { */
-	/* 		display: none; */
-	/* 	} */
-	/* todo change to .active */
-	/* 	#languages-widget ul li a.active, */
-	/* 	#login-widget ul li:first-child a { */
-	/* 		display: block; */
-	/* 	} */
-	/* 	#languages-widget ul li a, */
-	/* 	#login-widget ul li a { */
-	/* 		color: white; */
-	/* 		text-transform: lowercase; */
-	/* 		height: 30px; */
-	/* 		line-height: 32px; */
-	/* 	} */
-	/* 	#languages-widget ul li a.active { */
-	/* 		color: white; */
-	/* 	} */
-	/* 	#languages-widget ul li a:hover, */
-	/* 	#login-widget ul li a:hover { */
-	/* 		color: white; */
-	/* 		background-color: transparent; */
-	/* 	} */
-	/* 	#languages-widget.open li a { */
-	/* 		display: block; */
-	/* 	} */
+	
 	#content.search-centered .container-fluid:last-child .span4 {
 		/* 		margin-top: -82px; */
 		/* 		top: 33%; */
@@ -2307,17 +2238,6 @@ a.simpleLink:hover {
 	#searchoptions .styledRadio,#searchoptions .styledCheckbox {
 		margin-top: 1px;
 	}
-	
-/* 	#feed_container { */
-/* 		visibility: hidden; */
-/* 		z-index: 1000; */
-/* 		width: 15%; */
-/* 		text-align: right; */
-/* 		padding-right: 50px; */
-/* 		line-height: 1.2; */
-/* 		padding-bottom: 50px; */
-/* 		position: absolute; */
-/* 	} */
 
 	#feed_container {
 	    z-index: 1000;
@@ -2330,19 +2250,6 @@ a.simpleLink:hover {
 	    top: 20px;
 	}
 	
-/* 	.feed { */
-/* 		position: absolute; */
-/* 		width: 50% !important; */
-/* 		height: auto; */
-/* 		font-family: "europa", sans-serif; */
-/* 		color: white; */
-/* 		background-color: rgb(188, 188, 188); */
-/* 		padding: 10px; */
-/* 		text-align: left; */
-/* 		font-size: 12px; */
-/* 		box-shadow: 2px 2px 5px #999; */
-/* 		margin-left: 15%; */
-/* 	} */
 	.feed {
 	    position: absolute;
 	    height: auto;
@@ -2357,9 +2264,11 @@ a.simpleLink:hover {
 	
 	.feed a.readMore:hover {
 		text-decoration: none;
-/* 		color: #999 !important; */
 	}
-
+    
+	#signupDialog { height: 450px !important; display: block !important; top: 30% !important;} 
+	.sign-up-input { width: 100%; } 
+	#registerSubmit { width: 93%; background: rgb(0, 200, 255); color: white; }
 }
 @media all and (width: 768px) {
 	#content.content .row-fluid .span4 {

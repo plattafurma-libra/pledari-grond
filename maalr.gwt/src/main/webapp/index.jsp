@@ -33,21 +33,10 @@
 			<%@ include file="/maalr_modules/misc/dict_links.jsp"%>
 			<div id="mock_middle_container"></div>
 			<div id="feed_container" style="visibility: hidden;">
-<!-- 				<div id="feed"> -->
-<!-- 					<p id="pubDate"></p> -->
-<!-- 					<p id="excerpt"></p> -->
-<!-- 					<p> -->
-<%-- 						<a id="readMore" href="/" target="_blank"><fmt:message key="maalr.feed.readmore" /></a> --%>
-<!-- 					</p> -->
-<!-- 				</div> -->
 			</div>
 		</div>
 
 	<div id="content" class="content">
-			
-<%-- 			<%@ include file="/maalr_modules/misc/dict_links.jsp" %> --%>
-<%-- 			<%@ include file="/maalr_modules/misc/language_widget.jsp" %> --%>
-<%-- 			<%@ include file="/maalr_modules/misc/login_widget.jsp" %> --%>
 			
 			<%-- SEARCH AREA --%>
 			<div class="container-fluid" id="nojs_searchcontainer">

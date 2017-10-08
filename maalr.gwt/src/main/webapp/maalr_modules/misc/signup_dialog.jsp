@@ -1,34 +1,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div id="signupDialog" class="modal hide fade vertical-center" tabindex="-1" aria-hidden="true" style="height: 242px !important; top: 43% !important;">
+<div id="signupDialog" class="modal hide fade vertical-center" tabindex="-1" aria-hidden="true">
 	<h3><fmt:message key="maalr.signup.header"/></h3>
 	<div class="modal-body">
-		<div class="row-fluid">
-			<div class="span12">
-				<p> 
-					<fmt:message key='maalr.signup.information' />
-				</p>
-			</div>
-		</div>
+		
 		<div class="row-fluid">
 			<div class="span12">
 				<form id="registrationForm" class="form-horizontal">
 					<div class="form-group">
-						<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;">Email</label>
+						<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;"><fmt:message key='maalr.login.name' /></label>
 						<div class="col-sm-9">
-							<input class="form-control" style="width:80% !important;" type="text" name="email"/>
+							<input class="form-control sign-up-input" type="text" name="email"/>
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 15px;">
-                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;">Passwort</label>
+                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;"><fmt:message key='maalr.login.pwd' /></label>
                    		<div class="col-sm-9">
-                    		<input class="form-control" style="width:80% !important;" type="password" name="password"/>
+                    		<input class="form-control sign-up-input" type="password" name="password"/>
                     	</div>
                 	</div>
                 	<div class="form-group" style="margin-top: 15px;">
-                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;">Passwort*</label>
+                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;"><fmt:message key='maalr.login.pwd' />*</label>
                    		<div class="col-sm-9">
-                    		<input class="form-control" style="width:80% !important;" type="password" name="confirm"/>
+                    		<input class="form-control sign-up-input" type="password" name="confirm"/>
                     	</div>
                 	</div>
                 	<div class="form-group" style="margin-top: 15px;">
@@ -37,6 +31,14 @@
                 	</div>
 				</form>
 				
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<span class="glyphicon icon-info-sign"></span>
+				<p style="padding-top: 5px;"> 
+					<fmt:message key='maalr.signup.information' />
+				</p>
 			</div>
 		</div>
 	</div>
