@@ -22,17 +22,21 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
  */
 public class PGAuthUserDetailsService implements UserDetailsService {
 	
-	Logger logger  = LoggerFactory.getLogger(getClass());
+	private static final Logger LOG  = LoggerFactory.getLogger(PGAuthUserDetailsService.class);
 	
-	
-	@Autowired private UserInfoBackend backend;
+	@Autowired 
+	private UserInfoBackend backend;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
+	{
+		LOG.info("load user: {}", username);
 		
 		MaalrUserInfo user = backend.getByLogin(username);
 
-		if (null == user) {
+		if (null == user) 
+		{
+			LOG.info("user not found: {}", username);
 			throw new UsernameNotFoundException(String.format("User %s not found.", username));
 		}
 

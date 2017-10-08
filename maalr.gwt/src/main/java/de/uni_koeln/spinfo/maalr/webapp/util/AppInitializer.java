@@ -57,14 +57,26 @@ public class AppInitializer {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired private Environment environment;
-	@Autowired private BackendService adminController;
-	@Autowired private PGAutenticationProvider authProvider;
-	@Autowired private UserInfoBackend userBackend;
-	@Autowired private Index index;
+	@Autowired 
+	private Environment environment;
 	
-	@Autowired private BackUpHelper backUpHelper;
-	@Autowired private ExportFormatScheduler exportFormatScheduler;
+	@Autowired 
+	private BackendService adminController;
+	
+	@Autowired 
+	private PGAutenticationProvider authProvider;
+	
+	@Autowired 
+	private UserInfoBackend userBackend;
+	
+	@Autowired 
+	private Index index;
+	
+	@Autowired 
+	private BackUpHelper backUpHelper;
+	
+	@Autowired 
+	private ExportFormatScheduler exportFormatScheduler;
 
 	@PostConstruct
 	public void postConstruct() throws Exception  {

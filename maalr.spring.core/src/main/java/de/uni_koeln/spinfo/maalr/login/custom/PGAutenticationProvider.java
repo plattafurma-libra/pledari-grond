@@ -1,5 +1,7 @@
 package de.uni_koeln.spinfo.maalr.login.custom;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,14 +20,16 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
  */
 public class PGAutenticationProvider implements AuthenticationProvider {
 
-	@Autowired private UserInfoBackend backend;
+	private static final Logger LOG = LoggerFactory.getLogger(PGAutenticationProvider.class);
+	
+	@Autowired 
+	private UserInfoBackend backend;
 	
 	private UserDetailsService userDetailsService;
 	
-	
 	@Override
-	public Authentication authenticate(Authentication authentication) {
-		
+	public Authentication authenticate(Authentication authentication) 
+	{
 		logout();
 		
 		String username = authentication.getName();
@@ -33,14 +37,20 @@ public class PGAutenticationProvider implements AuthenticationProvider {
         
         UserDetails principal = userDetailsService.loadUserByUsername(username);
         
-        if(principal != null) {
-        	
-        	if (BCrypt.checkpw(password, principal.getPassword())) {
-        		
-        		Authentication authenticate = new UsernamePasswordAuthenticationToken(principal, "ignored", principal.getAuthorities());
-        		SecurityContextHolder.getContext().setAuthentication(authenticate);
-        		return authenticate;
-        	} 
+        if(principal != null) 
+        {
+        	try {
+				if (BCrypt.checkpw(password, principal.getPassword())) 
+				{
+					Authentication authenticate = new UsernamePasswordAuthenticationToken(principal, 
+							"ignored", principal.getAuthorities());
+					SecurityContextHolder.getContext().setAuthentication(authenticate);
+					return authenticate;
+				}
+			} catch (Exception e) 
+			{
+				LOG.warn("Error occured {}", e);
+			} 
         }
         return null;
 	}
