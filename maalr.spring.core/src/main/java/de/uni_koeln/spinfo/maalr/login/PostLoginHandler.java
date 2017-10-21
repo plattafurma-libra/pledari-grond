@@ -57,7 +57,7 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 					return;
 				}
 			}
-			response.sendRedirect(dictContext + "/index.html");
+			response.sendRedirect(dictContext + "/");
 		}
 
 	}

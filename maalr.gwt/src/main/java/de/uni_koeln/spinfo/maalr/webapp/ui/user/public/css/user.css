@@ -970,7 +970,7 @@ px
 	font-size: 13px;
 	line-height: 13px;
 	margin-top: 12px;
-	margin-left: 352px;
+	margin-left: 356px;
 }
 
 #login_container #login_input .input_wrapper {
@@ -1042,9 +1042,20 @@ px
 }
 
 #login_container button#google_signin:hover,#login_container button#yahoo_signin:hover,#login_container button#facebook_signin:hover,#login_container button#twitter_signin:hover,#login_container button#persona_signin:hover
-	{
+{
 	color: rgb(0, 200, 255);
 }
+
+a#signUp::before {
+    content: "→";
+    left: 0px;
+    top: 0px;
+    padding-right: 2px;
+}
+#login_container a#signUp:hover{
+	color: rgb(0, 200, 255);
+	text-decoration: none;
+} 
 
 #login_container p#error_font {
 	color: red;
@@ -1898,10 +1909,18 @@ a.simpleLink:hover {
 	border-radius: 11px;
 }
 
-
-#signupDialog { height: 342px !important; top: 33% !important; } 
-.sign-up-input { width:80%; } 
-#registerSubmit { width: 10%; background: rgb(0, 200, 255) !important; color: white; }
+#signupDialog { 
+	height: 400px !important; 
+	top: 33% !important; 
+} 
+.sign-up-input { 
+	width:80%; 
+} 
+#registerSubmit { 
+	width: 80px; 
+	background: rgb(0, 200, 255) !important; 
+	color: white; 
+}
 
 /* MOBILE */
 @media all and (max-width: 767px) {
@@ -2203,6 +2222,12 @@ a.simpleLink:hover {
 		margin-bottom: 0;
 	}
 	
+	.modal input[type="password"] {
+		box-sizing: border-box !important;
+		height: 32px;
+		margin-bottom: 0;
+	}
+	
 	.modal textarea {
 		box-sizing: border-box !important;
 		height: 64px;
@@ -2266,9 +2291,24 @@ a.simpleLink:hover {
 		text-decoration: none;
 	}
     
-	#signupDialog { height: 450px !important; display: block !important; top: 30% !important;} 
-	.sign-up-input { width: 100%; } 
-	#registerSubmit { width: 93%; background: rgb(0, 200, 255); color: white; }
+	#signupDialog { 
+		height: 530px !important; 
+		top: 30% !important;
+	}
+	
+	.sign-up-input { 
+		width: 100%; 
+	} 
+	
+	#registerSubmit { 
+		width: 93%; 
+		background: rgb(0, 200, 255); 
+		color: white; 
+	}
+	
+	#cancelButton {
+		width: 93%; 
+	} 
 }
 @media all and (width: 768px) {
 	#content.content .row-fluid .span4 {

@@ -2,8 +2,7 @@
 
 <div id="signupDialog" class="modal hide fade vertical-center" tabindex="-1" aria-hidden="true">
 	<h3><fmt:message key="maalr.signup.header"/></h3>
-	<div class="modal-body">
-		
+	<div class="modal-body" style="overflow-y: hidden; overflow-x: hidden; max-height: 480px;">
 		<div class="row-fluid">
 			<div class="span12">
 				<form id="registrationForm" class="form-horizontal">
@@ -25,9 +24,18 @@
                     		<input class="form-control sign-up-input" type="password" name="confirm"/>
                     	</div>
                 	</div>
-                	<div class="form-group" style="margin-top: 15px;">
-                		<div class="col-sm-offset-3 col-sm-9"><a class="btn btn-default" href="#" id="registerSubmit"><fmt:message key="maalr.signup.submit" /></a>
-						<span id=errorMessage style="margin-left:8px; color: red;"></span></div>
+                	<div class="form-group" style="margin-top: 40px;">
+                		<div id="buttonGroupSignup" class="col-sm-offset-3 pull-right col-sm-9">
+                			<a class="btn btn-default" href="#" data-dismiss="modal" data-target="#signupDialog" id="cancelButton">
+                				<fmt:message key="maalr.signup.cancel" />
+                			</a>
+                			<a class="btn btn-default" href="#" id="registerSubmit">
+                				<fmt:message key="maalr.signup.submit" />
+                			</a>
+						</div>
+                		<div class="col-sm-offset-3 col-sm-9">
+							<span id=errorMessage style="margin-left:8px; color: red;"></span>
+						</div>
                 	</div>
 				</form>
 				
@@ -44,6 +52,13 @@
 	</div>
 </div>
 <script type="text/javascript">
+
+	resize();
+	
+	$(window).resize(function() {
+		resize();
+	});
+	
 	$("#registerSubmit").click(function(event) {
 		
 		event.preventDefault();
@@ -69,4 +84,16 @@
 		  },
 		});
 	});
+	
+	function resize()
+	{
+		if($(window).width() > 768)
+		{
+	  		$('#buttonGroupSignup').addClass('pull-right')
+		} else 
+		{
+			$('#buttonGroupSignup').removeClass('pull-right')
+		}
+	}
+	
 </script>
