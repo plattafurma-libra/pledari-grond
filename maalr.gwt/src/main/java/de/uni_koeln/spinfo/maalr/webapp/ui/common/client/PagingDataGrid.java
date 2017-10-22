@@ -20,8 +20,10 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ScrollEvent;
 import com.google.gwt.event.dom.client.ScrollHandler;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.cellview.client.RowHoverEvent;
 import com.google.gwt.user.client.ui.HeaderPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.visualization.client.Color;
 
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadEvent;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.events.LazyLoadHandler;

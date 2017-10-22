@@ -34,11 +34,7 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 public final class AutoConnectionSignUp implements ConnectionSignUp {
 
-//	@Autowired
-//	private UserInfoBackend userInfos;
-	
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
 	
 	public String execute(Connection<?> connection) {
 		
@@ -54,11 +50,8 @@ public final class AutoConnectionSignUp implements ConnectionSignUp {
 	private MaalrUserInfo createAndRegisterUser(UserProfile profile,
 			ConnectionData connectionData) {
 		MaalrUserInfo user = new MaalrUserInfo();
-		user.setFirstname(profile.getFirstName());
-		user.setLastname(profile.getLastName());
-		user.setEmail(profile.getEmail());
 		user.setLogin(profile.getUsername());
-		user.setRole(Role.OPENID_2);
+		user.setRole(Role.GUEST_1);
 		user.setProviderUserId(connectionData.getProviderUserId());
 		user.setProviderId(connectionData.getProviderId());
 		return store(user);

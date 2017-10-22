@@ -21,16 +21,16 @@ import de.uni_koeln.spinfo.maalr.common.shared.Constants.Roles;
 
 public enum Role implements Serializable {
 	
-	ADMIN_5(Roles.ADMIN_5, "Admin"), TRUSTED_IN_4(Roles.TRUSTED_IN_4, "Internal"), TRUSTED_EX_3(Roles.TRUSTED_EX_3, "External"), PERSONA(Roles.PERSONA, "Persona"), OPENID_2(Roles.OPENID_2, "Open ID"), GUEST_1(Roles.GUEST_1, "Guest");
+	ADMIN_5(Roles.ADMIN_5, "Admin"), TRUSTED_IN_4(Roles.TRUSTED_IN_4, "Internal"), TRUSTED_EX_3(Roles.TRUSTED_EX_3, "External"), GUEST_1(Roles.GUEST_1, "Guest");
 	
 	private String role;
 	private String roleName;
-	
+
 	public String getRoleName() {
 		return roleName;
 	}
 
-	public static final String[] ROLE_DISPLAY_NAMES = new String[] {GUEST_1.roleName, OPENID_2.roleName, PERSONA.roleName, TRUSTED_EX_3.roleName, TRUSTED_IN_4.roleName, ADMIN_5.roleName};
+	public static final String[] ROLE_DISPLAY_NAMES = new String[] {GUEST_1.roleName, TRUSTED_EX_3.roleName, TRUSTED_IN_4.roleName, ADMIN_5.roleName};
 
 	private Role(String roleId, String roleName) {
 		this.role = roleId;

@@ -58,21 +58,13 @@ import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 @Secured(Constants.Roles.ADMIN_5)
 public class AdminService {
 	
-	@Autowired
-	private Environment environment;
-	
-	@Autowired(required=false)
-	@Qualifier("maalr.system.stats")
+	@Autowired(required = false) @Qualifier("maalr.system.stats") 
 	private IStatisticsService systemStats;
 	
-//	@Autowired
-//	private DataBaseCreator dbCreator;
-	
-	@Autowired
-	private Index index;
-	
-	@Autowired
-	private DataLoader dbCreator;
+	@Autowired private Environment environment;
+	@Autowired private Index index;
+	@Autowired private DataLoader dbCreator;
+	@Autowired private BackUpHelper backUpHelper;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -131,7 +123,9 @@ public class AdminService {
 	}
 
 	public SystemSummary getSystemSummary() {
-		if(systemStats == null) return null;
+		if(systemStats == null) {
+			return null;
+		}
 		return systemStats.getCurrent();
 	}
 
@@ -148,6 +142,6 @@ public class AdminService {
 	}
 	
 	public BackupInfos getBackupInfos() {
-		return BackUpHelper.getInstance().getBackupInfos();
+		return backUpHelper.getBackupInfos();
 	}
 }

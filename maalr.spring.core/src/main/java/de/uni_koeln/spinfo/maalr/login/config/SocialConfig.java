@@ -51,7 +51,7 @@ import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
 /**
  * @author  Mihail Atanassov (atanassov.mihail@gmail.com)
  */
-@Configuration
+//@Configuration
 public class SocialConfig {
 	
 	@Autowired

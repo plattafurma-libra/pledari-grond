@@ -26,7 +26,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration;
@@ -37,42 +36,32 @@ import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 
 public class Configuration {
 
-	private Logger logger = LoggerFactory.getLogger(Configuration.class);
-
+	private static final String MAALR_PROPERTIES = "maalr.properties";
+	private static final String MAALR_CONFIG_DIR = "maalr.config.dir";
+	private static final String MAALR_DEFAULT_CONFIG_DIR = "maalr_sm_config";
+	private static final String MAALR_SEARCH_CONFIG = "maalr.search.config";
 	private static final String LUCENE_DIR = "lucene.dir";
-
 	private static final String LEX_FILE = "lex.file";
-	
 	private static final String DICT_CONTEXT = "maalr.dict.context";
-	
 	private static final String MONGODB_USER = "mongodb.user";
-	
 	private static final String MONGODB_USER_COLLECTION = "mongodb.user.collection";
-
 	private static final String MONGODB_PORT = "mongodb.port";
-
 	private static final String MONGODB_HOST = "mongodb.host";
-	
 	private static final String MONGODB_NAME = "mongodb.name";
-
 	private static final String LONG_NAME = "maalr.long.name";
-
 	private static final String SHORT_NAME = "maalr.short.name";
-
 	private static final String BACKUP_LOCATION = "backup.location";
-
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
-
 	private static final String BACKUP_NUMS = "backup.nums";
+	private static final String LOCALE_CODE = "locale.code";
+	private static final String MAALR_IMPL = "maalr.impl";
+	private static final String ADMIN_CREDENTIALS = "admin.secret";
+	private static final String EDITOR_CREDENTIALS = "editor.secret";
 
 	private Properties properties;
-
 	private static Configuration instance;
-
 	private ClientOptions clientOptions;
-
 	private DictionaryConfiguration dictConfig;
-
 	private final File configDir;
 
 	public File getConfigDirectory() {
@@ -93,10 +82,10 @@ public class Configuration {
 	}
 
 	private Configuration() throws IOException {
-		String configDir = System.getProperty("maalr.config.dir");
+		String configDir = System.getProperty(MAALR_CONFIG_DIR);
 		boolean isDefault = false;
 		if (configDir == null) {
-			this.configDir = new File("maalr_sm_config");
+			this.configDir = new File(MAALR_DEFAULT_CONFIG_DIR);
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);
@@ -114,7 +103,7 @@ public class Configuration {
 							+ " does not exist!");
 		}
 		properties = new Properties();
-		try (InputStreamReader input = getConfiguration("maalr.properties")) {
+		try (InputStreamReader input = getConfiguration(MAALR_PROPERTIES)) {
 			properties.load(input);
 			clientOptions = new ClientOptions();
 			clientOptions.setShortAppName(getShortName());
@@ -122,8 +111,7 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		}
-		// TODO: Try reading more then one searchconfig.xml
-		try (InputStreamReader reader = getConfiguration("searchconfig_sm.xml")) {
+		try (InputStreamReader reader = getConfiguration(properties.getProperty(MAALR_SEARCH_CONFIG))) {
 			JAXBContext ctx = JAXBContext
 					.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
@@ -140,7 +128,8 @@ public class Configuration {
 			try {
 				instance = new Configuration();
 			} catch (IOException e) {
-				throw new RuntimeException("Failed to initialize configuration", e);
+				throw new RuntimeException(
+						"Failed to initialize configuration", e);
 			}
 		}
 		return instance;
@@ -177,7 +166,7 @@ public class Configuration {
 	public String getLongName() {
 		return properties.getProperty(LONG_NAME);
 	}
-	
+
 	public String getDictContext() {
 		return properties.getProperty(DICT_CONTEXT);
 	}
@@ -256,12 +245,29 @@ public class Configuration {
 	public String getDbName() {
 		return properties.getProperty(MONGODB_NAME);
 	}
-
+	
 	public String getUserDb() {
 		return properties.getProperty(MONGODB_USER);
+	}
+	
+	public String getLocaleCode() {
+		return properties.getProperty(LOCALE_CODE);
 	}
 	
 	public String getUserDbCollection() {
 		return properties.getProperty(MONGODB_USER_COLLECTION);
 	}
+	
+	public String getMaalrImpl() {
+		return properties.getProperty(MAALR_IMPL);
+	}
+
+	public String getAdminCredentials() {
+		return properties.getProperty(ADMIN_CREDENTIALS);
+	}
+
+	public String getEditorCredentials() {
+		return properties.getProperty(EDITOR_CREDENTIALS);
+	}
+
 }

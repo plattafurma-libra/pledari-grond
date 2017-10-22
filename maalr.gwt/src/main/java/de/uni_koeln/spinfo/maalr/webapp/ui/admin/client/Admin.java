@@ -18,8 +18,9 @@ package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -33,7 +34,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 import de.uni_koeln.spinfo.maalr.common.shared.ClientOptions;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.DbManager;
-import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.RoleEditor;
+import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.RoleEditorNew;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Navigation;
@@ -68,19 +69,17 @@ public class Admin implements EntryPoint {
 				initializeMainPanel();
 				initHistory();
 				initModules(navigation);
-				Logger.getLogger(getClass()).info("Admin module has been loaded!!!");
 				if(History.getToken().isEmpty()) {
-					History.newItem(Modules.ANCHOR_DB_MANAGER);
+					History.newItem(Modules.ANCHOR_ROLE_MANAGER);
 				}
 				History.fireCurrentHistoryState();
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				Logger.getLogger(getClass()).info("CommonService.getClientOptions().Exception :: " + caught.getMessage());
 			}
 		});
-		
 	}
 	
 	private void initializeMainPanel() {
@@ -93,26 +92,29 @@ public class Admin implements EntryPoint {
 	}
 
 	private void initModules(Navigation navigation) {
-		RoleEditor roleEditor = new RoleEditor();
-		DbManager dbManager = new DbManager();
-		registerModule(roleEditor, Modules.ANCHOR_ROLE_MANAGER);
-		registerModule(dbManager, Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER);
-		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER);
-		navigation.addLinkLeft("Logout", "/surmiran/j_spring_security_logout");
+//		RoleEditor roleEditor = new RoleEditor();
+		registerModule(new RoleEditorNew(), Modules.ANCHOR_ROLE_MANAGER);
+		registerModule(new DbManager(), Modules.ANCHOR_DB_MANAGER);
+		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
+		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER, IconType.TABLE, false);
+		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER, IconType.GROUP, false);
+		navigation.addLinkLeft("Edit Dictionary", contextPath + Modules.ANCHOR_EDITOR_MODULE, IconType.EDIT_SIGN, true);
+		navigation.addLinkLeft("Front Page", contextPath, IconType.DESKTOP, true);
+		navigation.addLinkRight("Logout", contextPath + "/j_spring_security_logout", IconType.SIGNOUT, true);
 	}
 
 	private void initHistory() {
-		 History.addValueChangeHandler(new ValueChangeHandler<String>() {
-		      public void onValueChange(ValueChangeEvent<String> event) {
-		        String historyToken = event.getValue();
-		        if(historyToken.trim().length() == 0) {
-		        	showModule(modules.get(Modules.ANCHOR_DB_MANAGER));
-		        } else {
-		        	showModule(modules.get(historyToken));
-		        }
-		      }
-		    });
+		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+			public void onValueChange(ValueChangeEvent<String> event) {
+				
+				String historyToken = event.getValue();
+				if (historyToken.trim().length() == 0) {
+					showModule(modules.get(Modules.ANCHOR_DB_MANAGER));
+				} else {
+					showModule(modules.get(historyToken));
+				}
+			}
+		});
 	}
 
 	private void registerModule(Composite composite, String key) {

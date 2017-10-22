@@ -13,6 +13,9 @@
 <jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 
 	<body>
+	
+		<%-- SIGNUP DIALOG --%>
+		<%@ include file="/maalr_modules/misc/signup_dialog.jsp"%>
 		
 		<%-- NAVIGATION --%>
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
@@ -22,11 +25,13 @@
 		
 		<div>
 			
+			<%@ include file="/maalr_modules/misc/language_widget.jsp"%>
+			
 			<%-- INTERNAL SIGN IN --%>
 			<div class="container well" id="login_container">
+			
 				<h1><fmt:message key="maalr.login.header" /></h1>
 				<br>
-				
 				<c:if test="${not empty param.login_error}">
 					<p id="error_font"> <fmt:message key="maalr.login.error" /><br /></p>
 				</c:if>
@@ -46,13 +51,23 @@
 					</div>
 				</form>
 				 
-				<%-- login info text  --%>
+				<%-- Registration Dialog --%>
+				<div id="openid_login">
+					<div class="input_wrapper">
+						<a id="signUp" href="#signupDialog" id="signUp" data-toggle="modal"><fmt:message key="maalr.signup"/></a>
+					</div>
+				</div>
+				
+				<%-- Login info text  --%>
 				<div id="maalr_login_info">
 					<span class="glyphicon icon-info-sign"></span>
 					<p><fmt:message key="maalr.login.welcome" /></p>
 				</div>
+				
 			</div>
 		</div>
+		
 		<jsp:include page="/analytics.jsp" />
+		
 	</body>
 </html>

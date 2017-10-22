@@ -3,17 +3,17 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 
-<fmt:setLocale value='<%=session.getAttribute("locale") %>' />
+<fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <%
-	MaalrQuery pgq = (MaalrQuery) request.getAttribute("search");
+	MaalrQuery maalrQuery = (MaalrQuery) request.getAttribute("search");
 %>
 
 <div align="left">
 	<h3>
 		<fmt:message key="maalr.query.noresults_header">
-			<fmt:param><%=MaalrQueryFormatter.getQueryLabel(pgq)%></fmt:param>
+			<fmt:param><%=MaalrQueryFormatter.getQueryLabel(maalrQuery)%></fmt:param>
 		</fmt:message>
 	</h3>
 	<p>

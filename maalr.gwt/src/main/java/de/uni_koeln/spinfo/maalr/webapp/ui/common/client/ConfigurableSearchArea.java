@@ -71,7 +71,6 @@ import com.google.gwt.user.client.ui.Widget;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.ColumnSelector;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
-import de.uni_koeln.spinfo.maalr.common.shared.SimpleWebLogger;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;

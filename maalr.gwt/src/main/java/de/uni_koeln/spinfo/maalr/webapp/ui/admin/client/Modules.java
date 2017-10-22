@@ -19,5 +19,6 @@ public interface Modules {
 
 	public static final String ANCHOR_ROLE_MANAGER = "role_manager";
 	public static final String ANCHOR_DB_MANAGER = "db_manager";
+	public static final String ANCHOR_EDITOR_MODULE = "/editor/editor";
 	
 }

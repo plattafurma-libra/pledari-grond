@@ -76,7 +76,7 @@ public class DictionaryConstants {
 	public static Dictionary getLinksDictionary() {
 		return Dictionary.getDictionary(LINKS);
 	}
-
+	
 	public static Dictionary getExtLinksDictionary() {
 		return Dictionary.getDictionary(EXT_LINKS);
 	}

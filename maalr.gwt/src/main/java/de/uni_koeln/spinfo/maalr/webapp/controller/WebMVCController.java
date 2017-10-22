@@ -35,48 +35,53 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueFormat;
+import de.uni_koeln.spinfo.maalr.common.shared.form.UserForm;
+import de.uni_koeln.spinfo.maalr.common.shared.form.UserFormValidationResponse;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
-import de.uni_koeln.spinfo.maalr.login.LoginManager;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
+import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 
-@Controller
+@Controller 
 public class WebMVCController {
+	
+	private static final String I18N_TEXT = "de.uni_koeln.spinfo.maalr.webapp.i18n.text";
+	private static final String SM = "sm";
+	private static final String LOCALE = "locale";
 
-	@Autowired
-	private LoginManager loginManager;
+	private final Logger logger = LoggerFactory.getLogger(WebMVCController.class);
 
-	@Autowired
-	private UserInfoBackend users;
-	
-	@Autowired
-	private Index index;
-	
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	
+	@Autowired private Index index;
+	@Autowired private UserInfoBackend users;
+	@Autowired private AccountService accountService;
+	@Autowired private PGAutenticationProvider authProvider;
+
 	private Configuration configuration = Configuration.getInstance();
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
-		String locale = (String) request.getParameter("locale");
-		if(locale == null) {
-			locale = (String) session.getAttribute("locale");
-			if(locale == null) {
-				session.setAttribute("locale", "sm");
-				locale = "sm";
+		String locale = (String) request.getParameter(LOCALE);
+		if (locale == null) {
+			locale = (String) session.getAttribute(LOCALE);
+			if (locale == null) {
+				session.setAttribute(LOCALE, SM);
+				locale = SM;
 			}
 			return locale;
 		} else {
@@ -87,9 +92,9 @@ public class WebMVCController {
 	private String getLocalizedString(String key, HttpSession session, HttpServletRequest request) {
 		String locale = getLocale(session, request);
 		if(locale == null) {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text").getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT).getString(key);
 		} else {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text", new Locale(locale)).getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT, new Locale(locale)).getString(key);
 		}
 	}
 
@@ -98,21 +103,22 @@ public class WebMVCController {
 		return new MaalrQuery();
 	}
 
-	private void setPageTitle(ModelAndView mv, String title) {
-		mv.addObject("pageTitle", title);
-	}
-
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
-	ModelAndView mv = new ModelAndView("index");
-	setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-	mv.addObject("dictContext", configuration.getDictContext());
-	session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
-	return mv;
+		ModelAndView mv = new ModelAndView("index");
+		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
+		session.setAttribute("language", Configuration.getInstance().getLemmaDescription().getLanguageName(true));
+		return mv;
+	}
+
+	private void setPageTitle(ModelAndView mv, String title) {
+		mv.addObject("pageTitle", title);
 	}
 	
 	@RequestMapping("/")
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
+		logger.info("Request: {}", request.getContextPath());
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
@@ -127,12 +133,12 @@ public class WebMVCController {
 	@ModelAttribute("user")
 	private MaalrUserInfo currentUser(final HttpServletRequest request, Principal principal) {
 		if (principal != null) {
-			final String currentUser = principal.getName();
-			if (loginManager.loggedIn())
-				if (currentUser != null) {
+			final String userName = principal.getName();
+			if (authProvider.loggedIn())
+				if (userName != null) {
 					MaalrUserInfo user = (MaalrUserInfo) request.getSession().getAttribute("user");
 					if (user == null) {
-						user = users.getOrCreateCurrentUser();
+						user = users.getByLogin(userName);
 						request.getSession().setAttribute("user", user);
 					}
 					return user;
@@ -167,7 +173,13 @@ public class WebMVCController {
 		ModelAndView mv = new ModelAndView("login");
 		setPageTitle(mv, getLocalizedString("maalr.login_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
+		mv.addObject("userForm", new UserForm());
 		return mv;
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST, produces="application/json", consumes="application/json")
+	public @ResponseBody UserFormValidationResponse processRegistration(@RequestBody UserForm userForm, HttpSession session, HttpServletRequest request) {
+		return accountService.createAccount(userForm, getLocale(session, request));
 	}
 	
 	/**
@@ -314,5 +326,4 @@ public class WebMVCController {
 		}
 		return mv;
 	}
-	
 }

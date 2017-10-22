@@ -20,7 +20,7 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!--[if IE 7]>
-	<link rel="stylesheet" href="/de.uni_koeln.spinfo.maalr.user/css/font-awesome-ie7.css">
+	<link rel="stylesheet" href="${dictContext}/de.uni_koeln.spinfo.maalr.user/css/font-awesome-ie7.css">
 <![endif]-->
 
 <title><%=Configuration.getInstance().getShortName()%> - Editor Backend</title>

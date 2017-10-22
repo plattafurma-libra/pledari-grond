@@ -58,7 +58,6 @@ import org.slf4j.LoggerFactory;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
-import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -692,6 +691,10 @@ public class Database {
 		while (!ze.getName().endsWith(".xml")) {
 			ze = in.getNextEntry();
 		}
+	}
+	
+	public DBCursor getAll() {
+		return entryCollection.find();
 	}
 
 }

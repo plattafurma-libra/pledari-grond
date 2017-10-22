@@ -42,6 +42,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
  * @author sschwieb
  *
  */
+@Deprecated
 public class UserListDataProvider extends AsyncDataProvider<LightUserInfo> {
 
 	/**
@@ -167,6 +168,8 @@ public class UserListDataProvider extends AsyncDataProvider<LightUserInfo> {
 	}
 		
 	private void update(List<LightUserInfo> result) {
+		if(!result.isEmpty())
+			loaded.clear();
 		loaded.addAll(result);
 		pageSize = loaded.size();
 		updateRowData(0, loaded);

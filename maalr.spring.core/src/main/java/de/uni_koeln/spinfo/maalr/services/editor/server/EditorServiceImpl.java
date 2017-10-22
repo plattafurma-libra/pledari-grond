@@ -64,7 +64,7 @@ import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 
 @Service
-@Secured(Constants.Roles.TRUSTED_IN_4)
+@Secured({Constants.Roles.TRUSTED_IN_4, Constants.Roles.ADMIN_5})
 public class EditorServiceImpl {
 	
 	@Autowired

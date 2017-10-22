@@ -113,8 +113,6 @@ $(document).ready(function() {
 	}
 
 	function stopMobile() {
-		// console.log("stopMobile");
-		
 		/*Reverse settings from startMobile function*/
 
 		if(locale == "sm") {

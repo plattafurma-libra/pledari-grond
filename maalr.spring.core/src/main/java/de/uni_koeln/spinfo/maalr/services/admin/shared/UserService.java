@@ -31,19 +31,16 @@ public interface UserService extends RemoteService {
 	
 	public @ResponseBody LightUserInfo getUserInfo(String login);
 	
-	public void updateRole(String login, Role role) throws InvalidUserException;
-	
-	public void updateUserFields(LightUserInfo user) throws InvalidUserException;
-	
 	public int getNumberOfUsers();
 	
-	List<LightUserInfo> getAllUsers(Role role, String text, 
-			String sortColumn, boolean sortAscending, int from, int length);
+	List<LightUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length);
 	
 	public LightUserInfo insertNewUser(LightUserInfo user) throws InvalidUserException;
 
-	void adminUpdate(LightUserInfo workingCopy) throws InvalidUserException;
+	public void updateRole(LightUserInfo user) throws InvalidUserException;
 
 	boolean deleteUser(LightUserInfo unmodified);
+
+	List<LightUserInfo> getAllUsers(int from, int length, String sortColumn, boolean sortRoleAscending);
 	
 }

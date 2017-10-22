@@ -21,6 +21,7 @@ import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Navbar;
 import com.github.gwtbootstrap.client.ui.VerticalDivider;
 import com.github.gwtbootstrap.client.ui.constants.Alignment;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -67,13 +68,27 @@ public class Navigation extends Composite {
 		backendName.setText(name);
 	}
 	
-	public void addLinkLeft(String title, String href) {
-		navLeft.add(new NavLink(title, href));
+	public void addLinkLeft(String title, String href, IconType iconType, boolean divider) {
+		if (divider) navLeft.add(new VerticalDivider());
+		if(iconType == null) {
+			navLeft.add(new NavLink(title, href));
+		} else {
+			NavLink navLink = new NavLink(title, href);
+			navLink.setIcon(iconType);
+			navLeft.add(navLink);
+		}
+		
 	}
 	
-	public void addLinkRight(String title, String href, boolean divider) {
-		navRight.add(new NavLink(title, href));
+	public void addLinkRight(String title, String href, IconType iconType, boolean divider) {
 		if (divider) navRight.add(new VerticalDivider());
+		if(iconType == null) {
+			navRight.add(new NavLink(title, href));
+		} else {
+			NavLink navLink = new NavLink(title, href);
+			navLink.setIcon(iconType);
+			navRight.add(navLink);
+		}
 	}
-
+	
 }

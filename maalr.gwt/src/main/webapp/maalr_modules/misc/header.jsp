@@ -3,7 +3,6 @@
 <%@ page import="de.uni_koeln.spinfo.maalr.common.server.util.Configuration" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Role" %>
 
-<%@ page import="de.uni_koeln.spinfo.maalr.login.LoginManager" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %>
 
 <%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt' %>
@@ -53,6 +52,7 @@
 		    	 	</cr:when>
 		    	 	<cr:otherwise>
 		    	 		<c:set var="userName" value="${user.getDisplayName()}"/>
+		    	 		<c:set var="prefixName" value="${fn:split(userName, '@')}" />
 		    	 		<a href="#" class="navi_a_common" title="${userName}">
 								<span id="u_name">${userName}</span>
 		    	 		</a>

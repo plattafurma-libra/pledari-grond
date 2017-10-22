@@ -105,13 +105,7 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 		LightUserInfo userInfo = lemma.getUserInfo();
 		SafeHtmlBuilder builder = new SafeHtmlBuilder();
 		if(userInfo != null && userInfo.getRole() != Role.GUEST_1) {
-			String firstName = userInfo.getFirstName();
-			String lastName = userInfo.getLastName();
-			if(firstName != null && lastName != null) {
-				builder.append(templates.userName(firstName, lastName));
-			} else {
-				builder.append(templates.login(userInfo.getLogin()));
-			}
+			builder.append(templates.login(userInfo.getLogin()));
 			if(lemma.getIP() != null) {
 				builder.append(templates.ipSmall(lemma.getIP()));
 			} else {
@@ -138,17 +132,9 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 		if(role.equals("Admin")) role = constants.admin();
 		if(role.equals("Internal")) role = constants.internal();
 		if(role.equals("External")) role = constants.external();
-		if(role.equals("Open ID")) role = constants.openId();
 		if(role.equals("Guest")) role = constants.guest();
 		return templates.roleLabel(getRoleStyle(), role);
 	}
-
-//	@Override
-//	public SafeHtml getRoleLabel() {
-//		if(getRole().equals("Admin"))return templates.roleLabel(getRoleStyle(), constants.admin());
-//		String role = getRole().equals("Guest")?constants.guest():constants.internal();
-//		return templates.roleLabel(getRoleStyle(), role);
-//	}
 
 	private String getRoleStyle() {
 		if(lemma.getUserInfo() == null) {
@@ -158,12 +144,10 @@ public class LemmaVersionCellWrapper implements ICellWrapper {
 			case ADMIN_5: return "admin-label";
 			case TRUSTED_IN_4: return "internal-label";
 			case TRUSTED_EX_3: return "trusted-label";
-			case OPENID_2: return "openid-label";
 			case GUEST_1: return "guest-label";
 			default: return "guest-label";
 		}
 	}
-	
 
 	@Override
 	public String getComment() {

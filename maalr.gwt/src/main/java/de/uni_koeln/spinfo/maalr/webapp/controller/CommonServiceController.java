@@ -29,7 +29,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
-import de.uni_koeln.spinfo.maalr.login.LoginManager;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
@@ -37,11 +37,8 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 @Service("commonService")
 public class CommonServiceController implements CommonService {
 
-	@Autowired
-	private LoginManager loginManager;
-	
-	@Autowired
-	private Index index;
+	@Autowired private PGAutenticationProvider authProvider;
+	@Autowired private Index index;
 
 	private final LemmaDescription lemmaDescription;
 
@@ -76,7 +73,7 @@ public class CommonServiceController implements CommonService {
 	
 	@Override
 	public LightUserInfo getCurrentUser() {
-		LightUserInfo user = loginManager.getCurrentUser();
+		LightUserInfo user = authProvider.getCurrentUser();
 		return user;
 	}
 

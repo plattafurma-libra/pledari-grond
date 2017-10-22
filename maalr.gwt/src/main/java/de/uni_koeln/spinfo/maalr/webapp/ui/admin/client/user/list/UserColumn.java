@@ -22,14 +22,13 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.cell.UserListC
 
 public class UserColumn extends Column<LightUserInfo, LightUserInfo> {
 
-		
-		public UserColumn() {
+	public UserColumn() {
 		super(new UserListCell());
 	}
 
-		@Override
-		public LightUserInfo getValue(LightUserInfo object) {
-			return object;
-		}
-	
+	@Override
+	public LightUserInfo getValue(LightUserInfo object) {
+		return object;
+	}
+
 }

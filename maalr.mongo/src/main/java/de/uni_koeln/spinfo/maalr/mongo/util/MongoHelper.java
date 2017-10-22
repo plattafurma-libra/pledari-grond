@@ -34,8 +34,9 @@ public class MongoHelper {
 
 	private static DB db;
 	
+	private static String DB_NAME;
+
 	private static final Object lock = new Object();
-	
 
 	public static DB getDB(String dbName) throws UnknownHostException {
 		synchronized(lock) {
@@ -45,7 +46,7 @@ public class MongoHelper {
 			}
 			db = mongo.getDB(dbName);
 			logger.debug("Connecting to data base... " + db.getName());
-			return db;
+			return db;	
 		}
 	}
 	
