@@ -38,7 +38,11 @@ import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 public class Configuration {
 
 	private Logger logger = LoggerFactory.getLogger(Configuration.class);
-
+	
+	private static final String MAALR_PROPERTIES = "maalr.properties";
+	private static final String MAALR_CONFIG_DIR = "maalr.config.dir";
+	private static final String MAALR_DEFAULT_CONFIG_DIR = "maalr_st_config";
+	private static final String MAALR_SEARCH_CONFIG = "maalr.search.config";
 	private static final String LUCENE_DIR = "lucene.dir";
 	private static final String LEX_FILE = "lex.file";
 	private static final String DICT_CONTEXT = "maalr.dict.context";
@@ -52,7 +56,6 @@ public class Configuration {
 	private static final String BACKUP_LOCATION = "backup.location";
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
 	private static final String BACKUP_NUMS = "backup.nums";
-	// TODO: unused in surmiran?
 	private static final String LOCALE_CODE = "locale.code";
 	private static final String MAALR_IMPL = "maalr.impl";
 	private static final String ADMIN_CREDENTIALS = "admin.secret";
@@ -82,28 +85,21 @@ public class Configuration {
 	}
 
 	private Configuration() throws IOException {
-		String configDir = System.getProperty("maalr.config.dir");
+		String configDir = System.getProperty(MAALR_CONFIG_DIR);
 		boolean isDefault = false;
 		if (configDir == null) {
-			this.configDir = new File("maalr_st_config");
+			this.configDir = new File(MAALR_DEFAULT_CONFIG_DIR);
 			isDefault = true;
 		} else {
 			this.configDir = new File(configDir);
 		}
 		if (this.configDir.exists()) {
-			logger.info(
-					"Using " + (isDefault ? "default " : "")
-							+ "configuration in directory "
-							+ this.configDir.getAbsolutePath());
+			logger.info("Using " + (isDefault ? "default " : "") + "configuration in directory " + this.configDir.getAbsolutePath());
 		} else {
-			logger.error(
-					"The " + (isDefault ? "default " : "")
-							+ "configuration directory "
-							+ this.configDir.getAbsolutePath()
-							+ " does not exist!");
+			logger.error("The " + (isDefault ? "default " : "") + "configuration directory " + this.configDir.getAbsolutePath() + " does not exist!");
 		}
 		properties = new Properties();
-		try (InputStreamReader input = getConfiguration("maalr.properties")) {
+		try (InputStreamReader input = getConfiguration(MAALR_PROPERTIES)) {
 			properties.load(input);
 			clientOptions = new ClientOptions();
 			clientOptions.setShortAppName(getShortName());
@@ -111,7 +107,7 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		}
-		try (InputStreamReader reader = getConfiguration("searchconfig_st.xml")) {
+		try (InputStreamReader reader = getConfiguration(properties.getProperty(MAALR_SEARCH_CONFIG))) {
 			JAXBContext ctx = JAXBContext.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
 			dictConfig = (DictionaryConfiguration) unmarshaller.unmarshal(reader);
@@ -163,7 +159,7 @@ public class Configuration {
 	public String getLongName() {
 		return properties.getProperty(LONG_NAME);
 	}
-	
+
 	public String getDictContext() {
 		return properties.getProperty(DICT_CONTEXT);
 	}
@@ -242,18 +238,17 @@ public class Configuration {
 	public String getDbName() {
 		return properties.getProperty(MONGODB_NAME);
 	}
-
+	
 	public String getUserDb() {
 		return properties.getProperty(MONGODB_USER);
 	}
 	
-	public String getUserDbCollection() {
-		return properties.getProperty(MONGODB_USER_COLLECTION);
-	}
-
-	// TODO unused in surmiran?
 	public String getLocaleCode() {
 		return properties.getProperty(LOCALE_CODE);
+	}
+	
+	public String getUserDbCollection() {
+		return properties.getProperty(MONGODB_USER_COLLECTION);
 	}
 	
 	public String getMaalrImpl() {

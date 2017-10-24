@@ -15,7 +15,6 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.cell;
 
-
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.shared.GWT;
@@ -28,42 +27,43 @@ import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 
 @Deprecated
 public class UserListCell extends AbstractCell<LightUserInfo> {
-	
-	private static UserListUiRenderer renderer = GWT.create(UserListUiRenderer.class);
-	
+
+	private static UserListUiRenderer renderer = GWT
+			.create(UserListUiRenderer.class);
+
 	interface UserListUiRenderer extends UiRenderer {
 
 		/*
 		 * Responsible for rendering the cell as defined in the 'ui.xml'
-		 * Remember that the parameter names must be identical here and in the ui.xml-file!
-		 * See https://developers.google.com/web-toolkit/doc/latest/DevGuideUiBinder#Rendering_HTML_for_Cells
+		 * Remember that the parameter names must be identical here and in the
+		 * ui.xml-file! See
+		 * https://developers.google.com/web-toolkit/doc/latest/
+		 * DevGuideUiBinder#Rendering_HTML_for_Cells
 		 */
 		void render(SafeHtmlBuilder sb, LightUserInfo userInfo);
 
-		void onBrowserEvent(UserListCell cell, NativeEvent event, Element element, LightUserInfo user);
-		
+		void onBrowserEvent(UserListCell cell, NativeEvent event,
+				Element element, LightUserInfo user);
+
 	}
-	
 
 	public UserListCell() {
 		super("click");
 	}
 
 	@Override
-	public void render(Context context, LightUserInfo userInfo, SafeHtmlBuilder sb) {
-		if(userInfo == null) return;
+	public void render(Context context, LightUserInfo userInfo,
+			SafeHtmlBuilder sb) {
+		if (userInfo == null)
+			return;
 		renderer.render(sb, userInfo);
 	}
-	
+
 	@Override
-	public void onBrowserEvent(Context context,
-			Element parent, LightUserInfo user, NativeEvent event,
+	public void onBrowserEvent(Context context, Element parent,
+			LightUserInfo user, NativeEvent event,
 			ValueUpdater<LightUserInfo> valueUpdater) {
 		renderer.onBrowserEvent(this, event, parent, user);
 	}
-	
 
-
-	
-	
 }

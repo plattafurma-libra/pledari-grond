@@ -54,7 +54,6 @@ import de.uni_koeln.spinfo.maalr.common.shared.description.ValueType;
 import de.uni_koeln.spinfo.maalr.common.shared.description.ValueValidator;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.i18n.LocalizedStrings;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util.SimpleWebLogger;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.shared.util.Logger;
 
 /**

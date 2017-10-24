@@ -542,7 +542,7 @@ public class Database {
 		logger.info("HISTORY DROPPED: " + toLogString(entry.getCurrent())
 				+ ", entry " + entry.getId());
 	}
-	
+
 	public String export(boolean allVersions) throws JAXBException,
 			IOException, NoSuchAlgorithmException {
 		String fileName = null;
@@ -692,7 +692,7 @@ public class Database {
 			ze = in.getNextEntry();
 		}
 	}
-
+	
 	public DBCursor getAll() {
 		return entryCollection.find();
 	}

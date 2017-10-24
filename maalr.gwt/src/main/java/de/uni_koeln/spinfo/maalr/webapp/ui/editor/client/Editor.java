@@ -201,12 +201,12 @@ public class Editor implements EntryPoint {
 		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
 		String locale = DictionaryConstants.getDictionary().get(DictionaryConstants.LOCALE);
 		registerModule(lexEditor, Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLinkLeft(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR);
-		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR);
-		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR);
-		navigation.addLinkRight(constants.logout(), contextPath + "/j_spring_security_logout", true);
-		navigation.addLinkRight(constants.st(), GWT.getHostPageBaseURL() + "editor.html?locale=" + locale, false);
-		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", false);
+		navigation.addLinkLeft(constants.suggestionEditor(), "#" + Modules.ANCHOR_SUGGESTION_EDITOR, null, false);
+		navigation.addLinkLeft(constants.verificationHistory(), "#" + Modules.ANCHOR_HISTORY_EDITOR, null, false);
+		navigation.addLinkLeft(constants.lexiconEditor(), "#" + Modules.ANCHOR_LEX_EDITOR, null, false);
+		navigation.addLinkRight(constants.logout(), "/sutsilvan/j_spring_security_logout", null, true);
+		navigation.addLinkRight(constants.st(), GWT.getHostPageBaseURL() + "editor.html?locale=st", null, false);
+		navigation.addLinkRight(constants.en(), GWT.getHostPageBaseURL() + "editor.html?locale=en", null, false);
 	}
 	
 	private void setSuggestionColumns(SuggestionEditor editor) {

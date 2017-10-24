@@ -29,7 +29,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LightUserInfo;
 import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.TranslationMap;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.NoIndexAvailableException;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
@@ -37,7 +37,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.CommonService;
 @Service("commonService")
 public class CommonServiceController implements CommonService {
 
-	@Autowired private PGAuthenticationProvider authProvider;
+	@Autowired private PGAutenticationProvider authProvider;
 	@Autowired private Index index;
 
 	private final LemmaDescription lemmaDescription;

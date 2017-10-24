@@ -17,9 +17,6 @@
 		<%-- SIGNUP DIALOG --%>
 		<%@ include file="/maalr_modules/misc/signup_dialog.jsp"%>
 		
-		<%-- EXPORT DIALOG --%>
-		<%@ include file="/maalr_modules/misc/export_dialog.jsp"%>
-	
 		<%-- NAVIGATION --%>
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
 		
@@ -54,21 +51,23 @@
 					</div>
 				</form>
 				 
-				<%-- OPEN-ID SIGN IN --%>
+				<%-- Registration Dialog --%>
 				<div id="openid_login">
-
 					<div class="input_wrapper">
 						<a id="signUp" href="#signupDialog" id="signUp" data-toggle="modal"><fmt:message key="maalr.signup"/></a>
 					</div>
 				</div>
-				<%-- login info text  --%>
+				
+				<%-- Login info text  --%>
 				<div id="maalr_login_info">
 					<span class="glyphicon icon-info-sign"></span>
 					<p><fmt:message key="maalr.login.welcome" /></p>
 				</div>
+				
 			</div>
 		</div>
 		
 		<jsp:include page="/analytics.jsp" />
+		
 	</body>
 </html>

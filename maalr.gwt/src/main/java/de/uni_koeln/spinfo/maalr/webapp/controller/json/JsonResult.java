@@ -1,9 +1,9 @@
-package de.uni_koeln.spinfo.maalr.webapp.controller;
+package de.uni_koeln.spinfo.maalr.webapp.controller.json;
 
 import java.util.List;
 import java.util.Map;
 
-class JsonResult {
+public class JsonResult {
 	
 	private List<Map<String, String>> data;
 	private String nothingFoundMessage;

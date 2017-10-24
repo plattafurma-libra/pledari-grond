@@ -18,7 +18,7 @@
 	<security:global-method-security secured-annotations="enabled" />
 
 	<!-- Spring security configuration -->
-	<security:http auto-config='true'>
+	<security:http auto-config="true" use-expressions="true">
 		<!-- Allow unauthorized users to access the login page -->
 		<!-- Otherwise it would be difficult to login... -->
 		<security:intercept-url pattern="/login.html*" />
@@ -27,23 +27,23 @@
 		
 		<!-- Only admins get access to the backend -->
 		<!-- Unauthorized users will get redirected to the login page -->
-		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-		<security:intercept-url pattern="/editor/**" access="ROLE_TRUSTED_IN" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/editor/**" access="hasAnyRole('ROLE_TRUSTED_IN','ROLE_ADMIN')" />
 		
 		<!-- Define which login form to use -->
 		<!-- After login, the postLoginHandler will increase the session timeout -->
 		<!-- and insert new user infos into the user database -->
 		<security:form-login login-page='/login.html' authentication-success-handler-ref="postLoginHandler" authentication-failure-url = "/login.html?login_error=1" />
-		
 	</security:http>
 
 	<security:authentication-manager>
 		<!-- Custom authentication -->
-		<!-- Located in /maalr.spring.core/src/main/java/de/uni_koeln/spinfo/maalr/login/custom/PGAuthenticationProvider.java -->
+		<!-- Located in /maalr.spring.core/src/main/java/de/uni_koeln/spinfo/maalr/login/custom/PGAutenticationProvider.java -->
 		<security:authentication-provider ref="pgAuthProvider"/>
 	</security:authentication-manager>
 
-	<bean id="pgAuthProvider" class="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider">
+
+	<bean id="pgAuthProvider" class="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider">
 		<property name="userDetailsService" ref="pgUserDetailsService" />
 	</bean>
 	

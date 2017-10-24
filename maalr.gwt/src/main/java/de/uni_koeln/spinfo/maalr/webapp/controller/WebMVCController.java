@@ -50,7 +50,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.form.UserFormValidationResponse;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.Localizer;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.BrokenIndexException;
 import de.uni_koeln.spinfo.maalr.lucene.exceptions.InvalidQueryException;
@@ -59,25 +59,29 @@ import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 
-@Controller public class WebMVCController {
+@Controller 
+public class WebMVCController {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static final String I18N_TEXT = "de.uni_koeln.spinfo.maalr.webapp.i18n.text";
+	private static final String ST = "st";
+	private static final String LOCALE = "locale";
+
+	private final Logger logger = LoggerFactory.getLogger(WebMVCController.class);
 
 	@Autowired private Index index;
 	@Autowired private UserInfoBackend users;
 	@Autowired private AccountService accountService;
-	@Autowired private PGAuthenticationProvider authProvider;
+	@Autowired private PGAutenticationProvider authProvider;
 
 	private Configuration configuration = Configuration.getInstance();
 	
 	private String getLocale(HttpSession session, HttpServletRequest request) {
-		String localeCode = configuration.getLocaleCode();
-		String locale = (String) request.getParameter("locale");
-		if(locale == null) {
-			locale = (String) session.getAttribute("locale");
-			if(locale == null) {
-				session.setAttribute("locale", localeCode);
-				locale = localeCode;
+		String locale = (String) request.getParameter(LOCALE);
+		if (locale == null) {
+			locale = (String) session.getAttribute(LOCALE);
+			if (locale == null) {
+				session.setAttribute(LOCALE, ST);
+				locale = ST;
 			}
 			return locale;
 		} else {
@@ -88,9 +92,9 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	private String getLocalizedString(String key, HttpSession session, HttpServletRequest request) {
 		String locale = getLocale(session, request);
 		if(locale == null) {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text").getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT).getString(key);
 		} else {
-			return ResourceBundle.getBundle("de.uni_koeln.spinfo.maalr.webapp.i18n.text", new Locale(locale)).getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT, new Locale(locale)).getString(key);
 		}
 	}
 
@@ -99,21 +103,22 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 		return new MaalrQuery();
 	}
 
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("index");
+		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		mv.addObject("dictContext", configuration.getDictContext());
+		session.setAttribute("language", Configuration.getInstance().getLemmaDescription().getLanguageName(true));
+		return mv;
+	}
+
 	private void setPageTitle(ModelAndView mv, String title) {
 		mv.addObject("pageTitle", title);
 	}
 	
-	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+	@RequestMapping("/")
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("index");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
-		mv.addObject("dictContext", configuration.getDictContext());
-		session.setAttribute("language", configuration.getLemmaDescription().getLanguageName(true));
-		return mv;
-	}
-
-	//@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
+		logger.info("Request: {}", request.getContextPath());
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
@@ -130,7 +135,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 	private MaalrUserInfo currentUser(final HttpServletRequest request, Principal principal) {
 		if (principal != null) {
 			final String userName = principal.getName();
-//			logger.info("CURRENT USER : " + principal);
 			if (authProvider.loggedIn())
 				if (userName != null) {
 					MaalrUserInfo user = (MaalrUserInfo) request.getSession().getAttribute("user");
@@ -157,9 +161,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 		mv.addObject("search", query);
 		
 		try {
-			// if (query.getSearchPhrase() != null && query.getSearchPhrase().trim().length() > 0) {
-			// 		setPageTitle(mv, "Translations of " + query.getSearchPhrase());
-			// }
 			QueryResult result = index.query(query, true);
 			mv.addObject("result", result);
 			return mv;
@@ -216,9 +217,6 @@ import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 			String title = Localizer.getTranslation(getLocale(session, request), key);
 			title = title.replaceAll("\\{0\\}", query.getValue("searchPhrase"));
 			setPageTitle(mv, title);
-			// TODO: Required to display umlauts etc in XML output.
-			// However, this is done automatically in JSON & HTML...
-			// should be configured somewhere else?
 			response.setCharacterEncoding("UTF-8");
 			return mv;
 		} catch (Exception e) {

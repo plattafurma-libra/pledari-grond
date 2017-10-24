@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 @XmlRootElement
 public class LemmaVersion implements Serializable {
 
@@ -113,8 +114,6 @@ public class LemmaVersion implements Serializable {
 	
 	private HashMap<String, String> entryValues = new HashMap<String, String>();
 	private HashMap<String, String> maalrValues = new HashMap<String, String>();
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -333,7 +332,5 @@ public class LemmaVersion implements Serializable {
 	public void setValue(String key, String value) {
 		entryValues.put(key, value);
 	}
-
-	
 
 }

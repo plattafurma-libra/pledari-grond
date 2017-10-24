@@ -15,17 +15,10 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list;
 
-import java.util.Date;
-
-import com.google.gwt.cell.client.DateCell;
-import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.SelectionChangeEvent.Handler;
@@ -48,8 +41,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.PagingDataGrid;
 @Deprecated
 public class UserList extends Composite {
 
-	private static UserListUiBinder uiBinder = GWT
-			.create(UserListUiBinder.class);
+	private static UserListUiBinder uiBinder = GWT.create(UserListUiBinder.class);
 
 	@UiField(provided = true)
 	PagingDataGrid<LightUserInfo> table;
@@ -73,13 +65,13 @@ public class UserList extends Composite {
 
 	/**
 	 * Returns either the String which should be displayed,
-	 * or "--" if it is <code>null</code>.
+	 * or "-" if it is <code>null</code>.
 	 * @param toDisplay
 	 * @return
 	 */
 	private String getDisplayString(String toDisplay) {
 		if (toDisplay == null || toDisplay.trim().length() == 0) {
-			return "--";
+			return "-";
 		}
 		return toDisplay.trim();
 	}
@@ -178,7 +170,6 @@ public class UserList extends Composite {
 //			table.getColumn(i).setSortable(true);
 //		}
 //		table.setRowCount(20);
-
 	}
 
 	/**

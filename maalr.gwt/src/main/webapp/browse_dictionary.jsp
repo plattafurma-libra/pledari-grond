@@ -8,7 +8,7 @@
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.description.UseCase" %>
-<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.lucene.query.QueryResult" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

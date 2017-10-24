@@ -1,19 +1,28 @@
 package de.uni_koeln.spinfo.maalr.common.shared.form;
 
-
 public class UserForm {
 
 	private String email;
 	private String password;
+	private String confirm;
 
 	public UserForm() {
 	}
 
-	public UserForm(String email, String password) {
+	public UserForm(final String email, final String password, final String confirm) {
 		setEmail(email);
 		setPassword(password);
+		setConfirm(confirm);
 	}
 	
+	public void setConfirm(final String confirm) {
+		this.confirm = confirm;
+	}
+	
+	public String getConfirm() {
+		return confirm;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -22,11 +31,11 @@ public class UserForm {
 		return password;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(final 	String password) {
 		this.password = password;
 	}
 

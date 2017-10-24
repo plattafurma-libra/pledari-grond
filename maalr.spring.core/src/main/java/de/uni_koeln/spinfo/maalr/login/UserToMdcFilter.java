@@ -28,7 +28,7 @@ import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 
 
 
@@ -43,7 +43,7 @@ import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
 @Service("springLogUserLogin")
 public class UserToMdcFilter implements javax.servlet.Filter {
 	
-	@Autowired private PGAuthenticationProvider authProvider;
+	@Autowired private PGAutenticationProvider authProvider;
 	
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

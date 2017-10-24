@@ -37,8 +37,7 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 	@Autowired private UserInfoBackend backend;
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication authentication)
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
 		
 		// Set Session Timeout to one hour
@@ -58,7 +57,7 @@ public class PostLoginHandler implements AuthenticationSuccessHandler {
 					return;
 				}
 			}
-			response.sendRedirect(dictContext + "/index.html");
+			response.sendRedirect(dictContext + "/");
 		}
 
 	}

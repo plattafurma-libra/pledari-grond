@@ -27,7 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.uni_koeln.spinfo.maalr.MongoTestHelper;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
-import de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider;
+import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidUserException;
 
 // TODO: Rewrite tests! Use de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider instead of "LoginManager"

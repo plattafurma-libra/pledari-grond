@@ -208,6 +208,7 @@ public class UserInfoBackend {
 	 *            the number of elements to return
 	 * @return
 	 */
+
 	@Secured(Constants.Roles.ADMIN_5)
 	public List<MaalrUserInfo> getAllUsers(Role role, String text, String sortColumn, boolean sortAscending, int from, int length) {
 		UserInfoDB userInfos = new UserInfoDB();

@@ -4,7 +4,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gwtbootstrap="urn:import:com.github.gwtbootstrap.client.ui" xmlns:datepicker="urn:import:com.github.gwtbootstrap.datepicker.client">
 	<g:HTMLPanel>
 		<gwtbootstrap:Well>
-			<gwtbootstrap:Form type="HORIZONTAL">
+			<gwtbootstrap:Form type="VERTICAL">
 				<gwtbootstrap:Fieldset>
 					<gwtbootstrap:Legend>Account Details</gwtbootstrap:Legend>
 					<gwtbootstrap:ControlGroup>

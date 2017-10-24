@@ -1,6 +1,6 @@
 <%@ page import="javax.security.auth.login.LoginContext" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.common.shared.Role" %>
-<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider" %>
 <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %>
 
 <%-- LOGIN --%>

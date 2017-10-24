@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
+<%-- Header included here --%>
 <jsp:include page="editor_head.jsp" />
 
 <body>

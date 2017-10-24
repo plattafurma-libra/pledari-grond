@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value='<%=session.getAttribute("locale")%>' />
@@ -9,7 +10,7 @@
 	
 		<jsp:include page="/maalr_modules/misc/header.jsp" />
 		
-<!-- 		<div class="content" id="content"> -->
+<!-- <div class="content" id="content"> -->
 		<div class="content">
 			<div class="container-fluid">
 				<noscript>
@@ -35,6 +36,6 @@
 		
 		<iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
 		<jsp:include page="/analytics.jsp" />
-		
+	
 	</body>
 </html>

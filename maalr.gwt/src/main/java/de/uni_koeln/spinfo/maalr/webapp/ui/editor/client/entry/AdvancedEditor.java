@@ -496,7 +496,6 @@ public class AdvancedEditor {
 						int selected = -1;
 						for (int i = 0; i < options.size(); i++) {
 							OverlayOption option = options.get(i);
-//							list.addItem(option.getValue());
 							list.addItem(option.getLabel(), option.getValue());
 							if (option.getValue().equals(lv.getEntryValue(id))) {
 								selected = i;

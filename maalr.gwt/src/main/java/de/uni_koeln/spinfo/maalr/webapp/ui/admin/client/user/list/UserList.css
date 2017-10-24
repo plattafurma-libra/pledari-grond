@@ -20,11 +20,16 @@
 }
 
 .dataGridHeader {
-  padding: 3px 5px;
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-shadow: none;
+    padding: 3px 5px;
+    text-align: left;
+    font-size: 16px;
+    font-family: inherit;
+    letter-spacing: 1.3px;
+    font-style: normal;
+    font-weight: 100;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: none;
 }
 
 .dataGridCell {
@@ -67,7 +72,8 @@
 }
 
 .dataGridEvenRow {
-  background: white;
+  background: #FFFFFF;
+  font-size: 12px;
 }
 
 .dataGridEvenRowCell {
@@ -75,7 +81,8 @@
 
 .dataGridOddRow {
   background: #EAEAEA;
-  cursor: pointer;
+/*   cursor: pointer; */
+  font-size: 12px;
 }
 
 .dataGridOddRowCell {
@@ -97,7 +104,7 @@
 }
 
 .dataGridSelectedRow {
-  background: #628cd5;
+  background: rgb(73, 175, 205);
   color: white;
 }
 

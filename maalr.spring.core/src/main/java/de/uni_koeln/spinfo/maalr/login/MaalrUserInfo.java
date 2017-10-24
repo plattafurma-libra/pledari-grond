@@ -40,13 +40,13 @@ public class MaalrUserInfo extends BasicDBObject {
 		setRole(role);
 	}
 	
-	public MaalrUserInfo(String login, String password, Role role) {
+	public MaalrUserInfo(final String login, final String password, Role role) {
 		setLogin(login);
 		setPassword(password);
 		setRole(role);
 	}
 	
-	public void setLogin(String login) {
+	public void setLogin(final String login) {
 		super.put(Constants.Users.LOGIN, login);
 	}
 	
@@ -54,9 +54,8 @@ public class MaalrUserInfo extends BasicDBObject {
 		return super.getString(Constants.Users.LOGIN);
 	}
 	
-	public void setPassword(String password) {
-		String hashpw = BCrypt.hashpw(password, BCrypt.gensalt());
-		super.put(Constants.Users.PASSWORD, hashpw);
+	public void setPassword(final String password) {
+		super.put(Constants.Users.PASSWORD, BCrypt.hashpw(password, BCrypt.gensalt()));
 	}
 	
 	public String getPassword() {
@@ -103,7 +102,7 @@ public class MaalrUserInfo extends BasicDBObject {
 		return getLogin();
 	}
 
-	// SPRING SOCIAL SPECIFIC VALUES NOT USED...
+	@Deprecated
 	public void setProviderUserId(String providerUserId) {
 		super.put(Constants.Users.PROVIDER_USER_ID, providerUserId);
 	}
@@ -120,4 +119,13 @@ public class MaalrUserInfo extends BasicDBObject {
 		return super.getString(Constants.Users.PROVIDER_ID);
 	}
 
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return super.equals(o);
+	}
 }

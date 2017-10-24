@@ -13,12 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.uni_koeln.spinfo.maalr.webapp.ui.admin.client;
+package de.uni_koeln.spinfo.maalr.common.shared;
 
-public interface Modules {
+/**
+ * Utility class for simple logging into the browsers console by using JSNI .
+ * 
+ * @author Mihail Atanassov (matana)
+ * 
+ */
+public class SimpleWebLogger {
 
-	public static final String ANCHOR_ROLE_MANAGER = "role_manager";
-	public static final String ANCHOR_DB_MANAGER = "db_manager";
-	public static final String ANCHOR_EDITOR_MODULE = "/editor/editor";
-	
+	public static void log(Class<? extends Object> clazz, String msg) {
+		consoleLog(clazz.getName() + ": " + msg);
+	}
+
+	public static void log(String msg) {
+		consoleLog(msg);
+	}
+
+	private static native void consoleLog(String msg) /*-{
+		console.log(msg);
+	}-*/;
+
 }

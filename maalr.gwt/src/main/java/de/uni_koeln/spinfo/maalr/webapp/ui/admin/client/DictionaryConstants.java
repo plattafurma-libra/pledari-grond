@@ -32,5 +32,4 @@ class DictionaryConstants {
 		return Dictionary.getDictionary(CONTEXT);
 	}
 
-
 }

@@ -448,6 +448,13 @@ public class ConfigurableSearchArea extends Form {
 
 	private Widget buildTextBox(final UiField field) {
 		final TextBox box = new TextBox();
+		
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+	        public void execute () {
+	        	box.setFocus(true);
+	        }
+		});
+		
 		box.setValue(field.getInitialValue());
 		
 		box.addKeyDownHandler(new KeyDownHandler() {
@@ -510,7 +517,7 @@ public class ConfigurableSearchArea extends Form {
 	private Widget buildComboBox(final UiField field) {
 		final ListBox box = new ListBox();
 		ArrayList<String> values = field.getValues();
-		// 
+
 		if(values != null) {
 			for(int i = 0; i < values.size(); i++) {
 				String value = values.get(i);
@@ -707,7 +714,6 @@ public class ConfigurableSearchArea extends Form {
 		        	}
 		        }
 		   });
-			
 		}
 	}
 	

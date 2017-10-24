@@ -1,5 +1,5 @@
-<%-- <%@page import="org.apache.jasper.tagplugins.jstl.ForEach"%> --%>
-<%-- <%@ page import="java.util.List"%> --%>
+<%-- <%@ page import="org.apache.jasper.tagplugins.jstl.ForEach" %> --%>
+<%-- <%@ page import="java.util.List" %> --%>
 <%-- <%@ page import="javax.security.auth.login.LoginContext" %> --%>
 <%-- <%@ page import="de.uni_koeln.spinfo.maalr.login.MaalrUserInfo" %> --%>
 <%-- <%@ page import="de.uni_koeln.spinfo.maalr.login.UserInfoBackend" %> --%>

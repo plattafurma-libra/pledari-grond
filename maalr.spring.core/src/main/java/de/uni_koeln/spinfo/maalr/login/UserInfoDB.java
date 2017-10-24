@@ -47,7 +47,10 @@ public class UserInfoDB {
 			Configuration config = Configuration.getInstance();
 			DB db = MongoHelper.getDB(config.getUserDb());
 			userCollection = db.getCollection(config.getUserDbCollection());
-			createIndex();
+			if(userCollection.count() == 0) 
+			{
+				createIndex();
+			}
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -79,22 +82,11 @@ public class UserInfoDB {
 	}
 
 	MaalrUserInfo insert(MaalrUserInfo user) throws InvalidUserException {
-		
-		long now = System.currentTimeMillis();
-
-		//FIXME: Workaround weil PostConstruct bei jetty-deployment nicht aufgerufen wird!
-		if(!userExists("admin")){
-			logger.warn("WORKAROUND! Creating initial user admin in DB: " 
-					+ Configuration.getInstance().getDbName()+", db-user: "+Configuration.getInstance().getUserDb()+", collection: "+Configuration.getInstance().getUserDbCollection());
-			String adminSecret = Configuration.getInstance().getAdminCredentials();
-			MaalrUserInfo admin = new MaalrUserInfo("admin", adminSecret, Role.ADMIN_5);
-			admin.setCreationDate(now);
-			admin.setLastModificationDate(now);
-			userCollection.insert(admin);
-			return user;
+		if(userExists(user.getLogin()))
+		{
+			throw new InvalidUserException("User already exists!");
 		}
-		
-		if(userExists(user.getLogin())) throw new InvalidUserException("User already exists!");
+		long now = System.currentTimeMillis();
 		user.setCreationDate(now);
 		user.setLastModificationDate(now);
 		userCollection.insert(user);
@@ -170,14 +162,9 @@ public class UserInfoDB {
 		if(role != null) {
 			query.put(Constants.Users.ROLE, role.toString());
 		}
+		// The value for the variable 'text' is set in 'maalr.gwt > ListFilter.java'
 		if(text != null && text.trim().length() > 0) {
 			BasicDBList attributes = new BasicDBList();
-//			DBObject firstName = new BasicDBObject();
-//			firstName.put(Constants.Users.FIRSTNAME, pattern); 
-//			attributes.add(firstName);
-//			DBObject lastName = new BasicDBObject();
-//			lastName.put(Constants.Users.LASTNAME, pattern);
-//			attributes.add(lastName);
 			DBObject login = new BasicDBObject();
 			login.put(Constants.Users.LOGIN, pattern);
 			attributes.add(login);
@@ -194,7 +181,10 @@ public class UserInfoDB {
 		while(cursor.hasNext()) {
 			DBObject o = cursor.next();
 			MaalrUserInfo user = new MaalrUserInfo(o);
-			all.add(user);
+			if(!all.contains(user)) 
+			{
+				all.add(user);
+			}
 		}
 		cursor.close();
 		return all;
@@ -210,16 +200,5 @@ public class UserInfoDB {
 		userCollection.remove(obj);
 		return true;
 	}
-
-//	public SocialUserDetails loadUserByUserId(String userId) {
-//		BasicDBObject obj = new BasicDBObject();
-//		obj.put(Constants.ID, userId);
-//		DBCursor cursor = userCollection.find(obj);
-//		if(!cursor.hasNext()) return null;
-//		MaalrUserInfo toReturn = new MaalrUserInfo(cursor.next());
-//		cursor.close();
-//		return toReturn;
-//	}
-	
 
 }

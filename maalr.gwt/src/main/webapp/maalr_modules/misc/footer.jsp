@@ -8,7 +8,7 @@
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
 <div id="navi_bottom">
-	
+
 	<div id="abc_list">
 		<jsp:include page="/maalr_modules/browse/alist_main.jsp" />
 	</div>

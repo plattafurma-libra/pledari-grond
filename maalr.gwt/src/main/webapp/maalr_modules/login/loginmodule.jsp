@@ -1,4 +1,4 @@
-<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAuthenticationProvider" %>
+<%@ page import="de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider" %>
 <%@ taglib prefix='cr' uri='http://java.sun.com/jstl/core_rt' %>
 
 <fmt:setLocale value='<%=session.getAttribute("locale") %>' />

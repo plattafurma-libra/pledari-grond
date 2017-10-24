@@ -19,8 +19,11 @@ import java.util.Date;
 
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.ListBox;
+import com.github.gwtbootstrap.client.ui.Modal;
+import com.github.gwtbootstrap.client.ui.ModalFooter;
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -32,6 +35,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
 
@@ -41,7 +45,6 @@ import de.uni_koeln.spinfo.maalr.services.admin.shared.UserService;
 import de.uni_koeln.spinfo.maalr.services.admin.shared.UserServiceAsync;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.user.list.UserList;
 import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.Dialog;
-import de.uni_koeln.spinfo.maalr.webapp.ui.common.client.util.SimpleWebLogger;
 
 @Deprecated
 public class UserDetails extends Composite {
@@ -171,6 +174,7 @@ public class UserDetails extends Composite {
 				Dialog.confirm("Confirm deletion", "Do you really want to delete user \"" + unmodified.getLogin() + "\"? This cannot be undone!", "OK", "Cancel", command , null, false);
 			}
 		});
+		mailto.getElement().getStyle().setCursor(Cursor.POINTER);
 		mailto.addClickHandler(new ClickHandler() {
 			
 			@Override
@@ -178,11 +182,22 @@ public class UserDetails extends Composite {
 				Window.open("mailto:" + login.getText(), "_blank", "");
 			}
 		});
+		edits.getElement().getStyle().setCursor(Cursor.POINTER);
 		edits.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert("This feature is not yet implemented.");
+				final Modal modal = new Modal();	
+				modal.setTitle("Info");
+				modal.add(new Label("This feature is not yet implemented."));
+				modal.add(new ModalFooter(new Button("OK", new ClickHandler() {
+					
+					@Override
+					public void onClick(ClickEvent event) {
+						modal.hide();
+					}
+				})));
+				modal.show();
 			}
 		});
 	}
@@ -201,7 +216,9 @@ public class UserDetails extends Composite {
 		creationDate.setValue(new Date(workingCopy.getCreationDate()));
 		modifiedDate.setValue(new Date(workingCopy.getLastModificationDate()));
 		role.setSelectedIndex(getRoleIndex(workingCopy.getRole()));
-		if(user.getLogin().equals("admin")) {
+		
+		//if(user.getLogin().equals("admin")) {
+		if(user.getRole().equals("ROLE_ADMIN")) {
 			role.setEnabled(false);
 		} else {
 			role.setEnabled(true);

@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+
 @XmlRootElement
 public class LightUserInfo implements Serializable {
 	
@@ -204,5 +205,4 @@ public class LightUserInfo implements Serializable {
 			return false;
 		return true;
 	}
-
 }

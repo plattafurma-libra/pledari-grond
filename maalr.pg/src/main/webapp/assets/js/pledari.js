@@ -110,11 +110,9 @@ $(document).ready(function() {
 				$('#dic_navi_head').after("<div id='dict_descript'>Puter</div>");
 			}
 		}
-		
 	}
 
 	function stopMobile() {
-		
 		/*Reverse settings from startMobile function*/
 
 		if(locale == "st") {
@@ -124,7 +122,6 @@ $(document).ready(function() {
 			$('#pt_brand_title').html('<a href="/puter">puter</a>');
 			$('#vl_brand_title').html('<a href="/vallader">vallader</a>');
 			$('#sr_brand_title').html('<a href="/sursilvan">sursilvan</a>');
-			
 		} else {
 			$('#sm_brand_title').html('<a href="/surmiran">Surmiran</a>');
 			$('#st_brand_title').html('<a href="/sutsilvan">Sutsilvan</a>');
@@ -201,6 +198,7 @@ $(document).ready(function() {
 				'background-image': 'url(/sutsilvan/assets/img/checkbox_sprite2x.png)'
 			});
 		}
+		
 	}
 	
 });
