@@ -19,7 +19,7 @@
                     	</div>
                 	</div>
                 	<div class="form-group" style="margin-top: 15px;">
-                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;"><fmt:message key='maalr.login.pwd' />*</label>
+                   		<label class="col-sm-3 control-label" style="padding-right: 1em; width: 80px !important; text-align: left !important;"><fmt:message key='maalr.login.pwd.repeat' /></label>
                    		<div class="col-sm-9">
                     		<input class="form-control sign-up-input" type="password" name="confirm"/>
                     	</div>
