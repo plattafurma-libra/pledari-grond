@@ -1,4 +1,4 @@
-maalr
+Pledari Grond
 =====
 
-Maalr - Modern Approach to Aggregate Lexical Resources
+
