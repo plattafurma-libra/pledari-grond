@@ -1,4 +1,2 @@
-maalr
+Pledari Grond (surmiran)
 =====
-
-Maalr - Modern Approach to Aggregate Lexical Resources
