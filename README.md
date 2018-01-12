@@ -1,4 +1,4 @@
-Pledari Grond (rumantsch)
+Pledari Grond (rumantsch grischun)
 =====
 
 
