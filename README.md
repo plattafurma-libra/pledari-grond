@@ -1,4 +1,2 @@
-maalr
+Pledari Grond (sutsilvan)
 =====
-
-Maalr - Modern Approach to Aggregate Lexical Resources
