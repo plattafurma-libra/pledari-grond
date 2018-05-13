@@ -59,22 +59,30 @@ import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQuery;
 import de.uni_koeln.spinfo.maalr.lucene.query.QueryResult;
 import de.uni_koeln.spinfo.maalr.webapp.service.AccountService;
 
-@Controller 
+@Controller
 public class WebMVCController {
-	
+
 	private static final String I18N_TEXT = "de.uni_koeln.spinfo.maalr.webapp.i18n.text";
 	private static final String RM = "rm";
 	private static final String LOCALE = "locale";
 
-	private final Logger logger = LoggerFactory.getLogger(WebMVCController.class);
+	private static final Logger LOG = LoggerFactory
+			.getLogger(WebMVCController.class);
 
-	@Autowired private Index index;
-	@Autowired private UserInfoBackend users;
-	@Autowired private AccountService accountService;
-	@Autowired private PGAutenticationProvider authProvider;
+	@Autowired
+	private Index index;
+
+	@Autowired
+	private UserInfoBackend users;
+
+	@Autowired
+	private AccountService accountService;
+
+	@Autowired
+	private PGAutenticationProvider authProvider;
 
 	private Configuration configuration = Configuration.getInstance();
-	
+
 	private String getLocale(HttpSession session, HttpServletRequest request) {
 		String locale = (String) request.getParameter(LOCALE);
 		if (locale == null) {
@@ -88,13 +96,15 @@ public class WebMVCController {
 			return locale;
 		}
 	}
-	
-	private String getLocalizedString(String key, HttpSession session, HttpServletRequest request) {
+
+	private String getLocalizedString(String key, HttpSession session,
+			HttpServletRequest request) {
 		String locale = getLocale(session, request);
-		if(locale == null) {
+		if (locale == null) {
 			return ResourceBundle.getBundle(I18N_TEXT).getString(key);
 		} else {
-			return ResourceBundle.getBundle(I18N_TEXT, new Locale(locale)).getString(key);
+			return ResourceBundle.getBundle(I18N_TEXT, new Locale(locale))
+					.getString(key);
 		}
 	}
 
@@ -104,11 +114,14 @@ public class WebMVCController {
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView showResults(HttpSession session, HttpServletRequest request) {
+	public ModelAndView showResults(HttpSession session,
+			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		setPageTitle(mv,
+				getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
-		session.setAttribute("language", Configuration.getInstance().getLemmaDescription().getLanguageName(true));
+		session.setAttribute("language", Configuration.getInstance()
+				.getLemmaDescription().getLanguageName(true));
 		return mv;
 	}
 
@@ -117,10 +130,12 @@ public class WebMVCController {
 	}
 
 	@RequestMapping("/")
-	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
-		logger.info("Request: {}", request.getContextPath());
+	public ModelAndView showIndex(HttpSession session,
+			HttpServletRequest request) {
+		LOG.info("Request: {}", request.getContextPath());
 		ModelAndView mv = new ModelAndView("index");
-		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
+		setPageTitle(mv,
+				getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
@@ -131,12 +146,14 @@ public class WebMVCController {
 	}
 
 	@ModelAttribute("user")
-	private MaalrUserInfo currentUser(final HttpServletRequest request, Principal principal) {
+	private MaalrUserInfo currentUser(final HttpServletRequest request,
+			Principal principal) {
 		if (principal != null) {
 			final String userName = principal.getName();
 			if (authProvider.loggedIn())
 				if (userName != null) {
-					MaalrUserInfo user = (MaalrUserInfo) request.getSession().getAttribute("user");
+					MaalrUserInfo user = (MaalrUserInfo) request.getSession()
+							.getAttribute("user");
 					if (user == null) {
 						user = users.getByLogin(userName);
 						request.getSession().setAttribute("user", user);
@@ -152,13 +169,15 @@ public class WebMVCController {
 		return new ModelAndView("search");
 	}
 
-	@RequestMapping(value = "/translate", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView translate(@ModelAttribute("query") MaalrQuery query, BindingResult br, final HttpServletRequest request) {
-		
+	@RequestMapping(value = "/translate", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public ModelAndView translate(@ModelAttribute("query") MaalrQuery query,
+			BindingResult br, final HttpServletRequest request) {
+
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("search", query);
-		
+
 		try {
 			QueryResult result = index.query(query, true);
 			mv.addObject("result", result);
@@ -171,17 +190,22 @@ public class WebMVCController {
 	@RequestMapping("/login")
 	public ModelAndView login(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("login");
-		setPageTitle(mv, getLocalizedString("maalr.login_page.title", session, request));
+		setPageTitle(mv,
+				getLocalizedString("maalr.login_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
 		mv.addObject("userForm", new UserForm());
 		return mv;
 	}
-	
-	@RequestMapping(value = "/signup", method = RequestMethod.POST, produces="application/json", consumes="application/json")
-	public @ResponseBody UserFormValidationResponse processRegistration(@RequestBody UserForm userForm, HttpSession session, HttpServletRequest request) {
-		return accountService.createAccount(userForm, getLocale(session, request));
+
+	@RequestMapping(value = "/signup", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public @ResponseBody
+	UserFormValidationResponse processRegistration(
+			@RequestBody UserForm userForm, HttpSession session,
+			HttpServletRequest request) {
+		return accountService.createAccount(userForm,
+				getLocale(session, request));
 	}
-	
+
 	/**
 	 * This method maps dictionary-urls to queries. URLs must match the pattern
 	 * described in the request mapping annotations, as
@@ -191,29 +215,36 @@ public class WebMVCController {
 	 * 
 	 * See http://static.springsource.org/spring/docs/3.1.x/spring-framework-
 	 * reference/html/mvc.html#mvc-ann-modelattrib-methods
-	 * @param session 
-	 * @param request 
+	 * 
+	 * @param session
+	 * @param request
 	 * 
 	 * @throws Exception
 	 */
 	@RequestMapping("/dictionary/{values[language]}/{values[searchPhrase]}")
-	public ModelAndView search(@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpServletResponse response, HttpSession session, HttpServletRequest request) {
+	public ModelAndView search(@ModelAttribute("query") MaalrQuery query,
+			BindingResult br, HttpServletResponse response,
+			HttpSession session, HttpServletRequest request) {
 		try {
 			query.setPageSize(100);
 			ModelAndView mv = new ModelAndView("dictionary");
 			mv.addObject("dictContext", configuration.getDictContext());
-			String firstLanguage = Configuration.getInstance().getLemmaDescription().getFirstLanguage().getId();
+			String firstLanguage = Configuration.getInstance()
+					.getLemmaDescription().getFirstLanguage().getId();
 			String language = query.getValue("language");
 			boolean isFirst = firstLanguage.equals(language);
-			QueryResult result = index.queryExact(query.getValue("searchPhrase"), isFirst, true);
+			QueryResult result = index.queryExact(
+					query.getValue("searchPhrase"), isFirst, true);
 			mv.addObject("result", result);
 			String key = null;
-			if(language.equals(configuration.getLemmaDescription().getLanguageName(true))) {
+			if (language.equals(configuration.getLemmaDescription()
+					.getLanguageName(true))) {
 				key = "dict.title_lang1";
 			} else {
 				key = "dict.title_lang2";
 			}
-			String title = Localizer.getTranslation(getLocale(session, request), key);
+			String title = Localizer.getTranslation(
+					getLocale(session, request), key);
 			title = title.replaceAll("\\{0\\}", query.getValue("searchPhrase"));
 			setPageTitle(mv, title);
 			// TODO: Required to display umlauts etc in XML output.
@@ -245,15 +276,15 @@ public class WebMVCController {
 	public ModelAndView newAlphaList(@ModelAttribute("query") MaalrQuery query,
 			BindingResult br, HttpSession session, HttpServletRequest request) {
 		try {
-			return newAlphaList(query.getValue("language"), "A", 0,
-					query, br, session, request);
+			return newAlphaList(query.getValue("language"), "A", 0, query, br,
+					session, request);
 		} catch (Exception e) {
 			return getErrorView(e);
 		}
 	}
 
 	private ModelAndView getErrorView(Exception e) {
-		logger.error("An error occurred", e);
+		LOG.error("An error occurred", e);
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
@@ -265,24 +296,37 @@ public class WebMVCController {
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
 	}
-	
-	@RequestMapping(value = "/dowanload/backup/{fileName}", method = { RequestMethod.GET }, produces = { "application/zip" })
-	public void downloadBackup (@PathVariable("fileName") String fileName, HttpServletRequest request, HttpServletResponse response) {
+
+	@RequestMapping(value = "/downloads/backup/{fileName}", method = { RequestMethod.GET }, produces = { "application/zip" })
+	public void downloadBackup(@PathVariable("fileName") String fileName,
+			HttpServletRequest request, HttpServletResponse response) {
 		try {
+
 			String dir = Configuration.getInstance().getBackupLocation();
+
 			File zip = new File(dir, fileName + ".zip");
+
+			LOG.info("downloading backup file: {}", zip.getName());
+
 			response.setContentType("application/zip");
-			response.setContentLength((int)zip.length());
+
+			response.setContentLength((int) zip.length());
+
 			OutputStream os = response.getOutputStream();
+
 			os.write(IOUtils.toByteArray(new FileInputStream(zip)));
+
 		} catch (IOException e) {
-			e.printStackTrace();
+
+			LOG.error("backup download failed with error: {}", e);
+
 		}
 	}
 
 	@RequestMapping("/browse/{language}")
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
-			@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpSession session, HttpServletRequest request)
+			@ModelAttribute("query") MaalrQuery query, BindingResult br,
+			HttpSession session, HttpServletRequest request)
 			throws NoIndexAvailableException, BrokenIndexException,
 			InvalidQueryException {
 		return newAlphaList(language, "A", 0, query, br, session, request);
@@ -292,10 +336,13 @@ public class WebMVCController {
 	public ModelAndView newAlphaList(@PathVariable("language") String language,
 			@PathVariable("letter") String letter,
 			@RequestParam(value = "page", defaultValue = "0") int page,
-			@ModelAttribute("query") MaalrQuery query, BindingResult br, HttpSession session, HttpServletRequest request)
+			@ModelAttribute("query") MaalrQuery query, BindingResult br,
+			HttpSession session, HttpServletRequest request)
 			throws NoIndexAvailableException, BrokenIndexException,
 			InvalidQueryException {
-		if(language == null) language = Configuration.getInstance().getLemmaDescription().getLanguageName(true);
+		if (language == null)
+			language = Configuration.getInstance().getLemmaDescription()
+					.getLanguageName(true);
 		QueryResult result = index.getAllStartingWith(language, letter, page);
 		ModelAndView mv = new ModelAndView("browse_dictionary");
 		mv.addObject("dictContext", configuration.getDictContext());
@@ -304,26 +351,37 @@ public class WebMVCController {
 		mv.addObject("page", page);
 		mv.addObject("language", language);
 		boolean first = true;
-		if(language.equals(configuration.getLemmaDescription().getLanguageName(true))) {
-			mv.addObject("otherLanguage", configuration.getLemmaDescription().getLanguageName(false));
+		if (language.equals(configuration.getLemmaDescription()
+				.getLanguageName(true))) {
+			mv.addObject("otherLanguage", configuration.getLemmaDescription()
+					.getLanguageName(false));
 		} else {
-			mv.addObject("otherLanguage", configuration.getLemmaDescription().getLanguageName(true));
+			mv.addObject("otherLanguage", configuration.getLemmaDescription()
+					.getLanguageName(true));
 			first = false;
 		}
 		mv.addObject("query", query);
-		if(result.getEntries().size() < 2 ) {
-			
-			String template = getLocalizedString("maalr.dict_title", session, request);
-			String title = template.replaceAll("\\{0\\}", Localizer.getTranslation(getLocale(session, request), (first ? "dict.lang1_lang2" : "dict.lang2_lang1")));
+		if (result.getEntries().size() < 2) {
+
+			String template = getLocalizedString("maalr.dict_title", session,
+					request);
+			String title = template.replaceAll("\\{0\\}", Localizer
+					.getTranslation(getLocale(session, request),
+							(first ? "dict.lang1_lang2" : "dict.lang2_lang1")));
 			setPageTitle(mv, title);
 		} else {
 			LemmaDescription desc = configuration.getLemmaDescription();
 			ValueFormat format = desc.getResultList(first).get(0);
-			String template = getLocalizedString("maalr.dict_title_ext", session, request);
-			String langPair = Localizer.getTranslation(getLocale(session, request), (first ? "dict.lang1_lang2" : "dict.lang2_lang1"));
+			String template = getLocalizedString("maalr.dict_title_ext",
+					session, request);
+			String langPair = Localizer.getTranslation(
+					getLocale(session, request), (first ? "dict.lang1_lang2"
+							: "dict.lang2_lang1"));
 			String title = template.replaceAll("\\{0\\}", langPair);
 			String a = format.apply(result.getEntries().get(0), null);
-			String b = format.apply(result.getEntries().get(result.getEntries().size()-1), null);
+			String b = format.apply(
+					result.getEntries().get(result.getEntries().size() - 1),
+					null);
 			title = title.replaceAll("\\{1\\}", a).replaceAll("\\{2\\}", b);
 			setPageTitle(mv, title);
 		}

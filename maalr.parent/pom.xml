@@ -16,21 +16,17 @@
 	</modules>
 
 	<properties>
-		<!-- general properties -->
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.svn.name>maalr</project.svn.name>
-		<!-- application properties -->
 		<application.title>Maalr</application.title>
-		<!-- dependency versions -->
-		<spring.version>4.1.4.RELEASE</spring.version>
+		<spring.version>4.3.17.RELEASE</spring.version>
 		<spring.security.version>3.2.0.RELEASE</spring.security.version>
 		<lucene.version>4.6.0</lucene.version>
 		<logback.version>1.0.9</logback.version>
 		<slf4j.version>1.6.6</slf4j.version>
-<!-- 		<gwt.version>2.6.1</gwt.version> -->
 		<gwt.version>2.7.0</gwt.version>
 		<antlr.version>3.4</antlr.version>
 		<jetty.default.port>8080</jetty.default.port>

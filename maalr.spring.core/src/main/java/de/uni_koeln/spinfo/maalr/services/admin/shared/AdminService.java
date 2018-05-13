@@ -52,7 +52,7 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+ import de.uni_koeln.spinfo.maalr.mongo.util.backup.BackupInfoHelper;
 
 @Service
 @Secured(Constants.Roles.ADMIN_5)
@@ -64,7 +64,9 @@ public class AdminService {
 	@Autowired private Environment environment;
 	@Autowired private Index index;
 	@Autowired private DataLoader dbCreator;
-	@Autowired private BackUpHelper backUpHelper;
+	
+	@Qualifier("backupInfoHelper")
+	@Autowired private BackupInfoHelper backupInfoHelper;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -142,6 +144,6 @@ public class AdminService {
 	}
 	
 	public BackupInfos getBackupInfos() {
-		return backUpHelper.getBackupInfos();
+		return backupInfoHelper.getBackupInfos();
 	}
 }
