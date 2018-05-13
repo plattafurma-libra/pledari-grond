@@ -15,9 +15,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -28,9 +25,9 @@ import javax.xml.bind.Marshaller;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -48,13 +45,11 @@ import de.uni_koeln.spinfo.maalr.mongo.core.Converter;
 import de.uni_koeln.spinfo.maalr.mongo.core.Database;
 import de.uni_koeln.spinfo.maalr.mongo.core.MD5OutputStream;
 
-@Service
-public class ExportFormatScheduler {
+@Service("scheduledExportCreater")
+public class ScheduledExportCreater {
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static final Logger LOG = LoggerFactory.getLogger(ScheduledExportCreater.class);
 
-	private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
-	
 	private static final String PATH_XML = "formats/xml/";
 	private static final String PATH_JSON = "formats/json/";
 	private static final String XML_INFIX = "_data_xml";
@@ -65,58 +60,48 @@ public class ExportFormatScheduler {
 	private static final String UTF_8 = "UTF-8";
 	private static final String NEW_LINE_SEPARATOR = "\n";
 	
+	@Scheduled(initialDelayString = "${export.initial.delay}", fixedRateString = "${export.fixed.rate}")
 	public void schedule() throws InterruptedException, ExecutionException {
+		try {
+			
+			LOG.info("creating csv export...");
+			exportCSV(Database.getInstance().getAll());
+			
+			LOG.info("creating xml export...");
+			exportXML(Database.getInstance().getAll());
+			
+			LOG.info("creating json export...");
+			exportJSON(Database.getInstance().getAll());
+			
+		} catch (NoDatabaseAvailableException | NoSuchAlgorithmException
+				| IOException e) {
+			LOG.error("public export failed with error: {}", e);
+		}
 		
-		scheduledExecutorService
-				.scheduleAtFixedRate(new Runnable() {
-
-					@Override
-					public void run() {
-						
-						try {
-							
-							Thread.sleep(6000);
-							
-							exportCSV(Database.getInstance().getAll());
-							exportXML(Database.getInstance().getAll());
-							exportJSON(Database.getInstance().getAll());
-							
-						} catch (NoDatabaseAvailableException
-								| NoSuchAlgorithmException | IOException | InterruptedException e) {
-							logger.error("Error occured: {}", e);
-						}
-					}
-				}, 0, 1, TimeUnit.DAYS);
 	}
 	
 	private void exportCSV(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("START CSV EXPORT");
 		File dir = createDirs(PATH_CSV);
 		String fileName = createFileName(CSV_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataCSV(fos, fileName, cursor);
-		logger.info("END CSV EXPORT");
 	}
 	
 	private void exportXML(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("START XML EXPORT");
 		File dir = createDirs(PATH_XML);
 		String fileName = createFileName(XML_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataXml(fos, fileName, cursor);
-		logger.info("END XML EXPORT");
 	}
 	
 	private void exportJSON(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
-		logger.info("START JSON EXPORT");
 		File dir = createDirs(PATH_JSON);
 		String fileName = createFileName(JSON_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
 		FileOutputStream fos = new FileOutputStream(file, false);
 		exportDataJson(fos, fileName, cursor);
-		logger.info("END JSON EXPORT");
 	}
 
 	private File createDirs(String dirPath) {
