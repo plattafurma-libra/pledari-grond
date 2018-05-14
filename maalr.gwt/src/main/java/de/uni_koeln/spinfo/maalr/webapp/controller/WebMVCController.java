@@ -31,6 +31,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -82,6 +83,9 @@ public class WebMVCController {
 	private PGAutenticationProvider authProvider;
 
 	private Configuration configuration = Configuration.getInstance();
+
+	@Value("${backup.location:backup}")
+	private String backupDir;
 
 	private String getLocale(HttpSession session, HttpServletRequest request) {
 		String locale = (String) request.getParameter(LOCALE);
@@ -302,9 +306,7 @@ public class WebMVCController {
 			HttpServletRequest request, HttpServletResponse response) {
 		try {
 
-			String dir = Configuration.getInstance().getBackupLocation();
-
-			File zip = new File(dir, fileName + ".zip");
+			File zip = new File(backupDir, fileName + ".zip");
 
 			LOG.info("downloading backup file: {}", zip.getName());
 

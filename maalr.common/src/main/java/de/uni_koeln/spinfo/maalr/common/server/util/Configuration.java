@@ -50,7 +50,6 @@ public class Configuration {
 	private static final String MONGODB_NAME = "mongodb.name";
 	private static final String LONG_NAME = "maalr.long.name";
 	private static final String SHORT_NAME = "maalr.short.name";
-	private static final String BACKUP_LOCATION = "backup.location";
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
 	private static final String BACKUP_NUMS = "backup.nums";
 	private static final String LOCALE_CODE = "locale.code";
@@ -111,7 +110,8 @@ public class Configuration {
 		} catch (IOException e) {
 			throw e;
 		}
-		try (InputStreamReader reader = getConfiguration(properties.getProperty(MAALR_SEARCH_CONFIG))) {
+		try (InputStreamReader reader = getConfiguration(properties
+				.getProperty(MAALR_SEARCH_CONFIG))) {
 			JAXBContext ctx = JAXBContext
 					.newInstance(DictionaryConfiguration.class);
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
@@ -179,10 +179,6 @@ public class Configuration {
 		return dictConfig;
 	}
 
-	public String getBackupLocation() {
-		return properties.getProperty(BACKUP_LOCATION);
-	}
-
 	public String getTriggerTime() {
 		return properties.getProperty(BACKUP_TRIGGER_TIME);
 	}
@@ -245,19 +241,19 @@ public class Configuration {
 	public String getDbName() {
 		return properties.getProperty(MONGODB_NAME);
 	}
-	
+
 	public String getUserDb() {
 		return properties.getProperty(MONGODB_USER);
 	}
-	
+
 	public String getLocaleCode() {
 		return properties.getProperty(LOCALE_CODE);
 	}
-	
+
 	public String getUserDbCollection() {
 		return properties.getProperty(MONGODB_USER_COLLECTION);
 	}
-	
+
 	public String getMaalrImpl() {
 		return properties.getProperty(MAALR_IMPL);
 	}

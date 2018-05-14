@@ -25,7 +25,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(ScheduledBackupHelper.class);
 
-	@Value("${backup.directory:backup}")
+	@Value("${backup.location:backup}")
 	private String backupDir;
 
 	@Value("${db.name:rumantsch}")

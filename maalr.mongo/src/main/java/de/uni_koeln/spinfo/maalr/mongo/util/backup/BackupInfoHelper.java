@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
 
@@ -22,12 +21,15 @@ public class BackupInfoHelper extends AbstractBackupHelper {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(BackupInfoHelper.class);
 
-	@Value("${backup.directory:backup}")
+	@Value("${backup.location:backup}")
 	private String backupDir;
 
+	@Value("${backup.num:7}")
+	private String backupNum;
+
 	/**
-	 * Returns a wrapper class for displaying backup information within the
-	 * gwt admin-module.
+	 * Returns a wrapper class for displaying backup information within the gwt
+	 * admin-module.
 	 */
 	public BackupInfos getBackupInfos() {
 
@@ -52,9 +54,8 @@ public class BackupInfoHelper extends AbstractBackupHelper {
 		}
 
 		return new BackupInfos(list)
-				.backupDir(Configuration.getInstance().getBackupLocation())
-				.backupNum(Configuration.getInstance().getBackupNums())
-				.backupTime(Configuration.getInstance().getTriggerTime());
+				.backupDir(backupDir)
+				.backupNum(backupNum);
 	}
 
 	private String getSize(File file) {
