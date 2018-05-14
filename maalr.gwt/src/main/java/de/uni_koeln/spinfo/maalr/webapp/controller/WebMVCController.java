@@ -308,7 +308,7 @@ public class WebMVCController {
 
 			File zip = new File(backupDir, fileName + ".zip");
 
-			LOG.info("downloading backup file: {}", zip.getAbsolutePath());
+			LOG.info("downloading backup file: {}", zip.getName());
 
 			response.setContentType("application/zip");
 

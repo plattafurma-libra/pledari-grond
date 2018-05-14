@@ -50,7 +50,6 @@ public class Configuration {
 	private static final String MONGODB_NAME = "mongodb.name";
 	private static final String LONG_NAME = "maalr.long.name";
 	private static final String SHORT_NAME = "maalr.short.name";
-	// private static final String BACKUP_LOCATION = "backup.location";
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
 	private static final String BACKUP_NUMS = "backup.nums";
 	private static final String LOCALE_CODE = "locale.code";
@@ -179,10 +178,6 @@ public class Configuration {
 	public DictionaryConfiguration getDictionaryConfig() {
 		return dictConfig;
 	}
-
-	// public String getBackupLocation() {
-	// return properties.getProperty(BACKUP_LOCATION);
-	// }
 
 	public String getTriggerTime() {
 		return properties.getProperty(BACKUP_TRIGGER_TIME);
