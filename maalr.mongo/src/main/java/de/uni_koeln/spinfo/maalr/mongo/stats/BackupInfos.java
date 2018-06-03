@@ -19,15 +19,16 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Wrapper class for GWT module. Wraps general information about the scheduled back up.
+ * Wrapper class for GWT module. Wraps general information about the scheduled
+ * back up.
  * 
  * @author Mihail Atanassov (atanassov.mihail@gmail.com)
- *
+ * 
  */
 public class BackupInfos implements Serializable {
-	
+
 	private static final long serialVersionUID = 753709468739198232L;
-	
+
 	private List<FileInfo> infos;
 
 	private String backupLocation;
@@ -35,10 +36,10 @@ public class BackupInfos implements Serializable {
 	private String backupNums;
 
 	private String triggerTime;
-	
+
 	public BackupInfos() {
 	}
-	
+
 	public BackupInfos(List<FileInfo> infos) {
 		this.infos = infos;
 	}
@@ -47,14 +48,29 @@ public class BackupInfos implements Serializable {
 		this.backupLocation = backupLocation;
 	}
 
+	public BackupInfos backupDir(String backupLocation) {
+		this.setBackupDir(backupLocation);
+		return this;
+	}
+
 	public void setBackupNum(String backupNums) {
 		this.backupNums = backupNums;
+	}
+
+	public BackupInfos backupNum(String backupNums) {
+		this.setBackupNum(backupNums);
+		return this;
 	}
 
 	public void setBackupTime(String triggerTime) {
 		this.triggerTime = triggerTime;
 	}
-	
+
+	public BackupInfos backupTime(String triggerTime) {
+		this.setBackupTime(triggerTime);
+		return this;
+	}
+
 	public List<FileInfo> getInfos() {
 		return infos;
 	}
@@ -70,9 +86,5 @@ public class BackupInfos implements Serializable {
 	public String getTriggerTime() {
 		return triggerTime;
 	}
-	
-
-	
-	
 
 }
