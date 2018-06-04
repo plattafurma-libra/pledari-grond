@@ -45,9 +45,7 @@ import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.BackUpHelperException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
 @Service
@@ -69,9 +67,6 @@ public class AppInitializer {
 	
 	@Autowired 
 	private Index index;
-	
-	@Autowired 
-	private BackUpHelper backUpHelper;
 	
 	@PostConstruct
 	public void postConstruct() throws Exception  {
@@ -96,19 +91,6 @@ public class AppInitializer {
 		IndexStatistics statistics = index.getIndexStatistics();
 		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(), statistics.getLastUpdated(), statistics.getOverlayCount());
 		
-		// ASYNC TASKS
-		triggerBackUp();
-	}
-
-	private void triggerBackUp() {
-		logger.info("STARTING SCHEDULED BACKUP!!!");
-		String parent = Configuration.getInstance().getBackupLocation();
-		String time = Configuration.getInstance().getTriggerTime();
-		try {
-			backUpHelper.setBackup(BackUpHelper.Period.DAILY, time, parent, false);
-		} catch (BackUpHelperException e) {
-			logger.error("Error occured: {}", e);
-		}
 	}
 
 	private void configureSearchUi() {

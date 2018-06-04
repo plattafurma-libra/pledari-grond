@@ -52,36 +52,47 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+import de.uni_koeln.spinfo.maalr.mongo.util.backup.BackupInfoHelper;
 
 @Service
 @Secured(Constants.Roles.ADMIN_5)
 public class AdminService {
-	
-	@Autowired(required = false) @Qualifier("maalr.system.stats") 
+
+	@Autowired(required = false)
+	@Qualifier("maalr.system.stats")
 	private IStatisticsService systemStats;
-	
-	@Autowired private Environment environment;
-	@Autowired private Index index;
-	@Autowired private DataLoader dbCreator;
-	@Autowired private BackUpHelper backUpHelper;
-	
+
+	@Autowired
+	private Environment environment;
+
+	@Autowired
+	private Index index;
+
+	@Autowired
+	private DataLoader dbCreator;
+
+	@Qualifier("backupInfoHelper")
+	@Autowired
+	private BackupInfoHelper backupInfoHelper;
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	public void importDatabase() throws NoDatabaseAvailableException, IndexException, InvalidEntryException, DatabaseIOException, ZipException, IOException {
+
+	public void importDatabase() throws NoDatabaseAvailableException,
+			IndexException, InvalidEntryException, DatabaseIOException,
+			ZipException, IOException {
 		dbCreator.createFromSQLDump(environment.getLexFile(), -1);
-			rebuildIndex();
+		rebuildIndex();
 	}
 
 	public void importDatabase(int max) throws Exception {
-			dbCreator.createFromSQLDump(environment.getLexFile(), max);
-			rebuildIndex();
+		dbCreator.createFromSQLDump(environment.getLexFile(), max);
+		rebuildIndex();
 	}
 
 	public String dropDatabase() throws DatabaseException {
 		Database.getInstance().deleteAllEntries();
 		boolean empty = Database.getInstance().isEmpty();
-		if(empty) {
+		if (empty) {
 			return "The database has been dropped and is empty";
 		} else {
 			return "The database has been dropped but is still not empty, which is weird.";
@@ -99,8 +110,9 @@ public class AdminService {
 		}
 		return "The database has been reloaded.";
 	}
-	
-	public String rebuildIndex() throws NoDatabaseAvailableException, IndexException {
+
+	public String rebuildIndex() throws NoDatabaseAvailableException,
+			IndexException {
 		logger.info("Rebuilding index...");
 		Database db = Database.getInstance();
 		Iterator<LexEntry> iterator = db.getEntries();
@@ -112,36 +124,44 @@ public class AdminService {
 		return "The index has been rebuilt";
 	}
 
-	public DatabaseStatistics getDatabaseStats() throws NoDatabaseAvailableException {
+	public DatabaseStatistics getDatabaseStats()
+			throws NoDatabaseAvailableException {
 		return Database.getInstance().getStatistics();
 	}
-	
+
 	public IndexStatistics getIndexStats() throws NoIndexAvailableException {
 		IndexStatistics statistics = index.getIndexStatistics();
-		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(), statistics.getLastUpdated(), statistics.getOverlayCount());
+		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(),
+				statistics.getApprovedEntries(), statistics.getLastUpdated(),
+				statistics.getOverlayCount());
 		return statistics;
 	}
 
 	public SystemSummary getSystemSummary() {
-		if(systemStats == null) {
+		if (systemStats == null) {
 			return null;
 		}
 		return systemStats.getCurrent();
 	}
 
-	public void importDatabase(HttpServletRequest request) throws IOException, InvalidEntryException, NoDatabaseAvailableException, JAXBException, XMLStreamException {
+	public void importDatabase(HttpServletRequest request) throws IOException,
+			InvalidEntryException, NoDatabaseAvailableException, JAXBException,
+			XMLStreamException {
 		DefaultMultipartHttpServletRequest dmhsRequest = (DefaultMultipartHttpServletRequest) request;
-		MultipartFile multipartFile = (MultipartFile) dmhsRequest.getFile("file");
+		MultipartFile multipartFile = (MultipartFile) dmhsRequest
+				.getFile("file");
 		InputStream in = multipartFile.getInputStream();
 		Database.getInstance().importData(in);
 	}
 
 	public void exportData(boolean allVersions, boolean dropKeys,
-			ServletOutputStream out, String fileName) throws NoDatabaseAvailableException, NoSuchAlgorithmException, JAXBException, IOException {
+			ServletOutputStream out, String fileName)
+			throws NoDatabaseAvailableException, NoSuchAlgorithmException,
+			JAXBException, IOException {
 		Database.getInstance().exportData(allVersions, dropKeys, out, fileName);
 	}
-	
+
 	public BackupInfos getBackupInfos() {
-		return backUpHelper.getBackupInfos();
+		return backupInfoHelper.getBackupInfos();
 	}
 }

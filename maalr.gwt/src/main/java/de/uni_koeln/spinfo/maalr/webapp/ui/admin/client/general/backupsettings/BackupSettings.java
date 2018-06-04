@@ -18,33 +18,38 @@ import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.FileInfo;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendServiceAsync;
+import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.backupsettings.template.BackupSettingTemplate;
 
 public class BackupSettings extends Composite {
 
-	private static BackupSettingsUiBinder uiBinder = GWT.create(BackupSettingsUiBinder.class);
+	private static BackupSettingsUiBinder uiBinder = GWT
+			.create(BackupSettingsUiBinder.class);
 
 	interface BackupSettingsUiBinder extends UiBinder<Widget, BackupSettings> {
 	}
-	
+
+	private static final BackupSettingTemplate TEMPLATE = GWT
+			.create(BackupSettingTemplate.class);
+
 	@UiField
 	Accordion backupInfo;
-	
+
 	@UiField
 	DivWidget generalInfo;
-	
+
 	AccordionGroup noBackupYet;
-		
-	private BackupInfos backupInfos; 
+
+	private BackupInfos backupInfos;
 
 	private BackendServiceAsync service;
-	
+
+	private String contextPath;
 
 	public BackupSettings() {
 		service = GWT.create(BackendService.class);
 		initWidget(uiBinder.createAndBindUi(this));
 		initBackupInfos();
 	}
-
 
 	private void initBackupInfos() {
 		service.getBackupInfos(new AsyncCallback<BackupInfos>() {
@@ -61,19 +66,18 @@ public class BackupSettings extends Composite {
 			}
 
 			private void displayGeneralInfos() {
-//				Label label = new Label("General Settings");
-//				label.addStyleName("label-info");
-//				generalInfo.add(label);
-				generalInfo.add(new Paragraph());
-				generalInfo.add(new Paragraph("Max. Backups: " + backupInfos.getBackupNums()));
-				generalInfo.add(new Paragraph("Location: " + backupInfos.getBackupLocation()));
-				generalInfo.add(new Paragraph("Timer: " + backupInfos.getTriggerTime()));
+				generalInfo.add(new Paragraph(
+						"A scheduled backup is triggered every 24 hours"));
+				generalInfo.add(new Paragraph("Max. Backups: "
+						+ backupInfos.getBackupNums()));
+				generalInfo.add(new Paragraph("Location: "
+						+ backupInfos.getBackupLocation()));
 			}
 
 			private void dispalyBackupInfos() {
 				List<FileInfo> infos = backupInfos.getInfos();
 				if (infos.size() != 0) {
-					if(noBackupYet != null) { 
+					if (null != noBackupYet) {
 						backupInfo.remove(noBackupYet);
 					}
 					for (int i = 0; i < infos.size(); i++) {
@@ -84,30 +88,40 @@ public class BackupSettings extends Composite {
 
 						accordionGroup.setHeading(file.getCreationDate());
 
-						accordionGroup.add(new Paragraph("<b>File</b>: " + file.getName()));
-						accordionGroup.add(new Paragraph("<b>Last mod.</b>: " + file.getLastModified()));
-						accordionGroup.add(new Paragraph("<b>Size</b>: ~ " + file.getSize() + " MB"));
-						Paragraph paragraph = new Paragraph("Download ");
-						paragraph.add(new Anchor("link", "/dowanload/backup/" + file.getName()));
+						accordionGroup.add(new Paragraph(TEMPLATE.fileName(
+								file.getName()).asString()));
+						accordionGroup.add(new Paragraph(TEMPLATE.createdAt(
+								file.getCreationDate()).asString()));
+						accordionGroup.add(new Paragraph(TEMPLATE.size(
+								file.getSize()).asString()));
+						Paragraph paragraph = new Paragraph();
+						paragraph.add(new Anchor("Download", TEMPLATE.link(
+								contextPath, file.getName()).asString()));
+
 						accordionGroup.add(paragraph);
 
 						backupInfo.add(accordionGroup);
 					}
 				} else {
-					noBackupYet = noBackupYet == null ? new AccordionGroup() : noBackupYet;
+					noBackupYet = noBackupYet == null ? new AccordionGroup()
+							: noBackupYet;
 					setAccGroupSytle(noBackupYet);
 					noBackupYet.setHeading("no backups created yet...");
 					Paragraph paragraph = new Paragraph();
-					paragraph.setText("Check out the maalr configurations or properties setting. The next back is scheduled for (DATE + TIME).");
+					paragraph
+							.setText("Check out the maalr configurations or properties setting. The next back is scheduled for (DATE + TIME).");
 					noBackupYet.add(paragraph);
 					backupInfo.add(noBackupYet);
 				}
 			}
-			
+
 			private void setAccGroupSytle(Widget w) {
 				w.getElement().getStyle().setBorderColor("#999999");
 			}
 		});
 	}
 
+	public void setContext(String contextPath) {
+		this.contextPath = contextPath;
+	}
 }

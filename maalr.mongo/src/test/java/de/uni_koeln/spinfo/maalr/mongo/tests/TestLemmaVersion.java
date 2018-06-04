@@ -25,7 +25,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Status;
 
 public class TestLemmaVersion {
-	
+
 	@Test
 	public void testStatus() {
 		LemmaVersion l = new LemmaVersion();
@@ -36,7 +36,7 @@ public class TestLemmaVersion {
 		s = l.getStatus();
 		Assert.assertEquals(Status.DELETED, s);
 	}
-	
+
 	@Test
 	public void testUserId() {
 		LemmaVersion l = new LemmaVersion();
@@ -45,7 +45,7 @@ public class TestLemmaVersion {
 		l.setUserId("b");
 		Assert.assertEquals("b", l.getUserId());
 	}
-	
+
 	@Test
 	public void testTimeStamp() {
 		LemmaVersion l = new LemmaVersion();
@@ -54,21 +54,21 @@ public class TestLemmaVersion {
 		l.setTimestamp(20L);
 		Assert.assertEquals(20, (long) l.getTimestamp());
 	}
-	
-//	@Test
-//	public void testRating() {
-//		LemmaVersion l = new LemmaVersion();
-//		Assert.assertEquals(0, l.getRating());
-//		l.setRating("a", true);
-//		Assert.assertEquals(1, l.getRating());
-//		l.setRating("b", true);
-//		Assert.assertEquals(2, l.getRating());
-//		l.setRating("b", true);
-//		Assert.assertEquals(2, l.getRating());
-//		l.setRating("b", false);
-//		Assert.assertEquals(1, l.getRating());
-//	}
-	
+
+	// @Test
+	// public void testRating() {
+	// LemmaVersion l = new LemmaVersion();
+	// Assert.assertEquals(0, l.getRating());
+	// l.setRating("a", true);
+	// Assert.assertEquals(1, l.getRating());
+	// l.setRating("b", true);
+	// Assert.assertEquals(2, l.getRating());
+	// l.setRating("b", true);
+	// Assert.assertEquals(2, l.getRating());
+	// l.setRating("b", false);
+	// Assert.assertEquals(1, l.getRating());
+	// }
+
 	@Test
 	@Ignore
 	public void testValues() {
@@ -81,5 +81,5 @@ public class TestLemmaVersion {
 		l.setEntryValues(map);
 		Assert.assertEquals(map, l.getEntryValues());
 	}
-	
+
 }
