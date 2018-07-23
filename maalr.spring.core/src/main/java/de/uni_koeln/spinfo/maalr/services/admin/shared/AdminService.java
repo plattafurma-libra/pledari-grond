@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
-import java.util.zip.ZipException;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -52,44 +51,46 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+import de.uni_koeln.spinfo.maalr.mongo.util.backup.BackupInfoHelper;
 
 @Service
 @Secured(Constants.Roles.ADMIN_5)
 public class AdminService {
-	
-	@Autowired(required=false)
-	@Qualifier("maalr.system.stats") 
+
+	@Autowired(required = false)
+	@Qualifier("maalr.system.stats")
 	private IStatisticsService systemStats;
-	
-	@Autowired 
+
+	@Autowired
 	private Environment environment;
-	
-	@Autowired 
+
+	@Autowired
 	private Index index;
-	
-	@Autowired 
+
+	@Autowired
 	private DataLoader dbCreator;
-	
-	@Autowired 
-	private BackUpHelper backUpHelper;
-	
+
+	@Autowired
+	@Qualifier("backupInfoHelper")
+	private BackupInfoHelper backupInfoHelper;
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	public void importDatabase() throws NoDatabaseAvailableException, IndexException, InvalidEntryException, DatabaseIOException, ZipException, IOException {
+
+	public void importDatabase()
+			throws NoDatabaseAvailableException, IndexException, InvalidEntryException, IOException {
 		dbCreator.createFromSQLDump(environment.getLexFile(), -1);
-			rebuildIndex();
+		rebuildIndex();
 	}
 
 	public void importDatabase(int max) throws Exception {
-			dbCreator.createFromSQLDump(environment.getLexFile(), max);
-			rebuildIndex();
+		dbCreator.createFromSQLDump(environment.getLexFile(), max);
+		rebuildIndex();
 	}
 
 	public String dropDatabase() throws DatabaseException {
 		Database.getInstance().deleteAllEntries();
 		boolean empty = Database.getInstance().isEmpty();
-		if(empty) {
+		if (empty) {
 			return "The database has been dropped and is empty";
 		} else {
 			return "The database has been dropped but is still not empty, which is weird.";
@@ -97,17 +98,21 @@ public class AdminService {
 	}
 
 	public String reloadDatabase() throws DatabaseException, IndexException {
-		dropDatabase();
+
 		try {
+
+			dropDatabase();
+
 			dbCreator.createFromSQLDump(environment.getLexFile(), -1);
-		} catch (ZipException e) {
-			throw new DatabaseIOException(e);
+
 		} catch (IOException e) {
+
 			throw new DatabaseIOException(e);
 		}
+
 		return "The database has been reloaded.";
 	}
-	
+
 	public String rebuildIndex() throws NoDatabaseAvailableException, IndexException {
 		logger.info("Rebuilding index...");
 		Database db = Database.getInstance();
@@ -123,34 +128,39 @@ public class AdminService {
 	public DatabaseStatistics getDatabaseStats() throws NoDatabaseAvailableException {
 		return Database.getInstance().getStatistics();
 	}
-	
+
 	public IndexStatistics getIndexStats() throws NoIndexAvailableException {
-		IndexStatistics statistics = index.getIndexStatistics();
-		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(), statistics.getLastUpdated(), statistics.getOverlayCount());
-		return statistics;
+		try {
+			IndexStatistics statistics = index.getIndexStatistics();
+			DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(),
+					statistics.getLastUpdated(), statistics.getOverlayCount());
+			return statistics;
+		} catch (Exception e) {
+			throw new NoIndexAvailableException(e);
+		}
 	}
 
 	public SystemSummary getSystemSummary() {
-		if(systemStats == null) 
-		{
+		if (systemStats == null) {
 			return null;
 		}
 		return systemStats.getCurrent();
 	}
 
-	public void importDatabase(HttpServletRequest request) throws IOException, InvalidEntryException, NoDatabaseAvailableException, JAXBException, XMLStreamException {
+	public void importDatabase(HttpServletRequest request)
+			throws IOException, InvalidEntryException, NoDatabaseAvailableException, JAXBException, XMLStreamException {
 		DefaultMultipartHttpServletRequest dmhsRequest = (DefaultMultipartHttpServletRequest) request;
-		MultipartFile multipartFile = (MultipartFile) dmhsRequest.getFile("file");
+		MultipartFile multipartFile = dmhsRequest.getFile("file");
 		InputStream in = multipartFile.getInputStream();
 		Database.getInstance().importData(in);
 	}
 
-	public void exportData(boolean allVersions, boolean dropKeys,
-			ServletOutputStream out, String fileName) throws NoDatabaseAvailableException, NoSuchAlgorithmException, JAXBException, IOException {
+	public void exportData(boolean allVersions, boolean dropKeys, ServletOutputStream out, String fileName)
+			throws NoDatabaseAvailableException, NoSuchAlgorithmException, JAXBException, IOException {
 		Database.getInstance().exportData(allVersions, dropKeys, out, fileName);
 	}
-	
+
 	public BackupInfos getBackupInfos() {
-		return backUpHelper.getBackupInfos();
+		return backupInfoHelper.getBackupInfos();
 	}
 }

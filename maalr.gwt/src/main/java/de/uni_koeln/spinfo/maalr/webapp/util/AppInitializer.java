@@ -45,9 +45,7 @@ import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
 import de.uni_koeln.spinfo.maalr.lucene.Index;
 import de.uni_koeln.spinfo.maalr.lucene.query.MaalrQueryFormatter;
 import de.uni_koeln.spinfo.maalr.lucene.stats.IndexStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.BackUpHelperException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
 import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 
 @Service
@@ -55,28 +53,22 @@ public class AppInitializer {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired 
-	private Environment environment;
-	
-	@Autowired 
+	@Autowired
 	private BackendService adminController;
-	
-	@Autowired 
+
+	@Autowired
 	private PGAutenticationProvider authProvider;
-	
-	@Autowired 
+
+	@Autowired
 	private UserInfoBackend userBackend;
-	
-	@Autowired 
+
+	@Autowired
 	private Index index;
-	
-	@Autowired 
-	private BackUpHelper backUpHelper;
-	
+
 	@PostConstruct
-	public void postConstruct() throws Exception  {
+	public void postConstruct() throws Exception {
 		String shouldImport = System.getProperty("maalr.import");
-		if(shouldImport != null && Boolean.parseBoolean(shouldImport)) {
+		if (shouldImport != null && Boolean.parseBoolean(shouldImport)) {
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			logger.warn("Importing Data...");
 			try {
@@ -90,73 +82,60 @@ public class AppInitializer {
 			}
 			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
-		
+
 		configureSearchUi();
 		MaalrQueryFormatter.setUiConfiguration(Configuration.getInstance().getUserDefaultSearchUiConfig());
 		IndexStatistics statistics = index.getIndexStatistics();
-		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(), statistics.getLastUpdated(), statistics.getOverlayCount());
-		
-		// ASYNC TASKS
-		triggerBackUp();
-	}
+		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(),
+				statistics.getLastUpdated(), statistics.getOverlayCount());
 
-	private void triggerBackUp() {
-		logger.info("STARTING SCHEDULED BACKUP!!!");
-		String parent = Configuration.getInstance().getBackupLocation();
-		String time = Configuration.getInstance().getTriggerTime();
-		try {
-			backUpHelper.setBackup(BackUpHelper.Period.DAILY, time, parent, false);
-		} catch (BackUpHelperException e) {
-			logger.error("Error occured: {}", e);
-		}
 	}
 
 	private void configureSearchUi() {
 		DictionaryConfiguration dictionaryConfig = Configuration.getInstance().getDictionaryConfig();
-		ArrayList<String> mainFields = new ArrayList<String>();
+		ArrayList<String> mainFields = new ArrayList<>();
 		List<QueryKey> queryKeys = dictionaryConfig.getQueryKeys();
 		for (QueryKey key : queryKeys) {
 			mainFields.add(key.getId());
 		}
 		List<ColumnSelector> fcList = dictionaryConfig.getColumnSelectors();
-		Map<String, ColumnSelector> columnSelectors = new HashMap<String, ColumnSelector>();
+		Map<String, ColumnSelector> columnSelectors = new HashMap<>();
 		for (ColumnSelector choice : fcList) {
 			columnSelectors.put(choice.getId(), choice);
 		}
 		List<QueryBuilder> qmList = dictionaryConfig.getQueryModifier();
-		Map<String, QueryBuilder> queryModifiers = new HashMap<String, QueryBuilder>(); 
+		Map<String, QueryBuilder> queryModifiers = new HashMap<>();
 		for (QueryBuilder modifier : qmList) {
 			queryModifiers.put(modifier.getId(), modifier);
 		}
 		UiConfiguration[] configs = Configuration.getInstance().getUIConfigurations();
 		for (UiConfiguration uiConfig : configs) {
-			if(uiConfig != null) {
-				initialize(mainFields, columnSelectors, queryModifiers,
-						uiConfig);
+			if (uiConfig != null) {
+				initialize(mainFields, columnSelectors, queryModifiers, uiConfig);
 			}
 		}
 	}
 
 	private void initialize(ArrayList<String> mainFields, Map<String, ColumnSelector> fieldChoices,
 			Map<String, QueryBuilder> queryModifiers, UiConfiguration uiConfig) {
-		
+
 		uiConfig.setMainFields(mainFields);
 		List<UiField> fields = uiConfig.getFields();
-		
+
 		for (UiField field : fields) {
-			if(field.isBuildIn()) {
+			if (field.isBuildIn()) {
 				setBuildinDefaults(field);
 				continue;
 			}
 			ColumnSelector choice = fieldChoices.get(field.getId());
-			if(choice != null) {
-				ArrayList<String> values = new ArrayList<String>();
+			if (choice != null) {
+				ArrayList<String> values = new ArrayList<>();
 				field.setValues(values);
 				List<ColumnSelectorOption> options = choice.getOptions();
-				for(int i = 0; i < options.size(); i++) {
+				for (int i = 0; i < options.size(); i++) {
 					ColumnSelectorOption option = options.get(i);
 					values.add(option.getId());
-					if(option.isDefault()) {
+					if (option.isDefault()) {
 						field.setInitialValue(i);
 					}
 				}
@@ -164,14 +143,14 @@ public class AppInitializer {
 			}
 
 			QueryBuilder queryModifier = queryModifiers.get(field.getId());
-			if(queryModifier != null) {
-				ArrayList<String> values = new ArrayList<String>();
+			if (queryModifier != null) {
+				ArrayList<String> values = new ArrayList<>();
 				field.setValues(values);
 				List<QueryBuilderOption> options = queryModifier.getOptions();
-				for(int i = 0; i < options.size(); i++) {
+				for (int i = 0; i < options.size(); i++) {
 					QueryBuilderOption option = options.get(i);
 					values.add(option.getId());
-					if(option.isDefault()) {
+					if (option.isDefault()) {
 						field.setInitialValue(i);
 					}
 				}
@@ -181,8 +160,8 @@ public class AppInitializer {
 	}
 
 	private void setBuildinDefaults(UiField field) {
-		if("pageSize".equals(field.getId())) {
-			ArrayList<String> sizes = new ArrayList<String>();
+		if ("pageSize".equals(field.getId())) {
+			ArrayList<String> sizes = new ArrayList<>();
 			sizes.add("15");
 			sizes.add("25");
 			sizes.add("50");
@@ -191,13 +170,13 @@ public class AppInitializer {
 			field.setValues(sizes);
 			field.setInitialValue(0);
 		}
-		if("highlight".equals(field.getId())) {
-			ArrayList<String> list = new ArrayList<String>();
+		if ("highlight".equals(field.getId())) {
+			ArrayList<String> list = new ArrayList<>();
 			list.add("false");
 			field.setValues(list);
 		}
-		if("suggestions".equals(field.getId())) {
-			ArrayList<String> list = new ArrayList<String>();
+		if ("suggestions".equals(field.getId())) {
+			ArrayList<String> list = new ArrayList<>();
 			list.add("false");
 			field.setValues(list);
 		}
