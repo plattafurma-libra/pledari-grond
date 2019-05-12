@@ -27,6 +27,7 @@ import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.LuceneHelper;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
+
 /**
  * A query builder to generate 'exact' queries. Matches both upper and lowercase.
  * See {@link MaalrQueryBuilder} and {@link DefaultQueryBuilder} for details.

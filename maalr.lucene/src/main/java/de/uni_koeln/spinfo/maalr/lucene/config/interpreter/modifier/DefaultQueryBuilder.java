@@ -27,6 +27,7 @@ import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
+
 /**
  * This query builder generates three lucene-queries from
  * a single {@link MaalrField}, to modify the sort order of
