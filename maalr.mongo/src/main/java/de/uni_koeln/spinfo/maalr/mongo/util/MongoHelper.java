@@ -20,9 +20,8 @@ import java.net.UnknownHostException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mongodb.CommandResult;
-import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 
@@ -30,43 +29,38 @@ public class MongoHelper {
 
 	private static Logger logger = LoggerFactory.getLogger(MongoHelper.class);
 
-	private static MongoClient mongo;
+	private static MongoClient MONGO_CLIENT;
 
-	private static DB db;
-	
-	private static String DB_NAME;
+	private static MongoDatabase DATABASE;
 
 	private static final Object lock = new Object();
 
-	public static DB getDB(String dbName) throws UnknownHostException {
+	public static MongoDatabase getDB(String dbName) throws UnknownHostException {
 		synchronized(lock) {
+			
 			dbName = dbName != null ? dbName : Configuration.getInstance().getDbName();
-			if(mongo == null) {
-				mongo = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
+			
+			if(MONGO_CLIENT == null) {
+				MONGO_CLIENT = new MongoClient(Configuration.getInstance().getMongoDBHost(), Configuration.getInstance().getMongoPort());
 			}
-			db = mongo.getDB(dbName);
-			logger.debug("Connecting to data base... " + db.getName());
-			return db;	
+			
+			DATABASE = MONGO_CLIENT.getDatabase(dbName);
+			
+			logger.info("Connecting to data base... " + DATABASE.getName());
+			
+			return DATABASE;	
 		}
 	}
 	
 	public static boolean isRunning() {
-		logger.info("Checking if MongoDB is running - might produce some stack traces...");
-		try {
-			CommandResult result = getDB(null).getStats();
-			if(result != null) return true;
-			return false;
-		} catch (Exception e) {
-			logger.info("Seems like MongoDB did not run - ignore exceptions above.");
-			return false;
-		}
+		return DATABASE != null && MONGO_CLIENT != null;
 	}
 
 	public static void shutdown() {
 		synchronized(lock ) {
-			mongo.close();
-			db = null;
-			mongo = null;
+			MONGO_CLIENT.close();
+			DATABASE = null;
+			MONGO_CLIENT = null;
 		}
 	}
 

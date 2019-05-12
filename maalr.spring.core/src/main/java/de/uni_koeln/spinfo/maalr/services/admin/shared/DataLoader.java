@@ -26,12 +26,11 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.mongodb.DBObject;
 
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Status;
@@ -85,7 +84,7 @@ public class DataLoader {
 		String line = br.readLine();
 		String[] keys = line.split("\t",-1);
 		Database db = Database.getInstance();
-		List<DBObject> entries = new ArrayList<DBObject>();
+		List<Document> entries = new ArrayList();
 		int counter = 0;
 		String userId = authProvider.getCurrentUserId();
 		while((line = br.readLine()) != null) {
@@ -115,7 +114,7 @@ public class DataLoader {
 			entry.getCurrent().setUserId(userId);
 			entry.getCurrent().setTimestamp(timestamp);
 			entry.getCurrent().setCreatorRole(Role.ADMIN_5);
-			entries.add(Converter.convertLexEntry(entry));
+			entries.add(new Document(Converter.convertLexEntry(entry)));
 			if(entries.size() == 10000) {
 				db.insertBatch(entries);
 				entries.clear();
