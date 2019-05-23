@@ -11,3 +11,4 @@ bin/
 .gwt/
 .metadata/
 maalr-lexem/*
+.recommenders/
