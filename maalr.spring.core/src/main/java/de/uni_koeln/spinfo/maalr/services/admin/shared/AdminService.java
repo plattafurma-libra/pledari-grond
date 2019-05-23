@@ -75,11 +75,10 @@ public class AdminService {
 	@Autowired
 	private BackupInfoHelper backupInfoHelper;
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(AdminService.class);
 
-	public void importDatabase() throws NoDatabaseAvailableException,
-			IndexException, InvalidEntryException, DatabaseIOException,
-			ZipException, IOException {
+	public void importDatabase() throws NoDatabaseAvailableException, IndexException, InvalidEntryException,
+			DatabaseIOException, ZipException, IOException {
 		dbCreator.createFromSQLDump(environment.getLexFile(), -1);
 		rebuildIndex();
 	}
@@ -111,8 +110,7 @@ public class AdminService {
 		return "The database has been reloaded.";
 	}
 
-	public String rebuildIndex() throws NoDatabaseAvailableException,
-			IndexException {
+	public String rebuildIndex() throws NoDatabaseAvailableException, IndexException {
 		logger.info("Rebuilding index...");
 		Database db = Database.getInstance();
 		Iterator<LexEntry> iterator = db.getEntries();
@@ -124,16 +122,14 @@ public class AdminService {
 		return "The index has been rebuilt";
 	}
 
-	public DatabaseStatistics getDatabaseStats()
-			throws NoDatabaseAvailableException {
+	public DatabaseStatistics getDatabaseStats() throws NoDatabaseAvailableException {
 		return Database.getInstance().getStatistics();
 	}
 
 	public IndexStatistics getIndexStats() throws NoIndexAvailableException {
 		IndexStatistics statistics = index.getIndexStatistics();
-		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(),
-				statistics.getApprovedEntries(), statistics.getLastUpdated(),
-				statistics.getOverlayCount());
+		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(),
+				statistics.getLastUpdated(), statistics.getOverlayCount());
 		return statistics;
 	}
 
@@ -144,20 +140,17 @@ public class AdminService {
 		return systemStats.getCurrent();
 	}
 
-	public void importDatabase(HttpServletRequest request) throws IOException,
-			InvalidEntryException, NoDatabaseAvailableException, JAXBException,
-			XMLStreamException {
+	public void importDatabase(HttpServletRequest request)
+			throws IOException, InvalidEntryException, NoDatabaseAvailableException, JAXBException, XMLStreamException {
 		DefaultMultipartHttpServletRequest dmhsRequest = (DefaultMultipartHttpServletRequest) request;
-		MultipartFile multipartFile = (MultipartFile) dmhsRequest
-				.getFile("file");
+		MultipartFile multipartFile = (MultipartFile) dmhsRequest.getFile("file");
 		InputStream in = multipartFile.getInputStream();
+		logger.info("Importing from XML file... {}", multipartFile.getName());
 		Database.getInstance().importData(in);
 	}
 
-	public void exportData(boolean allVersions, boolean dropKeys,
-			ServletOutputStream out, String fileName)
-			throws NoDatabaseAvailableException, NoSuchAlgorithmException,
-			JAXBException, IOException {
+	public void exportData(boolean allVersions, boolean dropKeys, ServletOutputStream out, String fileName)
+			throws NoDatabaseAvailableException, NoSuchAlgorithmException, JAXBException, IOException {
 		Database.getInstance().exportData(allVersions, dropKeys, out, fileName);
 	}
 

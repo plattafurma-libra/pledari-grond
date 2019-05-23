@@ -112,8 +112,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 
 		try (FileInputStream input = new FileInputStream(backupFile)) {
 
-			Iterator<LexEntry> data = Database.getInstance().getExportedData(
-					input);
+			Iterator<LexEntry> data = Database.getInstance().getExportedData(input);
 
 			while (data.hasNext()) {
 				Validator.validate(data.next());
