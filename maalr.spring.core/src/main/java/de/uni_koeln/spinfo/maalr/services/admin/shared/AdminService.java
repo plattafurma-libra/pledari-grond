@@ -123,7 +123,9 @@ public class AdminService {
 	}
 
 	public DatabaseStatistics getDatabaseStats() throws NoDatabaseAvailableException {
-		return Database.getInstance().getStatistics();
+		DatabaseStatistics statistics = Database.getInstance().getStatistics();
+		logger.info(statistics.toString());
+		return statistics;
 	}
 
 	public IndexStatistics getIndexStats() throws NoIndexAvailableException {
