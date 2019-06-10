@@ -39,7 +39,7 @@ public class BackupSettings extends Composite {
 	private BackupInfos backupInfos;
 
 	private BackendServiceAsync service;
-	
+
 	private String contextPath;
 
 	public BackupSettings() {
@@ -63,10 +63,10 @@ public class BackupSettings extends Composite {
 			}
 
 			private void displayGeneralInfos() {
-				generalInfo.add(new Paragraph());
+				generalInfo.add(new Paragraph("A scheduled backup is triggered every 24 hours"));
+
 				generalInfo.add(new Paragraph("Max. Backups: " + backupInfos.getBackupNums()));
 				generalInfo.add(new Paragraph("Location: " + backupInfos.getBackupLocation()));
-				generalInfo.add(new Paragraph("Timer: " + backupInfos.getTriggerTime()));
 			}
 
 			private void dispalyBackupInfos() {

@@ -54,7 +54,6 @@ public class DataLoader {
 			logger.info("Trying to read data from zip file=" + file.getName());
 			zipFile = new ZipFile(file);
 			String entryName = file.getName().replaceAll(".zip", "");
-//			ZipEntry entry = zipFile.getEntry(entryName+".tsv");
 			ZipEntry entry = zipFile.getEntry(entryName);
 			if (entry == null) {
 				logger.info("No file named " + entryName + " found in zip file - skipping import");

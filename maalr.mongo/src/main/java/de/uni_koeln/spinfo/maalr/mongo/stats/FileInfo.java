@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.mongo.stats;
 
 import java.io.Serializable;
@@ -21,20 +6,26 @@ import java.io.Serializable;
  * Wrapper class for GWT module. A light version of a File representation.
  * 
  * @author Mihail Atanassov (atanassov.mihail@gmail.com)
- *
+ * 
  */
 public class FileInfo implements Serializable {
 
 	private static final long serialVersionUID = -7867093437185012413L;
 
 	private String absolutePath;
+
 	private String parent;
+
 	private String name;
+
 	private String creationDate;
+
 	private String size;
+
 	private String lastModified;
 
 	public FileInfo() {
+		super();
 	}
 
 	public String getAbsolutePath() {
@@ -107,6 +98,14 @@ public class FileInfo implements Serializable {
 		return this;
 	}
 
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -166,14 +165,6 @@ public class FileInfo implements Serializable {
 	public String toString() {
 		return "FileInfo [absolutePath=" + absolutePath + ", parent=" + parent + ", name=" + name + ", lastModified="
 				+ lastModified + ", size=" + size + "]";
-	}
-
-	public String getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(String creationDate) {
-		this.creationDate = creationDate;
 	}
 
 }

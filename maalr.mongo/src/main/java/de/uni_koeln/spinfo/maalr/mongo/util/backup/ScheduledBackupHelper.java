@@ -3,6 +3,7 @@ package de.uni_koeln.spinfo.maalr.mongo.util.backup;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -22,8 +23,7 @@ import de.uni_koeln.spinfo.maalr.mongo.util.Validator;
 @Service("scheduledBackupHelper")
 public class ScheduledBackupHelper extends AbstractBackupHelper {
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(ScheduledBackupHelper.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ScheduledBackupHelper.class);
 
 	@Value("${backup.location:backup}")
 	private String backupDir;
@@ -64,8 +64,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 
 		try {
 
-			Database.getInstance().exportData(true, false,
-					new FileOutputStream(backupFile), backupFileName);
+			Database.getInstance().exportData(true, false, new FileOutputStream(backupFile), backupFileName);
 
 		} catch (Exception e) {
 			LOG.error("error occured... {}", e);
@@ -78,15 +77,15 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 
 		List<File> backupFiles = listBackupFilesAsc(backupDir);
 
-		if (backupFiles.size() >= 7) {
-
-			boolean delete = backupFiles.get(0).delete();
-
-			if (!delete) {
-				throw new ScheduledBackupException(String.format(
-						"could not delete obsolete backup file: %s",
-						backupFiles.get(0).getAbsolutePath()));
+		try {
+			if (backupFiles.size() >= 7) {
+				Files.delete(backupFiles.get(0).toPath());
 			}
+
+		} catch (Exception e) {
+			throw new ScheduledBackupException(
+					String.format("could not delete obsolete backup file: %s", backupFiles.get(0).getAbsolutePath()));
+
 		}
 
 		LOG.info("list of backupFiles...");
@@ -129,8 +128,9 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	}
 
 	private String buildName() {
-		return String.format("%s_db_dump_%s.zip", dbName, new SimpleDateFormat(
-				"yyyy-MM-dd_HH-mm-ss").format(new Date()));
+		return String.format("%s_db_dump_%s.zip", dbName,
+				new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date()));
+
 	}
 
 }

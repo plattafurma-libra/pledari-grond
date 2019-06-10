@@ -53,8 +53,10 @@ public class AppInitializer {
 	public void postConstruct() throws Exception {
 		String shouldImport = System.getProperty("maalr.import");
 		if (shouldImport != null && Boolean.parseBoolean(shouldImport)) {
+
 			LOGGER.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			LOGGER.warn("Importing Data...");
+
 			try {
 				String adminSecret = Configuration.getInstance().getAdminCredentials();
 				MaalrUserInfo admin = new MaalrUserInfo("admin", adminSecret, Role.ADMIN_5);
@@ -72,22 +74,24 @@ public class AppInitializer {
 		IndexStatistics statistics = index.getIndexStatistics();
 		DictionaryStatistics.initialize(statistics.getUnverifiedEntries(), statistics.getApprovedEntries(),
 				statistics.getLastUpdated(), statistics.getOverlayCount());
+
 	}
 
 	private void configureSearchUi() {
 		DictionaryConfiguration dictionaryConfig = Configuration.getInstance().getDictionaryConfig();
-		ArrayList<String> mainFields = new ArrayList<String>();
+		ArrayList<String> mainFields = new ArrayList<>();
 		List<QueryKey> queryKeys = dictionaryConfig.getQueryKeys();
 		for (QueryKey key : queryKeys) {
 			mainFields.add(key.getId());
 		}
 		List<ColumnSelector> fcList = dictionaryConfig.getColumnSelectors();
-		Map<String, ColumnSelector> columnSelectors = new HashMap<String, ColumnSelector>();
+		Map<String, ColumnSelector> columnSelectors = new HashMap<>();
 		for (ColumnSelector choice : fcList) {
 			columnSelectors.put(choice.getId(), choice);
 		}
 		List<QueryBuilder> qmList = dictionaryConfig.getQueryModifier();
-		Map<String, QueryBuilder> queryModifiers = new HashMap<String, QueryBuilder>();
+
+		Map<String, QueryBuilder> queryModifiers = new HashMap<>();
 		for (QueryBuilder modifier : qmList) {
 			queryModifiers.put(modifier.getId(), modifier);
 		}
@@ -112,7 +116,7 @@ public class AppInitializer {
 			}
 			ColumnSelector choice = fieldChoices.get(field.getId());
 			if (choice != null) {
-				ArrayList<String> values = new ArrayList<String>();
+				ArrayList<String> values = new ArrayList<>();
 				field.setValues(values);
 				List<ColumnSelectorOption> options = choice.getOptions();
 				for (int i = 0; i < options.size(); i++) {
@@ -127,7 +131,7 @@ public class AppInitializer {
 
 			QueryBuilder queryModifier = queryModifiers.get(field.getId());
 			if (queryModifier != null) {
-				ArrayList<String> values = new ArrayList<String>();
+				ArrayList<String> values = new ArrayList<>();
 				field.setValues(values);
 				List<QueryBuilderOption> options = queryModifier.getOptions();
 				for (int i = 0; i < options.size(); i++) {
@@ -144,7 +148,7 @@ public class AppInitializer {
 
 	private void setBuildinDefaults(UiField field) {
 		if ("pageSize".equals(field.getId())) {
-			ArrayList<String> sizes = new ArrayList<String>();
+			ArrayList<String> sizes = new ArrayList<>();
 			sizes.add("15");
 			sizes.add("25");
 			sizes.add("50");
@@ -154,12 +158,12 @@ public class AppInitializer {
 			field.setInitialValue(0);
 		}
 		if ("highlight".equals(field.getId())) {
-			ArrayList<String> list = new ArrayList<String>();
+			ArrayList<String> list = new ArrayList<>();
 			list.add("false");
 			field.setValues(list);
 		}
 		if ("suggestions".equals(field.getId())) {
-			ArrayList<String> list = new ArrayList<String>();
+			ArrayList<String> list = new ArrayList<>();
 			list.add("false");
 			field.setValues(list);
 		}

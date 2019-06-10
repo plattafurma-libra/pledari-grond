@@ -8,7 +8,7 @@ import java.util.List;
  * back up.
  * 
  * @author Mihail Atanassov (atanassov.mihail@gmail.com)
- *
+ * 
  */
 public class BackupInfos implements Serializable {
 
@@ -29,13 +29,13 @@ public class BackupInfos implements Serializable {
 		this.infos = infos;
 	}
 
-	public void setBackupDir(String backupLocation) {
-		this.backupLocation = backupLocation;
+	public BackupInfos backupDir(String backupLocation) {
+		this.setBackupDir(backupLocation);
+		return this;
 	}
 
-	public BackupInfos backupDir(String backupLocation) {
+	public void setBackupDir(String backupLocation) {
 		this.backupLocation = backupLocation;
-		return this;
 	}
 
 	public void setBackupNum(String backupNums) {

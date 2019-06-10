@@ -34,7 +34,7 @@ public class BackupInfoHelper extends AbstractBackupHelper {
 
 		LOG.debug("admin-gwt-module called backup infos...");
 
-		List<FileInfo> list = new ArrayList<FileInfo>();
+		List<FileInfo> list = new ArrayList<>();
 
 		List<File> backupFiles = listBackupFilesAsc(backupDir);
 

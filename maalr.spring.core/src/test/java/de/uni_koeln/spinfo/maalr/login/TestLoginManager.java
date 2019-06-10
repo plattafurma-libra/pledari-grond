@@ -15,22 +15,9 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.login;
 
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import de.uni_koeln.spinfo.maalr.MongoTestHelper;
-
-//TODO: Rewrite tests! Use de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider instead of "LoginManager"
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/spring-maalr-test.xml")
+// TODO: Rewrite tests! Use de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider instead of "LoginManager"
+// @RunWith(SpringJUnit4ClassRunner.class)
+// @ContextConfiguration(locations = "classpath:/spring-maalr-test.xml")
 public class TestLoginManager {
 
 //	@Autowired private LoginManager loginManager;

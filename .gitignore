@@ -14,3 +14,7 @@ bin/
 *.prefs
 maalr-lexem/*
 .recommenders/
+<<<<<<< HEAD
+=======
+.sonarlint/
+>>>>>>> 755c96ce4ec492ab83359249f7a061e8b974421f
