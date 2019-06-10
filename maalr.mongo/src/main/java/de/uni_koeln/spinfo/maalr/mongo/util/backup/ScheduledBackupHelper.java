@@ -29,7 +29,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	@Value("${backup.location:backup}")
 	private String backupDir;
 
-	@Value("${db.name:rumantsch}")
+	@Value("${db.name:surmiran}")
 	private String dbName;
 
 	@Scheduled(initialDelayString = "${backup.initial.delay}", fixedRateString = "${backup.fixed.rate}")
