@@ -60,7 +60,7 @@ public class UserInfoDB {
 		userCollection.createIndex(new BasicDBObject(Constants.Users.CREATION_DATE, 1));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.LAST_MODIFICATION, 1));
 		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1);
-		userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
+		// userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
 		userCollection.createIndex(new BasicDBObject(Constants.Users.PASSWORD, 1));
 	}
 
