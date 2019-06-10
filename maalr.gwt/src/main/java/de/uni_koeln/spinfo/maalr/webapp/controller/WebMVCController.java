@@ -31,6 +31,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,12 +67,15 @@ public class WebMVCController {
 	private static final String ST = "st";
 	private static final String LOCALE = "locale";
 
-	private final Logger logger = LoggerFactory.getLogger(WebMVCController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebMVCController.class);
 
 	@Autowired private Index index;
 	@Autowired private UserInfoBackend users;
 	@Autowired private AccountService accountService;
 	@Autowired private PGAutenticationProvider authProvider;
+	
+	@Value("${backup.location:backup}")
+	private String backupDir;
 
 	private Configuration configuration = Configuration.getInstance();
 	
@@ -118,7 +122,7 @@ public class WebMVCController {
 	
 	@RequestMapping("/")
 	public ModelAndView showIndex(HttpSession session, HttpServletRequest request) {
-		logger.info("Request: {}", request.getContextPath());
+		LOGGER.info("Request: {}", request.getContextPath());
 		ModelAndView mv = new ModelAndView("index");
 		setPageTitle(mv, getLocalizedString("maalr.index_page.title", session, request));
 		mv.addObject("dictContext", configuration.getDictContext());
@@ -251,7 +255,7 @@ public class WebMVCController {
 	}
 
 	private ModelAndView getErrorView(Exception e) {
-		logger.error("An error occurred", e);
+		LOGGER.error("An error occurred", e);
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("dictContext", configuration.getDictContext());
 		return mv;
@@ -268,7 +272,9 @@ public class WebMVCController {
 	public void downloadBackup (@PathVariable("fileName") String fileName, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			String dir = Configuration.getInstance().getBackupLocation();
-			File zip = new File(dir, fileName + ".zip");
+			// File zip = new File(dir, fileName + ".zip");
+			File zip = new File(backupDir, fileName + ".zip");
+			LOGGER.info("downloading backup file: {}", zip.getAbsolutePath());
 			response.setContentType("application/zip");
 			response.setContentLength((int)zip.length());
 			OutputStream os = response.getOutputStream();

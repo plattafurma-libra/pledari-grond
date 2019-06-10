@@ -24,6 +24,7 @@ import javax.xml.bind.Marshaller;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.bson.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -31,8 +32,10 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.client.MongoCursor;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
@@ -102,7 +105,7 @@ public class ExportFormatScheduler {
 		return instance;
 	}
 	
-	private void exportCSV(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	private void exportCSV(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_CSV);
 		String fileName = createFileName(CSV_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -110,7 +113,7 @@ public class ExportFormatScheduler {
 		exportDataCSV(fos, fileName, cursor);
 	}
 	
-	public void exportXML(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	public void exportXML(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_XML);
 		String fileName = createFileName(XML_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -118,7 +121,7 @@ public class ExportFormatScheduler {
 		exportDataXml(fos, fileName, cursor);
 	}
 	
-	public void exportJSON(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	public void exportJSON(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_JSON);
 		String fileName = createFileName(JSON_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -136,7 +139,7 @@ public class ExportFormatScheduler {
 		return Configuration.getInstance().getMaalrImpl() + formInfix;
 	}
 	
-	private void exportDataCSV(OutputStream os, String fileName, DBCursor cursor) throws IOException {
+	private void exportDataCSV(OutputStream os, String fileName, MongoCursor<Document> cursor) throws IOException {
 		
 		ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(os));
 		zout.putNextEntry(new ZipEntry(fileName + ".csv"));
@@ -150,7 +153,7 @@ public class ExportFormatScheduler {
 		CSVPrinter csvFilePrinter = new CSVPrinter(out, csvFileFormat);
 		
 		while (cursor.hasNext()) {
-			DBObject object = cursor.next();
+			BasicDBObject object = new BasicDBObject(cursor.next());
 			LexEntry entry = Converter.convertToLexEntry(object);
 			LemmaVersion lemmaVersion = entry.getCurrent();
 			if (lemmaVersion != null) {
@@ -167,7 +170,7 @@ public class ExportFormatScheduler {
 	}
 
 	
-	private void exportDataJson(OutputStream os, String fileName, DBCursor cursor) throws JsonGenerationException,
+	private void exportDataJson(OutputStream os, String fileName, MongoCursor<Document> cursor) throws JsonGenerationException,
 			JsonMappingException, IOException, NoSuchAlgorithmException {
 
 		ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(os));
@@ -176,7 +179,7 @@ public class ExportFormatScheduler {
 		
 		JSONArray entries = new JSONArray();
 		while (cursor.hasNext()) {
-			DBObject object = cursor.next();
+			BasicDBObject object = new BasicDBObject(cursor.next());
 			LexEntry entry = Converter.convertToLexEntry(object);
 			LemmaVersion lemmaVersion = entry.getCurrent();
 			if (lemmaVersion != null) {
@@ -192,7 +195,7 @@ public class ExportFormatScheduler {
 		zout.close();
 	}
 	
-	private void exportDataXml(OutputStream os, String fileName, DBCursor cursor) throws IOException,NoSuchAlgorithmException {
+	private void exportDataXml(OutputStream os, String fileName, MongoCursor<Document> cursor) throws IOException,NoSuchAlgorithmException {
 		
 		ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(os));
 		zout.putNextEntry(new ZipEntry(fileName + ".xml"));
@@ -212,7 +215,7 @@ public class ExportFormatScheduler {
 			marshaller.setProperty(Marshaller.JAXB_FRAGMENT,true);
 
 			while (cursor.hasNext()) {
-				DBObject object = cursor.next();
+				BasicDBObject object = new BasicDBObject(cursor.next());
 				LexEntry entry = Converter.convertToLexEntry(object);
 				LemmaVersion version = entry.getCurrent();
 				if (version != null) {

@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.services.admin.shared;
 
 import java.io.IOException;
@@ -52,11 +37,13 @@ import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.BackupInfos;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DictionaryStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.util.BackUpHelper;
+import de.uni_koeln.spinfo.maalr.mongo.util.backup.BackupInfoHelper;
 
 @Service
 @Secured(Constants.Roles.ADMIN_5)
 public class AdminService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(AdminService.class);
 	
 	@Autowired(required=false)
 	@Qualifier("maalr.system.stats") 
@@ -72,9 +59,10 @@ public class AdminService {
 	private DataLoader dbCreator;
 	
 	@Autowired 
-	private BackUpHelper backUpHelper;
+	@Qualifier("backupInfoHelper")
+	private BackupInfoHelper backupInfoHelper;
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 	
 	public void importDatabase() throws NoDatabaseAvailableException, IndexException, InvalidEntryException, DatabaseIOException, ZipException, IOException {
 		dbCreator.createFromSQLDump(environment.getLexFile(), -1);
@@ -109,14 +97,14 @@ public class AdminService {
 	}
 	
 	public String rebuildIndex() throws NoDatabaseAvailableException, IndexException {
-		logger.info("Rebuilding index...");
+		LOGGER.info("Rebuilding index...");
 		Database db = Database.getInstance();
 		Iterator<LexEntry> iterator = db.getEntries();
 		index.dropIndex();
 		index.addToIndex(iterator);
-		logger.info("Index has been created, swapping to RAM...");
+		LOGGER.info("Index has been created, swapping to RAM...");
 		index.reloadIndex();
-		logger.info("RAM-Index updated!");
+		LOGGER.info("RAM-Index updated!");
 		return "The index has been rebuilt";
 	}
 
@@ -142,6 +130,7 @@ public class AdminService {
 		DefaultMultipartHttpServletRequest dmhsRequest = (DefaultMultipartHttpServletRequest) request;
 		MultipartFile multipartFile = (MultipartFile) dmhsRequest.getFile("file");
 		InputStream in = multipartFile.getInputStream();
+		LOGGER.info("Importing from XML file... {}", multipartFile.getName());
 		Database.getInstance().importData(in);
 	}
 
@@ -151,6 +140,6 @@ public class AdminService {
 	}
 	
 	public BackupInfos getBackupInfos() {
-		return backUpHelper.getBackupInfos();
+		return backupInfoHelper.getBackupInfos();
 	}
 }

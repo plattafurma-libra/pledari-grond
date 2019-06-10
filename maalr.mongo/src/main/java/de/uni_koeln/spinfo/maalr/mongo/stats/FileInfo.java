@@ -24,69 +24,96 @@ import java.io.Serializable;
  *
  */
 public class FileInfo implements Serializable {
-	
+
 	private static final long serialVersionUID = -7867093437185012413L;
-	
+
 	private String absolutePath;
 	private String parent;
 	private String name;
 	private String creationDate;
 	private String size;
 	private String lastModified;
-	
+
 	public FileInfo() {
 	}
-	
+
 	public String getAbsolutePath() {
 		return absolutePath;
 	}
-	
+
+	public FileInfo absolutePath(String absolutePath) {
+		this.setAbsolutePath(absolutePath);
+		return this;
+	}
+
 	public void setAbsolutePath(String absolutePath) {
 		this.absolutePath = absolutePath;
 	}
-	
+
 	public String getParent() {
 		return parent;
 	}
-	
+
+	public FileInfo parent(String parent) {
+		this.setParent(parent);
+		return this;
+	}
+
 	public void setParent(String parent) {
 		this.parent = parent;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
+	public FileInfo name(String name) {
+		this.setName(name);
+		return this;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getLastModified() {
 		return lastModified;
 	}
-	
+
+	public FileInfo lastModified(String lastModified) {
+		this.setLastModified(lastModified);
+		return this;
+	}
+
 	public void setLastModified(String lastModified) {
 		this.lastModified = lastModified;
 	}
-	
+
 	public String getSize() {
 		return size;
 	}
-	
+
+	public FileInfo size(String size) {
+		this.setSize(size);
+		return this;
+	}
+
 	public void setSize(String size) {
 		this.size = size;
 	}
-	
+
+	public FileInfo creationDate(String creationDate) {
+		this.setCreationDate(creationDate);
+		return this;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((absolutePath == null) ? 0 : absolutePath.hashCode());
-		result = prime * result
-				+ ((creationDate == null) ? 0 : creationDate.hashCode());
-		result = prime * result
-				+ ((lastModified == null) ? 0 : lastModified.hashCode());
+		result = prime * result + ((absolutePath == null) ? 0 : absolutePath.hashCode());
+		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result + ((lastModified == null) ? 0 : lastModified.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
 		result = prime * result + ((size == null) ? 0 : size.hashCode());
@@ -137,9 +164,8 @@ public class FileInfo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FileInfo [absolutePath=" + absolutePath + ", parent=" + parent
-				+ ", name=" + name + ", lastModified=" + lastModified
-				+ ", size=" + size + "]";
+		return "FileInfo [absolutePath=" + absolutePath + ", parent=" + parent + ", name=" + name + ", lastModified="
+				+ lastModified + ", size=" + size + "]";
 	}
 
 	public String getCreationDate() {
@@ -149,6 +175,5 @@ public class FileInfo implements Serializable {
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-	
 
 }
