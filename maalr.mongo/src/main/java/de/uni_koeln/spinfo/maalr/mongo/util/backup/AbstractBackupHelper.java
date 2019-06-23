@@ -11,7 +11,8 @@ import java.util.List;
 public abstract class AbstractBackupHelper {
 
 	protected List<File> listBackupFilesAsc(String backupDir) {
-		List<File> backupFiles = Arrays.asList(new File(backupDir).listFiles(filter()));
+		List<File> backupFiles = Arrays.asList(new File(backupDir)
+				.listFiles(filter()));
 
 		Collections.sort(backupFiles, new Comparator<File>() {
 			@Override
@@ -28,7 +29,8 @@ public abstract class AbstractBackupHelper {
 		return new FileFilter() {
 			@Override
 			public boolean accept(File f) {
-				return f.exists() && f.getName().endsWith(".zip") && f.canRead() && !f.isHidden();
+				return f.exists() && f.getName().endsWith(".zip")
+						&& f.canRead() && !f.isHidden();
 			}
 		};
 	}

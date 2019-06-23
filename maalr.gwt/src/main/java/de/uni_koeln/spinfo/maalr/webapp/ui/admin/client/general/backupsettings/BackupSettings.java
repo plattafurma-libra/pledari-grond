@@ -24,8 +24,7 @@ public class BackupSettings extends Composite {
 
 	private static BackupSettingsUiBinder uiBinder = GWT.create(BackupSettingsUiBinder.class);
 
-	interface BackupSettingsUiBinder extends UiBinder<Widget, BackupSettings> {
-	}
+	interface BackupSettingsUiBinder extends UiBinder<Widget, BackupSettings> { }
 
 	private static final BackupSettingTemplate TEMPLATE = GWT.create(BackupSettingTemplate.class);
 
@@ -65,6 +64,7 @@ public class BackupSettings extends Composite {
 
 			private void displayGeneralInfos() {
 				generalInfo.add(new Paragraph("A scheduled backup is triggered every 24 hours"));
+
 				generalInfo.add(new Paragraph("Max. Backups: " + backupInfos.getBackupNums()));
 				generalInfo.add(new Paragraph("Location: " + backupInfos.getBackupLocation()));
 			}

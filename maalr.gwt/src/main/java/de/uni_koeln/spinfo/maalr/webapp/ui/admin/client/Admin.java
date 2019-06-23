@@ -94,13 +94,12 @@ public class Admin implements EntryPoint {
 	}
 
 	private void initModules(Navigation navigation) {
-
 		String contextPath = DictionaryConstants.getDictionary().get(DictionaryConstants.PATH);
 
 		registerModule(new RoleEditorNew(), Modules.ANCHOR_ROLE_MANAGER);
 
 		registerModule(new DbManager(contextPath), Modules.ANCHOR_DB_MANAGER);
-
+		
 		navigation.addLinkLeft("DB Manager", "#" + Modules.ANCHOR_DB_MANAGER, IconType.TABLE, false);
 
 		navigation.addLinkLeft("Role Manager", "#" + Modules.ANCHOR_ROLE_MANAGER, IconType.GROUP, false);

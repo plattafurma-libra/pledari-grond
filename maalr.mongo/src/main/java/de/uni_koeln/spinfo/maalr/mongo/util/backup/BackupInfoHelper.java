@@ -49,10 +49,7 @@ public class BackupInfoHelper extends AbstractBackupHelper {
 			LOG.error("error occured: {}", e);
 		}
 
-		return new BackupInfos(list)
-				.backupDir(backupDir)
-				.backupNum(backupNum);
-
+		return new BackupInfos(list).backupDir(backupDir).backupNum(backupNum);
 	}
 
 	private String getSize(File file) {

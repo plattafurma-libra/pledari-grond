@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright 2013 Sprachliche Informationsverarbeitung, University of Cologne
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.webapp.util;
 
 import java.util.ArrayList;
@@ -38,7 +23,6 @@ import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Role;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiField;
-import de.uni_koeln.spinfo.maalr.configuration.Environment;
 import de.uni_koeln.spinfo.maalr.login.MaalrUserInfo;
 import de.uni_koeln.spinfo.maalr.login.UserInfoBackend;
 import de.uni_koeln.spinfo.maalr.login.custom.PGAutenticationProvider;
@@ -51,7 +35,7 @@ import de.uni_koeln.spinfo.maalr.webapp.ui.admin.client.general.BackendService;
 @Service
 public class AppInitializer {
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppInitializer.class);
 
 	@Autowired
 	private BackendService adminController;
@@ -69,8 +53,10 @@ public class AppInitializer {
 	public void postConstruct() throws Exception {
 		String shouldImport = System.getProperty("maalr.import");
 		if (shouldImport != null && Boolean.parseBoolean(shouldImport)) {
-			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			logger.warn("Importing Data...");
+
+			LOGGER.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			LOGGER.warn("Importing Data...");
+
 			try {
 				String adminSecret = Configuration.getInstance().getAdminCredentials();
 				MaalrUserInfo admin = new MaalrUserInfo("admin", adminSecret, Role.ADMIN_5);
@@ -80,7 +66,7 @@ public class AppInitializer {
 			} finally {
 				authProvider.logout();
 			}
-			logger.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			LOGGER.warn("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
 
 		configureSearchUi();
@@ -104,6 +90,7 @@ public class AppInitializer {
 			columnSelectors.put(choice.getId(), choice);
 		}
 		List<QueryBuilder> qmList = dictionaryConfig.getQueryModifier();
+
 		Map<String, QueryBuilder> queryModifiers = new HashMap<>();
 		for (QueryBuilder modifier : qmList) {
 			queryModifiers.put(modifier.getId(), modifier);

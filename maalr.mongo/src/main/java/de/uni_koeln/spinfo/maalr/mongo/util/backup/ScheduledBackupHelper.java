@@ -28,7 +28,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	@Value("${backup.location:backup}")
 	private String backupDir;
 
-	@Value("${db.name:rumantsch}")
+	@Value("${db.name:sutsilvan}")
 	private String dbName;
 
 	@Scheduled(initialDelayString = "${backup.initial.delay}", fixedRateString = "${backup.fixed.rate}")
@@ -85,6 +85,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 		} catch (Exception e) {
 			throw new ScheduledBackupException(
 					String.format("could not delete obsolete backup file: %s", backupFiles.get(0).getAbsolutePath()));
+
 		}
 
 		LOG.info("list of backupFiles...");
@@ -129,6 +130,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	private String buildName() {
 		return String.format("%s_db_dump_%s.zip", dbName,
 				new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date()));
+
 	}
 
 }
