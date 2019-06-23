@@ -23,14 +23,12 @@ public class ExportServiceImpl implements ExportService {
 			return null;
 
 		if (dir.listFiles().length > 0) {
-			File file = dir.listFiles(new FileFilter() {
+			return dir.listFiles(new FileFilter() {
 				@Override
 				public boolean accept(File pathname) {
 					return pathname.getName().endsWith(".zip");
 				}
 			})[0];
-			
-			return file;
 		}
 		return null;
 	}

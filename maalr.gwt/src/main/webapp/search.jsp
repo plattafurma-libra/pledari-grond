@@ -5,12 +5,8 @@
 <fmt:setLocale value='<%=session.getAttribute("locale")%>' />
 <fmt:setBundle basename="de.uni_koeln.spinfo.maalr.webapp.i18n.text" />
 
-<jsp:include page="jsp/modules/htmlhead.jsp" />
+<jsp:include page="/maalr_modules/misc/htmlhead.jsp" />
 	<body>
-	
-		<jsp:include page="/maalr_modules/misc/header.jsp" />
-		
-<!-- <div class="content" id="content"> -->
 		<div class="content">
 			<div class="container-fluid">
 				<noscript>

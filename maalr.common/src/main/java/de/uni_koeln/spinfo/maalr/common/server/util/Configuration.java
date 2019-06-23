@@ -38,7 +38,7 @@ import de.uni_koeln.spinfo.maalr.common.shared.searchconfig.UiConfiguration;
 public class Configuration {
 
 	private Logger logger = LoggerFactory.getLogger(Configuration.class);
-	
+
 	private static final String MAALR_PROPERTIES = "maalr.properties";
 	private static final String MAALR_CONFIG_DIR = "maalr.config.dir";
 	private static final String MAALR_DEFAULT_CONFIG_DIR = "maalr_st_config";
@@ -53,7 +53,6 @@ public class Configuration {
 	private static final String MONGODB_NAME = "mongodb.name";
 	private static final String LONG_NAME = "maalr.long.name";
 	private static final String SHORT_NAME = "maalr.short.name";
-	private static final String BACKUP_LOCATION = "backup.location";
 	private static final String BACKUP_TRIGGER_TIME = "backup.trigger.time";
 	private static final String BACKUP_NUMS = "backup.nums";
 	private static final String LOCALE_CODE = "locale.code";
@@ -71,8 +70,7 @@ public class Configuration {
 		return configDir;
 	}
 
-	public InputStreamReader getConfiguration(String relativePath)
-			throws IOException {
+	public InputStreamReader getConfiguration(String relativePath) throws IOException {
 		File parent = getConfigDirectory();
 		File file = new File(parent, relativePath);
 		InputStreamReader reader;
@@ -94,9 +92,11 @@ public class Configuration {
 			this.configDir = new File(configDir);
 		}
 		if (this.configDir.exists()) {
-			logger.info("Using " + (isDefault ? "default " : "") + "configuration in directory " + this.configDir.getAbsolutePath());
+			logger.info("Using " + (isDefault ? "default " : "") + "configuration in directory "
+					+ this.configDir.getAbsolutePath());
 		} else {
-			logger.error("The " + (isDefault ? "default " : "") + "configuration directory " + this.configDir.getAbsolutePath() + " does not exist!");
+			logger.error("The " + (isDefault ? "default " : "") + "configuration directory "
+					+ this.configDir.getAbsolutePath() + " does not exist!");
 		}
 		properties = new Properties();
 		try (InputStreamReader input = getConfiguration(MAALR_PROPERTIES)) {
@@ -112,8 +112,7 @@ public class Configuration {
 			Unmarshaller unmarshaller = ctx.createUnmarshaller();
 			dictConfig = (DictionaryConfiguration) unmarshaller.unmarshal(reader);
 		} catch (JAXBException e) {
-			throw new IOException("Failed to parse search configuration files",
-					e);
+			throw new IOException("Failed to parse search configuration files", e);
 		}
 	}
 
@@ -172,10 +171,6 @@ public class Configuration {
 		return dictConfig;
 	}
 
-	public String getBackupLocation() {
-		return properties.getProperty(BACKUP_LOCATION);
-	}
-
 	public String getTriggerTime() {
 		return properties.getProperty(BACKUP_TRIGGER_TIME);
 	}
@@ -213,10 +208,8 @@ public class Configuration {
 	}
 
 	public UiConfiguration[] getUIConfigurations() {
-		return new UiConfiguration[] { getUserDefaultSearchUiConfig(),
-				getUserExtendedSearchUiConfig(),
-				getEditorDefaultSearchUiConfig(),
-				getEditorExtendedSearchUiConfig() };
+		return new UiConfiguration[] { getUserDefaultSearchUiConfig(), getUserExtendedSearchUiConfig(),
+				getEditorDefaultSearchUiConfig(), getEditorExtendedSearchUiConfig() };
 	}
 
 	public String getSocialClientKey(String socialService) {
@@ -238,19 +231,19 @@ public class Configuration {
 	public String getDbName() {
 		return properties.getProperty(MONGODB_NAME);
 	}
-	
+
 	public String getUserDb() {
 		return properties.getProperty(MONGODB_USER);
 	}
-	
+
 	public String getLocaleCode() {
 		return properties.getProperty(LOCALE_CODE);
 	}
-	
+
 	public String getUserDbCollection() {
 		return properties.getProperty(MONGODB_USER_COLLECTION);
 	}
-	
+
 	public String getMaalrImpl() {
 		return properties.getProperty(MAALR_IMPL);
 	}

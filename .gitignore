@@ -13,3 +13,5 @@ bin/
 *.classpath
 *.prefs
 maalr-lexem/*
+.recommenders/
+.sonarlint/
