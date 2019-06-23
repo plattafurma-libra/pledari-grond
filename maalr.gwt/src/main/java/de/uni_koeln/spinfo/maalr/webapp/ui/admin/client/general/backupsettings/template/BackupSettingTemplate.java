@@ -17,6 +17,4 @@ public interface BackupSettingTemplate extends SafeHtmlTemplates {
 	@Template("{0}/downloads/backup/{1}")
 	public SafeHtml link(String context, String fileName);
 	
-	
-	
 }

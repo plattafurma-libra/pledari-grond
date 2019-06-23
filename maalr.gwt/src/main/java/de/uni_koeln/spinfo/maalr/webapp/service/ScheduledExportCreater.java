@@ -24,6 +24,7 @@ import javax.xml.bind.Marshaller;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.bson.Document;
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +33,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.mongodb.DBCursor;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.mongodb.client.MongoCursor;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
@@ -80,7 +82,7 @@ public class ScheduledExportCreater {
 		
 	}
 	
-	private void exportCSV(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	private void exportCSV(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_CSV);
 		String fileName = createFileName(CSV_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -88,7 +90,7 @@ public class ScheduledExportCreater {
 		exportDataCSV(fos, fileName, cursor);
 	}
 	
-	private void exportXML(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	private void exportXML(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_XML);
 		String fileName = createFileName(XML_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -96,7 +98,7 @@ public class ScheduledExportCreater {
 		exportDataXml(fos, fileName, cursor);
 	}
 	
-	private void exportJSON(DBCursor cursor) throws IOException, NoSuchAlgorithmException {
+	private void exportJSON(MongoCursor<Document> cursor) throws IOException, NoSuchAlgorithmException {
 		File dir = createDirs(PATH_JSON);
 		String fileName = createFileName(JSON_INFIX);
 		File file = new File(dir, fileName + ZIP_SUFFIX);
@@ -114,7 +116,7 @@ public class ScheduledExportCreater {
 		return Configuration.getInstance().getMaalrImpl() + formInfix;
 	}
 	
-	private void exportDataCSV(OutputStream outputStream, String fileName, DBCursor cursor) throws IOException {
+	private void exportDataCSV(OutputStream outputStream, String fileName, MongoCursor<Document> cursor) throws IOException {
 		
 		File tmp = null;
 		BufferedReader bufferedReader = null;
@@ -136,7 +138,7 @@ public class ScheduledExportCreater {
 			csvFilePrinter = new CSVPrinter(new FileWriter(tmp), csvFileFormat);
 			
 			while (cursor.hasNext()) {
-				DBObject object = cursor.next();
+				DBObject object = new BasicDBObject(cursor.next());
 				LexEntry entry = Converter.convertToLexEntry(object);
 				LemmaVersion lemmaVersion = entry.getCurrent();
 				if (lemmaVersion != null) {
@@ -163,7 +165,7 @@ public class ScheduledExportCreater {
 		}
 	}
 	
-	private void exportDataJson(OutputStream outputStream, String fileName, DBCursor cursor) throws JsonGenerationException,
+	private void exportDataJson(OutputStream outputStream, String fileName, MongoCursor<Document> cursor) throws JsonGenerationException,
 			JsonMappingException, IOException, NoSuchAlgorithmException {
 		
 		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
@@ -173,7 +175,7 @@ public class ScheduledExportCreater {
 		
 		JSONArray entries = new JSONArray();
 		while (cursor.hasNext()) {
-			DBObject object = cursor.next();
+			DBObject object = new BasicDBObject(cursor.next());
 			LexEntry entry = Converter.convertToLexEntry(object);
 			LemmaVersion copy = entry.getCurrent();
 			if (copy != null) {
@@ -194,7 +196,7 @@ public class ScheduledExportCreater {
 		
 	}
 	
-	private void exportDataXml(OutputStream os, String fileName, DBCursor cursor) throws IOException,NoSuchAlgorithmException {
+	private void exportDataXml(OutputStream os, String fileName, MongoCursor<Document> cursor) throws IOException,NoSuchAlgorithmException {
 		
 		ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(os));
 		zout.putNextEntry(new ZipEntry(fileName + ".xml"));
@@ -214,7 +216,7 @@ public class ScheduledExportCreater {
 			marshaller.setProperty(Marshaller.JAXB_FRAGMENT,true);
 
 			while (cursor.hasNext()) {
-				DBObject object = cursor.next();
+				DBObject object = new BasicDBObject(cursor.next());
 				LexEntry entry = Converter.convertToLexEntry(object);
 				LemmaVersion copy = entry.getCurrent();
 				if (copy != null) {

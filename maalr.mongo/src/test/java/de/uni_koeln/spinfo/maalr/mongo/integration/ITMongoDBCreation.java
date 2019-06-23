@@ -15,37 +15,23 @@
  ******************************************************************************/
 package de.uni_koeln.spinfo.maalr.mongo.integration;
 
-import java.io.IOException;
-import java.util.zip.ZipException;
+public class ITMongoDBCreation {
 
-import junit.framework.Assert;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import de.uni_koeln.spinfo.maalr.common.shared.NoDatabaseAvailableException;
-import de.uni_koeln.spinfo.maalr.mongo.core.Database;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.DatabaseIOException;
-import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
-import de.uni_koeln.spinfo.maalr.mongo.util.MongoTestHelper;
-
-public class ITMongoDBCreation extends MongoTestHelper {
-
-	@Before
-	public void beforeTest() throws Exception {
-		Database.getInstance().deleteAllEntries();
-	}
-
-	@Test
-	public void testGetNumberOfEntries() throws InvalidEntryException, DatabaseIOException, ZipException, IOException, NoDatabaseAvailableException  {
-		long entries = Database.getInstance().getNumberOfEntries();
-		Assert.assertEquals(0, entries);
-	}
-	
+//	@Before
+//	public void beforeTest() throws Exception {
+//		Database.getInstance().deleteAllEntries();
+//	}
+//
+//	@Test
+//	public void testGetNumberOfEntries() throws InvalidEntryException, DatabaseIOException, ZipException, IOException, NoDatabaseAvailableException  {
+//		long entries = Database.getInstance().getNumberOfEntries();
+//		Assert.assertEquals(0, entries);
+//	}
+//
 //	@Test
 //	public void testQuery() throws InvalidEntryException, DatabaseIOException, ZipException, IOException, NoDatabaseAvailableException  {
 //		LexEntryList result = Database.getInstance().queryForLexEntries(null, null, null, 0, System.currentTimeMillis(), null, 10, 0, null, false);
 //		Assert.assertTrue(result.getOverallCount() > 0);
 //	}
-	
+
 }

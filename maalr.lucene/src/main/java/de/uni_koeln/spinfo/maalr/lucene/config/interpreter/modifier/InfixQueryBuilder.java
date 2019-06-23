@@ -27,6 +27,7 @@ import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
 import de.uni_koeln.spinfo.maalr.lucene.config.interpreter.MaalrQueryBuilder;
 import de.uni_koeln.spinfo.maalr.lucene.util.TokenizerHelper;
 
+
 /**
  * A query builder for 'infix' queries. 
  * See {@link MaalrQueryBuilder} and {@link DefaultQueryBuilder} for details.

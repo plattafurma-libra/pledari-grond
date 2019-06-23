@@ -1,8 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorConstants.properties=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorConstants_en.properties=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorConstants_rm.properties=UTF-8
 encoding//src/main/java/de/uni_koeln/spinfo/maalr/webapp/ui/editor/client/EditorUiBinderMessages_rm.properties=UTF-8
+encoding//src/main/resources=UTF-8
 encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text.properties=UTF-8
 encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_de.properties=UTF-8
 encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_en.properties=UTF-8
@@ -10,6 +12,7 @@ encoding//src/main/resources/de/uni_koeln/spinfo/maalr/webapp/i18n/text_rm.prope
 encoding//src/main/webapp/i18n/text.properties=UTF-8
 encoding//src/main/webapp/i18n/text_de.properties=UTF-8
 encoding//src/main/webapp/i18n/text_rm.properties=UTF-8
+encoding//src/test/resources=UTF-8
 encoding//src/test/resources/maalr_minimal/i18n/lemma-description.properties=UTF-8
 encoding//src/test/resources/maalr_minimal/i18n/lemma-description_de.properties=UTF-8
 encoding//src/test/resources/maalr_minimal/i18n/user-searchui.properties=UTF-8

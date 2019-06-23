@@ -45,9 +45,9 @@ import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfigurat
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.DictionaryConfiguration.UiConfigurations;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.IndexedColumn;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.MaalrFieldType;
+import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilderOption;
 import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryKey;
-import de.uni_koeln.spinfo.maalr.common.server.searchconfig.QueryBuilder;
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion.Verification;

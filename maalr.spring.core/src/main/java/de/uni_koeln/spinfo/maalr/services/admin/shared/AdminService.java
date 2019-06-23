@@ -68,7 +68,7 @@ public class AdminService {
 	@Qualifier("backupInfoHelper")
 	@Autowired private BackupInfoHelper backupInfoHelper;
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(AdminService.class);
 	
 	public void importDatabase() throws NoDatabaseAvailableException, IndexException, InvalidEntryException, DatabaseIOException, ZipException, IOException {
 		dbCreator.createFromSQLDump(environment.getLexFile(), -1);
@@ -135,6 +135,7 @@ public class AdminService {
 		DefaultMultipartHttpServletRequest dmhsRequest = (DefaultMultipartHttpServletRequest) request;
 		MultipartFile multipartFile = (MultipartFile) dmhsRequest.getFile("file");
 		InputStream in = multipartFile.getInputStream();
+		logger.info("Importing from XML file... {}", multipartFile.getName());
 		Database.getInstance().importData(in);
 	}
 
