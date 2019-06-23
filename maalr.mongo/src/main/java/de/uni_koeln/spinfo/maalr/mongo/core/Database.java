@@ -30,7 +30,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,18 +50,20 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
-import com.mongodb.CommandResult;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.WriteConcern;
-import com.mongodb.WriteResult;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Indexes;
+import com.mongodb.client.model.Sorts;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.LemmaVersion;
@@ -76,12 +77,12 @@ import de.uni_koeln.spinfo.maalr.common.shared.description.LemmaDescription;
 import de.uni_koeln.spinfo.maalr.common.shared.description.UseCase;
 import de.uni_koeln.spinfo.maalr.mongo.exceptions.InvalidEntryException;
 import de.uni_koeln.spinfo.maalr.mongo.stats.DatabaseStatistics;
-import de.uni_koeln.spinfo.maalr.mongo.stats.StatEntry.Category;
 import de.uni_koeln.spinfo.maalr.mongo.util.MongoHelper;
 import de.uni_koeln.spinfo.maalr.mongo.util.Validator;
 
 public class Database {
 
+	private static final String ENTRIES = "entries";
 	private static final String QUERY_VERSION_CREATOR = LemmaVersion.CREATOR;
 	private static final String QUERY_VERSION_ROLE = LemmaVersion.CREATOR_ROLE;
 	private static final String QUERY_VERSION_VERIFICATION = LemmaVersion.VERIFICATION;
@@ -94,53 +95,32 @@ public class Database {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	private DBCollection entryCollection;
-	
-	// private DBCollection backupCollection;
+	private MongoCollection<Document> entryCollection;
 
-	private LemmaDescription description = Configuration.getInstance()
-			.getLemmaDescription();
+	private LemmaDescription description = Configuration.getInstance().getLemmaDescription();
 
 	private final boolean debugging;
 
 	Database() throws UnknownHostException {
 		debugging = logger.isDebugEnabled();
-		entryCollection = MongoHelper.getDB(null).getCollection("entries");
-		// backupCollection = db.getCollection("backup");
-		long entries = entryCollection.count();
+		entryCollection = MongoHelper.getDB(null).getCollection(ENTRIES);
+		long entries = entryCollection.countDocuments();
 		logger.info("Connected to entries-collection containing " + entries + " items.");
 		createIndex();
 	}
 
 	private void createIndex() {
-		// FIXME: Optimize indexes to efficiently support editor queries...
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_CREATOR, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_IP, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_ROLE, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_STATE, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_TIMESTAMP, 1));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_VERIFICATION, 1).append("background", true));
-//		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS, 1)
-//				.append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_VERIFICATION, 1).append(
-				QUERY_VERSION_TIMESTAMP, 1));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_VERIFIER, 1).append("background", true));
-		entryCollection.ensureIndex(new BasicDBObject(LexEntry.VERSIONS + "."
-				+ QUERY_VERSION_VERIFICATION, 1).append(QUERY_VERSION_STATE, 1)
-				.append(QUERY_VERSION_TIMESTAMP, 1));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_CREATOR));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_IP));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_ROLE));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_STATE));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_TIMESTAMP));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_VERIFICATION));
+		entryCollection.createIndex(Indexes.ascending(LexEntry.VERSIONS + "." + QUERY_VERSION_VERIFIER));
 		logger.info("DB indices have been created.");
 	}
 
-	public static synchronized Database getInstance()
-			throws NoDatabaseAvailableException {
+	public static synchronized Database getInstance() throws NoDatabaseAvailableException {
 		try {
 			if (instance == null) {
 				instance = new Database();
@@ -165,34 +145,29 @@ public class Database {
 
 	public void insert(final LexEntry entry) throws InvalidEntryException {
 		Validator.validate(entry);
-		DBObject object = Converter.convertLexEntry(entry);
-		WriteResult result = entryCollection.insert(object);
-		ObjectId id = (ObjectId) object.get("_id");
+		Document document = new Document(Converter.convertLexEntry(entry));
+		entryCollection.insertOne(document);
+		ObjectId id = (ObjectId) document.get("_id");
 		entry.setId(id.toString());
-		operationResult(result);
-		logger.info("INSERTED: "
-				+ toLogString(entry.getVersionHistory().get(0)) + ", entry "
-				+ entry.getId());
+		logger.info("INSERTED: {}, entryId {}", toLogString(entry.getVersionHistory().get(0)), entry.getId());
 	}
 
-	public void insertBatch(final List<DBObject> entries)
-			throws InvalidEntryException {
-		if (entries == null)
+	public void insertBatch(final List<Document> entries) throws InvalidEntryException {
+		if (entries == null) {
 			throw new IllegalArgumentException("Parameter must not be null!");
-		if (entries.isEmpty())
+		}
+		if (entries.isEmpty()) {
 			return;
+		}
 		long s = System.nanoTime();
-		WriteResult result = entryCollection.insert(entries);
+		entryCollection.insertMany(entries);
 		long e = System.nanoTime();
-		logger.info("Batch insert of " + entries.size() + " entries completed in " + (e-s)/1000000 + " ms.");
-		
-		operationResult(result);
+		logger.info("Batch insert of " + entries.size() + " entries completed in " + (e - s) / 1000000 + " ms.");
 	}
 
 	public Iterator<LexEntry> getEntries() {
-		final DBCursor cursor = entryCollection.find();
+		final MongoCursor<Document> cursor = entryCollection.find().iterator();
 		Iterator<LexEntry> entryIterator = new Iterator<LexEntry>() {
-
 			@Override
 			public boolean hasNext() {
 				if (!cursor.hasNext()) {
@@ -204,54 +179,40 @@ public class Database {
 
 			@Override
 			public LexEntry next() {
-				return Converter.convertToLexEntry(cursor.next());
+				return Converter.convertToLexEntry(new BasicDBObject(cursor.next()));
 			}
 
 			@Override
 			public void remove() {
 				// TODO Auto-generated method stub
-
 			}
-
 		};
 		return entryIterator;
 	}
 
 	public BasicDBObject getById(final String id) {
-		return (BasicDBObject) entryCollection.findOne(new ObjectId(id));
+		return new BasicDBObject(entryCollection.find(Filters.eq("_id", id)).first());
 	}
 
 	public void delete(LexEntry entry) throws InvalidEntryException {
 		if (entry == null || entry.getId() == null) {
 			throw new InvalidEntryException("Cannot delete entry without id!");
 		}
-		BasicDBObject object = new BasicDBObject();
-		object.put("_id", new ObjectId(entry.getId()));
-		WriteResult result = entryCollection.remove(object, WriteConcern.SAFE);
-		operationResult(result);
-		logger.info("DELETED: " + toLogString(entry.getCurrent()) + ", entry "
-				+ entry.getId());
+		entryCollection.deleteOne(Filters.eq("_id", entry.getId()));
+		logger.info("DELETED: {}/{}", toLogString(entry.getCurrent()), entry.getId());
 	}
 
-	private void operationResult(final WriteResult result) {
-		if (result.getError() != null) {
-			throw new RuntimeException("Operation failed: " + result.getError());
-		}
-	}
-
-	public void accept(LexEntry entry, LemmaVersion version)
-			throws InvalidEntryException {
+	public void accept(LexEntry entry, LemmaVersion version) throws InvalidEntryException {
 		Validator.validate(entry);
 		version.setVerification(Verification.ACCEPTED);
 		entry.setCurrent(version);
-		DBObject object = Converter.convertLexEntry(entry);
-		entryCollection.save(object);
-		logger.info("ACCEPTED: " + toLogString(entry.getCurrent()) + ", entry "
-				+ entry.getId());
+		BasicDBObject object = Converter.convertLexEntry(entry);
+		entryCollection.insertOne(new Document(object));
+		logger.info("ACCEPTED: {}/{}", toLogString(entry.getCurrent()), entry.getId());
 	}
 
-	public void acceptAfterUpdate(LexEntry entry, LemmaVersion suggestion,
-			LemmaVersion modified) throws InvalidEntryException {
+	public void acceptAfterUpdate(LexEntry entry, LemmaVersion suggestion, LemmaVersion modified)
+			throws InvalidEntryException {
 		Validator.validate(entry);
 		suggestion.setVerification(Verification.OUTDATED);
 		modified.setTimestamp(System.currentTimeMillis());
@@ -262,24 +223,20 @@ public class Database {
 		modified.setStatus(Status.NEW_MODIFICATION);
 		entry.addLemma(modified);
 		entry.setCurrent(modified);
-		DBObject object = Converter.convertLexEntry(entry);
-		entryCollection.save(object);
-		logger.info("ACCEPTED/UPDATED: " + toLogString(entry.getCurrent())
-				+ ", entry " + entry.getId());
+		BasicDBObject object = Converter.convertLexEntry(entry);
+		entryCollection.insertOne(new Document(object));
+		logger.info("ACCEPTED/UPDATED: {}/{}", toLogString(entry.getCurrent()), entry.getId());
 	}
 
-	public void reject(LexEntry entry, LemmaVersion version)
-			throws InvalidEntryException {
+	public void reject(LexEntry entry, LemmaVersion version) throws InvalidEntryException {
 		Validator.validate(entry);
 		if (version.equals(entry.getCurrent())) {
-			throw new InvalidEntryException(
-					"Please choose a new current version before rejecting!");
+			throw new InvalidEntryException("Please choose a new current version before rejecting!");
 		}
 		version.setVerification(Verification.REJECTED);
-		DBObject object = Converter.convertLexEntry(entry);
-		entryCollection.save(object);
-		logger.info("REJECTED: " + toLogString(version) + ", entry "
-				+ entry.getId());
+		BasicDBObject object = Converter.convertLexEntry(entry);
+		entryCollection.insertOne(new Document(object));
+		logger.info("REJECTED: {}/{}", toLogString(entry.getCurrent()), entry.getId());
 	}
 
 	public void rate(final LexEntry entry, boolean rateUp) {
@@ -287,8 +244,7 @@ public class Database {
 			logger.debug("Rating " + entry + ", " + rateUp);
 	}
 
-	public void update(LexEntry entry, LemmaVersion update)
-			throws InvalidEntryException {
+	public void update(LexEntry entry, LemmaVersion update) throws InvalidEntryException {
 		update.setStatus(Status.NEW_MODIFICATION);
 		entry.addLemma(update);
 		if (update.isApproved()) {
@@ -298,27 +254,28 @@ public class Database {
 			}
 			entry.setCurrent(update);
 		}
-		DBObject object = Converter.convertLexEntry(entry);
-		WriteResult result = entryCollection.save(object);
+		BasicDBObject object = Converter.convertLexEntry(entry);
+		entryCollection.insertOne(new Document(object));
+
 		if (update.isApproved()) {
-			logger.info("UPDATED: " + toLogString(entry.getCurrent())
-					+ ", entry " + entry.getId());
+
+			logger.info("UPDATED: {}/{}", toLogString(entry.getCurrent()), entry.getId());
+
 		} else {
-			logger.info("SUGGESTED UPDATE: " + toLogString(update) + ", entry "
-					+ entry.getId());
+
+			logger.info("SUGGESTED UPDATE: {}/{}", toLogString(entry.getCurrent()), entry.getId());
 		}
-		operationResult(result);
 	}
 
 	/**
-	 * <strong>For unit tests only!</strong> This method drops the entire
-	 * collection of entries and creates a new one.
+	 * <strong>For unit tests only!</strong> This method drops the entire collection
+	 * of entries and creates a new one.
 	 */
 	public void deleteAllEntries() {
 		logger.warn("Dropping database!");
 		entryCollection.drop();
 		try {
-			entryCollection = MongoHelper.getDB(null).getCollection("entries");
+			entryCollection = MongoHelper.getDB(null).getCollection(ENTRIES);
 			createIndex();
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
@@ -331,32 +288,30 @@ public class Database {
 	 * @return
 	 */
 	public long getNumberOfEntries() {
-		return entryCollection.count();
+		return entryCollection.countDocuments();
 	}
 
-	public LexEntryList queryForLexEntries(String login, Role role,
-			Verification verification, String verifier, long startTime, long endTime,
-			Status[] states, int limit, int offset, String orderField,
+	public LexEntryList queryForLexEntries(String login, Role role, Verification verification, String verifier,
+			long startTime, long endTime, Status[] states, int limit, int offset, String orderField,
 			boolean ascending) {
-		 logger.info("Query Params: " + login + ", " + role + ", " +
-		 verification + ", " + startTime + ", " + endTime + ", " + states +
-		 ", " + limit + ", " + offset + ", " + orderField + ", " + ascending);
-		DBCursor cursor = query(login, role, verification, verifier, startTime, endTime,
-				states, limit, offset, orderField, ascending);
+		logger.info("Query Params: " + login + ", " + role + ", " + verification + ", " + startTime + ", " + endTime
+				+ ", " + states + ", " + limit + ", " + offset + ", " + orderField + ", " + ascending);
+		MongoCursor<Document> cursor = query(login, role, verification, verifier, startTime, endTime, states, limit,
+				offset, orderField, ascending);
 		List<LexEntry> results = new ArrayList<LexEntry>();
+		int count = 0;
 		while (cursor.hasNext()) {
-			DBObject next = cursor.next();
+			DBObject next = new BasicDBObject(cursor.next());
 			LexEntry entry = Converter.convertToLexEntry(next);
 			results.add(entry);
+			count += 1;
 		}
-		int count = cursor.count();
 		cursor.close();
 		return new LexEntryList(results, count);
 	}
 
-	private DBCursor query(String loginOrIP, Role role,
-			Verification verification, String verifier, long startTime, long endTime,
-			Status[] states, int limit, int offset, String orderField,
+	private MongoCursor<Document> query(String loginOrIP, Role role, Verification verification, String verifier,
+			long startTime, long endTime, Status[] states, int limit, int offset, String orderField,
 			boolean ascending) {
 		// TODO: Add querying for 'current' state
 		BasicDBObject query = new BasicDBObject();
@@ -371,7 +326,7 @@ public class Database {
 			or.add(ip);
 			attributes.put("$or", or);
 		}
-		if(verifier != null && verifier.trim().length() > 0) {
+		if (verifier != null && verifier.trim().length() > 0) {
 			attributes.put(QUERY_VERSION_VERIFIER, verifier);
 		}
 		if (role != null) {
@@ -390,58 +345,70 @@ public class Database {
 			attributes.put(QUERY_VERSION_STATE, nestedOr);
 		}
 		if (startTime > 0) {
-			attributes.put(QUERY_VERSION_TIMESTAMP, new BasicDBObject("$gt",
-					startTime));
+			attributes.put(QUERY_VERSION_TIMESTAMP, new BasicDBObject("$gt", startTime));
 		}
 		if (endTime > 0) {
-			attributes.put(QUERY_VERSION_TIMESTAMP, new BasicDBObject("$lt",
-					endTime));
+			attributes.put(QUERY_VERSION_TIMESTAMP, new BasicDBObject("$lt", endTime));
 		}
-		if(startTime > 0 && endTime > 0) {
+		if (startTime > 0 && endTime > 0) {
 			DBObject obj = new BasicDBObject("$lt", endTime);
 			obj.put("$gt", startTime);
 			attributes.put(QUERY_VERSION_TIMESTAMP, obj);
 		}
-		DBCursor found;
+		FindIterable<Document> found;
 		if (attributes.size() > 0) {
-			BasicDBObject elemMatch = new BasicDBObject("$elemMatch",
-					attributes);
+			BasicDBObject elemMatch = new BasicDBObject("$elemMatch", attributes);
 			query.append(LexEntry.VERSIONS, elemMatch);
-			// query.append("$and", attributes);
-			// query.append("$elemMatch", attributes);
 			found = entryCollection.find(query);
 		} else {
 			found = entryCollection.find();
 		}
 		if (orderField != null) {
-			DBObject order = new BasicDBObject();
-			order.put(LexEntry.VERSIONS + "." + orderField, ascending ? 1 : -1);
-			found.sort(order);
+			if (ascending) {
+				found = entryCollection.find().sort(Sorts.ascending(LexEntry.VERSIONS + "." + orderField));
+			} else {
+				found = entryCollection.find().sort(Sorts.descending(LexEntry.VERSIONS + "." + orderField));
+			}
+
 		}
 		// TODO: This is inefficient! However, it should be ok for
 		// small queries, which is the expected usecase.
+
 		if (offset > 0) {
 			found = found.skip(offset);
 		}
+
 		if (limit > 0) {
 			found = found.limit(limit);
 		}
-		return found;
+
+		return found.iterator();
 	}
 
 	public String getCollection() {
-		return entryCollection.getName();
+		return entryCollection.getNamespace().getCollectionName();
 	}
 
 	public boolean isEmpty() {
-		return entryCollection.getCount() == 0;
+		return entryCollection.countDocuments() == 0;
 	}
 
 	public DatabaseStatistics getStatistics() {
+		logger.info("getStatistics called...");
+//		try {
+		/*
+		 * matana@2019-05-12 TODO: Check if stats are needed in backend?
+		 */
+		// Document collStats = MongoHelper.getDB(null).runCommand(new
+		// Document("collStats", ENTRIES));
+		// logger.info("collStats: {}", collStats.toJson());
+//		} catch (UnknownHostException e) {
+//			e.printStackTrace();
+//		}
 		DatabaseStatistics stats = new DatabaseStatistics();
-		stats.setNumberOfEntries((int) entryCollection.getCount());
+		stats.setNumberOfEntries((int) entryCollection.countDocuments());
 		Map<Verification, Integer> count = new HashMap<Verification, Integer>();
-		DBCursor cursor = entryCollection.find();
+		MongoCursor<Document> cursor = entryCollection.find().iterator();
 		int entryCount = 0, lemmaCount = 0;
 		Verification[] values = Verification.values();
 		for (Verification verification : values) {
@@ -449,7 +416,7 @@ public class Database {
 		}
 		count.put(null, 0);
 		while (cursor.hasNext()) {
-			LexEntry entry = Converter.convertToLexEntry(cursor.next());
+			LexEntry entry = Converter.convertToLexEntry(new BasicDBObject(cursor.next()));
 			List<LemmaVersion> history = entry.getVersionHistory();
 			entryCount++;
 			lemmaCount += history.size();
@@ -465,65 +432,9 @@ public class Database {
 		stats.setNumberOfUndefined(count.get(null));
 		stats.setNumberOfEntries(entryCount);
 		stats.setNumberOfLemmata(lemmaCount);
-		/*
-		 * TODO: - Create a separate "System/Diagnostics"-Tab, containing a)
-		 * general information about - RAM - Free Disk Space - CPU - Network b)
-		 * DB-Statistics - general - entries - users
-		 * 
-		 * Check if this will work with sigar:
-		 * 
-		 * 
-		 * 
-		 * - Add green and red 'lamps' to each entry, each sub-statistic
-		 * (entries, users, general) - Add one lamp to the navigation bar, to
-		 * summarize the server state: should always be green.
-		 */
-
-		CommandResult dbStats = entryCollection.getDB().getStats();
-
-		NumberFormat nf = NumberFormat.getInstance();
-		stats.addDBProperty("Server", dbStats.getString("serverUsed"));
-
-		Double serverStatus = dbStats.getDouble("ok");
-		if (Double.compare(1D, serverStatus) == 0) {
-			stats.addDBProperty("Server Status", "ok");
-		} else {
-			stats.addDBProperty("Server Status", "not ok: " + serverStatus,
-					Category.ERROR);
-		}
-
-		long collections = dbStats.getLong("collections");
-		if (collections == 0) {
-			stats.addDBProperty("Number of Collections",
-					nf.format(dbStats.getLong("collections")), Category.ERROR);
-		} else {
-			stats.addDBProperty("Number of Collections",
-					nf.format(dbStats.getLong("collections")));
-		}
-		stats.addDBProperty("Number of Indexes",
-				nf.format(dbStats.getLong("indexes")));
-		stats.addDBProperty("Average Object Size",
-				nf.format(dbStats.getDouble("avgObjSize") / 1024) + " KB");
-		stats.addDBProperty("Data Size",
-				nf.format(dbStats.getLong("dataSize") / (1024 * 1024)) + " MB");
-		stats.addDBProperty("Storage Size",
-				nf.format(dbStats.getLong("storageSize") / (1024 * 1024))
-						+ " MB");
-		stats.addDBProperty("Index Size",
-				nf.format(dbStats.getLong("indexSize") / (1024 * 1024)) + " MB");
-		stats.addDBProperty("File Size",
-				nf.format(dbStats.getLong("fileSize") / (1024 * 1024)) + " MB");
-
-		BasicDBObject query;
-		BasicDBList attributes;
-		query = new BasicDBObject();
-		attributes = new BasicDBList();
-		DBObject lemmata = new BasicDBObject();
-		lemmata.put(QUERY_VERSION_TIMESTAMP, new BasicDBObject("$gt", -1));
-		attributes.add(lemmata);
-		query.append("$and", attributes);
-		// stats.setNumberOfLemmata((int) entryCollection.count(query));
-
+		
+		logger.info("getStatistics finished.");
+		
 		return stats;
 	}
 
@@ -536,15 +447,12 @@ public class Database {
 				history.remove();
 			}
 		}
-		DBObject object = Converter.convertLexEntry(entry);
-		WriteResult result = entryCollection.save(object);
-		operationResult(result);
-		logger.info("HISTORY DROPPED: " + toLogString(entry.getCurrent())
-				+ ", entry " + entry.getId());
+		BasicDBObject object = Converter.convertLexEntry(entry);
+		entryCollection.insertOne(new Document(object));
+		logger.info("HISTORY DROPPED: " + toLogString(entry.getCurrent()) + ", entry " + entry.getId());
 	}
 
-	public String export(boolean allVersions) throws JAXBException,
-			IOException, NoSuchAlgorithmException {
+	public String export(boolean allVersions) throws JAXBException, IOException, NoSuchAlgorithmException {
 		String fileName = null;
 		if (allVersions) {
 			fileName = "all_entries_" + DateFormat.getDateInstance().format(new Date());
@@ -557,8 +465,9 @@ public class Database {
 		return file.getAbsolutePath();
 	}
 
-	public void exportData(boolean allVersions, boolean dropInternalKeys, OutputStream output, String fileName) throws JAXBException, IOException, NoSuchAlgorithmException {
-		DBCursor cursor = entryCollection.find();
+	public void exportData(boolean allVersions, boolean dropInternalKeys, OutputStream output, String fileName)
+			throws JAXBException, IOException, NoSuchAlgorithmException {
+		MongoCursor<Document> cursor = entryCollection.find().iterator();
 		JAXBContext context = null;
 		if (allVersions) {
 			context = JAXBContext.newInstance(LexEntry.class);
@@ -578,7 +487,7 @@ public class Database {
 		int entryCounter = 0;
 		int versionCounter = 0;
 		while (cursor.hasNext()) {
-			DBObject object = cursor.next();
+			DBObject object = new BasicDBObject(cursor.next());
 			LexEntry entry = Converter.convertToLexEntry(object);
 			entryCounter++;
 			if (allVersions) {
@@ -615,17 +524,16 @@ public class Database {
 		zout.close();
 	}
 
-	public void importData(InputStream input) throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
-		logger.info("Importing...");
+	public void importData(InputStream input)
+			throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
 		XMLStreamReader xsr = getXMLStreamReader(new BufferedInputStream(input));
 		xsr.nextTag(); // Advance to statements element
 		Unmarshaller unmarshaller = JAXBContext.newInstance(LexEntry.class).createUnmarshaller();
-		List<DBObject> toInsert = new ArrayList<DBObject>();
+		List<Document> toInsert = new ArrayList<>();
 		int counter = 0;
 		while (xsr.nextTag() == XMLStreamConstants.START_ELEMENT) {
 			LexEntry entry = (LexEntry) unmarshaller.unmarshal(xsr);
-			// System.out.println(entry.getMostRecent().getTimestamp());
-			toInsert.add(Converter.convertLexEntry(entry));
+			toInsert.add(new Document(Converter.convertLexEntry(entry)));
 			counter++;
 			if (counter % 10000 == 0) {
 				insertBatch(toInsert);
@@ -633,19 +541,17 @@ public class Database {
 			}
 		}
 		insertBatch(toInsert);
-		logger.info("Import done.");
+		logger.info("Importing done.");
 	}
-	
-	
 
-	public Iterator<LexEntry> getExportedData(InputStream input) throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
+	public Iterator<LexEntry> getExportedData(InputStream input)
+			throws JAXBException, IOException, XMLStreamException, InvalidEntryException {
 		final XMLStreamReader xsr = getXMLStreamReader(new BufferedInputStream(input));
 		xsr.nextTag();
 		xsr.nextTag();
 		final Unmarshaller unmarshaller = JAXBContext.newInstance(LexEntry.class).createUnmarshaller();
 		Iterator<LexEntry> allEntries = new Iterator<LexEntry>() {
-			
-			
+
 			private LexEntry next = (LexEntry) unmarshaller.unmarshal(xsr);
 
 			@Override
@@ -672,13 +578,13 @@ public class Database {
 			@Override
 			public void remove() {
 				// TODO Auto-generated method stub
-				
 			}
 		};
 		return allEntries;
 	}
 
-	private XMLStreamReader getXMLStreamReader(InputStream input) throws IOException, FactoryConfigurationError, XMLStreamException, UnsupportedEncodingException {
+	private XMLStreamReader getXMLStreamReader(InputStream input)
+			throws IOException, FactoryConfigurationError, XMLStreamException, UnsupportedEncodingException {
 		ZipInputStream in = new ZipInputStream(input);
 		getNextEntry(in);
 		XMLInputFactory xif = XMLInputFactory.newInstance();
@@ -692,9 +598,9 @@ public class Database {
 			ze = in.getNextEntry();
 		}
 	}
-	
-	public DBCursor getAll() {
-		return entryCollection.find();
+
+	public MongoCursor<Document> getAll() {
+		return entryCollection.find().iterator();
 	}
 
 }

@@ -29,7 +29,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 	@Value("${backup.location:backup}")
 	private String backupDir;
 
-	@Value("${db.name:rumantsch}")
+	@Value("${db.name:surmiran}")
 	private String dbName;
 
 	@Scheduled(initialDelayString = "${backup.initial.delay}", fixedRateString = "${backup.fixed.rate}")
@@ -112,8 +112,7 @@ public class ScheduledBackupHelper extends AbstractBackupHelper {
 
 		try (FileInputStream input = new FileInputStream(backupFile)) {
 
-			Iterator<LexEntry> data = Database.getInstance().getExportedData(
-					input);
+			Iterator<LexEntry> data = Database.getInstance().getExportedData(input);
 
 			while (data.hasNext()) {
 				Validator.validate(data.next());

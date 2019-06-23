@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBList;
@@ -31,15 +32,15 @@ import de.uni_koeln.spinfo.maalr.common.shared.LexEntry;
 
 /**
  * Converts {@link LexEntry} and {@link LemmaVersion} objects to/from
- * {@link DBObject} objects.
- * FIXME: Separate Maalr entries and user entries, to allow non-string
- * values for Maalr entries. Required for search...
+ * {@link DBObject} objects. FIXME: Separate Maalr entries and user entries, to
+ * allow non-string values for Maalr entries. Required for search...
+ * 
  * @return
  */
 public class Converter {
-	
-	public static DBObject convertLexEntry(LexEntry entry) {
-		DBObject object = new BasicDBObject();
+
+	public static BasicDBObject convertLexEntry(LexEntry entry) {
+		BasicDBObject object = new BasicDBObject();
 		List<LemmaVersion> vHistory = entry.getVersionHistory();
 		BasicDBList versions = new BasicDBList();
 		for (LemmaVersion lemmaVersion : vHistory) {
@@ -47,7 +48,7 @@ public class Converter {
 			versions.add(obj);
 		}
 		object.put(LexEntry.VERSIONS, versions);
-		if(entry.getId() != null) {
+		if (entry.getId() != null) {
 			object.put(LexEntry.ID, new ObjectId(entry.getId()));
 		}
 		object.put(LexEntry.CURRENT, entry.getCurrentId());
@@ -67,15 +68,14 @@ public class Converter {
 	}
 
 	public static LexEntry convertToLexEntry(DBObject obj) {
-		BasicDBList versions = (BasicDBList) obj.get(LexEntry.VERSIONS);
+		ArrayList<Document> versions = (ArrayList<Document>) obj.get(LexEntry.VERSIONS);
 		ArrayList<LemmaVersion> list = new ArrayList<LemmaVersion>();
-		for (Object o : versions) {
-			Map map = ((DBObject) o).toMap();
-			Map entryValues = new HashMap(map);
+		for (Document doc : versions) {
+			Map<String, String> entryValues = new HashMap(doc);
 			entryValues.keySet().removeAll(LemmaVersion.MAALR_KEYS);
-			Map maalrValues = new HashMap(map);
+			Map<String, String> maalrValues = new HashMap(doc);
 			maalrValues.keySet().retainAll(LemmaVersion.MAALR_KEYS);
-			Long timeStamp = (Long) map.remove(LemmaVersion.TIMESTAMP);
+			Long timeStamp = (Long) doc.remove(LemmaVersion.TIMESTAMP);
 			LemmaVersion lemmaVersion = new LemmaVersion();
 			lemmaVersion.getEntryValues().putAll(entryValues);
 			lemmaVersion.getMaalrValues().putAll(maalrValues);
@@ -84,7 +84,7 @@ public class Converter {
 		}
 		ObjectId objId = (ObjectId) obj.get(LexEntry.ID);
 		LexEntry entry = new LexEntry();
-		if(objId != null) {
+		if (objId != null) {
 			entry.setId(objId.toString());
 		}
 		entry.setNextInternalId((Integer) obj.get(LexEntry.INTERNAL_ID));
@@ -93,6 +93,4 @@ public class Converter {
 		entry.setChangeStamp((String) obj.get(LexEntry.CHANGE_STAMP));
 		return entry;
 	}
-
-	
 }

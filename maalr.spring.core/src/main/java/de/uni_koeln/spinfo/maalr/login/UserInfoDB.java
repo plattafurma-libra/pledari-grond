@@ -20,15 +20,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.IndexOptions;
+import com.mongodb.client.model.Indexes;
+import com.mongodb.client.result.DeleteResult;
 
 import de.uni_koeln.spinfo.maalr.common.server.util.Configuration;
 import de.uni_koeln.spinfo.maalr.common.shared.Constants;
@@ -39,33 +44,39 @@ import de.uni_koeln.spinfo.maalr.mongo.util.MongoHelper;
 
 public class UserInfoDB {
 
-	private DBCollection userCollection;
+	private MongoCollection<Document> userCollection;
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoDB.class);
 	
 	UserInfoDB() {
+		
 		try {
+			
 			Configuration config = Configuration.getInstance();
-			DB db = MongoHelper.getDB(config.getUserDb());
-			userCollection = db.getCollection(config.getUserDbCollection());
-			if(userCollection.count() == 0)
+			
+			MongoDatabase db = MongoHelper.getDB(config.getUserDb());
+			
+			 userCollection = db.getCollection(config.getUserDbCollection());
+			
+			if(userCollection.countDocuments() == 0) {
 				createIndex();
+			}
+				
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
 	private void createIndex() {
-		userCollection.createIndex(new BasicDBObject(Constants.Users.CREATION_DATE, 1));
-		userCollection.createIndex(new BasicDBObject(Constants.Users.LAST_MODIFICATION, 1));
-		BasicDBObject login = new BasicDBObject(Constants.Users.LOGIN, 1);
-		userCollection.ensureIndex(login,new BasicDBObject("unique", "true"));
-		userCollection.createIndex(new BasicDBObject(Constants.Users.PASSWORD, 1));
+		userCollection.createIndex(Indexes.ascending(Constants.Users.LOGIN), new IndexOptions().unique(true));
+		userCollection.createIndex(Indexes.ascending(Constants.Users.CREATION_DATE));
+		userCollection.createIndex(Indexes.ascending(Constants.Users.LAST_MODIFICATION));
+		userCollection.createIndex(Indexes.ascending(Constants.Users.PASSWORD));
 	}
 
 	boolean userExists(String login) {
 		BasicDBObject obj = new BasicDBObject();
 		obj.put(Constants.Users.LOGIN, login);
-		DBCursor cursor = userCollection.find(obj);
+		MongoCursor<Document> cursor = userCollection.find(obj).iterator();
 		boolean hasNext = cursor.hasNext();
 		cursor.close();
 		return hasNext;
@@ -84,7 +95,7 @@ public class UserInfoDB {
 		long now = System.currentTimeMillis();
 		user.setCreationDate(now);
 		user.setLastModificationDate(now);
-		userCollection.insert(user);
+		userCollection.insertOne(new Document(user));
 		logger.info("Inserted new user " + user.getLogin());
 		return user;
 	}
@@ -102,9 +113,9 @@ public class UserInfoDB {
 	}
 
 	private MaalrUserInfo findByDbObject(BasicDBObject obj) {
-		DBCursor cursor = userCollection.find(obj);
+		MongoCursor<Document> cursor = userCollection.find(obj).iterator();
 		if(!cursor.hasNext()) return null;
-		MaalrUserInfo toReturn = new MaalrUserInfo(cursor.next());
+		MaalrUserInfo toReturn = new MaalrUserInfo(new BasicDBObject(cursor.next()));
 		cursor.close();
 		return toReturn;
 	}
@@ -126,24 +137,28 @@ public class UserInfoDB {
 	}
 
 	private void update(MaalrUserInfo user) {
-		// TODO: Stimmt das so?
-		// DOTO: Google doch mal!
-		// TODO: Na gut...
-		userCollection.save(user);
+		Document document = new Document(user);
+		userCollection.insertOne(document);
+		logger.info("user updated: {}", document.toJson());
 	}
 	
 	public List<MaalrUserInfo> getAllUsers(int from, int length, String sortColumn, boolean sortAscending) {
-		BasicDBObject query = new BasicDBObject();
-		DBCursor cursor = userCollection.find(query);
+		
+		FindIterable<Document> find = userCollection.find();
+		
 		if(sortColumn != null) {
 			BasicDBObject sort = new BasicDBObject();
 			sort.put(sortColumn, sortAscending ? 1 : -1);
-			cursor.sort(sort);
+			find.sort(sort);
 		}
-		cursor = cursor.skip(from).limit(length);
+		
+		find = find.skip(from).limit(length);
+		
 		List<MaalrUserInfo> all = new ArrayList<MaalrUserInfo>();
+		MongoCursor<Document> cursor = find.iterator();
+		
 		while(cursor.hasNext()) {
-			DBObject o = cursor.next();
+			DBObject o = new BasicDBObject(cursor.next());
 			MaalrUserInfo user = new MaalrUserInfo(o);
 			all.add(user);
 		}
@@ -165,16 +180,19 @@ public class UserInfoDB {
 			attributes.add(login);
 			query.append("$or", attributes);
 		}
-		DBCursor cursor = userCollection.find(query);
+		FindIterable<Document> find = userCollection.find(query);
 		if(sortColumn != null) {
 			BasicDBObject sort = new BasicDBObject();
 			sort.put(sortColumn, sortAscending ? 1 : -1);
-			cursor.sort(sort);
+			find.sort(sort);
 		}
-		cursor = cursor.skip(from).limit(length);
+		
+		find = find.skip(from).limit(length);
 		List<MaalrUserInfo> all = new ArrayList<MaalrUserInfo>();
+		
+		MongoCursor<Document> cursor = find.iterator();
 		while(cursor.hasNext()) {
-			DBObject o = cursor.next();
+			DBObject o = new BasicDBObject(cursor.next());
 			MaalrUserInfo user = new MaalrUserInfo(o);
 			if(!all.contains(user)) 
 				all.add(user);
@@ -184,14 +202,14 @@ public class UserInfoDB {
 	}
 
 	int getNumberOfUsers() {
-		return (int) userCollection.count();
+		return (int) userCollection.countDocuments();
 	}
 
 	public boolean deleteUser(LightUserInfo user) {
 		BasicDBObject obj = new BasicDBObject();
 		obj.put(Constants.Users.LOGIN, user.getLogin());
-		userCollection.remove(obj);
-		return true;
+		DeleteResult deleteOne = userCollection.deleteOne(obj);
+		return deleteOne.getDeletedCount() == 1;
 	}
 
 }

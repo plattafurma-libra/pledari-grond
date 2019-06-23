@@ -25,22 +25,21 @@ public class DatabaseStatistics implements Serializable {
 	private static final long serialVersionUID = 8517174780704841339L;
 
 	private long numberOfLemmata;
-	
+
 	private long numberOfEntries;
-	
+
 	private long numberOfSuggestions;
 
 	private long numberOfApproved;
 
 	private long numberOfDeleted;
-	
+
 	private long numberOfUndefined;
-	
+
 	private ArrayList<StatEntry> dbStats = new ArrayList<StatEntry>();
 
 	private Integer numberOfOutdated;
 
-	
 	public long getNumberOfUndefined() {
 		return numberOfUndefined;
 	}
@@ -92,7 +91,7 @@ public class DatabaseStatistics implements Serializable {
 	public void addDBProperty(String key, String value) {
 		dbStats.add(new StatEntry(key, value, Category.NORMAL));
 	}
-	
+
 	public void addDBProperty(String key, String value, Category category) {
 		dbStats.add(new StatEntry(key, value, category));
 	}
@@ -104,6 +103,13 @@ public class DatabaseStatistics implements Serializable {
 	public Integer getNumberOfOutdated() {
 		return numberOfOutdated;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "DatabaseStatistics [numberOfLemmata=" + numberOfLemmata + ", numberOfEntries=" + numberOfEntries
+				+ ", numberOfSuggestions=" + numberOfSuggestions + ", numberOfApproved=" + numberOfApproved
+				+ ", numberOfDeleted=" + numberOfDeleted + ", numberOfUndefined=" + numberOfUndefined + ", dbStats="
+				+ dbStats + ", numberOfOutdated=" + numberOfOutdated + "]";
+	}
 
 }
